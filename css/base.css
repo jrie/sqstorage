@@ -1,0 +1,191 @@
+@import url('../fonts/Montserrat/Montserrat.css');
+
+body {
+    font-family: 'Montserrat', sans;
+    font-weight: 300;
+    font-size: 0.75em;
+}
+
+.content {
+    padding: 16px 24px;
+}
+
+.btn {
+    font-size: 0.85rem;
+    font-family: inherit;
+}
+
+.navbar {
+    border-bottom: 1px solid lightgrey;
+    font-size: 0.85rem;
+}
+
+.logo {
+    max-width: 100%;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    height: 3.5rem;
+}
+
+.navbar form input,
+.navbar form button {
+    font-size: inherit;
+}
+
+.navbar h4 {
+    font-weight: bold;
+    margin-right: 2%;
+    border-bottom: 2px solid lightcoral;
+    padding-bottom: 6px;
+    padding-top: 9px;
+}
+
+.input-group input,
+.input-group select {
+    font-size: 0.75rem;
+    height: 100%;
+}
+
+.input-group-text {
+    min-width: 13.8em;
+    font-size: 0.8rem;
+}
+
+.storage-area {
+    clear: both;
+    padding: 6px 8px;
+    border-radius: 12px;
+}
+
+.storage-area:last-of-type {
+    margin-bottom: 100px;
+}
+
+.storage-area .btn.smallButton {
+    float: left;
+    margin-top: 0px;
+    padding: 0px;
+    margin-right: 14px;
+}
+
+.storage-area .alert-info,
+.categories .alert-info {
+    clear: both;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    font-weight: 500;
+}
+
+.storage-area .alert,
+.categories .alert {
+    list-style-type: none;
+    margin: 0px;
+}
+
+.categories .list-group-item .btn {
+    height: auto;
+}
+
+.list-group-item .btn {
+    height: 1.95em;
+    padding-top: 0.125rem;
+    font-size: 0.75rem;
+}
+
+.removalButton {
+    padding-left: 0px;
+}
+
+.list-span {
+    display: inline-block;
+    margin-right: 0.75em;
+    font-size: 0.75rem;
+}
+
+
+.small {
+    font-size: 0.9rem;
+}
+
+.fa, .fas, .far, .fal, .fab {
+    font-size: 1.5em !important;
+}
+
+a.fas:hover,
+a.far:hover {
+    text-decoration: none;
+}
+
+.categories .list-span,
+.categories .list-span:nth-child(0n+1) {
+    min-width: 15%;
+}
+.categories li.alert-info .list-span:nth-child(0n+2),
+.categories li.list-group-item .list-span:nth-child(0n+2) {
+    min-width: 15%;
+}
+
+.storage-area li.alert-info .list-span,
+.storage-area li.alert-info .list-span:nth-child(0n+1),
+.storage-area li.list-group-item .list-span:nth-child(0n+2) {
+    min-width: 10%;
+}
+
+.storage-area li.alert-info .list-span:nth-child(0n+2),
+.storage-area li.list-group-item .list-span:nth-child(0n+3) {
+    min-width: 13.5%;
+}
+
+.storage-area li.alert-info .list-span:nth-child(0n+3),
+.storage-area li.list-group-item .list-span:nth-child(0n+4) {
+    min-width: 6%;
+}
+
+.storage-area li.alert-info .list-span:nth-child(0n+4),
+.storage-area li.list-group-item .list-span:nth-child(0n+5) {
+    min-width: 15%;
+}
+
+.storage-area li.alert-info .list-span:nth-child(0n+5),
+.storage-area li.list-group-item .list-span:nth-child(0n+6) {
+    min-width: 16%;
+}
+
+.storage-area li.alert-info .list-span:nth-child(0n+6),
+.storage-area li.list-group-item .list-span:nth-child(0n+7) {
+    min-width: 16%;
+}
+
+.switchStorage {
+    margin-left: 12px;
+}
+
+.list-span:last-of-type {
+    border: none;
+}
+
+.list-span-btn {
+    display: inline-block;
+    width: 2.3rem;
+}
+
+.list-span:first-child {
+    margin: 0px;
+    margin-right: 3.4em;
+}
+
+.input-group .dropdown-toggle {
+    min-width: 11rem;
+}
+
+.list-group-item:nth-of-type(2n+2) {
+    background-color: #f8f9fa;
+}
+
+.footer {
+    bottom: 12px;
+    position: fixed;
+    left: 12px;
+    z-index: 1;
+    background-color: #f8f9fa;
+}
