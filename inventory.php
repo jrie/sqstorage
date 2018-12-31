@@ -42,7 +42,7 @@
                 printf('<li class="list-group-item"><button class="btn smallButton" name="remove" data-name="%s" value="%d" type="submit"><i class="fas fa-times-circle"></i></button><a href="inventory.php?category=%d" class="list-span">%s</a><span class="list-span">%s</span><span class="list-span">%d</span><span class="list-span">%s</span><span class="list-span">%s</span> <span class="list-span">%s</span><a class="list-span" href="index.php?editItem=%d"><i class="fas fa-edit"></i></a>', $item['label'], $item['id'], $item['headcategory'], $category['name'], $item['label'], $item['amount'], $item['comment'], implode(', ', $subCategories), explode(' ', $item['date'])[0], $item['id']);
 
                 printf('<div class="dropdown float-right"><select autocomplete="false" class="btn btn-primary dropdown-toggle switchStorage" value="0"  type="button" tabindex="-1" data-id="%d" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">', $item['id']);
-                echo '<option selected="selected" value="-1">Zuweisen</option>';
+                echo '<option selected="selected" value="-1">' . gettext('Zuweisen') . '</option>';
 
                 foreach ($storages as $storage) {
                     printf('<option value="%s">%s</option>', $storage['id'], $storage['label']);
@@ -51,13 +51,13 @@
             }
 
             function addHeadColumns($store) {
-                printf('<hr></hr><div class="storage-area"><button class="btn smallButton" name="removeStorage" data-name="%s" value="%d" type="submit"><i class="fas fa-times-circle"></i></button><h4 class="text-dark"><a href="inventory.php?storageid=%d">%s</a>&nbsp;<span class="small">(%d %s)</span></h4><ul class="list-group">', $store['label'], $store['id'], $store['id'], $store['label'], $store['amount'], $store['amount'] == 1 ? 'Gegenstand': 'Gegenstände');
-                echo '<li class="alert alert-info"><span class="list-span">Gruppe</span><span class="list-span">Bezeichnung</span><span class="list-span">Anzahl</span><span class="list-span">Bemerkung</span><span class="list-span">Unterkategorien</span><span class="list-span">Hinzugefügt</span><span class="list-span">Aktionen</span></li>';
+                printf('<hr></hr><div class="storage-area"><button class="btn smallButton" name="removeStorage" data-name="%s" value="%d" type="submit"><i class="fas fa-times-circle"></i></button><h4 class="text-dark"><a href="inventory.php?storageid=%d">%s</a>&nbsp;<span class="small">(%d %s)</span></h4><ul class="list-group">', $store['label'], $store['id'], $store['id'], $store['label'], $store['amount'], $store['amount'] == 1 ? getText('Gegenstand') : gettext('Gegenstände'));
+                echo '<li class="alert alert-info"><span class="list-span">' . gettext('Gruppe') . '</span><span class="list-span">' . gettext('Bezeichnung') . '</span><span class="list-span">' . gettext('Anzahl') . '</span><span class="list-span">' . gettext('Bemerkung') . '</span><span class="list-span">' . gettext('Unterkategorien') . '</span><span class="list-span">' . gettext('Hinzugefügt') . '</span><span class="list-span">' . gettext('Aktionen') . '</span></li>';
             }
 
             function addHeadColumnsPositions($store) {
                 printf('<hr></hr><div class="storage-area"><button class="btn smallButton" name="removeStorage" data-name="%s" value="%d" type="submit"><i class="fas fa-times-circle"></i></button><h4 class="text-dark"><a href="inventory.php?storageid=%d">%s</a>&nbsp;<span class="small">(%d %s)</span></h4><ul class="list-group">', $store['label'], $store['id'], $store['id'], $store['label'], DB::affectedRows(), DB::affectedRows() == 1 ? 'Position': 'Positionen');
-                echo '<li class="alert alert-info"><span class="list-span">Gruppe</span><span class="list-span">Bezeichnung</span><span class="list-span">Anzahl</span><span class="list-span">Bemerkung</span><span class="list-span">Unterkategorien</span><span class="list-span">Hinzugefügt</span><span class="list-span">Aktionen</span></li>';
+                echo '<li class="alert alert-info"><span class="list-span">' . gettext('Gruppe') . '</span><span class="list-span">' . gettext('Bezeichnung') . '</span><span class="list-span">' . gettext('Anzahl') . '</span><span class="list-span">' . gettext('Bemerkung') . '</span><span class="list-span">' . gettext('Unterkategorien') . '</span><span class="list-span">' . gettext('Hinzugefügt') . '</span><span class="list-span">' . gettext('Aktionen') . '</span></li>';
             }
 
 
@@ -114,11 +114,11 @@
                     printf('<div class="storage-area"><ul class="list-group"><h4>%s <small>(%d %s)</small></h4>', $category['name'], DB::affectedRows(), DB::affectedRows() == 1 ? 'Position' : 'Positionen');
                     $storages = DB::query('SELECT id, label FROM storages');
 
-                    echo '<li class="alert alert-info"><span class="list-span">Gruppe</span><span class="list-span">Bezeichnung</span><span class="list-span">Anzahl</span><span class="list-span">Bemerkung</span><span class="list-span">Lagerplatz</span><span class="list-span">Unterkategorien</span><span class="list-span">Aktionen</span></li>';
+                    echo '<li class="alert alert-info"><span class="list-span">' . gettext('Gruppe') . '</span><span class="list-span">' . gettext('Bezeichnung') . '</span><span class="list-span">' . gettext('Anzahl') . '</span><span class="list-span">' . gettext('Bemerkung') . '</span><span class="list-span">' . gettext('Lagerplatz') . '</span><span class="list-span">' . gettext('Unterkategorien') . '</span><span class="list-span">' . gettext('Aktionen') . '</span></li>';
                     if ($items != null) {
                         foreach($items as $item) { addItemStore($item, $storages); }
                     } else {
-                        echo '<li class="list-group-item"><span>Keine Gegenstände gefunden.</span></li>';
+                        echo '<li class="list-group-item"><span>' . gettext('Keine Gegenstände gefunden.') . '</span></li>';
                     }
 
                     echo '</ul></div>';
@@ -161,7 +161,7 @@
                                 }
 
                                 if ($items != null) foreach($items as $item) addItem($item, $storages);
-                                else echo '<li class="list-group-item"><span class="list-span">Keine Gegenstände gefunden.</span></li>';
+                                else echo '<li class="list-group-item"><span>' . gettext('Keine Gegenstände gefunden.') . '</span></li>';
                             }
                         } else {
                             foreach ($headCategories as $headCategory) {
@@ -170,7 +170,7 @@
                                 if ($items != null) {
                                     foreach($items as $item) { addItem($item, $storages); }
                                 } else {
-                                    echo '<li class="list-group-item"><span>Keine Gegenstände gefunden.</span></li>';
+                                    echo '<li class="list-group-item"><span>' . gettext('Keine Gegenstände gefunden.') . '</span></li>';
                                 }
                             }
                         }
@@ -184,7 +184,7 @@
                                 }
 
                                 if ($items != null) foreach($items as $item) addItem($item, $storages);
-                                else echo '<li class="list-group-item"><span class="list-span">Keine Gegenstände gefunden.</span></li>';
+                                else echo '<li class="list-group-item"><span class="list-span">' . gettext('Keine Gegenstände gefunden.') . '</span></li>';
                             }
                         }
 
@@ -200,11 +200,12 @@
                     printf('<div class="storage-area"><ul class="list-group"><h4>%s <small>(%d Positionen)</small></h4>', $category['name'], DB::affectedRows());
                     $storages = DB::query('SELECT id, label FROM storages');
 
-                    echo '<li class="alert alert-info"><span class="list-span">Gruppe</span><span class="list-span">Bezeichnung</span><span class="list-span">Anzahl</span><span class="list-span">Bemerkung</span><span class="list-span">Lagerplatz</span><span class="list-span">Unterkategorien</span><span class="list-span">Aktionen</span></li>';
+                    echo '<li class="alert alert-info"><span class="list-span">' . gettext('Gruppe') . '</span><span class="list-span">' . gettext('Bezeichnung') . '</span><span class="list-span">' . gettext('Anzahl') . '</span><span class="list-span">' . gettext('Bemerkung') . '</span><span class="list-span">' . gettext('Lagerplatz') . '</span><span class="list-span">' . gettext('Unterkategorien') . '</span><span class="list-span">' . gettext('Aktionen') . '</span></li>';
+
                     if ($items != null) {
                         foreach($items as $item) { addItemStore($item, $storages); }
                     } else {
-                        echo '<li class="list-group-item"><span>Keine Gegenstände gefunden.</span></li>';
+                        echo '<li class="list-group-item"><span>' . gettext('Keine Gegenstände gefunden.') . '</span></li>';
                     }
 
                     echo '</ul></div>';
@@ -214,7 +215,8 @@
                         $storages = DB::query('SELECT id, label FROM storages');
 
                         printf('<div class="storage-area"><h4 class="text-dark">Unsortiert <span class="small">(%d %s)</span></h4><ul class="list-group">', DB::affectedRows(), DB::affectedRows() == 1 ? 'Position' : 'Positionen');
-                        echo '<li class="alert alert-info"><span class="list-span">Gruppe</span><span class="list-span">Bezeichnung</span><span class="list-span">Anzahl</span><span class="list-span">Bemerkung</span><span class="list-span">Unterkategorien</span><span class="list-span">Hinzugefügt</span></li>';
+
+                        echo '<li class="alert alert-info"><span class="list-span">' . gettext('Gruppe') . '</span><span class="list-span">' . gettext('Bezeichnung') . '</span><span class="list-span">' . gettext('Anzahl') . '</span><span class="list-span">' . gettext('Bemerkung') . '</span><span class="list-span">' . gettext('Unterkategorien') . '</span><span class="list-span">' . gettext('Hinzugefügt') . '</span></li>';
 
                         foreach ($loseItems as $item) addItem($item, $storages);
                         echo '</ul></div>';
@@ -232,7 +234,7 @@
                             if ($items != NULL) {
                                 foreach($items as $item) { addItem($item, $storages); }
                             } else {
-                                echo '<li class="list-group-item"><span>Keine Gegenstände gefunden.</span></li>';
+                                echo '<li class="list-group-item"><span>' . gettext('Keine Gegenstände gefunden.') . '</span></li>';
                             }
                             echo '</ul></div>';
                         }
@@ -255,8 +257,8 @@
             let removalButtons = document.querySelectorAll('.smallButton')
             for (let button of removalButtons) {
                 button.addEventListener('click', function (evt) {
-                    let targetType = evt.target.name === 'removeStorage' ? 'Lagerplatz' : 'Position'
-                    if (!window.confirm(targetType + ' "' + evt.target.dataset['name'] + '" wirklich entfernen?')) {
+                    let targetType = evt.target.name === 'removeStorage' ? '<?php echo gettext('Lagerplatz wirklich entfernen?') ?>' : '<?php echo gettext('Position wirklich entfernen?') ?>'
+                    if (!window.confirm(targetType + ' "' + evt.target.dataset['name'] + '"')) {
                         evt.preventDefault()
                     }
                 })

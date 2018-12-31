@@ -84,13 +84,13 @@
         <div class="content">
             <?php if ($success): ?>
             <div class="alert alert-info" role="alert">
-                <p><?php echo $_POST['label'] ?> zur Datenbank hinzugefügt.</p>
+                <p><?php echo $_POST['label'] . ' ' . gettext('zur Datenbank hinzugefügt.') ?></p>
             </div>
             <?php endif; ?>
 
             <?php if ($isEdit): ?>
             <div class="alert alert-danger" role="alert">
-                <h6>Eintrag zur Bearbeitung: &quot;<?php echo $item['label'] ?>&quot;</h6>
+                <h6><?php echo gettext('Eintrag zur Bearbeitung:') ?> &quot;<?php echo $item['label'] ?>&quot;</h6>
             </div>
             <?php endif; ?>
 
@@ -100,12 +100,12 @@
                 ?>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">Bezeichnung</span>
+                        <span class="input-group-text" id="basic-addon1"><?php echo gettext('Bezeichnung') ?></span>
                     </div>
 
                     <?php
-                        if (!$isEdit) echo '<input type="text" name="label" maxlength="64" class="form-control" required="required" placeholder="Bezeichnung oder Name" aria-label="Gerätename" aria-describedby="basic-addon1">';
-                        else printf('<input type="text" name="label" maxlength="64" class="form-control" required="required" placeholder="Bezeichnung oder Name" aria-label="Gerätename" aria-describedby="basic-addon1" value="%s">', $item['label']);
+                        if (!$isEdit) echo '<input type="text" name="label" maxlength="64" class="form-control" required="required" placeholder="'. gettext('Bezeichnung oder Name') . '" aria-label="' . gettext('Bezeichnung') . '" aria-describedby="basic-addon1">';
+                        else printf('<input type="text" name="label" maxlength="64" class="form-control" required="required" placeholder="'. gettext('Bezeichnung oder Name') . '")aria-label="' . gettext('Bezeichnung') . '" aria-describedby="basic-addon1" value="%s">', $item['label']);
                     ?>
                 </div>
 
@@ -114,8 +114,8 @@
                         <div class="dropdown">
                             <select class="btn btn-secondary dropdown-toggle" type="button" tabindex="-1" id="storageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" autocomplete="off">
                                 <?php
-                                    if ($isEdit && $item['storageid'] != 0) echo '<option value="-1">Lagerplatz</option>';
-                                    else echo '<option value="-1" selected="selected">Lagerplatz</option>';
+                                    if ($isEdit && $item['storageid'] != 0) echo '<option value="-1">' . gettext('Lagerplatz') . '</option>';
+                                    else echo '<option value="-1" selected="selected">' . gettext('Lagerplatz') . '</option>';
 
                                     $storages = DB::query('SELECT id, label FROM storages');
                                     $currentStorage = NULL;
@@ -134,18 +134,18 @@
                     </div>
 
                     <?php
-                        if ($isEdit && $item['storageid'] != 0) printf('<input type="text" name="storage" id="storage" maxlength="32" class="form-control" placeholder="Lagerplatz" required="required" autocomplete="off" value="%s">', $currentStorage['label']);
-                        else echo '<input type="text" name="storage" id="storage" maxlength="32" class="form-control" placeholder="Lagerplatz" required="required" autocomplete="off">';
+                        if ($isEdit && $item['storageid'] != 0) printf('<input type="text" name="storage" id="storage" maxlength="32" class="form-control" placeholder="' . gettext('Lagerplatz') . '" required="required" autocomplete="off" value="%s">', $currentStorage['label']);
+                        else echo '<input type="text" name="storage" id="storage" maxlength="32" class="form-control" placeholder="' . gettext('Lagerplatz') . '" required="required" autocomplete="off">';
                     ?>
                 </div>
 
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon7">Bemerkung</span>
+                        <span class="input-group-text" id="basic-addon7"><?php echo gettext('Bemerkung') ?></span>
                     </div>
                     <?php
-                        if (isset($item['comment']) && !empty($item['comment']) != NULL) printf('<input type="text" name="comment" maxlength="255" class="form-control" autocomplete="off" placeholder="Bemerkung" aria-label="Bemerkung" aria-describedby="basic-addon7" value="%s">', $item['comment']);
-                        else echo '<input type="text" name="comment" maxlength="255" class="form-control" autocomplete="off" placeholder="Bemerkung" aria-label="Bemerkung" aria-describedby="basic-addon7">';
+                        if (isset($item['comment']) && !empty($item['comment']) != NULL) printf('<input type="text" name="comment" maxlength="255" class="form-control" autocomplete="off" placeholder="' . gettext('Bemerkung') . '" aria-label="Bemerkung" aria-describedby="basic-addon7" value="%s">', $item['comment']);
+                        else echo '<input type="text" name="comment" maxlength="255" class="form-control" autocomplete="off" placeholder="' . gettext('Bemerkung') . '" aria-label="' . gettext('Bemerkung') . '" aria-describedby="basic-addon7">';
                     ?>
 
                 </div>
@@ -156,9 +156,9 @@
                             <select class="btn btn-secondary dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="categoryDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <?php
                                     if ($isEdit) {
-                                        echo '<option value="-1">Kategorie</option>';
+                                        echo '<option value="-1">' . gettext('Kategorie') . '</option>';
                                     } else {
-                                        echo '<option value="-1" selected="selected">Kategorie</option>';
+                                        echo '<option value="-1" selected="selected">' . gettext('Kategorie') . '</option>';
                                     }
                                     $categories = DB::query('SELECT id, name FROM headCategories');
 
@@ -177,9 +177,9 @@
                     </div>
                     <?php
                         if (!$isEdit || $currentCategory == NULL) {
-                            echo '<input type="text" class="form-control" id="category" name="category" required="required" autocomplete="off" placeholder="Netzwerk/Hardware">';
+                            echo '<input type="text" class="form-control" id="category" name="category" required="required" autocomplete="off" placeholder="' . gettext('Netzwerk/Hardware') . '">';
                         } else {
-                            printf('<input type="text" class="form-control" id="category" name="category" required="required" autocomplete="off" placeholder="Netzwerk/Hardware" value="%s">', $currentCategory['name']);
+                            printf('<input type="text" class="form-control" id="category" name="category" required="required" autocomplete="off" placeholder="%s" value="%s">', gettext('Netzwerk/Hardware'), $currentCategory['name']);
                         }
                     ?>
                 </div>
@@ -192,9 +192,9 @@
 
                                     $subCat = array();
                                     if ($isEdit && !empty($item['subcategories'])) {
-                                        echo '<option value="-1">Unterkategorie</option>';
+                                        echo '<option value="-1">' . gettext('Unterkategorie') . '</option>';
                                         $subCat = explode(',', $item['subcategories']);
-                                    } else echo '<option value="-1" selected="selected">Unterkategorie</option>';
+                                    } else echo '<option value="-1" selected="selected">' . gettext('Unterkategorie') . '</option>';
 
                                     $subCategories = array();
                                     $categories = DB::query('SELECT id, name FROM subCategories');
@@ -211,38 +211,38 @@
                         </div>
                     </div>
                     <?php
-                        if (!$isEdit || empty($subCategories)) echo '<input type="text" class="form-control" id="subcategory" name="subcategories" placeholder="Router,wlan,fritzBox" aria-label="Unterkategorien" autocomplete="off">';
-                        else printf('<input type="text" class="form-control" id="subcategory" name="subcategories" placeholder="Router,wlan,fritzBox" aria-label="Unterkategorien" autocomplete="off" value="%s">', implode($subCategories, ','));
+                        if (!$isEdit || empty($subCategories)) echo '<input type="text" class="form-control" id="subcategory" name="subcategories" placeholder="' . gettext('Router,wlan,fritzBox') . '" aria-label="' . gettext('Unterkategorie') . '" autocomplete="off">';
+                        else printf('<input type="text" class="form-control" id="subcategory" name="subcategories" placeholder="' . gettext('Router,wlan,fritzBox') . '" aria-label="' . gettext('Unterkategorie') . '" autocomplete="off" value="%s">', implode($subCategories, ','));
                     ?>
 
                 </div>
 
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon4">Anzahl</span>
+                        <span class="input-group-text" id="basic-addon4"><?php echo gettext('Anzahl') ?></span>
                     </div>
                     <?php
-                        if (!$isEdit) echo '<input type="text" autocomplete="off" name="amount" class="form-control" placeholder="1" aria-label="Anzahl" aria-describedby="basic-addon4">';
-                        else printf('<input type="text" autocomplete="off" name="amount" class="form-control" placeholder="1" aria-label="Anzahl" aria-describedby="basic-addon4" value="%s">', $item['amount']);
+                        if (!$isEdit) echo '<input type="text" autocomplete="off" name="amount" class="form-control" placeholder="1" aria-label="' . gettext('Anzahl') . '" aria-describedby="basic-addon4">';
+                        else printf('<input type="text" autocomplete="off" name="amount" class="form-control" placeholder="1" aria-label="' . gettext('Anzahl') . '" aria-describedby="basic-addon4" value="%s">', $item['amount']);
                     ?>
                 </div>
 
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon6">Seriennummer</span>
+                        <span class="input-group-text" id="basic-addon6"><?php echo gettext('Seriennummer') ?></span>
                     </div>
                     <?php
-                        if (!$isEdit) echo '<input type="text" name="serialnumber" class="form-control" placeholder="Seriennummer/Artikelnummer" aria-label="Seriennummer" aria-describedby="basic-addon6">';
-                        else printf('<input type="text" name="serialnumber" class="form-control" placeholder="Seriennummer/Artikelnummer" aria-label="Seriennummer" aria-describedby="basic-addon6" value="%s">', $item['serialnumber']);
+                        if (!$isEdit) echo '<input type="text" name="serialnumber" class="form-control" placeholder="Seriennummer/Artikelnummer" aria-label="' . gettext('Seriennummer') . '" aria-describedby="basic-addon6">';
+                        else printf('<input type="text" name="serialnumber" class="form-control" placeholder="%s" aria-label="Seriennummer" aria-describedby="basic-addon6" value="%s">', gettext('Seriennummer/Artikelnummer'), $item['serialnumber']);
                     ?>
 
                 </div>
 
                 <div style="float: right;">
                 <?php if ($isEdit): ?>
-                    <button type="submit" class="btn btn-danger">Überschreiben</button>
+                    <button type="submit" class="btn btn-danger"><?php echo gettext('Überschreiben') ?></button>
                 <?php else: ?>
-                    <button type="submit" class="btn btn-primary">Eintragen</button>
+                    <button type="submit" class="btn btn-primary"><?php echo gettext('Eintragen') ?></button>
                 <?php endif; ?>
 
                 </div>
