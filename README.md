@@ -1,6 +1,5 @@
 ![Logo sqStorage](https://www.picflash.org/img/2018/12/31/hwxkb96wq17sfvu.png "Logo sqStorage")
 
-# sqStorage
 A easy to use and quick way to organize your inventory, storage and storage areas.
 
 ## Installation
