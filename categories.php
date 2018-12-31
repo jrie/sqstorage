@@ -60,14 +60,15 @@
                 button.addEventListener('click', function (evt) {
                     let targetType = evt.target.name === 'editCategory' ? 'Kategorie' : 'Unterkategorie'
                     let newName = window.prompt(targetType + ' "' + evt.target.dataset['name'] + '" umbenennen?', '')
-                    console.log(newName);
-                    if (newName.length !== 0) {
+
+                    if (newName !== null && newName.length !== 0) {
                         if (evt.target.name === 'editCategory') window.location.href = 'categories.php?headCategory=' + evt.target.dataset['id'] +  '&to='+ newName
                         else window.location.href = 'categories.php?subCategory=' + evt.target.dataset['id'] +  '&to='+ newName
-                        evt.preventDefault()
-                    } else {
-                        evt.preventDefault()
+                        return
                     }
+
+                    evt.preventDefault()
+                    return false
                 })
             }
         </script>
