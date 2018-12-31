@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <img class="logo" src="./img/sqstorage.png"></img>
+    <a href="index.php"><img class="logo" src="./img/sqstorage.png"></img></a>
     <ul class="nav">
         <li class="nav-item"><a href="index.php" class="nav-link"><?php echo gettext('Eintragen') ?></li></a></li>
         <li class="nav-item"><a href="inventory.php" class="nav-link"><?php echo gettext('Inventar') ?></li></a></li>
