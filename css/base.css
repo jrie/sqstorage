@@ -1,5 +1,4 @@
 @import url('../fonts/Montserrat/Montserrat.css');
-
 body {
     font-family: 'Montserrat', sans;
     font-weight: 300;
@@ -8,6 +7,7 @@ body {
 
 .content {
     padding: 16px 24px;
+    margin-bottom: 100px;
 }
 
 .btn {
@@ -25,6 +25,7 @@ body {
     margin-top: 12px;
     margin-bottom: 12px;
     height: 3.5rem;
+    margin-right: 1.75em;
 }
 
 .navbar form input,
@@ -55,10 +56,6 @@ body {
     clear: both;
     padding: 6px 8px;
     border-radius: 12px;
-}
-
-.storage-area:last-of-type {
-    margin-bottom: 100px;
 }
 
 .storage-area .btn.smallButton {
@@ -102,12 +99,15 @@ body {
     font-size: 0.75rem;
 }
 
-
 .small {
     font-size: 0.9rem;
 }
 
-.fa, .fas, .far, .fal, .fab {
+.fa,
+.fas,
+.far,
+.fal,
+.fab {
     font-size: 1.5em !important;
 }
 
@@ -120,6 +120,7 @@ a.far:hover {
 .categories .list-span:nth-child(0n+1) {
     min-width: 15%;
 }
+
 .categories li.alert-info .list-span:nth-child(0n+2),
 .categories li.list-group-item .list-span:nth-child(0n+2) {
     min-width: 15%;
