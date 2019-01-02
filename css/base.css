@@ -99,6 +99,15 @@ body {
     font-size: 0.75rem;
 }
 
+.headSubcategories {
+    list-style: none;
+    padding: 6px 18px;
+}
+
+.headSubcategories li {
+    padding: 6px 0px;
+}
+
 .small {
     font-size: 0.9rem;
 }

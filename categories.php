@@ -36,7 +36,12 @@
 
                     echo '<hr/><ul class="categories list-group"><li class="alert alert-info"><span class="list-span">' .  gettext('Kategorien') . '</span><span class="list-span">' .  gettext('Anzahl') . '</span><span class="list-span">' .  gettext('Aktionen') . '</span></li>';
                     foreach ($headCategories as $category) {
-                        printf('<li class="list-group-item"><a name="removeCategory" data-name="%s" href="categories.php?removeCategory=%d" class="removalButton fas fa-times-circle btn"></a><a class="list-span" data-name="%s" href="inventory.php?category=%d">%s</a><span class="list-span">%d %s</span><a class="fas fa-edit editCategory" href="categories.php" name="editCategory" data-name="%s" data-id="%d"></a></li>', $category['name'], $category['id'], $category['name'], $category['id'], $category['name'], $category['amount'], $category['amount'] == 1 ? 'Gegenstand' : 'Gegenstände', $category['name'], $category['id']);
+                        printf('<li class="list-group-item"><a name="removeCategory" data-name="%s" href="categories.php?removeCategory=%d" class="removalButton fas fa-times-circle btn"></a><a class="list-span" data-name="%s" href="inventory.php?category=%d">%s</a><span class="list-span">%d %s</span><a class="fas fa-edit editCategory" href="categories.php" name="editCategory" data-name="%s" data-id="%d"></a>', $category['name'], $category['id'], $category['name'], $category['id'], $category['name'], $category['amount'], $category['amount'] == 1 ? gettext('Gegenstand') : gettext('Gegenstände'), $category['name'], $category['id']);
+                        echo '<ul class="headSubcategories">';
+                        foreach($subCategories as $subCategory) {
+                            if ($subCategory['headcategory'] != NULL && $subCategory['headcategory'] == $category['id']) printf('<li><a class="list-span" href="inventory.php?subcategory=%d">%s</a><span class="list-span">%d %s</span></li>', $subCategory['id'], $subCategory['name'], $subCategory['amount'], $subCategory['amount'] == 1 ? gettext('Gegenstand') : gettext('Gegenstände'));
+                        }
+                        echo '</ul></li>';
                     }
                     echo '</ul><hr/>';
 
