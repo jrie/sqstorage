@@ -101,6 +101,7 @@
                     if (newName !== null && newName.length !== 0) {
                         if (evt.target.name === 'editCategory') window.location.href = 'categories.php?headCategory=' + evt.target.dataset['id'] +  '&to='+ newName
                         else window.location.href = 'categories.php?subCategory=' + evt.target.dataset['id'] +  '&to='+ newName
+                        evt.preventDefault()
                         return
                     }
 
