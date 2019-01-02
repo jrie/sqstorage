@@ -179,6 +179,10 @@ a.far:hover {
     min-width: 11rem;
 }
 
+.dropdown.list-span {
+    margin-left: 13%;
+}
+
 .list-group-item:nth-of-type(2n+2) {
     background-color: #f8f9fa;
 }
