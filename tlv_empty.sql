@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Erstellungszeit: 27. Dez 2018 um 19:23
+-- Erstellungszeit: 03. Jan 2019 um 04:03
 -- Server-Version: 10.1.37-MariaDB-3
 -- PHP-Version: 7.3.0-2
 
@@ -71,7 +71,8 @@ CREATE TABLE `storages` (
 CREATE TABLE `subCategories` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` char(128) NOT NULL,
-  `amount` bigint(20) UNSIGNED NOT NULL DEFAULT '0'
+  `amount` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
+  `headcategory` bigint(20) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -122,7 +123,7 @@ ALTER TABLE `items`
 -- AUTO_INCREMENT für Tabelle `storages`
 --
 ALTER TABLE `storages`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT für Tabelle `subCategories`
 --
