@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a href="index.php"><img class="logo" src="./img/sqstorage.png"></img></a>
+    <a href="index.php"><img class="logo" src="./img/sqstorage.png" /></a>
     <ul class="nav">
-        <li class="nav-item"><a href="index.php" class="nav-link"><?php echo gettext('Eintragen') ?></li></a></li>
-        <li class="nav-item"><a href="inventory.php" class="nav-link"><?php echo gettext('Inventar') ?></li></a></li>
+        <li class="nav-item"><a href="index.php" class="nav-link"><?php echo gettext('Eintragen') ?></a></li>
+        <li class="nav-item"><a href="inventory.php" class="nav-link"><?php echo gettext('Inventar') ?></a></li>
         <li class="nav-item"><a href="categories.php" class="nav-link"><?php echo gettext('Kategorien') ?></a></li>
     </ul>
 
