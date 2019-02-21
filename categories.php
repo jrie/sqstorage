@@ -8,8 +8,16 @@
             <?php
 
                 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-                    if (isset($_GET['to']) && (isset($_GET['headCategory']) || isset($_GET['subCategory']))) {
-                        if (isset($_GET['headCategory'])) {
+                    if (isset($_GET['setCategoryId']) && !empty($_GET['setCategoryId']) && isset($_GET['to']) && !empty($_GET['to'])) {
+                        DB::update('subCategories', array('headcategory' => intVal($_GET['to'])), 'id=%d', intVal($_GET['setCategoryId']));
+                        header("location: categories.php");
+                        die();
+                    } else if (isset($_GET['resetSubcategoryId']) && !empty($_GET['resetSubcategoryId'])) {
+                        DB::update('subCategories', array('headcategory' => NULL), 'id=%d', intVal($_GET['resetSubcategoryId']));
+                        header("location: categories.php");
+                        die();
+                    } else if (isset($_GET['to']) && !empty($_GET['to']) && (isset($_GET['headCategory']) || isset($_GET['subCategory']))) {
+                        if (isset($_GET['headCategory']) && !empty($_GET['headCategory'])) {
                             DB::update('headCategories', array('name' => $_GET['to']), 'id=%d', intVal($_GET['headCategory']));
                             if (DB::affectedRows() === 1) echo '<div class="alert alert-info" role="alert"><p>' . gettext('Kategorie umbenannt.') . '</p></div>';
                         } else {
@@ -25,7 +33,7 @@
                     }
 
                     $headCategories = DB::query('SELECT id, name, amount FROM headCategories ORDER BY name ASC');
-                    $subCategories = DB::query('SELECT id, name, amount FROM subCategories ORDER BY name ASC');
+                    $subCategories = DB::query('SELECT id, name, amount, headcategory FROM subCategories ORDER BY name ASC');
 
                     echo '<hr/><ul class="categories list-group"><li class="alert alert-info"><span class="list-span">' .  gettext('Kategorien') . '</span><span class="list-span">' .  gettext('Anzahl') . '</span><span class="list-span">' .  gettext('Aktionen') . '</span></li>';
                     foreach ($headCategories as $category) {
@@ -33,7 +41,10 @@
                     }
                     echo '</ul><hr/>';
 
-                    echo '<ul class="categories list-group"><li class="alert alert-info"><span class="list-span">' .  gettext('Unterkategorien') . '</span><span class="list-span">' .  gettext('Anzahl') . '</span><span class="list-span">' .  gettext('Aktionen') . '</span></li>';
+                    echo '<ul class="categories list-group"><li class="alert alert-info"><span class="list-span">' .  gettext('Unterkategorien') . '</span><span class="list-span">' .  gettext('Anzahl') . '</span><span class="list-span">' .  gettext('Aktionen') . '</span><span class="list-span">' . gettext('Oberkategorie') . '</span></li>';
+
+                    $headCategories = DB::query('SELECT id, name FROM headCategories');
+
                     foreach ($subCategories as $category) {
                         printf('<li class="list-group-item"><a name="removeSubcategory" data-name="%s" href="categories.php?removeSubcategory=%d" class="removalButton fas fa-times-circle btn"></a><a class="list-span" data-name="%s" href="inventory.php?subcategory=%d">%s</a><span class="list-span">%d %s</span><a class="fas fa-edit editCategory" href="#" name="editSubcategory" data-name="%s" data-id="%d"></a></li>', $category['name'], $category['id'], $category['name'], $category['id'], $category['name'], $category['amount'], $category['amount'] == 1 ? 'Gegenstand' : 'Gegenstände', $category['name'], $category['id']);
                     }
@@ -70,6 +81,22 @@
                     return false
                 })
             }
+
+            let categoryDropdowns = document.querySelectorAll('.categoryDropdowns')
+            for (let dropDown of categoryDropdowns) {
+                dropDown.addEventListener('change', function (evt) {
+                    let subcategoryId = evt.target.dataset['originid']
+
+                    if (evt.target.value === -1) {
+                        window.location.href = 'categories.php?resetSubcategoryId=' + subcategoryId
+                        return
+                    }
+
+                    window.location.href = 'categories.php?setCategoryId=' + subcategoryId + '&to=' + evt.target.value
+                })
+            }
+
+
         </script>
     </body>
 </html>

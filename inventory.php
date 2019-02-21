@@ -7,7 +7,7 @@
         <div class="content">
         <?php
             function addItemStore($item, $storages) {
-                $category = DB::queryFirstRow('SELECT name,amount FROM headCategories WHERE id=%d', $item['headcategory']);
+                $category = DB::queryFirstRow('SELECT name,amount FROM headCategories WHERE id=%d ORDER BY name ASC', $item['headcategory']);
 
                 $storage = DB::queryFirstRow('SELECT id,label FROM storages WHERE id=%d', $item['storageid']);
 
@@ -30,7 +30,7 @@
             }
 
             function addItem($item, $storages) {
-                $category = DB::queryFirstRow('SELECT name,amount FROM headCategories WHERE id=%d', $item['headcategory']);
+                $category = DB::queryFirstRow('SELECT name,amount FROM headCategories WHERE id=%d ORDER BY name ASC', $item['headcategory']);
 
                 $subcategoriesDB = explode(',', $item['subcategories']);
                 $subCategories= array();
@@ -90,7 +90,7 @@
                 $success = FALSE;
                 if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['itemid'])) {
                     $storeId = intVal($_GET['storageid']);
-                    $storages = DB::query('SELECT id, label, amount FROM storages');
+                    $storages = DB::query('SELECT id, label, amount FROM storages ORDER BY label ASC');
                     $store = DB::queryFirstRow('SELECT id, label, amount FROM storages WHERE id=%d', $storeId);
                     $items = DB::query('SELECT * FROM items WHERE storageid=%d', $storeId);
 
@@ -109,7 +109,7 @@
                     $items = DB::query('SELECT * FROM items WHERE subcategories LIKE %s', ($categoryId . '%'));
 
                     printf('<div class="storage-area"><ul class="list-group"><h4>%s <small>(%d %s)</small></h4>', $category['name'], DB::affectedRows(), DB::affectedRows() == 1 ? 'Position' : 'Positionen');
-                    $storages = DB::query('SELECT id, label FROM storages');
+                    $storages = DB::query('SELECT id, label FROM storages ORDER BY label ASC');
 
                     echo '<li class="alert alert-info"><span class="list-span">' . gettext('Gruppe') . '</span><span class="list-span">' . gettext('Bezeichnung') . '</span><span class="list-span">' . gettext('Anzahl') . '</span><span class="list-span">' . gettext('Bemerkung') . '</span><span class="list-span">' . gettext('Lagerplatz') . '</span><span class="list-span">' . gettext('Unterkategorien') . '</span><span class="list-span">' . gettext('Aktionen') . '</span></li>';
                     if ($items != null) {
@@ -212,7 +212,7 @@
                 } else {
                     $loseItems = DB::query('SELECT * FROM items WHERE storageid=0');
                     if ($loseItems != NULL) {
-                        $storages = DB::query('SELECT id, label FROM storages');
+                        $storages = DB::query('SELECT id, label FROM storages ORDER BY label ASC');
 
                         printf('<div class="storage-area"><h4 class="text-dark">Unsortiert <span class="small">(%d %s)</span></h4><ul class="list-group">', DB::affectedRows(), DB::affectedRows() == 1 ? 'Position' : 'Positionen');
 
@@ -223,7 +223,7 @@
                     }
 
 
-                    $storages = DB::query('SELECT id, label, amount FROM storages');
+                    $storages = DB::query('SELECT id, label, amount FROM storages ORDER BY label ASC');
                     if ($storages == NULL && $loseItems == NULL) {
                         echo '<div class="storage-area"><ul class="list-group"><li class="list-group-item"><span>Keine Gegenstände gefunden.</span></li>';
                     } else {
