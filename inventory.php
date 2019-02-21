@@ -51,7 +51,7 @@
             }
 
             function addHeadColumns($store) {
-                printf('<hr></hr><div class="storage-area"><button class="btn smallButton" name="removeStorage" data-name="%s" value="%d" type="submit"><i class="fas fa-times-circle"></i></button><h4 class="text-dark"><a href="inventory.php?storageid=%d">%s</a>&nbsp;<span class="small">(%d %s)</span></h4><ul class="list-group">', $store['label'], $store['id'], $store['id'], $store['label'], $store['amount'], $store['amount'] == 1 ? getText('Gegenstand') : gettext('Gegenstände'));
+                printf('<hr></hr><div class="storage-area"><button class="btn smallButton" name="removeStorage" data-name="%s" value="%d" type="submit"><i class="fas fa-times-circle"></i></button><h4 class="text-dark"><a href="inventory.php?storageid=%d">%s</a>&nbsp;<span class="small">(%d %s, %d %s)</span></h4><ul class="list-group">', $store['label'], $store['id'], $store['id'], $store['label'], DB::affectedRows(), DB::affectedRows() == 1 ? getText('Position') : gettext('Positionen'), $store['amount'], $store['amount'] == 1 ? getText('Gegenstand') : gettext('Gegenstände'));
                 echo '<li class="alert alert-info"><span class="list-span">' . gettext('Gruppe') . '</span><span class="list-span">' . gettext('Bezeichnung') . '</span><span class="list-span">' . gettext('Anzahl') . '</span><span class="list-span">' . gettext('Bemerkung') . '</span><span class="list-span">' . gettext('Unterkategorien') . '</span><span class="list-span">' . gettext('Hinzugefügt') . '</span><span class="list-span">' . gettext('Aktionen') . '</span></li>';
             }
 
@@ -59,9 +59,6 @@
                 printf('<hr></hr><div class="storage-area"><button class="btn smallButton" name="removeStorage" data-name="%s" value="%d" type="submit"><i class="fas fa-times-circle"></i></button><h4 class="text-dark"><a href="inventory.php?storageid=%d">%s</a>&nbsp;<span class="small">(%d %s)</span></h4><ul class="list-group">', $store['label'], $store['id'], $store['id'], $store['label'], DB::affectedRows(), DB::affectedRows() == 1 ? 'Position': 'Positionen');
                 echo '<li class="alert alert-info"><span class="list-span">' . gettext('Gruppe') . '</span><span class="list-span">' . gettext('Bezeichnung') . '</span><span class="list-span">' . gettext('Anzahl') . '</span><span class="list-span">' . gettext('Bemerkung') . '</span><span class="list-span">' . gettext('Unterkategorien') . '</span><span class="list-span">' . gettext('Hinzugefügt') . '</span><span class="list-span">' . gettext('Aktionen') . '</span></li>';
             }
-
-
-
 
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 if (isset($_POST['remove']) && !empty($_POST['remove'])) {
@@ -73,14 +70,14 @@
                             $subCategoryDB = DB::queryFirstRow('SELECT id, amount FROM subCategories WHERE id=%d', intVal($subCategory));
 
                             if ($subCategoryDB != NULL) {
-                                DB::update('subCategories', array('amount' => intVal($subCategoryDB['amount'])- intVal($item['amount'])), 'id=%d', $subCategoryDB['id']);
+                                DB::update('subCategories', array('amount' => intVal($subCategoryDB['amount']) - intVal($item['amount'])), 'id=%d', $subCategoryDB['id']);
                             }
                         }
                     }
 
                     $headCategory = DB::queryFirstRow('SELECT amount FROM headCategories WHERE id=%d', $item['headcategory']);
-                    DB::update('storages', array('amount' => intVal($storage['amount']) - intVal($item['amount'])), 'id=%d', $item['storageid']);
-                    DB::update('headCategories', array('amount' => intVal($headCategory['amount']) - intVal($item['amount'])), 'id=%d', $item['headcategory']);
+                    DB::update('storages', array('amount' => intVal($storage['amount']) + intVal($item['amount'])), 'id=%d', $item['storageid']);
+                    DB::update('headCategories', array('amount' => intVal($headCategory['amount']) + intVal($item['amount'])), 'id=%d', $item['headcategory']);
                     DB::query('DELETE FROM items WHERE id=%d', $_POST['remove']);
                 } else if (isset($_POST['removeStorage']) && !empty($_POST['removeStorage'])) {
                     DB::update('items', array('storageid' => NULL), 'storageid=%d', $_POST['removeStorage']);
@@ -109,7 +106,7 @@
                 } else if (isset($_GET['subcategory']) && !empty($_GET['subcategory'])) {
                     $categoryId = intVal($_GET['subcategory']);
                     $category = DB::queryFirstRow('SELECT id, name, amount from subCategories WHERE id=%d', $categoryId);
-                    $items = DB::query('SELECT * FROM items WHERE subcategories LIKE %ss', $categoryId);
+                    $items = DB::query('SELECT * FROM items WHERE subcategories LIKE %s', ($categoryId . '%'));
 
                     printf('<div class="storage-area"><ul class="list-group"><h4>%s <small>(%d %s)</small></h4>', $category['name'], DB::affectedRows(), DB::affectedRows() == 1 ? 'Position' : 'Positionen');
                     $storages = DB::query('SELECT id, label FROM storages');
@@ -147,14 +144,14 @@
 
                     $storages = DB::query('SELECT id, label, amount FROM storages', $searchValue);
                     $headCategories = DB::query('SELECT id FROM headCategories WHERE name LIKE %ss', $searchValue);
-                    $subCategories = DB::query('SELECT id FROM subCategories WHERE name LIKE %ss', $searchValue);
+                    $subCategories = DB::query('SELECT id FROM subCategories WHERE name LIKE %s', ($searchValue . '%'));
 
                     foreach ($storages as $store) {
                         $hasHeader = FALSE;
 
                         if ($headCategories != null) {
                             foreach ($headCategories as $headCategory) {
-                                $items = DB::query('SELECT * FROM items WHERE storageid=%d AND (headCategory=%d OR label LIKE %ss OR comment LIKE %ss OR serialnumber LIKE %ss OR subcategories LIKE %ss)', $store['id'], $headCategory['id'], $searchValue, $searchValue, $searchValue, $searchValue);
+                                $items = DB::query('SELECT * FROM items WHERE storageid=%d AND (headCategory=%d OR label LIKE %ss OR comment LIKE %ss OR serialnumber LIKE %ss OR subcategories LIKE %s)', $store['id'], $headCategory['id'], $searchValue, $searchValue, $searchValue, ($searchValue . '%'));
                                 if (!$hasHeader) {
                                     addHeadColumnsPositions($store);
                                     $hasHeader = TRUE;
@@ -165,7 +162,7 @@
                             }
                         } else {
                             foreach ($headCategories as $headCategory) {
-                                $items = DB::query('SELECT * FROM items WHERE storageid=%d AND (label LIKE %ss OR comment LIKE %ss OR serialnumber LIKE %ss OR subcategories LIKE %ss)', $store['id'], $searchValue, $searchValue, $searchValue, $searchValue);
+                                $items = DB::query('SELECT * FROM items WHERE storageid=%d AND (label LIKE %ss OR comment LIKE %ss OR serialnumber LIKE %ss OR subcategories LIKE %s)', $store['id'], $searchValue, $searchValue, $searchValue, ($searchValue . '%'));
 
                                 if ($items != null) {
                                     foreach($items as $item) { addItem($item, $storages); }
@@ -177,7 +174,7 @@
 
                         if ($subCategories != null) {
                             foreach ($subCategories as $subCategory) {
-                                $items = DB::query('SELECT * FROM items WHERE storageid=%d AND (label LIKE %ss OR comment LIKE %ss OR serialnumber LIKE %ss OR subcategories LIKE %ss)', $store['id'], $subCategory['id'], $searchValue, $searchValue, $searchValue, $searchValue);
+                                $items = DB::query('SELECT * FROM items WHERE storageid=%d AND (label LIKE %ss OR comment LIKE %ss OR serialnumber LIKE %ss OR subcategories LIKE %s)', $store['id'], $subCategory['id'], $searchValue, $searchValue, $searchValue, ($searchValue . '%'));
                                 if (!$hasHeader) {
                                     addHeadColumnsPositions($store);
                                     $hasHeader = TRUE;
@@ -197,7 +194,10 @@
                     $category = DB::queryFirstRow('SELECT id, name, amount from headCategories WHERE id=%d', $categoryId);
                     $items = DB::query('SELECT * FROM items WHERE headcategory=%d', $categoryId);
 
-                    printf('<div class="storage-area"><ul class="list-group"><h4>%s <small>(%d Positionen)</small></h4>', $category['name'], DB::affectedRows());
+                    $itemCount = 0;
+                    foreach ($items as $item) $itemCount += intVal($item['amount']);
+
+                    printf('<div class="storage-area"><ul class="list-group"><h4>%s <small>(%d %s, %d %s)</small></h4>', $category['name'], DB::affectedRows(), DB::affectedRows() == 1 ? getText('Position') : gettext('Positionen'), $itemCount, $itemCount == 1 ? getText('Gegenstand') : gettext('Gegenstände'));
                     $storages = DB::query('SELECT id, label FROM storages');
 
                     echo '<li class="alert alert-info"><span class="list-span">' . gettext('Gruppe') . '</span><span class="list-span">' . gettext('Bezeichnung') . '</span><span class="list-span">' . gettext('Anzahl') . '</span><span class="list-span">' . gettext('Bemerkung') . '</span><span class="list-span">' . gettext('Lagerplatz') . '</span><span class="list-span">' . gettext('Unterkategorien') . '</span><span class="list-span">' . gettext('Aktionen') . '</span></li>';
