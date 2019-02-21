@@ -27,10 +27,12 @@
                         }
                     }
 
+                    /*
                     $category = DB::queryFirstRow('SELECT id,amount FROM headCategories WHERE id=%d', intVal($existingItem['headcategory']));
                     if ($category != NULL) {
                         DB::update('headCategories', array('amount' => $category['amount'] - $existingItem['amount']), 'id=%d', $category['id']);
                     }
+                    */
 
                     $storage = DB::queryFirstRow('SELECT id,label,amount FROM storages WHERE id=%d', $existingItem['storageid']);
                     if ($storage != NULL) {
