@@ -92,7 +92,7 @@
                         return
                     }
 
-                    window.location.href = 'categories.php?setCategoryId=' + subcategoryId + '&to=' + evt.target.value
+                    window.location.href = 'categories.php?setCategoryId=' + subcategoryId + '&to=' + encodeURIcomponent(evt.target.value)
                 })
             }
 
