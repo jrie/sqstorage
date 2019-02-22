@@ -147,6 +147,8 @@
                         $hasHeader = FALSE;
                         $hasItems = FALSE;
 
+                        $existingItemIds = array();
+
                         if ($headCategories != null) {
                             foreach ($headCategories as $headCategory) {
                                 if (stripos($headCategory['name'], $searchValue) !== FALSE) $items = DB::query('SELECT * FROM items WHERE storageid=%d', $store['id']);
@@ -158,7 +160,10 @@
                                         $hasHeader = TRUE;
                                     }
 
-                                    foreach($items as $item) addItem($item, $storages);
+                                    foreach($items as $item) {
+                                        addItem($item, $storages);
+                                        $existingItemIds[] = $item['id'];
+                                    }
                                     $hasItems = TRUE;
                                 }
                             }
@@ -175,7 +180,11 @@
                                         $hasHeader = TRUE;
                                     }
 
-                                    foreach($items as $item) addItem($item, $storages);
+                                    foreach($items as $item) if (!in_array($item['id'], $existingItemIds)) {
+                                        $existingItemIds[] = $item['id'];
+                                        addItem($item, $storages);
+                                    }
+
                                     $hasItems = TRUE;
                                 }
                             }
