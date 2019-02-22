@@ -149,8 +149,8 @@
 
                         if ($headCategories != null) {
                             foreach ($headCategories as $headCategory) {
-                                if (strcasecmp($headCategory['name'], $searchValue) == 0) $items = DB::query('SELECT * FROM items WHERE storageid=%d', $store['id']);
-                                else $items = DB::query('SELECT * FROM items WHERE storageid=%d AND (label LIKE %ss OR comment LIKE %ss OR serialnumber LIKE %ss OR subcategories LIKE %s)', $store['id'], $searchValue, $searchValue, $searchValue, ($searchValue . '%'));
+                                if (stripos($headCategory['name'], $searchValue) !== FALSE) $items = DB::query('SELECT * FROM items WHERE storageid=%d', $store['id']);
+                                else $items = DB::query('SELECT * FROM items WHERE storageid=%d AND (label LIKE %ss OR comment LIKE %ss OR serialnumber LIKE %ss OR subcategories LIKE %s)', $store['id'], $searchValue, $searchValue, $searchValue, ('%' . $searchValue . '%'));
 
                                 if ($items != null) {
                                     if (!$hasHeader) {
@@ -166,8 +166,8 @@
 
                         if ($subCategories != null) {
                             foreach ($subCategories as $subCategory) {
-                                if (strcasecmp($subCategory['name'], $searchValue) == 0) $items = DB::query('SELECT * FROM items WHERE storageid=%d', $store['id']);
-                                else $items = DB::query('SELECT * FROM items WHERE storageid=%d AND id=%d AND (label LIKE %ss OR comment LIKE %ss OR serialnumber LIKE %ss OR subcategories LIKE %s)', $store['id'], $subCategory['id'], $searchValue, $searchValue, $searchValue, ($searchValue . '%'));
+                                if (stripos($subCategory['name'], $searchValue) !== FALSE) $items = DB::query('SELECT * FROM items WHERE storageid=%d', $store['id']);
+                                else $items = DB::query('SELECT * FROM items WHERE storageid=%d AND id=%d AND (label LIKE %ss OR comment LIKE %ss OR serialnumber LIKE %ss OR subcategories LIKE %s)', $store['id'], $subCategory['id'], $searchValue, $searchValue, $searchValue, ('%' . $searchValue . '%'));
 
                                 if ($items != null) {
                                     if (!$hasHeader) {
