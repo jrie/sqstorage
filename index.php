@@ -27,13 +27,6 @@
                         }
                     }
 
-                    /*
-                    $category = DB::queryFirstRow('SELECT id,amount FROM headCategories WHERE id=%d', intVal($existingItem['headcategory']));
-                    if ($category != NULL) {
-                        DB::update('headCategories', array('amount' => $category['amount'] - $existingItem['amount']), 'id=%d', $category['id']);
-                    }
-                    */
-
                     $storage = DB::queryFirstRow('SELECT id,label,amount FROM storages WHERE id=%d', $existingItem['storageid']);
                     if ($storage != NULL) {
                         DB::update('storages', array('amount' => $storage['amount'] - $existingItem['amount']), 'id=%d', $storage['id']);
@@ -68,9 +61,9 @@
                 } else DB::update('headCategories', array('amount' => $category['amount'] + $amount), 'id=%d', $category['id']);
 
                 if(isset($_POST['itemUpdateId']) && !empty($_POST['itemUpdateId'])) {
-                    $item = DB::update('items', array('label' => $_POST['label'], 'comment' => $comment, 'serialnumber' => $serialNumber, 'amount' => $amount, 'headcategory' => $category['id'], 'subcategories' => implode($subIds, ','), 'storageid' => $storage['id']), 'id=%d', $existingItem['id']);
+                    $item = DB::update('items', array('label' => $_POST['label'], 'comment' => $comment, 'serialnumber' => $serialNumber, 'amount' => $amount, 'headcategory' => $category['id'], 'subcategories' => (',' . implode($subIds, ',') . ','), 'storageid' => $storage['id']), 'id=%d', $existingItem['id']);
                 } else {
-                    $item = DB::insert('items', array('label' => $_POST['label'], 'comment' => $comment, 'serialnumber' => $serialNumber, 'amount' => $amount, 'headcategory' => $category['id'], 'subcategories' => implode($subIds, ','), 'storageid' => $storage['id']));
+                    $item = DB::insert('items', array('label' => $_POST['label'], 'comment' => $comment, 'serialnumber' => $serialNumber, 'amount' => $amount, 'headcategory' => $category['id'], 'subcategories' => (',' . implode($subIds, ',') . ','), 'storageid' => $storage['id']));
                 }
 
                 $success = TRUE;

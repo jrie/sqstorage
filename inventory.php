@@ -103,7 +103,7 @@
                 } else if (isset($_GET['subcategory']) && !empty($_GET['subcategory'])) {
                     $categoryId = intVal($_GET['subcategory']);
                     $category = DB::queryFirstRow('SELECT id, name, amount from subCategories WHERE id=%d', $categoryId);
-                    $items = DB::query('SELECT * FROM items WHERE subcategories LIKE %s', ('%' . $categoryId . '%'));
+                    $items = DB::query('SELECT * FROM items WHERE subCategories LIKE %s', ('%,' . $categoryId . ',%'));
 
                     $itemCount = 0;
                     foreach ($items as $item) $itemCount += intVal($item['amount']);
@@ -143,16 +143,17 @@
                     $headCategories = DB::query('SELECT id, name FROM headCategories');
                     $subCategories = DB::query('SELECT id, name FROM subCategories');
 
+                    $foundData = FALSE;
+
+                    $existingItemIds = array();
                     foreach ($storages as $store) {
                         $hasHeader = FALSE;
                         $hasItems = FALSE;
 
-                        $existingItemIds = array();
-
                         if ($headCategories != null) {
                             foreach ($headCategories as $headCategory) {
                                 if (stripos($headCategory['name'], $searchValue) !== FALSE) $items = DB::query('SELECT * FROM items WHERE storageid=%d', $store['id']);
-                                else $items = DB::query('SELECT * FROM items WHERE storageid=%d AND (label LIKE %ss OR comment LIKE %ss OR serialnumber LIKE %ss OR subcategories LIKE %s)', $store['id'], $searchValue, $searchValue, $searchValue, ('%' . $searchValue . '%'));
+                                else $items = DB::query('SELECT * FROM items WHERE storageid=%d AND (label LIKE %ss OR comment LIKE %ss OR serialnumber LIKE %ss)', $store['id'], $searchValue, $searchValue, $searchValue);
 
                                 if ($items != null) {
                                     if (!$hasHeader) {
@@ -160,19 +161,21 @@
                                         $hasHeader = TRUE;
                                     }
 
-                                    foreach($items as $item) {
+                                    foreach($items as $item) if (!in_array($item['id'], $existingItemIds)) {
                                         addItem($item, $storages);
                                         $existingItemIds[] = $item['id'];
                                     }
+
                                     $hasItems = TRUE;
+                                    $foundData = TRUE;
                                 }
                             }
                         }
 
                         if ($subCategories != null) {
                             foreach ($subCategories as $subCategory) {
-                                if (stripos($subCategory['name'], $searchValue) !== FALSE) $items = DB::query('SELECT * FROM items WHERE storageid=%d', $store['id']);
-                                else $items = DB::query('SELECT * FROM items WHERE storageid=%d AND id=%d AND (label LIKE %ss OR comment LIKE %ss OR serialnumber LIKE %ss OR subcategories LIKE %s)', $store['id'], $subCategory['id'], $searchValue, $searchValue, $searchValue, ('%' . $searchValue . '%'));
+                                if (stripos($subCategory['name'], $searchValue) !== FALSE) $items = DB::query('SELECT * FROM items WHERE storageid=%d AND subcategories LIKE %s', $store['id'], ('%,' . $subCategory['id'] . ',%'));
+                                else $items = DB::query('SELECT * FROM items WHERE storageid=%d AND subcategories LIKE %s AND (label LIKE %ss OR comment LIKE %ss OR serialnumber LIKE %ss)', $store['id'], ('%,' . $subCategory['id'] . ',%'), $searchValue, $searchValue, $searchValue, ($searchValue . '%'));
 
                                 if ($items != null) {
                                     if (!$hasHeader) {
@@ -186,13 +189,20 @@
                                     }
 
                                     $hasItems = TRUE;
+                                    $foundData = TRUE;
                                 }
                             }
+
                         }
 
-                        if (!$hasItems) echo '<li class="list-group-item"><span>' . gettext('Keine Gegenstände gefunden.') . '</span></li>';
+                        if ($foundData) echo '</ul></div>';
+                    }
+
+                    if (!$foundData) {
+                        echo '<li class="list-group-item"><span>' . gettext('Keine Gegenstände gefunden.') . '</span></li>';
                         echo '</ul></div>';
                     }
+
                 } else if (isset($_GET['category']) && !empty($_GET['category'])) {
                     $categoryId = $_GET['category'];
                     $category = DB::queryFirstRow('SELECT id, name, amount from headCategories WHERE id=%d', $categoryId);
