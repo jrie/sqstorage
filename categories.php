@@ -95,8 +95,6 @@
                     window.location.href = 'categories.php?setCategoryId=' + subcategoryId + '&to=' + encodeURIcomponent(evt.target.value)
                 })
             }
-
-
         </script>
     </body>
 </html>
