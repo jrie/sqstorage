@@ -223,6 +223,28 @@
                     }
 
                     echo '</ul></div>';
+                    echo '<hr/><h4>' . gettext('Unterkategorien') . '</h4>';
+
+                    $subCategories = DB::query('SELECT * FROM subCategories WHERE headcategory=%d ORDER BY name ASC', $categoryId);
+                    foreach ($subCategories as $subCategory) {
+                        $items = DB::query('SELECT * FROM items WHERE subcategories LIKE %s', '%,' . $subCategory['id'] . '%,');
+
+                        $itemCount = 0;
+                        foreach ($items as $item) $itemCount += intVal($item['amount']);
+
+                        printf('<div class="storage-area"><ul class="list-group"><h4>%s <small>(%d %s, %d %s)</small></h4>', $subCategory['name'], DB::affectedRows(), DB::affectedRows() == 1 ? getText('Position') : gettext('Positionen'), $itemCount, $itemCount == 1 ? getText('Gegenstand') : gettext('Gegenstände'));
+                        $storages = DB::query('SELECT id, label FROM storages');
+
+                        echo '<li class="alert alert-info"><span class="list-span">' . gettext('Gruppe') . '</span><span class="list-span">' . gettext('Bezeichnung') . '</span><span class="list-span">' . gettext('Anzahl') . '</span><span class="list-span">' . gettext('Bemerkung') . '</span><span class="list-span">' . gettext('Lagerplatz') . '</span><span class="list-span">' . gettext('Unterkategorien') . '</span><span class="list-span">' . gettext('Aktionen') . '</span></li>';
+
+                        if ($items != null) {
+                            foreach($items as $item) { addItemStore($item, $storages); }
+                        } else {
+                            echo '<li class="list-group-item"><span>' . gettext('Keine Gegenstände gefunden.') . '</span></li>';
+                        }
+
+                        echo '</ul></div>';
+                    }
                 } else {
                     $loseItems = DB::query('SELECT * FROM items WHERE storageid=0');
                     if ($loseItems != NULL) {
