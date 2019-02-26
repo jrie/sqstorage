@@ -43,10 +43,27 @@
 
                     echo '<ul class="categories list-group"><li class="alert alert-info"><span class="list-span">' .  gettext('Unterkategorien') . '</span><span class="list-span">' .  gettext('Anzahl') . '</span><span class="list-span">' .  gettext('Aktionen') . '</span><span class="list-span">' . gettext('Oberkategorie') . '</span></li>';
 
-                    $headCategories = DB::query('SELECT id, name FROM headCategories');
-
                     foreach ($subCategories as $category) {
-                        printf('<li class="list-group-item"><a name="removeSubcategory" data-name="%s" href="categories.php?removeSubcategory=%d" class="removalButton fas fa-times-circle btn"></a><a class="list-span" data-name="%s" href="inventory.php?subcategory=%d">%s</a><span class="list-span">%d %s</span><a class="fas fa-edit editCategory" href="#" name="editSubcategory" data-name="%s" data-id="%d"></a></li>', $category['name'], $category['id'], $category['name'], $category['id'], $category['name'], $category['amount'], $category['amount'] == 1 ? 'Gegenstand' : 'Gegenstände', $category['name'], $category['id']);
+                        printf('<li class="list-group-item"><a name="removeSubcategory" data-name="%s" href="categories.php?removeSubcategory=%d" class="removalButton fas fa-times-circle btn"></a><a class="list-span" data-name="%s" href="inventory.php?subcategory=%d">%s</a><span class="list-span">%d %s</span><a class="fas fa-edit editCategory" href="#" name="editSubcategory" data-name="%s" data-id="%d"></a>', $category['name'], $category['id'], $category['name'], $category['id'], $category['name'], $category['amount'], $category['amount'] == 1 ? 'Gegenstand' : 'Gegenstände', $category['name'], $category['id']);
+                        ?>
+                        <div class="dropdown list-span">
+                            <select class="btn btn-secondary dropdown-toggle categoryDropdowns" type="button" data-originid="<?php echo $category['id'] ?>" tabindex="-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" autocomplete="off">
+                                <?php
+                                    if ($category['headcategory'] != 0) echo '<option value="-1">' . gettext('Oberkategorie') . '</option>';
+                                    else echo '<option value="-1" selected="selected">' . gettext('Oberkategorie') . '</option>';
+                                    foreach ($headCategories as $headCategory) {
+                                        if ($headCategory['id'] == $category['headcategory']) {
+                                            printf('<option value="%d" selected="selected">%s</option>', $headCategory['id'], $headCategory['name']);
+                                        } else {
+                                            printf('<option value="%d">%s</option>', $headCategory['id'], $headCategory['name']);
+                                        }
+                                    }
+                                ?>
+                            </select>
+                        </div>
+
+                    <?php
+                        echo '</li>';
                     }
 
                     echo '</ul>';
@@ -74,8 +91,8 @@
                     let newName = window.prompt(targetType + ' "' + evt.target.dataset['name'] + '"', '')
 
                     if (newName !== null && newName.length !== 0) {
-                        if (evt.target.name === 'editCategory') window.location.href = 'categories.php?headCategory=' + evt.target.dataset['id'] + '&to=' + encodeURIcomponent(newName)
-                        else window.location.href = 'categories.php?subCategory=' + evt.target.dataset['id'] + '&to=' + encodeURIcomponent(newName)
+                        if (evt.target.name === 'editCategory') window.location.href = 'categories.php?headCategory=' + evt.target.dataset['id'] + '&to=' + encodeURIComponent(newName)
+                        else window.location.href = 'categories.php?subCategory=' + evt.target.dataset['id'] + '&to=' + encodeURIComponent(newName)
                     }
 
                     return false
@@ -92,7 +109,7 @@
                         return
                     }
 
-                    window.location.href = 'categories.php?setCategoryId=' + subcategoryId + '&to=' + encodeURIcomponent(evt.target.value)
+                    window.location.href = 'categories.php?setCategoryId=' + subcategoryId + '&to=' + encodeURIComponent(evt.target.value)
                 })
             }
         </script>
