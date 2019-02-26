@@ -76,8 +76,8 @@
                     }
 
                     $headCategory = DB::queryFirstRow('SELECT amount FROM headCategories WHERE id=%d', $item['headcategory']);
-                    DB::update('storages', array('amount' => intVal($storage['amount']) + intVal($item['amount'])), 'id=%d', $item['storageid']);
-                    DB::update('headCategories', array('amount' => intVal($headCategory['amount']) + intVal($item['amount'])), 'id=%d', $item['headcategory']);
+                    DB::update('storages', array('amount' => intVal($storage['amount']) - intVal($item['amount'])), 'id=%d', $item['storageid']);
+                    DB::update('headCategories', array('amount' => intVal($headCategory['amount']) - intVal($item['amount'])), 'id=%d', $item['headcategory']);
                     DB::query('DELETE FROM items WHERE id=%d', $_POST['remove']);
                 } else if (isset($_POST['removeStorage']) && !empty($_POST['removeStorage'])) {
                     DB::update('items', array('storageid' => NULL), 'storageid=%d', $_POST['removeStorage']);
