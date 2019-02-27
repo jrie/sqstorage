@@ -49,8 +49,8 @@
                         <div class="dropdown list-span">
                             <select class="btn btn-secondary dropdown-toggle categoryDropdowns" type="button" data-originid="<?php echo $category['id'] ?>" tabindex="-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" autocomplete="off">
                                 <?php
-                                    if ($category['headcategory'] != 0) echo '<option value="-1">' . gettext('Oberkategorie') . '</option>';
-                                    else echo '<option value="-1" selected="selected">' . gettext('Oberkategorie') . '</option>';
+                                    if ($category['headcategory'] != 0) echo '<option value="-1">' . gettext('Keine') . '</option>';
+                                    else echo '<option value="-1" selected="selected">' . gettext('Keine') . '</option>';
                                     foreach ($headCategories as $headCategory) {
                                         if ($headCategory['id'] == $category['headcategory']) {
                                             printf('<option value="%d" selected="selected">%s</option>', $headCategory['id'], $headCategory['name']);
