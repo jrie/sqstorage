@@ -4,6 +4,7 @@
         <li class="nav-item"><a href="index.php" class="nav-link"><?php echo gettext('Eintragen') ?></a></li>
         <li class="nav-item"><a href="inventory.php" class="nav-link"><?php echo gettext('Inventar') ?></a></li>
         <li class="nav-item"><a href="categories.php" class="nav-link"><?php echo gettext('Kategorien') ?></a></li>
+        <li class="nav-item"><a href="transfer.php" class="nav-link"><?php echo gettext('Transferieren') ?></a></li>
     </ul>
 
     <form class="form-inline my-2 " method="GET" action="inventory.php">

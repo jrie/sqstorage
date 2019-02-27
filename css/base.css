@@ -196,6 +196,42 @@ a.far:hover {
     background-color: #f8f9fa;
 }
 
+.storageListing {
+    width: 38%;
+    padding-left: 1%;
+    float: left;
+    margin-top: 30px;
+}
+
+.storageListing a {
+    width: 96%;
+    display: inline-block;
+    font-size: 1.35em;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 4%;
+    padding-right: 4%;
+    text-align: left;
+}
+
+.storageListing a.moving {
+    text-align: center;
+}
+
+.storageListing a:nth-of-type(2n+1) {
+    background-color: #f8f9fa;
+}
+
+#transferButton {
+    margin-top: 30px;
+    margin-right: 4%;
+
+}
+
+.clearfix {
+    clear: both;
+}
+
 .footer {
     bottom: 12px;
     position: fixed;
