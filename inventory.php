@@ -204,7 +204,7 @@
                     }
 
                 } else if (isset($_GET['category']) && !empty($_GET['category'])) {
-                    $categoryId = $_GET['category'];
+                    $categoryId = intVal($_GET['category']);
                     $category = DB::queryFirstRow('SELECT id, name, amount from headCategories WHERE id=%d', $categoryId);
                     $items = DB::query('SELECT * FROM items WHERE headcategory=%d', $categoryId);
 
@@ -227,7 +227,7 @@
 
                     $subCategories = DB::query('SELECT * FROM subCategories WHERE headcategory=%d ORDER BY name ASC', $categoryId);
                     foreach ($subCategories as $subCategory) {
-                        $items = DB::query('SELECT * FROM items WHERE subcategories LIKE %s', '%,' . $subCategory['id'] . '%,');
+                        $items = DB::query('SELECT * FROM items WHERE subcategories LIKE %s', '%,' . $subCategory['id'] . ',%');
 
                         $itemCount = 0;
                         foreach ($items as $item) $itemCount += intVal($item['amount']);
