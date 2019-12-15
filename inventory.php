@@ -7,7 +7,7 @@
         <div class="content">
         <?php
             function addItemStore($item, $storages) {
-                $category = DB::queryFirstRow('SELECT name,amount FROM headCategories WHERE id=%d ORDER BY name ASC', $item['headcategory']);
+                $category = DB::queryFirstRow('SELECT name, amount FROM headCategories WHERE id=%d ORDER BY name ASC', $item['headcategory']);
 
                 $storage = DB::queryFirstRow('SELECT id,label FROM storages WHERE id=%d', $item['storageid']);
 
@@ -80,7 +80,7 @@
                     DB::update('headCategories', array('amount' => intVal($headCategory['amount']) - intVal($item['amount'])), 'id=%d', $item['headcategory']);
                     DB::query('DELETE FROM items WHERE id=%d', $_POST['remove']);
                 } else if (isset($_POST['removeStorage']) && !empty($_POST['removeStorage'])) {
-                    DB::update('items', array('storageid' => NULL), 'storageid=%d', $_POST['removeStorage']);
+                    DB::update('items', array('storageid' => 0), 'storageid=%d', $_POST['removeStorage']);
                     DB::query('DELETE FROM storages WHERE id=%d', $_POST['removeStorage']);
                 }
             }
@@ -247,10 +247,11 @@
                     }
                 } else {
                     $loseItems = DB::query('SELECT * FROM items WHERE storageid=0');
+                    $count = DB::affectedRows();
                     if ($loseItems != NULL) {
                         $storages = DB::query('SELECT id, label FROM storages ORDER BY label ASC');
 
-                        printf('<div class="storage-area"><h4 class="text-dark">%s <span class="small">(%d %s)</span></h4><ul class="list-group">', gettext('Unsortiert'), DB::affectedRows(), DB::affectedRows() == 1 ? 'Position' : 'Positionen');
+                        printf('<div class="storage-area"><h4 class="text-dark">%s <span class="small">(%d %s)</span></h4><ul class="list-group">', gettext('Unsortiert'), $count, $count == 1 ? 'Position' : 'Positionen');
 
                         echo '<li class="alert alert-info"><span class="list-span">' . gettext('Gruppe') . '</span><span class="list-span">' . gettext('Bezeichnung') . '</span><span class="list-span">' . gettext('Anzahl') . '</span><span class="list-span">' . gettext('Bemerkung') . '</span><span class="list-span">' . gettext('Unterkategorien') . '</span><span class="list-span">' . gettext('Hinzugefügt') . '</span></li>';
 
@@ -293,8 +294,9 @@
             let removalButtons = document.querySelectorAll('.smallButton')
             for (let button of removalButtons) {
                 button.addEventListener('click', function (evt) {
-                    let targetType = evt.target.name === 'removeStorage' ? '<?php echo gettext('Lagerplatz wirklich entfernen?') ?>' : '<?php echo gettext('Position wirklich entfernen?') ?>'
-                    if (!window.confirm(targetType + ' "' + evt.target.dataset['name'] + '"')) {
+                    let target = evt.target.parentNode
+                    let targetType = target.name === 'removeStorage' ? '<?php echo gettext('Lagerplatz wirklich entfernen?') ?>' : '<?php echo gettext('Position wirklich entfernen?') ?>'
+                    if (!window.confirm(targetType + ' "' + target.dataset['name'] + '"')) {
                         evt.preventDefault()
                     }
                 })
