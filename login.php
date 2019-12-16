@@ -66,11 +66,11 @@
                 }
 
                 if (!preg_match("#[a-z]+#", $_POST['password'])) {
-                    $errors[] = gettext('Passwort muß ein Kleinbuchstabe enthalten!');
+                    $errors[] = gettext('Passwort muß einen Kleinbuchstaben enthalten!');
                 }
 
                 if (!preg_match("#[A-Z]+#", $_POST['password'])) {
-                    $errors[] = gettext('Passwort muß ein Großbuchstabe enthalten!');
+                    $errors[] = gettext('Passwort muß einen Großbuchstaben enthalten!');
                 }
 
                 if ($_POST['password'] != $_POST['password_repeat']) {
