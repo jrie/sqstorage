@@ -312,7 +312,7 @@ ul.existingFields li {
     height: unset;
 }
 
-.form-control[readonly] {
+.login-box .form-control[readonly] {
     background-color: white;
     cursor: no-drop;
 }
