@@ -15,6 +15,7 @@ body {
     font-family: inherit;
 }
 
+
 .navbar {
     border-bottom: 1px solid lightgrey;
     font-size: 0.85rem;
@@ -23,7 +24,7 @@ body {
 .logo {
     max-width: 100%;
     margin-top: 12px;
-    margin-bottom: 12px;
+    margin-bottom: 2em;
     height: 3.5rem;
     margin-right: 1.75em;
 }
@@ -39,6 +40,11 @@ body {
     border-bottom: 2px solid lightcoral;
     padding-bottom: 6px;
     padding-top: 9px;
+}
+
+.searchArea {
+    float: right;
+    margin: 1em 0px;
 }
 
 .input-group input,
@@ -225,11 +231,64 @@ a.far:hover {
 #transferButton {
     margin-top: 30px;
     margin-right: 4%;
+}
 
+ul.existingFields {
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    padding: 4px 10px;
+    font-weight: bold;
+    min-height: 40px;
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
+ul.existingFields li {
+    padding: 4px 14px;
+    border-radius: 4px;
+    margin-bottom: 1.3em;
+    cursor: pointer;
 }
 
 .clearfix {
     clear: both;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.green,
+.red,
+.blue {
+    margin: 1rem 1.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    min-width: 52%;
+    font-weight: bold;
+}
+
+.green p,
+.red p,
+.blue p {
+    padding: 0px;
+    margin: 0px;
+}
+
+.green {
+    background-color: green;
+    color: whitesmoke;
+}
+
+.red {
+    background-color: red;
+    color: whitesmoke;
+}
+
+.blue {
+    background-color: blue;
+    color: whitesmoke;
 }
 
 .footer {
