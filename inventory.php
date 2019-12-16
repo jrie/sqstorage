@@ -1,3 +1,4 @@
+<?php require('login.php'); ?>
 <!DOCTYPE html>
 <html>
     <?php include_once('head.php'); ?>

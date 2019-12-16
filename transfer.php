@@ -1,3 +1,4 @@
+<?php require('login.php'); ?>
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     if (isset($_GET['getId']) && !empty($_GET['getId'])) {
