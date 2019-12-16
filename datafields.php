@@ -1,4 +1,6 @@
 <?php
+require('login.php');
+
 include_once('customFieldsData.php');
 $removedEntry = FALSE;
 $removedData = FALSE;
