@@ -13,7 +13,6 @@ Right now sqStorage is only available in German, a English translation is due to
 3) Open sqstorage and create a admin account - this can be done once after installation. If you mess up, you will have to drop/truncate the following tables in order to prompt for the admin account registration again.
 
 The tables are:
-* usergroups
 * users
 
 Then open `bootDB.php` again to recreate the tables.
