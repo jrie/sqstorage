@@ -71,8 +71,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="dropdown float-left">
                     <select name="dataType" autocomplete="off" required class="btn btn-primary dropdown-toggle switchdatatype" type="button" tabindex="-1" aria-haspopup="true" aria-expanded="false">'
                         <?php
-                        echo '<option value="-1" selected="selected">Datentyp</option>';
-                        foreach ($fieldTypes as $type => $value) printf('<option value="%s">%s</option>', $type, $value);
+                                                                            echo '<option value="-1" selected="selected">' . gettext('Datentyp') . '</option>';
+                                                                            foreach ($fieldTypes as $type => $value) printf('<option value="%s">%s</option>', $type, $value);
                         ?>
                     </select>
                 </div>
@@ -88,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <hr>
             </hr>
 
-            <h5>Details</h5>
+            <h5><?php echo gettext('Details') ?></h5>
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -110,9 +110,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
                 <?php echo '<input type="text" maxlength="1023" name="fieldValues" requried="required" readonly="readonly" maxlength="1023" class="form-control fieldValues" autocomplete="off" placeholder="' . gettext('Auswahlwerte, durch Komma getrennt: \'\'Neu,Gebraucht,Refurbished\'\' und oder Dezimal und Gleitkommazahlen.') . '" aria-label="' . gettext('Neu,Gebraucht,Refurbished') . '" aria-describedby="basic-addon6">'; ?>
             </div>
-            <button type="submit" class="btn btn-primary">Eintragen / Aktualisieren</button>
-            <button type="reset" class="btn btn-secondary">Formular zurücksetzen</button>
-            <button type="button" name="btnDelete" type="button" class="hidden btn btn-danger">Feld löschen</button>
+            <button type="submit" class="btn btn-primary"><?php echo gettext('Eintragen / Aktualisieren'); ?></button>
+            <button type="reset" class="btn btn-secondary"><?php echo gettext('Formular zurücksetzen'); ?></button>
+            <button type="button" name="btnDelete" type="button" class="hidden btn btn-danger"><?php echo gettext('Feld löschen'); ?></button>
             <input type="hidden" readonly="readonly" name="existingId" value="-1" />
             <input type="hidden" readonly="readonly" name="doDelete" value="-1" />
         </form>
@@ -123,10 +123,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <h5>Bestehende Datenfelder</h5>
         <ul class="existingFields">
             <?php $customFields = DB::query('SELECT * FROM customFields');
-            foreach ($customFields as $field) printf('<li class="btn-secondary dataField" data-fieldid="%d" data-default="%s" data-type="%d" data-name="%s">%s</li>', $field['id'], $field['default'], $field['dataType'], $field['label'], $field['label']);
+                foreach ($customFields as $field) printf('<li class="btn-secondary dataField" data-fieldid="%d" data-default="%s" data-type="%d" data-name="%s">%s</li>', $field['id'], $field['default'], $field['dataType'], $field['label'], $field['label']);
             ?>
         </ul>
-
 
         <?php include_once('footer.php'); ?>
 
@@ -142,7 +141,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
 
             let dataExamples = {
-                <?php
+            <?php
                 $joinedFields = array();
                 foreach ($dataExamples as $key => $values) $joinedFields[] = '\'' . $key . '\': \'' . $values . '\'';
                 echo implode(',', $joinedFields); ?>
@@ -169,7 +168,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
 
                 let validData = {
-                    <?php
+                <?php
                     $joinedFields = array();
                     foreach ($fieldLimits as $key => $values) $joinedFields[] = '\'' . $key . '\': [' . implode(', ', $values) . ']';
                     echo implode(',', $joinedFields); ?>
@@ -211,7 +210,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
 
             let fieldTypes = {
-                <?php
+            <?php
                 $joinedFields = array();
                 foreach ($fieldTypesPos as $key => $values) $joinedFields[] = $values . ': \'' . $key . '\'';
                 echo implode(',', $joinedFields); ?>
