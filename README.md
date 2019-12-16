@@ -3,7 +3,7 @@
 A easy to use and super quick way to organize your inventory, storage and storage areas.
 
 ### Note
-At the moment sqStorage is only available in German, a translation to English is work in progress and to be come.
+Right now sqStorage is only available in German, a English translation is due to happen at some point in near future!
 
 ### Installation and usage
 1) By default, the database name used is **tlv** and the main user **tlvUser** with the password **tlvUser** - this can be configured in **support/dba.php** changing the ***DB::dbName***,  ***DB::$user*** and ***DB::$password*** variables, if you use a server, you might want to use the SQL Server IP instead of *localhost*.
