@@ -10,7 +10,7 @@ At the moment sqStorage is only available in German, a translation to English is
 
 2) Once the user and database are created, open `bootDB.php` this will create all db tables ready for usage.
 
-3) Open sqstorage and create a admin account - this can be done once after installation. If you mess up, youhave to drop/truncate the following tables.
+3) Open sqstorage and create a admin account - this can be done once after installation. If you mess up, you will have to drop/truncate the following tables in order to prompt for the admin account registration again.
 
 The tables are:
 * usergroups
@@ -18,5 +18,7 @@ The tables are:
 
 Then open `bootDB.php` again to recreate the tables.
 
-4) Have fun!
+Last but not least:
+
+4) Have fun using sqStorage and do not hesitate to write a email or issue, if you miss something!
 
