@@ -239,3 +239,21 @@ a.far:hover {
     z-index: 1;
     background-color: #f8f9fa;
 }
+
+.login-box {
+    width: 350px;
+    margin: 10% auto;
+}
+
+.login-box .input-group-text {
+    min-width: unset;
+}
+
+.login-box .input-group input, .input-group select {
+    height: unset;
+}
+
+.form-control[readonly] {
+    background-color: white;
+    cursor: no-drop;
+}
