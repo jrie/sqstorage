@@ -1,4 +1,4 @@
-    <?php
+<?php
     DB::$user = 'tlvUser';
     DB::$password = 'tlvUser';
     DB::$dbName = 'tlv';
