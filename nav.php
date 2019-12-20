@@ -5,7 +5,7 @@
         <li class="nav-item"><a href="inventory.php" class="nav-link"><?php echo gettext('Inventar') ?></a></li>
         <li class="nav-item"><a href="categories.php" class="nav-link"><?php echo gettext('Kategorien') ?></a></li>
         <li class="nav-item"><a href="transfer.php" class="nav-link"><?php echo gettext('Transferieren') ?></a></li>
-        <?php if($_SESSION['user']['usergroupid']==1) { ?><li class="nav-item"><a href="settings.php" class="nav-link"><?php echo gettext('Einstellungen') ?></a></li><?php } ?>
+        <?php if ($_SESSION['user']['usergroupid'] == 1) { ?><li class="nav-item"><a href="settings.php" class="nav-link"><?php echo gettext('Einstellungen') ?></a></li><?php } ?>
 
         <li class="nav-item"><a href="datafields.php" class="nav-link"><?php echo gettext('Datenfelder') ?></a></li>
     </ul>
@@ -16,6 +16,6 @@
     </form>
 
     <ul class="nav">
-        <li class="nav-item"><a href="index.php?logout" class="nav-link"><?php echo gettext('Abmelden') ?></a></li>
+        <li class="nav-item"><a href="index.php?logout" class="nav-link"><i class="fas fa-sign-out-alt" alt="<?php echo gettext('Abmelden') ?>" title="<?php echo gettext('Abmelden') ?>"></i></a></li>
     </ul>
 </nav>
