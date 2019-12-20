@@ -70,10 +70,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
                 <div class="dropdown float-left">
                     <select name="dataType" autocomplete="off" required class="btn btn-primary dropdown-toggle switchdatatype" type="button" tabindex="-1" aria-haspopup="true" aria-expanded="false">'
-                        <?php
-                                                                            echo '<option value="-1" selected="selected">' . gettext('Datentyp') . '</option>';
-                                                                            foreach ($fieldTypes as $type => $value) printf('<option value="%s">%s</option>', $type, $value);
-                        ?>
+                    <?php
+                        echo '<option value="-1" selected="selected">' . gettext('Datentyp') . '</option>';
+                        foreach ($fieldTypes as $type => $value) printf('<option value="%s">%s</option>', $type, $value);
+                    ?>
                     </select>
                 </div>
             </div>
@@ -122,9 +122,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <h5>Bestehende Datenfelder</h5>
         <ul class="existingFields">
-            <?php $customFields = DB::query('SELECT * FROM customFields');
-                foreach ($customFields as $field) printf('<li class="btn-secondary dataField" data-fieldid="%d" data-default="%s" data-type="%d" data-name="%s">%s</li>', $field['id'], $field['default'], $field['dataType'], $field['label'], $field['label']);
-            ?>
+        <?php
+            $customFields = DB::query('SELECT * FROM customFields');
+            foreach ($customFields as $field) printf('<li class="btn-secondary dataField" data-fieldid="%d" data-default="%s" data-type="%d" data-name="%s">%s</li>', $field['id'], $field['default'], $field['dataType'], $field['label'], $field['label']);
+        ?>
         </ul>
 
         <?php include_once('footer.php'); ?>
@@ -140,12 +141,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 else fieldValues.removeAttribute('readonly')
             }
 
-            let dataExamples = {
-            <?php
+            let dataExamples = <?php
                 $joinedFields = array();
                 foreach ($dataExamples as $key => $values) $joinedFields[] = '\'' . $key . '\': \'' . $values . '\'';
-                echo implode(',', $joinedFields); ?>
-            }
+                echo '{' . implode(',', $joinedFields) . '}';?>
 
             function checkFields(evt) {
                 if (document.querySelector('input[name="doDelete"]').value !== '-1') return
@@ -161,18 +160,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 let dataFields = evt.target.elements;
                 let nonValidInputs = {
-                    'dataType': ['-1', 'Datentyp', 1, 12],
+                    'dataType': ['-1', 'Datentyp', 1, 63],
                     'fieldName': ['', 'Feldname', 1, 63],
                     'fieldDefault': ['', 'Standardwert', 0, 63],
                     'fieldValues': ['', 'Auswahl', 1, 1023]
                 }
 
-                let validData = {
-                <?php
+                let validData = <?php
                     $joinedFields = array();
                     foreach ($fieldLimits as $key => $values) $joinedFields[] = '\'' . $key . '\': [' . implode(', ', $values) . ']';
-                    echo implode(',', $joinedFields); ?>
-                }
+                    echo '{' . implode(',', $joinedFields) . '}';?>
 
                 let dataType = null;
 
@@ -209,12 +206,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
             }
 
-            let fieldTypes = {
-            <?php
+            let fieldTypes = <?php
                 $joinedFields = array();
                 foreach ($fieldTypesPos as $key => $values) $joinedFields[] = $values . ': \'' . $key . '\'';
-                echo implode(',', $joinedFields); ?>
-            }
+                echo '{'. implode(',', $joinedFields) . '}';?>
 
             let currentSelection = null
 
@@ -234,6 +229,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     currentSelection.classList.add('btn-secondary')
                     currentSelection.classList.remove('btn-primary')
                     currentSelection = null
+                    document.querySelector('input[name="existingId"]').value = "-1"
                     document.querySelector('input[name="doDelete"]').value = "-1"
                     document.querySelector('.fieldValues').setAttribute('readonly', 'readonly')
                 }
@@ -245,8 +241,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     document.querySelector('form[name="fieldData"] button[type="submit"]').click()
                 }
             })
-
-
 
             function fillData(evt) {
                 if (currentSelection !== null) {
@@ -260,9 +254,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 toggleDeleteButton(true)
 
                 document.querySelector('input[name="existingId"]').value = parseInt(evt.target.dataset['fieldid'], 10)
-                document.querySelector('select[name="dataType"]').value = fieldTypes[evt.target.dataset['type']]
+
+                let target = document.querySelector('select[name="dataType"]')
+                target.value = fieldTypes[evt.target.dataset['type']]
+                document.querySelector('input[name="dataType"]').value = target.options[target.selectedIndex].innerText
                 document.querySelector('input[name="fieldDefault"]').value = evt.target.dataset['default']
                 document.querySelector('input[name="fieldName"]').value = evt.target.dataset['name']
+
                 setDataExample()
             }
 
