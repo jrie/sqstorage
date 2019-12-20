@@ -55,6 +55,7 @@ body {
 
 .input-group-text {
     min-width: 13.8em;
+    max-width: 13.8em;
     font-size: 0.8rem;
 }
 
@@ -85,9 +86,6 @@ body {
     margin: 0px;
 }
 
-.categories .list-group-item .btn {
-    height: auto;
-}
 
 .list-group-item .btn {
     height: 1.95em;
@@ -123,7 +121,7 @@ body {
 .far,
 .fal,
 .fab {
-    font-size: 1.5em !important;
+    font-size: 1.5em;
 }
 
 a.fas:hover,
@@ -256,7 +254,11 @@ ul.existingFields li {
 }
 
 .hidden {
-    visibility: hidden;
+    visibility: hidden !important;;
+}
+
+.nodisplay {
+    display: none !important;
 }
 
 .green,
@@ -315,4 +317,122 @@ ul.existingFields li {
 .login-box .form-control[readonly] {
     background-color: white;
     cursor: no-drop;
+}
+
+.dropDown {
+    min-height: 2.6em;
+    max-height: 2.6em;
+    padding: 0px;
+    min-width: 13.8em;
+    width: 13.8em;
+    cursor: pointer;
+}
+
+
+.dropDown .fas {
+    margin: 0px;
+    padding: 0.3em;
+    border: 1px solid transparent;
+}
+
+form[name="fieldData"] .dropDown {
+    max-width: 150%;
+    width: 150%;
+}
+
+.dropDown input {
+    text-align: left;
+    cursor: pointer;
+    background: transparent;
+    border-radius: 0px 4px 4px 0px;
+    border: none;
+    color: #000;
+    margin: 0px;
+    padding: 0.5em 0.75em;
+    margin-left: 0.25em;
+    min-width: 80%;
+}
+
+.dropDown input:focus {
+    color: whitesmoke;
+}
+
+.dropDown label {
+    padding: 0px;
+    margin: 0px;
+    display: inline-block;
+    width: inherit;
+}
+
+.dropDown input[type="checkbox"] {
+    padding: 0px;
+    margin: 0px;
+    text-align: left;
+    min-width: auto;
+    min-width: 2em;
+    vertical-align: top;
+}
+
+.dropDown .dropDownList {
+    background-color: whitesmoke;
+    max-height: 500px;
+    overflow-y: scroll;
+    position: absolute;
+    left: 0px;
+    text-align: left;
+    top: 2.3em;
+    border-radius: 0px 0px 8px 8px;
+    border: 1px solid #aaa;
+    border-top: 0px;
+    height: 0px;
+    transition-property: height;
+    transition-duration: 700ms;
+    transition-delay: 0ms;
+    z-index: 1;
+    width: inherit;
+}
+
+.dropDown:hover {
+    color: whitesmoke;
+}
+
+.dropDown .dropDownList.hide {
+    height: 0px;
+    border: 0px;
+}
+
+.dropDown .dropDownList.show {
+    height: auto;
+}
+
+.dropDown .dropDownList span {
+    padding: 0.33em 0.75em;
+    display: block;
+    color: whitesmoke;
+    border-bottom: 1px solid lightgrey;
+    width: 100%;
+    color: grey;
+}
+
+.dropDown.multipleSelect .dropDownList span {
+    padding: 0px;
+}
+
+.dropDown.multipleSelect .dropDownList label {
+    padding: 0.33em 0.13em;
+    cursor: pointer;
+}
+
+.dropDown.multipleSelect .dropDownList input {
+    margin: 0px;
+    padding: 0px;
+}
+
+.dropDown .dropDownList span:hover {
+    background-color: slategray;
+    color: whitesmoke;
+}
+
+.dropDown .dropDownList span:last-child {
+    border-bottom: 0px;
 }
