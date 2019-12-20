@@ -108,7 +108,7 @@
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <div class="dropdown">
-                            <select class="btn btn-secondary dropdown-toggle" type="button" tabindex="-1" id="storageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" autocomplete="off">
+                            <select class="btn btn-secondary dropdown-toggle" type="button" tabindex="-1" id="storageDropdown" data-toggle="dropdown" data-nosettitle="true" aria-haspopup="true" aria-expanded="false" autocomplete="off">
                                 <?php
                                     if ($isEdit && $item['storageid'] != 0) echo '<option value="-1">' . gettext('Lagerplatz') . '</option>';
                                     else echo '<option value="-1" selected="selected">' . gettext('Lagerplatz') . '</option>';
@@ -149,7 +149,7 @@
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <div class="dropdown">
-                            <select class="btn btn-secondary dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="categoryDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <select class="btn btn-secondary dropdown-toggle" tabindex="-1" autocomplete="off" data-nosettitle="true" type="button" id="categoryDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <?php
                                     if ($isEdit) {
                                         echo '<option value="-1">' . gettext('Kategorie') . '</option>';
@@ -183,7 +183,7 @@
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <div class="dropdown">
-                            <select class="btn btn-secondary dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="subcategoryDropdown" multiple="multiple" size="3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <select class="btn btn-secondary dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="subcategoryDropdown" multiple="multiple" size="3" data-nosettitle="true"data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <?php
 
                                     $subCat = array();
@@ -248,7 +248,7 @@
         <?php include_once('footer.php'); ?>
         <script type="text/javascript">
             document.querySelector('#storageDropdown').addEventListener('change', function(evt) {
-                if (parseInt(evt.target.value) === -1) {
+                if (evt.target.value === '-1') {
                     document.querySelector('#storage').value = ''
                     return
                 }
@@ -256,7 +256,7 @@
             })
 
             document.querySelector('#subcategoryDropdown').addEventListener('change', function(evt) {
-                if (parseInt(evt.target.value) === -1) {
+                if (evt.target.value === '-1') {
                     document.querySelector('#subcategory').value = ''
                     return
                 } else {
@@ -273,7 +273,7 @@
 
 
             document.querySelector('#categoryDropdown').addEventListener('change', function(evt) {
-                if (parseInt(evt.target.value) === -1) {
+                if (evt.target.value === '-1') {
                     document.querySelector('#category').value = ''
                     return
                 }

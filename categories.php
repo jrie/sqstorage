@@ -38,14 +38,14 @@
 
                     echo '<hr/><ul class="categories list-group"><li class="alert alert-info"><span class="list-span">' .  gettext('Kategorien') . '</span><span class="list-span">' .  gettext('Anzahl') . '</span><span class="list-span">' .  gettext('Aktionen') . '</span></li>';
                     foreach ($headCategories as $category) {
-                        printf('<li class="list-group-item"><a name="removeCategory" data-name="%s" href="categories.php?removeCategory=%d" class="removalButton fas fa-times-circle btn"></a><a class="list-span" data-name="%s" href="inventory.php?category=%d">%s</a><span class="list-span">%d %s</span><a class="fas fa-edit editCategory" href="#" name="editCategory" data-name="%s" data-id="%d"></a></li>', $category['name'], $category['id'], $category['name'], $category['id'], $category['name'], $category['amount'], $category['amount'] == 1 ? gettext('Gegenstand') : gettext('Gegenstände'), $category['name'], $category['id']);
+                        printf('<li class="list-group-item"><a name="removeCategory" tabindex="-1" data-name="%s" href="categories.php?removeCategory=%d" class="removalButton fas fa-times-circle btn"></a><a class="list-span" data-name="%s" href="inventory.php?category=%d">%s</a><span class="list-span">%d %s</span><a class="fas fa-edit editCategory" href="#" name="editCategory" data-name="%s" data-id="%d"></a></li>', $category['name'], $category['id'], $category['name'], $category['id'], $category['name'], $category['amount'], $category['amount'] == 1 ? gettext('Gegenstand') : gettext('Gegenstände'), $category['name'], $category['id']);
                     }
                     echo '</ul><hr/>';
 
                     echo '<ul class="categories list-group"><li class="alert alert-info"><span class="list-span">' .  gettext('Unterkategorien') . '</span><span class="list-span">' .  gettext('Anzahl') . '</span><span class="list-span">' .  gettext('Aktionen') . '</span><span class="list-span">' . gettext('Oberkategorie') . '</span></li>';
 
                     foreach ($subCategories as $category) {
-                        printf('<li class="list-group-item"><a name="removeSubcategory" data-name="%s" href="categories.php?removeSubcategory=%d" class="removalButton fas fa-times-circle btn"></a><a class="list-span" data-name="%s" href="inventory.php?subcategory=%d">%s</a><span class="list-span">%d %s</span><a class="fas fa-edit editCategory" href="#" name="editSubcategory" data-name="%s" data-id="%d"></a>', $category['name'], $category['id'], $category['name'], $category['id'], $category['name'], $category['amount'], $category['amount'] == 1 ? gettext('Gegenstand') : gettext('Gegenstände'), $category['name'], $category['id']);
+                        printf('<li class="list-group-item"><a name="removeSubcategory" tabindex="-1" data-name="%s" href="categories.php?removeSubcategory=%d" class="removalButton fas fa-times-circle btn"></a><a class="list-span" data-name="%s" href="inventory.php?subcategory=%d">%s</a><span class="list-span">%d %s</span><a class="fas fa-edit editCategory" href="#" name="editSubcategory" data-name="%s" data-id="%d"></a>', $category['name'], $category['id'], $category['name'], $category['id'], $category['name'], $category['amount'], $category['amount'] == 1 ? gettext('Gegenstand') : gettext('Gegenstände'), $category['name'], $category['id']);
                         ?>
                         <div class="dropdown list-span">
                             <select class="btn btn-secondary dropdown-toggle categoryDropdowns" type="button" data-originid="<?php echo $category['id'] ?>" tabindex="-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" autocomplete="off">
@@ -104,13 +104,12 @@
             for (let dropDown of categoryDropdowns) {
                 dropDown.addEventListener('change', function (evt) {
                     let subcategoryId = evt.target.dataset['originid']
-
-                    if (evt.target.value === -1) {
+                    if (evt.target.value === '-1') {
                         window.location.href = 'categories.php?resetSubcategoryId=' + subcategoryId
                         return
                     }
 
-                    window.location.href = 'categories.php?setCategoryId=' + subcategoryId + '&to=' + encodeURIComponent(evt.target.value)
+                    window.location.href = 'categories.php?setCategoryId=' + subcategoryId + '&to=' + evt.target.value
                 })
             }
         </script>
