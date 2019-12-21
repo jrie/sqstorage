@@ -221,8 +221,6 @@ for (let item of dropDowns) {
 
   itemContainer.setAttribute('tabindex', '-1')
 
-  itemContainer.addEventListener('focus', function () { toggleDropdown(input, itemContainer); itemContainer.children[0].focus() })
-  itemContainer.addEventListener('blur', function () { forceMouseOut(input, itemContainer) })
   input.addEventListener('focus', function () { toggleDropdown(input, itemContainer) })
   input.addEventListener('keyup', function () { searchValue(input, itemContainer) })
   icon.addEventListener('click', function () { toggleDropdown(input, itemContainer) })
