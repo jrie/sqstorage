@@ -10,6 +10,12 @@
 		"name": "JanRie",
 		"email": "jan@dwrox.net"
 	}],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:SergeyTsalkov/meekrodb.git"
+        }
+    ],
 	"require": {
 		"php": ">=7.0",
 		"sergeytsalkov/meekrodb": "dev-master#8e19d9d6c331b9c5d8b90630b70b20f65dc0b903"
