@@ -11,6 +11,7 @@
 		"email": "jan@dwrox.net"
 	}],
 	"require": {
-		"php": ">=7.0"
+		"php": ">=7.0",
+		"sergeytsalkov/meekrodb": "dev-master#8e19d9d6c331b9c5d8b90630b70b20f65dc0b903"
 	}
 }
