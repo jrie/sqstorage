@@ -220,6 +220,7 @@ for (let item of dropDowns) {
   }
 
   itemContainer.setAttribute('tabindex', '-1')
+  input.setAttribute('tabindex', '0')
 
   input.addEventListener('focus', function () { toggleDropdown(input, itemContainer) })
   input.addEventListener('keyup', function () { searchValue(input, itemContainer) })

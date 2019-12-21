@@ -353,8 +353,12 @@ form[name="fieldData"] .dropDown {
     min-width: 80%;
 }
 
-.dropDown input:focus {
+.dropDown:hover input:focus {
     color: whitesmoke;
+}
+
+.dropDown .dropDownList input:focus {
+    color: #000;
 }
 
 .dropDown label {
