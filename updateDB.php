@@ -1,8 +1,5 @@
 <?php
 include_once('head.php');
-
-// Tables
-
 DB::$usenull = false;
 
 $items = DB::query('SELECT `id`, `label`, `subcategories` FROM `items`');
