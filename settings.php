@@ -2,7 +2,8 @@
     $requireAdmin = true;
     require('login.php');
 
-    require_once('./support/meekrodb.2.3.class.php');
+    // require_once('./support/meekrodb.2.3.class.php');
+    require_once('./vendor/autoload.php');
     require_once('./support/dba.php');
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['target']=='mail') {
