@@ -187,6 +187,7 @@ for (let item of dropDowns) {
 
     dropDownItem.addEventListener('focus', function () { toggleDropdown(input, itemContainer) })
     dropDownItem.addEventListener('blur', function () { forceMouseOut(input, itemContainer) })
+    dropDownItem.addEventListener('click', function () { toggleDropdown(input, itemContainer) })
     itemContainer.appendChild(dropDownItem)
     dropDownItem.dataset['idx'] = optionIndex++
     dropDownItem.dataset['targetIndex'] = targetIndex
