@@ -428,7 +428,9 @@ form[name="fieldData"] .dropDown {
     padding: 0px;
 }
 
-.dropDown .dropDownList span:hover {
+.dropDown .dropDownList span:hover,
+.dropDown .dropDownList span:focus,
+.dropDown .dropDownList label:focus {
     background-color: slategray;
     color: whitesmoke;
 }

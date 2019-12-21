@@ -94,6 +94,7 @@ for (let item of dropDowns) {
       let label = document.createElement('label')
       let checkbox = document.createElement('input')
       checkbox.setAttribute('type', 'checkbox')
+      checkbox.setAttribute('tabindex', '-1')
       label.appendChild(checkbox)
       label.appendChild(document.createTextNode(option.innerText))
 
@@ -162,13 +163,33 @@ for (let item of dropDowns) {
         })
       }
 
-      dropDownItem.appendChild(label)
-    } else dropDownItem.appendChild(document.createTextNode(option.innerText))
+      label.addEventListener('focus', function () { toggleDropdown(input, itemContainer) })
+      label.addEventListener('blur', function () { forceMouseOut(input, itemContainer) })
+      label.addEventListener('keypress', function (evt) {
+        if (evt.keyCode === 13 || evt.charCode === 32) {
+          evt.target.children[0].click()
+        }
+      })
 
+      label.setAttribute('tabindex', '0')
+      dropDownItem.setAttribute('tabindex', '-1')
+      dropDownItem.appendChild(label)
+    } else {
+      dropDownItem.appendChild(document.createTextNode(option.innerText))
+
+      dropDownItem.setAttribute('tabindex', '0')
+      dropDownItem.addEventListener('keypress', function (evt) {
+        if (evt.keyCode === 13 || evt.charCode === 32) {
+          evt.target.click()
+        }
+      })
+    }
+
+    dropDownItem.addEventListener('focus', function () { toggleDropdown(input, itemContainer) })
+    dropDownItem.addEventListener('blur', function () { forceMouseOut(input, itemContainer) })
     itemContainer.appendChild(dropDownItem)
     dropDownItem.dataset['idx'] = optionIndex++
     dropDownItem.dataset['targetIndex'] = targetIndex
-
     if (item.getAttribute('id') !== null) dropDownItem.dataset['targetid'] = '#' + item.getAttribute('id')
     else if (item.getAttribute('class') !== null) dropDownItem.dataset['targetid'] = '.' + item.getAttribute('class').replace(/ /g, '.')
 
@@ -198,6 +219,10 @@ for (let item of dropDowns) {
     input.setAttribute('placeholder', item.options[0].innerText)
   }
 
+  itemContainer.setAttribute('tabindex', '-1')
+
+  itemContainer.addEventListener('focus', function () { toggleDropdown(input, itemContainer); itemContainer.children[0].focus() })
+  itemContainer.addEventListener('blur', function () { forceMouseOut(input, itemContainer) })
   input.addEventListener('focus', function () { toggleDropdown(input, itemContainer) })
   input.addEventListener('keyup', function () { searchValue(input, itemContainer) })
   icon.addEventListener('click', function () { toggleDropdown(input, itemContainer) })
