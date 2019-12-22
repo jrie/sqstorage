@@ -1,10 +1,10 @@
 {
-	"name": "jri/sq-storage",
+	"name": "jrie/sq-storage",
 	"license": "GPL-3.0-only",
 	"homepage": "https://github.com/jrie/sqstorage/",
 	"readme": "https://github.com/jrie/sqstorage/README.md",
 	"description": "A easy to use and quick way to organize your inventory, storages and storage areas",
-	"keywords": 
+	"keywords":
 		["storage", "inventory", "web-application", "management", "database"],
 	"authors": [{
 		"name": "JanRie",
