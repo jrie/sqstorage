@@ -117,9 +117,10 @@ for (let item of dropDowns) {
 
           if (subTarget.dataset['targetid'].startsWith('#', 0)) target = document.querySelector(subTarget.dataset['targetid'])
           else target = document.querySelectorAll(subTarget.dataset['targetid'])[parseInt(subTarget.dataset['targetIndex'])]
-          for (let option of target.options) option.removeAttribute('selected')
 
+          for (let option of target.options) option.removeAttribute('selected')
           for (let index of selected) target.options[index].setAttribute('selected', 'selected')
+
           let event = new Event('change')
           target.dispatchEvent(event)
         })
