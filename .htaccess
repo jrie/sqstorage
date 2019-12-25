@@ -1,6 +1,7 @@
 <Files .htaccess>
 Order allow,deny
 Deny from all
+Satisfy all
 </Files>
 
 Options -Indexes
