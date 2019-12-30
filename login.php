@@ -187,7 +187,7 @@
                 <div class="card">
                     <div class="card-body login-card-body">
 
-                    <?php if($error) { ?>
+                    <?php if(isset($error)) { ?>
                     <div class="alert alert-danger"><?php echo $error; ?></div>
                     <?php } ?>
 
@@ -195,7 +195,7 @@
 
                     <form action="login.php<?php echo $showActivation ? '?activate='.$_GET['activate'] : '' ?><?php echo $showRecover ? '?recover' : '' ?>" method="post">
                         <div class="input-group mb-3">
-                            <input type="text" id="username" name="username" class="form-control" placeholder="<?php echo gettext('Benutzername'); ?>" value="<?php echo ($showActivation || $showRecover) ? ($_POST['username'] ?? $user['username']) : ''; ?>">
+                            <input type="text" id="username" name="username" class="form-control" placeholder="<?php echo gettext('Benutzername'); ?>" value="<?php echo ($showActivation || $showRecover) ? ($_POST['username'] ?? @$user['username']) : ''; ?>">
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                 <span class="fas fa-user"></span>
@@ -204,7 +204,7 @@
                         </div>
                         <?php if ($showRecover || $createFirstAdmin) { ?>
                         <div class="input-group mb-3">
-                            <input type="email" id="mailaddress" name="mailaddress" class="form-control" placeholder="<?php echo gettext('E-Mail'); ?>" value="<?php echo $_POST['mailaddress']; ?>">
+                            <input type="email" id="mailaddress" name="mailaddress" class="form-control" placeholder="<?php echo gettext('E-Mail'); ?>" value="<?php if(isset($_POST['mailaddress'])) echo $_POST['mailaddress']; ?>">
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -214,7 +214,7 @@
                         <?php } ?>
                         <?php if (!$showRecover) { ?>
                             <div class="input-group mb-3">
-                                <input type="password" id="password" name="password" class="form-control" placeholder="<?php echo gettext('Passwort'); ?>" value="<?php echo $showActivation ? $_POST['password'] : '' ?>">
+                                <input type="password" id="password" name="password" class="form-control" placeholder="<?php echo gettext('Passwort'); ?>" value="<?php echo $showActivation ? @$_POST['password'] : '' ?>">
                                 <div class="input-group-append">
                                     <div class="input-group-text">
                                     <span class="fas fa-lock"></span>
@@ -223,7 +223,7 @@
                             </div>
                             <?php if ($showActivation) { ?>
                             <div class="input-group mb-3">
-                                <input type="password" id="password_repeat" name="password_repeat" class="form-control" placeholder="<?php echo gettext('Passwort wiederholen'); ?>" value="<?php echo $showActivation ? $_POST['password_repeat'] : '' ?>">
+                                <input type="password" id="password_repeat" name="password_repeat" class="form-control" placeholder="<?php echo gettext('Passwort wiederholen'); ?>" value="<?php echo $showActivation ? @$_POST['password_repeat'] : '' ?>">
                                 <div class="input-group-append">
                                     <div class="input-group-text">
                                     <span class="fas fa-lock"></span>
