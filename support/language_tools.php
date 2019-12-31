@@ -8,7 +8,7 @@ $langsLabels = array(
     'de_DE' => 'Deutsch'
 );
 $defaultLanguage = $langsAvailable[count($langsAvailable)-1];
-session_start();
+if(!isset($_SESSION))session_start();
 if(isset($_REQUEST['lang'])){
     if(in_array($_REQUEST['lang'],$langsAvailable)){
         $newlang = $_REQUEST['lang'];

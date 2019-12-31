@@ -1,9 +1,8 @@
 <?php
     session_start();
 
-    // require_once('./support/meekrodb.2.3.class.php');
-    require_once('./vendor/autoload.php');
-    require_once('./support/dba.php');
+     require_once('includer.php');
+    
 
     if (isset($_GET['logout'])) {
         unset($_SESSION['authenticated']);
@@ -20,6 +19,7 @@
         }
         else{
             header('Location: index.php?logout');
+            exit;
         }
 
         if(@$requireAdmin && $user['usergroupid']!=1){
@@ -27,12 +27,12 @@
             include('accessdenied.php');
             exit;
         }
-
         return;
     }
 
     $showRecover = isset($_GET['recover']);
-
+	$createFirstAdmin = false;
+	$showActivation = false;
     DB::query('SELECT id FROM users LIMIT 1');
     if (DB::count()==0) {
         $showActivation = true;
@@ -107,6 +107,7 @@
                             $_SESSION['authenticated'] = true;
                             $_SESSION['user'] = ['id'=>$userId];
                             header('Location: index.php');
+                            exit;
                         }
                     }
                     catch(Exception $e) {
@@ -136,6 +137,7 @@
             $_SESSION['authenticated'] = true;
             $_SESSION['user'] = ['id'=>$user['id']];
             header('Location: index.php');
+            exit;
         }
         else{
             $error = gettext('Zugangsdaten ungültig');
