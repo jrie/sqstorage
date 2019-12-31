@@ -72,10 +72,12 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon7">{t}Bemerkung{/t}</span>
                     </div>
-                    <?php
- ---                       if (isset($item['comment']) && !empty($item['comment']) != NULL) printf('<input type="text" name="comment" maxlength="255" class="form-control" autocomplete="off" placeholder="{t}Bemerkung{/t}" aria-label="{t}Bemerkung{/t}" aria-describedby="basic-addon7" value="%s">', $item['comment']);
-  ---                      else echo '<input type="text" name="comment" maxlength="255" class="form-control" autocomplete="off" placeholder="{t}Bemerkung{/t}" aria-label="{t}Bemerkung{/t}" aria-describedby="basic-addon7">';
-                    ?>
+                    
+                        {if isset($item.comment) && !empty($item.comment) != NULL} 
+                            <input type="text" name="comment" maxlength="255" class="form-control" autocomplete="off" placeholder="{t}Bemerkung{/t}" aria-label="{t}Bemerkung{/t}" aria-describedby="basic-addon7" value="{$item.comment}">', $item['comment']);
+                        {else}
+                            <input type="text" name="comment" maxlength="255" class="form-control" autocomplete="off" placeholder="{t}Bemerkung{/t}" aria-label="{t}Bemerkung{/t}" aria-describedby="basic-addon7">';
+                        {/if}
 
                 </div>
 
@@ -113,62 +115,67 @@
                     <div class="input-group-prepend">
                         <div class="dropdown">
                             <select class="btn btn-secondary dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="subcategoryDropdown" multiple="multiple" size="3" data-nosettitle="true"data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <?php
+                                    {$subCat = array()}
+                                    {$subCategories = array()}
+                                    {if ($isEdit && !empty($item.subcategories)}
+                                        <option value="-1">{t}Unterkategorie{/t}</option>
+                                        {assign var="subCat" value=","|explode:$item.subcategories}
+                                        
+                                    {else}
+                                        <option value="-1" selected="selected">{t}Unterkategorie{/t}</option>
+                                    {/if}
 
-                                    $subCat = array();
-                                    if ($isEdit && !empty($item['subcategories'])) {
-                                        echo '<option value="-1">{t}Unterkategorie{/t}</option>';
-                                        $subCat = explode(',', $item['subcategories']);
-                                    } else echo '<option value="-1" selected="selected">{t}Unterkategorie{/t}</option>';
+                                    {foreach $subcategories as $category}
+                                        {if $isEdit}
+                                            {if in_array($category.id, $subCat)}
+                                                {$subCategories[] = $category.name};
+                                                <option selected="selected" value="{$category.name}">{$category.name}</option>
+                                            {else}
+                                                <option value="{$category.name}">{$category.name}</option>
+                                            {/if}
 
-                                    $subCategories = array();
-                                    $categories = DB::query('SELECT id, name FROM subCategories');
-                                    foreach ($categories as $category) {
-                                        if ($isEdit && in_array($category['id'], $subCat)) {
-                                            $subCategories[] = $category['name'];
-                                            printf('<option selected="selected" value="%s">%s</option>', $category['name'], $category['name']);
-                                        } else {
-                                            printf('<option value="%s">%s</option>', $category['name'], $category['name']);
-                                        }
-                                    }
-                                ?>
+                                        {/if}    
+                                    {/foreach}
                             </select>
                         </div>
                     </div>
-                    <?php
-                        if (!$isEdit || empty($subCategories)) echo '<input type="text" class="form-control" id="subcategory" name="subcategories" placeholder="{t}Router,wlan,fritzBox{/t}" aria-label="{t}Unterkategorie{t/}" autocomplete="off">';
-                        else printf('<input type="text" class="form-control" id="subcategory" name="subcategories" placeholder="{t}Router,wlan,fritzBox{/t}" aria-label="{t}Unterkategorie{/t}" autocomplete="off" value="%s">', implode($subCategories, ','));
-                    ?>
-
+                        {if !$isEdit || empty($subCategories)}
+                            <input type="text" class="form-control" id="subcategory" name="subcategories" placeholder="{t}Router,wlan,fritzBox{/t}" aria-label="{t}Unterkategorie{t/}" autocomplete="off">
+                        {else}
+                            <input type="text" class="form-control" id="subcategory" name="subcategories" placeholder="{t}Router,wlan,fritzBox{/t}" aria-label="{t}Unterkategorie{/t}" autocomplete="off" value="{','|implode:$subCategories}">
+                        {/if}
                 </div>
 
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon4">{t}Anzahl{/t}</span>
                     </div>
-                    <?php
-                        if (!$isEdit) echo '<input type="text" autocomplete="off" name="amount" class="form-control" placeholder="1" aria-label="{t}Anzahl{/t}" aria-describedby="basic-addon4">';
-                        else printf('<input type="text" autocomplete="off" name="amount" class="form-control" placeholder="1" aria-label="{t}Anzahl{/t}" aria-describedby="basic-addon4" value="%s">', $item['amount']);
-                    ?>
+                        {if !$isEdit}
+                            <input type="text" autocomplete="off" name="amount" class="form-control" placeholder="1" aria-label="{t}Anzahl{/t}" aria-describedby="basic-addon4">
+                        {else}
+                            <input type="text" autocomplete="off" name="amount" class="form-control" placeholder="1" aria-label="{t}Anzahl{/t}" aria-describedby="basic-addon4" value="{$item.amount}">
+                        {/if}
                 </div>
 
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon6">{t}Seriennummer{/t}</span>
                     </div>
-                    <?php
-                        if (!$isEdit) echo '<input type="text" name="serialnumber" class="form-control" placeholder="{t}Seriennummer/Artikelnummer{/t}" aria-label="{t}Seriennummer{/t}" aria-describedby="basic-addon6">';
-                        else printf('<input type="text" name="serialnumber" class="form-control" placeholder="{t}Seriennummer/Artikelnummer{/t}" aria-label="Seriennummer" aria-describedby="basic-addon6" value="%s">',  $item['serialnumber']);
-                    ?>
+                        {if !$isEdit}
+                            <input type="text" name="serialnumber" class="form-control" placeholder="{t}Seriennummer/Artikelnummer{/t}" aria-label="{t}Seriennummer{/t}" aria-describedby="basic-addon6">
+                        {else} 
+                            <input type="text" name="serialnumber" class="form-control" placeholder="{t}Seriennummer/Artikelnummer{/t}" aria-label="Seriennummer" aria-describedby="basic-addon6" value="{$item.serialnumber}">
+                        {/if}
+                    
 
                 </div>
 
                 <div style="float: right;">
-                <?php if ($isEdit): ?>
+                {if $isEdit}
                     <button type="submit" class="btn btn-danger">{t}Überschreiben{/t}</button>
-                <?php else: ?>
+                {else}
                     <button type="submit" class="btn btn-primary">{t}Eintragen{/t}</button>
-                <?php endif; ?>
+                {/if}
 
                 </div>
             </form>
