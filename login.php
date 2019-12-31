@@ -175,6 +175,24 @@
             $error = gettext('Falls ein Benutzerkonto gefunden wird, erhalten Sie nun eine Mail mit einem Link zum Zurücksetzen des Passworts.');
         }
     }
+
+
+/*
+    $smarty->assign('target',$_SERVER['PHP_SELF']) ;
+    $smarty->assign('showRecover',$showRecover);
+    $smarty->assign('createFirstAdmin',$createFirstAdmin);
+    $smarty->assign('showActivation',$showActivation);
+    $smarty->assign('error',$error);
+        
+    $smarty->display('login.tpl');      
+*/
+
+
+
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html>
