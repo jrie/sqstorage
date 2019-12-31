@@ -14,6 +14,6 @@ if(isset($langsAvailable)){
 }
 
 //** un-comment the following line to show the debug console
-$smarty->debugging = true;
+//$smarty->debugging = true;
 $smarty->force_compile = true;
 //$smarty->display('index.tpl');

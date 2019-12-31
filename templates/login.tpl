@@ -1,5 +1,4 @@
 {include file="head.tpl" title=foo}
-{include file="nav.tpl" title=foo}
 
         <div class="content">
             <div class="login-box">
@@ -11,81 +10,89 @@
                     {/if}
 
                     <p class="login-box-msg">
-                        {if($createFirstAdmin)}
+                        {if $createFirstAdmin}
                             {t}Neue Admin-Zugangsdaten eingeben{/t}
                         {else}
-                            {if ($showActivation)}
+                            {if $showActivation}
                                 {t}Neue Zugangsdaten eingeben{/t}
                             {else}
                                 {t}Zugangsdaten eingeben{/t}</p>
-                            {if}
+                            {/if}
                         {/if}
-                    <form action="login.php<?php echo $showActivation ? '?activate='.@$_GET['activate'] : '' ?><?php echo $showRecover ? '?recover' : '' ?>" method="post">
+                    <form action="login.php{if $showActivation}?activate={$activate}{/if}{if $showRecover}?recover{/if}" method="post">
                         <div class="input-group mb-3">
-                            <input type="text" id="username" name="username" class="form-control" placeholder="<?php echo gettext('Benutzername'); ?>" value="<?php echo ($showActivation || $showRecover) ? ($_POST['username'] ?? @$user['username']) : ''; ?>">
+                            <input type="text" id="username" name="username" class="form-control" placeholder="{t}Benutzername{/t}" value="{if ($showActivation || $showRecover)}{if isset($POST.username)}{$POST.username}{/if}{else}{if isset($user.username)}{$user.username}{/if}{/if}">
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                 <span class="fas fa-user"></span>
                                 </div>
                             </div>
                         </div>
-                        <?php if ($showRecover || $createFirstAdmin) { ?>
+                        {if ($showRecover || $createFirstAdmin)}
                         <div class="input-group mb-3">
-                            <input type="email" id="mailaddress" name="mailaddress" class="form-control" placeholder="<?php echo gettext('E-Mail'); ?>" value="<?php if(isset($_POST['mailaddress'])) echo $_POST['mailaddress']; ?>">
+                            <input type="email" id="mailaddress" name="mailaddress" class="form-control" placeholder="{t}E-Mail{/t}" value="{if isset($POST.mailaddress)}{$POST.mailaddress}{/if}">
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
                                 </div>
                             </div>
                         </div>
-                        <?php } ?>
-                        <?php if (!$showRecover) { ?>
+                        {/if}
+                        {if (!$showRecover)}
+
+
                             <div class="input-group mb-3">
-                                <input type="password" id="password" name="password" class="form-control" placeholder="<?php echo gettext('Passwort'); ?>" value="<?php echo $showActivation ? @$_POST['password'] : '' ?>">
+                                <input type="password" id="password" name="password" class="form-control" placeholder="{t}Passwort{/t}" value="{if $showActivation}{if isset($POST.password)}{$POST.password}{/if}{/if}">
                                 <div class="input-group-append">
                                     <div class="input-group-text">
                                     <span class="fas fa-lock"></span>
                                     </div>
                                 </div>
                             </div>
-                            <?php if ($showActivation) { ?>
+                            {if $showActivation}
                             <div class="input-group mb-3">
-                                <input type="password" id="password_repeat" name="password_repeat" class="form-control" placeholder="<?php echo gettext('Passwort wiederholen'); ?>" value="<?php echo $showActivation ? @$_POST['password_repeat'] : '' ?>">
+                                <input type="password" id="password_repeat" name="password_repeat" class="form-control" placeholder="{t}Passwort wiederholen{/t}" value="{if $showActivation}{if isset($POST.password_repeat)}{$POST.password_repeat}{/if}{/if}">
                                 <div class="input-group-append">
                                     <div class="input-group-text">
                                     <span class="fas fa-lock"></span>
                                     </div>
                                 </div>
                             </div>
-                            <?php } ?>
+                            {/if}
                             <div class="row">
                                 <div class="col-7">
                                     <div class="form-group form-check">
                                     <input type="checkbox" id="remember" class="form-check-input">
                                     <label for="remember" class="form-check-label">
-                                        <?php echo gettext('Angemeldet bleiben?'); ?>
+                                        {t}Angemeldet bleiben?{/t}
                                     </label>
                                     </div>
                                 </div>
                                 <div class="col-5">
-                                    <button type="submit" class="btn btn-primary btn-block btn-flat"><?php echo ($showActivation ? gettext('Speichern') : gettext('Anmelden')); ?></button>
+                                    <button type="submit" class="btn btn-primary btn-block btn-flat">{if $showActivation}{t}Speichern{/t}{else}{t}Anmelden{/t}{/if}</button>
                                 </div>
                             </div>
-                        <?php } else { ?>
+
+
+                        {else}
                             <div class="row">
                                 <div class="col-7">
                                 </div>
                                 <div class="col-5">
-                                    <button type="submit" class="btn btn-primary btn-block btn-flat"><?php echo gettext('Anfordern'); ?></button>
+                                    <button type="submit" class="btn btn-primary btn-block btn-flat">{t}Anfordern{/t}</button>
                                 </div>
                             </div>
-                        <?php } ?>
+                        {/if}
+
+
                     </form>
-                    <?php if(!$showActivation && !$showRecover) { ?>
+                    {if !$showActivation}
+                    {if !$showRecover}
                     <p class="mb-1">
-                        <a href="login.php?recover"><?php echo gettext('Zugangsdaten vergessen?'); ?></a>
+                        <a href="login.php?recover">{t}Zugangsdaten vergessen{/t}</a>
                     </p>
-                    <?php } ?>
+                    {/if}
+                    {/if}
                     </div>
                 </div>
             </div>
