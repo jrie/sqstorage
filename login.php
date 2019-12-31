@@ -22,7 +22,7 @@
             header('Location: index.php?logout');
         }
 
-        if($requireAdmin && $user['usergroupid']!=1){
+        if(@$requireAdmin && $user['usergroupid']!=1){
             $error = gettext('Zugriff verweigert!');
             include('accessdenied.php');
             exit;
@@ -193,7 +193,7 @@
 
                     <p class="login-box-msg"><?php echo ($createFirstAdmin ? gettext('Neue Admin-Zugangsdaten eingeben') : ($showActivation ? gettext('Neue Zugangsdaten eingeben') : gettext('Zugangsdaten eingeben'))); ?></p>
 
-                    <form action="login.php<?php echo $showActivation ? '?activate='.$_GET['activate'] : '' ?><?php echo $showRecover ? '?recover' : '' ?>" method="post">
+                    <form action="login.php<?php echo $showActivation ? '?activate='.@$_GET['activate'] : '' ?><?php echo $showRecover ? '?recover' : '' ?>" method="post">
                         <div class="input-group mb-3">
                             <input type="text" id="username" name="username" class="form-control" placeholder="<?php echo gettext('Benutzername'); ?>" value="<?php echo ($showActivation || $showRecover) ? ($_POST['username'] ?? @$user['username']) : ''; ?>">
                             <div class="input-group-append">
