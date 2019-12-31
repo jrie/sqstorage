@@ -1,0 +1,192 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8\n"
+
+#: templates//categories.tpl:9 templates//nav.tpl:7
+msgid "Kategorien"
+msgstr ""
+
+#: templates//categories.tpl:10 templates//categories.tpl:20
+#: templates//indexpage.tpl:127 templates//indexpage.tpl:129
+#: templates//inventorypage.tpl:24
+msgid "Anzahl"
+msgstr ""
+
+#: templates//categories.tpl:10 templates//categories.tpl:20
+#: templates//inventorypage.tpl:24
+msgid "Aktionen"
+msgstr ""
+
+#: templates//categories.tpl:14 templates//categories.tpl:25
+#: templates//inventorypage.tpl:22
+msgid "Gegenstand"
+msgid_plural "Gegenstände"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates//categories.tpl:19 templates//inventorypage.tpl:24
+msgid "Unterkategorien"
+msgstr ""
+
+#: templates//categories.tpl:20
+msgid "Oberkategorie"
+msgstr ""
+
+#: templates//categories.tpl:28
+msgid "Keine"
+msgstr ""
+
+#: templates//categories.tpl:50
+msgid "Kategorie wirklich entfernen?"
+msgstr ""
+
+#: templates//categories.tpl:50 templates//categories.tpl:60
+msgid "Unterkategorie umbenennen?"
+msgstr ""
+
+#: templates//categories.tpl:60
+msgid "Kategorie umbenennen?"
+msgstr ""
+
+#: templates//footer.tpl:2
+msgid "Kontakt"
+msgstr ""
+
+#: templates//footer.tpl:3
+msgid "Github"
+msgstr ""
+
+#: templates//indexpage.tpl:7
+msgid "zur Datenbank hinzugefügt."
+msgstr ""
+
+#: templates//indexpage.tpl:13
+msgid "Eintrag zur Bearbeitung:"
+msgstr ""
+
+#: templates//indexpage.tpl:21 templates//indexpage.tpl:23
+#: templates//inventorypage.tpl:24
+msgid "Bezeichnung"
+msgstr ""
+
+#: templates//indexpage.tpl:23
+msgid "Bezeichnung oder Name"
+msgstr ""
+
+#: templates//indexpage.tpl:31 templates//indexpage.tpl:33
+#: templates//indexpage.tpl:49
+msgid "Lagerplatz"
+msgstr ""
+
+#: templates//indexpage.tpl:55 templates//indexpage.tpl:59
+#: templates//inventorypage.tpl:24
+msgid "Bemerkung"
+msgstr ""
+
+#: templates//indexpage.tpl:68 templates//indexpage.tpl:70
+msgid "Kategorie"
+msgstr ""
+
+#: templates//indexpage.tpl:88 templates//indexpage.tpl:90
+msgid "Netzwerk/Hardware"
+msgstr ""
+
+#: templates//indexpage.tpl:101 templates//indexpage.tpl:103
+#: templates//indexpage.tpl:119 templates//indexpage.tpl:121
+msgid "Unterkategorie"
+msgstr ""
+
+#: templates//indexpage.tpl:119 templates//indexpage.tpl:121
+msgid "Router,wlan,fritzBox"
+msgstr ""
+
+#: templates//indexpage.tpl:134 templates//indexpage.tpl:136
+msgid "Seriennummer"
+msgstr ""
+
+#: templates//indexpage.tpl:136
+msgid "Seriennummer/Artikelnummer"
+msgstr ""
+
+#: templates//indexpage.tpl:140
+msgid "Überschreiben"
+msgstr ""
+
+#: templates//indexpage.tpl:140 templates//nav.tpl:5
+msgid "Eintragen"
+msgstr ""
+
+#: templates//inventorypage.tpl:22
+msgid "Position"
+msgid_plural "Positionen"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates//inventorypage.tpl:24
+msgid "Gruppe"
+msgstr ""
+
+#: templates//inventorypage.tpl:24
+msgid "Hinzugefügt"
+msgstr ""
+
+#: templates//inventorypage.tpl:53
+msgid "Zuweisen"
+msgstr ""
+
+#: templates//inventorypage.tpl:87
+msgid "Lagerplatz wirklich entfernen?"
+msgstr ""
+
+#: templates//inventorypage.tpl:87
+msgid "Position wirklich entfernen?"
+msgstr ""
+
+#: templates//nav.tpl:6
+msgid "Inventar"
+msgstr ""
+
+#: templates//nav.tpl:8 templates//test.tpl:27 templates//transfer.tpl:27
+msgid "Transferieren"
+msgstr ""
+
+#: templates//nav.tpl:12
+msgid "Suche"
+msgstr ""
+
+#: templates//nav.tpl:13
+msgid "Suchen"
+msgstr ""
+
+#: templates//nav.tpl:21
+msgid "Sprache wählen"
+msgstr ""
+
+#: templates//test.tpl:9 templates//test.tpl:26 templates//transfer.tpl:9
+#: templates//transfer.tpl:26
+msgid "Quelle"
+msgstr ""
+
+#: templates//test.tpl:19 templates//test.tpl:27 templates//transfer.tpl:19
+#: templates//transfer.tpl:27
+msgid "Ziel"
+msgstr ""
+
+#: templates//test.tpl:26 templates//transfer.tpl:26
+msgid "Quelle wählen."
+msgstr ""
+
+#: templates//test.tpl:27 templates//transfer.tpl:27
+msgid "Ziel wählen."
+msgstr ""
+
+#: templates//test.tpl:107 templates//transfer.tpl:107
+msgid "Quelle wählen"
+msgstr ""
+
+#: templates//test.tpl:108 templates//transfer.tpl:108
+msgid "Ziel wählen"
+msgstr ""
+
+#: templates//test.tpl:127 templates//transfer.tpl:127
+msgid "Keine Gegenstände gefunden"
+msgstr ""

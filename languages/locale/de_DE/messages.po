@@ -1,0 +1,203 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.5\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: templates//categories.tpl:9 templates//nav.tpl:7
+msgid "Kategorien"
+msgstr "Kategorien"
+
+#: templates//categories.tpl:10 templates//categories.tpl:20
+#: templates//indexpage.tpl:127 templates//indexpage.tpl:129
+#: templates//inventorypage.tpl:24
+msgid "Anzahl"
+msgstr "Anzahl"
+
+#: templates//categories.tpl:10 templates//categories.tpl:20
+#: templates//inventorypage.tpl:24
+msgid "Aktionen"
+msgstr "Aktionen"
+
+#: templates//categories.tpl:14 templates//categories.tpl:25
+#: templates//inventorypage.tpl:22
+msgid "Gegenstand"
+msgid_plural "Gegenstände"
+msgstr[0] "Gegenstand"
+msgstr[1] "Gegenstände"
+
+#: templates//categories.tpl:19 templates//inventorypage.tpl:24
+msgid "Unterkategorien"
+msgstr "Unterkategorien"
+
+#: templates//categories.tpl:20
+msgid "Oberkategorie"
+msgstr "Oberkategorie"
+
+#: templates//categories.tpl:28
+msgid "Keine"
+msgstr "Keine"
+
+#: templates//categories.tpl:50
+msgid "Kategorie wirklich entfernen?"
+msgstr "Kategorie wirklich entfernen?"
+
+#: templates//categories.tpl:50 templates//categories.tpl:60
+msgid "Unterkategorie umbenennen?"
+msgstr "Unterkategorie umbenennen?"
+
+#: templates//categories.tpl:60
+msgid "Kategorie umbenennen?"
+msgstr "Kategorie umbenennen?"
+
+#: templates//footer.tpl:2
+msgid "Kontakt"
+msgstr "Kontakt"
+
+#: templates//footer.tpl:3
+msgid "Github"
+msgstr "Github"
+
+#: templates//indexpage.tpl:7
+msgid "zur Datenbank hinzugefügt."
+msgstr "zur Datenbank hinzugefügt."
+
+#: templates//indexpage.tpl:13
+msgid "Eintrag zur Bearbeitung:"
+msgstr "Eintrag zur Bearbeitung:"
+
+#: templates//indexpage.tpl:21 templates//indexpage.tpl:23
+#: templates//inventorypage.tpl:24
+msgid "Bezeichnung"
+msgstr "Bezeichnung"
+
+#: templates//indexpage.tpl:23
+msgid "Bezeichnung oder Name"
+msgstr "Bezeichnung oder Name"
+
+#: templates//indexpage.tpl:31 templates//indexpage.tpl:33
+#: templates//indexpage.tpl:49
+msgid "Lagerplatz"
+msgstr "Lagerplatz"
+
+#: templates//indexpage.tpl:55 templates//indexpage.tpl:59
+#: templates//inventorypage.tpl:24
+msgid "Bemerkung"
+msgstr "Bemerkung"
+
+#: templates//indexpage.tpl:68 templates//indexpage.tpl:70
+msgid "Kategorie"
+msgstr "Kategorie"
+
+#: templates//indexpage.tpl:88 templates//indexpage.tpl:90
+msgid "Netzwerk/Hardware"
+msgstr "Netzwerk/Hardware"
+
+#: templates//indexpage.tpl:101 templates//indexpage.tpl:103
+#: templates//indexpage.tpl:119 templates//indexpage.tpl:121
+msgid "Unterkategorie"
+msgstr "Unterkategorie"
+
+#: templates//indexpage.tpl:119 templates//indexpage.tpl:121
+msgid "Router,wlan,fritzBox"
+msgstr "Router,wlan,fritzBox"
+
+#: templates//indexpage.tpl:134 templates//indexpage.tpl:136
+msgid "Seriennummer"
+msgstr "Seriennummer"
+
+#: templates//indexpage.tpl:136
+msgid "Seriennummer/Artikelnummer"
+msgstr "Seriennummer/Artikelnummer"
+
+#: templates//indexpage.tpl:140
+msgid "Überschreiben"
+msgstr "Überschreiben"
+
+#: templates//indexpage.tpl:140 templates//nav.tpl:5
+msgid "Eintragen"
+msgstr "Eintragen"
+
+#: templates//inventorypage.tpl:22
+msgid "Position"
+msgid_plural "Positionen"
+msgstr[0] "Position"
+msgstr[1] "Positionen"
+
+#: templates//inventorypage.tpl:24
+msgid "Gruppe"
+msgstr "Gruppe"
+
+#: templates//inventorypage.tpl:24
+msgid "Hinzugefügt"
+msgstr "Hinzugefügt"
+
+#: templates//inventorypage.tpl:53
+msgid "Zuweisen"
+msgstr "Zuweisen"
+
+#: templates//inventorypage.tpl:87
+msgid "Lagerplatz wirklich entfernen?"
+msgstr "Lagerplatz wirklich entfernen?"
+
+#: templates//inventorypage.tpl:87
+msgid "Position wirklich entfernen?"
+msgstr "Position wirklich entfernen?"
+
+#: templates//nav.tpl:6
+msgid "Inventar"
+msgstr "Inventar"
+
+#: templates//nav.tpl:8 templates//test.tpl:27 templates//transfer.tpl:27
+msgid "Transferieren"
+msgstr "Transferieren"
+
+#: templates//nav.tpl:12
+msgid "Suche"
+msgstr "Suche"
+
+#: templates//nav.tpl:13
+msgid "Suchen"
+msgstr "Suchen"
+
+#: templates//nav.tpl:21
+msgid "Sprache wählen"
+msgstr "Sprache wählen"
+
+#: templates//test.tpl:9 templates//test.tpl:26 templates//transfer.tpl:9
+#: templates//transfer.tpl:26
+msgid "Quelle"
+msgstr "Quelle"
+
+#: templates//test.tpl:19 templates//test.tpl:27 templates//transfer.tpl:19
+#: templates//transfer.tpl:27
+msgid "Ziel"
+msgstr "Ziel"
+
+#: templates//test.tpl:26 templates//transfer.tpl:26
+msgid "Quelle wählen."
+msgstr "Quelle wählen."
+
+#: templates//test.tpl:27 templates//transfer.tpl:27
+msgid "Ziel wählen."
+msgstr "Ziel wählen."
+
+#: templates//test.tpl:107 templates//transfer.tpl:107
+msgid "Quelle wählen"
+msgstr "Quelle wählen"
+
+#: templates//test.tpl:108 templates//transfer.tpl:108
+msgid "Ziel wählen"
+msgstr "Ziel wählen"
+
+#: templates//test.tpl:127 templates//transfer.tpl:127
+msgid "Keine Gegenstände gefunden"
+msgstr "Keine Gegenstände gefunden"

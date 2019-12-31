@@ -1,0 +1,203 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: sqstorage\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_GB\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.5\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: templates//categories.tpl:9 templates//nav.tpl:7
+msgid "Kategorien"
+msgstr "Categories"
+
+#: templates//categories.tpl:10 templates//categories.tpl:20
+#: templates//indexpage.tpl:127 templates//indexpage.tpl:129
+#: templates//inventorypage.tpl:24
+msgid "Anzahl"
+msgstr "Amount"
+
+#: templates//categories.tpl:10 templates//categories.tpl:20
+#: templates//inventorypage.tpl:24
+msgid "Aktionen"
+msgstr "Actions"
+
+#: templates//categories.tpl:14 templates//categories.tpl:25
+#: templates//inventorypage.tpl:22
+msgid "Gegenstand"
+msgid_plural "Gegenstände"
+msgstr[0] "Item"
+msgstr[1] "Items"
+
+#: templates//categories.tpl:19 templates//inventorypage.tpl:24
+msgid "Unterkategorien"
+msgstr "Subcategories"
+
+#: templates//categories.tpl:20
+msgid "Oberkategorie"
+msgstr "Maincategories"
+
+#: templates//categories.tpl:28
+msgid "Keine"
+msgstr "None"
+
+#: templates//categories.tpl:50
+msgid "Kategorie wirklich entfernen?"
+msgstr "Really remove the category?"
+
+#: templates//categories.tpl:50 templates//categories.tpl:60
+msgid "Unterkategorie umbenennen?"
+msgstr "Rename the subcategory?"
+
+#: templates//categories.tpl:60
+msgid "Kategorie umbenennen?"
+msgstr "Rename the category?"
+
+#: templates//footer.tpl:2
+msgid "Kontakt"
+msgstr "Contact"
+
+#: templates//footer.tpl:3
+msgid "Github"
+msgstr "Github"
+
+#: templates//indexpage.tpl:7
+msgid "zur Datenbank hinzugefügt."
+msgstr "added to the database."
+
+#: templates//indexpage.tpl:13
+msgid "Eintrag zur Bearbeitung:"
+msgstr "Item to edit:"
+
+#: templates//indexpage.tpl:21 templates//indexpage.tpl:23
+#: templates//inventorypage.tpl:24
+msgid "Bezeichnung"
+msgstr "Description"
+
+#: templates//indexpage.tpl:23
+msgid "Bezeichnung oder Name"
+msgstr "Description or name"
+
+#: templates//indexpage.tpl:31 templates//indexpage.tpl:33
+#: templates//indexpage.tpl:49
+msgid "Lagerplatz"
+msgstr "Storage area"
+
+#: templates//indexpage.tpl:55 templates//indexpage.tpl:59
+#: templates//inventorypage.tpl:24
+msgid "Bemerkung"
+msgstr "Comment"
+
+#: templates//indexpage.tpl:68 templates//indexpage.tpl:70
+msgid "Kategorie"
+msgstr "Category"
+
+#: templates//indexpage.tpl:88 templates//indexpage.tpl:90
+msgid "Netzwerk/Hardware"
+msgstr "Network/Hardware"
+
+#: templates//indexpage.tpl:101 templates//indexpage.tpl:103
+#: templates//indexpage.tpl:119 templates//indexpage.tpl:121
+msgid "Unterkategorie"
+msgstr "Subcategory"
+
+#: templates//indexpage.tpl:119 templates//indexpage.tpl:121
+msgid "Router,wlan,fritzBox"
+msgstr "Router,WiFi,FritzBox"
+
+#: templates//indexpage.tpl:134 templates//indexpage.tpl:136
+msgid "Seriennummer"
+msgstr "Serialnumber"
+
+#: templates//indexpage.tpl:136
+msgid "Seriennummer/Artikelnummer"
+msgstr "Serialnumber/Productnumber"
+
+#: templates//indexpage.tpl:140
+msgid "Überschreiben"
+msgstr "Overwrite"
+
+#: templates//indexpage.tpl:140 templates//nav.tpl:5
+msgid "Eintragen"
+msgstr "Enter"
+
+#: templates//inventorypage.tpl:22
+msgid "Position"
+msgid_plural "Positionen"
+msgstr[0] "Position"
+msgstr[1] "Positions"
+
+#: templates//inventorypage.tpl:24
+msgid "Gruppe"
+msgstr "Group"
+
+#: templates//inventorypage.tpl:24
+msgid "Hinzugefügt"
+msgstr "Add"
+
+#: templates//inventorypage.tpl:53
+msgid "Zuweisen"
+msgstr "Allocate"
+
+#: templates//inventorypage.tpl:87
+msgid "Lagerplatz wirklich entfernen?"
+msgstr "Really remove storage area?"
+
+#: templates//inventorypage.tpl:87
+msgid "Position wirklich entfernen?"
+msgstr "Really remove position?"
+
+#: templates//nav.tpl:6
+msgid "Inventar"
+msgstr "Inventory"
+
+#: templates//nav.tpl:8 templates//test.tpl:27 templates//transfer.tpl:27
+msgid "Transferieren"
+msgstr "Transfer"
+
+#: templates//nav.tpl:12
+msgid "Suche"
+msgstr "Search"
+
+#: templates//nav.tpl:13
+msgid "Suchen"
+msgstr "Search"
+
+#: templates//nav.tpl:21
+msgid "Sprache wählen"
+msgstr "Select language"
+
+#: templates//test.tpl:9 templates//test.tpl:26 templates//transfer.tpl:9
+#: templates//transfer.tpl:26
+msgid "Quelle"
+msgstr "Source"
+
+#: templates//test.tpl:19 templates//test.tpl:27 templates//transfer.tpl:19
+#: templates//transfer.tpl:27
+msgid "Ziel"
+msgstr "Target"
+
+#: templates//test.tpl:26 templates//transfer.tpl:26
+msgid "Quelle wählen."
+msgstr "Select source."
+
+#: templates//test.tpl:27 templates//transfer.tpl:27
+msgid "Ziel wählen."
+msgstr "Select target."
+
+#: templates//test.tpl:107 templates//transfer.tpl:107
+msgid "Quelle wählen"
+msgstr "Select source"
+
+#: templates//test.tpl:108 templates//transfer.tpl:108
+msgid "Ziel wählen"
+msgstr "Select target"
+
+#: templates//test.tpl:127 templates//transfer.tpl:127
+msgid "Keine Gegenstände gefunden"
+msgstr "No items found"
