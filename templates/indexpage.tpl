@@ -117,7 +117,7 @@
                             <select class="btn btn-secondary dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="subcategoryDropdown" multiple="multiple" size="3" data-nosettitle="true"data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {$subCat = array()}
                                     {$subCategories = array()}
-                                    {if ($isEdit && !empty($item.subcategories)}
+                                    {if $isEdit && !empty($item.subcategories)}
                                         <option value="-1">{t}Unterkategorie{/t}</option>
                                         {assign var="subCat" value=","|explode:$item.subcategories}
                                         
@@ -140,7 +140,7 @@
                         </div>
                     </div>
                         {if !$isEdit || empty($subCategories)}
-                            <input type="text" class="form-control" id="subcategory" name="subcategories" placeholder="{t}Router,wlan,fritzBox{/t}" aria-label="{t}Unterkategorie{t/}" autocomplete="off">
+                            <input type="text" class="form-control" id="subcategory" name="subcategories" placeholder="{t}Router,wlan,fritzBox{/t}" aria-label="{t}Unterkategorie{/t}" autocomplete="off">
                         {else}
                             <input type="text" class="form-control" id="subcategory" name="subcategories" placeholder="{t}Router,wlan,fritzBox{/t}" aria-label="{t}Unterkategorie{/t}" autocomplete="off" value="{','|implode:$subCategories}">
                         {/if}

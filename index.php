@@ -1,11 +1,5 @@
-<?php require('login.php'); ?>
-<!DOCTYPE html>
-<html>
-    <?php include_once('head.php'); ?>
-    <body>
-        <?php include_once('nav.php'); ?>
+<?php require('login.php'); 
 
-        <?php
             $success = FALSE;
 
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
