@@ -75,210 +75,27 @@
                 $item = DB::queryFirstRow('SELECT * from items WHERE id=%d', intVal($_GET['editItem']));
                 $isEdit = TRUE;
             }
-        ?>
-
-        <div class="content">
-            <?php if ($success): ?>
-            <div class="alert alert-info" role="alert">
-                <p><?php echo $_POST['label'] . ' ' . gettext('zur Datenbank hinzugefügt.') ?></p>
-            </div>
-            <?php endif; ?>
-
-            <?php if ($isEdit): ?>
-            <div class="alert alert-danger" role="alert">
-                <h6><?php echo gettext('Eintrag zur Bearbeitung:') ?> &quot;<?php echo $item['label'] ?>&quot;</h6>
-            </div>
-            <?php endif; ?>
-
-            <form accept-charset="utf-8" method="POST" action="index.php">
-                <?php
-                    if ($isEdit) printf('<input type="hidden" value="%d" name="itemUpdateId" />', $item['id']);
-                ?>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1"><?php echo gettext('Bezeichnung') ?></span>
-                    </div>
-
-                    <?php
-                        if (!$isEdit) echo '<input type="text" name="label" maxlength="64" class="form-control" required="required" placeholder="'. gettext('Bezeichnung oder Name') . '" aria-label="' . gettext('Bezeichnung') . '" aria-describedby="basic-addon1">';
-                        else printf('<input type="text" name="label" maxlength="64" class="form-control" required="required" placeholder="'. gettext('Bezeichnung oder Name') . '")aria-label="' . gettext('Bezeichnung') . '" aria-describedby="basic-addon1" value="%s">', $item['label']);
-                    ?>
-                </div>
-
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <div class="dropdown">
-                            <select class="btn btn-secondary dropdown-toggle" type="button" tabindex="-1" id="storageDropdown" data-toggle="dropdown" data-nosettitle="true" aria-haspopup="true" aria-expanded="false" autocomplete="off">
-                                <?php
-                                    if ($isEdit && $item['storageid'] != 0) echo '<option value="-1">' . gettext('Lagerplatz') . '</option>';
-                                    else echo '<option value="-1" selected="selected">' . gettext('Lagerplatz') . '</option>';
-
-                                    $storages = DB::query('SELECT id, label FROM storages');
-                                    $currentStorage = NULL;
-
-                                    foreach ($storages as $storage) {
-                                        if ($isEdit && $storage['id'] == $item['storageid']) {
-                                            $currentStorage = $storage;
-                                            printf('<option value="%s" selected="selected">%s</option>', $storage['label'], $storage['label']);
-                                        } else {
-                                            printf('<option value="%s">%s</option>', $storage['label'], $storage['label']);
-                                        }
-                                    }
-                                ?>
-                            </select>
-                        </div>
-                    </div>
-
-                    <?php
-                        if ($isEdit && $item['storageid'] != 0) printf('<input type="text" name="storage" id="storage" maxlength="32" class="form-control" placeholder="' . gettext('Lagerplatz') . '" required="required" autocomplete="off" value="%s">', $currentStorage['label']);
-                        else echo '<input type="text" name="storage" id="storage" maxlength="32" class="form-control" placeholder="' . gettext('Lagerplatz') . '" required="required" autocomplete="off">';
-                    ?>
-                </div>
-
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon7"><?php echo gettext('Bemerkung') ?></span>
-                    </div>
-                    <?php
-                        if (isset($item['comment']) && !empty($item['comment']) != NULL) printf('<input type="text" name="comment" maxlength="255" class="form-control" autocomplete="off" placeholder="' . gettext('Bemerkung') . '" aria-label="Bemerkung" aria-describedby="basic-addon7" value="%s">', $item['comment']);
-                        else echo '<input type="text" name="comment" maxlength="255" class="form-control" autocomplete="off" placeholder="' . gettext('Bemerkung') . '" aria-label="' . gettext('Bemerkung') . '" aria-describedby="basic-addon7">';
-                    ?>
-
-                </div>
-
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <div class="dropdown">
-                            <select class="btn btn-secondary dropdown-toggle" tabindex="-1" autocomplete="off" data-nosettitle="true" type="button" id="categoryDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <?php
-                                    if ($isEdit) {
-                                        echo '<option value="-1">' . gettext('Kategorie') . '</option>';
-                                    } else {
-                                        echo '<option value="-1" selected="selected">' . gettext('Kategorie') . '</option>';
-                                    }
-                                    $categories = DB::query('SELECT id, name FROM headCategories');
-
-                                    $currentCategory = NULL;
-                                    foreach ($categories as $category) {
-                                        if ($isEdit && $category['id'] == $item['headcategory']) {
-                                            $currentCategory = $category;
-                                            printf('<option value="%s" selected="selected">%s</option>', $category['name'], $category['name']);
-                                        } else {
-                                            printf('<option value="%s">%s</option>', $category['name'], $category['name']);
-                                        }
-                                    }
-                                ?>
-                            </select>
-                        </div>
-                    </div>
-                    <?php
-                        if (!$isEdit || $currentCategory == NULL) {
-                            echo '<input type="text" class="form-control" id="category" name="category" required="required" autocomplete="off" placeholder="' . gettext('Netzwerk/Hardware') . '">';
-                        } else {
-                            printf('<input type="text" class="form-control" id="category" name="category" required="required" autocomplete="off" placeholder="%s" value="%s">', gettext('Netzwerk/Hardware'), $currentCategory['name']);
-                        }
-                    ?>
-                </div>
-
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <div class="dropdown">
-                            <select class="btn btn-secondary dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="subcategoryDropdown" multiple="multiple" size="3" data-nosettitle="true"data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <?php
-
-                                    $subCat = array();
-                                    if ($isEdit && !empty($item['subcategories'])) {
-                                        echo '<option value="-1">' . gettext('Unterkategorie') . '</option>';
-                                        $subCat = explode(',', $item['subcategories']);
-                                    } else echo '<option value="-1" selected="selected">' . gettext('Unterkategorie') . '</option>';
-
-                                    $subCategories = array();
-                                    $categories = DB::query('SELECT id, name FROM subCategories');
-                                    foreach ($categories as $category) {
-                                        if ($isEdit && in_array($category['id'], $subCat)) {
-                                            $subCategories[] = $category['name'];
-                                            printf('<option selected="selected" value="%s">%s</option>', $category['name'], $category['name']);
-                                        } else {
-                                            printf('<option value="%s">%s</option>', $category['name'], $category['name']);
-                                        }
-                                    }
-                                ?>
-                            </select>
-                        </div>
-                    </div>
-                    <?php
-                        if (!$isEdit || empty($subCategories)) echo '<input type="text" class="form-control" id="subcategory" name="subcategories" placeholder="' . gettext('Router,wlan,fritzBox') . '" aria-label="' . gettext('Unterkategorie') . '" autocomplete="off">';
-                        else printf('<input type="text" class="form-control" id="subcategory" name="subcategories" placeholder="' . gettext('Router,wlan,fritzBox') . '" aria-label="' . gettext('Unterkategorie') . '" autocomplete="off" value="%s">', implode($subCategories, ','));
-                    ?>
-
-                </div>
-
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon4"><?php echo gettext('Anzahl') ?></span>
-                    </div>
-                    <?php
-                        if (!$isEdit) echo '<input type="text" autocomplete="off" name="amount" class="form-control" placeholder="1" aria-label="' . gettext('Anzahl') . '" aria-describedby="basic-addon4">';
-                        else printf('<input type="text" autocomplete="off" name="amount" class="form-control" placeholder="1" aria-label="' . gettext('Anzahl') . '" aria-describedby="basic-addon4" value="%s">', $item['amount']);
-                    ?>
-                </div>
-
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon6"><?php echo gettext('Seriennummer') ?></span>
-                    </div>
-                    <?php
-                        if (!$isEdit) echo '<input type="text" name="serialnumber" class="form-control" placeholder="Seriennummer/Artikelnummer" aria-label="' . gettext('Seriennummer') . '" aria-describedby="basic-addon6">';
-                        else printf('<input type="text" name="serialnumber" class="form-control" placeholder="%s" aria-label="Seriennummer" aria-describedby="basic-addon6" value="%s">', gettext('Seriennummer/Artikelnummer'), $item['serialnumber']);
-                    ?>
-
-                </div>
-
-                <div style="float: right;">
-                <?php if ($isEdit): ?>
-                    <button type="submit" class="btn btn-danger"><?php echo gettext('Überschreiben') ?></button>
-                <?php else: ?>
-                    <button type="submit" class="btn btn-primary"><?php echo gettext('Eintragen') ?></button>
-                <?php endif; ?>
-
-                </div>
-            </form>
-        </div>
-
-        <?php include_once('footer.php'); ?>
-        <script type="text/javascript">
-            document.querySelector('#storageDropdown').addEventListener('change', function(evt) {
-                if (evt.target.value === '-1') {
-                    document.querySelector('#storage').value = ''
-                    return
-                }
-                document.querySelector('#storage').value = evt.target.value;
-            })
-
-            document.querySelector('#subcategoryDropdown').addEventListener('change', function(evt) {
-                if (evt.target.value === '-1') {
-                    document.querySelector('#subcategory').value = ''
-                    return
-                } else {
-                    let selections = []
-                    document.querySelector('#subcategory').value = '';
-                    for (let selection of this.selectedOptions) {
-                        selections.push(selection.value);
-                    }
-                    document.querySelector('#subcategory').value =  selections.join(',');
-                }
-
-            })
 
 
+            if(!isset($item)) $item=array();
 
-            document.querySelector('#categoryDropdown').addEventListener('change', function(evt) {
-                if (evt.target.value === '-1') {
-                    document.querySelector('#category').value = ''
-                    return
-                }
-                document.querySelector('#category').value = evt.target.value;
-            })
-        </script>
-    </body>
-</html>
+            $storages = DB::query('SELECT id, label FROM storages');
+            $categories = DB::query('SELECT id, name FROM headCategories');
+            $subcategories = DB::query('SELECT id, name FROM subCategories');
+            
+            $smarty->assign('success', $success);
+            $smarty->assign('isEdit', $isEdit);
+            $smarty->assign('item', $item);
+            $smarty->assign('storages', $storages);
+            $smarty->assign('categories', $categories);
+            $smarty->assign('subcategories', $subcategories);
+
+            if(isset($_POST)) $smarty->assign('POST',$_POST);
+        
+
+                
+            $smarty->display('indexpage.tpl');      
+        
+            exit;            
+
+
