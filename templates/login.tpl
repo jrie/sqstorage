@@ -1,5 +1,9 @@
 {include file="head.tpl" title=foo}
 
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a href="index.php"><img class="logo" src="./img/sqstorage.png" /></a>
+    </nav>  
+
         <div class="content">
             <div class="login-box">
                 <div class="card">
