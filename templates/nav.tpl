@@ -2,7 +2,7 @@
 
 
 <nav class="navbar navbar-light bg-light">
-    <a href="index.php"><img class="logo" src="./img/sqstorage.png" /></a>
+    <a href="index.php"><img class="logo" src="./img/sqstorage.png" alt="Logo" /></a>
     <ul class="nav">
         <li class="nav-item"><a href="index.php" class="nav-link">{t}Eintragen{/t}</a></li>
         <li class="nav-item"><a href="inventory.php" class="nav-link">{t}Inventar{/t}</a></li>
@@ -32,6 +32,6 @@
     </form>
 
     <ul class="nav">
-        <li class="nav-item"><a href="index.php?logout" class="nav-link"><i class="fas fa-sign-out-alt" alt="{t}Abmelden{/t}" title="{t}Abmelde{/t}"></i></a></li>
+        <li class="nav-item"><a href="index.php?logout" class="nav-link"><i class="fas fa-sign-out-alt" title="{t}Abmelde{/t}"></i></a></li>
     </ul>
 </nav>

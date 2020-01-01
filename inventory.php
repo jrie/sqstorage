@@ -1,12 +1,5 @@
-<?php require('login.php'); ?>
-<!DOCTYPE html>
-<html>
-    <?php include_once('head.php'); ?>
-    <body>
-        <?php include_once('nav.php'); ?>
+<?php require('login.php');
 
-        <div class="content">
-        <?php
             function addItemStore($item, $storages) {
                 $category = DB::queryFirstRow('SELECT name, amount FROM headCategories WHERE id=%d ORDER BY name ASC', $item['headcategory']);
 
@@ -61,6 +54,7 @@
                 echo '<li class="alert alert-info"><span class="list-span">' . gettext('Gruppe') . '</span><span class="list-span">' . gettext('Bezeichnung') . '</span><span class="list-span">' . gettext('Anzahl') . '</span><span class="list-span">' . gettext('Bemerkung') . '</span><span class="list-span">' . gettext('Unterkategorien') . '</span><span class="list-span">' . gettext('Hinzugefügt') . '</span><span class="list-span">' . gettext('Aktionen') . '</span></li>';
             }
 
+/** START OK     */        
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 if (isset($_POST['remove']) && !empty($_POST['remove'])) {
                     $item = DB::queryFirstRow('SELECT * FROM items WHERE id=%d', $_POST['remove']);
@@ -85,10 +79,10 @@
                     DB::query('DELETE FROM storages WHERE id=%d', $_POST['removeStorage']);
                 }
             }
-            ?>
-            <form id="inventoryForm" method="POST" action="inventory.php">
-            <?php
+/** ENDE OK */
+
                 $success = FALSE;
+//----- P1 +
                 if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['itemid'])) {
                     $storeId = intVal($_GET['storageid']);
                     $storages = DB::query('SELECT id, label, amount FROM storages ORDER BY label ASC');
@@ -101,6 +95,8 @@
                     else echo '<li class="list-group-item"><span>Keine Gegenstände gefunden.</span></li>';
 
                     echo '</ul></div>';
+//----- P1 -
+//----- P2 +
                 } else if (isset($_GET['subcategory']) && !empty($_GET['subcategory'])) {
                     $categoryId = intVal($_GET['subcategory']);
                     $category = DB::queryFirstRow('SELECT id, name, amount from subCategories WHERE id=%d', $categoryId);
@@ -117,6 +113,8 @@
                     else echo '<li class="list-group-item"><span>' . gettext('Keine Gegenstände gefunden.') . '</span></li>';
 
                     echo '</ul></div>';
+//----- P2 -
+//----- P3 +
                 } else if (isset($_GET['storageid']) && !empty($_GET['storageid']) && isset($_GET['itemid']) && !empty($_GET['itemid'])) {
                     $storeId = intVal($_GET['storageid']);
                     $itemId = intVal($_GET['itemid']);
@@ -137,6 +135,8 @@
                     DB::update('items', array('storageid' => $storage['id']), 'id=%d', $item['id']);
                     header("location: inventory.php");
                     die();
+//----- P3 -
+//----- P4 +
                 } else if (isset($_GET['searchValue']) && !empty($_GET['searchValue'])) {
                     $searchValue = $_GET['searchValue'];
 
@@ -203,7 +203,8 @@
                         echo '<li class="list-group-item"><span>' . gettext('Keine Gegenstände gefunden.') . '</span></li>';
                         echo '</ul></div>';
                     }
-
+//----- P4 -
+//----- P5 +
                 } else if (isset($_GET['category']) && !empty($_GET['category'])) {
                     $categoryId = intVal($_GET['category']);
                     $category = DB::queryFirstRow('SELECT id, name, amount from headCategories WHERE id=%d', $categoryId);
@@ -246,62 +247,80 @@
 
                         echo '</ul></div>';
                     }
+//----- P5 -
+//----- P6 +
                 } else {
+                    //--
+                    $storagebyid = array();
+                    $myitem=array();
                     $loseItems = DB::query('SELECT * FROM items WHERE storageid=0');
-                    $count = DB::affectedRows();
-                    if ($loseItems != NULL) {
-                        $storages = DB::query('SELECT id, label FROM storages ORDER BY label ASC');
-
-                        printf('<div class="storage-area"><h4 class="text-dark">%s <span class="small">(%d %s)</span></h4><ul class="list-group">', gettext('Unsortiert'), $count, $count == 1 ? 'Position' : 'Positionen');
-
-                        echo '<li class="alert alert-info"><span class="list-span">' . gettext('Gruppe') . '</span><span class="list-span">' . gettext('Bezeichnung') . '</span><span class="list-span">' . gettext('Anzahl') . '</span><span class="list-span">' . gettext('Bemerkung') . '</span><span class="list-span">' . gettext('Unterkategorien') . '</span><span class="list-span">' . gettext('Hinzugefügt') . '</span></li>';
-
-                        foreach ($loseItems as $item) addItem($item, $storages);
-                        echo '</ul></div>';
+                    if(count($loseItems)> 0) {
+                        $myitem[0]['storage']['id'] = "0";
+                        $myitem[0]['positionen']=0;
+                        $myitem[0]['itemcount'] = 0;
                     }
+                    for($x=0;$x<count($loseItems);$x++){
 
+                        $myitem[0]['items'][]=$loseItems[$x];
+                        $myitem[0]['positionen']++;
+                        $myitem[0]['itemcount'] += $loseItems[$x]['amount'];
 
+                    }
                     $storages = DB::query('SELECT id, label, amount FROM storages ORDER BY label ASC');
-                    if ($storages == NULL && $loseItems == NULL) {
-                        echo '<div class="storage-area"><ul class="list-group"><li class="list-group-item"><span>Keine Gegenstände gefunden.</span></li>';
-                    } else {
-                        foreach ($storages as $store) {
-                            $items = DB::query('SELECT * FROM items WHERE storageid=%d', $store['id']);
-                            addHeadColumns($store);
-
-                            if ($items != NULL) {
-                                foreach($items as $item) { addItem($item, $storages); }
-                            } else {
-                                echo '<li class="list-group-item"><span>' . gettext('Keine Gegenstände gefunden.') . '</span></li>';
+                    foreach ($storages as $store) {
+                        $storagebyid[$store['id']] = $store;
+                        $myitem[$store['id']]['storage'] = $store;
+                        $myitem[$store['id']]['positionen']=0;
+                        $myitem[$store['id']]['itemcount'] = 0;                        
+                        $items = DB::query('SELECT * FROM items WHERE storageid=%d', $store['id']);
+                            for($x=0;$x<count($items);$x++){
+                                $myitem[$store['id']]['items'][]=$items[$x];
+                                $myitem[$store['id']]['positionen']++;
+                                $myitem[$store['id']]['itemcount'] += $items[$x]['amount'];                               
                             }
-                            echo '</ul></div>';
-                        }
                     }
+
+                    $categoryarray = DB::query('SELECT * FROM headCategories');
+                    for($x=0;$x < count($categoryarray);$x++){
+                        $tmp = $categoryarray[$x];
+                        $categories[$tmp['id']] = $tmp;
+                    }
+
+                    $subarray = DB::query('SELECT * FROM subCategories');
+                    for($x=0;$x<count($subarray);$x++){
+                        $tmp = $subarray[$x];
+                        $subcategories[$tmp['id']] = $tmp;
+                    }
+
+
                 }
-            ?>
-            </form>
-        </div>
+//----- P6 -
 
-        <?php include_once('footer.php'); ?>
-        <script type="text/javascript">
-            let switches = document.querySelectorAll('.btn.switchStorage')
-            for (let item of switches) {
-                item.addEventListener('change', function(evt) {
-                    if (evt.target.value === '-1') return
-                    window.location.href = 'inventory.php?storageid=' + evt.target.value + '&itemid=' + evt.target.dataset['id'];
-                })
-            }
 
-            let removalButtons = document.querySelectorAll('.smallButton')
-            for (let button of removalButtons) {
-                button.addEventListener('click', function (evt) {
-                    let target = evt.target.parentNode
-                    let targetType = target.name === 'removeStorage' ? '<?php echo gettext('Lagerplatz wirklich entfernen?') ?>' : '<?php echo gettext('Position wirklich entfernen?') ?>'
-                    if (!window.confirm(targetType + ' "' + target.dataset['name'] + '"')) {
-                        evt.preventDefault()
-                    }
-                })
-            }
-        </script>
-    </body>
-</html>
+
+$storages = DB::query('SELECT id, label FROM storages');
+
+
+$smarty->assign('dump',print_r(array($categoryarray,$storages),true));
+
+$smarty->assign('storages',$storages);
+$smarty->assign('categories',$categories);
+$smarty->assign('subcategories',$subcategories);
+
+$smarty->assign('storagebyid',$storagebyid);
+$smarty->assign('success', $success);
+$smarty->assign('myitem', $myitem);
+
+/*
+$smarty->assign('item', $item);
+$smarty->assign('storages', $storages);
+$smarty->assign('categories', $categories);
+$smarty->assign('subcategories', $subcategories);
+if(isset($_POST)) $smarty->assign('POST',$_POST);
+*/
+
+    
+$smarty->display('inventory.tpl');      
+
+exit;
+

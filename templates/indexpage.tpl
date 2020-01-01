@@ -37,21 +37,18 @@
                         <div class="dropdown">
                             <select class="btn btn-secondary dropdown-toggle" type="button" tabindex="-1" id="storageDropdown" data-toggle="dropdown" data-nosettitle="true" aria-haspopup="true" aria-expanded="false" autocomplete="off">
 
-                                {if $isEdit}
-                                    {if $item.storageid != 0}
+                                {if $isEdit && $item.storageid != 0}
                                         <option value="-1">{t}Lagerplatz{/t}</option>
                                     {else}
                                         <option value="-1" selected="selected">{t}Lagerplatz{/t}</option>
-                                    {/if}
                                 {/if}
                                     {foreach $storages as $storage}
-                                        {if $isEdit}
-                                            {if $storage.id == $item.storageid}
+                                        {if $isEdit && $storage.id == $item.storageid}
                                                 {$currentStorage = $storage}
                                                 <option value="{$storage.label}" selected="selected">{$storage.label}</option>
                                             {else}
                                                 <option value="{$storage.label}">{$storage.label}</option>
-                                            {/if}
+                                            
                                         {/if}
                                     {{/foreach}}
 
@@ -59,12 +56,11 @@
                         </div>
                     </div>
 
-                                {if $isEdit}
-                                    {if $item.storageid != 0}
+                                {if $isEdit && $item.storageid != 0}
                                         <input type="text" name="storage" id="storage" maxlength="32" class="form-control" placeholder="{t}Lagerplatz{/t}" required="required" autocomplete="off" value="{$currentStorage.label}">
                                     {else}
                                         <input type="text" name="storage" id="storage" maxlength="32" class="form-control" placeholder="{t}Lagerplatz{/t}" required="required" autocomplete="off">
-                                    {/if}
+                                    
                                 {/if}
                 </div>
 
@@ -91,13 +87,12 @@
                                         <option value="-1" selected="selected">{t}Kategorie{/t}</option>
                                     {/if}
                                     {foreach $categories as $category}
-                                        {if $isEdit}
-                                            {if $category.id == $item.headcategory}
+                                        {if $isEdit && $category.id == $item.headcategory}
                                             $currentCategory = $category;
                                                 <option value="{$category.name}" selected="selected">{$category.name}</option>
                                             {else}
                                                 <option value="{$category.name}">{$category.name}</option>'
-                                            {/if}
+                                            
 
                                         {/if}    
                                     {/foreach}
@@ -126,13 +121,12 @@
                                     {/if}
 
                                     {foreach $subcategories as $category}
-                                        {if $isEdit}
-                                            {if in_array($category.id, $subCat)}
+                                        {if $isEdit && in_array($category.id, $subCat)}
                                                 {$subCategories[] = $category.name};
                                                 <option selected="selected" value="{$category.name}">{$category.name}</option>
                                             {else}
                                                 <option value="{$category.name}">{$category.name}</option>
-                                            {/if}
+                                            
 
                                         {/if}    
                                     {/foreach}
