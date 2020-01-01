@@ -3,11 +3,13 @@
 
 
 
+{$hasdata=false}
 
 {if $parse.mode == "default"}
         <div class="content">
             <form id="inventoryForm" method="POST" action="inventory.php">
             {foreach $myitem as $itemstore}
+            {$hasdata=true}
             {if $parse.showemptystorages || $itemstore.itemcount > 0 }    
             <hr>
                 <div class="storage-area">
@@ -61,14 +63,16 @@
                         </li>
                     
                     {/foreach}
-                    
+                {else}
+                    <li class="list-group-item"><span>{t}Keine Gegenstände gefunden{/t}</span></li>    
                 {/if}
                 </ul></div>
             {else}
-            <h1>Keine Teile verdammt</h1>
+            <!--<h1>Keine Teile verdammt</h1>-->
             {/if}
             
             {/foreach}
+            {if !$hasdata}<li class="list-group-item"><span>{t}Keine Gegenstände gefunden{/t}</span></li>{/if}
             </form>
 
         </div>
@@ -131,11 +135,12 @@
                         </li>
                     
                     {/foreach}
-                    
+                {else}
+                    <li class="list-group-item"><span>{t}Keine Gegenstände gefunden{/t}</span></li> 
                 {/if}
                 </ul></div>
             {else}
-            <h1>Keine Teile verdammt</h1>
+            <!--<h1>Keine Teile verdammt</h1>-->
             {/if}
             
             {/foreach}
@@ -201,11 +206,12 @@
                         </li>
                     
                     {/foreach}
-                    
+                {else}
+                    <li class="list-group-item"><span>{t}Keine Gegenstände gefunden{/t}</span></li>    
                 {/if}
                 </ul></div>
             {else}
-            <h1>Keine Teile verdammt</h1>
+            <!--<h1>Keine Teile verdammt</h1>-->
             {/if}
             
             {/foreach}

@@ -113,11 +113,7 @@ $myitem=array();
                     $category = DB::queryFirstRow('SELECT id, name, amount from subCategories WHERE id=%d', $categoryId);
                     $items = DB::query('SELECT * FROM items WHERE subCategories LIKE %s', ('%,' . $categoryId . ',%'));
 
-                    $storages = DB::query('SELECT * FROM storages ORDER BY label ASC');
-                    for($y=0;$y<count($storages);$y++){
-                        $store[$storages[$y]['id']] = $storages[$y];
-                    }
-                    
+                  
                     
                     for($x=0;$x<count($items);$x++){
                         $item = $items[$x];
@@ -160,7 +156,7 @@ $myitem=array();
 //----- P4 + OK       // SEARCH
                 } else if (isset($_GET['searchValue']) && !empty($_GET['searchValue'])) {
                     $parse['mode'] = "default";
-                    $parse['showemptystorages'] = false;
+                    $parse['showemptystorages'] = true;
                     $searchValue = $_GET['searchValue'];
                     $storages = DB::query('SELECT id, label, amount FROM storages');
                     $headCategories = DB::query('SELECT id FROM headCategories WHERE name LIKE %ss',$searchValue);
@@ -201,49 +197,27 @@ $myitem=array();
 //----- P4 - OK
 //----- P5 +          // Category
                 } else if (isset($_GET['category']) && !empty($_GET['category'])) {
+
                     $parse['mode'] = "category";
                     $parse['showemptystorages'] = false; 
                     $categoryId = intVal($_GET['category']);
                     $category = DB::queryFirstRow('SELECT id, name, amount from headCategories WHERE id=%d', $categoryId);
                     $items = DB::query('SELECT * FROM items WHERE headcategory=%d', $categoryId);
+                    
+                    for($x=0;$x<count($items);$x++){
+                        $item = $items[$x];
+                        $storeId = 0;
+                        $store[$storeId]['id'] = 0;
+                        $store[$storeId]['label'] = $category['name'];
 
-                    $itemCount = 0;
-                    foreach ($items as $item) $itemCount += intVal($item['amount']);
+                        $myitem[$storeId]['storage'] = $store[$storeId];
+                        if(!isset($myitem[$storeId]['positionen'])) $myitem[$storeId]['positionen']=0;
+                        if(!isset($myitem[$storeId]['itemcount'] )) $myitem[$storeId]['itemcount'] = 0;
+                            $myitem[$storeId]['items'][]=$items[$x];
+                            $myitem[$storeId]['positionen']++;
+                            $myitem[$storeId]['itemcount'] += $items[$x]['amount'];                               
+                    } 
 
-                    printf('<div class="storage-area"><ul class="list-group"><h4>%s <small>(%d %s, %d %s)</small></h4>', $category['name'], DB::affectedRows(), DB::affectedRows() == 1 ? getText('Position') : gettext('Positionen'), $itemCount, $itemCount == 1 ? getText('Gegenstand') : gettext('Gegenstände'));
-                    $storages = DB::query('SELECT id, label FROM storages');
-
-                    echo '<li class="alert alert-info"><span class="list-span">' . gettext('Gruppe') . '</span><span class="list-span">' . gettext('Bezeichnung') . '</span><span class="list-span">' . gettext('Anzahl') . '</span><span class="list-span">' . gettext('Bemerkung') . '</span><span class="list-span">' . gettext('Lagerplatz') . '</span><span class="list-span">' . gettext('Unterkategorien') . '</span><span class="list-span">' . gettext('Aktionen') . '</span></li>';
-
-                    if ($items != null) {
-                        foreach($items as $item) { addItemStore($item, $storages); }
-                    } else {
-                        echo '<li class="list-group-item"><span>' . gettext('Keine Gegenstände gefunden.') . '</span></li>';
-                    }
-
-                    echo '</ul></div>';
-                    echo '<hr/><h4>' . gettext('Unterkategorien') . '</h4>';
-
-                    $subCategories = DB::query('SELECT * FROM subCategories WHERE headcategory=%d ORDER BY name ASC', $categoryId);
-                    foreach ($subCategories as $subCategory) {
-                        $items = DB::query('SELECT * FROM items WHERE subcategories LIKE %s', '%,' . $subCategory['id'] . ',%');
-
-                        $itemCount = 0;
-                        foreach ($items as $item) $itemCount += intVal($item['amount']);
-
-                        printf('<div class="storage-area"><ul class="list-group"><h4>%s <small>(%d %s, %d %s)</small></h4>', $subCategory['name'], DB::affectedRows(), DB::affectedRows() == 1 ? getText('Position') : gettext('Positionen'), $itemCount, $itemCount == 1 ? getText('Gegenstand') : gettext('Gegenstände'));
-                        $storages = DB::query('SELECT id, label FROM storages');
-
-                        echo '<li class="alert alert-info"><span class="list-span">' . gettext('Gruppe') . '</span><span class="list-span">' . gettext('Bezeichnung') . '</span><span class="list-span">' . gettext('Anzahl') . '</span><span class="list-span">' . gettext('Bemerkung') . '</span><span class="list-span">' . gettext('Lagerplatz') . '</span><span class="list-span">' . gettext('Unterkategorien') . '</span><span class="list-span">' . gettext('Aktionen') . '</span></li>';
-
-                        if ($items != null) {
-                            foreach($items as $item) { addItemStore($item, $storages); }
-                        } else {
-                            echo '<li class="list-group-item"><span>' . gettext('Keine Gegenstände gefunden.') . '</span></li>';
-                        }
-
-                        echo '</ul></div>';
-                    }
 //----- P5 -
 //----- P6 + OK
                 } else {
