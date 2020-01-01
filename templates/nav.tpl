@@ -22,14 +22,19 @@
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">{t}Suchen{/t}</button>
     </form>
 
-    <form class="form-inline my-2 " method="GET">
-        <select class="form-control mr-sm-2" name="lang">
-            {foreach $langsAvailable as $lang}
-            <option class="nav-item" value="{$lang}" {if $langCurrent == $lang} selected="selected"{/if}>{$langsLabels[{$lang}]}</option>
-            {/foreach}
+
+        {foreach $langsAvailable as $lang}
+                <a href="index.php?lang={$lang}" alt="Language {$langsLabels.$lang}"><small>{$langsLabels.$lang}</small></a><br />
+        {/foreach}
+<!--        <select class="form-control mr-sm-2" name="lang">
+        
+            { foreach $langsAvailable as $lang }
+            <option class="nav-item" value="{ $lang }" { if $langCurrent == $lang } selected="selected"{ /if }>{ $langsLabels[{ $lang }] }</option>
+            { /foreach }
+        
         </select>
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">{t}Sprache wählen{/t}</button>
-    </form>
+-->
+
 
     <ul class="nav">
         <li class="nav-item"><a href="index.php?logout" class="nav-link"><i class="fas fa-sign-out-alt" title="{t}Abmelde{/t}"></i></a></li>

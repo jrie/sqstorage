@@ -241,10 +241,7 @@
             for (let item of switches) {
                 item.addEventListener('change', function(evt) {
                     if (evt.target.value === '-1') return
-                    var itemidstrin = this.id;
-                    var itemidarr = itemidstrin.split("_");
-                    var itemid = itemidarr[1];
-                    window.location.href = 'inventory.php?storageid=' + evt.target.value + '&itemid=' + itemid;
+                    window.location.href = 'inventory.php?storageid=' + evt.target.value + '&itemid=' + evt.target.dataset['id'];
                 })
             }
 
