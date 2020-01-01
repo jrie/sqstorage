@@ -54,7 +54,11 @@
                 echo '<li class="alert alert-info"><span class="list-span">' . gettext('Gruppe') . '</span><span class="list-span">' . gettext('Bezeichnung') . '</span><span class="list-span">' . gettext('Anzahl') . '</span><span class="list-span">' . gettext('Bemerkung') . '</span><span class="list-span">' . gettext('Unterkategorien') . '</span><span class="list-span">' . gettext('Hinzugefügt') . '</span><span class="list-span">' . gettext('Aktionen') . '</span></li>';
             }
 
-/** START OK     */        
+/** START OK     */ 
+$parse['mode'] = "default";
+$parse['showemptystorages'] = true;
+
+
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 if (isset($_POST['remove']) && !empty($_POST['remove'])) {
                     $item = DB::queryFirstRow('SELECT * FROM items WHERE id=%d', $_POST['remove']);
@@ -82,22 +86,28 @@
 /** ENDE OK */
 
                 $success = FALSE;
-//----- P1 +
+//----- P1 + OK
                 if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['itemid'])) {
                     $storeId = intVal($_GET['storageid']);
                     $storages = DB::query('SELECT id, label, amount FROM storages ORDER BY label ASC');
                     $store = DB::queryFirstRow('SELECT id, label, amount FROM storages WHERE id=%d', $storeId);
                     $items = DB::query('SELECT * FROM items WHERE storageid=%d', $storeId);
 
-                    addHeadColumns($store);
+                    
+                    $myitem[$storeId]['storage'] = $store;
+                    $myitem[$storeId]['positionen']=0;
+                    $myitem[$storeId]['itemcount'] = 0;
+                    for($x=0;$x<count($items);$x++){
+                        $myitem[$storeId]['items'][]=$items[$x];
+                        $myitem[$storeId]['positionen']++;
+                        $myitem[$storeId]['itemcount'] += $items[$x]['amount'];                               
+                    }
 
-                    if ($items != null) foreach($items as $item) { addItem($item, $storages); }
-                    else echo '<li class="list-group-item"><span>Keine Gegenstände gefunden.</span></li>';
-
-                    echo '</ul></div>';
-//----- P1 -
-//----- P2 +
+//----- P1 - OK
+//----- P2 +        // SUBCATEGORY
                 } else if (isset($_GET['subcategory']) && !empty($_GET['subcategory'])) {
+                    $parse['mode'] = "default";
+                    $parse['showemptystorages'] = false;
                     $categoryId = intVal($_GET['subcategory']);
                     $category = DB::queryFirstRow('SELECT id, name, amount from subCategories WHERE id=%d', $categoryId);
                     $items = DB::query('SELECT * FROM items WHERE subCategories LIKE %s', ('%,' . $categoryId . ',%'));
@@ -114,7 +124,7 @@
 
                     echo '</ul></div>';
 //----- P2 -
-//----- P3 +
+//----- P3 + OK
                 } else if (isset($_GET['storageid']) && !empty($_GET['storageid']) && isset($_GET['itemid']) && !empty($_GET['itemid'])) {
                     $storeId = intVal($_GET['storageid']);
                     $itemId = intVal($_GET['itemid']);
@@ -135,9 +145,11 @@
                     DB::update('items', array('storageid' => $storage['id']), 'id=%d', $item['id']);
                     header("location: inventory.php");
                     die();
-//----- P3 -
-//----- P4 +
+//----- P3 - OK
+//----- P4 +        // SEARCH
                 } else if (isset($_GET['searchValue']) && !empty($_GET['searchValue'])) {
+                    $parse['mode'] = "default";
+                    $parse['showemptystorages'] = true;
                     $searchValue = $_GET['searchValue'];
 
                     $storages = DB::query('SELECT id, label, amount FROM storages');
@@ -150,7 +162,9 @@
                     foreach ($storages as $store) {
                         $hasHeader = FALSE;
                         $hasItems = FALSE;
-
+                        $myitem[$store['id']]['storage'] = $store;
+                        $myitem[$store['id']]['positionen'] =0;
+                        $myitem[$store['id']]['itemcount'] = 0;
                         if ($headCategories != null) {
                             foreach ($headCategories as $headCategory) {
                                 if (stripos($headCategory['name'], $searchValue) !== FALSE) $items = DB::query('SELECT * FROM items WHERE storageid=%d', $store['id']);
@@ -158,12 +172,16 @@
 
                                 if ($items != null) {
                                     if (!$hasHeader) {
-                                        addHeadColumnsPositions($store);
+                                       // addHeadColumnsPositions($store);
                                         $hasHeader = TRUE;
                                     }
 
                                     foreach($items as $item) if (!in_array($item['id'], $existingItemIds)) {
-                                        addItem($item, $storages);
+                                        $myitem[$store['id']]['items'][] = $item;
+                                        $myitem[$store['id']]['positionen'] =0;
+                                        $myitem[$store['id']]['itemcount'] = 0;
+
+                                       // addItem($item, $storages);
                                         $existingItemIds[] = $item['id'];
                                     }
 
@@ -180,12 +198,15 @@
 
                                 if ($items != null) {
                                     if (!$hasHeader) {
-                                        addHeadColumnsPositions($store);
+                                        //addHeadColumnsPositions($store);
                                         $hasHeader = TRUE;
                                     }
 
                                     foreach($items as $item) if (!in_array($item['id'], $existingItemIds)) {
                                         $existingItemIds[] = $item['id'];
+                                        $myitem[$store['id']]['items'][] = $item;
+                                        $myitem[$store['id']]['positionen'] =0;
+                                        $myitem[$store['id']]['itemcount'] = 0;
                                         addItem($item, $storages);
                                     }
 
@@ -195,17 +216,14 @@
                             }
 
                         }
-
-                        if ($foundData) echo '</ul></div>';
                     }
 
-                    if (!$foundData) {
-                        echo '<li class="list-group-item"><span>' . gettext('Keine Gegenstände gefunden.') . '</span></li>';
-                        echo '</ul></div>';
-                    }
+
 //----- P4 -
 //----- P5 +
                 } else if (isset($_GET['category']) && !empty($_GET['category'])) {
+                    $parse['mode'] = "category";
+                    $parse['showemptystorages'] = false; 
                     $categoryId = intVal($_GET['category']);
                     $category = DB::queryFirstRow('SELECT id, name, amount from headCategories WHERE id=%d', $categoryId);
                     $items = DB::query('SELECT * FROM items WHERE headcategory=%d', $categoryId);
@@ -248,8 +266,10 @@
                         echo '</ul></div>';
                     }
 //----- P5 -
-//----- P6 +
+//----- P6 + OK
                 } else {
+                    $parse['mode'] = "default";
+                    $parse['showemptystorages'] = true;
                     //--
                     $storagebyid = array();
                     $myitem=array();
@@ -266,7 +286,7 @@
                         $myitem[0]['itemcount'] += $loseItems[$x]['amount'];
 
                     }
-                    $storages = DB::query('SELECT id, label, amount FROM storages ORDER BY label ASC');
+                    $storages = DB::query('SELECT * FROM storages ORDER BY label ASC');
                     foreach ($storages as $store) {
                         $storagebyid[$store['id']] = $store;
                         $myitem[$store['id']]['storage'] = $store;
@@ -280,25 +300,31 @@
                             }
                     }
 
-                    $categoryarray = DB::query('SELECT * FROM headCategories');
-                    for($x=0;$x < count($categoryarray);$x++){
-                        $tmp = $categoryarray[$x];
-                        $categories[$tmp['id']] = $tmp;
-                    }
 
-                    $subarray = DB::query('SELECT * FROM subCategories');
-                    for($x=0;$x<count($subarray);$x++){
-                        $tmp = $subarray[$x];
-                        $subcategories[$tmp['id']] = $tmp;
-                    }
 
 
                 }
-//----- P6 -
+//----- P6 - OK
 
 
 
 $storages = DB::query('SELECT id, label FROM storages');
+if(!isset($storagebyid)){
+    foreach ($storages as $store) {
+        $storagebyid[$store['id']] = $store;
+    }    
+}
+$categoryarray = DB::query('SELECT * FROM headCategories');
+for($x=0;$x < count($categoryarray);$x++){
+    $tmp = $categoryarray[$x];
+    $categories[$tmp['id']] = $tmp;
+}
+
+$subarray = DB::query('SELECT * FROM subCategories');
+for($x=0;$x<count($subarray);$x++){
+    $tmp = $subarray[$x];
+    $subcategories[$tmp['id']] = $tmp;
+}
 
 
 $smarty->assign('dump',print_r(array($categoryarray,$storages),true));
@@ -310,6 +336,7 @@ $smarty->assign('subcategories',$subcategories);
 $smarty->assign('storagebyid',$storagebyid);
 $smarty->assign('success', $success);
 $smarty->assign('myitem', $myitem);
+$smarty->assign('parse',$parse);
 
 /*
 $smarty->assign('item', $item);

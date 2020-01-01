@@ -3,10 +3,12 @@
 
 
 
+
+{if $parse.mode == "default"}
         <div class="content">
             <form id="inventoryForm" method="POST" action="inventory.php">
             {foreach $myitem as $itemstore}
-                
+            {if $parse.showemptystorages || $itemstore.itemcount > 0 }    
             <hr>
                 <div class="storage-area">
                 <button class="btn smallButton" name="removeStorage" data-name="{if isset($itemstore.storage.label)}{$itemstore.storage.label}{else}{t}Unsortiert{/t}{/if}" value="{$itemstore.storage.id}" type="submit"><i class="fas fa-times-circle"></i></button>
@@ -62,11 +64,21 @@
                     
                 {/if}
                 </ul></div>
+            {else}
+            <h1>Keine Teile verdammt</h1>
+            {/if}
+            
             {/foreach}
             </form>
-{if isset($dump)}<pre>{$dump}</pre>{/if}
+                {if isset($dumpx)}<pre>{$dump}</pre>{/if}
         </div>
-
+{elseif $parse.mode == "category"}
+<h1>Kategory parser</h1>
+{elseif $parse.mode == "subcategory"}
+<h1>subKategory parser</h1>
+{else}
+<h1>was denn sonst</h1>
+{/if}
 
 
 {include file="footer.tpl"}
