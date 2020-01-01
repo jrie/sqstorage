@@ -26,7 +26,7 @@
 
                         
                         {assign var="subCats" value=","|explode:$item.subcategories}
-
+                        {$subCategories=array()} 
                         {foreach $subCats as $subCat}
                             {if isset($subcategories.$subCat)}
                             {$subCategories[] ="<a href='inventory.php?subcategory={$subcategories.$subCat.id}'>{$subcategories.$subCat.name}</a>"}
@@ -70,7 +70,7 @@
             
             {/foreach}
             </form>
-                {if isset($dumpx)}<pre>{$dump}</pre>{/if}
+{if isset($dump)}<pre>{$dump}</pre>{/if}
         </div>
 {elseif $parse.mode == "category"}
 <h1>Kategory parser</h1>
