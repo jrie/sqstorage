@@ -85,7 +85,7 @@
             $smarty->assign('subcategories', $subcategories);
 
             if(isset($_POST)) $smarty->assign('POST',$_POST);
-        
+            $smarty->assign('SESSION',$_SESSION);
 
                 
             $smarty->display('indexpage.tpl');      

@@ -32,5 +32,5 @@
                     $smarty->assign('alert',$alert);
                     $smarty->assign("headCategories",$headCategories);
                     $smarty->assign("subCategories",$subCategories);
-        
+                    $smarty->assign('SESSION',$_SESSION);
                     $smarty->display('categories.tpl');

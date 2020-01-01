@@ -238,6 +238,7 @@ $smarty->assign('storagebyid',$storagebyid);
 $smarty->assign('success', $success);
 $smarty->assign('myitem', $myitem);
 $smarty->assign('parse',$parse);
+$smarty->assign('SESSION',$_SESSION);
 
    
 $smarty->display('inventory.tpl'); 
