@@ -1,5 +1,5 @@
 <?php require('login.php');
-
+//-- func +
             function addItemStore($item, $storages) {
                 $category = DB::queryFirstRow('SELECT name, amount FROM headCategories WHERE id=%d ORDER BY name ASC', $item['headcategory']);
 
@@ -53,7 +53,7 @@
                 printf('<hr></hr><div class="storage-area"><button class="btn smallButton" name="removeStorage" data-name="%s" value="%d" type="submit"><i class="fas fa-times-circle"></i></button><h4 class="text-dark"><a href="inventory.php?storageid=%d">%s</a>&nbsp;<span class="small">(%d %s)</span></h4><ul class="list-group">', $store['label'], $store['id'], $store['id'], $store['label'], DB::affectedRows(), DB::affectedRows() == 1 ? 'Position': 'Positionen');
                 echo '<li class="alert alert-info"><span class="list-span">' . gettext('Gruppe') . '</span><span class="list-span">' . gettext('Bezeichnung') . '</span><span class="list-span">' . gettext('Anzahl') . '</span><span class="list-span">' . gettext('Bemerkung') . '</span><span class="list-span">' . gettext('Unterkategorien') . '</span><span class="list-span">' . gettext('Hinzugefügt') . '</span><span class="list-span">' . gettext('Aktionen') . '</span></li>';
             }
-
+//---- func -
 
 $parse['mode'] = "default";
 $parse['showemptystorages'] = true;
@@ -179,12 +179,31 @@ $parse['showemptystorages'] = true;
 
                     }
 
+                    $storages = DB::query('SELECT * FROM storages ORDER BY label ASC');
+                    for($y=0;$y<count($storages);$y++){
+                        $store[$storages[$y]['id']] = $storages[$y];
+                    }
+                    
+                    
+                    for($x=0;$x<count($items);$x++){
+                        $item = $items[$x];
+                        $storeId = $item['storageid'];
+                        $myitem[$storeId]['storage'] = $store[$storeId];
+                        if(!isset($myitem[$storeId]['positionen'])) $myitem[$storeId]['positionen']=0;
+                        if(!isset($myitem[$storeId]['itemcount'] )) $myitem[$storeId]['itemcount'] = 0;
+                        
+                            $myitem[$storeId]['items'][]=$items[$x];
+                            $myitem[$storeId]['positionen']++;
+                            $myitem[$storeId]['itemcount'] += $items[$x]['amount'];                               
+                        
+
+
+                    }
 
                     
 
 
 
-                    $myitem=array();
 
                     $foundData = FALSE;
 
@@ -363,7 +382,8 @@ for($x=0;$x<count($subarray);$x++){
 }
 if(!isset($items)) $items = array();
 
-$smarty->assign('dump',print_r(array($sql,$categories,$subcategories,$storages,$myitem,$items),true));
+//$smarty->assign('dump',print_r(array($sql,$categories,$subcategories,$storages,$myitem,$items),true));
+$smarty->assign('dump',print_r(array($sql,$myitem,$items),true));
 
 $smarty->assign('storages',$storages);
 $smarty->assign('categories',$categories);
