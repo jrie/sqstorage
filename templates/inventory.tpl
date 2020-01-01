@@ -4,7 +4,7 @@
 
 
 {$hasdata=false}
-
+{$selectid=0}
 {if $parse.mode == "default"}
         <div class="content">
             <form id="inventoryForm" method="POST" action="inventory.php">
@@ -51,7 +51,7 @@
                             <a class="list-span" href="index.php?editItem={$item.id}"><i class="fas fa-edit"></i></a>
 
                             <div class="dropdown float-right">
-                                <select autocomplete="off" class="btn btn-primary dropdown-toggle switchStorage" data-value="0"  data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <select autocomplete="off" id="item_{$item.id}" class="btn btn-primary dropdown-toggle switchStorage" data-value="0"  data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 
                                 <option selected="selected" value="-1">{t}Zuweisen{/t}</option>
 
@@ -123,7 +123,7 @@
                             <a class="list-span" href="index.php?editItem={$item.id}"><i class="fas fa-edit"></i></a>
 
                             <div class="dropdown float-right">
-                                <select autocomplete="off" class="btn btn-primary dropdown-toggle switchStorage" data-value="0"  data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <select autocomplete="off" id="item_{$item.id}" class="btn btn-primary dropdown-toggle switchStorage" data-value="0"  data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 
                                 <option selected="selected" value="-1">{t}Zuweisen{/t}</option>
 
@@ -194,7 +194,7 @@
                             <a class="list-span" href="index.php?editItem={$item.id}"><i class="fas fa-edit"></i></a>
 
                             <div class="dropdown float-right">
-                                <select autocomplete="off" class="btn btn-primary dropdown-toggle switchStorage" data-value="0"  data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <select autocomplete="off" id="item_{$item.id}" class="btn btn-primary dropdown-toggle switchStorage" data-value="0"  data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 
                                 <option selected="selected" value="-1">{t}Zuweisen{/t}</option>
 
@@ -229,12 +229,22 @@
 {include file="footer.tpl"}
 {literal}
         <script type="text/javascript">
+            function MoveItem(itemid,storageid){
+
+                alert('inventory.php?storageid=' + itemid + '&itemid=' + storageid);
+
+            }
+
+
+
             let switches = document.querySelectorAll('.btn.switchStorage')
             for (let item of switches) {
                 item.addEventListener('change', function(evt) {
                     if (evt.target.value === '-1') return
-                    alert('inventory.php?storageid=' + evt.target.value + '&itemid=' + evt.target.dataset['id']);
-                    window.location.href = 'inventory.php?storageid=' + evt.target.value + '&itemid=' + evt.target.dataset['id'];
+                    var itemidstrin = this.id;
+                    var itemidarr = itemidstrin.split("_");
+                    var itemid = itemidarr[1];
+                    window.location.href = 'inventory.php?storageid=' + evt.target.value + '&itemid=' + itemid;
                 })
             }
 
