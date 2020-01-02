@@ -36,6 +36,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
 $storages = DB::query('SELECT id,label FROM storages');
 $smarty->assign('storages',$storages);
-
+$smarty->assign('SESSION',$_SESSION);
 
 $smarty->display('transfer.tpl');
