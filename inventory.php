@@ -228,7 +228,7 @@ for($x=0;$x<count($subarray);$x++){
 if(!isset($items)) $items = array();
 
 //$smarty->assign('dump',print_r(array($sql,$categories,$subcategories,$storages,$myitem,$items),true));
-$smarty->assign('dump',print_r(array($myitem,$items),true));
+//$smarty->assign('dump',print_r(array($myitem,$items),true));
 
 $smarty->assign('storages',$storages);
 $smarty->assign('categories',$categories);

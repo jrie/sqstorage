@@ -88,7 +88,7 @@
                                     {/if}
                                     {foreach $categories as $category}
                                         {if $isEdit && $category.id == $item.headcategory}
-                                            $currentCategory = $category;
+                                            {$currentCategory = $category}
                                                 <option value="{$category.name}" selected="selected">{$category.name}</option>
                                             {else}
                                                 <option value="{$category.name}">{$category.name}</option>'
