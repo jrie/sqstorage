@@ -153,7 +153,7 @@ $myitem=array();
                         $item = $items[$x];
                         $storeId = 0;
                         $store[$storeId]['id'] = 0;
-                        $store[$storeId]['label'] = $category['name'];
+                        $store[$storeId]['label'] = gettext('Kategorie') . ": " . $category['name'];
 
                         $myitem[$storeId]['storage'] = $store[$storeId];
                         if(!isset($myitem[$storeId]['positionen'])) $myitem[$storeId]['positionen']=0;
@@ -162,6 +162,26 @@ $myitem=array();
                             $myitem[$storeId]['positionen']++;
                             $myitem[$storeId]['itemcount'] += $items[$x]['amount'];                               
                     } 
+
+                    $availsubcats =   DB::query('SELECT * FROM subCategories WHERE headcategory=%d ORDER BY name ASC', $categoryId);
+                    foreach ($availsubcats as $subCategory) {
+                        $storeId++;
+                        $store[$storeId]['label'] = gettext('Unterkategorie') . ": " . $subCategory['name'];
+                        $myitem[$storeId]['positionen']=0;
+                        $myitem[$storeId]['itemcount'] = 0;
+                        $items = DB::query('SELECT * FROM items WHERE subcategories LIKE %s', '%,' . $subCategory['id'] . ',%');
+                        for($x=0;$x<count($items);$x++){
+                            $item = $items[$x];
+                                
+                            $myitem[$storeId]['storage'] = $store[$storeId];
+                                $myitem[$storeId]['items'][]=$items[$x];
+                                $myitem[$storeId]['positionen']++;
+                                $myitem[$storeId]['itemcount'] += $items[$x]['amount'];                               
+                        } 
+
+
+                    }
+
 
 //----- P5 - OK
 //----- P6 + OK
