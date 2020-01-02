@@ -1,0 +1,5 @@
+
+Extract all text snippets from templates
+
+vendor/smarty-gettext/smarty-gettext/tsmarty2c.php -o languages/sqstorage.pot templates/
+

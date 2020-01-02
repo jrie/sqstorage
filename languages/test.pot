@@ -1,0 +1,446 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8\n"
+
+#: templates//categories.tpl:9 templates//nav.tpl:9
+msgid "Kategorien"
+msgstr ""
+
+#: templates//categories.tpl:9 templates//categories.tpl:15
+#: templates//indexpage.tpl:145 templates//indexpage.tpl:148
+#: templates//indexpage.tpl:150 templates//inventory.tpl:24
+#: templates//inventory.tpl:96 templates//inventory.tpl:167
+#: templates//inventorypage.tpl:24
+msgid "Anzahl"
+msgstr ""
+
+#: templates//categories.tpl:9 templates//categories.tpl:15
+#: templates//inventory.tpl:24 templates//inventory.tpl:96
+#: templates//inventory.tpl:167 templates//inventorypage.tpl:24
+#: templates//settings.tpl:110
+msgid "Aktionen"
+msgstr ""
+
+#: templates//categories.tpl:11 templates//categories.tpl:18
+#: templates//inventory.tpl:19 templates//inventory.tpl:91
+#: templates//inventory.tpl:162 templates//inventorypage.tpl:22
+#, fuzzy
+msgid "Gegenstand"
+msgstr ""
+"#-#-#-#-#  test.pot  #-#-#-#-#\n"
+"#-#-#-#-#  tsmC88E.tmp  #-#-#-#-#\n"
+
+#: templates//categories.tpl:11 templates//categories.tpl:18
+#: templates//inventory.tpl:19 templates//inventory.tpl:91
+#: templates//inventory.tpl:162
+msgid "Gegenstände"
+msgstr ""
+
+#: templates//categories.tpl:15 templates//inventory.tpl:24
+#: templates//inventory.tpl:96 templates//inventory.tpl:167
+#: templates//inventorypage.tpl:24
+msgid "Unterkategorien"
+msgstr ""
+
+#: templates//categories.tpl:15
+msgid "Oberkategorie"
+msgstr ""
+
+#: templates//categories.tpl:22 templates//categories.tpl:24
+msgid "Keine"
+msgstr ""
+
+#: templates//categories.tpl:54
+msgid "Kategorie wirklich entfernen?"
+msgstr ""
+
+#: templates//categories.tpl:54
+msgid "Unterkategorie wirklich entfernen?"
+msgstr ""
+
+#: templates//categories.tpl:64
+msgid "Kategorie umbenennen?"
+msgstr ""
+
+#: templates//categories.tpl:64
+msgid "Unterkategorie umbenennen?"
+msgstr ""
+
+#: templates//datafields.tpl:21 templates//datafields.tpl:26
+msgid "Datentyp"
+msgstr ""
+
+#: templates//datafields.tpl:37 templates//datafields.tpl:39
+msgid "Beispielwerte"
+msgstr ""
+
+#: templates//datafields.tpl:39
+msgid "Datentyp Beispielwerte"
+msgstr ""
+
+#: templates//datafields.tpl:45
+msgid "Details"
+msgstr ""
+
+#: templates//datafields.tpl:49 templates//datafields.tpl:51
+msgid "Feldname"
+msgstr ""
+
+#: templates//datafields.tpl:56 templates//datafields.tpl:58
+msgid "Standardwert"
+msgstr ""
+
+#: templates//datafields.tpl:58
+msgid "Standardwert: Keine Eingabe gleichsam leer"
+msgstr ""
+
+#: templates//datafields.tpl:63
+msgid "Auswahlwerte"
+msgstr ""
+
+#: templates//datafields.tpl:65
+msgid ""
+"Auswahlwerte, durch Komma getrennt: ''Neu,Gebraucht,Refurbished'' und oder "
+"Dezimal und Gleitkommazahlen."
+msgstr ""
+
+#: templates//datafields.tpl:65
+msgid "Neu,Gebraucht,Refurbished"
+msgstr ""
+
+#: templates//datafields.tpl:67
+msgid "Eintragen / Aktualisieren"
+msgstr ""
+
+#: templates//datafields.tpl:68
+msgid "Formular zurücksetzen"
+msgstr ""
+
+#: templates//datafields.tpl:69
+msgid "Feld löschen"
+msgstr ""
+
+#: templates//datafields.tpl:77
+msgid "Bestehende Datenfelder"
+msgstr ""
+
+#: templates//datafields.tpl:120
+msgid "Ein Feld mit gleichem Namem"
+msgstr ""
+
+#: templates//datafields.tpl:120
+msgid ""
+"ist bereits vorhanden. Das alte Feld muß gelöscht oder umbenannt werden."
+msgstr ""
+
+#: templates//datafields.tpl:161 templates//datafields.tpl:169
+#: templates//datafields.tpl:173
+msgid "Feld"
+msgstr ""
+
+#: templates//datafields.tpl:161
+msgid "muß zwischen"
+msgstr ""
+
+#: templates//datafields.tpl:161 templates//datafields.tpl:169
+#: templates//datafields.tpl:173
+msgid "und"
+msgstr ""
+
+#: templates//datafields.tpl:161
+msgid "Zeichen lang sein."
+msgstr ""
+
+#: templates//datafields.tpl:169 templates//datafields.tpl:173
+msgid "darf nur zwischen"
+msgstr ""
+
+#: templates//datafields.tpl:169
+msgid "liegen"
+msgstr ""
+
+#: templates//datafields.tpl:173
+msgid "Zeichen lang sein. Aktuelle Zeichen"
+msgstr ""
+
+#: templates//datafields.tpl:222
+msgid "Eintrag"
+msgstr ""
+
+#: templates//datafields.tpl:222
+msgid "wirklich löschen?"
+msgstr ""
+
+#: templates//footer.tpl:2
+msgid "Kontakt"
+msgstr ""
+
+#: templates//footer.tpl:3
+msgid "Github"
+msgstr ""
+
+#: templates//indexpage.tpl:7
+msgid "zur Datenbank hinzugefügt."
+msgstr ""
+
+#: templates//indexpage.tpl:13 templates//settings.tpl:24
+msgid "Eintrag zur Bearbeitung:"
+msgstr ""
+
+#: templates//indexpage.tpl:23 templates//indexpage.tpl:28
+#: templates//indexpage.tpl:30 templates//inventory.tpl:24
+#: templates//inventory.tpl:96 templates//inventory.tpl:167
+#: templates//inventorypage.tpl:24
+msgid "Bezeichnung"
+msgstr ""
+
+#: templates//indexpage.tpl:28 templates//indexpage.tpl:30
+msgid "Bezeichnung oder Name"
+msgstr ""
+
+#: templates//indexpage.tpl:41 templates//indexpage.tpl:43
+#: templates//indexpage.tpl:60 templates//indexpage.tpl:62
+msgid "Lagerplatz"
+msgstr ""
+
+#: templates//indexpage.tpl:69 templates//indexpage.tpl:73
+#: templates//indexpage.tpl:75 templates//inventory.tpl:24
+#: templates//inventory.tpl:96 templates//inventory.tpl:167
+#: templates//inventorypage.tpl:24
+msgid "Bemerkung"
+msgstr ""
+
+#: templates//indexpage.tpl:85 templates//indexpage.tpl:87
+msgid "Kategorie"
+msgstr ""
+
+#: templates//indexpage.tpl:103 templates//indexpage.tpl:105
+msgid "Netzwerk/Hardware"
+msgstr ""
+
+#: templates//indexpage.tpl:116 templates//indexpage.tpl:120
+#: templates//indexpage.tpl:137 templates//indexpage.tpl:139
+msgid "Unterkategorie"
+msgstr ""
+
+#: templates//indexpage.tpl:137 templates//indexpage.tpl:139
+msgid "Router,wlan,fritzBox"
+msgstr ""
+
+#: templates//indexpage.tpl:156 templates//indexpage.tpl:159
+msgid "Seriennummer"
+msgstr ""
+
+#: templates//indexpage.tpl:159 templates//indexpage.tpl:161
+msgid "Seriennummer/Artikelnummer"
+msgstr ""
+
+#: templates//indexpage.tpl:169 templates//settings.tpl:90
+msgid "Überschreiben"
+msgstr ""
+
+#: templates//indexpage.tpl:171 templates//nav.tpl:7
+#: templates//settings.tpl:92
+msgid "Eintragen"
+msgstr ""
+
+#: templates//inventory.tpl:16 templates//inventory.tpl:18
+#: templates//inventory.tpl:88 templates//inventory.tpl:90
+#: templates//inventory.tpl:159 templates//inventory.tpl:161
+msgid "Unsortiert"
+msgstr ""
+
+#: templates//inventory.tpl:19 templates//inventory.tpl:91
+#: templates//inventory.tpl:162 templates//inventorypage.tpl:22
+#, fuzzy
+msgid "Position"
+msgstr ""
+"#-#-#-#-#  test.pot  #-#-#-#-#\n"
+"#-#-#-#-#  tsmC88E.tmp  #-#-#-#-#\n"
+
+#: templates//inventory.tpl:19 templates//inventory.tpl:91
+#: templates//inventory.tpl:162
+msgid "Positionen"
+msgstr ""
+
+#: templates//inventory.tpl:24 templates//inventory.tpl:96
+#: templates//inventory.tpl:167 templates//inventorypage.tpl:24
+#: templates//settings.tpl:110
+msgid "Gruppe"
+msgstr ""
+
+#: templates//inventory.tpl:24 templates//inventory.tpl:96
+#: templates//inventory.tpl:167 templates//inventorypage.tpl:24
+msgid "Hinzugefügt"
+msgstr ""
+
+#: templates//inventory.tpl:56 templates//inventory.tpl:128
+#: templates//inventory.tpl:199 templates//inventorypage.tpl:53
+msgid "Zuweisen"
+msgstr ""
+
+#: templates//inventory.tpl:67 templates//inventory.tpl:75
+#: templates//inventory.tpl:139 templates//inventory.tpl:210
+#: templates//test.tpl:127
+msgid "Keine Gegenstände gefunden"
+msgstr ""
+
+#: templates//inventory.tpl:252 templates//inventorypage.tpl:87
+msgid "Lagerplatz wirklich entfernen?"
+msgstr ""
+
+#: templates//inventory.tpl:252 templates//inventorypage.tpl:87
+msgid "Position wirklich entfernen?"
+msgstr ""
+
+#: templates//login.tpl:18
+msgid "Neue Admin-Zugangsdaten eingeben"
+msgstr ""
+
+#: templates//login.tpl:21
+msgid "Neue Zugangsdaten eingeben"
+msgstr ""
+
+#: templates//login.tpl:23
+msgid "Zugangsdaten eingeben"
+msgstr ""
+
+#: templates//login.tpl:28 templates//settings.tpl:34
+#: templates//settings.tpl:110
+msgid "Benutzername"
+msgstr ""
+
+#: templates//login.tpl:37 templates//settings.tpl:48
+#: templates//settings.tpl:110
+msgid "E-Mail"
+msgstr ""
+
+#: templates//login.tpl:49
+msgid "Passwort"
+msgstr ""
+
+#: templates//login.tpl:58
+msgid "Passwort wiederholen"
+msgstr ""
+
+#: templates//login.tpl:71
+msgid "Angemeldet bleiben?"
+msgstr ""
+
+#: templates//login.tpl:76
+msgid "Speichern"
+msgstr ""
+
+#: templates//login.tpl:76
+msgid "Anmelden"
+msgstr ""
+
+#: templates//login.tpl:86
+msgid "Anfordern"
+msgstr ""
+
+#: templates//login.tpl:96
+msgid "Zugangsdaten vergessen"
+msgstr ""
+
+#: templates//nav.tpl:8
+msgid "Inventar"
+msgstr ""
+
+#: templates//nav.tpl:10 templates//test.tpl:27 templates//transfer.tpl:32
+msgid "Transferieren"
+msgstr ""
+
+#: templates//nav.tpl:13
+msgid "Einstellungen"
+msgstr ""
+
+#: templates//nav.tpl:17
+msgid "Datenfelder"
+msgstr ""
+
+#: templates//nav.tpl:21
+msgid "Suche"
+msgstr ""
+
+#: templates//nav.tpl:22
+msgid "Suchen"
+msgstr ""
+
+#: templates//nav.tpl:40
+msgid "Abmelde"
+msgstr ""
+
+#: templates//settings.tpl:18
+msgid "zur Datenbank hinzugefügt"
+msgstr ""
+
+#: templates//settings.tpl:63 templates//settings.tpl:79
+#: templates//settings.tpl:82
+msgid "Benutzergruppe"
+msgstr ""
+
+#: templates//settings.tpl:109
+msgid "Neuer Benutzer"
+msgstr ""
+
+#: templates//settings.tpl:120
+msgid "Mailserver-Einstellungen"
+msgstr ""
+
+#: templates//settings.tpl:125
+msgid "E-Mail Absenderadresse"
+msgstr ""
+
+#: templates//settings.tpl:131
+msgid "Mailversand"
+msgstr ""
+
+#: templates//settings.tpl:135
+msgid "deaktivieren"
+msgstr ""
+
+#: templates//settings.tpl:139
+msgid "aktivieren"
+msgstr ""
+
+#: templates//settings.tpl:142
+msgid "Einstellungen speichern"
+msgstr ""
+
+#: templates//settings.tpl:163
+msgid "Benutzer wirklich entfernen?"
+msgstr ""
+
+#: templates//settings.tpl:163
+msgid "Der letzte Administrator kann nicht gelöscht werden!"
+msgstr ""
+
+#: templates//test.tpl:9 templates//test.tpl:26 templates//transfer.tpl:8
+#: templates//transfer.tpl:27
+msgid "Quelle"
+msgstr ""
+
+#: templates//test.tpl:19 templates//test.tpl:27 templates//transfer.tpl:17
+#: templates//transfer.tpl:31
+msgid "Ziel"
+msgstr ""
+
+#: templates//test.tpl:26 templates//transfer.tpl:28
+msgid "Quelle wählen."
+msgstr ""
+
+#: templates//test.tpl:27 templates//transfer.tpl:32
+msgid "Ziel wählen."
+msgstr ""
+
+#: templates//test.tpl:107 templates//transfer.tpl:116
+msgid "Quelle wählen"
+msgstr ""
+
+#: templates//test.tpl:108 templates//transfer.tpl:117
+msgid "Ziel wählen"
+msgstr ""
+
+#: templates//transfer.tpl:136
+msgid "Keine Gegenstände gefunden."
+msgstr ""

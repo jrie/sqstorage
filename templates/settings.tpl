@@ -4,7 +4,7 @@
         <div class="content">
 
 
-        {if $isEdit || $isAdd} {
+        {if $isEdit || $isAdd} 
 
 
                         {if strlen($error)>0}
