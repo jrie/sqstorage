@@ -56,7 +56,11 @@ support/language_tools.php
 Make sure you have compiled the locale on the server your webpage is running
 Debian: `dpkg-reconfigure locales`
 
-
+If you're running a Windows XAMPP development system, you need to start xampp-control by command line.
+Start the command line [WIN+R -> cmd.exe] and enter the command
+**set LANG=en_GB** (or de_DE, or ... you know)
+and start xampp-control 
+**c:\xampp\xampp-control.exe**
 
 
 
