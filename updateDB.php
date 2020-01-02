@@ -5,7 +5,7 @@ DB::$usenull = false;
 $items = DB::query('SELECT `id`, `label`, `subcategories` FROM `items`');
 
 if ($items != null) {
-    foreach($items as $item) {
+    foreach ($items as $item) {
         $subIds = trim($item['subcategories'], ',');
         if (empty($subIds)) continue;
         $newSubIds = ',' . $subIds . ',';

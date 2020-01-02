@@ -21,4 +21,3 @@ DB::$error_handler = true;
 
 print('<strong>Database bootstrapped succesfully.</strong>');
 die();
-?>

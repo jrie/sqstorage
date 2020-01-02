@@ -3,5 +3,5 @@
     <a class="btn btn-info" tabIndex="-1" target="_blank" href="https://github.com/jrie/sqstorage"><?php echo gettext('Github') ?></a>
 </footer>
 <script type="text/javascript">
-<?php include_once('js/dropDown.js'); ?>
+    <?php include_once('js/dropDown.js'); ?>
 </script>
