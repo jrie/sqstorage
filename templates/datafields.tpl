@@ -12,7 +12,7 @@
             <p>Feld &quot;{$POST.fieldName}&quot; Typ geändert. {if $resetEntries !== 0}{$resetEntries}{/if}</p>
         </div>
     {/if}
-    
+
     <div class="content">
         <h5>Auswahl</h5>
         <form class="form-outline" name="fieldData" method="POST" action="datafields.php">
@@ -22,12 +22,12 @@
                 </div>
                 <div class="dropdown float-left">
                     <select name="dataType" autocomplete="off" required class="btn btn-primary dropdown-toggle switchdatatype" type="button" tabindex="-1" aria-haspopup="true" aria-expanded="false">
-                    
+
                         <option value="-1" selected="selected">{t}Datentyp{/t}</option>
-                        {foreach $fieldTypes as $type => $value} 
+                        {foreach $fieldTypes as $type => $value}
                             <option value="{$type}">{$value}</option>
                         {/foreach}
-                    
+
                     </select>
                 </div>
             </div>
@@ -90,9 +90,7 @@
         <script type="text/javascript">
             function setDataExample() {
                 let targetValue = document.querySelector('.switchdatatype').value
-                alert(targetValue)
                 let dataExample = dataExamples[targetValue]
-                alert(dataExample)
                 document.querySelector('.example').value = dataExample
                 let fieldValues = document.querySelector('.fieldValues')
 
