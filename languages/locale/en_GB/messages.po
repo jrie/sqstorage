@@ -12,6 +12,10 @@ msgstr ""
 "X-Generator: Poedit 2.2.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: templates//accessdenied.tpl:16 templates//php_language_extract.tpl:59
+msgid "Zugriff verweigert!"
+msgstr "Access denied!"
+
 #: templates//categories.tpl:9 templates//nav.tpl:9
 #: templates//php_language_extract.tpl:33
 msgid "Kategorien"
@@ -142,52 +146,52 @@ msgstr "Delete field"
 msgid "Bestehende Datenfelder"
 msgstr "Existing data fields"
 
-#: templates//datafields.tpl:120
+#: templates//datafields.tpl:118
 msgid "Ein Feld mit gleichem Namem"
 msgstr "A field with the same name"
 
-#: templates//datafields.tpl:120
+#: templates//datafields.tpl:118
 msgid ""
 "ist bereits vorhanden. Das alte Feld muß gelöscht oder umbenannt werden."
 msgstr "does already exits. The old one needs to be deleted or renamed."
 
-#: templates//datafields.tpl:161 templates//datafields.tpl:169
-#: templates//datafields.tpl:173
+#: templates//datafields.tpl:159 templates//datafields.tpl:167
+#: templates//datafields.tpl:171
 msgid "Feld"
 msgstr "Field"
 
-#: templates//datafields.tpl:161
+#: templates//datafields.tpl:159
 msgid "muß zwischen"
 msgstr "needs to be between"
 
-#: templates//datafields.tpl:161 templates//datafields.tpl:169
-#: templates//datafields.tpl:173
+#: templates//datafields.tpl:159 templates//datafields.tpl:167
+#: templates//datafields.tpl:171
 msgid "und"
 msgstr "and"
 
-#: templates//datafields.tpl:161
+#: templates//datafields.tpl:159
 msgid "Zeichen lang sein."
 msgstr "character long."
 
-#: templates//datafields.tpl:169 templates//datafields.tpl:173
+#: templates//datafields.tpl:167 templates//datafields.tpl:171
 msgid "darf nur zwischen"
 msgstr "is only allowed to be between"
 
-#: templates//datafields.tpl:169
+#: templates//datafields.tpl:167
 msgid "liegen"
 msgstr " ."
 
-#: templates//datafields.tpl:173
+#: templates//datafields.tpl:171
 msgid "Zeichen lang sein. Aktuelle Zeichen"
 msgstr "character long. Current character"
 
-#: templates//datafields.tpl:222 templates//php_language_extract.tpl:13
+#: templates//datafields.tpl:220 templates//php_language_extract.tpl:13
 #, fuzzy
 #| msgid "Eintragen"
 msgid "Eintrag"
 msgstr "Enter"
 
-#: templates//datafields.tpl:222
+#: templates//datafields.tpl:220
 msgid "wirklich löschen?"
 msgstr "really delete?"
 
@@ -310,61 +314,69 @@ msgstr "Allocate"
 msgid "Keine Gegenstände gefunden"
 msgstr "No items found"
 
-#: templates//inventory.tpl:252 templates//inventorypage.tpl:87
+#: templates//inventory.tpl:233 templates//php_language_extract.tpl:65
+msgid ""
+"Von diesem Artikel sind mehrere Stück am Lagerplatz. Wieviele sollen zum "
+"neuen Lagerort transferiert werden?"
+msgstr ""
+"Multiple of this items are available at the current storage. How many do you "
+"want to transfer to the new storage?"
+
+#: templates//inventory.tpl:264 templates//inventorypage.tpl:87
 msgid "Lagerplatz wirklich entfernen?"
 msgstr "Really remove storage area?"
 
-#: templates//inventory.tpl:252 templates//inventorypage.tpl:87
+#: templates//inventory.tpl:264 templates//inventorypage.tpl:87
 msgid "Position wirklich entfernen?"
 msgstr "Really remove position?"
 
-#: templates//login.tpl:18
+#: templates//login.tpl:32
 msgid "Neue Admin-Zugangsdaten eingeben"
 msgstr "Enter the new administrator credentials"
 
-#: templates//login.tpl:21
+#: templates//login.tpl:35
 msgid "Neue Zugangsdaten eingeben"
 msgstr "Enter the new credentials"
 
-#: templates//login.tpl:23
+#: templates//login.tpl:37
 msgid "Zugangsdaten eingeben"
 msgstr "Enter credentials"
 
-#: templates//login.tpl:28 templates//settings.tpl:34
+#: templates//login.tpl:42 templates//settings.tpl:34
 #: templates//settings.tpl:110
 msgid "Benutzername"
 msgstr "Username"
 
-#: templates//login.tpl:37 templates//settings.tpl:48
+#: templates//login.tpl:51 templates//settings.tpl:48
 #: templates//settings.tpl:110
 msgid "E-Mail"
 msgstr "e-mail"
 
-#: templates//login.tpl:49
+#: templates//login.tpl:63
 msgid "Passwort"
 msgstr "Password"
 
-#: templates//login.tpl:58
+#: templates//login.tpl:72
 msgid "Passwort wiederholen"
 msgstr "Repeat password"
 
-#: templates//login.tpl:71
+#: templates//login.tpl:85
 msgid "Angemeldet bleiben?"
 msgstr "Stay signed in"
 
-#: templates//login.tpl:76
+#: templates//login.tpl:90
 msgid "Speichern"
 msgstr "Save"
 
-#: templates//login.tpl:76
+#: templates//login.tpl:90
 msgid "Anmelden"
 msgstr "Sign in"
 
-#: templates//login.tpl:86
+#: templates//login.tpl:100
 msgid "Anfordern"
 msgstr "Request"
 
-#: templates//login.tpl:96
+#: templates//login.tpl:110
 msgid "Zugangsdaten vergessen"
 msgstr "Credentials forgotten"
 
@@ -373,31 +385,27 @@ msgid "Inventar"
 msgstr "Inventory"
 
 #: templates//nav.tpl:10 templates//php_language_extract.tpl:52
-#: templates//test.tpl:27 templates//transfer.tpl:32
+#: templates//test.tpl:27 templates//transfer.tpl:31
 msgid "Transferieren"
 msgstr "Transfer"
 
-#: templates//nav.tpl:13 templates//php_language_extract.tpl:12
+#: templates//nav.tpl:14 templates//php_language_extract.tpl:12
 msgid "Einstellungen"
 msgstr "Settings"
 
-#: templates//nav.tpl:17 templates//php_language_extract.tpl:6
+#: templates//nav.tpl:18 templates//php_language_extract.tpl:6
 msgid "Datenfelder"
 msgstr "Data fields"
 
-#: templates//nav.tpl:21 templates//php_language_extract.tpl:50
+#: templates//nav.tpl:22 templates//php_language_extract.tpl:50
 msgid "Suche"
 msgstr "Search"
 
-#: templates//nav.tpl:22 templates//php_language_extract.tpl:51
+#: templates//nav.tpl:23 templates//php_language_extract.tpl:51
 msgid "Suchen"
 msgstr "Search"
 
-#: templates//nav.tpl:40
-msgid "Abmelde"
-msgstr "Sign out"
-
-#: templates//php_language_extract.tpl:1
+#: templates//nav.tpl:46 templates//php_language_extract.tpl:1
 msgid "Abmelden"
 msgstr "Sign out"
 
@@ -599,10 +607,6 @@ msgstr "String <512 characters"
 msgid "Zugangsdaten ungültig"
 msgstr "Invalid credentials"
 
-#: templates//php_language_extract.tpl:59
-msgid "Zugriff verweigert!"
-msgstr "Access denied!"
-
 #: templates//php_language_extract.tpl:60
 msgid ""
 "Um das Passwort für sqStorage zu ändern bitte den folgenden Link aufrufen: "
@@ -681,34 +685,37 @@ msgid "Der letzte Administrator kann nicht gelöscht werden!"
 msgstr "The last administrator cannot be deleted!"
 
 #: templates//test.tpl:9 templates//test.tpl:26 templates//transfer.tpl:8
-#: templates//transfer.tpl:27
+#: templates//transfer.tpl:26
 msgid "Quelle"
 msgstr "Source"
 
 #: templates//test.tpl:19 templates//test.tpl:27 templates//transfer.tpl:17
-#: templates//transfer.tpl:31
+#: templates//transfer.tpl:30
 msgid "Ziel"
 msgstr "Target"
 
-#: templates//test.tpl:26 templates//transfer.tpl:28
+#: templates//test.tpl:26 templates//transfer.tpl:27
 msgid "Quelle wählen."
 msgstr "Select source."
 
-#: templates//test.tpl:27 templates//transfer.tpl:32
+#: templates//test.tpl:27 templates//transfer.tpl:31
 msgid "Ziel wählen."
 msgstr "Select target."
 
-#: templates//test.tpl:107 templates//transfer.tpl:116
+#: templates//test.tpl:107 templates//transfer.tpl:115
 msgid "Quelle wählen"
 msgstr "Select source"
 
-#: templates//test.tpl:108 templates//transfer.tpl:117
+#: templates//test.tpl:108 templates//transfer.tpl:116
 msgid "Ziel wählen"
 msgstr "Select target"
 
-#: templates//transfer.tpl:136
+#: templates//transfer.tpl:135
 msgid "Keine Gegenstände gefunden."
 msgstr "No items found."
+
+#~ msgid "Abmelde"
+#~ msgstr "Sign out"
 
 #~ msgid "Sprache wählen"
 #~ msgstr "Select language"

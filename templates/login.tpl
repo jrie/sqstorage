@@ -2,7 +2,21 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a href="index.php"><img class="logo" src="./img/sqstorage.png" /></a>
-    </nav>  
+
+    <div class="dropdown">
+         <select class="form-control mr-sm-2" name="lang">
+            {foreach $langsAvailable as $lang}
+            <option value="{$lang}" {if $langCurrent == $lang} selected="selected"{/if}>{$langsLabels.$lang}</option>
+            {/foreach}
+        </select>
+        <script type ="text/javascript">
+            let langSelection = document.querySelector('select[name="lang"').addEventListener('change', function (evt) {
+                let langValue = evt.target.options[evt.target.selectedIndex].value
+                window.location.href = 'index.php?lang=' + langValue;
+            })
+        </script>
+    </div>
+    </nav>
 
         <div class="content">
             <div class="login-box">

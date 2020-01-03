@@ -1,6 +1,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=UTF-8\n"
 
+#: templates//accessdenied.tpl:16 templates//php_language_extract.tpl:59
+msgid "Zugriff verweigert!"
+msgstr ""
+
 #: templates//categories.tpl:9 templates//nav.tpl:9
 #: templates//php_language_extract.tpl:33
 msgid "Kategorien"
@@ -28,7 +32,7 @@ msgstr ""
 msgid "Gegenstand"
 msgstr ""
 "#-#-#-#-#  sqstorage.pot  #-#-#-#-#\n"
-"#-#-#-#-#  tsmF5AD.tmp  #-#-#-#-#\n"
+"#-#-#-#-#  tsm46D1.tmp  #-#-#-#-#\n"
 
 #: templates//categories.tpl:11 templates//categories.tpl:18
 #: templates//inventory.tpl:19 templates//inventory.tpl:91
@@ -124,50 +128,50 @@ msgstr ""
 msgid "Bestehende Datenfelder"
 msgstr ""
 
-#: templates//datafields.tpl:120
+#: templates//datafields.tpl:118
 msgid "Ein Feld mit gleichem Namem"
 msgstr ""
 
-#: templates//datafields.tpl:120
+#: templates//datafields.tpl:118
 msgid ""
 "ist bereits vorhanden. Das alte Feld muß gelöscht oder umbenannt werden."
 msgstr ""
 
-#: templates//datafields.tpl:161 templates//datafields.tpl:169
-#: templates//datafields.tpl:173
+#: templates//datafields.tpl:159 templates//datafields.tpl:167
+#: templates//datafields.tpl:171
 msgid "Feld"
 msgstr ""
 
-#: templates//datafields.tpl:161
+#: templates//datafields.tpl:159
 msgid "muß zwischen"
 msgstr ""
 
-#: templates//datafields.tpl:161 templates//datafields.tpl:169
-#: templates//datafields.tpl:173
+#: templates//datafields.tpl:159 templates//datafields.tpl:167
+#: templates//datafields.tpl:171
 msgid "und"
 msgstr ""
 
-#: templates//datafields.tpl:161
+#: templates//datafields.tpl:159
 msgid "Zeichen lang sein."
 msgstr ""
 
-#: templates//datafields.tpl:169 templates//datafields.tpl:173
+#: templates//datafields.tpl:167 templates//datafields.tpl:171
 msgid "darf nur zwischen"
 msgstr ""
 
-#: templates//datafields.tpl:169
+#: templates//datafields.tpl:167
 msgid "liegen"
 msgstr ""
 
-#: templates//datafields.tpl:173
+#: templates//datafields.tpl:171
 msgid "Zeichen lang sein. Aktuelle Zeichen"
 msgstr ""
 
-#: templates//datafields.tpl:222 templates//php_language_extract.tpl:13
+#: templates//datafields.tpl:220 templates//php_language_extract.tpl:13
 msgid "Eintrag"
 msgstr ""
 
-#: templates//datafields.tpl:222
+#: templates//datafields.tpl:220
 msgid "wirklich löschen?"
 msgstr ""
 
@@ -258,7 +262,7 @@ msgstr ""
 msgid "Position"
 msgstr ""
 "#-#-#-#-#  sqstorage.pot  #-#-#-#-#\n"
-"#-#-#-#-#  tsmF5AD.tmp  #-#-#-#-#\n"
+"#-#-#-#-#  tsm46D1.tmp  #-#-#-#-#\n"
 
 #: templates//inventory.tpl:19 templates//inventory.tpl:91
 #: templates//inventory.tpl:162
@@ -287,61 +291,67 @@ msgstr ""
 msgid "Keine Gegenstände gefunden"
 msgstr ""
 
-#: templates//inventory.tpl:252 templates//inventorypage.tpl:87
+#: templates//inventory.tpl:233 templates//php_language_extract.tpl:65
+msgid ""
+"Von diesem Artikel sind mehrere Stück am Lagerplatz. Wieviele sollen zum "
+"neuen Lagerort transferiert werden?"
+msgstr ""
+
+#: templates//inventory.tpl:264 templates//inventorypage.tpl:87
 msgid "Lagerplatz wirklich entfernen?"
 msgstr ""
 
-#: templates//inventory.tpl:252 templates//inventorypage.tpl:87
+#: templates//inventory.tpl:264 templates//inventorypage.tpl:87
 msgid "Position wirklich entfernen?"
 msgstr ""
 
-#: templates//login.tpl:18
+#: templates//login.tpl:32
 msgid "Neue Admin-Zugangsdaten eingeben"
 msgstr ""
 
-#: templates//login.tpl:21
+#: templates//login.tpl:35
 msgid "Neue Zugangsdaten eingeben"
 msgstr ""
 
-#: templates//login.tpl:23
+#: templates//login.tpl:37
 msgid "Zugangsdaten eingeben"
 msgstr ""
 
-#: templates//login.tpl:28 templates//settings.tpl:34
+#: templates//login.tpl:42 templates//settings.tpl:34
 #: templates//settings.tpl:110
 msgid "Benutzername"
 msgstr ""
 
-#: templates//login.tpl:37 templates//settings.tpl:48
+#: templates//login.tpl:51 templates//settings.tpl:48
 #: templates//settings.tpl:110
 msgid "E-Mail"
 msgstr ""
 
-#: templates//login.tpl:49
+#: templates//login.tpl:63
 msgid "Passwort"
 msgstr ""
 
-#: templates//login.tpl:58
+#: templates//login.tpl:72
 msgid "Passwort wiederholen"
 msgstr ""
 
-#: templates//login.tpl:71
+#: templates//login.tpl:85
 msgid "Angemeldet bleiben?"
 msgstr ""
 
-#: templates//login.tpl:76
+#: templates//login.tpl:90
 msgid "Speichern"
 msgstr ""
 
-#: templates//login.tpl:76
+#: templates//login.tpl:90
 msgid "Anmelden"
 msgstr ""
 
-#: templates//login.tpl:86
+#: templates//login.tpl:100
 msgid "Anfordern"
 msgstr ""
 
-#: templates//login.tpl:96
+#: templates//login.tpl:110
 msgid "Zugangsdaten vergessen"
 msgstr ""
 
@@ -350,31 +360,27 @@ msgid "Inventar"
 msgstr ""
 
 #: templates//nav.tpl:10 templates//php_language_extract.tpl:52
-#: templates//test.tpl:27 templates//transfer.tpl:32
+#: templates//test.tpl:27 templates//transfer.tpl:31
 msgid "Transferieren"
 msgstr ""
 
-#: templates//nav.tpl:13 templates//php_language_extract.tpl:12
+#: templates//nav.tpl:14 templates//php_language_extract.tpl:12
 msgid "Einstellungen"
 msgstr ""
 
-#: templates//nav.tpl:17 templates//php_language_extract.tpl:6
+#: templates//nav.tpl:18 templates//php_language_extract.tpl:6
 msgid "Datenfelder"
 msgstr ""
 
-#: templates//nav.tpl:21 templates//php_language_extract.tpl:50
+#: templates//nav.tpl:22 templates//php_language_extract.tpl:50
 msgid "Suche"
 msgstr ""
 
-#: templates//nav.tpl:22 templates//php_language_extract.tpl:51
+#: templates//nav.tpl:23 templates//php_language_extract.tpl:51
 msgid "Suchen"
 msgstr ""
 
-#: templates//nav.tpl:40
-msgid "Abmelde"
-msgstr ""
-
-#: templates//php_language_extract.tpl:1
+#: templates//nav.tpl:46 templates//php_language_extract.tpl:1
 msgid "Abmelden"
 msgstr ""
 
@@ -562,10 +568,6 @@ msgstr ""
 msgid "Zugangsdaten ungültig"
 msgstr ""
 
-#: templates//php_language_extract.tpl:59
-msgid "Zugriff verweigert!"
-msgstr ""
-
 #: templates//php_language_extract.tpl:60
 msgid ""
 "Um das Passwort für sqStorage zu ändern bitte den folgenden Link aufrufen: "
@@ -638,31 +640,31 @@ msgid "Der letzte Administrator kann nicht gelöscht werden!"
 msgstr ""
 
 #: templates//test.tpl:9 templates//test.tpl:26 templates//transfer.tpl:8
-#: templates//transfer.tpl:27
+#: templates//transfer.tpl:26
 msgid "Quelle"
 msgstr ""
 
 #: templates//test.tpl:19 templates//test.tpl:27 templates//transfer.tpl:17
-#: templates//transfer.tpl:31
+#: templates//transfer.tpl:30
 msgid "Ziel"
 msgstr ""
 
-#: templates//test.tpl:26 templates//transfer.tpl:28
+#: templates//test.tpl:26 templates//transfer.tpl:27
 msgid "Quelle wählen."
 msgstr ""
 
-#: templates//test.tpl:27 templates//transfer.tpl:32
+#: templates//test.tpl:27 templates//transfer.tpl:31
 msgid "Ziel wählen."
 msgstr ""
 
-#: templates//test.tpl:107 templates//transfer.tpl:116
+#: templates//test.tpl:107 templates//transfer.tpl:115
 msgid "Quelle wählen"
 msgstr ""
 
-#: templates//test.tpl:108 templates//transfer.tpl:117
+#: templates//test.tpl:108 templates//transfer.tpl:116
 msgid "Ziel wählen"
 msgstr ""
 
-#: templates//transfer.tpl:136
+#: templates//transfer.tpl:135
 msgid "Keine Gegenstände gefunden."
 msgstr ""
