@@ -3,10 +3,13 @@
 A easy to use and super quick way to organize your inventory, storage and storage areas.
 
 ### Note
-Right now sqStorage is only available in German, a English translation is due to happen at some point in near future!
+Right now sqStorage available in German and English. Feel free to add your own translation (see LANGUAGE.md).
 
 ### Installation and usage
 1) By default, the database name used is **tlv** and the main user **tlvUser** with the password **tlvUser** - this can be configured in **support/dba.php** changing the ***DB::dbName***,  ***DB::$user*** and ***DB::$password*** variables, if you use a server, you might want to use the SQL Server IP instead of *localhost*.
+The directories **smartyfiles/** and **languages/locale/** need to be writeable for the webserver.
+**chown -R www-data smartyfiles/** and **chown -R www-data languages/locale/** should do it in most cases.
+You need to have the php intl extension enabled.
 
 2) Once the user and database are created, open `bootDB.php` this will create all db tables ready for usage.
 

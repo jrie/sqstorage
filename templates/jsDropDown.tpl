@@ -1,3 +1,4 @@
+{literal}
 let dropDowns = document.querySelectorAll('select')
 
 function toggleDropdown (input, container) {
@@ -250,3 +251,5 @@ for (let item of dropDowns) {
   item.classList.add('nodisplay')
   targetIndex++
 }
+
+{/literal}
