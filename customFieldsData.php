@@ -43,3 +43,4 @@
         'selection' => gettext('Einzelauswahl, durch Komma getrennt: erlaubt "Neu" oder "Gebraucht" oder "Refurbished" wenn "Neu,Gebraucht,Refurbished" angegeben. Und oder numerische Werte (Ganzzahl, Gleitkommazahlen)'),
         'mselection' => gettext('Mehrfachauswahl, durch Komma getrennt: erlaubt "Neu" und oder "Netzwerk", wenn "Neu,Netzwerk" angegeben. Und oder numerische Werte (Ganzzahl, Gleitkommanzahlen).')
     ];
+?>

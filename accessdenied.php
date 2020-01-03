@@ -1,22 +1,9 @@
 <?php
-header("HTTP/1.1 401 Unauthorized");
-?>
-<!DOCTYPE html>
-<html>
-<?php include_once('head.php'); ?>
+    header("HTTP/1.1 401 Unauthorized");
+require_once('includer.php');
 
-<body>
-    <?php include_once('nav.php'); ?>
+if(isset($error)) $smart->assign('error',$error);
 
-    <div class="content">
-        <?php if ($error) : ?>
-            <div class="alert alert-danger" role="alert">
-                <h6><?php echo $error; ?></h6>
-            </div>
-        <?php endif; ?>
-    </div>
+$smarty->assign('SESSION',$_SESSION);
 
-    <?php include_once('footer.php'); ?>
-</body>
-
-</html>
+$smarty->display('accessdenied.tpl');
