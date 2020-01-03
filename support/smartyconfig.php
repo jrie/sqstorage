@@ -17,5 +17,5 @@ if (isset($_SESSION)) $smarty->assign('$SESSION', $_SESSION);
 
 //** un-comment the following line to show the debug console
 //$smarty->debugging = true;
-$smarty->force_compile = true;
+$smarty->force_compile = false;
 //$smarty->display('index.tpl');
