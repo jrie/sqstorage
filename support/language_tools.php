@@ -28,9 +28,9 @@ function initLang($locale)
   $domain = "messages"; // the domain you’re using, this is the .PO/.MO file name without the extension
 
   // path to the .MO file that we should monitor
-  $filename = "$locales_root/$locale/LC_MESSAGES/$domain.mo";
+  $filename = "$locales_root".$locale."/LC_MESSAGES/$domain.mo";
   $mtime = filemtime($filename); // check its modification time
-  $filename_new = "$locales_root/$locale/LC_MESSAGES/{$domain}_{$mtime}.mo";
+  $filename_new = "$locales_root".$locale."/LC_MESSAGES/{$domain}_{$mtime}.mo";
   if (!file_exists($filename_new)) { // check if we have created it before
     copy($filename, $filename_new);
   }
