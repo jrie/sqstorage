@@ -10,7 +10,7 @@
             <form id="inventoryForm" method="POST" action="inventory.php">
             {foreach $myitem as $itemstore}
             {$hasdata=true}
-            {if $parse.showemptystorages || $itemstore.itemcount > 0 }    
+            {if $parse.showemptystorages || $itemstore.itemcount > 0 }
             <hr>
                 <div class="storage-area">
                 <button class="btn smallButton" name="removeStorage" data-name="{if isset($itemstore.storage.label)}{$itemstore.storage.label}{else}{t}Unsortiert{/t}{/if}" value="{$itemstore.storage.id}" type="submit"><i class="fas fa-times-circle"></i></button>
@@ -26,9 +26,9 @@
                 {if isset($itemstore.items)}
                     {foreach $itemstore.items as $item}
 
-                        
+
                         {assign var="subCats" value=","|explode:$item.subcategories}
-                        {$subCategories=array()} 
+                        {$subCategories=array()}
                         {foreach $subCats as $subCat}
                             {if isset($subcategories.$subCat)}
                             {$subCategories[] ="<a href='inventory.php?subcategory={$subcategories.$subCat.id}'>{$subcategories.$subCat.name}</a>"}
@@ -46,43 +46,43 @@
                             <span class="list-span">{$item.amount}</span>
                             <span class="list-span">{$item.comment}</span>
 
-                            <span class="list-span">{$implodedSubCats}</span> 
+                            <span class="list-span">{$implodedSubCats}</span>
                             <span class="list-span">{$dateexploded.0}</span>
                             <a class="list-span" href="index.php?editItem={$item.id}"><i class="fas fa-edit"></i></a>
 
                             <div class="dropdown float-right">
-                                <select autocomplete="off" id="item_{$item.id}" class="btn btn-primary dropdown-toggle switchStorage" data-value="0"  data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                
+                                <select autocomplete="off" id="item_{$item.id}" class="btn btn-primary dropdown-toggle switchStorage" data-itemamount="{$item.amount}" data-value="0"  data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
                                 <option selected="selected" value="-1">{t}Zuweisen{/t}</option>
 
-                                {foreach $storages as $storage} 
+                                {foreach $storages as $storage}
                                     <option value="{$storage.id}">{$storage.label}</option>
                                 {/foreach}
                                 </select>
                             </div>
                         </li>
-                    
+
                     {/foreach}
                 {else}
-                    <li class="list-group-item"><span>{t}Keine Gegenstände gefunden{/t}</span></li>    
+                    <li class="list-group-item"><span>{t}Keine Gegenstände gefunden{/t}</span></li>
                 {/if}
                 </ul></div>
             {else}
             <!--<h1>Keine Teile verdammt</h1>-->
             {/if}
-            
+
             {/foreach}
             {if !$hasdata}<li class="list-group-item"><span>{t}Keine Gegenstände gefunden{/t}</span></li>{/if}
             </form>
 
         </div>
-<!-------------------------------------------------------------------------------------------------------------->    
+<!-------------------------------------------------------------------------------------------------------------->
 {elseif $parse.mode == "category"}
 <!-------------------------------------------------------------------------------------------------------------->
         <div class="content">
             <form id="inventoryForm" method="POST" action="inventory.php">
             {foreach $myitem as $itemstore}
-            {if $parse.showemptystorages || $itemstore.itemcount > 0 }    
+            {if $parse.showemptystorages || $itemstore.itemcount > 0 }
             <hr>
                 <div class="storage-area">
                 <button class="btn smallButton" name="removeStorage" data-name="{if isset($itemstore.storage.label)}{$itemstore.storage.label}{else}{t}Unsortiert{/t}{/if}" value="{$itemstore.storage.id}" type="submit"><i class="fas fa-times-circle"></i></button>
@@ -98,9 +98,9 @@
                 {if isset($itemstore.items)}
                     {foreach $itemstore.items as $item}
 
-                        
+
                         {assign var="subCats" value=","|explode:$item.subcategories}
-                        {$subCategories=array()} 
+                        {$subCategories=array()}
                         {foreach $subCats as $subCat}
                             {if isset($subcategories.$subCat)}
                             {$subCategories[] ="<a href='inventory.php?subcategory={$subcategories.$subCat.id}'>{$subcategories.$subCat.name}</a>"}
@@ -118,31 +118,31 @@
                             <span class="list-span">{$item.amount}</span>
                             <span class="list-span">{$item.comment}</span>
 
-                            <span class="list-span">{$implodedSubCats}</span> 
+                            <span class="list-span">{$implodedSubCats}</span>
                             <span class="list-span">{$dateexploded.0}</span>
                             <a class="list-span" href="index.php?editItem={$item.id}"><i class="fas fa-edit"></i></a>
 
                             <div class="dropdown float-right">
                                 <select autocomplete="off" id="item_{$item.id}" class="btn btn-primary dropdown-toggle switchStorage" data-value="0"  data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                
+
                                 <option selected="selected" value="-1">{t}Zuweisen{/t}</option>
 
-                                {foreach $storages as $storage} 
+                                {foreach $storages as $storage}
                                     <option value="{$storage.id}">{$storage.label}</option>
                                 {/foreach}
                                 </select>
                             </div>
                         </li>
-                    
+
                     {/foreach}
                 {else}
-                    <li class="list-group-item"><span>{t}Keine Gegenstände gefunden{/t}</span></li> 
+                    <li class="list-group-item"><span>{t}Keine Gegenstände gefunden{/t}</span></li>
                 {/if}
                 </ul></div>
             {else}
             <!--<h1>Keine Teile verdammt</h1>-->
             {/if}
-            
+
             {/foreach}
             </form>
 
@@ -153,7 +153,7 @@
         <div class="content">
             <form id="inventoryForm" method="POST" action="inventory.php">
             {foreach $myitem as $itemstore}
-            {if $parse.showemptystorages || $itemstore.itemcount > 0 }    
+            {if $parse.showemptystorages || $itemstore.itemcount > 0 }
             <hr>
                 <div class="storage-area">
                 <button class="btn smallButton" name="removeStorage" data-name="{if isset($itemstore.storage.label)}{$itemstore.storage.label}{else}{t}Unsortiert{/t}{/if}" value="{$itemstore.storage.id}" type="submit"><i class="fas fa-times-circle"></i></button>
@@ -169,9 +169,9 @@
                 {if isset($itemstore.items)}
                     {foreach $itemstore.items as $item}
 
-                        
+
                         {assign var="subCats" value=","|explode:$item.subcategories}
-                        {$subCategories=array()} 
+                        {$subCategories=array()}
                         {foreach $subCats as $subCat}
                             {if isset($subcategories.$subCat)}
                             {$subCategories[] ="<a href='inventory.php?subcategory={$subcategories.$subCat.id}'>{$subcategories.$subCat.name}</a>"}
@@ -189,31 +189,31 @@
                             <span class="list-span">{$item.amount}</span>
                             <span class="list-span">{$item.comment}</span>
 
-                            <span class="list-span">{$implodedSubCats}</span> 
+                            <span class="list-span">{$implodedSubCats}</span>
                             <span class="list-span">{$dateexploded.0}</span>
                             <a class="list-span" href="index.php?editItem={$item.id}"><i class="fas fa-edit"></i></a>
 
                             <div class="dropdown float-right">
                                 <select autocomplete="off" id="item_{$item.id}" class="btn btn-primary dropdown-toggle switchStorage" data-value="0"  data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                
+
                                 <option selected="selected" value="-1">{t}Zuweisen{/t}</option>
 
-                                {foreach $storages as $storage} 
+                                {foreach $storages as $storage}
                                     <option value="{$storage.id}">{$storage.label}</option>
                                 {/foreach}
                                 </select>
                             </div>
                         </li>
-                    
+
                     {/foreach}
                 {else}
-                    <li class="list-group-item"><span>{t}Keine Gegenstände gefunden{/t}</span></li>    
+                    <li class="list-group-item"><span>{t}Keine Gegenstände gefunden{/t}</span></li>
                 {/if}
                 </ul></div>
             {else}
             <!--<h1>Keine Teile verdammt</h1>-->
             {/if}
-            
+
             {/foreach}
             </form>
 
@@ -229,19 +229,31 @@
 {include file="footer.tpl"}
 {literal}
         <script type="text/javascript">
-            function MoveItem(itemid,storageid){
-
-                alert('inventory.php?storageid=' + itemid + '&itemid=' + storageid);
-
+            function NumSelect(maxAmout) {
+              var Amount = prompt("{/literal}{t}Von diesem Artikel sind mehrere Stück am Lagerplatz. Wieviele sollen zum neuen Lagerort transferiert werden?{/t}{literal}", maxAmout);
+              return Amount
             }
 
 
+            function MoveItem(itemid,storageid){
+                alert('inventory.php?storageid=' + itemid + '&itemid=' + storageid);
+            }
 
             let switches = document.querySelectorAll('.btn.switchStorage')
+
             for (let item of switches) {
                 item.addEventListener('change', function(evt) {
+                    let amountTrans = ""
                     if (evt.target.value === '-1') return
-                    window.location.href = 'inventory.php?storageid=' + evt.target.value + '&itemid=' + evt.target.dataset['id'];
+                      if(evt.target.dataset['itemamount'] > 1){
+                          let ToTranser = NumSelect(evt.target.dataset['itemamount'])
+                          if (ToTranser >= 0 && ToTranser <= evt.target.dataset['itemamount']){
+                            amountTrans = "&amount=" + ToTranser
+                          }
+                      }
+
+                    window.location.href = 'inventory.php?storageid=' + evt.target.value + '&itemid=' + evt.target.dataset['id'] + amountTrans;
+                    //alert('inventory.php?storageid=' + evt.target.value + '&itemid=' + evt.target.dataset['id'] + amountTrans)
                 })
             }
 
@@ -255,6 +267,6 @@
                     }
                 })
             }
-        </script>  
+        </script>
 {/literal}
 {include file="bodyend.tpl"}

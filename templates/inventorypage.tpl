@@ -30,8 +30,8 @@
             <span class="list-span">{$item.amount}</span>
             <span class="list-span">{$item.comment}</span>
             <span class="list-span">
-            
-                {$subcategoriesDB = explode(',', trim($item['subcategories'], ','))}                            
+
+                {$subcategoriesDB = explode(',', trim($item['subcategories'], ','))}
                 {if count($subcategoriesDB)>0}
                 {foreach $subcategoriesDB as $sub}
                     {if strlen($sub)>0}
@@ -40,7 +40,7 @@
                     {/if}
                 {/foreach}
                 {/if}
-            
+
             </span>
 
 
@@ -49,7 +49,7 @@
             <a class="list-span" href="index.php?editItem={$item.id}"><i class="fas fa-edit"></i></a>
             <div class="dropdown float-right">
 
-                <select autocomplete="off" class="btn btn-primary dropdown-toggle switchStorage" value="0" type="button" tabindex="-1" data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <select autocomplete="off" class="btn btn-primary dropdown-toggle switchStorage" data-itemamount="{$item.amount}" value="0" type="button" tabindex="-1" data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <option selected="selected" value="-1">{t}Zuweisen{/t}</option>
                     {foreach $storages as $storage}
                         <option value="{$storage.id}">{$storage.label}</option>
@@ -91,6 +91,6 @@
                 })
             }
         </script>
-    
+
 {/literal}
 {include file="bodyend.tpl"}

@@ -62,6 +62,6 @@
 {t}Fehler: E-Mail-Adresse \"%s\" ungültig.{/t}
 {t}Sie haben eine Einladung für sqStorage erhalten: <a href=\"%s\">%s</a>\r\n{/t}
 {t}Es können zur Zeit keine Mails vom System versendet werden.<br />Bitte diesen Einladungslink an den Benutzer weiterleiten:<br /><a href=\"%s\">%s</a>\r\n{/t}
-
+{t}Von diesem Artikel sind mehrere Stück am Lagerplatz. Wieviele sollen zum neuen Lagerort transferiert werden?{/t}
 
 

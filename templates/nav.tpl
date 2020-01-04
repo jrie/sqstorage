@@ -22,22 +22,28 @@
         <input class="form-control mr-sm-2" name="searchValue" type="search" placeholder="{t}Suche{/t}" aria-label="{t}Suche{/t}">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">{t}Suchen{/t}</button>
     </form>
-
-
+    <!--
         {foreach $langsAvailable as $lang}
                 <a href="index.php?lang={$lang}" alt="Language {$langsLabels.$lang}"><small>{$langsLabels.$lang}</small></a><br />
         {/foreach}
-<!--        <select class="form-control mr-sm-2" name="lang">
-
-            { foreach $langsAvailable as $lang }
-            <option class="nav-item" value="{ $lang }" { if $langCurrent == $lang } selected="selected"{ /if }>{ $langsLabels[{ $lang }] }</option>
-            { /foreach }
-
+    -->
+    <div class="dropdown">
+         <select class="form-control mr-sm-2" name="lang">
+            {foreach $langsAvailable as $lang}
+            <option value="{$lang}" {if $langCurrent == $lang} selected="selected"{/if}>{$langsLabels.$lang}</option>
+            {/foreach}
         </select>
--->
+        <script type ="text/javascript">
+            let langSelection = document.querySelector('select[name="lang"').addEventListener('change', function (evt) {
+                let langValue = evt.target.options[evt.target.selectedIndex].value
+                window.location.href = 'index.php?lang=' + langValue;
+            })
+        </script>
+    </div>
 
 
     <ul class="nav">
-        <li class="nav-item"><a href="index.php?logout" class="nav-link"><i class="fas fa-sign-out-alt" title="{t}Abmelde{/t}"></i></a></li>
+        <li class="nav-item"><a href="index.php?logout" class="nav-link"><i class="fas fa-sign-out-alt" title="{t}Abmelden{/t}"></i></a></li>
     </ul>
 </nav>
+<p id="msgbox"></p>

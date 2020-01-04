@@ -15,7 +15,7 @@ function forceMouseOut (input, itemContainer) {
 function setSelectValue (evt) {
   let target = null
   if (evt.target.dataset['targetid'].startsWith('#', 0)) target = document.querySelector(evt.target.dataset['targetid'])
-  else target = document.querySelectorAll(evt.target.dataset['targetid'])[parseInt(evt.target.dataset['targetIndex'])]
+  else target = document.querySelector('select[data-targetindex="' + evt.target.dataset['targetindex'] + '"]')
 
   target.selectedIndex = parseInt(evt.target.dataset['idx'])
   let event = new Event('change')
@@ -79,6 +79,8 @@ for (let item of dropDowns) {
   container.classList.add('input-group-text')
   container.style.zIndex = zIndex
 
+  item.dataset['targetindex'] = targetIndex;
+
   let itemContainer = document.createElement('div')
   itemContainer.classList.add('dropDownList')
   itemContainer.classList.add('hide')
@@ -117,7 +119,7 @@ for (let item of dropDowns) {
           }
 
           if (subTarget.dataset['targetid'].startsWith('#', 0)) target = document.querySelector(subTarget.dataset['targetid'])
-          else target = document.querySelectorAll(subTarget.dataset['targetid'])[parseInt(subTarget.dataset['targetIndex'])]
+          else target = document.querySelector('select[data-targetindex="' + subTarget.dataset['targetindex'] + '"]')
 
           for (let option of target.options) option.removeAttribute('selected')
           for (let index of selected) target.options[index].setAttribute('selected', 'selected')
@@ -150,7 +152,7 @@ for (let item of dropDowns) {
           }
           let target = null
           if (subTarget.dataset['targetid'].startsWith('#', 0)) target = document.querySelector(subTarget.dataset['targetid'])
-          else target = document.querySelectorAll(subTarget.dataset['targetid'])[parseInt(subTarget.dataset['targetIndex'])]
+          else target = document.querySelector('select[data-targetindex="' + subTarget.dataset['targetindex'] + '"]')
 
           for (let option of target.options) option.removeAttribute('selected')
           for (let index of selected) target.options[index].setAttribute('selected', 'selected')
@@ -192,9 +194,9 @@ for (let item of dropDowns) {
     dropDownItem.addEventListener('click', function () { toggleDropdown(input, itemContainer) })
     itemContainer.appendChild(dropDownItem)
     dropDownItem.dataset['idx'] = optionIndex++
-    dropDownItem.dataset['targetIndex'] = targetIndex
+    dropDownItem.dataset['targetindex'] = targetIndex
     if (item.getAttribute('id') !== null) dropDownItem.dataset['targetid'] = '#' + item.getAttribute('id')
-    else if (item.getAttribute('class') !== null) dropDownItem.dataset['targetid'] = '.' + item.getAttribute('class').replace(/ /g, '.')
+    else if (item.className !== '') dropDownItem.dataset['targetid'] = targetIndex
 
     if (multiple === null) dropDownItem.addEventListener('click', setSelectValue)
   }
