@@ -36,9 +36,9 @@
 
 
                                     {if !$isEdit && !$error}
-                                        <input type="text" name="username" maxlength="20" class="form-control" required="required" placeholder="'. gettext('Benutzername') . '" aria-label="' . gettext('Benutzername') . '" aria-describedby="basic-addon1">
+                                        <input type="text" name="username" maxlength="20" class="form-control" required="required" placeholder="{t}Benutzername{/t}" aria-label="{t}Benutzername{/t}" aria-describedby="basic-addon1">
                                     {else}
-                                        <input type="text" name="username" maxlength="20" class="form-control" required="required" placeholder="'. gettext('Benutzername') . '" aria-label="' . gettext('Benutzername') . '" aria-describedby="basic-addon1" value="{$user.username}">
+                                        <input type="text" name="username" maxlength="20" class="form-control" required="required" placeholder="{t}Benutzername{/t}" aria-label="{t}Benutzername{/t}" aria-describedby="basic-addon1" value="{$user.username}">
                                     {/if}
 
                             </div>
@@ -48,9 +48,9 @@
                                     <span class="input-group-text" id="basic-addon7">{t}E-Mail{/t}</span>
                                 </div>
                                     {if !$isEdit && !$error}
-                                        <input type="email" name="mailaddress" maxlength="254" class="form-control" autocomplete="off" placeholder="' . gettext('E-Mail') . '" aria-label="' . gettext('E-Mail') . '" aria-describedby="basic-addon7">
+                                        <input type="email" name="mailaddress" maxlength="254" class="form-control" autocomplete="off" placeholder="{t}E-Mail{/t}" aria-label="{t}E-Mail{/t}" aria-describedby="basic-addon7">
                                     {else}
-                                        <input type="email" name="mailaddress" maxlength="254" class="form-control" autocomplete="off" placeholder="' . gettext('E-Mail') . '" aria-label="E-Mail" aria-describedby="basic-addon7" value="{$user.mailaddress}">
+                                        <input type="email" name="mailaddress" maxlength="254" class="form-control" autocomplete="off" placeholder="{t}E-Mail{/t}" aria-label="{t}E-Mail{/t}" aria-describedby="basic-addon7" value="{$user.mailaddress}">
                                     {/if}
 
                             </div>
@@ -68,7 +68,7 @@
                                                     {if ($isEdit || $error) && $user.usergroupid == $usergroup.id}
                                                         {$currentUsergroup=$usergroup}
                                                     {/if}
-                                                    <option value="{$usergroup.id}">{$usergroup.name}</option>
+                                                    <option value="{$usergroup.id}">{t}{$usergroup.name}{/t}</option>
                                                 {/foreach}
 
                                         </select>

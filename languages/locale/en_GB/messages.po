@@ -217,11 +217,11 @@ msgstr "Transfer"
 
 #: templates//test.tpl:107 templates//transfer.tpl:115
 msgid "Quelle wählen"
-msgstr "Select source"
+msgstr "Choose source"
 
 #: templates//test.tpl:108 templates//transfer.tpl:116
 msgid "Ziel wählen"
-msgstr "Select target"
+msgstr "Choose target"
 
 #: templates//test.tpl:127 templates//inventory.tpl:70
 #: templates//inventory.tpl:78 templates//inventory.tpl:142
@@ -292,7 +292,7 @@ msgid ""
 "\"Refurbished\" wenn \"Neu,Gebraucht,Refurbished\" angegeben. Und oder "
 "numerische Werte (Ganzzahl, Gleitkommazahlen)"
 msgstr ""
-"Single choice, comma separated :If \"New,Used,Refurbished\" is entered, \"New"
+"Single choice, comma separated: If \"New,Used,Refurbished\" is entered, \"New"
 "\", \"Used\" and \"Refurbished\" additional to numeric values (inter, "
 "decimal) will be available"
 
@@ -514,6 +514,18 @@ msgid ""
 msgstr ""
 "There are several amounts of this item. How many should be transferred?"
 
+#: templates//php_language_extract.tpl:66
+msgid "Administrator"
+msgstr "Administrator"
+
+#: templates//php_language_extract.tpl:67
+msgid "Gast"
+msgstr "Visitor"
+
+#: templates//php_language_extract.tpl:68
+msgid "Benutzer"
+msgstr "User"
+
 #: templates//transfer.tpl:135
 msgid "Keine Gegenstände gefunden."
 msgstr "No items found."
@@ -580,12 +592,14 @@ msgstr "added to the database"
 msgid "Benutzer zur Bearbeitung:"
 msgstr "User for editing:"
 
-#: templates//settings.tpl:34 templates//settings.tpl:110
+#: templates//settings.tpl:34 templates//settings.tpl:39
+#: templates//settings.tpl:41 templates//settings.tpl:110
 #: templates//login.tpl:42
 msgid "Benutzername"
 msgstr "Username"
 
-#: templates//settings.tpl:48 templates//settings.tpl:110
+#: templates//settings.tpl:48 templates//settings.tpl:51
+#: templates//settings.tpl:53 templates//settings.tpl:110
 #: templates//login.tpl:51
 msgid "E-Mail"
 msgstr "E-mail"
@@ -707,16 +721,3 @@ msgstr "Request"
 #: templates//login.tpl:110
 msgid "Zugangsdaten vergessen"
 msgstr "Credentials forgotten"
-
-#~ msgid ""
-#~ "Auswahlwerte, durch Komma getrennt: ''Neu,Gebraucht,Refurbished'' und "
-#~ "oder Dezimal und Gleitkommazahlen."
-#~ msgstr ""
-#~ "Options, comma separated: \"New,Used,Refurbished\" and/or integer of "
-#~ "float numbers."
-
-#~ msgid "Abmelde"
-#~ msgstr "Sign out"
-
-#~ msgid "Sprache wählen"
-#~ msgstr "Select language"

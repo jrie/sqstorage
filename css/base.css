@@ -51,6 +51,7 @@ body {
 .input-group select {
     font-size: 0.75rem;
     height: 100%;
+    line-height: 1.6;
 }
 
 .input-group-text {

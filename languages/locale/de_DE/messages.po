@@ -520,6 +520,18 @@ msgstr ""
 "Von diesem Artikel sind mehrere Stück am Lagerplatz. Wieviele sollen zum "
 "neuen Lagerort transferiert werden?"
 
+#: templates//php_language_extract.tpl:66
+msgid "Administrator"
+msgstr "Administrator"
+
+#: templates//php_language_extract.tpl:67
+msgid "Gast"
+msgstr "Gast"
+
+#: templates//php_language_extract.tpl:68
+msgid "Benutzer"
+msgstr "Benutzer"
+
 #: templates//transfer.tpl:135
 msgid "Keine Gegenstände gefunden."
 msgstr "Keine Gegenstände gefunden."
@@ -586,12 +598,14 @@ msgstr "zur Datenbank hinzugefügt"
 msgid "Benutzer zur Bearbeitung:"
 msgstr "Benutzer zur Bearbeitung:"
 
-#: templates//settings.tpl:34 templates//settings.tpl:110
+#: templates//settings.tpl:34 templates//settings.tpl:39
+#: templates//settings.tpl:41 templates//settings.tpl:110
 #: templates//login.tpl:42
 msgid "Benutzername"
 msgstr "Benutzername"
 
-#: templates//settings.tpl:48 templates//settings.tpl:110
+#: templates//settings.tpl:48 templates//settings.tpl:51
+#: templates//settings.tpl:53 templates//settings.tpl:110
 #: templates//login.tpl:51
 msgid "E-Mail"
 msgstr "E-Mail"
@@ -713,16 +727,3 @@ msgstr "Anfordern"
 #: templates//login.tpl:110
 msgid "Zugangsdaten vergessen"
 msgstr "Zugangsdaten vergessen"
-
-#~ msgid ""
-#~ "Auswahlwerte, durch Komma getrennt: ''Neu,Gebraucht,Refurbished'' und "
-#~ "oder Dezimal und Gleitkommazahlen."
-#~ msgstr ""
-#~ "Auswahlwerte, durch Komma getrennt: ''Neu,Gebraucht,Refurbished'' und "
-#~ "oder Dezimal und Gleitkommazahlen."
-
-#~ msgid "Abmelde"
-#~ msgstr "Abmelde"
-
-#~ msgid "Sprache wählen"
-#~ msgstr "Sprache wählen"

@@ -101,21 +101,20 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
     DB::update('items', array('storageid' => $storage['id']), 'id=%d', $item['id']);
     header("location: inventory.php");
     die();
-  }else{
+  } else {
     if ($storeId != NULL) {
       $previousStorage = DB::queryFirstRow('SELECT id, amount FROM storages WHERE id=%d', $item['storageid']);
-      DB::update('storages', array('amount' => intVal($previousStorage['amount']) - intVal($setamount) ), 'id=%d', $previousStorage['id']);
+      DB::update('storages', array('amount' => intVal($previousStorage['amount']) - intVal($setamount)), 'id=%d', $previousStorage['id']);
     }
     $storage = DB::queryFirstRow('SELECT id, amount FROM storages WHERE id=%d', $storeId);
     DB::update('storages', array('amount' => intVal($storage['amount']) + intVal($setamount)), 'id=%d', $storage['id']);
-
-    $insertarray=array();
+    $insertarray = array();
     foreach ($item as $key => $value) {
-       if($key != 'id') $insertarray[$key] = $value;
+      if ($key != 'id') $insertarray[$key] = $value;
     }
     $insertarray['storageid'] = $storage['id'];
     $insertarray['amount'] = $setamount;
-    DB::insert("items",$insertarray);
+    DB::insert("items", $insertarray);
 
     DB::update('items', array('amount' => intval($item['amount'] - $setamount)), 'id=%d', $item['id']);
 
