@@ -36,7 +36,7 @@
         <script type ="text/javascript">
             let langSelection = document.querySelector('select[name="lang"').addEventListener('change', function (evt) {
                 let langValue = evt.target.options[evt.target.selectedIndex].value
-                window.location.href = 'index.php?lang=' + langValue;
+                window.location.href = window.location.href + '?lang=' + langValue;
             })
         </script>
     </div>
