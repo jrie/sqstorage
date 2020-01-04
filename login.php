@@ -158,7 +158,7 @@ if ($createFirstAdmin || (isset($_REQUEST['activate']) && !empty($_REQUEST['acti
       $header[] = 'MIME-Version: 1.0';
       $header[] = 'Content-type: text/html; charset=utf-8';
       $header[] = 'From: ' . $mailSettings->senderAddress;
-      mail($user['mailaddress'], gettext('sqStorage Passwortänderung'), sprintf(gettext("Um das Passwort für sqStorage zu ändern bitte den folgenden Link aufrufen: <a href=\"%s\">%s</a>\r\n"), dirname($_SERVER['HTTP_REFERER']) . '/login.php?activate=' . $user['id'] . $token, dirname($_SERVER['HTTP_REFERER']) . '/login.php?activate=' . $user['id'] . $token), implode("\r\n", $header));
+      mail($user['mailaddress'], gettext('sqStorage Passwortänderung'), sprintf(gettext("Um das Passwort für sqStorage zu ändern bitte den folgenden Link aufrufen: <a href=\"%s\">%s</a>"), dirname($_SERVER['HTTP_REFERER']) . '/login.php?activate=' . $user['id'] . $token, dirname($_SERVER['HTTP_REFERER']) . '/login.php?activate=' . $user['id'] . $token), implode("\r\n", $header));
       $error = gettext('Falls ein Benutzerkonto gefunden wird, erhalten Sie nun eine Mail mit einem Link zum Zurücksetzen des Passworts.');
     } else {
       $error = gettext('Momentan können keine E-Mails versendet werden, bitte später noch einmal versuchen, oder einen Administrator kontaktieren.');

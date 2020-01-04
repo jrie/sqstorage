@@ -78,25 +78,51 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
   //----- P2 - OK
   //----- P3 + OK
 } else if (isset($_GET['storageid']) && !empty($_GET['storageid']) && isset($_GET['itemid']) && !empty($_GET['itemid'])) {
+
   $storeId = intVal($_GET['storageid']);
   $itemId = intVal($_GET['itemid']);
 
-  $item = DB::queryFirstRow('SELECT id, amount, storageid FROM items WHERE id=%d', $itemId);
+  $item = DB::queryFirstRow('SELECT * FROM items WHERE id=%d', $itemId);
+  $setamount = $item['amount'];
+  if (isset($_GET['amount']) && intval($_GET['amount'])) $setamount = intval($_GET['amount']);
   if ($item['storageid'] == $storeId) {
     header("location: inventory.php");
     die();
   }
 
-  if ($storeId != NULL) {
-    $previousStorage = DB::queryFirstRow('SELECT id, amount FROM storages WHERE id=%d', $item['storageid']);
-    DB::update('storages', array('amount' => intVal($previousStorage['amount']) - intVal($item['amount'])), 'id=%d', $previousStorage['id']);
+  if ($setamount == $item['amount']) {
+    if ($storeId != NULL) {
+      $previousStorage = DB::queryFirstRow('SELECT id, amount FROM storages WHERE id=%d', $item['storageid']);
+      DB::update('storages', array('amount' => intVal($previousStorage['amount']) - intVal($item['amount'])), 'id=%d', $previousStorage['id']);
+    }
+
+    $storage = DB::queryFirstRow('SELECT id, amount FROM storages WHERE id=%d', $storeId);
+    DB::update('storages', array('amount' => intVal($storage['amount']) + intVal($item['amount'])), 'id=%d', $storage['id']);
+    DB::update('items', array('storageid' => $storage['id']), 'id=%d', $item['id']);
+    header("location: inventory.php");
+    die();
+  }else{
+    if ($storeId != NULL) {
+      $previousStorage = DB::queryFirstRow('SELECT id, amount FROM storages WHERE id=%d', $item['storageid']);
+      DB::update('storages', array('amount' => intVal($previousStorage['amount']) - intVal($setamount) ), 'id=%d', $previousStorage['id']);
+    }
+    $storage = DB::queryFirstRow('SELECT id, amount FROM storages WHERE id=%d', $storeId);
+    DB::update('storages', array('amount' => intVal($storage['amount']) + intVal($setamount)), 'id=%d', $storage['id']);
+
+    $insertarray=array();
+    foreach ($item as $key => $value) {
+       if($key != 'id') $insertarray[$key] = $value;
+    }
+    $insertarray['storageid'] = $storage['id'];
+    $insertarray['amount'] = $setamount;
+    DB::insert("items",$insertarray);
+
+    DB::update('items', array('amount' => intval($item['amount'] - $setamount)), 'id=%d', $item['id']);
+
+    header("location: inventory.php");
+    die();
   }
 
-  $storage = DB::queryFirstRow('SELECT id, amount FROM storages WHERE id=%d', $storeId);
-  DB::update('storages', array('amount' => intVal($storage['amount']) + intVal($item['amount'])), 'id=%d', $storage['id']);
-  DB::update('items', array('storageid' => $storage['id']), 'id=%d', $item['id']);
-  header("location: inventory.php");
-  die();
   //----- P3 - OK
   //----- P4 + OK       // SEARCH
 } else if (isset($_GET['searchValue']) && !empty($_GET['searchValue'])) {
