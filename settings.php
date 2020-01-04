@@ -53,10 +53,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['target'] == 'mail') {
         $header[] = 'MIME-Version: 1.0';
         $header[] = 'Content-type: text/html; charset=utf-8';
         $header[] = 'From: ' . $mailSettings->senderAddress;
-        mail($_POST['mailaddress'], gettext('sqStorage Einladung'), sprintf(gettext("Sie haben eine Einladung für sqStorage erhalten: <a href=\"%s\">%s</a>\r\n"), dirname($_SERVER['HTTP_REFERER']) . '/login.php?activate=' . $userId . $token, dirname($_SERVER['HTTP_REFERER']) . '/login.php?activate=' . $userId . $token), implode("\r\n", $header));
+        mail($_POST['mailaddress'], gettext('sqStorage Einladung'), sprintf(gettext("Sie haben eine Einladung für sqStorage erhalten: <a href=\"%s\">%s</a>"), dirname($_SERVER['HTTP_REFERER']) . '/login.php?activate=' . $userId . $token, dirname($_SERVER['HTTP_REFERER']) . '/login.php?activate=' . $userId . $token) . '\r\n', implode("\r\n", $header));
       } else {
         DB::commit();
-        throw new Exception(sprintf(gettext("Es können zur Zeit keine Mails vom System versendet werden.<br />Bitte diesen Einladungslink an den Benutzer weiterleiten:<br /><a href=\"%s\">%s</a>\r\n"), dirname($_SERVER['HTTP_REFERER']) . '/login.php?activate=' . $userId . $token, dirname($_SERVER['HTTP_REFERER']) . '/login.php?activate=' . $userId . $token));
+        throw new Exception(sprintf(gettext("Es können zur Zeit keine Mails vom System versendet werden.<br />Bitte diesen Einladungslink an den Benutzer weiterleiten:<br /><a href=\"%s\">%s</a>"), dirname($_SERVER['HTTP_REFERER']) . '/login.php?activate=' . $userId . $token, dirname($_SERVER['HTTP_REFERER']) . '/login.php?activate=' . $userId . $token) . '\r\n');
       }
     }
     DB::commit();
