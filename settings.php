@@ -85,13 +85,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' || !empty($error) || ($_SERVER['REQUEST_
   if ($isEdit || $isAdd) {
     if (empty($error)) {
       $user = DB::queryFirstRow('SELECT u.id, u.username, u.mailaddress, g.name as usergroupname, g.id as usergroupid FROM users u LEFT JOIN users_groups ugs ON(ugs.userid = u.id) LEFT JOIN usergroups g ON(g.id = ugs.usergroupid) WHERE u.id = %i LIMIT 1', $_GET['editUser']);
-      if ($user == null) header('Location: index.php');
+      if ($user == null) {
+        header('Location: index.php');
+        die();
+      }
+
     }
   } else {
     if (isset($_GET['removeUser']) && !empty($_GET['removeUser'])) {
       $countAdmins = DB::query('SELECT count(*) as cnt, userid FROM users_groups WHERE usergroupid=1 LIMIT 1');
       if ($countAdmins['cnt'] == 1 && $countAdmins['userid'] == $_GET['removeUSER']) {
-        $error = 'Fehler: Der letzte Administrator kann nicht gelöscht werden!';
+        $error = gettext('Fehler: Der letzte Administrator kann nicht gelöscht werden!');
       } else {
         $user = DB::delete('users', 'id=%d', $_GET['removeUser']);
         header('Location: settings.php');
