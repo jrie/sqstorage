@@ -54,6 +54,10 @@ body {
     line-height: 1.6;
 }
 
+.input-group input:required {
+    background-color: whitesmoke;
+}
+
 .input-group-text {
     min-width: 13.8em;
     max-width: 13.8em;
