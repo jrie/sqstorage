@@ -6,21 +6,35 @@ A easy to use and super quick way to organize your inventory, storage and storag
 Right now sqStorage available in German and English. Feel free to add your own translation (see LANGUAGE.md).
 
 ### Installation and usage
-1) By default, the database name used is **tlv** and the main user **tlvUser** with the password **tlvUser** - this can be configured in **support/dba.php** changing the ***DB::dbName***,  ***DB::$user*** and ***DB::$password*** variables, if you use a server, you might want to use the SQL Server IP instead of *localhost*.
-The directories **smartyfiles/** and **languages/locale/** need to be writeable for the webserver.
-**chown -R www-data smartyfiles/** and **chown -R www-data languages/locale/** should do it in most cases.
-You need to have the php intl extension enabled.
 
-2) Once the user and database are created, open `bootDB.php` this will create all db tables ready for usage.
+#### Requirements
 
-3) Open sqstorage and create a admin account - this can be done once after installation. If you mess up, you will have to drop/truncate the following tables in order to prompt for the admin account registration again.
+* PHP version 7.0 and upwards
+  * PHP extensions: `mysqli`, `gettext`, `intl`
+* a MySQL-compatible database server (e.g. MariaDB)
+* a web server, e.g. nginx or Apache.
 
-The tables are:
-* users
+#### Database
 
-Then open `bootDB.php` again to recreate the tables.
+Default database: `tlv`
+Default username: `tlvUser`
+Default password: `tlvUser`
 
-Last but not least:
+This can be configured in `support/dba.php` by changing the `DB::dbName`, `DB::$user` and `DB::$password` variables. If your database is on a different server, you might want to use the IP or hostname instead of `localhost`.
 
-4) Have fun using sqStorage and do not hesitate to write a email or issue, if you miss something!
+#### Permissions
 
+The directories `smartyfiles/` and `languages/locale/` need to be **writeable** for the webserver.
+
+`chown -R www-data smartyfiles/` and `chown -R www-data languages/locale/` should work in most cases.
+
+#### First run
+
+- Once user and database are created, open `bootDB.php`. This will create all DB tables necessary.
+- Open sqstorage in your webbrowser and create a admin account.
+  * this can be done only once after installation!
+  * If you mess up, you will have to drop/truncate the `users` table in order to prompt for admin account registration again. You will have to open `bootDB.php` again to recreate the tables.
+
+#### Last but not least
+
+Have fun using sqStorage and do not hesitate to write a email or issue, if you miss something!
