@@ -1,0 +1,28 @@
+version: '3.1'
+
+services:        
+    web:
+        image: nginx:alpine
+        ports:
+            - "8080:80"
+        volumes:
+            - ../:/code
+            - ./docker-nginx.conf:/etc/nginx/conf.d/default.conf
+        command: /bin/sh -c 'sed -i s/localhost/db/g /code/support/dba.php && nginx -g "daemon off;"'
+        links:
+            - php
+            - db
+    php:
+        build: ./php
+        volumes: 
+            - ../:/code
+    db:
+        build: ./mariadb
+        restart: always
+        environment: 
+            MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+            MYSQL_USER: tlvUser
+            MYSQL_PASSWORD: tlvUser
+            MYSQL_DATABASE: tlv
+        command:
+            'mysqld --innodb-flush-method=fsync'
