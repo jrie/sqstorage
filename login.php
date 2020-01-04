@@ -32,7 +32,26 @@ if (!empty($_SESSION['authenticated'])) {
 $showRecover = isset($_GET['recover']);
 $createFirstAdmin = false;
 $showActivation = false;
-DB::query('SELECT id FROM users LIMIT 1');
+
+DB::$error_handler = false;
+DB::$throw_exception_on_error = true;
+try{
+  DB::query('SELECT id FROM users LIMIT 1');
+}
+catch(MeekroDBException $e){
+  if ($e->getCode() == 1146) {
+    // table doesn't exist -> init by calling bootDB
+    ob_start();
+    include('bootDB.php');
+    ob_end_clean();
+    DB::query('SELECT id FROM users LIMIT 1');
+  } else{
+    echo $e->getMessage();
+    exit;
+  }
+}
+DB::$error_handler = true;
+
 if (DB::count() == 0) {
   $showActivation = true;
   $createFirstAdmin = true;

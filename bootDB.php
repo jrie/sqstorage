@@ -15,9 +15,8 @@ DB::query('CREATE TABLE IF NOT EXISTS `users_groups` (`userid` bigint(20) UNSIGN
 DB::query('CREATE TABLE IF NOT EXISTS `users_tokens` (`id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,`userid` bigint(20) NOT NULL,`token` varchar(255) NOT NULL,`valid_until` datetime DEFAULT NULL,PRIMARY KEY (`id`),KEY `userid` (`id`)) ENGINE=InnoDB;');
 
 DB::$error_handler = false;
-DB::query('INSERT INTO `settings` (`id`, `namespace`, `jsondoc`) VALUES (1, \'mail\', \'{}\')');
-DB::query('INSERT INTO `usergroups` (`id`, `name`) VALUES (1, \'Administrator\'), (2, \'Gast\'), (3, \'Benutzer\');');
+DB::query('INSERT INTO `settings` (`id`, `namespace`, `jsondoc`) VALUES (1, \'mail\', \'{}\') ON DUPLICATE KEY UPDATE id=id;');
+DB::query('INSERT INTO `usergroups` (`id`, `name`) VALUES (1, \'Administrator\'), (2, \'Gast\'), (3, \'Benutzer\') ON DUPLICATE KEY UPDATE id=id;');
 DB::$error_handler = true;
 
 print('<strong>Database bootstrapped succesfully.</strong>');
-die();
