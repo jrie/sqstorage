@@ -1,15 +1,5 @@
-#, fuzzy
 msgid ""
-msgstr ""
-"Content-Type: text/plain; charset=UTF-8\n"
-"Project-Id-Version: \n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"MIME-Version: 1.0\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.4\n"
+msgstr "Content-Type: text/plain; charset=UTF-8\n"
 
 #: templates//categories.tpl:9 templates//php_language_extract.tpl:33
 #: templates//nav.tpl:9
@@ -17,37 +7,37 @@ msgid "Kategorien"
 msgstr ""
 
 #: templates//categories.tpl:9 templates//categories.tpl:15
-#: templates//inventory.tpl:24 templates//inventory.tpl:96
-#: templates//inventory.tpl:167 templates//inventorypage.tpl:24
+#: templates//inventory.tpl:24 templates//inventory.tpl:99
+#: templates//inventory.tpl:170 templates//inventorypage.tpl:24
 #: templates//indexpage.tpl:145 templates//indexpage.tpl:148
 #: templates//indexpage.tpl:150
 msgid "Anzahl"
 msgstr ""
 
 #: templates//categories.tpl:9 templates//categories.tpl:15
-#: templates//inventory.tpl:24 templates//inventory.tpl:96
-#: templates//inventory.tpl:167 templates//inventorypage.tpl:24
+#: templates//inventory.tpl:24 templates//inventory.tpl:99
+#: templates//inventory.tpl:170 templates//inventorypage.tpl:24
 #: templates//settings.tpl:110
 msgid "Aktionen"
 msgstr ""
 
 #: templates//categories.tpl:11 templates//categories.tpl:18
-#: templates//inventory.tpl:19 templates//inventory.tpl:91
-#: templates//inventory.tpl:162 templates//inventorypage.tpl:22
+#: templates//inventory.tpl:19 templates//inventory.tpl:94
+#: templates//inventory.tpl:165 templates//inventorypage.tpl:22
 #, fuzzy
 msgid "Gegenstand"
 msgstr ""
 "#-#-#-#-#  sqstorage.pot  #-#-#-#-#\n"
-"#-#-#-#-#  tsmarty2c42vpLe  #-#-#-#-#\n"
+"#-#-#-#-#  tsmarty2cl4de7B  #-#-#-#-#\n"
 
 #: templates//categories.tpl:11 templates//categories.tpl:18
-#: templates//inventory.tpl:19 templates//inventory.tpl:91
-#: templates//inventory.tpl:162
+#: templates//inventory.tpl:19 templates//inventory.tpl:94
+#: templates//inventory.tpl:165
 msgid "Gegenstände"
 msgstr ""
 
 #: templates//categories.tpl:15 templates//inventory.tpl:24
-#: templates//inventory.tpl:96 templates//inventory.tpl:167
+#: templates//inventory.tpl:99 templates//inventory.tpl:170
 #: templates//inventorypage.tpl:24
 msgid "Unterkategorien"
 msgstr ""
@@ -223,9 +213,9 @@ msgstr ""
 msgid "Ziel wählen"
 msgstr ""
 
-#: templates//test.tpl:127 templates//inventory.tpl:67
-#: templates//inventory.tpl:75 templates//inventory.tpl:139
-#: templates//inventory.tpl:210
+#: templates//test.tpl:127 templates//inventory.tpl:70
+#: templates//inventory.tpl:78 templates//inventory.tpl:142
+#: templates//inventory.tpl:213
 msgid "Keine Gegenstände gefunden"
 msgstr ""
 
@@ -491,7 +481,7 @@ msgid ""
 "a>rn"
 msgstr ""
 
-#: templates//php_language_extract.tpl:65 templates//inventory.tpl:233
+#: templates//php_language_extract.tpl:65 templates//inventory.tpl:236
 msgid ""
 "Von diesem Artikel sind mehrere Stück am Lagerplatz. Wieviele sollen zum "
 "neuen Lagerort transferiert werden?"
@@ -502,59 +492,59 @@ msgid "Keine Gegenstände gefunden."
 msgstr ""
 
 #: templates//inventory.tpl:16 templates//inventory.tpl:18
-#: templates//inventory.tpl:88 templates//inventory.tpl:90
-#: templates//inventory.tpl:159 templates//inventory.tpl:161
+#: templates//inventory.tpl:91 templates//inventory.tpl:93
+#: templates//inventory.tpl:162 templates//inventory.tpl:164
 msgid "Unsortiert"
 msgstr ""
 
-#: templates//inventory.tpl:19 templates//inventory.tpl:91
-#: templates//inventory.tpl:162 templates//inventorypage.tpl:22
+#: templates//inventory.tpl:19 templates//inventory.tpl:94
+#: templates//inventory.tpl:165 templates//inventorypage.tpl:22
 #, fuzzy
 msgid "Position"
 msgstr ""
 "#-#-#-#-#  sqstorage.pot  #-#-#-#-#\n"
-"#-#-#-#-#  tsmarty2c42vpLe  #-#-#-#-#\n"
+"#-#-#-#-#  tsmarty2cl4de7B  #-#-#-#-#\n"
 
-#: templates//inventory.tpl:19 templates//inventory.tpl:91
-#: templates//inventory.tpl:162
+#: templates//inventory.tpl:19 templates//inventory.tpl:94
+#: templates//inventory.tpl:165
 msgid "Positionen"
 msgstr ""
 
-#: templates//inventory.tpl:24 templates//inventory.tpl:96
-#: templates//inventory.tpl:167 templates//inventorypage.tpl:24
+#: templates//inventory.tpl:24 templates//inventory.tpl:99
+#: templates//inventory.tpl:170 templates//inventorypage.tpl:24
 #: templates//settings.tpl:110
 msgid "Gruppe"
 msgstr ""
 
-#: templates//inventory.tpl:24 templates//inventory.tpl:96
-#: templates//inventory.tpl:167 templates//inventorypage.tpl:24
+#: templates//inventory.tpl:24 templates//inventory.tpl:99
+#: templates//inventory.tpl:170 templates//inventorypage.tpl:24
 #: templates//indexpage.tpl:23 templates//indexpage.tpl:28
 #: templates//indexpage.tpl:30
 msgid "Bezeichnung"
 msgstr ""
 
-#: templates//inventory.tpl:24 templates//inventory.tpl:96
-#: templates//inventory.tpl:167 templates//inventorypage.tpl:24
+#: templates//inventory.tpl:24 templates//inventory.tpl:99
+#: templates//inventory.tpl:170 templates//inventorypage.tpl:24
 #: templates//indexpage.tpl:69 templates//indexpage.tpl:73
 #: templates//indexpage.tpl:75
 msgid "Bemerkung"
 msgstr ""
 
-#: templates//inventory.tpl:24 templates//inventory.tpl:96
-#: templates//inventory.tpl:167 templates//inventorypage.tpl:24
+#: templates//inventory.tpl:24 templates//inventory.tpl:99
+#: templates//inventory.tpl:170 templates//inventorypage.tpl:24
 msgid "Hinzugefügt"
 msgstr ""
 
-#: templates//inventory.tpl:56 templates//inventory.tpl:128
-#: templates//inventory.tpl:199 templates//inventorypage.tpl:53
+#: templates//inventory.tpl:56 templates//inventory.tpl:131
+#: templates//inventory.tpl:202 templates//inventorypage.tpl:53
 msgid "Zuweisen"
 msgstr ""
 
-#: templates//inventory.tpl:264 templates//inventorypage.tpl:87
+#: templates//inventory.tpl:267 templates//inventorypage.tpl:87
 msgid "Lagerplatz wirklich entfernen?"
 msgstr ""
 
-#: templates//inventory.tpl:264 templates//inventorypage.tpl:87
+#: templates//inventory.tpl:267 templates//inventorypage.tpl:87
 msgid "Position wirklich entfernen?"
 msgstr ""
 
@@ -562,8 +552,8 @@ msgstr ""
 msgid "zur Datenbank hinzugefügt"
 msgstr ""
 
-#: templates//settings.tpl:24 templates//indexpage.tpl:13
-msgid "Eintrag zur Bearbeitung:"
+#: templates//settings.tpl:24
+msgid "Benutzer zur Bearbeitung:"
 msgstr ""
 
 #: templates//settings.tpl:34 templates//settings.tpl:110
@@ -623,6 +613,10 @@ msgstr ""
 
 #: templates//indexpage.tpl:7
 msgid "zur Datenbank hinzugefügt."
+msgstr ""
+
+#: templates//indexpage.tpl:13
+msgid "Eintrag zur Bearbeitung:"
 msgstr ""
 
 #: templates//indexpage.tpl:28 templates//indexpage.tpl:30

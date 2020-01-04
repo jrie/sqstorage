@@ -20,34 +20,34 @@ msgid "Kategorien"
 msgstr "Kategorien"
 
 #: templates//categories.tpl:9 templates//categories.tpl:15
-#: templates//inventory.tpl:24 templates//inventory.tpl:96
-#: templates//inventory.tpl:167 templates//inventorypage.tpl:24
+#: templates//inventory.tpl:24 templates//inventory.tpl:99
+#: templates//inventory.tpl:170 templates//inventorypage.tpl:24
 #: templates//indexpage.tpl:145 templates//indexpage.tpl:148
 #: templates//indexpage.tpl:150
 msgid "Anzahl"
 msgstr "Anzahl"
 
 #: templates//categories.tpl:9 templates//categories.tpl:15
-#: templates//inventory.tpl:24 templates//inventory.tpl:96
-#: templates//inventory.tpl:167 templates//inventorypage.tpl:24
+#: templates//inventory.tpl:24 templates//inventory.tpl:99
+#: templates//inventory.tpl:170 templates//inventorypage.tpl:24
 #: templates//settings.tpl:110
 msgid "Aktionen"
 msgstr "Aktionen"
 
 #: templates//categories.tpl:11 templates//categories.tpl:18
-#: templates//inventory.tpl:19 templates//inventory.tpl:91
-#: templates//inventory.tpl:162 templates//inventorypage.tpl:22
+#: templates//inventory.tpl:19 templates//inventory.tpl:94
+#: templates//inventory.tpl:165 templates//inventorypage.tpl:22
 msgid "Gegenstand"
 msgstr "Gegenstand"
 
 #: templates//categories.tpl:11 templates//categories.tpl:18
-#: templates//inventory.tpl:19 templates//inventory.tpl:91
-#: templates//inventory.tpl:162
+#: templates//inventory.tpl:19 templates//inventory.tpl:94
+#: templates//inventory.tpl:165
 msgid "Gegenstände"
 msgstr "Gegenstände"
 
 #: templates//categories.tpl:15 templates//inventory.tpl:24
-#: templates//inventory.tpl:96 templates//inventory.tpl:167
+#: templates//inventory.tpl:99 templates//inventory.tpl:170
 #: templates//inventorypage.tpl:24
 msgid "Unterkategorien"
 msgstr "Unterkategorien"
@@ -226,9 +226,9 @@ msgstr "Quelle wählen"
 msgid "Ziel wählen"
 msgstr "Ziel wählen"
 
-#: templates//test.tpl:127 templates//inventory.tpl:67
-#: templates//inventory.tpl:75 templates//inventory.tpl:139
-#: templates//inventory.tpl:210
+#: templates//test.tpl:127 templates//inventory.tpl:70
+#: templates//inventory.tpl:78 templates//inventory.tpl:142
+#: templates//inventory.tpl:213
 msgid "Keine Gegenstände gefunden"
 msgstr "Keine Gegenstände gefunden"
 
@@ -512,7 +512,7 @@ msgstr ""
 "diesen Einladungslink an den Benutzer weiterleiten:<br /><a href=\"%s\">%s</"
 "a>rn"
 
-#: templates//php_language_extract.tpl:65 templates//inventory.tpl:233
+#: templates//php_language_extract.tpl:65 templates//inventory.tpl:236
 msgid ""
 "Von diesem Artikel sind mehrere Stück am Lagerplatz. Wieviele sollen zum "
 "neuen Lagerort transferiert werden?"
@@ -525,56 +525,56 @@ msgid "Keine Gegenstände gefunden."
 msgstr "Keine Gegenstände gefunden."
 
 #: templates//inventory.tpl:16 templates//inventory.tpl:18
-#: templates//inventory.tpl:88 templates//inventory.tpl:90
-#: templates//inventory.tpl:159 templates//inventory.tpl:161
+#: templates//inventory.tpl:91 templates//inventory.tpl:93
+#: templates//inventory.tpl:162 templates//inventory.tpl:164
 msgid "Unsortiert"
 msgstr "Unsortiert"
 
-#: templates//inventory.tpl:19 templates//inventory.tpl:91
-#: templates//inventory.tpl:162 templates//inventorypage.tpl:22
+#: templates//inventory.tpl:19 templates//inventory.tpl:94
+#: templates//inventory.tpl:165 templates//inventorypage.tpl:22
 msgid "Position"
 msgstr "Position"
 
-#: templates//inventory.tpl:19 templates//inventory.tpl:91
-#: templates//inventory.tpl:162
+#: templates//inventory.tpl:19 templates//inventory.tpl:94
+#: templates//inventory.tpl:165
 msgid "Positionen"
 msgstr "Positionen"
 
-#: templates//inventory.tpl:24 templates//inventory.tpl:96
-#: templates//inventory.tpl:167 templates//inventorypage.tpl:24
+#: templates//inventory.tpl:24 templates//inventory.tpl:99
+#: templates//inventory.tpl:170 templates//inventorypage.tpl:24
 #: templates//settings.tpl:110
 msgid "Gruppe"
 msgstr "Gruppe"
 
-#: templates//inventory.tpl:24 templates//inventory.tpl:96
-#: templates//inventory.tpl:167 templates//inventorypage.tpl:24
+#: templates//inventory.tpl:24 templates//inventory.tpl:99
+#: templates//inventory.tpl:170 templates//inventorypage.tpl:24
 #: templates//indexpage.tpl:23 templates//indexpage.tpl:28
 #: templates//indexpage.tpl:30
 msgid "Bezeichnung"
 msgstr "Bezeichnung"
 
-#: templates//inventory.tpl:24 templates//inventory.tpl:96
-#: templates//inventory.tpl:167 templates//inventorypage.tpl:24
+#: templates//inventory.tpl:24 templates//inventory.tpl:99
+#: templates//inventory.tpl:170 templates//inventorypage.tpl:24
 #: templates//indexpage.tpl:69 templates//indexpage.tpl:73
 #: templates//indexpage.tpl:75
 msgid "Bemerkung"
 msgstr "Bemerkung"
 
-#: templates//inventory.tpl:24 templates//inventory.tpl:96
-#: templates//inventory.tpl:167 templates//inventorypage.tpl:24
+#: templates//inventory.tpl:24 templates//inventory.tpl:99
+#: templates//inventory.tpl:170 templates//inventorypage.tpl:24
 msgid "Hinzugefügt"
 msgstr "Hinzugefügt"
 
-#: templates//inventory.tpl:56 templates//inventory.tpl:128
-#: templates//inventory.tpl:199 templates//inventorypage.tpl:53
+#: templates//inventory.tpl:56 templates//inventory.tpl:131
+#: templates//inventory.tpl:202 templates//inventorypage.tpl:53
 msgid "Zuweisen"
 msgstr "Zuweisen"
 
-#: templates//inventory.tpl:264 templates//inventorypage.tpl:87
+#: templates//inventory.tpl:267 templates//inventorypage.tpl:87
 msgid "Lagerplatz wirklich entfernen?"
 msgstr "Lagerplatz wirklich entfernen?"
 
-#: templates//inventory.tpl:264 templates//inventorypage.tpl:87
+#: templates//inventory.tpl:267 templates//inventorypage.tpl:87
 msgid "Position wirklich entfernen?"
 msgstr "Position wirklich entfernen?"
 
@@ -582,9 +582,9 @@ msgstr "Position wirklich entfernen?"
 msgid "zur Datenbank hinzugefügt"
 msgstr "zur Datenbank hinzugefügt"
 
-#: templates//settings.tpl:24 templates//indexpage.tpl:13
-msgid "Eintrag zur Bearbeitung:"
-msgstr "Eintrag zur Bearbeitung:"
+#: templates//settings.tpl:24
+msgid "Benutzer zur Bearbeitung:"
+msgstr "Benutzer zur Bearbeitung:"
 
 #: templates//settings.tpl:34 templates//settings.tpl:110
 #: templates//login.tpl:42
@@ -644,6 +644,10 @@ msgstr "Der letzte Administrator kann nicht gelöscht werden!"
 #: templates//indexpage.tpl:7
 msgid "zur Datenbank hinzugefügt."
 msgstr "zur Datenbank hinzugefügt."
+
+#: templates//indexpage.tpl:13
+msgid "Eintrag zur Bearbeitung:"
+msgstr "Eintrag zur Bearbeitung:"
 
 #: templates//indexpage.tpl:28 templates//indexpage.tpl:30
 msgid "Bezeichnung oder Name"
