@@ -43,6 +43,7 @@
 
 
     <ul class="nav">
-        <li class="nav-item"><a href="index.php?logout" class="nav-link"><i class="fas fa-sign-out-alt" title="{t}Abmelde{/t}"></i></a></li>
+        <li class="nav-item"><a href="index.php?logout" class="nav-link"><i class="fas fa-sign-out-alt" title="{t}Abmelden{/t}"></i></a></li>
     </ul>
 </nav>
+<p id="msgbox"></p>

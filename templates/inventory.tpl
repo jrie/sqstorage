@@ -51,7 +51,7 @@
                             <a class="list-span" href="index.php?editItem={$item.id}"><i class="fas fa-edit"></i></a>
 
                             <div class="dropdown float-right">
-                                <select autocomplete="off" id="item_{$item.id}" class="btn btn-primary dropdown-toggle switchStorage" data-value="0"  data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <select autocomplete="off" id="item_{$item.id}" class="btn btn-primary dropdown-toggle switchStorage" data-itemamount="{$item.amount}" data-value="0"  data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
                                 <option selected="selected" value="-1">{t}Zuweisen{/t}</option>
 
@@ -229,15 +229,31 @@
 {include file="footer.tpl"}
 {literal}
         <script type="text/javascript">
+            function NumSelect(maxAmout) {
+              var Amount = prompt("{/literal}{t}Von diesem Artikel sind mehrere Stück am Lagerplatz. Wieviele sollen zum neuen Lagerort transferiert werden?{/t}{literal}", maxAmout);
+              return Amount
+            }
+
+
             function MoveItem(itemid,storageid){
                 alert('inventory.php?storageid=' + itemid + '&itemid=' + storageid);
             }
 
             let switches = document.querySelectorAll('.btn.switchStorage')
+
             for (let item of switches) {
                 item.addEventListener('change', function(evt) {
+                    let amountTrans = ""
                     if (evt.target.value === '-1') return
-                    window.location.href = 'inventory.php?storageid=' + evt.target.value + '&itemid=' + evt.target.dataset['id'];
+                      if(evt.target.dataset['itemamount'] > 1){
+                          let ToTranser = NumSelect(evt.target.dataset['itemamount'])
+                          if (ToTranser >= 0 && ToTranser <= evt.target.dataset['itemamount']){
+                            amountTrans = "&amount=" + ToTranser
+                          }
+                      }
+
+                    window.location.href = 'inventory.php?storageid=' + evt.target.value + '&itemid=' + evt.target.dataset['id'] + amountTrans;
+                    //alert('inventory.php?storageid=' + evt.target.value + '&itemid=' + evt.target.dataset['id'] + amountTrans)
                 })
             }
 

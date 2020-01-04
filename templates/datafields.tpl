@@ -14,7 +14,7 @@
     {/if}
 
     <div class="content">
-        <h5>Auswahl</h5>
+        <h5>{t}Auswahl{/t}</h5>
         <form class="form-outline" name="fieldData" method="POST" action="datafields.php">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -62,7 +62,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon6">{t}Auswahlwerte{/t}</span>
                 </div>
-                <input type="text" maxlength="1023" name="fieldValues" requried="required" readonly="readonly" maxlength="1023" class="form-control fieldValues" autocomplete="off" placeholder="{t}Auswahlwerte, durch Komma getrennt: \'\'Neu,Gebraucht,Refurbished\'\' und oder Dezimal und Gleitkommazahlen.{/t}" aria-label="{t}Neu,Gebraucht,Refurbished{/t}" aria-describedby="basic-addon6">
+                <input type="text" maxlength="1023" name="fieldValues" requried="required" readonly="readonly" maxlength="1023" class="form-control fieldValues" autocomplete="off" placeholder="{t}Auswahlwerte, durch Komma getrennt: 'Neu,Gebraucht,Refurbished' und oder Dezimal und Gleitkommazahlen.{/t}" aria-label="{t}Neu,Gebraucht,Refurbished{/t}" aria-describedby="basic-addon6">
             </div>
             <button type="submit" class="btn btn-primary">{t}Eintragen / Aktualisieren{/t}</button>
             <button type="reset" class="btn btn-secondary">{t}Formular zurücksetzen{/t}</button>
@@ -123,10 +123,10 @@
 
                 let dataFields = evt.target.elements;
                 let nonValidInputs = {
-                    'dataType': ['-1', 'Datentyp', 1, 63],
-                    'fieldName': ['', 'Feldname', 1, 63],
-                    'fieldDefault': ['', 'Standardwert', 0, 63],
-                    'fieldValues': ['', 'Auswahl', 1, 1023]
+                    'dataType': ['-1', '{/literal}{t}Datentyp{/t}{literal}', 1, 63],
+                    'fieldName': ['', '{/literal}{t}Feldname{/t}{literal}', 1, 63],
+                    'fieldDefault': ['', '{/literal}{t}Standardwert{/t}{literal}', 0, 63],
+                    'fieldValues': ['', '{/literal}{t}Auswahl{/t}{literal}', 1, 1023]
                 }
 
 
@@ -152,7 +152,7 @@
 
                     if (nonValidInputs[field.name] !== undefined) {
                         if (dataValue === nonValidInputs[field.name][0] && dataValue !== '') {
-                            alert('Feld "' + nonValidInputs[field.name][1] + '" hat keinen Wert.')
+                            alert('{/literal}{t}Feld{/t}{literal} "' + nonValidInputs[field.name][1] + '" {/literal}{t}hat keinen Wert.{/t}{literal}')
                             evt.preventDefault()
                             break;
                         } else if (dataValue.length < nonValidInputs[field.name][2] || dataValue.length > nonValidInputs[field.name][3]) {
