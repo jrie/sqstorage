@@ -15,21 +15,21 @@
             {/if}
 
             <form accept-charset="utf-8" method="POST" action="index.php">
-                
+
                     {if $isEdit}<input type="hidden" value="{$item.id}" name="itemUpdateId" />{/if}
-                
+
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">{t}Bezeichnung{/t}</span>
                     </div>
 
-                    
+
                         {if !$isEdit}
                             <input type="text" name="label" maxlength="64" class="form-control" required="required" placeholder="{t}Bezeichnung oder Name{/t}" aria-label="{t}Bezeichnung{/t}" aria-describedby="basic-addon1">
                         {else}
                             <input type="text" name="label" maxlength="64" class="form-control" required="required" placeholder="{t}Bezeichnung oder Name{/t}")aria-label="{t}Bezeichnung{/t}" aria-describedby="basic-addon1" value="{$item.label}">
                         {/if}
-                    
+
                 </div>
 
                 <div class="input-group mb-3">
@@ -48,7 +48,7 @@
                                                 <option value="{$storage.label}" selected="selected">{$storage.label}</option>
                                             {else}
                                                 <option value="{$storage.label}">{$storage.label}</option>
-                                            
+
                                         {/if}
                                     {{/foreach}}
 
@@ -60,7 +60,7 @@
                                         <input type="text" name="storage" id="storage" maxlength="32" class="form-control" placeholder="{t}Lagerplatz{/t}" required="required" autocomplete="off" value="{$currentStorage.label}">
                                     {else}
                                         <input type="text" name="storage" id="storage" maxlength="32" class="form-control" placeholder="{t}Lagerplatz{/t}" required="required" autocomplete="off">
-                                    
+
                                 {/if}
                 </div>
 
@@ -68,11 +68,11 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon7">{t}Bemerkung{/t}</span>
                     </div>
-                    
-                        {if isset($item.comment) && !empty($item.comment) != NULL} 
+
+                        {if isset($item.comment) && !empty($item.comment) != NULL}
                             <input type="text" name="comment" maxlength="255" class="form-control" autocomplete="off" placeholder="{t}Bemerkung{/t}" aria-label="{t}Bemerkung{/t}" aria-describedby="basic-addon7" value="{$item.comment}">', $item['comment']);
                         {else}
-                            <input type="text" name="comment" maxlength="255" class="form-control" autocomplete="off" placeholder="{t}Bemerkung{/t}" aria-label="{t}Bemerkung{/t}" aria-describedby="basic-addon7">';
+                            <input type="text" name="comment" maxlength="255" class="form-control" autocomplete="off" placeholder="{t}Bemerkung{/t}" aria-label="{t}Bemerkung{/t}" aria-describedby="basic-addon7">
                         {/if}
 
                 </div>
@@ -92,9 +92,9 @@
                                                 <option value="{$category.name}" selected="selected">{$category.name}</option>
                                             {else}
                                                 <option value="{$category.name}">{$category.name}</option>'
-                                            
 
-                                        {/if}    
+
+                                        {/if}
                                     {/foreach}
                              </select>
                         </div>
@@ -115,7 +115,7 @@
                                     {if $isEdit && !empty($item.subcategories)}
                                         <option value="-1">{t}Unterkategorie{/t}</option>
                                         {assign var="subCat" value=","|explode:$item.subcategories}
-                                        
+
                                     {else}
                                         <option value="-1" selected="selected">{t}Unterkategorie{/t}</option>
                                     {/if}
@@ -126,9 +126,9 @@
                                                 <option selected="selected" value="{$category.name}">{$category.name}</option>
                                             {else}
                                                 <option value="{$category.name}">{$category.name}</option>
-                                            
 
-                                        {/if}    
+
+                                        {/if}
                                     {/foreach}
                             </select>
                         </div>
@@ -157,10 +157,10 @@
                     </div>
                         {if !$isEdit}
                             <input type="text" name="serialnumber" class="form-control" placeholder="{t}Seriennummer/Artikelnummer{/t}" aria-label="{t}Seriennummer{/t}" aria-describedby="basic-addon6">
-                        {else} 
+                        {else}
                             <input type="text" name="serialnumber" class="form-control" placeholder="{t}Seriennummer/Artikelnummer{/t}" aria-label="Seriennummer" aria-describedby="basic-addon6" value="{$item.serialnumber}">
                         {/if}
-                    
+
 
                 </div>
 
@@ -179,7 +179,7 @@
 
 {include file="footer.tpl"}
 {literal}
- 
+
         <script type="text/javascript">
             document.querySelector('#storageDropdown').addEventListener('change', function(evt) {
                 if (evt.target.value === '-1') {
@@ -214,6 +214,6 @@
                 document.querySelector('#category').value = evt.target.value;
             })
         </script>
-    
+
 {/literal}
 {include file="bodyend.tpl"}

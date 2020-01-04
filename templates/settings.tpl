@@ -106,8 +106,8 @@
                         </div>
                         {/if}
 
-                        <a class="btn btn-primary addUser" href="settings.php?addUser">{t}Neuer Benutzer{/t}</a>';
-                        <hr/><ul class="categories list-group"><li class="alert alert-info"><span class="list-span">´{t}Benutzername{/t}</span><span class="list-span">{t}E-Mail{/t}</span><span class="list-span">{t}Gruppe{/t}</span><span class="list-span">{t}Aktionen{/t}</span></li>
+                        <a class="btn btn-primary addUser" href="settings.php?addUser">{t}Neuer Benutzer{/t}</a>
+                        <hr/><ul class="categories list-group"><li class="alert alert-info"><span class="list-span">{t}Benutzername{/t}</span><span class="list-span">{t}E-Mail{/t}</span><span class="list-span">{t}Gruppe{/t}</span><span class="list-span">{t}Aktionen{/t}</span></li>
                         {foreach $users as $user}
                             <li class="list-group-item"><a name="removeUser" data-name="{$user.username}" data-id="{$user.usergroupid}" href="settings.php?removeUser={$user.id}" class="removalButton fas fa-times-circle btn"></a><span class="list-span">{$user.username}</span><span class="list-span">{$user.mailaddress}</span><span class="list-span">{$user.usergroupname}</span><a class="fas fa-edit editUser" href="#" name="editUser" data-name="{$user.username}" data-id="{$user.id}"></a></li>
                         {/foreach}
