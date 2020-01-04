@@ -236,9 +236,7 @@
                 document.querySelector('input[name="existingId"]').value = parseInt(evt.target.dataset['fieldid'], 10)
 
                 let target = document.querySelector('select[name="dataType"]')
-                //target.value = fieldTypes[evt.target.dataset['type']]
-                target.value = fieldTypes[evt.target.dataset['type']]
-                alert(target.value)
+                target.value = fieldTypes[parseInt(evt.target.dataset['type'])]
                 document.querySelector('input[name="dataType"]').value = target.options[target.selectedIndex].innerText
                 document.querySelector('input[name="fieldDefault"]').value = evt.target.dataset['default']
                 document.querySelector('input[name="fieldName"]').value = evt.target.dataset['name']
