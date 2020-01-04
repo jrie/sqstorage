@@ -85,6 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' || !empty($error) || ($_SERVER['REQUEST_
   if ($isEdit || $isAdd) {
     if (empty($error)) {
       $user = DB::queryFirstRow('SELECT u.id, u.username, u.mailaddress, g.name as usergroupname, g.id as usergroupid FROM users u LEFT JOIN users_groups ugs ON(ugs.userid = u.id) LEFT JOIN usergroups g ON(g.id = ugs.usergroupid) WHERE u.id = %i LIMIT 1', $_GET['editUser']);
+      if ($user == null) header('Location: index.php');
     }
   } else {
     if (isset($_GET['removeUser']) && !empty($_GET['removeUser'])) {
