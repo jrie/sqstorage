@@ -39,20 +39,14 @@ msgstr "Actions"
 #: templates//categories.tpl:11 templates//categories.tpl:18
 #: templates//inventory.tpl:19 templates//inventory.tpl:91
 #: templates//inventory.tpl:162 templates//inventorypage.tpl:22
-#, fuzzy
-#| msgid "Gegenstand"
-#| msgid_plural "Gegenstände"
 msgid "Gegenstand"
 msgstr "Item"
 
 #: templates//categories.tpl:11 templates//categories.tpl:18
 #: templates//inventory.tpl:19 templates//inventory.tpl:91
 #: templates//inventory.tpl:162
-#, fuzzy
-#| msgid "Gegenstand"
-#| msgid_plural "Gegenstände"
 msgid "Gegenstände"
-msgstr "Item"
+msgstr "Items"
 
 #: templates//categories.tpl:15 templates//inventory.tpl:24
 #: templates//inventory.tpl:96 templates//inventory.tpl:167
@@ -73,8 +67,6 @@ msgid "Kategorie wirklich entfernen?"
 msgstr "Really remove the category?"
 
 #: templates//categories.tpl:54
-#, fuzzy
-#| msgid "Kategorie wirklich entfernen?"
 msgid "Unterkategorie wirklich entfernen?"
 msgstr "Really remove the category?"
 
@@ -100,7 +92,7 @@ msgstr "Data type example values"
 
 #: templates//datafields.tpl:45
 msgid "Details"
-msgstr "details"
+msgstr "Details"
 
 #: templates//datafields.tpl:49 templates//datafields.tpl:51
 msgid "Feldname"
@@ -171,7 +163,7 @@ msgstr "and"
 
 #: templates//datafields.tpl:159
 msgid "Zeichen lang sein."
-msgstr "character long."
+msgstr "Character long."
 
 #: templates//datafields.tpl:167 templates//datafields.tpl:171
 msgid "darf nur zwischen"
@@ -183,13 +175,11 @@ msgstr " ."
 
 #: templates//datafields.tpl:171
 msgid "Zeichen lang sein. Aktuelle Zeichen"
-msgstr "character long. Current character"
+msgstr "Character long. Current character"
 
 #: templates//datafields.tpl:220 templates//php_language_extract.tpl:13
-#, fuzzy
-#| msgid "Eintragen"
 msgid "Eintrag"
-msgstr "Enter"
+msgstr "Entery"
 
 #: templates//datafields.tpl:220
 msgid "wirklich löschen?"
@@ -278,17 +268,11 @@ msgstr "Unsorted"
 
 #: templates//inventory.tpl:19 templates//inventory.tpl:91
 #: templates//inventory.tpl:162 templates//inventorypage.tpl:22
-#, fuzzy
-#| msgid "Position"
-#| msgid_plural "Positionen"
 msgid "Position"
 msgstr "Position"
 
 #: templates//inventory.tpl:19 templates//inventory.tpl:91
 #: templates//inventory.tpl:162
-#, fuzzy
-#| msgid "Position"
-#| msgid_plural "Positionen"
 msgid "Positionen"
 msgstr "Position"
 
@@ -350,7 +334,7 @@ msgstr "Username"
 #: templates//login.tpl:51 templates//settings.tpl:48
 #: templates//settings.tpl:110
 msgid "E-Mail"
-msgstr "e-mail"
+msgstr "E-mail"
 
 #: templates//login.tpl:63
 msgid "Passwort"
@@ -362,7 +346,7 @@ msgstr "Repeat password"
 
 #: templates//login.tpl:85
 msgid "Angemeldet bleiben?"
-msgstr "Stay signed in"
+msgstr "Stay signed in?"
 
 #: templates//login.tpl:90
 msgid "Speichern"
@@ -419,7 +403,7 @@ msgstr "Username contains illegal characters."
 
 #: templates//php_language_extract.tpl:4
 msgid "Benutzername ist erforderlich."
-msgstr "Username is required"
+msgstr "Username is required."
 
 #: templates//php_language_extract.tpl:5
 msgid "Bitte Benutzername und E-Mail-Adresse angeben."
@@ -442,10 +426,8 @@ msgid "Die Passwörter stimmen nicht überein!"
 msgstr "The passwords didn't match!"
 
 #: templates//php_language_extract.tpl:14
-#, fuzzy
-#| msgid "Eintragen"
 msgid "Einträge"
-msgstr "Enter"
+msgstr "Entries"
 
 #: templates//php_language_extract.tpl:16
 msgid "Einzelauswahl (Single-Dropdown)"
@@ -529,7 +511,7 @@ msgid ""
 msgstr ""
 "Multiple choice, comma separated :If \"New,Used,Refurbished\" is entered, "
 "\"New\", \"Used\" and \"Refurbished\" additional to numeric values (inter, "
-"decimal) will be available"
+"decimal) will be available."
 
 #: templates//php_language_extract.tpl:37
 msgid "mit verknüpften Altdaten entfernt."
@@ -637,6 +619,18 @@ msgstr ""
 "The system is currently unable to send mails. <br /> Please forward this "
 "invitation link to the user: <br />/><a href=\"%s\">%s</a>rn"
 
+#: templates//php_language_extract.tpl:66
+msgid "Administrator"
+msgstr "Administrator"
+
+#: templates//php_language_extract.tpl:67
+msgid "Gast"
+msgstr "Guest"
+
+#: templates//php_language_extract.tpl:68
+msgid "Benutzer"
+msgstr "User"
+
 #: templates//settings.tpl:18
 msgid "zur Datenbank hinzugefügt"
 msgstr "added to the database"
@@ -675,8 +669,6 @@ msgid "Einstellungen speichern"
 msgstr "Save settings"
 
 #: templates//settings.tpl:163
-#, fuzzy
-#| msgid "Kategorie wirklich entfernen?"
 msgid "Benutzer wirklich entfernen?"
 msgstr "Really remove the category?"
 

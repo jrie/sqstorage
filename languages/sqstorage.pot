@@ -32,7 +32,7 @@ msgstr ""
 msgid "Gegenstand"
 msgstr ""
 "#-#-#-#-#  sqstorage.pot  #-#-#-#-#\n"
-"#-#-#-#-#  tsm46D1.tmp  #-#-#-#-#\n"
+"#-#-#-#-#  tsm14E2.tmp  #-#-#-#-#\n"
 
 #: templates//categories.tpl:11 templates//categories.tpl:18
 #: templates//inventory.tpl:19 templates//inventory.tpl:91
@@ -262,7 +262,7 @@ msgstr ""
 msgid "Position"
 msgstr ""
 "#-#-#-#-#  sqstorage.pot  #-#-#-#-#\n"
-"#-#-#-#-#  tsm46D1.tmp  #-#-#-#-#\n"
+"#-#-#-#-#  tsm14E2.tmp  #-#-#-#-#\n"
 
 #: templates//inventory.tpl:19 templates//inventory.tpl:91
 #: templates//inventory.tpl:162
@@ -592,6 +592,18 @@ msgid ""
 "Es können zur Zeit keine Mails vom System versendet werden.<br />Bitte "
 "diesen Einladungslink an den Benutzer weiterleiten:<br /><a href=\"%s\">%s</"
 "a>rn"
+msgstr ""
+
+#: templates//php_language_extract.tpl:66
+msgid "Administrator"
+msgstr ""
+
+#: templates//php_language_extract.tpl:67
+msgid "Gast"
+msgstr ""
+
+#: templates//php_language_extract.tpl:68
+msgid "Benutzer"
 msgstr ""
 
 #: templates//settings.tpl:18

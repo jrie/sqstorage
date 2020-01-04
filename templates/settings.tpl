@@ -4,7 +4,7 @@
         <div class="content">
 
 
-        {if $isEdit || $isAdd} 
+        {if $isEdit || $isAdd}
 
 
                         {if strlen($error)>0}
@@ -26,21 +26,21 @@
                         {/if}
 
                         <form accept-charset="utf-8" id="userform" method="POST" action="#">
-                            
+
                                 {if $isEdit} <input type="hidden" value="{$user.id}" name="userUpdateId" />{/if}
-                            
+
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1">{t}Benutzername{/t}</span>
                                 </div>
 
-                                
+
                                     {if !$isEdit && !$error}
-                                        <input type="text" name="username" maxlength="20" class="form-control" required="required" placeholder="'. gettext('Benutzername') . '" aria-label="' . gettext('Benutzername') . '" aria-describedby="basic-addon1">
-                                    {else} 
-                                        <input type="text" name="username" maxlength="20" class="form-control" required="required" placeholder="'. gettext('Benutzername') . '" aria-label="' . gettext('Benutzername') . '" aria-describedby="basic-addon1" value="{$user.username}">
+                                        <input type="text" name="username" maxlength="20" class="form-control" required="required" placeholder="{t}Benutzername{/t}" aria-label="{t}Benutzername{/t}" aria-describedby="basic-addon1">
+                                    {else}
+                                        <input type="text" name="username" maxlength="20" class="form-control" required="required" placeholder="{t}Benutzername{/t}" aria-label="{t}Benutzername{/t}" aria-describedby="basic-addon1" value="{$user.username}">
                                     {/if}
-                                
+
                             </div>
 
                             <div class="input-group mb-3">
@@ -48,9 +48,9 @@
                                     <span class="input-group-text" id="basic-addon7">{t}E-Mail{/t}</span>
                                 </div>
                                     {if !$isEdit && !$error}
-                                        <input type="email" name="mailaddress" maxlength="254" class="form-control" autocomplete="off" placeholder="' . gettext('E-Mail') . '" aria-label="' . gettext('E-Mail') . '" aria-describedby="basic-addon7">
-                                    {else} 
-                                        <input type="email" name="mailaddress" maxlength="254" class="form-control" autocomplete="off" placeholder="' . gettext('E-Mail') . '" aria-label="E-Mail" aria-describedby="basic-addon7" value="{$user.mailaddress}"> 
+                                        <input type="email" name="mailaddress" maxlength="254" class="form-control" autocomplete="off" placeholder="{t}E-Mail{/t}" aria-label="{t}E-Mail{/t}" aria-describedby="basic-addon7">
+                                    {else}
+                                        <input type="email" name="mailaddress" maxlength="254" class="form-control" autocomplete="off" placeholder="{t}E-Mail{/t}" aria-label="{t}E-Mail{/t}" aria-describedby="basic-addon7" value="{$user.mailaddress}">
                                     {/if}
 
                             </div>
@@ -59,30 +59,30 @@
                                 <div class="input-group-prepend">
                                     <div class="dropdown">
                                         <select class="btn btn-secondary dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="usergroupDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            
-                                                <option value="-1" selected="selected">{t}Benutzergruppe{/t}</option>                                               
+
+                                                <option value="-1" selected="selected">{t}Benutzergruppe{/t}</option>
 
                                                 {$currentUsergroup=NULL}
 
-                                                {foreach $usergroups as $usergroup} 
+                                                {foreach $usergroups as $usergroup}
                                                     {if ($isEdit || $error) && $user.usergroupid == $usergroup.id}
                                                         {$currentUsergroup=$usergroup}
                                                     {/if}
-                                                    <option value="{$usergroup.id}">{$usergroup.name}</option> 
+                                                    <option value="{$usergroup.id}">{t}{$usergroup.name}{/t}</option>
                                                 {/foreach}
-                                           
+
                                         </select>
                                     </div>
                                 </div>
-                                
+
                                     {if (!$isEdit && !$error)  || $currentUsergroup == NULL} {
                                         <input type="text" class="form-control" id="usergroupname" name="usergroupname" readonly="readonly"  required="required" autocomplete="off" placeholder="{t}Benutzergruppe{/t}">
                                         <input type="hidden" value="" id="usergroupid" name="usergroupid" />
-                                    {else} 
+                                    {else}
                                         <input type="text" class="form-control" id="usergroupname" name="usergroupname" readonly="readonly" required="required" autocomplete="off" placeholder="{t}Benutzergruppe{/t} " value="{$user.usergroupname}">
-                                        <input type="hidden" value="{$user.usergroupid}" id="usergroupid" name="usergroupid" /> 
+                                        <input type="hidden" value="{$user.usergroupid}" id="usergroupid" name="usergroupid" />
                                     {/if}
-                                
+
                             </div>
 
                             <div style="float: right;">
@@ -108,8 +108,8 @@
 
                         <a class="btn btn-primary addUser" href="settings.php?addUser">{t}Neuer Benutzer{/t}</a>';
                         <hr/><ul class="categories list-group"><li class="alert alert-info"><span class="list-span">´{t}Benutzername{/t}</span><span class="list-span">{t}E-Mail{/t}</span><span class="list-span">{t}Gruppe{/t}</span><span class="list-span">{t}Aktionen{/t}</span></li>
-                        {foreach $users as $user} 
-                            <li class="list-group-item"><a name="removeUser" data-name="{$user.username}" data-id="{$user.usergroupid}" href="settings.php?removeUser={$user.id}" class="removalButton fas fa-times-circle btn"></a><span class="list-span">{$user.username}</span><span class="list-span">{$user.mailaddress}</span><span class="list-span">{$user.usergroupname}</span><a class="fas fa-edit editUser" href="#" name="editUser" data-name="{$user.username}" data-id="{$user.id}"></a></li>                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                        {foreach $users as $user}
+                            <li class="list-group-item"><a name="removeUser" data-name="{$user.username}" data-id="{$user.usergroupid}" href="settings.php?removeUser={$user.id}" class="removalButton fas fa-times-circle btn"></a><span class="list-span">{$user.username}</span><span class="list-span">{$user.mailaddress}</span><span class="list-span">{$user.usergroupname}</span><a class="fas fa-edit editUser" href="#" name="editUser" data-name="{$user.username}" data-id="{$user.id}"></a></li>
                         {/foreach}
                         </ul><hr/>
 
@@ -146,7 +146,7 @@
 
         {/if}
         </div>
- 
+
 
 {$target = "transfer.php"}
 
