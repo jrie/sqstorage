@@ -56,6 +56,9 @@
                                 <option selected="selected" value="-1">{t}Zuweisen{/t}</option>
 
                                 {foreach $storages as $storage}
+                                    {if $storage.id == $itemstore.storage.id}
+                                        {continue}
+                                    {/if}
                                     <option value="{$storage.id}">{$storage.label}</option>
                                 {/foreach}
                                 </select>
