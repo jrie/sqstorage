@@ -55,11 +55,6 @@ body {
     position: relative;
 }
 
-.input-group {
-    width: 50%;
-    overflow: visible;
-}
-
 .input-group .form-control:hover::placeholder {
     text-decoration: underline;
 }
