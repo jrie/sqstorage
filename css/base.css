@@ -52,10 +52,25 @@ body {
     font-size: 0.75rem;
     height: 100%;
     line-height: 1.6;
+    position: relative;
 }
 
-.input-group input:required {
-    background-color: whitesmoke;
+.input-group {
+    width: 50%;
+    overflow: visible;
+}
+
+.input-group .form-control:hover::placeholder {
+    text-decoration: underline;
+}
+
+.input-group .form-control:required::placeholder {
+    color: #444;
+}
+
+.input-group .form-control:required:hover::placeholder,
+.input-group .form-control:required:focus::placeholder {
+    color: red;
 }
 
 .input-group-text {
