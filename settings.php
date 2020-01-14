@@ -63,8 +63,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['target'] == 'mail') {
     header('Location: settings.php');
   } catch (Exception $e) {
     $error = $e->getMessage();
-    $user = $_POST;
-    $user['id'] = $_POST['userUpdateId'];
+    if (strncmp($error, "Duplicate", 9) === 0) $error = sprintf(gettext('Der Benutzer "%s" existiert bereits.'), $user['username']);
+    $user = DB::queryFirstRow('SELECT u.id, u.username, u.mailaddress, g.name as usergroupname, g.id as usergroupid FROM users u LEFT JOIN users_groups ugs ON(ugs.userid = u.id) LEFT JOIN usergroups g ON(g.id = ugs.usergroupid) WHERE u.id = %i LIMIT 1', $user['id']);
   }
   DB::$error_handler = 'meekrodb_error_handler';
   DB::$throw_exception_on_error = false;
@@ -84,12 +84,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' || !empty($error) || ($_SERVER['REQUEST_
 
   if ($isEdit || $isAdd) {
     if (empty($error)) {
-      $user = DB::queryFirstRow('SELECT u.id, u.username, u.mailaddress, g.name as usergroupname, g.id as usergroupid FROM users u LEFT JOIN users_groups ugs ON(ugs.userid = u.id) LEFT JOIN usergroups g ON(g.id = ugs.usergroupid) WHERE u.id = %i LIMIT 1', $_GET['editUser']);
-      if ($user == null) {
-        header('Location: index.php');
-        die();
+      if ($isEdit) {
+        $user = DB::queryFirstRow('SELECT u.id, u.username, u.mailaddress, g.name as usergroupname, g.id as usergroupid FROM users u LEFT JOIN users_groups ugs ON(ugs.userid = u.id) LEFT JOIN usergroups g ON(g.id = ugs.usergroupid) WHERE u.id = %i LIMIT 1', $_GET['editUser']);
+        if ($user == null) {
+          header('Location: index.php');
+          die();
+        }
+      } else if ($isAdd) {
+        $user = DB::queryFirstRow('SELECT u.id, u.username, u.mailaddress, g.name as usergroupname, g.id as usergroupid FROM users u LEFT JOIN users_groups ugs ON(ugs.userid = u.id) LEFT JOIN usergroups g ON(g.id = ugs.usergroupid) WHERE u.id = %i LIMIT 1', $_GET['editUser']);
       }
-
     }
   } else {
     if (isset($_GET['removeUser']) && !empty($_GET['removeUser'])) {
