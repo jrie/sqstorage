@@ -7,7 +7,7 @@ body {
 
 .content {
     padding: 16px 24px;
-    margin-bottom: 100px;
+    margin-bottom: 240px;
 }
 
 .btn {
@@ -26,7 +26,7 @@ body {
     margin-top: 12px;
     margin-bottom: 2em;
     height: 3.5rem;
-    margin-right: 1.75em;
+    margin-right: 0.75em;
 }
 
 .navbar form input,
@@ -42,6 +42,26 @@ body {
     padding-top: 9px;
 }
 
+.nav li {
+    margin: 0px;
+    margin-right: 1rem;
+}
+
+.nav li:last-child {
+    margin: 0px;
+}
+
+.nav .nav-link:hover {
+    color: #333;
+    text-decoration: underline;
+}
+
+.nav .nav-link.activePage {
+    background-color: lightblue;
+    border-radius: 6px;
+    color: #111;
+}
+
 .searchArea {
     float: right;
     margin: 1em 0px;
@@ -51,8 +71,23 @@ body {
 .input-group select {
     font-size: 0.75rem;
     height: 100%;
-    line-height: 1.6;
+    line-height: 1.6rem;
     position: relative;
+}
+
+.input-group .form-check {
+    font-size: 0.75rem;
+    margin-top: -0.5em;
+    margin-left: 1em;
+}
+
+.input-group .form-check label {
+    font-size: 0.75rem;
+    line-height: 0px;
+    padding: 0px;
+    margin: -0.7em 0px;
+    padding: 0px 6px;
+    vertical-align: text-top;
 }
 
 .input-group .form-control:hover::placeholder {
@@ -270,6 +305,7 @@ ul.existingFields li {
 
 .hidden {
     visibility: hidden !important;;
+    display: none;
 }
 
 .nodisplay {
@@ -279,7 +315,8 @@ ul.existingFields li {
 .green,
 .red,
 .blue {
-    margin: 1rem 1.5rem;
+    /*margin: 1rem 1.5rem;*/
+    margin: 1rem 0px;
     padding: 0.5rem 1rem;
     border-radius: 4px;
     min-width: 52%;
@@ -335,8 +372,8 @@ ul.existingFields li {
 }
 
 .dropDown {
-    min-height: 2.6em;
-    max-height: 2.6em;
+    min-height: 3em;
+    max-height: 3.2em;
     padding: 0px;
     min-width: 13.8em;
     width: 13.8em;
@@ -365,7 +402,7 @@ form[name="fieldData"] .dropDown {
     margin: 0px;
     padding: 0.5em 0.75em;
     margin-left: 0.25em;
-    min-width: 80%;
+    min-width: 95%;
     transition-property: all;
     transition-duration: 300ms;
     transition-delay: 0ms;
@@ -398,12 +435,12 @@ form[name="fieldData"] .dropDown {
 
 .dropDown .dropDownList {
     background-color: whitesmoke;
-    max-height: 500px;
     overflow-y: scroll;
     position: absolute;
     left: 0px;
     text-align: left;
-    top: 2.3em;
+    top: 2.8em;
+    max-height: 14em;
     border-radius: 0px 0px 8px 8px;
     border: 1px solid #aaa;
     border-top: 0px;
@@ -426,6 +463,8 @@ form[name="fieldData"] .dropDown {
 
 .dropDown .dropDownList.show {
     height: auto;
+    z-index: 99999;
+    max-height: 12rem;
 }
 
 .dropDown .dropDownList span {
@@ -452,12 +491,42 @@ form[name="fieldData"] .dropDown {
 }
 
 .dropDown .dropDownList span:hover,
+.dropDown .dropDownList span[selected]:hover,
 .dropDown .dropDownList span:focus,
 .dropDown .dropDownList label:focus {
     background-color: slategray;
     color: whitesmoke;
 }
 
+.dropDown .dropDownList span[selected],
+.dropDown .dropDownList option[selected] {
+    background-color: lightblue;
+    color: #333;
+}
+
 .dropDown .dropDownList span:last-child {
     border-bottom: 0px;
+}
+
+.customFieldWrapper {
+    display: inline;
+}
+
+.customFieldWrapper.hidden {
+    display: none;
+}
+
+.customFieldWrapper .customFieldTitle {
+    background-color: bisque;
+    padding: 4px 12px;
+    font-weight: bold;
+    width: 100%;
+    display: inline-block;
+    border-radius: 6px 6px 0px 0px;
+}
+
+input.errorInt,
+input.errorFloat,
+input.errorString {
+    background-color: orange;
 }
