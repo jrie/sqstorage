@@ -4,18 +4,20 @@
 <nav class="navbar navbar-light bg-light">
     <a href="index.php"><img class="logo" src="./img/sqstorage.png" alt="Logo" /></a>
     <ul class="nav">
-        <li class="nav-item"><a href="index.php" class="nav-link">{t}Eintragen{/t}</a></li>
-        <li class="nav-item"><a href="inventory.php" class="nav-link">{t}Inventar{/t}</a></li>
-        <li class="nav-item"><a href="categories.php" class="nav-link">{t}Kategorien{/t}</a></li>
-        <li class="nav-item"><a href="transfer.php" class="nav-link">{t}Transferieren{/t}</a></li>
+        {$pages = ['index.php' => '', 'inventory.php' => '', 'categories.php' => '', 'transfer.php' => '', 'datafields.php' => '', 'settings.php' => '']}
+        {$pages[$target] = 'activePage'}
+        <li class="nav-item"><a href="index.php" class="nav-link {$pages['index.php']}" >{t}Eintragen{/t}</a></li>
+        <li class="nav-item"><a href="inventory.php" class="nav-link {$pages['inventory.php']}">{t}Inventar{/t}</a></li>
+        <li class="nav-item"><a href="categories.php" class="nav-link {$pages['categories.php']}">{t}Kategorien{/t}</a></li>
+        <li class="nav-item"><a href="transfer.php" class="nav-link {$pages['transfer.php']}">{t}Transferieren{/t}</a></li>
+        <li class="nav-item"><a href="datafields.php" class="nav-link {$pages['datafields.php']}">{t}Datenfelder{/t}</a></li>
         {if isset($SESSION.user)}
           {if isset($SESSION.user.usergroupid)}
             {if $SESSION.user.usergroupid == 1}
-                <li class="nav-item"><a href="settings.php" class="nav-link">{t}Einstellungen{/t}</a></li>
+                <li class="nav-item"><a href="settings.php" class="nav-link {$pages['settings.php']}">{t}Einstellungen{/t}</a></li>
             {/if}
           {/if}
         {/if}
-        <li class="nav-item"><a href="datafields.php" class="nav-link">{t}Datenfelder{/t}</a></li>
     </ul>
 
     <form class="form-inline searchArea" method="GET" action="inventory.php">
@@ -36,7 +38,9 @@
         <script type ="text/javascript">
             let langSelection = document.querySelector('select[name="lang"').addEventListener('change', function (evt) {
                 let langValue = evt.target.options[evt.target.selectedIndex].value
-                window.location.href = window.location.href + '?lang=' + langValue;
+                let srcUri = window.location.href.toString().replace(/.lang=.[^\&\/]*/, '')
+                if (srcUri.indexOf('?') === -1) window.location.href = srcUri + '?lang=' + langValue
+                else window.location.href = srcUri + '&lang=' + langValue
             })
         </script>
     </div>
