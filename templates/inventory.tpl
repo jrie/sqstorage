@@ -1,7 +1,5 @@
-{include file="head.tpl" title=foo}
-{include file="nav.tpl" title=foo}
-
-
+{include file="head.tpl" title="{t}Inventar{/t}"}
+{include file="nav.tpl" target="inventory.php"}
 
 {$hasdata=false}
 {$selectid=0}

@@ -1,5 +1,5 @@
-{include file="head.tpl" title=foo}
-{include file="nav.tpl" title=foo}
+{include file="head.tpl" title="{t}Transferieren{/t}"}
+{include file="nav.tpl" target="transfer.php"}
 
     <div class="content">
 

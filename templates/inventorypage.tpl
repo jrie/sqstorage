@@ -1,8 +1,7 @@
-{include file="head.tpl" title=foo}
-{include file="nav.tpl" title=foo}
+{include file="head.tpl" title="{t}Datenfelder{/t}"}
+{include file="nav.tpl" target="datafields.php"}
 
         <div class="content">
-
 {$sid = -99}
 {$dataid = 0}
 {foreach $storecontent as $items}

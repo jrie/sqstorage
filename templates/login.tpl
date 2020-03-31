@@ -1,4 +1,4 @@
-{include file="head.tpl" title=foo}
+{include file="head.tpl" title="{t}Login und Registrierung{/t}"}
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a href="index.php"><img class="logo" src="./img/sqstorage.png" /></a>

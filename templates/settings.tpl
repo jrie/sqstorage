@@ -1,5 +1,5 @@
-{include file="head.tpl" title=foo}
-{include file="nav.tpl" title=foo}
+{include file="head.tpl" title="{t}Einstellungen{/t}"}
+{include file="nav.tpl" target="settings.php"}
 
         <div class="content">
 

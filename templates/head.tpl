@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>sqStorage</title>
+    <title>sqStorage - {$title}</title>
     <link rel="stylesheet" href="./css/bootstrap/bootstrap.css">
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./fonts/fontawesome/css/solid.css">
