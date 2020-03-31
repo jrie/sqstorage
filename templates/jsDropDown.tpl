@@ -18,6 +18,8 @@ function setSelectValue (evt) {
   else target = document.querySelector('select[data-targetindex="' + evt.target.dataset['targetindex'] + '"]')
 
   target.selectedIndex = parseInt(evt.target.dataset['idx'])
+  for (let spanChild of target.parentNode.children[0].children[2].children) spanChild.removeAttribute('selected')
+  target.parentNode.children[0].children[2].children[target.selectedIndex].setAttribute('selected', 'selected')
   let event = new Event('change')
   target.dispatchEvent(event)
 
@@ -86,7 +88,10 @@ for (let item of dropDowns) {
   itemContainer.classList.add('hide')
 
   let multiple = item.getAttribute('multiple')
-  if (multiple !== null) container.classList.add('multipleSelect')
+  if (multiple !== null) {
+    container.classList.add('multipleSelect')
+    if (item.getAttribute('name') !== null) item.setAttribute('name', item.getAttribute('name').replace(/[\[\]]/g, '') + '[]')
+  }
 
   let optionIndex = 0
   for (let option of item.children) {
@@ -102,7 +107,11 @@ for (let item of dropDowns) {
       label.appendChild(document.createTextNode(option.innerText))
 
       if (option.value === '-1') {
-        checkbox.checked = true
+        if (option.getAttribute('selected') !== null) {
+          checkbox.checked = true
+          option.parentNode.parentNode.setAttribute('selected', 'selected')
+        }
+
         checkbox.addEventListener('click', function (evt) {
           let checkboxes = document.querySelectorAll('input[type="checkbox"]')
           let subTarget = evt.target.parentNode.parentNode
@@ -113,8 +122,12 @@ for (let item of dropDowns) {
             if (fieldItem.parentNode.parentNode.parentNode === evt.target.parentNode.parentNode.parentNode) {
               if (fieldItem.parentNode.parentNode.getAttribute('value') === '-1') {
                 fieldItem.checked = true
+                fieldItem.parentNode.parentNode.setAttribute('selected', 'selected')
                 selected.push(0)
-              } else fieldItem.checked = false
+              } else {
+                fieldItem.parentNode.parentNode.removeAttribute('selected')
+                fieldItem.checked = false
+              }
             }
           }
 
@@ -126,15 +139,26 @@ for (let item of dropDowns) {
 
           let event = new Event('change')
           target.dispatchEvent(event)
+          evt.target.parentNode.parentNode.parentNode.scrollTo(0,0)
         })
       } else {
+        if (option.getAttribute('selected') !== null) {
+          checkbox.checked = true
+          option.parentNode.parentNode.setAttribute('selected', 'selected')
+        }
+
         checkbox.addEventListener('click', function (evt) {
           let checkboxes = document.querySelectorAll('input[type="checkbox"]')
           for (let fieldItem of checkboxes) {
             if (fieldItem.parentNode.parentNode.parentNode === evt.target.parentNode.parentNode.parentNode) {
-              if (fieldItem.parentNode.parentNode.getAttribute('value') === '-1') fieldItem.checked = false
+              if (fieldItem.parentNode.parentNode.getAttribute('value') === '-1') {
+                fieldItem.checked = false
+                fieldItem.parentNode.parentNode.removeAttribute('selected')
+              }
             }
           }
+
+          let originalOffset = evt.layerY;
 
           let subTarget = evt.target.parentNode.parentNode
           let selected = []
@@ -142,14 +166,17 @@ for (let item of dropDowns) {
 
           for (let fieldItem of checkboxes) {
             if (fieldItem.parentNode.parentNode.parentNode === evt.target.parentNode.parentNode.parentNode) {
-              options.push(fieldItem)
+              fieldItem.parentNode.parentNode.removeAttribute('selected')
               if (fieldItem.parentNode.parentNode.getAttribute('value') === '-1') {
                 fieldItem.checked = false
               } else if (fieldItem.checked === true) {
+                fieldItem.parentNode.parentNode.setAttribute('selected', 'selected')
                 selected.push(parseInt(fieldItem.parentNode.parentNode.dataset['idx']))
               }
+              options.push(fieldItem)
             }
           }
+
           let target = null
           if (subTarget.dataset['targetid'].startsWith('#', 0)) target = document.querySelector(subTarget.dataset['targetid'])
           else target = document.querySelector('select[data-targetindex="' + subTarget.dataset['targetindex'] + '"]')
@@ -159,11 +186,12 @@ for (let item of dropDowns) {
 
           if (selected.length === 0) {
             options[0].checked = true
-            target.options[0].setAttribute('selected', 'selected')
+            options[0].parentNode.parentNode.setAttribute('selected', 'selected')
           }
 
           let event = new Event('change')
           target.dispatchEvent(event)
+          evt.target.parentNode.parentNode.parentNode.scrollTo(0, originalOffset - 60)
         })
       }
 
@@ -207,7 +235,13 @@ for (let item of dropDowns) {
   icon.classList.add('fa-align-justify')
 
   let input = document.createElement('input')
-  for (let attribute of item.getAttributeNames()) input.setAttribute(attribute, item.getAttribute(attribute))
+  for (let attribute of item.getAttributeNames()) {
+    if (attribute === 'name') {
+      input.setAttribute(attribute, item.getAttribute(attribute).toString().replace(/[\[\]]/g, '') + '_input')
+      continue
+    }
+    input.setAttribute(attribute, item.getAttribute(attribute))
+  }
   input.className = ''
   input.removeAttribute('id')
   input.removeAttribute('required')
@@ -217,7 +251,8 @@ for (let item of dropDowns) {
   input.classList.remove('dropdown')
 
   if (item.selectedOptions.length !== 0) {
-    input.setAttribute('placeholder', item.selectedOptions[0].innerText)
+    // input.setAttribute('placeholder', item.selectedOptions[0].innerText)
+    input.setAttribute('placeholder', item.options[0].innerText)
     input.value = ''
   } else {
     input.value = ''
