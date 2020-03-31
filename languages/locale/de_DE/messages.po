@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-03-31 07:01+0200\n"
+"POT-Creation-Date: 2020-03-31 12:26+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Jan <jan@dwrox.net>\n"
 "Language-Team: \n"
@@ -116,7 +116,7 @@ msgstr "1 Datensatz mit verknüpften Altdaten entfernt."
 
 #: datafields.php:37
 msgid "Datensätze mit verknüpften Altdaten entfernt."
-msgstr "Datensätze mit verknüpften Altdaten entfernt."
+msgstr "Einzelwert: Zeichenfolge mit bis zu < 256 Zeichen"
 
 #: datafields.php:45
 msgid "1 Eintrag wurde gelöscht."
@@ -199,7 +199,10 @@ msgid "sqStorage Passwortänderung"
 msgstr "sqStorage Passwortänderung"
 
 #: login.php:161
-#, php-format
+#, fuzzy, php-format
+#| msgid ""
+#| "Um das Passwort für sqStorage zu ändern bitte den folgenden Link "
+#| "aufrufen: <a href=\"%s\">%s</a>"
 msgid ""
 "Um das Passwort für sqStorage zu ändern bitte den folgenden Link aufrufen: "
 "<a href=\"%s\">%s</a>"
@@ -287,12 +290,18 @@ msgid "sqStorage Einladung"
 msgstr "sqStorage Einladung"
 
 #: settings.php:56
-#, php-format
+#, fuzzy, php-format
+#| msgid ""
+#| "Sie haben eine Einladung für sqStorage erhalten: <a href=\"%s\">%s</a>"
 msgid "Sie haben eine Einladung für sqStorage erhalten: <a href=\"%s\">%s</a>"
 msgstr "Sie haben eine Einladung für sqStorage erhalten: <a href=\"%s\">%s</a>"
 
 #: settings.php:59
-#, php-format
+#, fuzzy, php-format
+#| msgid ""
+#| "Es können zur Zeit keine Mails vom System versendet werden.<br />Bitte "
+#| "diesen Einladungslink an den Benutzer weiterleiten:<br /><a href=\"%s\">"
+#| "%s</a>"
 msgid ""
 "Es können zur Zeit keine Mails vom System versendet werden.<br />Bitte "
 "diesen Einladungslink an den Benutzer weiterleiten:<br /><a href=\"%s\">%s</"
@@ -308,6 +317,8 @@ msgid "Der Benutzer \"%s\" existiert bereits."
 msgstr "Der Benutzer \"%s\" existiert bereits."
 
 #: settings.php:101
+#, fuzzy
+#| msgid "Fehler: Der letzte Administrator kann nicht gelöscht werden!"
 msgid "Fehler: Der letzte Administrator kann nicht gelöscht werden!"
 msgstr "Fehler: Der letzte Administrator kann nicht gelöscht werden!"
 

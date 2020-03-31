@@ -745,6 +745,10 @@ msgstr "Error"
 msgid "Zugriff verweigert"
 msgstr "Access denied"
 
+#: templates//login.tpl:1
+msgid "Login und Registrierung"
+msgstr "Login and registration"
+
 #: templates//login.tpl:32
 msgid "Neue Admin-Zugangsdaten eingeben"
 msgstr "Enter the new administrator credentials"
