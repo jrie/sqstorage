@@ -1,5 +1,5 @@
 {include file="head.tpl" title="{t}Datenfelder{/t}"}
-{include file="nav.tpl" target="datafields.php"}
+{include file="nav.tpl" target="datafields.php" request=$REQUEST}}
 
         <div class="content">
 {$sid = -99}

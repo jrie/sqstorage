@@ -6,6 +6,9 @@ $success = "";
 // require_once('./support/meekrodb.2.3.class.php');
 //require_once('./vendor/autoload.php');
 //require_once('./support/dba.php');
+$SCRIPT_NAME = $_SERVER['REQUEST_URI'];
+if (substr_count( $SCRIPT_NAME, '/') > 2) $urlBase = $SCRIPT_NAME;
+else $urlBase = dirname($SCRIPT_NAME);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['target'] == 'mail') {
   try {
@@ -53,14 +56,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['target'] == 'mail') {
         $header[] = 'MIME-Version: 1.0';
         $header[] = 'Content-type: text/html; charset=utf-8';
         $header[] = 'From: ' . $mailSettings->senderAddress;
-        mail($_POST['mailaddress'], gettext('sqStorage Einladung'), sprintf(gettext("Sie haben eine Einladung für sqStorage erhalten: <a href=\"%s\">%s</a>"), dirname($_SERVER['HTTP_REFERER']) . '/login.php?activate=' . $userId . $token, dirname($_SERVER['HTTP_REFERER']) . '/login.php?activate=' . $userId . $token) . '\r\n', implode("\r\n", $header));
+        mail($_POST['mailaddress'], gettext('sqStorage Einladung'), sprintf(gettext("Sie haben eine Einladung für sqStorage erhalten: <a href=\"%s\">%s</a>"), dirname($_SERVER['HTTP_REFERER']) . '/login?activate=' . $userId . $token, dirname($_SERVER['HTTP_REFERER']) . '/login?activate=' . $userId . $token) . '\r\n', implode("\r\n", $header));
       } else {
         DB::commit();
-        throw new Exception(sprintf(gettext("Es können zur Zeit keine Mails vom System versendet werden.<br />Bitte diesen Einladungslink an den Benutzer weiterleiten:<br /><a href=\"%s\">%s</a>"), dirname($_SERVER['HTTP_REFERER']) . '/login.php?activate=' . $userId . $token, dirname($_SERVER['HTTP_REFERER']) . '/login.php?activate=' . $userId . $token) . '\r\n');
+        throw new Exception(sprintf(gettext("Es können zur Zeit keine Mails vom System versendet werden.<br />Bitte diesen Einladungslink an den Benutzer weiterleiten:<br /><a href=\"%s\">%s</a>"), dirname($_SERVER['HTTP_REFERER']) . '/login?activate=' . $userId . $token, dirname($_SERVER['HTTP_REFERER']) .'/login?activate=' . $userId . $token));
       }
     }
     DB::commit();
-    header('Location: settings.php');
+    header('Location: ' . $urlBase . '/settings');
   } catch (Exception $e) {
     $error = $e->getMessage();
     if (strncmp($error, "Duplicate", 9) === 0) $error = sprintf(gettext('Der Benutzer "%s" existiert bereits.'), $user['username']);
@@ -87,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' || !empty($error) || ($_SERVER['REQUEST_
       if ($isEdit) {
         $user = DB::queryFirstRow('SELECT u.id, u.username, u.mailaddress, g.name as usergroupname, g.id as usergroupid FROM users u LEFT JOIN users_groups ugs ON(ugs.userid = u.id) LEFT JOIN usergroups g ON(g.id = ugs.usergroupid) WHERE u.id = %i LIMIT 1', $_GET['editUser']);
         if ($user == null) {
-          header('Location: index.php');
+          header('Location: '. $urlBase . '/index');
           die();
         }
       } else if ($isAdd) {
@@ -101,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' || !empty($error) || ($_SERVER['REQUEST_
         $error = gettext('Fehler: Der letzte Administrator kann nicht gelöscht werden!');
       } else {
         $user = DB::delete('users', 'id=%d', $_GET['removeUser']);
-        header('Location: settings.php');
+        header('Location: '. $urlBase . '/settings');
         exit;
       }
     }
@@ -132,5 +135,6 @@ $smarty->assign('user', $user);
 $smarty->assign('users', $users);
 $smarty->assign('usergroups', $usergroups);
 $smarty->assign('SESSION', $_SESSION);
+$smarty->assign('REQUEST', $_SERVER['REQUEST_URI']);
 
 $smarty->display('settings.tpl');

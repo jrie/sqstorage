@@ -1,11 +1,17 @@
 {include file="head.tpl" title="{t}Inventar{/t}"}
-{include file="nav.tpl" target="inventory.php"}
+{include file="nav.tpl" target="inventory.php" request=$REQUEST}
 
 {$hasdata=false}
 {$selectid=0}
+{if (substr_count( $SCRIPT_NAME, '/') > 2)}
+    {$urlBase = $SCRIPT_NAME}
+{else}
+    {$urlBase = dirname($SCRIPT_NAME)}
+{/if}
+
 {if $parse.mode == "default"}
         <div class="content">
-            <form id="inventoryForm" method="POST" action="inventory.php">
+            <form id="inventoryForm" method="POST" action="{$urlBase}/inventory">
             {foreach $myitem as $itemstore}
             {$hasdata=true}
             {if $parse.showemptystorages || $itemstore.itemcount > 0 }
@@ -13,7 +19,7 @@
                 <div class="storage-area">
                 <button class="btn smallButton" name="removeStorage" data-name="{if isset($itemstore.storage.label)}{$itemstore.storage.label}{else}{t}Unsortiert{/t}{/if}" value="{$itemstore.storage.id}" type="submit"><i class="fas fa-times-circle"></i></button>
                 <h4 class="text-dark">
-                    <a href="inventory.php?storageid={$itemstore.storage.id}">{if isset($itemstore.storage.label)}{$itemstore.storage.label}{else}{t}Unsortiert{/t}{/if}</a>&nbsp;
+                    <a href="{$urlBase}/inventory?storageid={$itemstore.storage.id}">{if isset($itemstore.storage.label)}{$itemstore.storage.label}{else}{t}Unsortiert{/t}{/if}</a>&nbsp;
                     <span class="small">({$itemstore.positionen} {if $itemstore.positionen == 1}{t}Position{/t}{else}{t}Positionen{/t}{/if}, {$itemstore.itemcount} {if $itemstore.itemcount == 1}{t}Gegenstand{/t}{else}{t}Gegenstände{/t}{/if})</span>
                 </h4>
                 <ul class="list-group">
@@ -29,7 +35,7 @@
                         {$subCategories=array()}
                         {foreach $subCats as $subCat}
                             {if isset($subcategories.$subCat)}
-                            {$subCategories[] ="<a href='inventory.php?subcategory={$subcategories.$subCat.id}'>{$subcategories.$subCat.name}</a>"}
+                            {$subCategories[] ="<a href='{$urlBase}/inventory?subcategory={$subcategories.$subCat.id}'>{$subcategories.$subCat.name}</a>"}
                             {/if}
                         {/foreach}
 
@@ -39,14 +45,14 @@
                         {assign var="category" value=$categories.$catid}
                         <li class="list-group-item">
                             <button class="btn smallButton" name="remove" data-name="{$item.label}" value="{$item.id}" type="submit"><i class="fas fa-times-circle"></i></button>
-                            <a href="inventory.php?category={$item.headcategory}" class="list-span">{$category.name}</a>
+                            <a href="{$urlBase}/inventory?category={$item.headcategory}" class="list-span">{$category.name}</a>
                             <span class="list-span">{$item.label}</span>
                             <span class="list-span">{$item.amount}</span>
                             <span class="list-span">{$item.comment}</span>
 
                             <span class="list-span">{$implodedSubCats}</span>
                             <span class="list-span">{$dateexploded.0}</span>
-                            <a class="list-span" href="index.php?editItem={$item.id}"><i class="fas fa-edit"></i></a>
+                            <a class="list-span" href="{$urlBase}/index?editItem={$item.id}"><i class="fas fa-edit"></i></a>
 
                             <div class="dropdown float-right">
                                 <select autocomplete="off" id="item_{$item.id}" class="btn btn-primary dropdown-toggle switchStorage" data-itemamount="{$item.amount}" data-value="0"  data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -81,7 +87,7 @@
 {elseif $parse.mode == "category"}
 <!-------------------------------------------------------------------------------------------------------------->
         <div class="content">
-            <form id="inventoryForm" method="POST" action="inventory.php">
+            <form id="inventoryForm" method="POST" action="{$urlBase}/inventory">
             {foreach $myitem as $itemstore}
             {if $parse.showemptystorages || $itemstore.itemcount > 0 }
             <hr>
@@ -104,7 +110,7 @@
                         {$subCategories=array()}
                         {foreach $subCats as $subCat}
                             {if isset($subcategories.$subCat)}
-                            {$subCategories[] ="<a href='inventory.php?subcategory={$subcategories.$subCat.id}'>{$subcategories.$subCat.name}</a>"}
+                            {$subCategories[] ="<a href='{$urlBase}/inventory?subcategory={$subcategories.$subCat.id}'>{$subcategories.$subCat.name}</a>"}
                             {/if}
                         {/foreach}
 
@@ -114,14 +120,14 @@
                         {assign var="category" value=$categories.$catid}
                         <li class="list-group-item">
                             <button class="btn smallButton" name="remove" data-name="{$item.label}" value="{$item.id}" type="submit"><i class="fas fa-times-circle"></i></button>
-                            <a href="inventory.php?category={$item.headcategory}" class="list-span">{$category.name}</a>
+                            <a href="{$urlBase}/inventory?category={$item.headcategory}" class="list-span">{$category.name}</a>
                             <span class="list-span">{$item.label}</span>
                             <span class="list-span">{$item.amount}</span>
                             <span class="list-span">{$item.comment}</span>
 
                             <span class="list-span">{$implodedSubCats}</span>
                             <span class="list-span">{$dateexploded.0}</span>
-                            <a class="list-span" href="index.php?editItem={$item.id}"><i class="fas fa-edit"></i></a>
+                            <a class="list-span" href="{$urlBase}/index?editItem={$item.id}"><i class="fas fa-edit"></i></a>
 
                             <div class="dropdown float-right">
                                 <select autocomplete="off" id="item_{$item.id}" class="btn btn-primary dropdown-toggle switchStorage" data-value="0"  data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -152,7 +158,7 @@
 {elseif $parse.mode == "subcategory"}
 <!-------------------------------------------------------------------------------------------------------------->
         <div class="content">
-            <form id="inventoryForm" method="POST" action="inventory.php">
+            <form id="inventoryForm" method="POST" action="{$urlBase}/inventory">
             {foreach $myitem as $itemstore}
             {if $parse.showemptystorages || $itemstore.itemcount > 0 }
             <hr>
@@ -175,7 +181,7 @@
                         {$subCategories=array()}
                         {foreach $subCats as $subCat}
                             {if isset($subcategories.$subCat)}
-                            {$subCategories[] ="<a href='inventory.php?subcategory={$subcategories.$subCat.id}'>{$subcategories.$subCat.name}</a>"}
+                            {$subCategories[] ="<a href='{$urlBase}/inventory?subcategory={$subcategories.$subCat.id}'>{$subcategories.$subCat.name}</a>"}
                             {/if}
                         {/foreach}
 
@@ -185,14 +191,14 @@
                         {assign var="category" value=$categories.$catid}
                         <li class="list-group-item">
                             <button class="btn smallButton" name="remove" data-name="{$item.label}" value="{$item.id}" type="submit"><i class="fas fa-times-circle"></i></button>
-                            <a href="inventory.php?category={$item.headcategory}" class="list-span">{$category.name}</a>
+                            <a href="{$urlBase}/inventory?category={$item.headcategory}" class="list-span">{$category.name}</a>
                             <span class="list-span">{$item.label}</span>
                             <span class="list-span">{$item.amount}</span>
                             <span class="list-span">{$item.comment}</span>
 
                             <span class="list-span">{$implodedSubCats}</span>
                             <span class="list-span">{$dateexploded.0}</span>
-                            <a class="list-span" href="index.php?editItem={$item.id}"><i class="fas fa-edit"></i></a>
+                            <a class="list-span" href="{$urlBase}/index?editItem={$item.id}"><i class="fas fa-edit"></i></a>
 
                             <div class="dropdown float-right">
                                 <select autocomplete="off" id="item_{$item.id}" class="btn btn-primary dropdown-toggle switchStorage" data-value="0"  data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -219,11 +225,6 @@
             </form>
 
         </div>
-<!-------------------------------------------------------------------------------------------------------------->
-{else}
-<!-------------------------------------------------------------------------------------------------------------->
-<h1>was denn sonst</h1>
-<!-------------------------------------------------------------------------------------------------------------->
 {/if}
 
 {if isset($dump)}<pre>{$dump}</pre>{/if}
@@ -237,7 +238,7 @@
 
 
             function MoveItem(itemid,storageid){
-                alert('inventory.php?storageid=' + itemid + '&itemid=' + storageid);
+                alert('{/literal}{$urlBase}{literal}/inventory?storageid=' + itemid + '&itemid=' + storageid);
             }
 
             let switches = document.querySelectorAll('.btn.switchStorage')
@@ -253,8 +254,8 @@
                           }
                       }
 
-                    window.location.href = 'inventory.php?storageid=' + evt.target.value + '&itemid=' + evt.target.dataset['id'] + amountTrans;
-                    //alert('inventory.php?storageid=' + evt.target.value + '&itemid=' + evt.target.dataset['id'] + amountTrans)
+                    window.location.href = '{/literal}{$urlBase}{literal}/inventory?storageid=' + evt.target.value + '&itemid=' + evt.target.dataset['id'] + amountTrans;
+                    //alert('{$urlBase}/inventory?storageid=' + evt.target.value + '&itemid=' + evt.target.dataset['id'] + amountTrans)
                 })
             }
 
