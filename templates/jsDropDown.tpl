@@ -251,8 +251,8 @@ for (let item of dropDowns) {
   input.classList.remove('dropdown')
 
   if (item.selectedOptions.length !== 0) {
-    // input.setAttribute('placeholder', item.selectedOptions[0].innerText)
-    input.setAttribute('placeholder', item.options[0].innerText)
+    if (item.selectedOptions.length !== 0) input.setAttribute('placeholder', item.selectedOptions[0].innerText)
+    else input.setAttribute('placeholder', item.options[0].innerText)
     input.value = ''
   } else {
     input.value = ''
