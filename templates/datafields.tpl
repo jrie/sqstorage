@@ -1,5 +1,5 @@
 {include file="head.tpl" title="{t}Datenfelder{/t}"}
-{include file="nav.tpl" target="datafields.php"}
+{include file="nav.tpl" target="datafields.php" request=$REQUEST}}
 
 
 
@@ -7,7 +7,7 @@
     <div id="errorForm" class="alert alert-danger hidden" role="alert">{t}Nicht gespeichert, es befinden sich Fehler in der Formular-Eingabe.{/t}</div>
 
     <div class="content">
-        {if $removedEntry}
+        {if $removedField}
             <div class="statusDisplay green">
                 <p>{t}Feld entfernt:{/t} {$POST.fieldName} {if $removedData !== FALSE}{$removedData}{/if}</p>
             </div>
