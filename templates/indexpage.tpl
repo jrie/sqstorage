@@ -1,5 +1,5 @@
 {include file="head.tpl" title="{t}Eintragen{/t}"}
-{include file="nav.tpl" target="index.php"}
+{include file="nav.tpl" target="index.php" request=$REQUEST}
 
         {$dataFieldsByKey=null}
         {foreach $fieldTypesPos as $key => $value}
@@ -134,7 +134,7 @@
                             {$hasData = false}
                             {$options = []}
                             {foreach explode(';', $field.fieldValues) as $value}
-                                {if in_array($value, $existingData)}
+                                {if $existingData !== NULL && in_array($value, $existingData)}
                                     {$options[]= "<option value=\"{$value}\" selected=\"selected\">{$value}</option>"}
                                     {$hasData = true}
                                 {else if empty($existingData) && in_array($value, $defaultData)}
@@ -254,7 +254,7 @@
                             {$hasData = false}
                             {$options = []}
                             {foreach explode(';', $field.fieldValues) as $value}
-                                {if in_array($value, $existingData)}
+                                {if $existingData !== NULL && in_array($value, $existingData)}
                                     {$options[]= "<option value=\"{$value}\" selected=\"selected\">{$value}</option>"}
                                     {$hasData = true}
                                 {else if empty($existingData) && in_array($value, $defaultData)}
