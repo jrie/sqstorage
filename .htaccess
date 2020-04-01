@@ -4,4 +4,39 @@ Deny from all
 Satisfy all
 </Files>
 
-Options -Indexes
+
+RewriteEngine on
+RewriteRule (js|css|img|fonts)/(.*) $1/$2
+RewriteRule ^index$ index.php [L]
+RewriteRule ^index/editItem=([0-9]+)$ index.php?editItem=$1 [QSA,L]
+
+RewriteRule ^items/$ inventory.php [L]
+RewriteRule ^items/new$ index.php [L]
+
+RewriteRule ^inventory$ inventory.php [L]
+RewriteRule ^inventory/$ inventory.php [L]
+
+RewriteRule ^categories$ categories.php [L]
+RewriteRule ^categories/$ categories.php [L]
+RewriteRule ^categories(\?.*)$ categories.php$1 [QSA,L]
+RewriteRule ^categories/([0-9]+)$ inventory.php?category=$1 [QSA,L]
+
+RewriteRule ^transfer$ transfer.php [L]
+RewriteRule ^transfer/$ transfer.php [L]
+
+RewriteRule ^datafields$ datafields.php [L]
+RewriteRule ^datafields/$ datafields.php [L]
+
+RewriteRule ^settings$ settings.php [L]
+RewriteRule ^settings/$ settings.php [L]
+RewriteRule ^settings/editUser=([0-9])+$ settings.php/editUser=$1 [QSA,L]
+RewriteRule ^settings/removeUser=([0-9])+$ settings.php/removeUser=$1 [QSA,L]
+RewriteRule ^settings\?addUser$ settings.php?addUser [QSA,L]
+
+RewriteRule ^login$ login.php [L]
+RewriteRule ^login/activate=(.*)+$ login.php/activate=$1 [QSA,L]
+
+RewriteRule ^subcategories/$ subcategories.php
+RewriteRule ^subcategories/([0-9]+)$ inventory.php?subcategory=$1 [QSA,L]
+
+
