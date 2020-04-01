@@ -1,20 +1,24 @@
 <body>
 
-
+{if (substr_count( $SCRIPT_NAME, '/') > 2)}
+    {$urlBase = $SCRIPT_NAME}
+{else}
+    {$urlBase = dirname($SCRIPT_NAME)}
+{/if}
 <nav class="navbar navbar-light bg-light">
-    <a href="index.php"><img class="logo" src="./img/sqstorage.png" alt="Logo" /></a>
+    <a href="{$urlBase}/index"><img class="logo" src="./img/sqstorage.png" alt="sqStorage logo" /></a>
     <ul class="nav">
         {$pages = ['index.php' => '', 'inventory.php' => '', 'categories.php' => '', 'transfer.php' => '', 'datafields.php' => '', 'settings.php' => '']}
         {$pages[$target] = 'activePage'}
-        <li class="nav-item"><a href="index.php" class="nav-link {$pages['index.php']}" >{t}Eintragen{/t}</a></li>
-        <li class="nav-item"><a href="inventory.php" class="nav-link {$pages['inventory.php']}">{t}Inventar{/t}</a></li>
-        <li class="nav-item"><a href="categories.php" class="nav-link {$pages['categories.php']}">{t}Kategorien{/t}</a></li>
-        <li class="nav-item"><a href="transfer.php" class="nav-link {$pages['transfer.php']}">{t}Transferieren{/t}</a></li>
-        <li class="nav-item"><a href="datafields.php" class="nav-link {$pages['datafields.php']}">{t}Datenfelder{/t}</a></li>
+        <li class="nav-item"><a href="{$urlBase}/index" class="nav-link {$pages['index.php']}" >{t}Eintragen{/t}</a></li>
+        <li class="nav-item"><a href="{$urlBase}/inventory" class="nav-link {$pages['inventory.php']}">{t}Inventar{/t}</a></li>
+        <li class="nav-item"><a href="{$urlBase}/categories" class="nav-link {$pages['categories.php']}">{t}Kategorien{/t}</a></li>
+        <li class="nav-item"><a href="{$urlBase}/transfer" class="nav-link {$pages['transfer.php']}">{t}Transferieren{/t}</a></li>
+        <li class="nav-item"><a href="{$urlBase}/datafields" class="nav-link {$pages['datafields.php']}">{t}Datenfelder{/t}</a></li>
         {if isset($SESSION.user)}
           {if isset($SESSION.user.usergroupid)}
             {if $SESSION.user.usergroupid == 1}
-                <li class="nav-item"><a href="settings.php" class="nav-link {$pages['settings.php']}">{t}Einstellungen{/t}</a></li>
+                <li class="nav-item"><a href="{$urlBase}/settings" class="nav-link {$pages['settings.php']}">{t}Einstellungen{/t}</a></li>
             {/if}
           {/if}
         {/if}
@@ -47,7 +51,7 @@
 
 
     <ul class="nav">
-        <li class="nav-item"><a href="index.php?logout" class="nav-link"><i class="fas fa-sign-out-alt" title="{t}Abmelden{/t}"></i></a></li>
+        <li class="nav-item"><a href="{$urlBase}/index.php?logout" class="nav-link"><i class="fas fa-sign-out-alt" title="{t}Abmelden{/t}"></i></a></li>
     </ul>
 </nav>
 <p id="msgbox"></p>
