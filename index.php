@@ -25,8 +25,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     $storage = DB::queryFirstRow('SELECT id,label,amount FROM storages WHERE id=%d', $existingItem['storageid']);
-    if ($storage != NULL) {
-      DB::update('storages', array('amount' => $storage['amount'] - $existingItem['amount']), 'id=%d', $storage['id']);
+    if ($storage !== NULL) {
+      if ($storage['amount'] - $existingItem['amount'] >= 0) {
+        DB::update('storages', array('amount' => $storage['amount'] - $existingItem['amount']), 'id=%d', $storage['id']);
+      }
     }
   }
 
@@ -99,7 +101,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           }
         }
 
-
         $existing = DB::queryFirstRow('SELECT `id` FROM `fieldData` WHERE `itemId`=%d AND `fieldId`=%d', intval($itemCreationId), intval($field['id']));
         if ($existing == NULL) DB::insert('fieldData', [$fieldType => $convertedValue, 'itemId' => intval($itemCreationId),'fieldId' => intval($field['id'])]);
         else DB::update('fieldData', [$fieldType => $convertedValue, 'itemId' => intval($itemCreationId),'fieldId' => intval($field['id'])], 'id=%d', $existing['id']);
@@ -121,7 +122,10 @@ if (!isset($item)) $item = array();
 $storages = DB::query('SELECT `id`, `label` FROM storages');
 $categories = DB::query('SELECT `id`, `name` FROM headCategories');
 $subcategories = DB::query('SELECT `id`, `name` FROM subCategories');
+
+$customData = DB::query('SELECT * FROM fieldData');
 $customFields = DB::query('SELECT * FROM customFields');
+
 $smarty->assign('success', $success);
 $smarty->assign('isEdit', $isEdit);
 if ($isEdit) $smarty->assign('editCategory', $item['headcategory']);
@@ -139,8 +143,7 @@ $smarty->assign('dataExamples', $dataExamples);
 
 if (isset($_POST)) $smarty->assign('POST', $_POST);
 $smarty->assign('SESSION', $_SESSION);
-
-
+$smarty->assign('REQUEST', $_SERVER['REQUEST_URI']);
 $smarty->display('indexpage.tpl');
 
 exit;

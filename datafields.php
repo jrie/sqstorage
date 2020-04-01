@@ -63,6 +63,7 @@ $smarty->assign('resetEntries', $resetEntries);
 $smarty->assign('removedField', $removedField);
 $smarty->assign('addedField', $addedField);
 $smarty->assign('SESSION', $_SESSION);
+$smarty->assign('REQUEST', $_SERVER['REQUEST_URI']);
 $smarty->assign('POST', $_POST);
 
 $smarty->display('datafields.tpl');

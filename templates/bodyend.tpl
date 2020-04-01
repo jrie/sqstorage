@@ -1,6 +1,6 @@
 <script type="text/javascript">
-{include file="jsDropDown.tpl" title=foo}
-{include file="jsRequiredFields.tpl" title=foo}
+{include file="jsDropDown.tpl"}
+{include file="jsRequiredFields.tpl"}
 </script>
 </body>
 </html>
