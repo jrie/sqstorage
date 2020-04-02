@@ -6,9 +6,8 @@ $success = "";
 // require_once('./support/meekrodb.2.3.class.php');
 //require_once('./vendor/autoload.php');
 //require_once('./support/dba.php');
-$SCRIPT_NAME = $_SERVER['REQUEST_URI'];
-if (substr_count( $SCRIPT_NAME, '/') > 2) $urlBase = $SCRIPT_NAME;
-else $urlBase = dirname($SCRIPT_NAME);
+require_once('support/urlBase.php');
+$smarty->assign('urlBase', $urlBase);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['target'] == 'mail') {
   try {

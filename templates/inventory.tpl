@@ -3,11 +3,6 @@
 
 {$hasdata=false}
 {$selectid=0}
-{if (substr_count( $SCRIPT_NAME, '/') > 2)}
-    {$urlBase = $SCRIPT_NAME}
-{else}
-    {$urlBase = dirname($SCRIPT_NAME)}
-{/if}
 
 {if $parse.mode == "default"}
         <div class="content">

@@ -1,10 +1,5 @@
 {include file="head.tpl" title="{t}Einstellungen{/t}"}
 {include file="nav.tpl" target="settings.php" request=$REQUEST}
-{if (substr_count( $SCRIPT_NAME, '/') > 2)}
-    {$urlBase = $SCRIPT_NAME}
-{else}
-    {$urlBase = dirname($SCRIPT_NAME)}
-{/if}
 
         <div class="content">
 

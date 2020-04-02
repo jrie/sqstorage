@@ -1,10 +1,5 @@
 {include file="head.tpl" title="{t}Kategorien{/t}"}
 {include file="nav.tpl" target="categories.php" request=$REQUEST}
-{if (substr_count( $SCRIPT_NAME, '/') > 2)}
-    {$urlBase = $SCRIPT_NAME}
-{else}
-    {$urlBase = dirname($SCRIPT_NAME)}
-{/if}
     <div class="content">
     {$alert}
             <hr/><ul class="categories list-group"><li class="alert alert-info"><span class="list-span">{t}Kategorien{/t}</span><span class="list-span">{t}Anzahl{/t}</span><span class="list-span">{t}Aktionen{/t}</span></li>

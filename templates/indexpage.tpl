@@ -1,6 +1,7 @@
 {include file="head.tpl" title="{t}Eintragen{/t}"}
 {include file="nav.tpl" target="index.php" request=$REQUEST}
 
+
         {$dataFieldsByKey=null}
         {foreach $fieldTypesPos as $key => $value}
         {$dataFieldsByKey[$value]=$key}

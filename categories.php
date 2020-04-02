@@ -1,7 +1,6 @@
 <?php require('login.php');
-$SCRIPT_NAME = $_SERVER['REQUEST_URI'];
-if (substr_count( $SCRIPT_NAME, '/') > 2) $urlBase = $SCRIPT_NAME;
-else $urlBase = dirname($SCRIPT_NAME);
+require_once('support/urlBase.php');
+$smarty->assign('urlBase', $urlBase);
 
 $alert = "";
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {

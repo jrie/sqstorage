@@ -2,6 +2,8 @@
 
 $success = FALSE;
 require_once('customFieldsData.php');
+require_once('support/urlBase.php');
+$smarty->assign('urlBase', $urlBase);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $amount = isset($_POST['amount']) && !empty($_POST['amount']) ? $_POST['amount'] : 1;

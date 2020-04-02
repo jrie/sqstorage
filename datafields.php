@@ -1,5 +1,7 @@
 <?php
 require('login.php');
+require_once('support/urlBase.php');
+$smarty->assign('urlBase', $urlBase);
 
 include_once('customFieldsData.php');
 $removedField = FALSE;

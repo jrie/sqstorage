@@ -1,5 +1,8 @@
 <?php require('login.php'); ?>
 <?php
+require_once('support/urlBase.php');
+$smarty->assign('urlBase', $urlBase);
+
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
   if (isset($_GET['getId']) && !empty($_GET['getId'])) {
     //require_once('./support/meekrodb.2.3.class.php');

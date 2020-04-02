@@ -2,10 +2,8 @@
 session_start();
 
 require_once('includer.php');
-
-$SCRIPT_NAME = $_SERVER['REQUEST_URI'];
-if (substr_count( $SCRIPT_NAME, '/') > 2) $urlBase = $SCRIPT_NAME;
-else $urlBase = dirname($SCRIPT_NAME);
+require_once('support/urlBase.php');
+$smarty->assign('urlBase', $urlBase);
 
 if (isset($_GET['logout'])) {
   unset($_SESSION['authenticated']);
@@ -161,7 +159,7 @@ if ($createFirstAdmin || (isset($_REQUEST['activate']) && !empty($_REQUEST['acti
       $header[] = 'MIME-Version: 1.0';
       $header[] = 'Content-type: text/html; charset=utf-8';
       $header[] = 'From: ' . $mailSettings->senderAddress;
-      mail($user['mailaddress'], gettext('sqStorage Passwortänderung'), sprintf(gettext("Um das Passwort für sqStorage zu ändern bitte den folgenden Link aufrufen: <a href=\"%s\">%s</a>"), dirname($_SERVER['HTTP_REFERER']) . '/login?activate=' . $user['id'] . $token, dirname($_SERVER['HTTP_REFERER']) . '/login?activate=' . $user['id'] . $token), implode("\r\n", $header));
+      mail($user['mailaddress'], gettext('sqStorage Passwortänderung'), sprintf(gettext("Um das Passwort für sqStorage zu ändern bitte den folgenden Link aufrufen: <a href=\"%s\">%s</a>"), dirname($_SERVER['HTTP_REFERER']) . $urlBase . '/login?activate=' . $user['id'] . $token, dirname($_SERVER['HTTP_REFERER']) . $urlBase . '/login?activate=' . $user['id'] . $token), implode("\r\n", $header));
       $error = gettext('Falls ein Benutzerkonto gefunden wird, erhalten Sie nun eine Mail mit einem Link zum Zurücksetzen des Passworts.');
     } else {
       $error = gettext('Momentan können keine E-Mails versendet werden, bitte später noch einmal versuchen, oder einen Administrator kontaktieren.');
@@ -179,7 +177,6 @@ if (isset($_POST)) $smarty->assign('POST', $_POST);
 $smarty->assign('showRecover', $showRecover);
 $smarty->assign('createFirstAdmin', $createFirstAdmin);
 $smarty->assign('showActivation', $showActivation);
-$smarty->assign('urlBase', $urlBase);
 if (isset($error)) $smarty->assign('error', $error);
 
 $smarty->display('login.tpl');

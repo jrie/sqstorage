@@ -1,10 +1,6 @@
 <body>
 
-{if (substr_count( $SCRIPT_NAME, '/') > 2)}
-    {$urlBase = $SCRIPT_NAME}
-{else}
-    {$urlBase = dirname($SCRIPT_NAME)}
-{/if}
+
 <nav class="navbar navbar-light bg-light">
     <a href="{$urlBase}/index"><img class="logo" src="./img/sqstorage.png" alt="sqStorage logo" /></a>
     <ul class="nav">
