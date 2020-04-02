@@ -3,7 +3,7 @@
 A easy to use and super quick way to organize your inventory, storage and storage areas.
 
 ### Note
-Right now sqStorage is available in German and English. Feel free to add your own translation (see LANGUAGE.md).
+Right now sqStorage is available in German and English. Feel free to add your own translation (see LANGUAGE.md for details).
 
 ### Installation and usage
 
@@ -41,6 +41,9 @@ If you are upgrading of an earlier version of sqStorage, the custom fields code 
 
 ##### Updating the database for usage of custom fields
 In any case it is a good idea to open the database and **dropping** the `customFields` and `fieldData` tables. After dropping the tables, visit or execute `bootdb.php` to let the tables be created. After that, you can already use custom fields - even so this feature is not yet completely finished, but the data structure will not change anymore in the future.
+
+#### German talking src ressource
+The whole idea behind sqStorage or "Tom's Invetarverwaltung" can be found at the german bulletin board NGB.to over https://ngb.to/threads/39122-Webbasierte-Mini-Lagerverwaltung
 
 #### Last but not least
 
