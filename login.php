@@ -3,11 +3,14 @@ session_start();
 
 require_once('includer.php');
 
+$SCRIPT_NAME = $_SERVER['REQUEST_URI'];
+if (substr_count( $SCRIPT_NAME, '/') > 2) $urlBase = $SCRIPT_NAME;
+else $urlBase = dirname($SCRIPT_NAME);
 
 if (isset($_GET['logout'])) {
   unset($_SESSION['authenticated']);
   unset($_SESSION['user']);
-  header('Location: index.php');
+  header('Location: ' . $urlBase . '/index');
   exit;
 }
 
@@ -17,7 +20,7 @@ if (!empty($_SESSION['authenticated'])) {
     $_SESSION['authenticated'] = true;
     $_SESSION['user'] = ['username' => $user['username'], 'id' => $user['id'], 'usergroupid' => $user['usergroupid']];
   } else {
-    header('Location: index.php?logout');
+    header('Location: '. $urlBase . '/index?logout');
     exit;
   }
 
@@ -105,7 +108,7 @@ if ($createFirstAdmin || (isset($_REQUEST['activate']) && !empty($_REQUEST['acti
             }
             $_SESSION['authenticated'] = true;
             $_SESSION['user'] = ['id' => $userId];
-            header('Location: index.php');
+            header('Location: '. $urlBase . '/index');
             exit;
           }
         } catch (Exception $e) {
@@ -131,7 +134,7 @@ if ($createFirstAdmin || (isset($_REQUEST['activate']) && !empty($_REQUEST['acti
   if ($user && password_verify($_POST['password'], $user['password'])) {
     $_SESSION['authenticated'] = true;
     $_SESSION['user'] = ['id' => $user['id']];
-    header('Location: index.php');
+    header('Location: '. $urlBase . '/index');
     exit;
   } else {
     $error = gettext('Zugangsdaten ungültig');
@@ -158,7 +161,7 @@ if ($createFirstAdmin || (isset($_REQUEST['activate']) && !empty($_REQUEST['acti
       $header[] = 'MIME-Version: 1.0';
       $header[] = 'Content-type: text/html; charset=utf-8';
       $header[] = 'From: ' . $mailSettings->senderAddress;
-      mail($user['mailaddress'], gettext('sqStorage Passwortänderung'), sprintf(gettext("Um das Passwort für sqStorage zu ändern bitte den folgenden Link aufrufen: <a href=\"%s\">%s</a>"), dirname($_SERVER['HTTP_REFERER']) . '/login.php?activate=' . $user['id'] . $token, dirname($_SERVER['HTTP_REFERER']) . '/login.php?activate=' . $user['id'] . $token), implode("\r\n", $header));
+      mail($user['mailaddress'], gettext('sqStorage Passwortänderung'), sprintf(gettext("Um das Passwort für sqStorage zu ändern bitte den folgenden Link aufrufen: <a href=\"%s\">%s</a>"), dirname($_SERVER['HTTP_REFERER']) . '/login?activate=' . $user['id'] . $token, dirname($_SERVER['HTTP_REFERER']) . '/login?activate=' . $user['id'] . $token), implode("\r\n", $header));
       $error = gettext('Falls ein Benutzerkonto gefunden wird, erhalten Sie nun eine Mail mit einem Link zum Zurücksetzen des Passworts.');
     } else {
       $error = gettext('Momentan können keine E-Mails versendet werden, bitte später noch einmal versuchen, oder einen Administrator kontaktieren.');
@@ -176,6 +179,7 @@ if (isset($_POST)) $smarty->assign('POST', $_POST);
 $smarty->assign('showRecover', $showRecover);
 $smarty->assign('createFirstAdmin', $createFirstAdmin);
 $smarty->assign('showActivation', $showActivation);
+$smarty->assign('urlBase', $urlBase);
 if (isset($error)) $smarty->assign('error', $error);
 
 $smarty->display('login.tpl');

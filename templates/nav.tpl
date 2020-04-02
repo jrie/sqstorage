@@ -24,7 +24,7 @@
         {/if}
     </ul>
 
-    <form class="form-inline searchArea" method="GET" action="inventory.php">
+    <form class="form-inline searchArea" method="GET" action="{$urlBase}/inventory">
         <input class="form-control mr-sm-2" name="searchValue" type="search" placeholder="{t}Suche{/t}" aria-label="{t}Suche{/t}">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">{t}Suchen{/t}</button>
     </form>
@@ -51,7 +51,7 @@
 
 
     <ul class="nav">
-        <li class="nav-item"><a href="{$urlBase}/index.php?logout" class="nav-link"><i class="fas fa-sign-out-alt" title="{t}Abmelden{/t}"></i></a></li>
+        <li class="nav-item"><a href="{$urlBase}/index?logout" class="nav-link"><i class="fas fa-sign-out-alt" title="{t}Abmelden{/t}"></i></a></li>
     </ul>
 </nav>
 <p id="msgbox"></p>
