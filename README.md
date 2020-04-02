@@ -34,6 +34,13 @@ The directories `smartyfiles/` and `languages/locale/` need to be **writeable** 
 - Open sqstorage in your webbrowser and create a admin account.
   * this can be done only once after installation!
   * If you mess up, you will have to drop/truncate the `users` table in order to prompt for admin account registration again. You will have to open `bootDB.php` again to recreate the tables.
+  
+#### Custom fields
+
+If you are upgrading of an earlier version of sqStorage, the custom fields code might have changed. This fields had been implemented earlier but where of no practical use. Still possible so, you might have to **update your database** in order to make use of the latest features.
+
+##### Updating the database for usage of custom fields
+In any case it is a good idea to open the database and **dropping** the `customFields` and `fieldData` tables. After dropping the tables, visit or execute `bootdb.php` to let the tables be created. After that, you can already use custom fields - even so this feature is not yet completely finished, but the data structure will not anymore.
 
 #### Last but not least
 
