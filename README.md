@@ -3,7 +3,7 @@
 A easy to use and super quick way to organize your inventory, storage and storage areas.
 
 ### Note
-Right now sqStorage is available in German and English. Feel free to add your own translation (see LANGUAGE.md for details).
+Right now sqStorage is available in German and English. Feel free to add your own translation (see LANGUAGE.md for details on how to do so).
 
 ### Installation and usage
 
@@ -44,6 +44,10 @@ In any case it is a good idea to open the database and **dropping** the `customF
 
 #### German talking src ressource
 The whole idea behind sqStorage or "Tom's Invetarverwaltung" can be found at the german bulletin board NGB.to over https://ngb.to/threads/39122-Webbasierte-Mini-Lagerverwaltung
+
+#### Chatroom
+There is a **Matrix chat room** at Tilde.fun where development and or general talk about features and such can be brought in:
+https://chat.tilde.fun/#/room/#sqstorage:tilde.fun
 
 #### Last but not least
 
