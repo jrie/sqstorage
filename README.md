@@ -40,7 +40,11 @@ The directories `smartyfiles/` and `languages/locale/` need to be **writeable** 
 If you are upgrading of an earlier version of sqStorage, the custom fields code might have changed. This fields had been implemented earlier but where of no practical use. Still possible so, you might have to **update your database** in order to make use of the latest features.
 
 ##### Updating the database for usage of custom fields
-In any case it is a good idea to open the database and **dropping** the `customFields` and `fieldData` tables. After dropping the tables, visit or execute `bootdb.php` to let the tables be created. After that, you can already use custom fields - even so this feature is not yet completely finished, but the data structure will not change anymore in the future.
+In any case it is a good idea to open the database and **dropping** the `customFields` and `fieldData` tables. After dropping the tables, visit or execute `bootdb.php` to let the tables be created. After that, you can use custom fields.
+
+##### Updating the database for upload of images for items
+If not `images` are present in the database, simply open `bootDB.php`, afterwards image upload for items is available.
+
 
 #### German talking src ressource
 The whole idea behind sqStorage or "Tom's Invetarverwaltung" can be found at the german bulletin board NGB.to over https://ngb.to/threads/39122-Webbasierte-Mini-Lagerverwaltung
