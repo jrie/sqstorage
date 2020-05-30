@@ -1,3 +1,5 @@
 messages_*.mo
 smartyfolders/templates_c/*.php
 composer.lock
+vendor/*
+
