@@ -5,7 +5,60 @@ require_once('customFieldsData.php');
 require_once('support/urlBase.php');
 $smarty->assign('urlBase', $urlBase);
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+$imageList = NULL;
+
+if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getImageId'])) {
+  $targetImage = DB::queryFirstRow('SELECT `imageData` FROM `images` WHERE `id`=%d', intval($_GET['getImageId']));
+  $targetData = [];
+  if ($targetImage != NULL) {
+    $targetData['status'] = 'OK';
+    $targetData['data'] = $targetImage['imageData'];
+    echo json_encode($targetData);
+  }
+
+  die();
+} else if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['removeImageId'])) {
+  DB::query('DELETE FROM `images` WHERE id=%d LIMIT 1', intval($_GET['removeImageId']));
+  $targetData = [];
+
+  if (DB::affectedRows() == 1) {
+    $targetData['status'] = 'OK';
+  } else {
+    $targetData['status'] = 'FAIL';
+  }
+
+  echo json_encode($targetData);
+  die();
+} else if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES) && count($_FILES) != 0) {
+  if (!isset($_FILES['images'])) die();
+  if (!isset($_POST['editItem'])) die();
+
+  $itemId = intval($_POST['editItem']);
+
+  $count = count($_FILES['images']['tmp_name']);
+  for ($x = 0; $x < $count; ++$x) {
+    $tmpName = $_FILES['images']['tmp_name'][$x];
+
+    $imageData = imagecreatefromstring(file_get_contents(addslashes($tmpName)));
+    $imageLarge = imagescale($imageData, 1920);
+    ob_start();
+    imagejpeg($imageLarge);
+    $imageData64 = base64_encode(ob_get_clean());
+
+    $imageThumbnail = imagescale($imageData, 200);
+    ob_start();
+    imagejpeg($imageThumbnail);
+    $imageThumbnailData64 = base64_encode(ob_get_clean());
+
+    $imageInfo = getimagesize($tmpName);
+
+    DB::query('INSERT INTO `images` VALUES(NULL, %d, %d, %d, %s, %s)', $itemId, $imageInfo[0], $imageInfo[1], $imageThumbnailData64, $imageData64);
+  }
+
+  header('Location: ' . $_SERVER['HTTP_REFERER']);
+  die();
+
+} else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $amount = isset($_POST['amount']) && !empty($_POST['amount']) ? $_POST['amount'] : 1;
   $serialNumber = isset($_POST['serialnumber']) && !empty($_POST['serialnumber']) ? $_POST['serialnumber'] : NULL;
   $comment = isset($_POST['comment']) && !empty($_POST['comment']) ? $_POST['comment'] : NULL;
@@ -114,11 +167,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 $isEdit = FALSE;
-if (isset($_GET['editItem']) && !empty($_GET['editItem'])) {
-  $item = DB::queryFirstRow('SELECT * FROM `items` WHERE `id`=%d', intval($_GET['editItem']));
-  $customData = DB::query('SELECT * FROM`fieldData` WHERE `itemId`=%d', intval($item['id']));
+if ((isset($_GET['editItem']) && !empty($_GET['editItem'])) || (isset($_POST['editItem']) && !empty($_POST['editItem']))) {
+  if (isset($_GET['editItem'])) $itemId = intval($_GET['editItem']);
+  else if (isset($_POST['editItem'])) $itemId = intval($_POST['editItem']);
+
+  $item = DB::queryFirstRow('SELECT * FROM `items` WHERE `id`=%d', $itemId);
+  $customData = DB::query('SELECT * FROM `fieldData` WHERE `itemId`=%d', intval($item['id']));
   $isEdit = TRUE;
-}
+
+  $imageList = DB::query('SELECT `id`, `thumb`, `sizeX`, `sizeY` FROM `images` WHERE `itemId`=%d', intval($item['id']));
+} else $imageList = DB::query('SELECT `id`, `thumb`, `sizeX`, `sizeY` FROM `images` WHERE `itemId`=%d', intval($item['id']));
+
+$smarty->assign('imageList', $imageList);
 
 if (!isset($item)) $item = array();
 $storages = DB::query('SELECT `id`, `label` FROM storages');

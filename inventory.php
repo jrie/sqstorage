@@ -59,8 +59,6 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
   $category = DB::queryFirstRow('SELECT id, name, amount from subCategories WHERE id=%d', $categoryId);
   $items = DB::query('SELECT * FROM items WHERE subCategories LIKE %s', ('%,' . $categoryId . ',%'));
 
-
-
   for ($x = 0; $x < count($items); $x++) {
     $item = $items[$x];
     $storeId = 0;
@@ -184,6 +182,7 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
     $myitem[$storeId]['storage'] = $store[$storeId];
     if (!isset($myitem[$storeId]['positionen'])) $myitem[$storeId]['positionen'] = 0;
     if (!isset($myitem[$storeId]['itemcount'])) $myitem[$storeId]['itemcount'] = 0;
+
     $myitem[$storeId]['items'][] = $items[$x];
     $myitem[$storeId]['positionen']++;
     $myitem[$storeId]['itemcount'] += $items[$x]['amount'];
@@ -222,6 +221,8 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
     $myitem[0]['itemcount'] = 0;
   }
   for ($x = 0; $x < count($loseItems); $x++) {
+    $hasImages = DB::query('SELECT `id` FROM `images` WHERE `itemId`=%d LIMIT 1', intval($$loseItems[$x]['id']));
+    if (DB::affectedRows() == 1) $$loseItems[$x]['hasImages'] = TRUE;
 
     $myitem[0]['items'][] = $loseItems[$x];
     $myitem[0]['positionen']++;
@@ -234,7 +235,11 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
     $myitem[$store['id']]['positionen'] = 0;
     $myitem[$store['id']]['itemcount'] = 0;
     $items = DB::query('SELECT * FROM items WHERE storageid=%d', $store['id']);
+
     for ($x = 0; $x < count($items); $x++) {
+      $hasImages = DB::query('SELECT `id` FROM `images` WHERE `itemId`=%d LIMIT 1', intval($items[$x]['id']));
+      if (DB::affectedRows() == 1) $items[$x]['hasImages'] = TRUE;
+
       $myitem[$store['id']]['items'][] = $items[$x];
       $myitem[$store['id']]['positionen']++;
       $myitem[$store['id']]['itemcount'] += $items[$x]['amount'];
@@ -242,7 +247,6 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
   }
 }
 //----- P6 - OK
-
 
 $storagebyid = array();
 $storages = DB::query('SELECT id, label FROM storages');
