@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-03-31 12:26+0200\n"
+"POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
 "Last-Translator: Jan <jan@dwrox.net>\n"
 "Language-Team: \n"
@@ -9,275 +9,391 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 2.3.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-Basepath: ../../..\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: categories.php:15
-msgid "Kategorie umbenannt."
-msgstr "Kategorie umbenannt."
-
-#: categories.php:18
-msgid "Unterkategorie umbenannt."
-msgstr "Unterkategorie umbenannt."
-
-#: categories.php:22
-msgid "Kategorie entfernt."
-msgstr "Kategorie entfernt."
-
-#: categories.php:25
-msgid "Unterkategorie entfernt."
-msgstr "Unterkategorie entfernt."
-
-#: customFieldsData.php:14
-msgid "Negative Ganzzahl"
-msgstr "Negative Ganzzahl"
-
-#: customFieldsData.php:15
-msgid "Positive Ganzzahl"
-msgstr "Positive Ganzzahl"
-
-#: customFieldsData.php:16
-msgid "Negative oder positive Ganzzahl"
-msgstr "Negative oder positive Ganzzahl"
-
-#: customFieldsData.php:17
-msgid "Negative oder positive Gleitkommazahl"
-msgstr "Negative oder positive Gleitkommazahl"
-
-#: customFieldsData.php:18
-msgid "Positive Gleitkommazahl"
-msgstr "Positive Gleitkommazahl"
-
-#: customFieldsData.php:19
-msgid "Zeichenfolge < 512 Zeichen"
-msgstr "Zeichenfolge < 512 Zeichen"
-
-#: customFieldsData.php:20
-msgid "Einzelauswahl (Single-Dropdown)"
-msgstr "Einzelauswahl (Single-Dropdown)"
-
-#: customFieldsData.php:21
-msgid "Mehrfachauswahl (Multi-Dropdown)"
-msgstr "Mehrfachauswahl (Multi-Dropdown)"
-
-#: customFieldsData.php:47
-msgid "Datentyp Beispielwerte"
-msgstr "Datentyp Beispielwerte"
-
-#: customFieldsData.php:48
-msgid "Einzelwert: -131 oder -7019 oder kleiner gleich 0"
-msgstr "Einzelwert: -131 oder -7019 oder kleiner gleich 0"
-
-#: customFieldsData.php:49
-msgid "Einzelwert: 1 oder 291 oder 4016, größer gleich 0"
-msgstr "Einzelwert: 1 oder 291 oder 4016, größer gleich 0"
-
-#: customFieldsData.php:50
-msgid "Einzelwert: -10 oder -2 oder 2000 oder 4000"
-msgstr "Einzelwert: -10 oder -2 oder 2000 oder 4000"
-
-#: customFieldsData.php:51
-msgid "Einzelwert: -11.4 oder -0.032 kleiner gleich 0"
-msgstr "Einzelwert: -11.4 oder -0.032 kleiner gleich 0"
-
-#: customFieldsData.php:52
-msgid "Einzelwert: 3.4172 oder 5.179 oder 27.4"
-msgstr "Einzelwert: 3.4172 oder 5.179 oder 27.4"
-
-#: customFieldsData.php:53
-msgid "Einzelwert: Zeichenfolge mit bis zu < 256 Zeichen"
-msgstr "Einzelwert: Zeichenfolge mit bis zu < 256 Zeichen"
-
-#: customFieldsData.php:54
-msgid ""
-"Einzelauswahl, durch Semikolon getrennt: erlaubt \"Neu\" oder \"Gebraucht\" "
-"oder \"Refurbished\" wenn \"Neu;Gebraucht;Refurbished\" angegeben. Und oder "
-"numerische Werte (Ganzzahl, Gleitkommazahlen)"
-msgstr ""
-"Einzelauswahl, durch Semikolon getrennt: erlaubt \"Neu\" oder \"Gebraucht\" "
-"oder \"Refurbished\" wenn \"Neu;Gebraucht;Refurbished\" angegeben. Und oder "
-"numerische Werte (Ganzzahl, Gleitkommazahlen)"
-
-#: customFieldsData.php:55
-msgid ""
-"Mehrfachauswahl, durch Semikolon getrennt: erlaubt \"Neu\" und oder "
-"\"Netzwerk\", wenn \"Neu;Netzwerk\" angegeben. Und oder numerische Werte "
-"(Ganzzahl, Gleitkommanzahlen)."
-msgstr ""
-"Mehrfachauswahl, durch Semikolon getrennt: erlaubt \"Neu\" und oder "
-"\"Netzwerk\", wenn \"Neu;Netzwerk\" angegeben. Und oder numerische Werte "
-"(Ganzzahl, Gleitkommanzahlen)."
-
-#: datafields.php:37
-msgid "1 Datensatz mit verknüpften Altdaten entfernt."
-msgstr "1 Datensatz mit verknüpften Altdaten entfernt."
-
-#: datafields.php:37
-msgid "Datensätze mit verknüpften Altdaten entfernt."
-msgstr "Einzelwert: Zeichenfolge mit bis zu < 256 Zeichen"
-
-#: datafields.php:45
-msgid "1 Eintrag wurde gelöscht."
-msgstr "1 Eintrag wurde gelöscht."
-
-#: datafields.php:45
-msgid "Einträge wurden gelöscht."
-msgstr "Einträge wurden gelöscht."
-
-#: datafields.php:46
-msgid "Es waren keine Einträge mit dem Datenfeld verknüpft."
-msgstr "Es waren keine Einträge mit dem Datenfeld verknüpft."
-
-#: footer.php:2
-msgid "Kontakt"
-msgstr "Kontakt"
-
-#: footer.php:3
-msgid "Github"
-msgstr "Github"
-
-#: inventory.php:181
-msgid "Kategorie"
-msgstr "Kategorie"
-
-#: inventory.php:194
-msgid "Unterkategorie"
-msgstr "Unterkategorie"
-
-#: login.php:25
-msgid "Zugriff verweigert!"
-msgstr "Zugriff verweigert!"
-
-#: login.php:61
-msgid "Passwort zu kurz, mindestens 8 Zeichen!"
-msgstr "Passwort zu kurz, mindestens 8 Zeichen!"
-
-#: login.php:65
-msgid "Passwort muß eine Zahl enthalten!"
-msgstr "Passwort muß eine Zahl enthalten!"
-
-#: login.php:69
-msgid "Passwort muß einen Kleinbuchstaben enthalten!"
-msgstr "Passwort muß einen Kleinbuchstaben enthalten!"
-
-#: login.php:73
-msgid "Passwort muß einen Großbuchstaben enthalten!"
-msgstr "Passwort muß einen Großbuchstaben enthalten!"
-
-#: login.php:77
-msgid "Die Passwörter stimmen nicht überein!"
-msgstr "Die Passwörter stimmen nicht überein!"
-
-#: login.php:81
-msgid "Benutzername ist erforderlich."
-msgstr "Benutzername ist erforderlich."
-
-#: login.php:83
-msgid "Benutzername enthält nicht zugelassene Zeichen."
-msgstr "Benutzername enthält nicht zugelassene Zeichen."
-
-#: login.php:87
-msgid "E-Mail-Adresse ungültig!"
-msgstr "E-Mail-Adresse ungültig!"
-
-#: login.php:127
-msgid "Der Aktivierungslink ist nicht mehr gültig."
-msgstr "Der Aktivierungslink ist nicht mehr gültig."
-
-#: login.php:137
-msgid "Zugangsdaten ungültig"
-msgstr "Zugangsdaten ungültig"
-
-#: login.php:149
-msgid "Bitte Benutzername und E-Mail-Adresse angeben."
-msgstr "Bitte Benutzername und E-Mail-Adresse angeben."
-
-#: login.php:161
-msgid "sqStorage Passwortänderung"
-msgstr "sqStorage Passwortänderung"
-
-#: login.php:161
-#, fuzzy, php-format
-#| msgid ""
-#| "Um das Passwort für sqStorage zu ändern bitte den folgenden Link "
-#| "aufrufen: <a href=\"%s\">%s</a>"
-msgid ""
-"Um das Passwort für sqStorage zu ändern bitte den folgenden Link aufrufen: "
-"<a href=\"%s\">%s</a>"
-msgstr ""
-"Um das Passwort für sqStorage zu ändern bitte den folgenden Link aufrufen: "
-"<a href=\"%s\">%s</a>"
-
-#: login.php:162 login.php:167
-msgid ""
-"Falls ein Benutzerkonto gefunden wird, erhalten Sie nun eine Mail mit einem "
-"Link zum Zurücksetzen des Passworts."
-msgstr ""
-"Falls ein Benutzerkonto gefunden wird, erhalten Sie nun eine Mail mit einem "
-"Link zum Zurücksetzen des Passworts."
-
-#: login.php:164
-msgid ""
-"Momentan können keine E-Mails versendet werden, bitte später noch einmal "
-"versuchen, oder einen Administrator kontaktieren."
-msgstr ""
-"Momentan können keine E-Mails versendet werden, bitte später noch einmal "
-"versuchen, oder einen Administrator kontaktieren."
-
-#: nav.php:4
-msgid "Eintragen"
-msgstr "Eintragen"
-
-#: nav.php:5
-msgid "Inventar"
-msgstr "Inventar"
-
-#: nav.php:6
+#: templates//categories.tpl:1 templates//categories.tpl:5
+#: templates//datafields.tpl:147 templates//php_language_extract.tpl:33
+#: templates//nav.tpl:11
 msgid "Kategorien"
 msgstr "Kategorien"
 
-#: nav.php:7
-msgid "Transferieren"
-msgstr "Transferieren"
+#: templates//categories.tpl:5 templates//categories.tpl:11
+#: templates//inventory.tpl:23 templates//inventory.tpl:98
+#: templates//inventory.tpl:169 templates//inventorypage.tpl:23
+#: templates//indexpage.tpl:211 templates//indexpage.tpl:214
+#: templates//indexpage.tpl:216
+msgid "Anzahl"
+msgstr "Anzahl"
 
-#: nav.php:8
-msgid "Einstellungen"
-msgstr "Einstellungen"
+#: templates//categories.tpl:5 templates//categories.tpl:11
+#: templates//inventory.tpl:23 templates//inventory.tpl:98
+#: templates//inventory.tpl:169 templates//inventorypage.tpl:23
+#: templates//settings.tpl:110
+msgid "Aktionen"
+msgstr "Aktionen"
 
-#: nav.php:10
+#: templates//categories.tpl:7 templates//categories.tpl:14
+#: templates//inventory.tpl:18 templates//inventory.tpl:93
+#: templates//inventory.tpl:164 templates//inventorypage.tpl:21
+msgid "Gegenstand"
+msgstr "Gegenstand"
+
+#: templates//categories.tpl:7 templates//categories.tpl:14
+#: templates//inventory.tpl:18 templates//inventory.tpl:93
+#: templates//inventory.tpl:164
+msgid "Gegenstände"
+msgstr "Gegenstände"
+
+#: templates//categories.tpl:11 templates//inventory.tpl:23
+#: templates//inventory.tpl:98 templates//inventory.tpl:169
+#: templates//inventorypage.tpl:23
+msgid "Unterkategorien"
+msgstr "Unterkategorien"
+
+#: templates//categories.tpl:11
+msgid "Oberkategorie"
+msgstr "Oberkategorie"
+
+#: templates//categories.tpl:19 templates//categories.tpl:21
+msgid "Keine"
+msgstr "Keine"
+
+#: templates//categories.tpl:46
+msgid "Kategorie wirklich entfernen?"
+msgstr "Kategorie wirklich entfernen?"
+
+#: templates//categories.tpl:46
+msgid "Unterkategorie wirklich entfernen?"
+msgstr "Unterkategorie wirklich entfernen?"
+
+#: templates//categories.tpl:56
+msgid "Kategorie umbenennen?"
+msgstr "Kategorie umbenennen?"
+
+#: templates//categories.tpl:56
+msgid "Unterkategorie umbenennen?"
+msgstr "Unterkategorie umbenennen?"
+
+#: templates//datafields.tpl:1 templates//php_language_extract.tpl:6
+#: templates//inventorypage.tpl:1 templates//nav.tpl:13
 msgid "Datenfelder"
 msgstr "Datenfelder"
 
-#: nav.php:14
-msgid "Suche"
-msgstr "Suche"
+#: templates//datafields.tpl:7 templates//indexpage.tpl:23
+msgid "Nicht gespeichert, es befinden sich Fehler in der Formular-Eingabe."
+msgstr "Nicht gespeichert, es befinden sich Fehler in der Formular-Eingabe."
 
-#: nav.php:15
-msgid "Suchen"
-msgstr "Suchen"
+#: templates//datafields.tpl:12
+msgid "Feld entfernt:"
+msgstr "Feld entfernt:"
 
-#: nav.php:19
+#: templates//datafields.tpl:16
+msgid "Feld Typ geändert:"
+msgstr "Feld Typ geändert:"
+
+#: templates//datafields.tpl:20
+msgid "Zur Datenbank hinzugefügt:"
+msgstr "Feld Typ geändert:"
+
+#: templates//datafields.tpl:23 templates//datafields.tpl:253
+msgid "Auswahl"
+msgstr "Auswahl"
+
+#: templates//datafields.tpl:27 templates//datafields.tpl:32
+#: templates//datafields.tpl:250
+msgid "Datentyp"
+msgstr "Datentyp"
+
+#: templates//datafields.tpl:43 templates//datafields.tpl:45
+msgid "Beispielwerte"
+msgstr "Beispielwerte"
+
+#: templates//datafields.tpl:45 templates//php_language_extract.tpl:9
+msgid "Datentyp Beispielwerte"
+msgstr "Datentyp Beispielwerte"
+
+#: templates//datafields.tpl:51
+msgid "Details"
+msgstr "Details"
+
+#: templates//datafields.tpl:55 templates//datafields.tpl:57
+#: templates//datafields.tpl:251
+msgid "Feldname"
+msgstr "Feldname"
+
+#: templates//datafields.tpl:62 templates//datafields.tpl:64
+#: templates//datafields.tpl:252
+msgid "Standardwert"
+msgstr "Standardwert"
+
+#: templates//datafields.tpl:64
+msgid "Standardwert: Keine Eingabe gleichsam leer"
+msgstr "Standardwert: Keine Eingabe gleichsam leer"
+
+#: templates//datafields.tpl:69
+msgid "Feld immer sichtbar?"
+msgstr "Feld immer sichtbar?"
+
+#: templates//datafields.tpl:73
+msgid "Ja"
+msgstr "Ja"
+
+#: templates//datafields.tpl:77
+msgid "Nein"
+msgstr "Nein"
+
+#: templates//datafields.tpl:83
+msgid "Sichtbarkeit"
+msgstr "Sichtbarkeit"
+
+#: templates//datafields.tpl:88
+msgid "Überall sichtbar"
+msgstr "Überall sichtbar"
+
+#: templates//datafields.tpl:100
+msgid "Auswahlwerte"
+msgstr "Auswahlwerte"
+
+#: templates//datafields.tpl:102
+msgid ""
+"Auswahlwerte, durch Semikolon getrennt: 'Neu;Gebraucht;Refurbished' und oder "
+"Dezimal und Gleitkommazahlen."
+msgstr ""
+"Auswahlwerte, durch Semikolon getrennt: 'Neu;Gebraucht;Refurbished' und oder "
+"Dezimal und Gleitkommazahlen."
+
+#: templates//datafields.tpl:102
+msgid "Neu;Gebraucht;Refurbished"
+msgstr "Neu;Gebraucht;Refurbished"
+
+#: templates//datafields.tpl:104
+msgid "Eintragen / Aktualisieren"
+msgstr "Eintragen / Aktualisieren"
+
+#: templates//datafields.tpl:105
+msgid "Formular zurücksetzen"
+msgstr "Formular zurücksetzen"
+
+#: templates//datafields.tpl:106
+msgid "Feld löschen"
+msgstr "Feld löschen"
+
+#: templates//datafields.tpl:114
+msgid "Bestehende Datenfelder"
+msgstr "Bestehende Datenfelder"
+
+#: templates//datafields.tpl:147 templates//php_language_extract.tpl:30
+#: templates//indexpage.tpl:89 templates//indexpage.tpl:91
+msgid "Kategorie"
+msgstr "Kategorie"
+
+#: templates//datafields.tpl:184
+msgid "ist doppelt enthalten."
+msgstr "ist doppelt enthalten."
+
+#: templates//datafields.tpl:186
+msgid "Standardwert doppelt."
+msgstr "Standardwert doppelt."
+
+#: templates//datafields.tpl:202
+msgid " nicht in Standardwerten enthalten."
+msgstr " nicht in Standardwerten enthalten."
+
+#: templates//datafields.tpl:204
+msgid "Standardwert nicht in Auswahlwerten enthalten."
+msgstr "Standardwert nicht in Auswahlwerten enthalten."
+
+#: templates//datafields.tpl:242
+msgid "Ein Feld mit gleichem Namem"
+msgstr "Ein Feld mit gleichem Namem"
+
+#: templates//datafields.tpl:242
+msgid ""
+"ist bereits vorhanden. Das alte Feld muß gelöscht oder umbenannt werden."
+msgstr ""
+"ist bereits vorhanden. Das alte Feld muß gelöscht oder umbenannt werden."
+
+#: templates//datafields.tpl:295
+msgid "Der Standardwert darf nur zwischen"
+msgstr "Der Standardwert darf nur zwischen"
+
+#: templates//datafields.tpl:295 templates//datafields.tpl:309
+msgid "und"
+msgstr "und"
+
+#: templates//datafields.tpl:295
+msgid "liegen."
+msgstr "liegen."
+
+#: templates//datafields.tpl:305 templates//datafields.tpl:309
+msgid "Feld"
+msgstr "Feld"
+
+#: templates//datafields.tpl:305
+msgid "hat keinen Wert."
+msgstr "hat keinen Wert."
+
+#: templates//datafields.tpl:309
+msgid "muß zwischen"
+msgstr "muß zwischen"
+
+#: templates//datafields.tpl:309
+msgid "Zeichen lang sein."
+msgstr "Zeichen lang sein."
+
+#: templates//datafields.tpl:353 templates//php_language_extract.tpl:13
+msgid "Eintrag"
+msgstr "Eintrag"
+
+#: templates//datafields.tpl:353
+msgid "wirklich löschen?"
+msgstr "wirklich löschen?"
+
+#: templates//test.tpl:9 templates//test.tpl:26 templates//transfer.tpl:8
+#: templates//transfer.tpl:26
+msgid "Quelle"
+msgstr "Quelle"
+
+#: templates//test.tpl:19 templates//test.tpl:27 templates//transfer.tpl:17
+#: templates//transfer.tpl:30
+msgid "Ziel"
+msgstr "Ziel"
+
+#: templates//test.tpl:26 templates//transfer.tpl:27
+msgid "Quelle wählen."
+msgstr "Quelle wählen."
+
+#: templates//test.tpl:27 templates//transfer.tpl:31
+msgid "Ziel wählen."
+msgstr "Ziel wählen."
+
+#: templates//test.tpl:27 templates//php_language_extract.tpl:52
+#: templates//transfer.tpl:1 templates//transfer.tpl:31 templates//nav.tpl:12
+msgid "Transferieren"
+msgstr "Transferieren"
+
+#: templates//test.tpl:107 templates//transfer.tpl:115
+msgid "Quelle wählen"
+msgstr "Quelle wählen"
+
+#: templates//test.tpl:108 templates//transfer.tpl:116
+msgid "Ziel wählen"
+msgstr "Ziel wählen"
+
+#: templates//test.tpl:127 templates//inventory.tpl:69
+#: templates//inventory.tpl:77 templates//inventory.tpl:141
+#: templates//inventory.tpl:212
+msgid "Keine Gegenstände gefunden"
+msgstr "Keine Gegenstände gefunden"
+
+#: templates//php_language_extract.tpl:1 templates//nav.tpl:51
 msgid "Abmelden"
 msgstr "Abmelden"
 
-#: settings.php:13
+#: templates//php_language_extract.tpl:2
 msgid "Absender-Mailadresse ungültig."
 msgstr "Absender-Mailadresse ungültig."
 
-#: settings.php:27
-#, php-format
-msgid "Fehler: Benutzername \"%s\" enthält nicht zugelassene Zeichen."
-msgstr "Fehler: Benutzername \"%s\" enthält nicht zugelassene Zeichen."
+#: templates//php_language_extract.tpl:3
+msgid "Benutzername enthält nicht zugelassene Zeichen."
+msgstr "Benutzername enthält nicht zugelassene Zeichen."
 
-#: settings.php:31
-#, php-format
-msgid "Fehler: E-Mail-Adresse \"%s\" ungültig."
-msgstr "Fehler: E-Mail-Adresse \"%s\" ungültig."
+#: templates//php_language_extract.tpl:4
+msgid "Benutzername ist erforderlich."
+msgstr "Benutzername ist erforderlich."
 
-#: settings.php:38
-#, php-format
+#: templates//php_language_extract.tpl:5
+msgid "Bitte Benutzername und E-Mail-Adresse angeben."
+msgstr "Bitte Benutzername und E-Mail-Adresse angeben."
+
+#: templates//php_language_extract.tpl:7
+msgid "Datensatz"
+msgstr "Datensatz"
+
+#: templates//php_language_extract.tpl:8
+msgid "Datensätze"
+msgstr "Datensätze"
+
+#: templates//php_language_extract.tpl:10
+msgid "Der Aktivierungslink ist nicht mehr gültig."
+msgstr "Der Aktivierungslink ist nicht mehr gültig."
+
+#: templates//php_language_extract.tpl:11
+msgid "Die Passwörter stimmen nicht überein!"
+msgstr "Die Passwörter stimmen nicht überein!"
+
+#: templates//php_language_extract.tpl:12 templates//settings.tpl:1
+#: templates//nav.tpl:17
+msgid "Einstellungen"
+msgstr "Einstellungen"
+
+#: templates//php_language_extract.tpl:14
+msgid "Einträge"
+msgstr "Einträge"
+
+#: templates//php_language_extract.tpl:15 templates//settings.tpl:92
+#: templates//indexpage.tpl:1 templates//indexpage.tpl:343 templates//nav.tpl:9
+msgid "Eintragen"
+msgstr "Eintragen"
+
+#: templates//php_language_extract.tpl:16
+msgid "Einzelauswahl (Single-Dropdown)"
+msgstr "Einzelauswahl (Single-Dropdown)"
+
+#: templates//php_language_extract.tpl:17
+msgid ""
+"Einzelauswahl, durch Komma getrennt: erlaubt \"Neu\" oder \"Gebraucht\" oder "
+"\"Refurbished\" wenn \"Neu,Gebraucht,Refurbished\" angegeben. Und oder "
+"numerische Werte (Ganzzahl, Gleitkommazahlen)"
+msgstr ""
+"Einzelauswahl, durch Komma getrennt: erlaubt \"Neu\" oder \"Gebraucht\" oder "
+"\"Refurbished\" wenn \"Neu,Gebraucht,Refurbished\" angegeben. Und oder "
+"numerische Werte (Ganzzahl, Gleitkommazahlen)"
+
+#: templates//php_language_extract.tpl:18
+msgid "Einzelwert: 1 oder 291 oder 4016, größer gleich 0"
+msgstr "Einzelwert: 1 oder 291 oder 4016, größer gleich 0"
+
+#: templates//php_language_extract.tpl:19
+msgid "Einzelwert: -10 oder -2 oder 2000 oder 4000"
+msgstr "Einzelwert: -10 oder -2 oder 2000 oder 4000"
+
+#: templates//php_language_extract.tpl:20
+msgid "Einzelwert: -11.4 oder -0.032 kleiner gleich 0"
+msgstr "Einzelwert: -11.4 oder -0.032 kleiner gleich 0"
+
+#: templates//php_language_extract.tpl:21
+msgid "Einzelwert: -131 oder -7019 oder kleiner gleich 0"
+msgstr "Einzelwert: -131 oder -7019 oder kleiner gleich 0"
+
+#: templates//php_language_extract.tpl:22
+msgid "Einzelwert: 3.4172 oder 5.179 oder 27.4"
+msgstr "Einzelwert: 3.4172 oder 5.179 oder 27.4"
+
+#: templates//php_language_extract.tpl:23
+msgid "Einzelwert: Zeichenfolge mit bis zu < 512 Zeichen"
+msgstr "Einzelwert: Zeichenfolge mit bis zu < 512 Zeichen"
+
+#: templates//php_language_extract.tpl:24
+msgid "Es waren keine Einträge mit dem Datenfeld verknüpft."
+msgstr "Es waren keine Einträge mit dem Datenfeld verknüpft."
+
+#: templates//php_language_extract.tpl:25
+msgid "Es wurden"
+msgstr "Es wurden"
+
+#: templates//php_language_extract.tpl:26
+msgid ""
+"Falls ein Benutzerkonto gefunden wird, erhalten Sie nun eine Mail mit einem "
+"Link zum Zurücksetzen des Passworts."
+msgstr ""
+"Falls ein Benutzerkonto gefunden wird, erhalten Sie nun eine Mail mit einem "
+"Link zum Zurücksetzen des Passworts."
+
+#: templates//php_language_extract.tpl:27
 msgid ""
 "Fehler: Dies ist der letzte Administrator, die Gruppe kann nicht auf \"%s\" "
 "geändert werden!"
@@ -285,386 +401,498 @@ msgstr ""
 "Fehler: Dies ist der letzte Administrator, die Gruppe kann nicht auf \"%s\" "
 "geändert werden!"
 
-#: settings.php:56
+#: templates//php_language_extract.tpl:28 templates//footer.tpl:3
+msgid "Github"
+msgstr "Github"
+
+#: templates//php_language_extract.tpl:29 templates//inventory.tpl:1
+#: templates//nav.tpl:10
+msgid "Inventar"
+msgstr "Inventar"
+
+#: templates//php_language_extract.tpl:31
+msgid "Kategorie entfernt."
+msgstr "Kategorie entfernt."
+
+#: templates//php_language_extract.tpl:32
+msgid "Kategorie umbenannt."
+msgstr "Kategorie umbenannt."
+
+#: templates//php_language_extract.tpl:34 templates//footer.tpl:2
+msgid "Kontakt"
+msgstr "Kontakt"
+
+#: templates//php_language_extract.tpl:35
+msgid "Mehrfachauswahl (Multi-Dropdown)"
+msgstr "Mehrfachauswahl (Multi-Dropdown)"
+
+#: templates//php_language_extract.tpl:36
+msgid ""
+"Mehrfachauswahl, durch Komma getrennt: erlaubt \"Neu\" und oder \"Netzwerk"
+"\", wenn \"Neu,Netzwerk\" angegeben. Und oder numerische Werte (Ganzzahl, "
+"Gleitkommanzahlen)."
+msgstr ""
+"Mehrfachauswahl, durch Komma getrennt: erlaubt \"Neu\" und oder \"Netzwerk"
+"\", wenn \"Neu,Netzwerk\" angegeben. Und oder numerische Werte (Ganzzahl, "
+"Gleitkommanzahlen)."
+
+#: templates//php_language_extract.tpl:37
+#| msgid "1 Datensatz mit verknüpften Altdaten entfernt."
+msgid "mit verknüpften Altdaten entfernt."
+msgstr "mit verknüpften Altdaten entfernt."
+
+#: templates//php_language_extract.tpl:38
+msgid ""
+"Momentan können keine E-Mails versendet werden, bitte später noch einmal "
+"versuchen, oder einen Administrator kontaktieren."
+msgstr ""
+"Momentan können keine E-Mails versendet werden, bitte später noch einmal "
+"versuchen, oder einen Administrator kontaktieren."
+
+#: templates//php_language_extract.tpl:39
+msgid "Negative Ganzzahl"
+msgstr "Negative Ganzzahl"
+
+#: templates//php_language_extract.tpl:40
+msgid "Negative oder positive Ganzzahl"
+msgstr "Negative oder positive Ganzzahl"
+
+#: templates//php_language_extract.tpl:41
+msgid "Negative oder positive Gleitkommazahl"
+msgstr "Negative oder positive Gleitkommazahl"
+
+#: templates//php_language_extract.tpl:42
+msgid "Passwort muß eine Zahl enthalten!"
+msgstr "Passwort muß eine Zahl enthalten!"
+
+#: templates//php_language_extract.tpl:43
+msgid "Passwort muß einen Großbuchstaben enthalten!"
+msgstr "Passwort muß einen Großbuchstaben enthalten!"
+
+#: templates//php_language_extract.tpl:44
+msgid "Passwort muß einen Kleinbuchstaben enthalten!"
+msgstr "Passwort muß einen Kleinbuchstaben enthalten!"
+
+#: templates//php_language_extract.tpl:45
+msgid "Passwort zu kurz, mindestens 8 Zeichen!"
+msgstr "Passwort zu kurz, mindestens 8 Zeichen!"
+
+#: templates//php_language_extract.tpl:46
+msgid "Positive Ganzzahl"
+msgstr "Positive Ganzzahl"
+
+#: templates//php_language_extract.tpl:47
+msgid "Positive Gleitkommazahl"
+msgstr "Positive Gleitkommazahl"
+
+#: templates//php_language_extract.tpl:48
 msgid "sqStorage Einladung"
 msgstr "sqStorage Einladung"
 
-#: settings.php:56
-#, fuzzy, php-format
-#| msgid ""
-#| "Sie haben eine Einladung für sqStorage erhalten: <a href=\"%s\">%s</a>"
-msgid "Sie haben eine Einladung für sqStorage erhalten: <a href=\"%s\">%s</a>"
-msgstr "Sie haben eine Einladung für sqStorage erhalten: <a href=\"%s\">%s</a>"
+#: templates//php_language_extract.tpl:49
+msgid "sqStorage Passwortänderung"
+msgstr "sqStorage Passwortänderung"
 
-#: settings.php:59
-#, fuzzy, php-format
-#| msgid ""
-#| "Es können zur Zeit keine Mails vom System versendet werden.<br />Bitte "
-#| "diesen Einladungslink an den Benutzer weiterleiten:<br /><a href=\"%s\">"
-#| "%s</a>"
+#: templates//php_language_extract.tpl:50 templates//nav.tpl:24
+msgid "Suche"
+msgstr "Suche"
+
+#: templates//php_language_extract.tpl:51 templates//nav.tpl:25
+msgid "Suchen"
+msgstr "Suchen"
+
+#: templates//php_language_extract.tpl:53 templates//indexpage.tpl:185
+#: templates//indexpage.tpl:188 templates//indexpage.tpl:203
+#: templates//indexpage.tpl:205
+msgid "Unterkategorie"
+msgstr "Unterkategorie"
+
+#: templates//php_language_extract.tpl:54
+msgid "Unterkategorie entfernt."
+msgstr "Unterkategorie entfernt."
+
+#: templates//php_language_extract.tpl:55
+msgid "Unterkategorie umbenannt."
+msgstr "Unterkategorie umbenannt."
+
+#: templates//php_language_extract.tpl:56
+msgid "verknüpfter Informationen gelöscht."
+msgstr "verknüpfter Informationen gelöscht."
+
+#: templates//php_language_extract.tpl:57
+msgid "Zeichenfolge < 512 Zeichen"
+msgstr "Zeichenfolge < 512 Zeichen"
+
+#: templates//php_language_extract.tpl:58
+msgid "Zugangsdaten ungültig"
+msgstr "Zugangsdaten ungültig"
+
+#: templates//php_language_extract.tpl:59 templates//accessdenied.tpl:16
+msgid "Zugriff verweigert!"
+msgstr "Zugriff verweigert!"
+
+#: templates//php_language_extract.tpl:60
+msgid ""
+"Um das Passwort für sqStorage zu ändern bitte den folgenden Link aufrufen: "
+"<a href=\"%s\">%s</a>rn"
+msgstr ""
+"Um das Passwort für sqStorage zu ändern bitte den folgenden Link aufrufen: "
+"<a href=\"%s\">%s</a>rn"
+
+#: templates//php_language_extract.tpl:61
+msgid "Fehler: Benutzername \"%s\" enthält nicht zugelassene Zeichen."
+msgstr "Fehler: Benutzername \"%s\" enthält nicht zugelassene Zeichen."
+
+#: templates//php_language_extract.tpl:62
+msgid "Fehler: E-Mail-Adresse \"%s\" ungültig."
+msgstr "Fehler: E-Mail-Adresse \"%s\" ungültig."
+
+#: templates//php_language_extract.tpl:63
+msgid ""
+"Sie haben eine Einladung für sqStorage erhalten: <a href=\"%s\">%s</a>rn"
+msgstr ""
+"Sie haben eine Einladung für sqStorage erhalten: <a href=\"%s\">%s</a>rn"
+
+#: templates//php_language_extract.tpl:64
 msgid ""
 "Es können zur Zeit keine Mails vom System versendet werden.<br />Bitte "
 "diesen Einladungslink an den Benutzer weiterleiten:<br /><a href=\"%s\">%s</"
-"a>"
+"a>rn"
 msgstr ""
 "Es können zur Zeit keine Mails vom System versendet werden.<br />Bitte "
 "diesen Einladungslink an den Benutzer weiterleiten:<br /><a href=\"%s\">%s</"
-"a>"
+"a>rn"
 
-#: settings.php:66
-#, php-format
-msgid "Der Benutzer \"%s\" existiert bereits."
-msgstr "Der Benutzer \"%s\" existiert bereits."
+#: templates//php_language_extract.tpl:65 templates//inventory.tpl:230
+msgid ""
+"Von diesem Artikel sind mehrere Stück am Lagerplatz. Wieviele sollen zum "
+"neuen Lagerort transferiert werden?"
+msgstr ""
+"Von diesem Artikel sind mehrere Stück am Lagerplatz. Wieviele sollen zum "
+"neuen Lagerort transferiert werden?"
 
-#: settings.php:101
-#, fuzzy
-#| msgid "Fehler: Der letzte Administrator kann nicht gelöscht werden!"
-msgid "Fehler: Der letzte Administrator kann nicht gelöscht werden!"
-msgstr "Fehler: Der letzte Administrator kann nicht gelöscht werden!"
+#: templates//php_language_extract.tpl:66
+msgid "Administrator"
+msgstr "Administrator"
 
-#~ msgid "Anzahl"
-#~ msgstr "Anzahl"
+#: templates//php_language_extract.tpl:67
+msgid "Gast"
+msgstr "Gast"
 
-#~ msgid "Aktionen"
-#~ msgstr "Aktionen"
+#: templates//php_language_extract.tpl:68
+msgid "Benutzer"
+msgstr "Benutzer"
 
-#~ msgid "Gegenstand"
-#~ msgstr "Gegenstand"
+#: templates//transfer.tpl:135
+msgid "Keine Gegenstände gefunden."
+msgstr "Keine Gegenstände gefunden."
 
-#~ msgid "Gegenstände"
-#~ msgstr "Gegenstände"
+#: templates//inventory.tpl:15 templates//inventory.tpl:17
+#: templates//inventory.tpl:90 templates//inventory.tpl:92
+#: templates//inventory.tpl:161 templates//inventory.tpl:163
+msgid "Unsortiert"
+msgstr "Unsortiert"
 
-#~ msgid "Unterkategorien"
-#~ msgstr "Unterkategorien"
+#: templates//inventory.tpl:18 templates//inventory.tpl:93
+#: templates//inventory.tpl:164 templates//inventorypage.tpl:21
+msgid "Position"
+msgstr "Position"
 
-#~ msgid "Oberkategorie"
-#~ msgstr "Oberkategorie"
+#: templates//inventory.tpl:18 templates//inventory.tpl:93
+#: templates//inventory.tpl:164
+msgid "Positionen"
+msgstr "Positionen"
 
-#~ msgid "Keine"
-#~ msgstr "Keine"
+#: templates//inventory.tpl:23 templates//inventory.tpl:98
+#: templates//inventory.tpl:169 templates//inventorypage.tpl:23
+#: templates//settings.tpl:110
+msgid "Gruppe"
+msgstr "Gruppe"
 
-#~ msgid "Kategorie wirklich entfernen?"
-#~ msgstr "Kategorie wirklich entfernen?"
+#: templates//inventory.tpl:23 templates//inventory.tpl:98
+#: templates//inventory.tpl:169 templates//inventorypage.tpl:23
+#: templates//indexpage.tpl:31 templates//indexpage.tpl:34
+#: templates//indexpage.tpl:36
+msgid "Bezeichnung"
+msgstr "Bezeichnung"
 
-#~ msgid "Unterkategorie wirklich entfernen?"
-#~ msgstr "Unterkategorie wirklich entfernen?"
+#: templates//inventory.tpl:23 templates//inventory.tpl:98
+#: templates//inventory.tpl:169 templates//inventorypage.tpl:23
+#: templates//indexpage.tpl:73 templates//indexpage.tpl:77
+#: templates//indexpage.tpl:79
+msgid "Bemerkung"
+msgstr "Bemerkung"
 
-#~ msgid "Kategorie umbenennen?"
-#~ msgstr "Kategorie umbenennen?"
+#: templates//inventory.tpl:23 templates//inventory.tpl:98
+#: templates//inventory.tpl:169 templates//inventorypage.tpl:23
+msgid "Hinzugefügt"
+msgstr "Hinzugefügt"
 
-#~ msgid "Unterkategorie umbenennen?"
-#~ msgstr "Unterkategorie umbenennen?"
+#: templates//inventory.tpl:44
+msgid "Gegenstand hat Bilder"
+msgstr "Gegenstand hat Bilder"
 
-#~ msgid "Nicht gespeichert, es befinden sich Fehler in der Formular-Eingabe."
-#~ msgstr "Nicht gespeichert, es befinden sich Fehler in der Formular-Eingabe."
+#: templates//inventory.tpl:55 templates//inventory.tpl:130
+#: templates//inventory.tpl:201 templates//inventorypage.tpl:52
+msgid "Zuweisen"
+msgstr "Zuweisen"
 
-#~ msgid "Feld entfernt:"
-#~ msgstr "Feld entfernt:"
+#: templates//inventory.tpl:261 templates//inventorypage.tpl:86
+msgid "Lagerplatz wirklich entfernen?"
+msgstr "Lagerplatz wirklich entfernen?"
 
-#~ msgid "Feld Typ geändert:"
-#~ msgstr "Feld Typ geändert:"
+#: templates//inventory.tpl:261 templates//inventorypage.tpl:86
+msgid "Position wirklich entfernen?"
+msgstr "Position wirklich entfernen?"
 
-#~ msgid "Zur Datenbank hinzugefügt:"
-#~ msgstr "Feld Typ geändert:"
+#: templates//settings.tpl:18
+msgid "zur Datenbank hinzugefügt"
+msgstr "zur Datenbank hinzugefügt"
 
-#~ msgid "Auswahl"
-#~ msgstr "Auswahl"
+#: templates//settings.tpl:24
+msgid "Benutzer zur Bearbeitung:"
+msgstr "Benutzer zur Bearbeitung:"
 
-#~ msgid "Datentyp"
-#~ msgstr "Datentyp"
+#: templates//settings.tpl:34 templates//settings.tpl:39
+#: templates//settings.tpl:41 templates//settings.tpl:110
+#: templates//login.tpl:44
+msgid "Benutzername"
+msgstr "Benutzername"
 
-#~ msgid "Beispielwerte"
-#~ msgstr "Beispielwerte"
+#: templates//settings.tpl:48 templates//settings.tpl:51
+#: templates//settings.tpl:53 templates//settings.tpl:110
+#: templates//login.tpl:53
+msgid "E-Mail"
+msgstr "E-Mail"
 
-#~ msgid "Details"
-#~ msgstr "Details"
+#: templates//settings.tpl:63 templates//settings.tpl:79
+#: templates//settings.tpl:82
+msgid "Benutzergruppe"
+msgstr "Benutzergruppe"
 
-#~ msgid "Feldname"
-#~ msgstr "Feldname"
+#: templates//settings.tpl:90 templates//indexpage.tpl:341
+msgid "Überschreiben"
+msgstr "Überschreiben"
 
-#~ msgid "Standardwert"
-#~ msgstr "Standardwert"
+#: templates//settings.tpl:109
+msgid "Neuer Benutzer"
+msgstr "Neuer Benutzer"
 
-#~ msgid "Standardwert: Keine Eingabe gleichsam leer"
-#~ msgstr "Standardwert: Keine Eingabe gleichsam leer"
+#: templates//settings.tpl:120
+msgid "Mailserver-Einstellungen"
+msgstr "Mailserver-Einstellungen"
 
-#~ msgid "Feld immer sichtbar?"
-#~ msgstr "Feld immer sichtbar?"
+#: templates//settings.tpl:125
+msgid "E-Mail Absenderadresse"
+msgstr "E-Mail Absenderadresse"
 
-#~ msgid "Ja"
-#~ msgstr "Ja"
+#: templates//settings.tpl:131
+msgid "Mailversand"
+msgstr "Mailversand"
 
-#~ msgid "Nein"
-#~ msgstr "Nein"
+#: templates//settings.tpl:135
+msgid "deaktivieren"
+msgstr "deaktivieren"
 
-#~ msgid "Sichtbarkeit"
-#~ msgstr "Sichtbarkeit"
+#: templates//settings.tpl:139
+msgid "aktivieren"
+msgstr "aktivieren"
 
-#~ msgid "Überall sichtbar"
-#~ msgstr "Überall sichtbar"
+#: templates//settings.tpl:142
+msgid "Einstellungen speichern"
+msgstr "Einstellungen speichern"
 
-#~ msgid "Auswahlwerte"
-#~ msgstr "Auswahlwerte"
+#: templates//settings.tpl:163
+msgid "Benutzer wirklich entfernen?"
+msgstr "Benutzer wirklich entfernen?"
+
+#: templates//settings.tpl:163
+msgid "Der letzte Administrator kann nicht gelöscht werden!"
+msgstr "Der letzte Administrator kann nicht gelöscht werden!"
+
+#: templates//indexpage.tpl:13
+msgid "zur Datenbank hinzugefügt."
+msgstr "zur Datenbank hinzugefügt."
+
+#: templates//indexpage.tpl:19
+msgid "Eintrag zur Bearbeitung:"
+msgstr "Eintrag zur Bearbeitung:"
+
+#: templates//indexpage.tpl:34 templates//indexpage.tpl:36
+msgid "Bezeichnung oder Name"
+msgstr "Bezeichnung oder Name"
+
+#: templates//indexpage.tpl:47 templates//indexpage.tpl:49
+#: templates//indexpage.tpl:65 templates//indexpage.tpl:67
+msgid "Lagerplatz"
+msgstr "Lagerplatz"
+
+#: templates//indexpage.tpl:105 templates//indexpage.tpl:107
+msgid "Netzwerk/Hardware"
+msgstr "Netzwerk/Hardware"
+
+#: templates//indexpage.tpl:203 templates//indexpage.tpl:205
+msgid "Router,wlan,fritzBox"
+msgstr "Router,wlan,fritzBox"
+
+#: templates//indexpage.tpl:222 templates//indexpage.tpl:225
+msgid "Seriennummer"
+msgstr "Seriennummer"
+
+#: templates//indexpage.tpl:225 templates//indexpage.tpl:227
+msgid "Seriennummer/Artikelnummer"
+msgstr "Seriennummer/Artikelnummer"
+
+#: templates//indexpage.tpl:350
+msgid "Bilder des Gegenstandes"
+msgstr "Bilder des Gegenstandes"
+
+#: templates//indexpage.tpl:352
+msgid "Bild Upload"
+msgstr "Bild Upload"
+
+#: templates//indexpage.tpl:354
+msgid "Bilder hochladen"
+msgstr "Bilder hochladen"
+
+#: templates//indexpage.tpl:362
+msgid "Bild entfernen"
+msgstr "Bild entfernen"
+
+#: templates//indexpage.tpl:376
+msgid "'Bild wirklich entfernen?'"
+msgstr "'Bild wirklich entfernen?'"
+
+#: templates//indexpage.tpl:469 templates//indexpage.tpl:479
+#: templates//indexpage.tpl:489
+msgid "Fehler"
+msgstr "Fehler"
+
+#: templates//accessdenied.tpl:1
+#| msgid "Zugriff verweigert!"
+msgid "Zugriff verweigert"
+msgstr "Zugriff verweigert"
+
+#: templates//login.tpl:1
+msgid "Login und Registrierung"
+msgstr "Login und Registrierung"
+
+#: templates//login.tpl:34
+msgid "Neue Admin-Zugangsdaten eingeben"
+msgstr "Neue Admin-Zugangsdaten eingeben"
+
+#: templates//login.tpl:37
+msgid "Neue Zugangsdaten eingeben"
+msgstr "Neue Zugangsdaten eingeben"
+
+#: templates//login.tpl:39
+msgid "Zugangsdaten eingeben"
+msgstr "Zugangsdaten eingeben"
+
+#: templates//login.tpl:65
+msgid "Passwort"
+msgstr "Passwort"
+
+#: templates//login.tpl:74
+msgid "Passwort wiederholen"
+msgstr "Passwort wiederholen"
+
+#: templates//login.tpl:87
+msgid "Angemeldet bleiben?"
+msgstr "Angemeldet bleiben?"
+
+#: templates//login.tpl:92
+msgid "Speichern"
+msgstr "Speichern"
+
+#: templates//login.tpl:92
+msgid "Anmelden"
+msgstr "Anmelden"
+
+#: templates//login.tpl:102
+msgid "Anfordern"
+msgstr "Anfordern"
+
+#: templates//login.tpl:112
+msgid "Zugangsdaten vergessen"
+msgstr "Zugangsdaten vergessen"
+
+#~ msgid "Einzelwert: Zeichenfolge mit bis zu < 256 Zeichen"
+#~ msgstr "Einzelwert: Zeichenfolge mit bis zu < 256 Zeichen"
 
 #~ msgid ""
-#~ "Auswahlwerte, durch Semikolon getrennt: 'Neu;Gebraucht;Refurbished' und "
-#~ "oder Dezimal und Gleitkommazahlen."
+#~ "Einzelauswahl, durch Semikolon getrennt: erlaubt \"Neu\" oder \"Gebraucht"
+#~ "\" oder \"Refurbished\" wenn \"Neu;Gebraucht;Refurbished\" angegeben. Und "
+#~ "oder numerische Werte (Ganzzahl, Gleitkommazahlen)"
 #~ msgstr ""
-#~ "Auswahlwerte, durch Semikolon getrennt: 'Neu;Gebraucht;Refurbished' und "
-#~ "oder Dezimal und Gleitkommazahlen."
-
-#~ msgid "Neu;Gebraucht;Refurbished"
-#~ msgstr "Neu;Gebraucht;Refurbished"
-
-#~ msgid "Eintragen / Aktualisieren"
-#~ msgstr "Eintragen / Aktualisieren"
-
-#~ msgid "Formular zurücksetzen"
-#~ msgstr "Formular zurücksetzen"
-
-#~ msgid "Feld löschen"
-#~ msgstr "Feld löschen"
-
-#~ msgid "Bestehende Datenfelder"
-#~ msgstr "Bestehende Datenfelder"
-
-#~ msgid "ist doppelt enthalten."
-#~ msgstr "ist doppelt enthalten."
-
-#~ msgid "Standardwert doppelt."
-#~ msgstr "Standardwert doppelt."
-
-#~ msgid " nicht in Standardwerten enthalten."
-#~ msgstr " nicht in Standardwerten enthalten."
-
-#~ msgid "Standardwert nicht in Auswahlwerten enthalten."
-#~ msgstr "Standardwert nicht in Auswahlwerten enthalten."
-
-#~ msgid "Ein Feld mit gleichem Namem"
-#~ msgstr "Ein Feld mit gleichem Namem"
+#~ "Einzelauswahl, durch Semikolon getrennt: erlaubt \"Neu\" oder \"Gebraucht"
+#~ "\" oder \"Refurbished\" wenn \"Neu;Gebraucht;Refurbished\" angegeben. Und "
+#~ "oder numerische Werte (Ganzzahl, Gleitkommazahlen)"
 
 #~ msgid ""
-#~ "ist bereits vorhanden. Das alte Feld muß gelöscht oder umbenannt werden."
+#~ "Mehrfachauswahl, durch Semikolon getrennt: erlaubt \"Neu\" und oder "
+#~ "\"Netzwerk\", wenn \"Neu;Netzwerk\" angegeben. Und oder numerische Werte "
+#~ "(Ganzzahl, Gleitkommanzahlen)."
 #~ msgstr ""
-#~ "ist bereits vorhanden. Das alte Feld muß gelöscht oder umbenannt werden."
+#~ "Mehrfachauswahl, durch Semikolon getrennt: erlaubt \"Neu\" und oder "
+#~ "\"Netzwerk\", wenn \"Neu;Netzwerk\" angegeben. Und oder numerische Werte "
+#~ "(Ganzzahl, Gleitkommanzahlen)."
 
-#~ msgid "Der Standardwert darf nur zwischen"
-#~ msgstr "Der Standardwert darf nur zwischen"
-
-#~ msgid "und"
-#~ msgstr "und"
-
-#~ msgid "liegen."
-#~ msgstr "liegen."
-
-#~ msgid "Feld"
-#~ msgstr "Feld"
-
-#~ msgid "hat keinen Wert."
-#~ msgstr "hat keinen Wert."
-
-#~ msgid "muß zwischen"
-#~ msgstr "muß zwischen"
-
-#~ msgid "Zeichen lang sein."
-#~ msgstr "Zeichen lang sein."
-
-#~ msgid "Eintrag"
-#~ msgstr "Eintrag"
-
-#~ msgid "wirklich löschen?"
-#~ msgstr "wirklich löschen?"
-
-#~ msgid "Quelle"
-#~ msgstr "Quelle"
-
-#~ msgid "Ziel"
-#~ msgstr "Ziel"
-
-#~ msgid "Quelle wählen."
-#~ msgstr "Quelle wählen."
-
-#~ msgid "Ziel wählen."
-#~ msgstr "Ziel wählen."
-
-#~ msgid "Quelle wählen"
-#~ msgstr "Quelle wählen"
-
-#~ msgid "Ziel wählen"
-#~ msgstr "Ziel wählen"
-
-#~ msgid "Keine Gegenstände gefunden"
-#~ msgstr "Keine Gegenstände gefunden"
-
-#~ msgid "Datensatz"
-#~ msgstr "Datensatz"
-
-#~ msgid "Datensätze"
-#~ msgstr "Datensätze"
-
-#~ msgid "Einträge"
-#~ msgstr "Einträge"
-
-#~ msgid "Es wurden"
-#~ msgstr "Es wurden"
-
-#, fuzzy
-#~| msgid "1 Datensatz mit verknüpften Altdaten entfernt."
-#~ msgid "mit verknüpften Altdaten entfernt."
+#~ msgid "1 Datensatz mit verknüpften Altdaten entfernt."
 #~ msgstr "1 Datensatz mit verknüpften Altdaten entfernt."
 
-#~ msgid "verknüpfter Informationen gelöscht."
-#~ msgstr "verknüpfter Informationen gelöscht."
+#~ msgid "Datensätze mit verknüpften Altdaten entfernt."
+#~ msgstr "Einzelwert: Zeichenfolge mit bis zu < 256 Zeichen"
 
-#~ msgid ""
-#~ "Von diesem Artikel sind mehrere Stück am Lagerplatz. Wieviele sollen zum "
-#~ "neuen Lagerort transferiert werden?"
-#~ msgstr ""
-#~ "Von diesem Artikel sind mehrere Stück am Lagerplatz. Wieviele sollen zum "
-#~ "neuen Lagerort transferiert werden?"
+#~ msgid "1 Eintrag wurde gelöscht."
+#~ msgstr "1 Eintrag wurde gelöscht."
 
-#~ msgid "Administrator"
-#~ msgstr "Administrator"
+#~ msgid "Einträge wurden gelöscht."
+#~ msgstr "Einträge wurden gelöscht."
 
-#~ msgid "Gast"
-#~ msgstr "Gast"
-
-#~ msgid "Benutzer"
-#~ msgstr "Benutzer"
-
-#~ msgid "Keine Gegenstände gefunden."
-#~ msgstr "Keine Gegenstände gefunden."
-
-#~ msgid "Unsortiert"
-#~ msgstr "Unsortiert"
-
-#~ msgid "Position"
-#~ msgstr "Position"
-
-#~ msgid "Positionen"
-#~ msgstr "Positionen"
-
-#~ msgid "Gruppe"
-#~ msgstr "Gruppe"
-
-#~ msgid "Bezeichnung"
-#~ msgstr "Bezeichnung"
-
-#~ msgid "Bemerkung"
-#~ msgstr "Bemerkung"
-
-#~ msgid "Hinzugefügt"
-#~ msgstr "Hinzugefügt"
-
-#~ msgid "Zuweisen"
-#~ msgstr "Zuweisen"
-
-#~ msgid "Lagerplatz wirklich entfernen?"
-#~ msgstr "Lagerplatz wirklich entfernen?"
-
-#~ msgid "Position wirklich entfernen?"
-#~ msgstr "Position wirklich entfernen?"
-
-#~ msgid "zur Datenbank hinzugefügt"
-#~ msgstr "zur Datenbank hinzugefügt"
-
-#~ msgid "Benutzer zur Bearbeitung:"
-#~ msgstr "Benutzer zur Bearbeitung:"
-
-#~ msgid "Benutzername"
-#~ msgstr "Benutzername"
-
-#~ msgid "E-Mail"
-#~ msgstr "E-Mail"
-
-#~ msgid "Benutzergruppe"
-#~ msgstr "Benutzergruppe"
-
-#~ msgid "Überschreiben"
-#~ msgstr "Überschreiben"
-
-#~ msgid "Neuer Benutzer"
-#~ msgstr "Neuer Benutzer"
-
-#~ msgid "Mailserver-Einstellungen"
-#~ msgstr "Mailserver-Einstellungen"
-
-#~ msgid "E-Mail Absenderadresse"
-#~ msgstr "E-Mail Absenderadresse"
-
-#~ msgid "Mailversand"
-#~ msgstr "Mailversand"
-
-#~ msgid "deaktivieren"
-#~ msgstr "deaktivieren"
-
-#~ msgid "aktivieren"
-#~ msgstr "aktivieren"
-
-#~ msgid "Einstellungen speichern"
-#~ msgstr "Einstellungen speichern"
-
-#~ msgid "Benutzer wirklich entfernen?"
-#~ msgstr "Benutzer wirklich entfernen?"
-
-#~ msgid "zur Datenbank hinzugefügt."
-#~ msgstr "zur Datenbank hinzugefügt."
-
-#~ msgid "Eintrag zur Bearbeitung:"
-#~ msgstr "Eintrag zur Bearbeitung:"
-
-#~ msgid "Bezeichnung oder Name"
-#~ msgstr "Bezeichnung oder Name"
-
-#~ msgid "Lagerplatz"
-#~ msgstr "Lagerplatz"
-
-#~ msgid "Netzwerk/Hardware"
-#~ msgstr "Netzwerk/Hardware"
-
-#~ msgid "Router,wlan,fritzBox"
-#~ msgstr "Router,wlan,fritzBox"
-
-#~ msgid "Seriennummer"
-#~ msgstr "Seriennummer"
-
-#~ msgid "Seriennummer/Artikelnummer"
-#~ msgstr "Seriennummer/Artikelnummer"
+#~ msgid "E-Mail-Adresse ungültig!"
+#~ msgstr "E-Mail-Adresse ungültig!"
 
 #, fuzzy
-#~| msgid "Zugriff verweigert!"
-#~ msgid "Zugriff verweigert"
-#~ msgstr "Zugriff verweigert!"
+#~| msgid ""
+#~| "Um das Passwort für sqStorage zu ändern bitte den folgenden Link "
+#~| "aufrufen: <a href=\"%s\">%s</a>"
+#~ msgid ""
+#~ "Um das Passwort für sqStorage zu ändern bitte den folgenden Link "
+#~ "aufrufen: <a href=\"%s\">%s</a>"
+#~ msgstr ""
+#~ "Um das Passwort für sqStorage zu ändern bitte den folgenden Link "
+#~ "aufrufen: <a href=\"%s\">%s</a>"
 
-#~ msgid "Neue Admin-Zugangsdaten eingeben"
-#~ msgstr "Neue Admin-Zugangsdaten eingeben"
+#, fuzzy
+#~| msgid ""
+#~| "Sie haben eine Einladung für sqStorage erhalten: <a href=\"%s\">%s</a>"
+#~ msgid ""
+#~ "Sie haben eine Einladung für sqStorage erhalten: <a href=\"%s\">%s</a>"
+#~ msgstr ""
+#~ "Sie haben eine Einladung für sqStorage erhalten: <a href=\"%s\">%s</a>"
 
-#~ msgid "Neue Zugangsdaten eingeben"
-#~ msgstr "Neue Zugangsdaten eingeben"
+#, fuzzy
+#~| msgid ""
+#~| "Es können zur Zeit keine Mails vom System versendet werden.<br />Bitte "
+#~| "diesen Einladungslink an den Benutzer weiterleiten:<br /><a href=\"%s\">"
+#~| "%s</a>"
+#~ msgid ""
+#~ "Es können zur Zeit keine Mails vom System versendet werden.<br />Bitte "
+#~ "diesen Einladungslink an den Benutzer weiterleiten:<br /><a href=\"%s\">"
+#~ "%s</a>"
+#~ msgstr ""
+#~ "Es können zur Zeit keine Mails vom System versendet werden.<br />Bitte "
+#~ "diesen Einladungslink an den Benutzer weiterleiten:<br /><a href=\"%s\">"
+#~ "%s</a>"
 
-#~ msgid "Zugangsdaten eingeben"
-#~ msgstr "Zugangsdaten eingeben"
+#~ msgid "Der Benutzer \"%s\" existiert bereits."
+#~ msgstr "Der Benutzer \"%s\" existiert bereits."
 
-#~ msgid "Passwort"
-#~ msgstr "Passwort"
-
-#~ msgid "Passwort wiederholen"
-#~ msgstr "Passwort wiederholen"
-
-#~ msgid "Angemeldet bleiben?"
-#~ msgstr "Angemeldet bleiben?"
-
-#~ msgid "Speichern"
-#~ msgstr "Speichern"
-
-#~ msgid "Anmelden"
-#~ msgstr "Anmelden"
-
-#~ msgid "Anfordern"
-#~ msgstr "Anfordern"
-
-#~ msgid "Zugangsdaten vergessen"
-#~ msgstr "Zugangsdaten vergessen"
+#, fuzzy
+#~| msgid "Fehler: Der letzte Administrator kann nicht gelöscht werden!"
+#~ msgid "Fehler: Der letzte Administrator kann nicht gelöscht werden!"
+#~ msgstr "Fehler: Der letzte Administrator kann nicht gelöscht werden!"
 
 #~ msgid "Zeichen lang sein. Aktuelle Zeichen"
 #~ msgstr "Zeichen lang sein. Aktuelle Zeichen"
