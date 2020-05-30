@@ -217,7 +217,7 @@ a.far:hover {
 
 .storage-area li.alert-info .list-span:nth-child(0n+6),
 .storage-area li.list-group-item .list-span:nth-child(0n+7) {
-    min-width: 16%;
+    min-width: 12%;
 }
 
 .switchStorage {
@@ -371,6 +371,71 @@ ul.existingFields li {
     cursor: no-drop;
 }
 
+.uploadedImages {
+    margin-top: 3em;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.uploadedImages .imgDiv {
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    overflow: hidden;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    position: relative;
+    border: 2px solid transparent;
+}
+
+.uploadedImages .imgDiv img {
+    width: 200px;
+    height: auto;
+    cursor: zoom-in;
+}
+
+.uploadedImages .imgDiv:hover {
+    border: 2px solid #333;
+}
+
+.imageOverlay {
+    display: none;
+    visibility: hidden;
+    z-index: 99999;
+    position: fixed;
+
+}
+
+.imageOverlay.active {
+    display: block;
+    visibility: visible;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    text-align: center;
+    background-color: rgba(225,225,225,0.8);
+    cursor: zoom-out;
+
+}
+
+.removeImageOverlay {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    text-shadow: 0px 0px 3px white;
+    cursor: pointer;
+    color: #000;
+}
+
+.imageOverlay .overlayedImaged {
+    top: 5%;
+    left: 0px;
+    height: 90%;
+    max-height: 90%;
+}
+
 .dropDown {
     min-height: 3em;
     max-height: 3.2em;
@@ -379,7 +444,6 @@ ul.existingFields li {
     width: 13.8em;
     cursor: pointer;
 }
-
 
 .dropDown .fas {
     margin: 0px;

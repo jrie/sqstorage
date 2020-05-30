@@ -343,12 +343,95 @@
                     <button type="submit" class="btn btn-primary">{t}Eintragen{/t}</button>
                 {/if}
                 </div>
+
             </form>
+
+            {if $isEdit}
+                <h2 class="clearfix">{t}Bilder des Gegenstandes{/t}</h2>
+                <form method="POST" accept-charset="utf-8" action="index.php" enctype="multipart/form-data">
+                    <input name="images[]" required="required" type="file" multiple="multiple" accept="image/png, image/jpeg" placeholder="{t}Bild Upload{/t}"/>
+                    <input type="hidden" value="{$item.id}" name="editItem" />
+                    <input type="submit" class="submit" value="{t}Bilder hochladen{/t}"/>
+                </form>
+                {if $imageList != NULL}
+                <div class="imageOverlay"><img class="overlayedImaged" /></div>
+                <div style="flex" class="uploadedImages">
+                    {foreach $imageList as $image}
+                    <div class="imgDiv">
+                        <a class="imageLink" data-imageid="{$image['id']}" href="#"><img src="data:image;base64,{$image['thumb']}"/></a>
+                        <a class="removeImageOverlay" title="{t}Bild entfernen{/t}" data-imageid="{$image['id']}" href="#"><i class="fas fa-times-circle"></i></a>
+                    </div>
+                    {/foreach}
+                </div>
+                {/if}
+            {/if}
+
         </div>
 
 {include file="footer.tpl"}
 {literal}
         <script type="text/javascript">
+            function removeImage(evt) {
+                evt.preventDefault()
+                if (window.confirm({/literal}{t}'Bild wirklich entfernen?'{/t}{literal})) {
+                    let imgContainer = evt.target.parentNode.parentNode
+                    let imgRemovalRequest = new XMLHttpRequest()
+
+                    function handleDeleteRequest(evt) {
+                        if (evt.target.readyState === 4) {
+                            if (evt.target.status === 200) {
+                                let responseJson = JSON.parse(evt.target.responseText)
+                                if (responseJson['status'] === 'OK') imgContainer.parentNode.removeChild(imgContainer)
+                            }
+                        }
+                    }
+
+                    imgRemovalRequest.addEventListener('readystatechange', handleDeleteRequest)
+                    if (evt.target.parentNode.dataset['imageid'] == undefined) imageId = evt.target.dataset['imageid']
+                    else imageId = evt.target.parentNode.dataset['imageid']
+
+                    imgRemovalRequest.open("GET", "index.php?removeImageId=" + imageId);
+                    imgRemovalRequest.send()
+                }
+            }
+
+            function openImageLink(evt) {
+                evt.preventDefault()
+
+                let imgSrc = evt.target.parentNode
+                let imgLoader = new XMLHttpRequest()
+
+                function hidePreview(evt) {
+                    let imgOverlay = document.querySelector('.imageOverlay')
+                    imgOverlay.classList.remove('active')
+                    imgOverlay.removeEventListener('click', hidePreview)
+                }
+
+                function handleRequest(evt) {
+                    if (evt.target.readyState === 4) {
+                        if (evt.target.status === 200) {
+                            let responseJson = JSON.parse(evt.target.responseText)
+                            if (responseJson['status'] === 'OK') {
+                                let imgOverlay = document.querySelector('.imageOverlay')
+                                imgOverlay.children[0].src = 'data:image;base64,' + responseJson['data']
+                                imgOverlay.classList.add('active')
+                                imgOverlay.addEventListener('click', hidePreview)
+                            }
+                        }
+                    }
+                }
+
+                imgLoader.addEventListener('readystatechange', handleRequest)
+                imgLoader.open("GET", "index.php?getImageId=" + evt.target.parentNode.dataset['imageid']);
+                imgLoader.send();
+            }
+
+            let imageLinks = document.querySelectorAll('.imageLink')
+            for (let image of imageLinks) image.addEventListener('click', openImageLink)
+
+            let imageRemoveLinks = document.querySelectorAll('.removeImageOverlay')
+            for (let link of imageRemoveLinks) link.addEventListener('click', removeImage)
+
             function removeInvisibleFields(evt) {
                 {/literal}
                 {foreach $fieldLimits as $key => $values}

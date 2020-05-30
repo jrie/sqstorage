@@ -47,7 +47,9 @@
 
 
     <ul class="nav">
+    {if isset($SESSION.user)}
         <li class="nav-item"><a href="{$urlBase}/index?logout" class="nav-link"><i class="fas fa-sign-out-alt" title="{t}Abmelden{/t}"></i></a></li>
+    {/if}
     </ul>
 </nav>
 <p id="msgbox"></p>
