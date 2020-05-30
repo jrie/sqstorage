@@ -41,7 +41,7 @@
                         <li class="list-group-item">
                             <button class="btn smallButton" name="remove" data-name="{$item.label}" value="{$item.id}" type="submit"><i class="fas fa-times-circle"></i></button>
                             <a href="{$urlBase}/inventory?category={$item.headcategory}" class="list-span">{$category.name}</a>
-                            <span class="list-span"><a class="list-span" href="{$urlBase}/index?editItem={$item.id}">{$item.label}</a> {if $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="fas fa-images"></i>{/if}</span>
+                            <span class="list-span"><a class="list-span" href="{$urlBase}/index?editItem={$item.id}">{$item.label}{if $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i>{/if}</a></span>
                             <span class="list-span">{$item.amount}</span>
                             <span class="list-span">{$item.comment}</span>
 

@@ -371,6 +371,11 @@ ul.existingFields li {
     cursor: no-drop;
 }
 
+i.picture {
+    margin-left: 12px;
+    margin-right: -24px;
+}
+
 .uploadedImages {
     margin-top: 3em;
     display: flex;
