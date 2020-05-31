@@ -2,7 +2,7 @@
 include_once('head.php');
 DB::$usenull = false;
 
-DB::query('CREATE TABLE IF NOT EXISTS `customFields` (`id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, `label` varchar(64) NOT NULL, `dataType` int(10) UNSIGNED NOT NULL, `default` varchar (64) DEFAULT NULL, PRIMARY KEY (`id`) ) ENGINE=InnoDB;');
+DB::query('CREATE TABLE IF NOT EXISTS `customFields` (`id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, `label` varchar(64) NOT NULL, `dataType` int(10) UNSIGNED NOT NULL, `default` varchar(64) DEFAULT NULL, `defaultVisible` tinyint(1) NOT NULL DEFAULT 0, `visibleIn` varchar(1024) DEFAULT NULL, `fieldValues` varchar(1280) DEFAULT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT');
 DB::query('CREATE TABLE IF NOT EXISTS `images` (`id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,`itemId` bigint(20) UNSIGNED NOT NULL,`sizeX` int(11) NOT NULL,`sizeY` int(11) NOT NULL,`thumb` mediumblob NOT NULL,`imageData` mediumblob NOT NULL,PRIMARY KEY (`id`)) ENGINE=InnoDB;');
 DB::query('CREATE TABLE IF NOT EXISTS `fieldData` (`id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, `fieldId` bigint(20) UNSIGNED NOT NULL, `itemId` bigint(20) UNSIGNED NOT NULL, `intNeg` bigint(20) DEFAULT NULL, `intPos` bigint(20) UNSIGNED DEFAULT NULL,`intNegPos` bigint(20) DEFAULT NULL,`floatNeg` double DEFAULT NULL,`floatPos` double UNSIGNED DEFAULT NULL,`string` varchar(256) DEFAULT NULL,`selection` varchar(1280) DEFAULT NULL,`mselection` varchar(1280) DEFAULT NULL,PRIMARY KEY (`id`)) ENGINE=InnoDB');
 DB::query('CREATE TABLE IF NOT EXISTS `headCategories` (`id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, `name` char(128) NOT NULL, `amount` int(10) UNSIGNED NOT NULL DEFAULT 0, PRIMARY KEY (`id`), UNIQUE KEY `name` (`name`)) ENGINE=InnoDB;');
