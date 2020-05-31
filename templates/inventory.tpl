@@ -41,7 +41,7 @@
                         <li class="list-group-item">
                             <button class="btn smallButton" name="remove" data-name="{$item.label}" value="{$item.id}" type="submit"><i class="fas fa-times-circle"></i></button>
                             <a href="{$urlBase}/inventory?category={$item.headcategory}" class="list-span">{$category.name}</a>
-                            <span class="list-span"><a class="list-span" href="{$urlBase}/index?editItem={$item.id}">{$item.label}{if $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i>{/if}</a></span>
+                            <span class="list-span"><a href="{$urlBase}/index?editItem={$item.id}">{$item.label}{if $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i>{/if}</a></span>
                             <span class="list-span">{$item.amount}</span>
                             <span class="list-span">{$item.comment}</span>
 
@@ -257,11 +257,11 @@
             let removalButtons = document.querySelectorAll('.smallButton')
             for (let button of removalButtons) {
                 button.addEventListener('click', function (evt) {
-                    let target = evt.target.parentNode
+                    let target = evt.target
+                    if (target.dataset['name'] === undefined) target = target.parentNode
                     let targetType = target.name === 'removeStorage' ? '{/literal}{t}Lagerplatz wirklich entfernen?{/t}{literal}' : '{/literal}{t}Position wirklich entfernen?{/t}{literal}'
-                    if (!window.confirm(targetType + ' "' + target.dataset['name'] + '"')) {
-                        evt.preventDefault()
-                    }
+
+                    if (!window.confirm(targetType + ' "' + target.dataset['name'] + '"')) evt.preventDefault()
                 })
             }
         </script>
