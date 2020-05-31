@@ -586,6 +586,10 @@ form[name="fieldData"] .dropDown {
     display: inline;
 }
 
+.customFieldWrapper .form-control {
+    font-style: italic;
+}
+
 .customFieldWrapper.hidden {
     display: none;
 }
