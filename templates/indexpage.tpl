@@ -238,9 +238,9 @@
                                 {if $customField['fieldId'] === $field.id}
                                     {$selectType = $dataFieldsByKey[$field.dataType]}
                                     {$existingData = explode(';', $customField[$selectType])}
-                                    {break}
                                 {/if}
                             {/foreach}
+
 
                             {$defaultData = explode(';', $field.default)}
                             {$readonly = ''}
@@ -271,6 +271,7 @@
                                 <option value="-1" data-default="{$field.default}">{$field.label}</option>
                             {/if}
                             {implode('', $options)}
+
                             </select>
                         </div>
                         {/if}
