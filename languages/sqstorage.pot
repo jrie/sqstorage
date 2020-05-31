@@ -3,7 +3,8 @@ msgstr "Content-Type: text/plain; charset=UTF-8\n"
 
 #: templates//categories.tpl:1 templates//categories.tpl:5
 #: templates//datafields.tpl:147 templates//php_language_extract.tpl:33
-#: templates//nav.tpl:11
+#: templates//inventory.tpl:23 templates//inventory.tpl:98
+#: templates//inventory.tpl:169 templates//nav.tpl:11
 msgid "Kategorien"
 msgstr ""
 
@@ -29,7 +30,7 @@ msgstr ""
 msgid "Gegenstand"
 msgstr ""
 "#-#-#-#-#  sqstorage.pot  #-#-#-#-#\n"
-"#-#-#-#-#  tsmarty2c1BqnrR  #-#-#-#-#\n"
+"#-#-#-#-#  tsmarty2cyGaNnC  #-#-#-#-#\n"
 
 #: templates//categories.tpl:7 templates//categories.tpl:14
 #: templates//inventory.tpl:18 templates//inventory.tpl:93
@@ -565,17 +566,11 @@ msgstr ""
 msgid "Position"
 msgstr ""
 "#-#-#-#-#  sqstorage.pot  #-#-#-#-#\n"
-"#-#-#-#-#  tsmarty2c1BqnrR  #-#-#-#-#\n"
+"#-#-#-#-#  tsmarty2cyGaNnC  #-#-#-#-#\n"
 
 #: templates//inventory.tpl:18 templates//inventory.tpl:93
 #: templates//inventory.tpl:164
 msgid "Positionen"
-msgstr ""
-
-#: templates//inventory.tpl:23 templates//inventory.tpl:98
-#: templates//inventory.tpl:169 templates//inventorypage.tpl:23
-#: templates//settings.tpl:110
-msgid "Gruppe"
 msgstr ""
 
 #: templates//inventory.tpl:23 templates//inventory.tpl:98
@@ -597,7 +592,8 @@ msgstr ""
 msgid "Hinzugefügt"
 msgstr ""
 
-#: templates//inventory.tpl:44
+#: templates//inventory.tpl:44 templates//inventory.tpl:119
+#: templates//inventory.tpl:190
 msgid "Gegenstand hat Bilder"
 msgstr ""
 
@@ -612,6 +608,10 @@ msgstr ""
 
 #: templates//inventory.tpl:261 templates//inventorypage.tpl:86
 msgid "Position wirklich entfernen?"
+msgstr ""
+
+#: templates//inventorypage.tpl:23 templates//settings.tpl:110
+msgid "Gruppe"
 msgstr ""
 
 #: templates//settings.tpl:18
