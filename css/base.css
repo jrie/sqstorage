@@ -95,7 +95,8 @@ body {
 }
 
 .input-group .form-control:required::placeholder {
-    color: #444;
+    color: #a00;
+    font-style: italic;
 }
 
 .input-group .form-control:required:hover::placeholder,
