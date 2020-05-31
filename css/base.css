@@ -94,6 +94,10 @@ body {
     text-decoration: underline;
 }
 
+.input-group .form-control::placeholder {
+    font-style: italic;
+}
+
 .input-group .form-control:required::placeholder {
     color: #a00;
     font-style: italic;
