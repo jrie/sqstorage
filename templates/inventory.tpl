@@ -20,7 +20,7 @@
                 <ul class="list-group">
 
 
-                        <li class="alert alert-info"><span class="list-span">{t}Gruppe{/t}</span><span class="list-span">{t}Bezeichnung{/t}</span><span class="list-span">{t}Anzahl{/t}</span><span class="list-span">{t}Bemerkung{/t}</span><span class="list-span">{t}Unterkategorien{/t}</span><span class="list-span">{t}Hinzugefügt{/t}</span><span class="list-span">{t}Aktionen{/t}</span>
+                        <li class="alert alert-info"><span class="list-span">{t}Kategorien{/t}</span><span class="list-span">{t}Bezeichnung{/t}</span><span class="list-span">{t}Anzahl{/t}</span><span class="list-span">{t}Bemerkung{/t}</span><span class="list-span">{t}Unterkategorien{/t}</span><span class="list-span">{t}Hinzugefügt{/t}</span><span class="list-span">{t}Aktionen{/t}</span>
                         </li>
                 {if isset($itemstore.items)}
                     {foreach $itemstore.items as $item}
@@ -95,7 +95,7 @@
                 <ul class="list-group">
 
 
-                        <li class="alert alert-info"><span class="list-span">{t}Gruppe{/t}</span><span class="list-span">{t}Bezeichnung{/t}</span><span class="list-span">{t}Anzahl{/t}</span><span class="list-span">{t}Bemerkung{/t}</span><span class="list-span">{t}Unterkategorien{/t}</span><span class="list-span">{t}Hinzugefügt{/t}</span><span class="list-span">{t}Aktionen{/t}</span>
+                        <li class="alert alert-info"><span class="list-span">{t}Kategorien{/t}</span><span class="list-span">{t}Bezeichnung{/t}</span><span class="list-span">{t}Anzahl{/t}</span><span class="list-span">{t}Bemerkung{/t}</span><span class="list-span">{t}Unterkategorien{/t}</span><span class="list-span">{t}Hinzugefügt{/t}</span><span class="list-span">{t}Aktionen{/t}</span>
                         </li>
                 {if isset($itemstore.items)}
                     {foreach $itemstore.items as $item}
@@ -166,7 +166,7 @@
                 <ul class="list-group">
 
 
-                        <li class="alert alert-info"><span class="list-span">{t}Gruppe{/t}</span><span class="list-span">{t}Bezeichnung{/t}</span><span class="list-span">{t}Anzahl{/t}</span><span class="list-span">{t}Bemerkung{/t}</span><span class="list-span">{t}Unterkategorien{/t}</span><span class="list-span">{t}Hinzugefügt{/t}</span><span class="list-span">{t}Aktionen{/t}</span>
+                        <li class="alert alert-info"><span class="list-span">{t}Kategorien{/t}</span><span class="list-span">{t}Bezeichnung{/t}</span><span class="list-span">{t}Anzahl{/t}</span><span class="list-span">{t}Bemerkung{/t}</span><span class="list-span">{t}Unterkategorien{/t}</span><span class="list-span">{t}Hinzugefügt{/t}</span><span class="list-span">{t}Aktionen{/t}</span>
                         </li>
                 {if isset($itemstore.items)}
                     {foreach $itemstore.items as $item}
