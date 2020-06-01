@@ -148,6 +148,12 @@ body {
     font-size: 0.75rem;
 }
 
+.list-group-item .removalButton.btn {
+    font-size: 1rem;
+    padding-top: 0px;
+    height: auto;
+}
+
 .removalButton {
     padding-left: 0px;
 }
