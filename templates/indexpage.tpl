@@ -233,25 +233,26 @@
                     {if $field.defaultVisible === '0' && $field.visibleIn === ';-1;'}
                         <span class="customFieldTitle">{$field.label}</span>
                         <div class="input-group mb-3 customFields">
-                            {$existingData = null}
                             {foreach $customData as $customField}
+                                {$existingData = null}
                                 {if $customField['fieldId'] === $field.id}
                                     {$selectType = $dataFieldsByKey[$field.dataType]}
                                     {$existingData = explode(';', $customField[$selectType])}
                                 {/if}
                             {/foreach}
 
-
                             {$defaultData = explode(';', $field.default)}
                             {$readonly = ''}
                             {if $field.dataType === '6' || $field.dataType === '7'}
                                 {$readonly = ' readonly="readonly"'}
+
                             <div class="dropdown">
                             {if $field.dataType === '6'}
                                 <select class="btn btn-secondary dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="cf{$field.id}" data-default="{$field.default}" data-nosettitle="true" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {else}
                                 <select class="btn btn-secondary dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="cf{$field.id}" data-default="{$field.default}" multiple="multiple" data-nosettitle="true" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {/if}
+
                             {$hasData = false}
                             {$options = []}
                             {foreach explode(';', $field.fieldValues) as $value}
