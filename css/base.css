@@ -508,9 +508,10 @@ form[name="fieldData"] .dropDown {
     padding: 0px;
     margin: 0px;
     text-align: left;
-    min-width: auto;
     min-width: 2em;
-    vertical-align: top;
+    vertical-align: middle;
+    height: 1.5em;
+    width: 2em;
 }
 
 .dropDown .dropDownList {
@@ -558,6 +559,9 @@ form[name="fieldData"] .dropDown {
 
 .dropDown.multipleSelect .dropDownList span {
     padding: 0px;
+    position: relative;
+    left: 0px;
+    top: 0px;
 }
 
 .dropDown.multipleSelect .dropDownList label {
