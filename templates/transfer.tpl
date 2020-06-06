@@ -3,7 +3,7 @@
 
     <div class="content">
 
-        <div class="dropdown float-left">
+        <div class="dropdown float-left storeSrcDiv">
             <select value="-1" autocomplete="off" class="btn btn-primary dropdown-toggle switchStorage" id="storeSrc" type="button" tabindex="-1" data-type="storeSrc" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <option selected="selected" value="-1">{t}Quelle{/t}</option>';
             {foreach $storages as $storage}
@@ -12,7 +12,7 @@
             </select>
         </div>
 
-        <div class="dropdown float-left">
+        <div class="dropdown float-left storeDestDiv">
             <select value="-1" autocomplete="off" class="btn btn-primary dropdown-toggle switchStorage" id="storeDest" type="button" tabindex="-1" data-type="storeDest" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <option selected="selected" value="-1">{t}Ziel{/t}</option>
 

@@ -259,6 +259,10 @@ a.far:hover {
     background-color: #f8f9fa;
 }
 
+.storeSrcDiv {
+    margin-right: 21px;
+}
+
 .storageListing {
     width: 38%;
     padding-left: 1%;
