@@ -175,8 +175,11 @@ if ((isset($_GET['editItem']) && !empty($_GET['editItem'])) || (isset($_POST['ed
   $customData = DB::query('SELECT * FROM `fieldData` WHERE `itemId`=%d', intval($item['id']));
   $isEdit = TRUE;
 
+  $imageList = DB::query('SELECT `id`, `thumb`, `sizeX`, `sizeY` FROM `images` WHERE `itemId`=%d', $item['id']);
+} else {
+  $customData = NULL;
   $imageList = DB::query('SELECT `id`, `thumb`, `sizeX`, `sizeY` FROM `images` WHERE `itemId`=%d', intval($item['id']));
-} else $imageList = DB::query('SELECT `id`, `thumb`, `sizeX`, `sizeY` FROM `images` WHERE `itemId`=%d', intval($item['id']));
+}
 
 $smarty->assign('imageList', $imageList);
 
@@ -185,7 +188,6 @@ $storages = DB::query('SELECT `id`, `label` FROM storages');
 $categories = DB::query('SELECT `id`, `name` FROM headCategories');
 $subcategories = DB::query('SELECT `id`, `name` FROM subCategories');
 
-$customData = DB::query('SELECT * FROM fieldData');
 $customFields = DB::query('SELECT * FROM customFields');
 
 $smarty->assign('success', $success);

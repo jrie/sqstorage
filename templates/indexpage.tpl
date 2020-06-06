@@ -108,6 +108,7 @@
                     {/if}
                 </div>
 
+
                 {foreach $customFields as $field}
                     <div class="customFieldWrapper hidden">
                     {if $field.visibleIn !== ';-1;'}
@@ -234,10 +235,14 @@
                         <span class="customFieldTitle">{$field.label}</span>
                         <div class="input-group mb-3 customFields">
                             {$existingData = null}
-                            {if $customField['fieldId'] === $field.id}
-                                {$selectType = $dataFieldsByKey[$field.dataType]}
-                                {$existingData = explode(';', $customField[$selectType])}
-                            {/if}
+                            {foreach $customData as $customField}
+                                {if $customField['fieldId'] === $field.id}
+                                    {$selectType = $dataFieldsByKey[$field.dataType]}
+                                    {$existingData = explode(';', $customField[$selectType])}
+                                    {break}
+                                {/if}
+                            {/foreach}
+
 
                             {$defaultData = explode(';', $field.default)}
                             {$readonly = ''}
@@ -291,10 +296,13 @@
                     {if $field.defaultVisible !== '0' && $field.visibleIn === ';-1;'}
                         <span class="customFieldTitle">{$field.label}</span>
                         {$existingData = null}
-                        {if $customField['fieldId'] === $field.id}
-                            {$selectType = $dataFieldsByKey[$field.dataType]}
-                            {$existingData = $customField[$selectType]}
-                        {/if}
+                        {foreach $customData as $customField}
+                            {if $customField['fieldId'] === $field.id}
+                                {$selectType = $dataFieldsByKey[$field.dataType]}
+                                {$existingData = $customField[$selectType]}
+                                {break}
+                            {/if}
+                        {/foreach}
 
                         <div class="input-group mb-3 customFields" data-catvisible="{$field.visibleIn}">
                             {$readonly = ''}
