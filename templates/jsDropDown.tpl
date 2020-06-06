@@ -262,7 +262,7 @@ for (let item of dropDowns) {
   itemContainer.setAttribute('tabindex', '-1')
   input.setAttribute('tabindex', '0')
 
-  //input.addEventListener('blur', function () { forceMouseOut(input, itemContainer) })
+  //input.addEventListener('blur', function () { forceMouseOut(input, itemContainer) }) // TODO: Readd on new Opera and Firefox versions
   input.addEventListener('focus', function () { toggleDropdown(input, itemContainer) })
   input.addEventListener('keyup', function () { searchValue(input, itemContainer) })
   icon.addEventListener('click', function () { toggleDropdown(input, itemContainer) })
