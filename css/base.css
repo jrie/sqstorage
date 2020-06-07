@@ -73,6 +73,11 @@ body {
     position: relative;
 }
 
+.input-group .form-check input { 
+    height: 100%;
+    line-height: 1.6rem;
+}
+
 .input-group .form-check {
     font-size: 0.75rem;
     margin-top: -0.5em;
