@@ -267,13 +267,18 @@ for (let item of dropDowns) {
   input.addEventListener('keyup', function () { searchValue(input, itemContainer) })
   icon.addEventListener('click', function () { toggleDropdown(input, itemContainer) })
 
-  itemContainer.addEventListener('mouseout', function (evt) {
+  input.addEventListener('blur', function (evt) {
     if (!isInTargetNode(evt.relatedTarget, container, 8)) forceMouseOut(input, itemContainer)
   })
 
   input.addEventListener('mouseout', function (evt) {
     if (!isInTargetNode(evt.relatedTarget, container, 8)) forceMouseOut(input, itemContainer)
   })
+
+  itemContainer.addEventListener('mouseout', function (evt) {
+    if (!isInTargetNode(evt.relatedTarget, container, 8)) forceMouseOut(input, itemContainer)
+  })
+
 
   icon.addEventListener('mouseout', function (evt) {
     if (!isInTargetNode(evt.relatedTarget, container, 8)) forceMouseOut(input, itemContainer)
