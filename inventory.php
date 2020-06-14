@@ -199,7 +199,7 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
     $store[$storeId]['label'] = gettext('Unterkategorie') . ": " . $subCategory['name'];
     $myitem[$storeId]['positionen'] = 0;
     $myitem[$storeId]['itemcount'] = 0;
-    $items = DB::query('SELECT * FROM items WHERE subcategories LIKE %s', '%,' . $subCategory['id'] . ',%');
+    $items = DB::query('SELECT * FROM items WHERE subcategories LIKE %ss', ',' . $subCategory['id'] . ',');
     for ($x = 0; $x < count($items); $x++) {
       $item = $items[$x];
 
