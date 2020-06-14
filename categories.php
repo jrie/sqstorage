@@ -10,6 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $subCategory = DB::queryFirstRow('SELECT `id`, `amount`, `headcategory` FROM `subCategories` WHERE id=%d', intval($_GET['setCategoryId']));
     $previousCategory = DB::queryFirstRow('SELECT `id`, `amount` FROM `headCategories` WHERE `id`=%d',  $subCategory['headcategory']);
 
+
     if ($previousCategory['id'] !== $newCategory['id']) {
       DB::update('headCategories', array('amount' => intval($previousCategory['amount']) - $subCategory['amount']), 'id=%d',  $previousCategory['id']);
       if ($newCategory !== NULL) {
@@ -50,7 +51,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 }
 
 $headCategories = DB::query('SELECT `id`, `name`, `amount` FROM `headCategories` ORDER BY name ASC');
+foreach($headCategories as $key => $category) {
+  $positions = DB::query('SELECT NULL FROM `items` WHERE `headcategory`=%d', $category['id']);
+  $headCategories[$key]['positions'] = DB::affectedRows();
+}
+
 $subCategories = DB::query('SELECT `id`, `name`, `amount`, `headcategory` FROM `subCategories` ORDER BY name ASC');
+foreach($subCategories as $key => $category) {
+  $positions = DB::query('SELECT NULL FROM `items` WHERE `subcategories` LIKE %ss', ',' . $category['id'] . ',');
+  $subCategories[$key]['positions'] = DB::affectedRows();
+}
 
 $smarty->assign('alert', $alert);
 $smarty->assign("headCategories", $headCategories);
