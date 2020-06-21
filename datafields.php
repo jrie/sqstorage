@@ -4,8 +4,8 @@ require_once('support/urlBase.php');
 $smarty->assign('urlBase', $urlBase);
 
 include_once('customFieldsData.php');
-$removedField = FALSE;
-$removedData = FALSE;
+$removedField = false;
+$removedData = false;
 $resetEntries = 0;
 $addedField = '';
 
@@ -20,13 +20,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $dataName = trim($_POST['fieldName']);
     $dataType = $fieldTypesPos[$_POST['dataType']];
     $dataDefault = trim($_POST['fieldDefault']);
-    $defaultVisible = $_POST['defaultVisible'] === 'on' ? TRUE : FALSE;
+    $defaultVisible = $_POST['defaultVisible'] === 'on' ? true : false;
     $visibleIn = ';' . implode(';', $_POST['visibleInCategories']) . ';';
-    $dataValues = NULL;
+    $dataValues = null;
 
     if ($_POST['dataType'] === 'selection' || $_POST['dataType'] === 'mselection') $dataValues = $_POST['fieldValues'];
-    if ($dataDefault === '') $dataDefault = NULL;
-    $existingField = NULL;
+    if ($dataDefault === '') $dataDefault = null;
+    $existingField = null;
     if ($existingId === -1) {
       DB::insert('customFields', array('label' => $dataName, 'default' => $dataDefault, 'dataType' => $dataType, 'defaultVisible' => $defaultVisible, 'visibleIn' => $visibleIn, 'fieldValues' => $dataValues));
       $addedField = $dataName;
@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $existingField = DB::queryFirstRow('SELECT `id`, `label`, `dataType` FROM `customFields` WHERE `id`=%d', $existingId);
       if ($existingField['dataType'] !== $dataType) DB::update('customFields', array('label' => $dataName, 'default' => $dataDefault, 'dataType' => $dataType, 'defaultVisible' => $defaultVisible, 'visibleIn' => $visibleIn, 'fieldValues' => $dataValues), 'id=%d', $existingField['id']);
       else DB::update('customFields', array('label' => $dataName, 'default' => $dataDefault, 'dataType' => $dataType, 'defaultVisible' => $defaultVisible, 'visibleIn' => $visibleIn, 'fieldValues' => $dataValues), 'id=%d', $existingField['id']);
-      if ($existingField !== NULL && intval($existingField['dataType']) !== intval($dataType)) {
+      if ($existingField !== null && intval($existingField['dataType']) !== intval($dataType)) {
         DB::delete('fieldData', 'fieldId=%d', $existingField['id']);
         if (DB::affectedRows() != 0) $resetEntries = DB::affectedRows() . ' ' . (DB::affectedRows() === 1 ? gettext('1 Datensatz mit verknüpften Altdaten entfernt.' ) : DB::affectedRows() . ' ' . gettext('Datensätze mit verknüpften Altdaten entfernt.'));
       }
@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   } else if ($_POST['doDelete'] === '1') {
     DB::delete('customFields', 'id=%d', $existingId);
     if (DB::affectedRows() === 1) {
-      $removedField = TRUE;
+      $removedField = true;
       DB::delete('fieldData', 'fieldId=%d', $existingId);
       if (DB::affectedRows() !== 0) $removedData = DB::affectedRows() . ' ' . (DB::affectedRows() === 1 ? gettext('1 Eintrag wurde gelöscht.') : DB::affectedRows() . ' ' . gettext('Einträge wurden gelöscht.'));
       else $removedData = gettext('Es waren keine Einträge mit dem Datenfeld verknüpft.');

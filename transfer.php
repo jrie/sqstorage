@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
     foreach ($transferIds as $itemId) {
       $item = DB::queryFirstRow('SELECT storageid, amount FROM items WHERE id=%d', $itemId);
-      if ($item === NULL) continue;
+      if ($item === null) continue;
 
       $srcStorage = DB::queryFirstRow('SELECT id, amount FROM storages WHERE id=%d', $item['storageid']);
       $destStorage = DB::queryFirstRow('SELECT id, amount FROM storages WHERE id=%d', $targetStorageId);

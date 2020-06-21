@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     if ($previousCategory['id'] !== $newCategory['id']) {
       DB::update('headCategories', array('amount' => intval($previousCategory['amount']) - $subCategory['amount']), 'id=%d',  $previousCategory['id']);
-      if ($newCategory !== NULL) {
+      if ($newCategory !== null) {
         DB::update('headCategories', array('amount' => intval($newCategory['amount']) + $subCategory['amount']), 'id=%d',  $newCategory['id']);
       }
 
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $subCategory = DB::queryFirstRow('SELECT `id`, `amount`, `headcategory` FROM `subCategories` WHERE id=%d', intval($_GET['resetSubcategoryId']));
 
     $previousCategory = DB::queryFirstRow('SELECT `id`, `amount` FROM `headCategories` WHERE `id`=%d',  $subCategory['headcategory']);
-    if ($previousCategory !== NULL) {
+    if ($previousCategory !== null) {
       DB::update('headCategories', array('amount' => $previousCategory['amount'] - $subCategory['amount']), 'id=%d', $subCategory['headcategory']);
     }
 

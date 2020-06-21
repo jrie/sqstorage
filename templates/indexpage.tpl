@@ -136,7 +136,7 @@
                             {$hasData = false}
                             {$options = []}
                             {foreach explode(';', $field.fieldValues) as $value}
-                                {if $existingData !== NULL && in_array($value, $existingData)}
+                                {if $existingData !== null && in_array($value, $existingData)}
                                     {$options[]= "<option value=\"{$value}\" selected=\"selected\">{$value}</option>"}
                                     {$hasData = true}
                                 {else if empty($existingData) && in_array($value, $defaultData)}
@@ -259,7 +259,7 @@
                             {$hasData = false}
                             {$options = []}
                             {foreach explode(';', $field.fieldValues) as $value}
-                                {if $existingData !== NULL && in_array($value, $existingData)}
+                                {if $existingData !== null && in_array($value, $existingData)}
                                     {$options[]= "<option value=\"{$value}\" selected=\"selected\">{$value}</option>"}
                                     {$hasData = true}
                                 {else if empty($existingData) && in_array($value, $defaultData)}
@@ -359,7 +359,7 @@
                     <input type="hidden" value="{$item.id}" name="editItem" />
                     <input type="submit" class="submit" value="{t}Bilder hochladen{/t}"/>
                 </form>
-                {if $imageList != NULL}
+                {if $imageList != null}
                 <div class="imageOverlay"><img class="overlayedImaged" /></div>
                 <div style="flex" class="uploadedImages">
                     {foreach $imageList as $image}

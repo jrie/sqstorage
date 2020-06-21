@@ -9,7 +9,7 @@
     <div class="content">
         {if $removedField}
             <div class="statusDisplay green">
-                <p>{t}Feld entfernt:{/t} {$POST.fieldName} {if $removedData !== FALSE}{$removedData}{/if}</p>
+                <p>{t}Feld entfernt:{/t} {$POST.fieldName} {if $removedData !== false}{$removedData}{/if}</p>
             </div>
         {elseif $resetEntries !== 0}
             <div class="statusDisplay green">
