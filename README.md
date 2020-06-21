@@ -28,9 +28,10 @@ Default port: `3306`
 
 Default useRegistration: `false`
 
-This can be configured in `support/dba-example.php` by changing the `DB::dbName`, `DB::$user` and `DB::$password` variables. If your database is on a different server, you might want to use the IP or hostname instead of `localhost`. Afterwards make a copy of `dba-example.php` and rename it to `dba.php` in order for sqStorage to read out this configuration file.
+This can be configured in `support/dba-example.php` by changing the `DB::dbName`, `DB::$user` and `DB::$password` variables. 
+***Please note the user registration and login/logout*** can be enabled by setting the variable `$useRegistration` to `true`, otherwise the default disables this feature by setting this to `false`.
 
-***Please note the user registration and login/logout*** can be enabled by setting the option `$useRegistration` in `support/dba-example.php` to `true`, otherwise the default disables this feature by setting this to `false`.
+If your database is on a different server, you might want to use the IP or hostname instead of `localhost`. Afterwards make a copy of `dba-example.php` and rename it to `dba.php` in order for sqStorage to read out this configuration file.
 
 #### Permissions
 
