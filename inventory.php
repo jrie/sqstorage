@@ -111,10 +111,9 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
     }
     $storage = DB::queryFirstRow('SELECT id, amount FROM storages WHERE id=%d', $storeId);
     DB::update('storages', array('amount' => intval($storage['amount']) + intval($setamount)), 'id=%d', $storage['id']);
+
     $insertarray = array();
-    foreach ($item as $key => $value) {
-      if ($key != 'id') $insertarray[$key] = $value;
-    }
+    foreach ($item as $key => $value) if ($key != 'id') $insertarray[$key] = $value;
     $insertarray['storageid'] = $storage['id'];
     $insertarray['amount'] = $setamount;
     DB::insert("items", $insertarray);
