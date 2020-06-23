@@ -10,14 +10,21 @@ msgstr ""
 
 #: templates//categories.tpl:5 templates//categories.tpl:11
 #: templates//inventory.tpl:23 templates//inventory.tpl:98
-#: templates//inventory.tpl:169 templates//indexpage.tpl:211
-#: templates//indexpage.tpl:214 templates//indexpage.tpl:216
+#: templates//inventory.tpl:169 templates//indexpage.tpl:212
+#: templates//indexpage.tpl:215 templates//indexpage.tpl:217
 msgid "Anzahl"
+msgstr ""
+
+#: templates//categories.tpl:5 templates//categories.tpl:7
+#: templates//categories.tpl:11 templates//categories.tpl:14
+#: templates//inventory.tpl:18 templates//inventory.tpl:93
+#: templates//inventory.tpl:164
+msgid "Positionen"
 msgstr ""
 
 #: templates//categories.tpl:5 templates//categories.tpl:11
 #: templates//inventory.tpl:23 templates//inventory.tpl:98
-#: templates//inventory.tpl:169 templates//settings.tpl:110
+#: templates//inventory.tpl:169 templates//settings.tpl:103
 msgid "Aktionen"
 msgstr ""
 
@@ -31,6 +38,12 @@ msgstr ""
 #: templates//inventory.tpl:18 templates//inventory.tpl:93
 #: templates//inventory.tpl:164
 msgid "Gegenstände"
+msgstr ""
+
+#: templates//categories.tpl:7 templates//categories.tpl:14
+#: templates//inventory.tpl:18 templates//inventory.tpl:93
+#: templates//inventory.tpl:164
+msgid "Position"
 msgstr ""
 
 #: templates//categories.tpl:11 templates//inventory.tpl:23
@@ -234,43 +247,6 @@ msgstr ""
 msgid "wirklich löschen?"
 msgstr ""
 
-#: templates//test.tpl:9 templates//test.tpl:26 templates//transfer.tpl:8
-#: templates//transfer.tpl:26
-msgid "Quelle"
-msgstr ""
-
-#: templates//test.tpl:19 templates//test.tpl:27 templates//transfer.tpl:17
-#: templates//transfer.tpl:30
-msgid "Ziel"
-msgstr ""
-
-#: templates//test.tpl:26 templates//transfer.tpl:27
-msgid "Quelle wählen."
-msgstr ""
-
-#: templates//test.tpl:27 templates//transfer.tpl:31
-msgid "Ziel wählen."
-msgstr ""
-
-#: templates//test.tpl:27 templates//php_language_extract.tpl:52
-#: templates//transfer.tpl:1 templates//transfer.tpl:31 templates//nav.tpl:12
-msgid "Transferieren"
-msgstr ""
-
-#: templates//test.tpl:107 templates//transfer.tpl:115
-msgid "Quelle wählen"
-msgstr ""
-
-#: templates//test.tpl:108 templates//transfer.tpl:116
-msgid "Ziel wählen"
-msgstr ""
-
-#: templates//test.tpl:127 templates//inventory.tpl:69
-#: templates//inventory.tpl:77 templates//inventory.tpl:141
-#: templates//inventory.tpl:212
-msgid "Keine Gegenstände gefunden"
-msgstr ""
-
 #: templates//php_language_extract.tpl:1 templates//nav.tpl:51
 msgid "Abmelden"
 msgstr ""
@@ -316,8 +292,8 @@ msgstr ""
 msgid "Einträge"
 msgstr ""
 
-#: templates//php_language_extract.tpl:15 templates//settings.tpl:92
-#: templates//indexpage.tpl:1 templates//indexpage.tpl:344 templates//nav.tpl:9
+#: templates//php_language_extract.tpl:15 templates//settings.tpl:90
+#: templates//indexpage.tpl:1 templates//indexpage.tpl:349 templates//nav.tpl:9
 msgid "Eintragen"
 msgstr ""
 
@@ -470,9 +446,14 @@ msgstr ""
 msgid "Suchen"
 msgstr ""
 
-#: templates//php_language_extract.tpl:53 templates//indexpage.tpl:185
-#: templates//indexpage.tpl:188 templates//indexpage.tpl:203
-#: templates//indexpage.tpl:205
+#: templates//php_language_extract.tpl:52 templates//transfer.tpl:1
+#: templates//transfer.tpl:31 templates//nav.tpl:12
+msgid "Transferieren"
+msgstr ""
+
+#: templates//php_language_extract.tpl:53 templates//indexpage.tpl:186
+#: templates//indexpage.tpl:189 templates//indexpage.tpl:204
+#: templates//indexpage.tpl:206
 msgid "Unterkategorie"
 msgstr ""
 
@@ -526,7 +507,8 @@ msgid ""
 "a>rn"
 msgstr ""
 
-#: templates//php_language_extract.tpl:65 templates//inventory.tpl:230
+#: templates//php_language_extract.tpl:65 templates//transfer.tpl:46
+#: templates//inventory.tpl:231
 msgid ""
 "Von diesem Artikel sind mehrere Stück am Lagerplatz. Wieviele sollen zum "
 "neuen Lagerort transferiert werden?"
@@ -544,7 +526,39 @@ msgstr ""
 msgid "Benutzer"
 msgstr ""
 
-#: templates//transfer.tpl:135
+#: templates//transfer.tpl:8 templates//transfer.tpl:26
+msgid "Quelle"
+msgstr ""
+
+#: templates//transfer.tpl:17 templates//transfer.tpl:30
+msgid "Ziel"
+msgstr ""
+
+#: templates//transfer.tpl:27
+msgid "Quelle wählen."
+msgstr ""
+
+#: templates//transfer.tpl:31
+msgid "Ziel wählen."
+msgstr ""
+
+#: templates//transfer.tpl:48 templates//inventory.tpl:233
+msgid "Von diesem Artikel sind nicht genug Einheiten vorhanden."
+msgstr ""
+
+#: templates//transfer.tpl:49 templates//inventory.tpl:234
+msgid "Anzahl kann nicht negativ sein."
+msgstr ""
+
+#: templates//transfer.tpl:156
+msgid "Quelle wählen"
+msgstr ""
+
+#: templates//transfer.tpl:157
+msgid "Ziel wählen"
+msgstr ""
+
+#: templates//transfer.tpl:176
 msgid "Keine Gegenstände gefunden."
 msgstr ""
 
@@ -552,16 +566,6 @@ msgstr ""
 #: templates//inventory.tpl:90 templates//inventory.tpl:92
 #: templates//inventory.tpl:161 templates//inventory.tpl:163
 msgid "Unsortiert"
-msgstr ""
-
-#: templates//inventory.tpl:18 templates//inventory.tpl:93
-#: templates//inventory.tpl:164
-msgid "Position"
-msgstr ""
-
-#: templates//inventory.tpl:18 templates//inventory.tpl:93
-#: templates//inventory.tpl:164
-msgid "Positionen"
 msgstr ""
 
 #: templates//inventory.tpl:23 templates//inventory.tpl:98
@@ -591,6 +595,11 @@ msgstr ""
 msgid "Zuweisen"
 msgstr ""
 
+#: templates//inventory.tpl:69 templates//inventory.tpl:77
+#: templates//inventory.tpl:141 templates//inventory.tpl:212
+msgid "Keine Gegenstände gefunden"
+msgstr ""
+
 #: templates//inventory.tpl:262
 msgid "Lagerplatz wirklich entfernen?"
 msgstr ""
@@ -599,72 +608,72 @@ msgstr ""
 msgid "Position wirklich entfernen?"
 msgstr ""
 
-#: templates//settings.tpl:18
+#: templates//settings.tpl:16
 msgid "zur Datenbank hinzugefügt"
 msgstr ""
 
-#: templates//settings.tpl:24
+#: templates//settings.tpl:22
 msgid "Benutzer zur Bearbeitung:"
 msgstr ""
 
-#: templates//settings.tpl:34 templates//settings.tpl:39
-#: templates//settings.tpl:41 templates//settings.tpl:110
+#: templates//settings.tpl:32 templates//settings.tpl:37
+#: templates//settings.tpl:39 templates//settings.tpl:103
 #: templates//login.tpl:44
 msgid "Benutzername"
 msgstr ""
 
-#: templates//settings.tpl:48 templates//settings.tpl:51
-#: templates//settings.tpl:53 templates//settings.tpl:110
+#: templates//settings.tpl:46 templates//settings.tpl:49
+#: templates//settings.tpl:51 templates//settings.tpl:103
 #: templates//login.tpl:53
 msgid "E-Mail"
 msgstr ""
 
-#: templates//settings.tpl:63 templates//settings.tpl:79
-#: templates//settings.tpl:82
+#: templates//settings.tpl:61 templates//settings.tpl:77
+#: templates//settings.tpl:80
 msgid "Benutzergruppe"
 msgstr ""
 
-#: templates//settings.tpl:90 templates//indexpage.tpl:342
+#: templates//settings.tpl:88 templates//indexpage.tpl:347
 msgid "Überschreiben"
 msgstr ""
 
-#: templates//settings.tpl:109
+#: templates//settings.tpl:102
 msgid "Neuer Benutzer"
 msgstr ""
 
-#: templates//settings.tpl:110
+#: templates//settings.tpl:103
 msgid "Gruppe"
 msgstr ""
 
-#: templates//settings.tpl:120
+#: templates//settings.tpl:113
 msgid "Mailserver-Einstellungen"
 msgstr ""
 
-#: templates//settings.tpl:125
+#: templates//settings.tpl:118
 msgid "E-Mail Absenderadresse"
 msgstr ""
 
-#: templates//settings.tpl:131
+#: templates//settings.tpl:124
 msgid "Mailversand"
 msgstr ""
 
-#: templates//settings.tpl:135
+#: templates//settings.tpl:128
 msgid "deaktivieren"
 msgstr ""
 
-#: templates//settings.tpl:139
+#: templates//settings.tpl:132
 msgid "aktivieren"
 msgstr ""
 
-#: templates//settings.tpl:142
+#: templates//settings.tpl:135
 msgid "Einstellungen speichern"
 msgstr ""
 
-#: templates//settings.tpl:163
+#: templates//settings.tpl:155
 msgid "Benutzer wirklich entfernen?"
 msgstr ""
 
-#: templates//settings.tpl:163
+#: templates//settings.tpl:155
 msgid "Der letzte Administrator kann nicht gelöscht werden!"
 msgstr ""
 
@@ -689,40 +698,40 @@ msgstr ""
 msgid "Netzwerk/Hardware"
 msgstr ""
 
-#: templates//indexpage.tpl:203 templates//indexpage.tpl:205
+#: templates//indexpage.tpl:204 templates//indexpage.tpl:206
 msgid "Router,wlan,fritzBox"
 msgstr ""
 
-#: templates//indexpage.tpl:222 templates//indexpage.tpl:225
+#: templates//indexpage.tpl:223 templates//indexpage.tpl:226
 msgid "Seriennummer"
 msgstr ""
 
-#: templates//indexpage.tpl:225 templates//indexpage.tpl:227
+#: templates//indexpage.tpl:226 templates//indexpage.tpl:228
 msgid "Seriennummer/Artikelnummer"
 msgstr ""
 
-#: templates//indexpage.tpl:351
+#: templates//indexpage.tpl:356
 msgid "Bilder des Gegenstandes"
 msgstr ""
 
-#: templates//indexpage.tpl:353
+#: templates//indexpage.tpl:358
 msgid "Bild Upload"
 msgstr ""
 
-#: templates//indexpage.tpl:355
+#: templates//indexpage.tpl:360
 msgid "Bilder hochladen"
 msgstr ""
 
-#: templates//indexpage.tpl:363
+#: templates//indexpage.tpl:368
 msgid "Bild entfernen"
 msgstr ""
 
-#: templates//indexpage.tpl:377
+#: templates//indexpage.tpl:382
 msgid "'Bild wirklich entfernen?'"
 msgstr ""
 
-#: templates//indexpage.tpl:470 templates//indexpage.tpl:480
-#: templates//indexpage.tpl:490
+#: templates//indexpage.tpl:475 templates//indexpage.tpl:485
+#: templates//indexpage.tpl:495
 msgid "Fehler"
 msgstr ""
 
