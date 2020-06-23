@@ -29,7 +29,7 @@ Create your own translation from the **languages/sqstorage.pot** file and save i
 
 Add the new language to the existing array in
 support/language_tools.php
-`$langsAvailable = array('en_GB','de_DE','youLanguage');`
+`$langsAvailable = array('en_GB','de_DE','yourLanguage');`
 `$langsLabels = array(
     'en_GB' => 'English',
     'de_DE' => 'Deutsch',
