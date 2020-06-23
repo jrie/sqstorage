@@ -226,11 +226,15 @@
 {include file="footer.tpl"}
 {literal}
         <script type="text/javascript">
-            function NumSelect(maxAmout) {
-              var Amount = prompt("{/literal}{t}Von diesem Artikel sind mehrere Stück am Lagerplatz. Wieviele sollen zum neuen Lagerort transferiert werden?{/t}{literal}", maxAmout);
-              return Amount
+            function NumSelect(maxAmount) {
+                while (true) {
+                    let transferAmount = parseInt(prompt("{/literal}{t}Von diesem Artikel sind mehrere Stück am Lagerplatz. Wieviele sollen zum neuen Lagerort transferiert werden?{/t}{literal}", maxAmount))
+                    if (isNaN(transferAmount)) return -1
+                    if (transferAmount > maxAmount) alert("{/literal}{t}Von diesem Artikel sind nicht genug Einheiten vorhanden.{/t}{literal}")
+                    else if (transferAmount < 0) alert("{/literal}{t}Anzahl kann nicht negativ sein.{/t}{literal}")
+                    else return transferAmount
+                }
             }
-
 
             function MoveItem(itemid,storageid){
                 alert('{/literal}{$urlBase}{literal}/inventory?storageid=' + itemid + '&itemid=' + storageid);
@@ -240,17 +244,13 @@
 
             for (let item of switches) {
                 item.addEventListener('change', function(evt) {
-                    let amountTrans = ""
                     if (evt.target.value === '-1') return
-                      if(evt.target.dataset['itemamount'] > 1){
-                          let ToTranser = NumSelect(evt.target.dataset['itemamount'])
-                          if (ToTranser >= 0 && ToTranser <= evt.target.dataset['itemamount']){
-                            amountTrans = "&amount=" + ToTranser
-                          }
-                      }
+
+                    let toTransfer = NumSelect(evt.target.dataset['itemamount'])
+                    if (toTransfer <= 0) return
+                    let amountTrans = "&amount=" + toTransfer.toString()
 
                     window.location.href = '{/literal}{$urlBase}{literal}/inventory?storageid=' + evt.target.value + '&itemid=' + evt.target.dataset['id'] + amountTrans;
-                    //alert('{$urlBase}/inventory?storageid=' + evt.target.value + '&itemid=' + evt.target.dataset['id'] + amountTrans)
                 })
             }
 
