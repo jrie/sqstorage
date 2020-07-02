@@ -44,6 +44,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         DB::insert("items", $insertarray);
       } else {
         DB::update('items', array('amount' => $existingDest['amount'] + intVal($transferAmounts[$index])), "id=%d", $existingDest['id']);
+        DB::update('images', array('itemId' => $existingDest['id']), "id=%d", $itemId);
+        DB::update('fieldData', array('itemId' => $existingDest['id']), "id=%d", $itemId);
       }
       if ($leftAmount === 0) DB::delete('items', "id=%d", $item['id']);
 
