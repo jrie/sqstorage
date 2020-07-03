@@ -47,7 +47,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         DB::update('images', array('itemId' => $existingDest['id']), "id=%d", $itemId);
 
         // NOTE: Add extra check to add/rewrite field data to target merge item or to delete field data instead?
-        DB::update('fieldData', array('itemId' => $existingDest['id']), "id=%d", $itemId);
+        //DB::update('fieldData', array('itemId' => $existingDest['id']), "id=%d", $itemId);
+        DB::delete('fieldData', "id=%d", $itemId);
       }
       if ($leftAmount === 0) DB::delete('items', "id=%d", $item['id']);
 
