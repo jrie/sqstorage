@@ -289,7 +289,7 @@
                         amountTrans = toTransfer
                     }
 
-                    window.location.href = '{/literal}{$urlBase}{literal}/inventory?storageid=' + evt.target.value + '&itemid=' + evt.target.dataset['id'] + '&amount=' amountTrans.toString();
+                    window.location.href = '{/literal}{$urlBase}{literal}/inventory?storageid=' + evt.target.value + '&itemid=' + evt.target.dataset['id'] + '&amount=' + amountTrans.toString();
                 })
             }
 
