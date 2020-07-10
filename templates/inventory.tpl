@@ -20,7 +20,7 @@
                 <ul class="list-group">
 
 
-                        <li class="alert alert-info"><span class="list-span">{t}Kategorien{/t}</span><span class="list-span">{t}Bezeichnung{/t}</span><span class="list-span">{t}Anzahl{/t}</span><span class="list-span">{t}Bemerkung{/t}</span><span class="list-span">{t}Unterkategorien{/t}</span><span class="list-span">{t}Hinzugefügt{/t}</span><span class="list-span">{t}Aktionen{/t}</span>
+                        <li class="alert alert-info"><span class="list-span">{t}Kategorien{/t}</span><span class="list-span">{t}Bezeichnung{/t}</span><span class="list-span">{t}Anzahl{/t}</span><span class="list-span">{t}Bemerkung{/t}</span><span class="list-span">{t}Unterkategorien{/t}</span><span class="list-span">{t}Hinzugefügt{/t}</span><span class="list-span">{t}Aktionen{/t}</span><span class="list-span">{t}Zuweisen{/t}</span>
                         </li>
                 {if isset($itemstore.items)}
                     {foreach $itemstore.items as $item}
@@ -52,14 +52,19 @@
                             <div class="dropdown float-right">
                                 <select autocomplete="off" id="item_{$item.id}" class="btn btn-primary dropdown-toggle switchStorage" data-itemamount="{$item.amount}" data-value="0"  data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-                                <option selected="selected" value="-1">{t}Zuweisen{/t}</option>
+                                {foreach $storages as $storage}
+                                    {if ($storage.id == $item.storageid)}
+                                        <option selected="selected" value="-1">{$storage.label}</option>
+                                        {break}
+                                    {/if}
+                                {{/foreach}}
 
                                 {foreach $storages as $storage}
-                                    {if $storage.id == $itemstore.storage.id}
-                                        {continue}
+                                    {if ($storage.id != $item.storageid)}
+                                        <option value="{$storage.id}">{$storage.label}</option>
                                     {/if}
-                                    <option value="{$storage.id}">{$storage.label}</option>
                                 {/foreach}
+
                                 </select>
                             </div>
                         </li>
@@ -95,7 +100,7 @@
                 <ul class="list-group">
 
 
-                        <li class="alert alert-info"><span class="list-span">{t}Kategorien{/t}</span><span class="list-span">{t}Bezeichnung{/t}</span><span class="list-span">{t}Anzahl{/t}</span><span class="list-span">{t}Bemerkung{/t}</span><span class="list-span">{t}Unterkategorien{/t}</span><span class="list-span">{t}Hinzugefügt{/t}</span><span class="list-span">{t}Aktionen{/t}</span>
+                        <li class="alert alert-info"><span class="list-span">{t}Kategorien{/t}</span><span class="list-span">{t}Bezeichnung{/t}</span><span class="list-span">{t}Anzahl{/t}</span><span class="list-span">{t}Bemerkung{/t}</span><span class="list-span">{t}Unterkategorien{/t}</span><span class="list-span">{t}Hinzugefügt{/t}</span><span class="list-span">{t}Aktionen{/t}</span><span class="list-span">{t}Zuweisen{/t}</span>
                         </li>
                 {if isset($itemstore.items)}
                     {foreach $itemstore.items as $item}
@@ -127,10 +132,17 @@
                             <div class="dropdown float-right">
                                 <select autocomplete="off" id="item_{$item.id}" class="btn btn-primary dropdown-toggle switchStorage" data-value="0"  data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-                                <option selected="selected" value="-1">{t}Zuweisen{/t}</option>
+                                {foreach $storages as $storage}
+                                    {if ($storage.id == $item.storageid)}
+                                        <option selected="selected" value="-1">{$storage.label}</option>
+                                        {break}
+                                    {/if}
+                                {{/foreach}}
 
                                 {foreach $storages as $storage}
-                                    <option value="{$storage.id}">{$storage.label}</option>
+                                    {if ($storage.id != $item.storageid)}
+                                        <option value="{$storage.id}">{$storage.label}</option>
+                                    {/if}
                                 {/foreach}
                                 </select>
                             </div>
@@ -166,7 +178,7 @@
                 <ul class="list-group">
 
 
-                        <li class="alert alert-info"><span class="list-span">{t}Kategorien{/t}</span><span class="list-span">{t}Bezeichnung{/t}</span><span class="list-span">{t}Anzahl{/t}</span><span class="list-span">{t}Bemerkung{/t}</span><span class="list-span">{t}Unterkategorien{/t}</span><span class="list-span">{t}Hinzugefügt{/t}</span><span class="list-span">{t}Aktionen{/t}</span>
+                        <li class="alert alert-info"><span class="list-span">{t}Kategorien{/t}</span><span class="list-span">{t}Bezeichnung{/t}</span><span class="list-span">{t}Anzahl{/t}</span><span class="list-span">{t}Bemerkung{/t}</span><span class="list-span">{t}Unterkategorien{/t}</span><span class="list-span">{t}Hinzugefügt{/t}</span><span class="list-span">{t}Aktionen{/t}</span><span class="list-span">{t}Zuweisen{/t}</span>
                         </li>
                 {if isset($itemstore.items)}
                     {foreach $itemstore.items as $item}
@@ -198,10 +210,16 @@
                             <div class="dropdown float-right">
                                 <select autocomplete="off" id="item_{$item.id}" class="btn btn-primary dropdown-toggle switchStorage" data-value="0"  data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-                                <option selected="selected" value="-1">{t}Zuweisen{/t}</option>
+                                {foreach $storages as $storage}
+                                    {if $storage.id == $item.storageid}
+                                        <option value="{$storage.label}" selected="selected">{$storage.label}</option>
+                                    {/if}
+                                {{/foreach}}
 
                                 {foreach $storages as $storage}
-                                    <option value="{$storage.id}">{$storage.label}</option>
+                                    {if ($storage.id != $item.storageid)}
+                                        <option value="{$storage.id}">{$storage.label}</option>
+                                    {/if}
                                 {/foreach}
                                 </select>
                             </div>

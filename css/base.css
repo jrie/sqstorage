@@ -73,7 +73,7 @@ body {
     position: relative;
 }
 
-.input-group .form-check input { 
+.input-group .form-check input {
     height: 100%;
     line-height: 1.6rem;
 }
@@ -162,8 +162,8 @@ body {
 }
 
 .list-span {
+    margin-right: 0.1em;
     display: inline-block;
-    margin-right: 0.75em;
     font-size: 0.75rem;
 }
 
@@ -231,7 +231,7 @@ a.far:hover {
 
 .storage-area li.alert-info .list-span:nth-child(0n+6),
 .storage-area li.list-group-item .list-span:nth-child(0n+7) {
-    min-width: 12%;
+    min-width: 13.5%;
 }
 
 .switchStorage {
