@@ -52,19 +52,24 @@
                             <div class="dropdown float-right">
                                 <select autocomplete="off" id="item_{$item.id}" class="btn btn-primary dropdown-toggle switchStorage" data-itemamount="{$item.amount}" data-value="0"  data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
+                                {$hasStorage = false}
                                 {foreach $storages as $storage}
                                     {if ($storage.id == $item.storageid)}
+                                        {$hasStorage = true}
                                         <option selected="selected" value="-1">{$storage.label}</option>
                                         {break}
                                     {/if}
-                                {{/foreach}}
+                                {/foreach}
+
+                                {if !$hasStorage}
+                                    <option selected="selected" value="-1">{t}Zuweisen{/t}</option>
+                                {/if}
 
                                 {foreach $storages as $storage}
                                     {if ($storage.id != $item.storageid)}
                                         <option value="{$storage.id}">{$storage.label}</option>
                                     {/if}
                                 {/foreach}
-
                                 </select>
                             </div>
                         </li>
@@ -132,12 +137,18 @@
                             <div class="dropdown float-right">
                                 <select autocomplete="off" id="item_{$item.id}" class="btn btn-primary dropdown-toggle switchStorage" data-value="0"  data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
+                                {$hasStorage = false}
                                 {foreach $storages as $storage}
                                     {if ($storage.id == $item.storageid)}
+                                        {$hasStorage = true}
                                         <option selected="selected" value="-1">{$storage.label}</option>
                                         {break}
                                     {/if}
-                                {{/foreach}}
+                                {/foreach}
+
+                                {if !$hasStorage}
+                                    <option selected="selected" value="-1">{t}Zuweisen{/t}</option>
+                                {/if}
 
                                 {foreach $storages as $storage}
                                     {if ($storage.id != $item.storageid)}
@@ -210,11 +221,18 @@
                             <div class="dropdown float-right">
                                 <select autocomplete="off" id="item_{$item.id}" class="btn btn-primary dropdown-toggle switchStorage" data-value="0"  data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
+                                {$hasStorage = false}
                                 {foreach $storages as $storage}
-                                    {if $storage.id == $item.storageid}
-                                        <option value="{$storage.label}" selected="selected">{$storage.label}</option>
+                                    {if ($storage.id == $item.storageid)}
+                                        {$hasStorage = true}
+                                        <option selected="selected" value="-1">{$storage.label}</option>
+                                        {break}
                                     {/if}
-                                {{/foreach}}
+                                {/foreach}
+
+                                {if !$hasStorage}
+                                    <option selected="selected" value="-1">{t}Zuweisen{/t}</option>
+                                {/if}
 
                                 {foreach $storages as $storage}
                                     {if ($storage.id != $item.storageid)}
