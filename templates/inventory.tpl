@@ -282,11 +282,14 @@
                 item.addEventListener('change', function(evt) {
                     if (evt.target.value === '-1') return
 
-                    let toTransfer = NumSelect(evt.target.dataset['itemamount'])
-                    if (toTransfer <= 0) return
-                    let amountTrans = "&amount=" + toTransfer.toString()
+                    let amountTrans = 1
+                    if (parseInt(evt.target.dataset['itemamount']) > 1) {
+                        let toTransfer = NumSelect(evt.target.dataset['itemamount'])
+                        if (toTransfer <= 0) return
+                        amountTrans = toTransfer
+                    }
 
-                    window.location.href = '{/literal}{$urlBase}{literal}/inventory?storageid=' + evt.target.value + '&itemid=' + evt.target.dataset['id'] + amountTrans;
+                    window.location.href = '{/literal}{$urlBase}{literal}/inventory?storageid=' + evt.target.value + '&itemid=' + evt.target.dataset['id'] + '&amount=' amountTrans.toString();
                 })
             }
 
