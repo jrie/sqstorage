@@ -58,12 +58,14 @@ If not `images` are present in the database, simply open `bootDB.php`, afterward
 
 
 #### German talking src ressource
-The whole idea behind sqStorage or "Tom's Invetarverwaltung" can be found at the german bulletin board NGB.to over https://ngb.to/threads/39122-Webbasierte-Mini-Lagerverwaltung
+The whole idea behind sqStorage or "Tom's Inventarverwaltung" can be found at the german bulletin board NGB.to over https://ngb.to/threads/39122-Webbasierte-Mini-Lagerverwaltung
 
 #### Chatroom
 There is a **Matrix chat room** at Tilde.fun where development and or general talk about features and such can be brought in:
 https://chat.tilde.fun/#/room/#sqstorage:tilde.fun
 
-#### Last but not least
+#### Support the development
+Finally there is a way, besides providing feedback, to feed back and support the development of sqStroage using PayPal.me at https://paypal.me/dwroxnet
 
+#### Last but not least
 Have fun using sqStorage and do not hesitate to write a email or issue, if you miss something!
