@@ -14,40 +14,51 @@ msgstr ""
 
 #: templates//categories.tpl:1 templates//categories.tpl:5
 #: templates//datafields.tpl:147 templates//php_language_extract.tpl:33
-#: templates//nav.tpl:11
+#: templates//inventory.tpl:23 templates//inventory.tpl:108
+#: templates//inventory.tpl:192 templates//nav.tpl:11
 msgid "Kategorien"
 msgstr "Categories"
 
 #: templates//categories.tpl:5 templates//categories.tpl:11
-#: templates//inventory.tpl:23 templates//inventory.tpl:98
-#: templates//inventory.tpl:169 templates//inventorypage.tpl:23
-#: templates//indexpage.tpl:211 templates//indexpage.tpl:214
-#: templates//indexpage.tpl:216
+#: templates//inventory.tpl:23 templates//inventory.tpl:108
+#: templates//inventory.tpl:192 templates//indexpage.tpl:212
+#: templates//indexpage.tpl:215 templates//indexpage.tpl:217
 msgid "Anzahl"
 msgstr "Amount"
 
+#: templates//categories.tpl:5 templates//categories.tpl:7
+#: templates//categories.tpl:11 templates//categories.tpl:14
+#: templates//inventory.tpl:18 templates//inventory.tpl:103
+#: templates//inventory.tpl:187
+msgid "Positionen"
+msgstr "Positions"
+
 #: templates//categories.tpl:5 templates//categories.tpl:11
-#: templates//inventory.tpl:23 templates//inventory.tpl:98
-#: templates//inventory.tpl:169 templates//inventorypage.tpl:23
-#: templates//settings.tpl:110
+#: templates//inventory.tpl:23 templates//inventory.tpl:108
+#: templates//inventory.tpl:192 templates//settings.tpl:103
 msgid "Aktionen"
 msgstr "Actions"
 
 #: templates//categories.tpl:7 templates//categories.tpl:14
-#: templates//inventory.tpl:18 templates//inventory.tpl:93
-#: templates//inventory.tpl:164 templates//inventorypage.tpl:21
+#: templates//inventory.tpl:18 templates//inventory.tpl:103
+#: templates//inventory.tpl:187
 msgid "Gegenstand"
 msgstr "Item"
 
 #: templates//categories.tpl:7 templates//categories.tpl:14
-#: templates//inventory.tpl:18 templates//inventory.tpl:93
-#: templates//inventory.tpl:164
+#: templates//inventory.tpl:18 templates//inventory.tpl:103
+#: templates//inventory.tpl:187
 msgid "Gegenstände"
 msgstr "Items"
 
+#: templates//categories.tpl:7 templates//categories.tpl:14
+#: templates//inventory.tpl:18 templates//inventory.tpl:103
+#: templates//inventory.tpl:187
+msgid "Position"
+msgstr "Position"
+
 #: templates//categories.tpl:11 templates//inventory.tpl:23
-#: templates//inventory.tpl:98 templates//inventory.tpl:169
-#: templates//inventorypage.tpl:23
+#: templates//inventory.tpl:108 templates//inventory.tpl:192
 msgid "Unterkategorien"
 msgstr "Subcategories"
 
@@ -76,7 +87,7 @@ msgid "Unterkategorie umbenennen?"
 msgstr "Rename the subcategory?"
 
 #: templates//datafields.tpl:1 templates//php_language_extract.tpl:6
-#: templates//inventorypage.tpl:1 templates//nav.tpl:13
+#: templates//nav.tpl:13
 msgid "Datenfelder"
 msgstr "Data fields"
 
@@ -197,6 +208,7 @@ msgid "Standardwert doppelt."
 msgstr "Default value duplicated."
 
 #: templates//datafields.tpl:202
+#, fuzzy
 msgid " nicht in Standardwerten enthalten."
 msgstr "not inside default values."
 
@@ -214,8 +226,6 @@ msgid ""
 msgstr "does already exits. The old one needs to be deleted or renamed."
 
 #: templates//datafields.tpl:295
-#, fuzzy
-#| msgid "darf nur zwischen"
 msgid "Der Standardwert darf nur zwischen"
 msgstr "is only allowed to be between"
 
@@ -250,43 +260,6 @@ msgstr "Entry"
 #: templates//datafields.tpl:353
 msgid "wirklich löschen?"
 msgstr "really delete?"
-
-#: templates//test.tpl:9 templates//test.tpl:26 templates//transfer.tpl:8
-#: templates//transfer.tpl:26
-msgid "Quelle"
-msgstr "Source"
-
-#: templates//test.tpl:19 templates//test.tpl:27 templates//transfer.tpl:17
-#: templates//transfer.tpl:30
-msgid "Ziel"
-msgstr "Target"
-
-#: templates//test.tpl:26 templates//transfer.tpl:27
-msgid "Quelle wählen."
-msgstr "Select source."
-
-#: templates//test.tpl:27 templates//transfer.tpl:31
-msgid "Ziel wählen."
-msgstr "Select target."
-
-#: templates//test.tpl:27 templates//php_language_extract.tpl:52
-#: templates//transfer.tpl:1 templates//transfer.tpl:31 templates//nav.tpl:12
-msgid "Transferieren"
-msgstr "Transfer"
-
-#: templates//test.tpl:107 templates//transfer.tpl:115
-msgid "Quelle wählen"
-msgstr "Choose source"
-
-#: templates//test.tpl:108 templates//transfer.tpl:116
-msgid "Ziel wählen"
-msgstr "Choose target"
-
-#: templates//test.tpl:127 templates//inventory.tpl:69
-#: templates//inventory.tpl:77 templates//inventory.tpl:141
-#: templates//inventory.tpl:212
-msgid "Keine Gegenstände gefunden"
-msgstr "No items found"
 
 #: templates//php_language_extract.tpl:1 templates//nav.tpl:51
 msgid "Abmelden"
@@ -333,8 +306,8 @@ msgstr "Settings"
 msgid "Einträge"
 msgstr "Entries"
 
-#: templates//php_language_extract.tpl:15 templates//settings.tpl:92
-#: templates//indexpage.tpl:1 templates//indexpage.tpl:343 templates//nav.tpl:9
+#: templates//php_language_extract.tpl:15 templates//settings.tpl:90
+#: templates//indexpage.tpl:1 templates//indexpage.tpl:349 templates//nav.tpl:9
 msgid "Eintragen"
 msgstr "Enter"
 
@@ -499,9 +472,14 @@ msgstr "Search"
 msgid "Suchen"
 msgstr "Search"
 
-#: templates//php_language_extract.tpl:53 templates//indexpage.tpl:185
-#: templates//indexpage.tpl:188 templates//indexpage.tpl:203
-#: templates//indexpage.tpl:205
+#: templates//php_language_extract.tpl:52 templates//transfer.tpl:1
+#: templates//transfer.tpl:31 templates//nav.tpl:12
+msgid "Transferieren"
+msgstr "Transfer"
+
+#: templates//php_language_extract.tpl:53 templates//indexpage.tpl:186
+#: templates//indexpage.tpl:189 templates//indexpage.tpl:204
+#: templates//indexpage.tpl:206
 msgid "Unterkategorie"
 msgstr "Subcategory"
 
@@ -559,150 +537,175 @@ msgstr ""
 "The system is currently unable to send mails. <br /> Please forward this "
 "invitation link to the user: <br />/><a href=\"%s\">%s</a>"
 
-#: templates//php_language_extract.tpl:65 templates//inventory.tpl:230
-msgid ""
-"Von diesem Artikel sind mehrere Stück am Lagerplatz. Wieviele sollen zum "
-"neuen Lagerort transferiert werden?"
-msgstr ""
-"There are several amounts of this item. How many should be transferred?"
-
-#: templates//php_language_extract.tpl:66
+#: templates//php_language_extract.tpl:65
 msgid "Administrator"
 msgstr "Administrator"
 
-#: templates//php_language_extract.tpl:67
+#: templates//php_language_extract.tpl:66
 msgid "Gast"
 msgstr "Visitor"
 
-#: templates//php_language_extract.tpl:68
+#: templates//php_language_extract.tpl:67
 msgid "Benutzer"
 msgstr "User"
 
-#: templates//transfer.tpl:135
+#: templates//transfer.tpl:8 templates//transfer.tpl:26
+msgid "Quelle"
+msgstr "Source"
+
+#: templates//transfer.tpl:17 templates//transfer.tpl:30
+msgid "Ziel"
+msgstr "Target"
+
+#: templates//transfer.tpl:27
+msgid "Quelle wählen."
+msgstr "Select source."
+
+#: templates//transfer.tpl:31
+msgid "Ziel wählen."
+msgstr "Select target."
+
+#: templates//transfer.tpl:46 templates//inventory.tpl:267
+msgid ""
+"Von diesem Artikel sind mehrere Stück am Lagerplatz. Wie viele sollen zum "
+"neuen Lagerort transferiert werden?"
+msgstr ""
+"There is more than one unit of this article in storage. How many should be "
+"transferred?"
+
+#: templates//transfer.tpl:48 templates//inventory.tpl:269
+msgid "Von diesem Artikel sind nicht genug Einheiten vorhanden."
+msgstr "Not enough units of the item available."
+
+#: templates//transfer.tpl:49 templates//inventory.tpl:270
+msgid "Anzahl kann nicht negativ sein."
+msgstr "Amount cannot be negative."
+
+#: templates//transfer.tpl:156
+msgid "Quelle wählen"
+msgstr "Choose source"
+
+#: templates//transfer.tpl:157
+msgid "Ziel wählen"
+msgstr "Choose target"
+
+#: templates//transfer.tpl:176
 msgid "Keine Gegenstände gefunden."
 msgstr "No items found."
 
 #: templates//inventory.tpl:15 templates//inventory.tpl:17
-#: templates//inventory.tpl:90 templates//inventory.tpl:92
-#: templates//inventory.tpl:161 templates//inventory.tpl:163
+#: templates//inventory.tpl:100 templates//inventory.tpl:102
+#: templates//inventory.tpl:184 templates//inventory.tpl:186
 msgid "Unsortiert"
 msgstr "Unsorted"
 
-#: templates//inventory.tpl:18 templates//inventory.tpl:93
-#: templates//inventory.tpl:164 templates//inventorypage.tpl:21
-msgid "Position"
-msgstr "Position"
-
-#: templates//inventory.tpl:18 templates//inventory.tpl:93
-#: templates//inventory.tpl:164
-msgid "Positionen"
-msgstr "Positions"
-
-#: templates//inventory.tpl:23 templates//inventory.tpl:98
-#: templates//inventory.tpl:169 templates//inventorypage.tpl:23
-#: templates//settings.tpl:110
-msgid "Gruppe"
-msgstr "Group"
-
-#: templates//inventory.tpl:23 templates//inventory.tpl:98
-#: templates//inventory.tpl:169 templates//inventorypage.tpl:23
-#: templates//indexpage.tpl:31 templates//indexpage.tpl:34
-#: templates//indexpage.tpl:36
+#: templates//inventory.tpl:23 templates//inventory.tpl:108
+#: templates//inventory.tpl:192 templates//indexpage.tpl:31
+#: templates//indexpage.tpl:34 templates//indexpage.tpl:36
 msgid "Bezeichnung"
 msgstr "Description"
 
-#: templates//inventory.tpl:23 templates//inventory.tpl:98
-#: templates//inventory.tpl:169 templates//inventorypage.tpl:23
-#: templates//indexpage.tpl:73 templates//indexpage.tpl:77
-#: templates//indexpage.tpl:79
+#: templates//inventory.tpl:23 templates//inventory.tpl:108
+#: templates//inventory.tpl:192 templates//indexpage.tpl:73
+#: templates//indexpage.tpl:77 templates//indexpage.tpl:79
 msgid "Bemerkung"
 msgstr "Comment"
 
-#: templates//inventory.tpl:23 templates//inventory.tpl:98
-#: templates//inventory.tpl:169 templates//inventorypage.tpl:23
+#: templates//inventory.tpl:23 templates//inventory.tpl:108
+#: templates//inventory.tpl:192
 msgid "Hinzugefügt"
 msgstr "Add"
 
-#: templates//inventory.tpl:44
-#, fuzzy
-msgid "Gegenstand hat Bilder"
-msgstr "Item has pictures"
-
-#: templates//inventory.tpl:55 templates//inventory.tpl:130
-#: templates//inventory.tpl:201 templates//inventorypage.tpl:52
+#: templates//inventory.tpl:23 templates//inventory.tpl:65
+#: templates//inventory.tpl:108 templates//inventory.tpl:150
+#: templates//inventory.tpl:192 templates//inventory.tpl:234
 msgid "Zuweisen"
 msgstr "Allocate"
 
-#: templates//inventory.tpl:261 templates//inventorypage.tpl:86
+#: templates//inventory.tpl:44 templates//inventory.tpl:129
+#: templates//inventory.tpl:213
+msgid "Gegenstand hat Bilder"
+msgstr "Item has pictures"
+
+#: templates//inventory.tpl:79 templates//inventory.tpl:87
+#: templates//inventory.tpl:164 templates//inventory.tpl:248
+msgid "Keine Gegenstände gefunden"
+msgstr "No items found"
+
+#: templates//inventory.tpl:301
 msgid "Lagerplatz wirklich entfernen?"
 msgstr "Really remove storage area?"
 
-#: templates//inventory.tpl:261 templates//inventorypage.tpl:86
+#: templates//inventory.tpl:301
 msgid "Position wirklich entfernen?"
 msgstr "Really remove position?"
 
-#: templates//settings.tpl:18
+#: templates//settings.tpl:16
 msgid "zur Datenbank hinzugefügt"
 msgstr "added to the database"
 
-#: templates//settings.tpl:24
+#: templates//settings.tpl:22
 msgid "Benutzer zur Bearbeitung:"
 msgstr "User for editing:"
 
-#: templates//settings.tpl:34 templates//settings.tpl:39
-#: templates//settings.tpl:41 templates//settings.tpl:110
+#: templates//settings.tpl:32 templates//settings.tpl:37
+#: templates//settings.tpl:39 templates//settings.tpl:103
 #: templates//login.tpl:44
 msgid "Benutzername"
 msgstr "Username"
 
-#: templates//settings.tpl:48 templates//settings.tpl:51
-#: templates//settings.tpl:53 templates//settings.tpl:110
+#: templates//settings.tpl:46 templates//settings.tpl:49
+#: templates//settings.tpl:51 templates//settings.tpl:103
 #: templates//login.tpl:53
 msgid "E-Mail"
-msgstr "E-mail"
+msgstr "E-Mail"
 
-#: templates//settings.tpl:63 templates//settings.tpl:79
-#: templates//settings.tpl:82
+#: templates//settings.tpl:61 templates//settings.tpl:77
+#: templates//settings.tpl:80
 msgid "Benutzergruppe"
 msgstr "User group"
 
-#: templates//settings.tpl:90 templates//indexpage.tpl:341
+#: templates//settings.tpl:88 templates//indexpage.tpl:347
 msgid "Überschreiben"
 msgstr "Overwrite"
 
-#: templates//settings.tpl:109
+#: templates//settings.tpl:102
 msgid "Neuer Benutzer"
 msgstr "New user"
 
-#: templates//settings.tpl:120
-msgid "Mailserver-Einstellungen"
-msgstr "Mailserver settings"
+#: templates//settings.tpl:103
+msgid "Gruppe"
+msgstr "Group"
 
-#: templates//settings.tpl:125
+#: templates//settings.tpl:113
+msgid "E-Mailserver-Einstellungen"
+msgstr "E-Mailserver settings"
+
+#: templates//settings.tpl:118
 msgid "E-Mail Absenderadresse"
-msgstr "Email sender address"
+msgstr "E-Mail sender address"
 
-#: templates//settings.tpl:131
-msgid "Mailversand"
-msgstr "Mail delivery"
+#: templates//settings.tpl:124
+msgid "E-Mailversand"
+msgstr "E-Mail delivery"
 
-#: templates//settings.tpl:135
+#: templates//settings.tpl:128
 msgid "deaktivieren"
 msgstr "deactivate"
 
-#: templates//settings.tpl:139
+#: templates//settings.tpl:132
 msgid "aktivieren"
 msgstr "activate"
 
-#: templates//settings.tpl:142
+#: templates//settings.tpl:135
 msgid "Einstellungen speichern"
 msgstr "Save settings"
 
-#: templates//settings.tpl:163
+#: templates//settings.tpl:155
 msgid "Benutzer wirklich entfernen?"
 msgstr "Really remove the user?"
 
-#: templates//settings.tpl:163
+#: templates//settings.tpl:155
 msgid "Der letzte Administrator kann nicht gelöscht werden!"
 msgstr "The last administrator cannot be deleted!"
 
@@ -727,40 +730,40 @@ msgstr "Storage area"
 msgid "Netzwerk/Hardware"
 msgstr "Network/Hardware"
 
-#: templates//indexpage.tpl:203 templates//indexpage.tpl:205
+#: templates//indexpage.tpl:204 templates//indexpage.tpl:206
 msgid "Router,wlan,fritzBox"
 msgstr "Router,WiFi,FritzBox"
 
-#: templates//indexpage.tpl:222 templates//indexpage.tpl:225
+#: templates//indexpage.tpl:223 templates//indexpage.tpl:226
 msgid "Seriennummer"
 msgstr "Serialnumber"
 
-#: templates//indexpage.tpl:225 templates//indexpage.tpl:227
+#: templates//indexpage.tpl:226 templates//indexpage.tpl:228
 msgid "Seriennummer/Artikelnummer"
 msgstr "Serialnumber/Productnumber"
 
-#: templates//indexpage.tpl:350
+#: templates//indexpage.tpl:356
 msgid "Bilder des Gegenstandes"
 msgstr "Picture of this item"
 
-#: templates//indexpage.tpl:352
+#: templates//indexpage.tpl:358
 msgid "Bild Upload"
 msgstr "Upload pictures"
 
-#: templates//indexpage.tpl:354
+#: templates//indexpage.tpl:360
 msgid "Bilder hochladen"
 msgstr "Upload picture"
 
-#: templates//indexpage.tpl:362
+#: templates//indexpage.tpl:368
 msgid "Bild entfernen"
 msgstr "Remove picture"
 
-#: templates//indexpage.tpl:376
+#: templates//indexpage.tpl:382
 msgid "'Bild wirklich entfernen?'"
 msgstr "Really remove picture?"
 
-#: templates//indexpage.tpl:469 templates//indexpage.tpl:479
-#: templates//indexpage.tpl:489
+#: templates//indexpage.tpl:475 templates//indexpage.tpl:485
+#: templates//indexpage.tpl:495
 msgid "Fehler"
 msgstr "Error"
 
@@ -811,6 +814,18 @@ msgstr "Request"
 #: templates//login.tpl:112
 msgid "Zugangsdaten vergessen"
 msgstr "Credentials forgotten"
+
+#~ msgid ""
+#~ "Von diesem Artikel sind mehrere Stück am Lagerplatz. Wieviele sollen zum "
+#~ "neuen Lagerort transferiert werden?"
+#~ msgstr ""
+#~ "There are several amounts of this item. How many should be transferred?"
+
+#~ msgid "Mailserver-Einstellungen"
+#~ msgstr "Mailserver settings"
+
+#~ msgid "Mailversand"
+#~ msgstr "Mail delivery"
 
 #~ msgid "Zeichen lang sein. Aktuelle Zeichen"
 #~ msgstr "characters long. Current characters"

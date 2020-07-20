@@ -110,7 +110,7 @@
                 <input type="hidden" id="mail" name="target" value="mail" />
                 <ul class="categories list-group">
                     <li class="alert alert-info">
-                        <span class="list-span">{t}Mailserver-Einstellungen{/t}</span>
+                        <span class="list-span">{t}E-Mailserver-Einstellungen{/t}</span>
                     </li>
                     <li class="list-group-item">
                         <div class="input-group mb-3">
@@ -121,7 +121,7 @@
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon7">{t}Mailversand{/t}</span>
+                                <span class="input-group-text" id="basic-addon7">{t}E-Mailversand{/t}</span>
                             </div>
                             <div class="form-check form-check-inline ml-3">
                                 <input class="form-check-input" type="radio" name="mail_enabled" id="mail_enabled_off" value="false" {if $mailSettings.enabled}checked="checked"{/if}>
