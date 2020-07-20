@@ -252,7 +252,7 @@ msgid "Abmelden"
 msgstr ""
 
 #: templates//php_language_extract.tpl:2
-msgid "Absender-Mailadresse ungültig."
+msgid "Absender-E-Mailadresse ungültig."
 msgstr ""
 
 #: templates//php_language_extract.tpl:3
@@ -502,7 +502,7 @@ msgstr ""
 
 #: templates//php_language_extract.tpl:64
 msgid ""
-"Es können zur Zeit keine Mails vom System versendet werden.<br />Bitte "
+"Es können zur Zeit keine E-Mails vom System versendet werden.<br />Bitte "
 "diesen Einladungslink an den Benutzer weiterleiten:<br /><a href=\"%s\">%s</"
 "a>rn"
 msgstr ""
@@ -510,7 +510,7 @@ msgstr ""
 #: templates//php_language_extract.tpl:65 templates//transfer.tpl:46
 #: templates//inventory.tpl:231
 msgid ""
-"Von diesem Artikel sind mehrere Stück am Lagerplatz. Wieviele sollen zum "
+"Von diesem Artikel sind mehrere Stück am Lagerplatz. Wie viele sollen zum "
 "neuen Lagerort transferiert werden?"
 msgstr ""
 
@@ -646,7 +646,7 @@ msgid "Gruppe"
 msgstr ""
 
 #: templates//settings.tpl:113
-msgid "Mailserver-Einstellungen"
+msgid "E-Mailserver-Einstellungen"
 msgstr ""
 
 #: templates//settings.tpl:118
@@ -654,7 +654,7 @@ msgid "E-Mail Absenderadresse"
 msgstr ""
 
 #: templates//settings.tpl:124
-msgid "Mailversand"
+msgid "E-Mailversand"
 msgstr ""
 
 #: templates//settings.tpl:128
