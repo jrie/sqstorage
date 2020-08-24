@@ -73,7 +73,7 @@
                         <span class="input-group-text" id="basic-addon7">{t}Bemerkung{/t}</span>
                     </div>
 
-                    {if isset($item.comment) && !empty($item.comment) != null}
+                    {if isset($item.comment) && !empty($item.comment)}
                         <input type="text" name="comment" maxlength="255" class="form-control" autocomplete="off" placeholder="{t}Bemerkung{/t}" aria-label="{t}Bemerkung{/t}" aria-describedby="basic-addon7" value="{$item.comment}">
                     {else}
                         <input type="text" name="comment" maxlength="255" class="form-control" autocomplete="off" placeholder="{t}Bemerkung{/t}" aria-label="{t}Bemerkung{/t}" aria-describedby="basic-addon7">
