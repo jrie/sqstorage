@@ -4,7 +4,7 @@ Deny from all
 Satisfy all
 </Files>
 
-
+<IfModule mod_rewrite.c>
 RewriteEngine on
 RewriteRule (js|css|img|fonts)/(.*) $1/$2
 RewriteRule ^index$ index.php [L]
@@ -38,5 +38,5 @@ RewriteRule ^login/activate=(.*)+$ login.php/activate=$1 [QSA,L]
 
 RewriteRule ^subcategories/$ subcategories.php
 RewriteRule ^subcategories/([0-9]+)$ inventory.php?subcategory=$1 [QSA,L]
-
+</IfModule>
 
