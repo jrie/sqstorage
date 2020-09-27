@@ -9,3 +9,6 @@
 
     // Make use of user login and registration feature
     $useRegistration = false; // true OR false
+
+    // Make use of pretty urls, might raise 404 errors on Pi4
+    $usePrettyURLs = true; // true OR false
