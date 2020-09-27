@@ -3,11 +3,13 @@ $requireAdmin = true;
 require('login.php');
 $error = "";
 $success = "";
-// require_once('./support/meekrodb.2.3.class.php');
-//require_once('./vendor/autoload.php');
-//require_once('./support/dba.php');
+
 require_once('support/urlBase.php');
 $smarty->assign('urlBase', $urlBase);
+
+require_once('./support/dba.php');
+if ($usePrettyURLs) $smarty->assign('urlPostFix', '');
+else $smarty->assign('urlPostFix', '.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['target'] == 'mail') {
   try {

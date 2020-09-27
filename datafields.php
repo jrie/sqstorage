@@ -3,6 +3,10 @@ require('login.php');
 require_once('support/urlBase.php');
 $smarty->assign('urlBase', $urlBase);
 
+require_once('./support/dba.php');
+if ($usePrettyURLs) $smarty->assign('urlPostFix', '');
+else $smarty->assign('urlPostFix', '.php');
+
 include_once('customFieldsData.php');
 $removedField = false;
 $removedData = false;

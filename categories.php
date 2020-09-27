@@ -2,6 +2,10 @@
 require_once('support/urlBase.php');
 $smarty->assign('urlBase', $urlBase);
 
+require_once('./support/dba.php');
+if ($usePrettyURLs) $smarty->assign('urlPostFix', '');
+else $smarty->assign('urlPostFix', '.php');
+
 $alert = "";
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   if (isset($_GET['setCategoryId']) && !empty($_GET['setCategoryId']) && isset($_GET['to']) && !empty($_GET['to'])) {

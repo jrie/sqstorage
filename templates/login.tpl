@@ -1,7 +1,7 @@
 {include file="head.tpl" title="{t}Login und Registrierung{/t}"}
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a href="{$urlBase}/index"><img class="logo" src="./img/sqstorage.png" /></a>
+            <a href="{$urlBase}/index{$urlPostFix}"><img class="logo" src="./img/sqstorage.png" /></a>
 
     <div class="dropdown">
         <select class="form-control mr-sm-2" name="lang">
@@ -39,7 +39,7 @@
                                 {t}Zugangsdaten eingeben{/t}</p>
                             {/if}
                         {/if}
-                    <form action="{$urlBase}/login{if $showActivation}?activate={$activate}{/if}{if $showRecover}?recover{/if}" method="post">
+                    <form action="{$urlBase}/login{$urlPostFix}{if $showActivation}?activate={$activate}{/if}{if $showRecover}?recover{/if}" method="post">
                         <div class="input-group mb-3">
                             <input type="text" id="username" name="username" class="form-control" placeholder="{t}Benutzername{/t}" value="{if ($showActivation || $showRecover)}{if isset($POST.username)}{$POST.username}{/if}{else}{if isset($user.username)}{$user.username}{/if}{/if}">
                             <div class="input-group-append">
@@ -109,7 +109,7 @@
                     {if !$showActivation}
                     {if !$showRecover}
                     <p class="mb-1">
-                        <a href="{$urlBase}/login?recover">{t}Zugangsdaten vergessen{/t}</a>
+                        <a href="{$urlBase}/login{$urlPostFix}?recover">{t}Zugangsdaten vergessen{/t}</a>
                     </p>
                     {/if}
                     {/if}

@@ -2,6 +2,10 @@
 require_once('support/urlBase.php');
 $smarty->assign('urlBase', $urlBase);
 
+require_once('./support/dba.php');
+if ($usePrettyURLs) $smarty->assign('urlPostFix', '');
+else $smarty->assign('urlPostFix', '.php');
+
 $parse['mode'] = "default";
 $parse['showemptystorages'] = true;
 $sqle = array();
@@ -89,7 +93,7 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
   $setamount = $item['amount'];
   if (isset($_GET['amount']) && intval($_GET['amount'])) $setamount = intval($_GET['amount']);
   if ($item['storageid'] == $storeId) {
-    header("location: {$urlBase}/inventory");
+    header("location: {$urlBase}/inventory{$urlPostFix}");
     die();
   }
 

@@ -5,6 +5,10 @@ require_once('includer.php');
 require_once('support/urlBase.php');
 $smarty->assign('urlBase', $urlBase);
 
+require_once('./support/dba.php');
+if ($usePrettyURLs) $smarty->assign('urlPostFix', '');
+else $smarty->assign('urlPostFix', '.php');
+
 if (isset($useRegistration) && !$useRegistration) {
   $activate = "";
   if (isset($_GET['activate'])) $activate = $_GET['activate'];

@@ -7,6 +7,10 @@ require('login.php'); ?>
 require_once('support/urlBase.php');
 $smarty->assign('urlBase', $urlBase);
 
+require_once('./support/dba.php');
+if ($usePrettyURLs) $smarty->assign('urlPostFix', '');
+else $smarty->assign('urlPostFix', '.php');
+
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
   if (isset($_GET['getId']) && !empty($_GET['getId'])) {
     //require_once('./support/meekrodb.2.3.class.php');

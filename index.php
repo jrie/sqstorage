@@ -5,6 +5,11 @@ require_once('customFieldsData.php');
 require_once('support/urlBase.php');
 $smarty->assign('urlBase', $urlBase);
 
+
+require_once('./support/dba.php');
+if ($usePrettyURLs) $smarty->assign('urlPostFix', '');
+else $smarty->assign('urlPostFix', '.php');
+
 $imageList = null;
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getImageId'])) {
@@ -167,6 +172,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getImageId'])) {
 }
 
 $isEdit = false;
+$imageList = null;
 if ((isset($_GET['editItem']) && !empty($_GET['editItem'])) || (isset($_POST['editItem']) && !empty($_POST['editItem']))) {
   if (isset($_GET['editItem'])) $itemId = intval($_GET['editItem']);
   else if (isset($_POST['editItem'])) $itemId = intval($_POST['editItem']);
@@ -178,7 +184,7 @@ if ((isset($_GET['editItem']) && !empty($_GET['editItem'])) || (isset($_POST['ed
   $imageList = DB::query('SELECT `id`, `thumb`, `sizeX`, `sizeY` FROM `images` WHERE `itemId`=%d', $item['id']);
 } else {
   $customData = null;
-  $imageList = DB::query('SELECT `id`, `thumb`, `sizeX`, `sizeY` FROM `images` WHERE `itemId`=%d', intval($item['id']));
+  if (isset($item)) $imageList = DB::query('SELECT `id`, `thumb`, `sizeX`, `sizeY` FROM `images` WHERE `itemId`=%d', intval($item['id']));
 }
 
 $smarty->assign('imageList', $imageList);

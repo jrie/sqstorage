@@ -6,7 +6,7 @@
 
 {if $parse.mode == "default"}
         <div class="content">
-            <form id="inventoryForm" method="POST" action="{$urlBase}/inventory">
+            <form id="inventoryForm" method="POST" action="{$urlBase}/inventory{$urlPostFix}">
             {foreach $myitem as $itemstore}
             {$hasdata=true}
             {if $parse.showemptystorages || $itemstore.itemcount > 0 }
@@ -14,7 +14,7 @@
                 <div class="storage-area">
                 <button class="btn smallButton" name="removeStorage" data-name="{if isset($itemstore.storage.label)}{$itemstore.storage.label}{else}{t}Unsortiert{/t}{/if}" value="{$itemstore.storage.id}" type="submit"><i class="fas fa-times-circle"></i></button>
                 <h4 class="text-dark">
-                    <a href="{$urlBase}/inventory?storageid={$itemstore.storage.id}">{if isset($itemstore.storage.label)}{$itemstore.storage.label}{else}{t}Unsortiert{/t}{/if}</a>&nbsp;
+                    <a href="{$urlBase}/inventory{$urlPostFix}?storageid={$itemstore.storage.id}">{if isset($itemstore.storage.label)}{$itemstore.storage.label}{else}{t}Unsortiert{/t}{/if}</a>&nbsp;
                     <span class="small">({$itemstore.positionen} {if $itemstore.positionen == 1}{t}Position{/t}{else}{t}Positionen{/t}{/if}, {$itemstore.itemcount} {if $itemstore.itemcount == 1}{t}Gegenstand{/t}{else}{t}Gegenstände{/t}{/if})</span>
                 </h4>
                 <ul class="list-group">
@@ -30,7 +30,7 @@
                         {$subCategories=array()}
                         {foreach $subCats as $subCat}
                             {if isset($subcategories.$subCat)}
-                            {$subCategories[] ="<a href='{$urlBase}/inventory?subcategory={$subcategories.$subCat.id}'>{$subcategories.$subCat.name}</a>"}
+                            {$subCategories[] ="<a href='{$urlBase}/inventory{$urlPostFix}?subcategory={$subcategories.$subCat.id}'>{$subcategories.$subCat.name}</a>"}
                             {/if}
                         {/foreach}
 
@@ -40,14 +40,14 @@
                         {assign var="category" value=$categories.$catid}
                         <li class="list-group-item">
                             <button class="btn smallButton" name="remove" data-name="{$item.label}" value="{$item.id}" type="submit"><i class="fas fa-times-circle"></i></button>
-                            <a href="{$urlBase}/inventory?category={$item.headcategory}" class="list-span">{$category.name}</a>
-                            <span class="list-span"><a href="{$urlBase}/index?editItem={$item.id}">{$item.label}{if $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i>{/if}</a></span>
+                            <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" class="list-span">{$category.name}</a>
+                            <span class="list-span"><a href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}{if $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i>{/if}</a></span>
                             <span class="list-span">{$item.amount}</span>
                             <span class="list-span">{$item.comment}</span>
 
                             <span class="list-span">{$implodedSubCats}</span>
                             <span class="list-span">{$dateexploded.0}</span>
-                            <a class="list-span" href="{$urlBase}/index?editItem={$item.id}"><i class="fas fa-edit"></i></a>
+                            <a class="list-span" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
 
                             <div class="dropdown float-right">
                                 <select autocomplete="off" id="item_{$item.id}" class="btn btn-primary dropdown-toggle switchStorage" data-itemamount="{$item.amount}" data-value="0"  data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -92,7 +92,7 @@
 {elseif $parse.mode == "category"}
 <!-------------------------------------------------------------------------------------------------------------->
         <div class="content">
-            <form id="inventoryForm" method="POST" action="{$urlBase}/inventory">
+            <form id="inventoryForm" method="POST" action="{$urlBase}/inventory{$urlPostFix}">
             {foreach $myitem as $itemstore}
             {if $parse.showemptystorages || $itemstore.itemcount > 0 }
             <hr>
@@ -115,7 +115,7 @@
                         {$subCategories=array()}
                         {foreach $subCats as $subCat}
                             {if isset($subcategories.$subCat)}
-                            {$subCategories[] ="<a href='{$urlBase}/inventory?subcategory={$subcategories.$subCat.id}'>{$subcategories.$subCat.name}</a>"}
+                            {$subCategories[] ="<a href='{$urlBase}/inventory{$urlPostFix}?subcategory={$subcategories.$subCat.id}'>{$subcategories.$subCat.name}</a>"}
                             {/if}
                         {/foreach}
 
@@ -125,14 +125,14 @@
                         {assign var="category" value=$categories.$catid}
                         <li class="list-group-item">
                             <button class="btn smallButton" name="remove" data-name="{$item.label}" value="{$item.id}" type="submit"><i class="fas fa-times-circle"></i></button>
-                            <a href="{$urlBase}/inventory?category={$item.headcategory}" class="list-span">{$category.name}</a>
-                            <span class="list-span"><a href="{$urlBase}/index?editItem={$item.id}">{$item.label}{if $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i>{/if}</a></span>
+                            <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" class="list-span">{$category.name}</a>
+                            <span class="list-span"><a href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}{if $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i>{/if}</a></span>
                             <span class="list-span">{$item.amount}</span>
                             <span class="list-span">{$item.comment}</span>
 
                             <span class="list-span">{$implodedSubCats}</span>
                             <span class="list-span">{$dateexploded.0}</span>
-                            <a class="list-span" href="{$urlBase}/index?editItem={$item.id}"><i class="fas fa-edit"></i></a>
+                            <a class="list-span" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
 
                             <div class="dropdown float-right">
                                 <select autocomplete="off" id="item_{$item.id}" class="btn btn-primary dropdown-toggle switchStorage" data-value="0"  data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -176,7 +176,7 @@
 {elseif $parse.mode == "subcategory"}
 <!-------------------------------------------------------------------------------------------------------------->
         <div class="content">
-            <form id="inventoryForm" method="POST" action="{$urlBase}/inventory">
+            <form id="inventoryForm" method="POST" action="{$urlBase}/inventory{$urlPostFix}">
             {foreach $myitem as $itemstore}
             {if $parse.showemptystorages || $itemstore.itemcount > 0 }
             <hr>
@@ -199,7 +199,7 @@
                         {$subCategories=array()}
                         {foreach $subCats as $subCat}
                             {if isset($subcategories.$subCat)}
-                            {$subCategories[] ="<a href='{$urlBase}/inventory?subcategory={$subcategories.$subCat.id}'>{$subcategories.$subCat.name}</a>"}
+                            {$subCategories[] ="<a href='{$urlBase}/inventory{$urlPostFix}?subcategory={$subcategories.$subCat.id}'>{$subcategories.$subCat.name}</a>"}
                             {/if}
                         {/foreach}
 
@@ -209,14 +209,14 @@
                         {assign var="category" value=$categories.$catid}
                         <li class="list-group-item">
                             <button class="btn smallButton" name="remove" data-name="{$item.label}" value="{$item.id}" type="submit"><i class="fas fa-times-circle"></i></button>
-                            <a href="{$urlBase}/inventory?category={$item.headcategory}" class="list-span">{$category.name}</a>
-                            <span class="list-span"><a href="{$urlBase}/index?editItem={$item.id}">{$item.label}{if $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i>{/if}</a></span>
+                            <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" class="list-span">{$category.name}</a>
+                            <span class="list-span"><a href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}{if $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i>{/if}</a></span>
                             <span class="list-span">{$item.amount}</span>
                             <span class="list-span">{$item.comment}</span>
 
                             <span class="list-span">{$implodedSubCats}</span>
                             <span class="list-span">{$dateexploded.0}</span>
-                            <a class="list-span" href="{$urlBase}/index?editItem={$item.id}"><i class="fas fa-edit"></i></a>
+                            <a class="list-span" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
 
                             <div class="dropdown float-right">
                                 <select autocomplete="off" id="item_{$item.id}" class="btn btn-primary dropdown-toggle switchStorage" data-value="0"  data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

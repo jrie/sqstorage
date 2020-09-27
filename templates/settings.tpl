@@ -99,10 +99,10 @@
             </div>
             {/if}
 
-            <a class="btn btn-primary addUser" href="{$urlBase}/settings?addUser">{t}Neuer Benutzer{/t}</a>
+            <a class="btn btn-primary addUser" href="{$urlBase}/settings{$urlPostFix}?addUser">{t}Neuer Benutzer{/t}</a>
             <hr/><ul class="categories list-group"><li class="alert alert-info"><span class="list-span">{t}Benutzername{/t}</span><span class="list-span">{t}E-Mail{/t}</span><span class="list-span">{t}Gruppe{/t}</span><span class="list-span">{t}Aktionen{/t}</span></li>
             {foreach $users as $user}
-                <li class="list-group-item"><a name="removeUser" data-name="{$user.username}" data-id="{$user.usergroupid}" href="{$urlBase}/settings?removeUser={$user.id}" class="removalButton fas fa-times-circle btn"></a><span class="list-span">{$user.username}</span><span class="list-span">{$user.mailaddress}</span><span class="list-span">{$user.usergroupname}</span><a class="fas fa-edit editUser" href="#" name="editUser" data-name="{$user.username}" data-id="{$user.id}"></a></li>
+                <li class="list-group-item"><a name="removeUser" data-name="{$user.username}" data-id="{$user.usergroupid}" href="{$urlBase}/settings{$urlPostFix}?removeUser={$user.id}" class="removalButton fas fa-times-circle btn"></a><span class="list-span">{$user.username}</span><span class="list-span">{$user.mailaddress}</span><span class="list-span">{$user.usergroupname}</span><a class="fas fa-edit editUser" href="#" name="editUser" data-name="{$user.username}" data-id="{$user.id}"></a></li>
             {/foreach}
             </ul><hr/>
 
@@ -167,7 +167,7 @@
             let editUserButtons = document.querySelectorAll('.editUser')
             for (let button of editUserButtons) {
                 button.addEventListener('click', function (evt) {
-                    if (evt.target.name === 'editUser') window.location.href = '{/literal}{$urlBase}{literal}/settings?editUser=' + evt.target.dataset['id']
+                    if (evt.target.name === 'editUser') window.location.href = '{/literal}{$urlBase}{literal}/settings{$urlPostFix}?editUser=' + evt.target.dataset['id']
 
                     return false
                 })
