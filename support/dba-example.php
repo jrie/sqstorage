@@ -6,3 +6,9 @@
     DB::$host = 'localhost';
     // DB::$host = '123.111.10.23'; // Use for webserver
     DB::$port = '3306';
+
+    // Make use of user login and registration feature
+    $useRegistration = false; // true OR false
+
+    // Make use of pretty urls, might raise 404 errors on Pi4
+    $usePrettyURLs = true; // true OR false

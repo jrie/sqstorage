@@ -1,10 +1,17 @@
 <?php require('login.php');
+require_once('support/urlBase.php');
+$smarty->assign('urlBase', $urlBase);
+
+require_once('./support/dba.php');
+if ($usePrettyURLs) $smarty->assign('urlPostFix', '');
+else $smarty->assign('urlPostFix', '.php');
 
 $parse['mode'] = "default";
 $parse['showemptystorages'] = true;
 $sqle = array();
 $myitem = array();
 //----- P0 + OK
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   if (isset($_POST['remove']) && !empty($_POST['remove'])) {
     $item = DB::queryFirstRow('SELECT * FROM items WHERE id=%d', $_POST['remove']);
@@ -12,29 +19,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (!empty($item['subcategories'])) {
       foreach (explode(',', $item['subcategories']) as $subCategory) {
-        $subCategoryDB = DB::queryFirstRow('SELECT id, amount FROM subCategories WHERE id=%d', intVal($subCategory));
+        $subCategoryDB = DB::queryFirstRow('SELECT `id`, `amount` FROM `subCategories` WHERE `id`=%d', intval($subCategory));
 
-        if ($subCategoryDB != NULL) {
-          DB::update('subCategories', array('amount' => intVal($subCategoryDB['amount']) - intVal($item['amount'])), 'id=%d', $subCategoryDB['id']);
-        }
+        if ($subCategoryDB != null) DB::update('subCategories', array('amount' => intval($subCategoryDB['amount']) - intval($item['amount'])), 'id=%d', $subCategoryDB['id']);
       }
     }
 
-    $headCategory = DB::queryFirstRow('SELECT amount FROM headCategories WHERE id=%d', $item['headcategory']);
-    DB::update('storages', array('amount' => intVal($storage['amount']) - intVal($item['amount'])), 'id=%d', $item['storageid']);
-    DB::update('headCategories', array('amount' => intVal($headCategory['amount']) - intVal($item['amount'])), 'id=%d', $item['headcategory']);
+    $headCategory = DB::queryFirstRow('SELECT `amount` FROM headCategories WHERE id=%d', $item['headcategory']);
+    DB::update('storages', array('amount' => intval($storage['amount']) - intval($item['amount'])), 'id=%d', $item['storageid']);
+    DB::update('headCategories', array('amount' => intval($headCategory['amount']) - intval($item['amount'])), 'id=%d', $item['headcategory']);
     DB::query('DELETE FROM items WHERE id=%d', $_POST['remove']);
   } else if (isset($_POST['removeStorage']) && !empty($_POST['removeStorage'])) {
     DB::update('items', array('storageid' => 0), 'storageid=%d', $_POST['removeStorage']);
-    DB::query('DELETE FROM storages WHERE id=%d', $_POST['removeStorage']);
+    DB::query('DELETE FROM `storages` WHERE id=%d', $_POST['removeStorage']);
   }
 }
 
 //----- P0 - OK
-$success = FALSE;
+$success = false;
 //----- P1 + OK
 if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['itemid'])) {
-  $storeId = intVal($_GET['storageid']);
+  $storeId = intval($_GET['storageid']);
   $storages = DB::query('SELECT id, label, amount FROM storages ORDER BY label ASC');
   $store = DB::queryFirstRow('SELECT id, label, amount FROM storages WHERE id=%d', $storeId);
   $items = DB::query('SELECT * FROM items WHERE storageid=%d', $storeId);
@@ -54,11 +59,9 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
 } else if (isset($_GET['subcategory']) && !empty($_GET['subcategory'])) {
   $parse['mode'] = "subcategory";
   $parse['showemptystorages'] = false;
-  $categoryId = intVal($_GET['subcategory']);
+  $categoryId = intval($_GET['subcategory']);
   $category = DB::queryFirstRow('SELECT id, name, amount from subCategories WHERE id=%d', $categoryId);
   $items = DB::query('SELECT * FROM items WHERE subCategories LIKE %s', ('%,' . $categoryId . ',%'));
-
-
 
   for ($x = 0; $x < count($items); $x++) {
     $item = $items[$x];
@@ -69,6 +72,10 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
     $myitem[$storeId]['storage'] = $store[$storeId];
     if (!isset($myitem[$storeId]['positionen'])) $myitem[$storeId]['positionen'] = 0;
     if (!isset($myitem[$storeId]['itemcount'])) $myitem[$storeId]['itemcount'] = 0;
+
+    $hasImages = DB::query('SELECT `id` FROM `images` WHERE `itemId`=%d LIMIT 1', intval($items[$x]['id']));
+    if (DB::affectedRows() == 1) $items[$x]['hasImages'] = true;
+
     $myitem[$storeId]['items'][] = $items[$x];
     $myitem[$storeId]['positionen']++;
     $myitem[$storeId]['itemcount'] += $items[$x]['amount'];
@@ -79,46 +86,45 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
   //----- P3 + OK
 } else if (isset($_GET['storageid']) && !empty($_GET['storageid']) && isset($_GET['itemid']) && !empty($_GET['itemid'])) {
 
-  $storeId = intVal($_GET['storageid']);
-  $itemId = intVal($_GET['itemid']);
+  $storeId = intval($_GET['storageid']);
+  $itemId = intval($_GET['itemid']);
 
   $item = DB::queryFirstRow('SELECT * FROM items WHERE id=%d', $itemId);
   $setamount = $item['amount'];
   if (isset($_GET['amount']) && intval($_GET['amount'])) $setamount = intval($_GET['amount']);
   if ($item['storageid'] == $storeId) {
-    header("location: inventory.php");
+    header("location: {$urlBase}/inventory{$urlPostFix}");
     die();
   }
 
   if ($setamount == $item['amount']) {
-    if ($storeId != NULL) {
+    if ($storeId != null) {
       $previousStorage = DB::queryFirstRow('SELECT id, amount FROM storages WHERE id=%d', $item['storageid']);
-      DB::update('storages', array('amount' => intVal($previousStorage['amount']) - intVal($item['amount'])), 'id=%d', $previousStorage['id']);
+      DB::update('storages', array('amount' => intval($previousStorage['amount']) - intval($item['amount'])), 'id=%d', $previousStorage['id']);
     }
 
     $storage = DB::queryFirstRow('SELECT id, amount FROM storages WHERE id=%d', $storeId);
-    DB::update('storages', array('amount' => intVal($storage['amount']) + intVal($item['amount'])), 'id=%d', $storage['id']);
+    DB::update('storages', array('amount' => intval($storage['amount']) + intval($item['amount'])), 'id=%d', $storage['id']);
     DB::update('items', array('storageid' => $storage['id']), 'id=%d', $item['id']);
-    header("location: inventory.php");
+    header("location: " . $urlBase. "/inventory");
     die();
   } else {
-    if ($storeId != NULL) {
+    if ($storeId != null) {
       $previousStorage = DB::queryFirstRow('SELECT id, amount FROM storages WHERE id=%d', $item['storageid']);
-      DB::update('storages', array('amount' => intVal($previousStorage['amount']) - intVal($setamount)), 'id=%d', $previousStorage['id']);
+      DB::update('storages', array('amount' => intval($previousStorage['amount']) - intval($setamount)), 'id=%d', $previousStorage['id']);
     }
     $storage = DB::queryFirstRow('SELECT id, amount FROM storages WHERE id=%d', $storeId);
-    DB::update('storages', array('amount' => intVal($storage['amount']) + intVal($setamount)), 'id=%d', $storage['id']);
+    DB::update('storages', array('amount' => intval($storage['amount']) + intval($setamount)), 'id=%d', $storage['id']);
+
     $insertarray = array();
-    foreach ($item as $key => $value) {
-      if ($key != 'id') $insertarray[$key] = $value;
-    }
+    foreach ($item as $key => $value) if ($key != 'id') $insertarray[$key] = $value;
     $insertarray['storageid'] = $storage['id'];
     $insertarray['amount'] = $setamount;
     DB::insert("items", $insertarray);
 
     DB::update('items', array('amount' => intval($item['amount'] - $setamount)), 'id=%d', $item['id']);
 
-    header("location: inventory.php");
+    header("location: " . $urlBase. "/inventory");
     die();
   }
 
@@ -170,7 +176,7 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
 
   $parse['mode'] = "category";
   $parse['showemptystorages'] = false;
-  $categoryId = intVal($_GET['category']);
+  $categoryId = intval($_GET['category']);
   $category = DB::queryFirstRow('SELECT id, name, amount from headCategories WHERE id=%d', $categoryId);
   $items = DB::query('SELECT * FROM items WHERE headcategory=%d', $categoryId);
 
@@ -183,18 +189,20 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
     $myitem[$storeId]['storage'] = $store[$storeId];
     if (!isset($myitem[$storeId]['positionen'])) $myitem[$storeId]['positionen'] = 0;
     if (!isset($myitem[$storeId]['itemcount'])) $myitem[$storeId]['itemcount'] = 0;
+    $hasImages = DB::query('SELECT `id` FROM `images` WHERE `itemId`=%d LIMIT 1', intval($items[$x]['id']));
+    if (DB::affectedRows() == 1) $items[$x]['hasImages'] = true;
     $myitem[$storeId]['items'][] = $items[$x];
     $myitem[$storeId]['positionen']++;
     $myitem[$storeId]['itemcount'] += $items[$x]['amount'];
   }
 
-  $availsubcats =   DB::query('SELECT * FROM subCategories WHERE headcategory=%d ORDER BY name ASC', $categoryId);
+  $availsubcats = DB::query('SELECT * FROM subCategories WHERE headcategory=%d ORDER BY name ASC', $categoryId);
   foreach ($availsubcats as $subCategory) {
     $storeId++;
     $store[$storeId]['label'] = gettext('Unterkategorie') . ": " . $subCategory['name'];
     $myitem[$storeId]['positionen'] = 0;
     $myitem[$storeId]['itemcount'] = 0;
-    $items = DB::query('SELECT * FROM items WHERE subcategories LIKE %s', '%,' . $subCategory['id'] . ',%');
+    $items = DB::query('SELECT * FROM items WHERE subcategories LIKE %ss', ',' . $subCategory['id'] . ',');
     for ($x = 0; $x < count($items); $x++) {
       $item = $items[$x];
 
@@ -221,6 +229,8 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
     $myitem[0]['itemcount'] = 0;
   }
   for ($x = 0; $x < count($loseItems); $x++) {
+    $hasImages = DB::query('SELECT `id` FROM `images` WHERE `itemId`=%d LIMIT 1', intval($$loseItems[$x]['id']));
+    if (DB::affectedRows() == 1) $$loseItems[$x]['hasImages'] = true;
 
     $myitem[0]['items'][] = $loseItems[$x];
     $myitem[0]['positionen']++;
@@ -233,7 +243,11 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
     $myitem[$store['id']]['positionen'] = 0;
     $myitem[$store['id']]['itemcount'] = 0;
     $items = DB::query('SELECT * FROM items WHERE storageid=%d', $store['id']);
+
     for ($x = 0; $x < count($items); $x++) {
+      $hasImages = DB::query('SELECT `id` FROM `images` WHERE `itemId`=%d LIMIT 1', intval($items[$x]['id']));
+      if (DB::affectedRows() == 1) $items[$x]['hasImages'] = true;
+
       $myitem[$store['id']]['items'][] = $items[$x];
       $myitem[$store['id']]['positionen']++;
       $myitem[$store['id']]['itemcount'] += $items[$x]['amount'];
@@ -241,7 +255,6 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
   }
 }
 //----- P6 - OK
-
 
 $storagebyid = array();
 $storages = DB::query('SELECT id, label FROM storages');
@@ -277,7 +290,9 @@ $smarty->assign('success', $success);
 $smarty->assign('myitem', $myitem);
 $smarty->assign('parse', $parse);
 $smarty->assign('SESSION', $_SESSION);
-
+$smarty->assign('REQUEST', $_SERVER['REQUEST_URI']);
+$smarty->assign('_POST', $_POST);
+$smarty->assign('_GET', $_GET);
 
 $smarty->display('inventory.tpl');
 

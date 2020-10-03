@@ -1,10 +1,10 @@
-{include file="head.tpl" title=foo}
+{include file="head.tpl" title="{t}Login und Registrierung{/t}"}
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a href="index.php"><img class="logo" src="./img/sqstorage.png" /></a>
+            <a href="{$urlBase}/index{$urlPostFix}"><img class="logo" src="./img/sqstorage.png" /></a>
 
     <div class="dropdown">
-         <select class="form-control mr-sm-2" name="lang">
+        <select class="form-control mr-sm-2" name="lang">
             {foreach $langsAvailable as $lang}
             <option value="{$lang}" {if $langCurrent == $lang} selected="selected"{/if}>{$langsLabels.$lang}</option>
             {/foreach}
@@ -12,7 +12,9 @@
         <script type ="text/javascript">
             let langSelection = document.querySelector('select[name="lang"').addEventListener('change', function (evt) {
                 let langValue = evt.target.options[evt.target.selectedIndex].value
-                window.location.href = 'index.php?lang=' + langValue;
+                let srcUri = window.location.href.toString().replace(/.lang=.[^\&\/]*/, '')
+                if (srcUri.indexOf('?') === -1) window.location.href = srcUri + '?lang=' + langValue
+                else window.location.href = srcUri + '&lang=' + langValue
             })
         </script>
     </div>
@@ -24,7 +26,7 @@
                     <div class="card-body login-card-body">
 
                     {if isset($error)}
-                    <div class="alert alert-danger">{$error}></div>
+                    <div class="statusDisplay red">{$error}</div>
                     {/if}
 
                     <p class="login-box-msg">
@@ -37,7 +39,7 @@
                                 {t}Zugangsdaten eingeben{/t}</p>
                             {/if}
                         {/if}
-                    <form action="login.php{if $showActivation}?activate={$activate}{/if}{if $showRecover}?recover{/if}" method="post">
+                    <form action="{$urlBase}/login{$urlPostFix}{if $showActivation}?activate={$activate}{/if}{if $showRecover}?recover{/if}" method="post">
                         <div class="input-group mb-3">
                             <input type="text" id="username" name="username" class="form-control" placeholder="{t}Benutzername{/t}" value="{if ($showActivation || $showRecover)}{if isset($POST.username)}{$POST.username}{/if}{else}{if isset($user.username)}{$user.username}{/if}{/if}">
                             <div class="input-group-append">
@@ -107,7 +109,7 @@
                     {if !$showActivation}
                     {if !$showRecover}
                     <p class="mb-1">
-                        <a href="login.php?recover">{t}Zugangsdaten vergessen{/t}</a>
+                        <a href="{$urlBase}/login{$urlPostFix}?recover">{t}Zugangsdaten vergessen{/t}</a>
                     </p>
                     {/if}
                     {/if}

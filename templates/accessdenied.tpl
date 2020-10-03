@@ -1,5 +1,5 @@
-{include file="head.tpl" title=foo}
-{include file="nav.tpl" title=foo}
+{include file="head.tpl" title="{t}Zugriff verweigert{/t}"}
+{include file="nav.tpl" target="accessdenied.php"}
 
         <div class="content">
             {$done=false}
