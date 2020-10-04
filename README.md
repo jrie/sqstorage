@@ -41,9 +41,9 @@ Also `usePrettyURLs` can be set to `false` in order to disable pretty urls. ***T
 
 If your database is on a different server, you might want to use the IP or hostname instead of `localhost`. Afterwards make a copy of `dba-example.php` and rename it to `dba.php` in order for sqStorage to read out this configuration file.
 
-#### Permissions
+#### Permissions and error 500
 
-The directories `smartyfiles/` and `languages/locale/` need to be **writeable** for the webserver.
+The directories `smartyfiles/` and `languages/locale/` need to be **writeable** for the webserver. This also fixes error 500 in some cirumstances.
 
 `chown -R www-data smartyfiles/` and `chown -R www-data languages/locale/` should work in most cases.
 
