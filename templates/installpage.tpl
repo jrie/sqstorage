@@ -1,5 +1,5 @@
 {include file="head.tpl" title="{t}Installation{/t}"}
-{include file="nav.tpl" target="index.php" request=$REQUEST}
+{include file="navinst.tpl" target="index.php" request=$REQUEST}
 
         <center><h2>{t}sqStorage Installation / Aktualiserung{/t}</h2></center>
 
@@ -31,9 +31,6 @@
             </div>
             {/if}
 
-
-
-            <div id="errorForm" class="alert alert-danger hidden" role="alert">{t}Nicht gespeichert, es befinden sich Fehler in der Formular-Eingabe.{/t}</div>
 
             <form class="inputForm" accept-charset="utf-8" method="POST" action="install.php">
 
