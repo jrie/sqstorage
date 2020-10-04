@@ -8,9 +8,9 @@
   <link rel="stylesheet" href="./fonts/fontawesome/css/fontawesome.css">
   <meta charset="utf-8">
   <?php
-    require_once('./vendor/autoload.php');
+    require_once('./includer.php');
 
-    require_once('./support/dba.php');
+//    require_once('./support/dba.php');
     if ($usePrettyURLs) $smarty->assign('urlPostFix', '');
     else $smarty->assign('urlPostFix', '.php');
   ?>
