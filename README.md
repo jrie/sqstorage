@@ -45,7 +45,12 @@ If your database is on a different server, you might want to use the IP or hostn
 
 The directories `smartyfiles/`, `smartyfolders/` and `languages/locale/` need to be **writeable and readable** for the webserver. This also fixes error 500 in some circumstances - please see your webserver log access and error report in case of questions.
 
-`chown -R www-data smartyfiles/`, `chown -R www-data smartyfolders/` and `chown -R www-data languages/locale/`
+```
+chown -R www-data smartyfiles/
+chown -R www-data smartyfolders/
+chown -R www-data languages/locale/
+```
+
 should work in most cases.
 
 #### First run
