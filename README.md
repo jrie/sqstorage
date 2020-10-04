@@ -43,7 +43,7 @@ If your database is on a different server, you might want to use the IP or hostn
 
 #### Permissions and error 500
 
-The directories `smartyfiles/` and `languages/locale/` need to be **writeable** for the webserver. This also fixes error 500 in some cirumstances.
+The directories `smartyfiles/` and `languages/locale/` need to be **writeable** for the webserver. This also fixes error 500 in some circumstances - please see your webserver log access and error report in case of questions.
 
 `chown -R www-data smartyfiles/` and `chown -R www-data languages/locale/` should work in most cases.
 
