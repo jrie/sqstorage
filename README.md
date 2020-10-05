@@ -43,11 +43,14 @@ If your database is on a different server, you might want to use the IP or hostn
 
 #### Permissions and error 500
 
-The directories `smartyfolders/` and `languages/locale/` need to be **writeable and readable** for the webserver. This also fixes error 500 in some circumstances - please see your webserver log access and error report in case of questions.
+The directories `smartyfolders/`, `support/` and `languages/locale/` need to be **write and readable** for the webserver. This also fixes error 500 in some circumstances - please see your webserver log access and error report in case of questions.
 
 ```
 chown -R www-data smartyfolders/
 chgrp -R www-data smartyfolders/
+
+chown -R www-data support/
+chgrp -R www-data support/
 
 chown -R www-data languages/locale/
 chgrp -R www-data languages/locale/
