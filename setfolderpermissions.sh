@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 PE=""
-if [ "$EUID" -ne 0 ]
+if [ "$EUID" != "0" ]
 then
 PE="sudo "
 fi
