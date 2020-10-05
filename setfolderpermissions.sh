@@ -2,6 +2,7 @@
 
 PE=""
 if [ "$EUID" -ne 0 ]
+then
 PE="sudo "
 fi
 
