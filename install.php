@@ -48,6 +48,7 @@ if(file_exists('./support/dba.php')){
   if(!@copy('./support/dba-example.php','./support/dba.php')){
         $error[] = gettext("Die Datei support/dba.php ist nicht vorhanden und konnte auch nicht erstellt werden.");
         $error[] = gettext("Setze die entsprechende Berechtigung so, dass Dein Webserver diese erstellen und bearbeiten kann oder erstelle die Datei manuell und gewähre darauf Schreibrechte für den Webserver");
+        $error[] = gettext("Unter Linux könnten folgende Befehle weiterhelfen");
         $error[] = "chown -R www-data ./support/";
         $error[] = "chgrp -R www-data ./support/";
     }
@@ -57,6 +58,7 @@ if(file_exists('./support/dba.php')){
   if(!is_writable('./support/dba.php')){
         $error[] =gettext("Der Webserver kann die Datei support/dba.php nicht ändern");
         $error[] =gettext("Bitte erlaube dem Webserver Schreibzugriff auf die Datei");
+        $error[] = gettext("Unter Linux könnten folgende Befehle weiterhelfen");
         $error[] = "chown www-data ./support/dba.php";
         $error[] = "chgrp www-data ./support/dba.php";
   }else{

@@ -784,6 +784,14 @@ msgstr ""
 msgid "Neue Revision:"
 msgstr ""
 
+#: templates//php_language_extract.tpl:78
+msgid "Zugang wurde verweigert. Bitte überprüfe die Zugangsdaten"
+msgstr ""
+
+#: templates//php_language_extract.tpl:79
+msgid "Die gewählte Datenbank existiert nicht und konnte nicht erstellt werden"
+msgstr ""
+
 #: templates//settings.tpl:16
 msgid "zur Datenbank hinzugefügt"
 msgstr ""

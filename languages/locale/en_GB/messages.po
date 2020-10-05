@@ -367,10 +367,8 @@ msgid "Installation"
 msgstr "Installation"
 
 #: templates//installpage.tpl:4
-#, fuzzy
-#| msgid "Eintragen / Aktualisieren"
 msgid "sqStorage Installation / Aktualiserung"
-msgstr "Enter / Update"
+msgstr "sqStorage Installation / Update"
 
 #: templates//installpage.tpl:42 templates//installpage.tpl:44
 #, fuzzy
@@ -399,16 +397,12 @@ msgid "Datenbank-Port"
 msgstr "Record"
 
 #: templates//installpage.tpl:75
-#, fuzzy
-#| msgid "Zugangsdaten eingeben"
 msgid "Verbinungsdaten eintragen"
 msgstr "Enter credentials"
 
 #: templates//installpage.tpl:79
-#, fuzzy
-#| msgid "Eintragen / Aktualisieren"
 msgid "Datenbank installieren / aktualisieren"
-msgstr "Enter / Update"
+msgstr "Install / update database"
 
 #: templates//inventory.tpl:1 templates//nav.tpl:8
 #: templates//php_language_extract.tpl:29
@@ -829,6 +823,18 @@ msgstr "Old revision:"
 #: templates//php_language_extract.tpl:77
 msgid "Neue Revision:"
 msgstr "New revision:"
+
+#: templates//php_language_extract.tpl:78
+msgid "Zugang wurde verweigert. Bitte überprüfe die Zugangsdaten"
+msgstr "Access denied. Please check the credentials"
+
+#: templates//php_language_extract.tpl:79
+#, fuzzy
+#| msgid ""
+#| "Die Datei support/dba.php ist nicht vorhanden und konnte auch nicht "
+#| "erstellt werden."
+msgid "Die gewählte Datenbank existiert nicht und konnte nicht erstellt werden"
+msgstr "The file support/dba.php is missing and creating it failed."
 
 #: templates//settings.tpl:16
 msgid "zur Datenbank hinzugefügt"

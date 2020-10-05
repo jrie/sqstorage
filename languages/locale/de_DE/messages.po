@@ -366,7 +366,7 @@ msgstr "Fehler"
 
 #: templates//installpage.tpl:1
 msgid "Installation"
-msgstr ""
+msgstr "Installation"
 
 #: templates//installpage.tpl:4
 #, fuzzy
@@ -388,11 +388,11 @@ msgstr "Passwort"
 
 #: templates//installpage.tpl:56 templates//installpage.tpl:58
 msgid "Datenbank-Name"
-msgstr ""
+msgstr "Datenbank-Name"
 
 #: templates//installpage.tpl:63 templates//installpage.tpl:65
 msgid "Datenbank-Server"
-msgstr ""
+msgstr "Datenbank-Server"
 
 #: templates//installpage.tpl:70 templates//installpage.tpl:72
 #, fuzzy
@@ -789,16 +789,19 @@ msgstr "Benutzer"
 #: templates//php_language_extract.tpl:68
 msgid "Datenbank-Verbindung nicht möglich. Bitte kontrolliere die Zugangsdaten"
 msgstr ""
+"Datenbank-Verbindung nicht möglich. Bitte kontrolliere die Zugangsdaten"
 
 #: templates//php_language_extract.tpl:69
 msgid "Datenbank-Verbindung hergestellt"
-msgstr ""
+msgstr "Datenbank-Verbindung hergestellt"
 
 #: templates//php_language_extract.tpl:70
 msgid ""
 "Die Datei support/dba.php ist nicht vorhanden und konnte auch nicht erstellt "
 "werden."
 msgstr ""
+"Die Datei support/dba.php ist nicht vorhanden und konnte auch nicht erstellt "
+"werden."
 
 #: templates//php_language_extract.tpl:71
 msgid ""
@@ -806,30 +809,42 @@ msgid ""
 "und bearbeiten kann oder erstelle die Datei manuell und gewähre darauf "
 "Schreibrechte für den Webserver"
 msgstr ""
+"Setze die entsprechende Berechtigung so, dass Dein Webserver diese erstellen "
+"und bearbeiten kann oder erstelle die Datei manuell und gewähre darauf "
+"Schreibrechte für den Webserver"
 
 #: templates//php_language_extract.tpl:72
 msgid "Der Webserver kann die Datei support/dba.php nicht ändern"
-msgstr ""
+msgstr "Der Webserver kann die Datei support/dba.php nicht ändern"
 
 #: templates//php_language_extract.tpl:73
 msgid "Bitte erlaube dem Webserver Schreibzugriff auf die Datei"
-msgstr ""
+msgstr "Bitte erlaube dem Webserver Schreibzugriff auf die Datei"
 
 #: templates//php_language_extract.tpl:74
 msgid "Datenbank ist auf dem aktuellen Stand"
-msgstr ""
+msgstr "Datenbank ist auf dem aktuellen Stand"
 
 #: templates//php_language_extract.tpl:75
 msgid "keine Änderungen durchgeführt"
-msgstr ""
+msgstr "keine Änderungen durchgeführt"
 
 #: templates//php_language_extract.tpl:76
 msgid "Alte Revision:"
-msgstr ""
+msgstr "Alte Revision:"
 
 #: templates//php_language_extract.tpl:77
 msgid "Neue Revision:"
+msgstr "Neue Revision:"
+
+#: templates//php_language_extract.tpl:78
+msgid "Zugang wurde verweigert. Bitte überprüfe die Zugangsdaten"
+msgstr "Zugang wurde verweigert. Bitte überprüfe die Zugangsdaten"
+
+#: templates//php_language_extract.tpl:79
+msgid "Die gewählte Datenbank existiert nicht und konnte nicht erstellt werden"
 msgstr ""
+"Die gewählte Datenbank existiert nicht und konnte nicht erstellt werden"
 
 #: templates//settings.tpl:16
 msgid "zur Datenbank hinzugefügt"
