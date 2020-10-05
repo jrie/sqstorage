@@ -836,6 +836,14 @@ msgstr "Access denied. Please check the credentials"
 msgid "Die gewählte Datenbank existiert nicht und konnte nicht erstellt werden"
 msgstr "The file support/dba.php is missing and creating it failed."
 
+#: templates//php_language_extract.tpl:80
+msgid "Zugriff auf folgende Verzeichnisse fehlgeschlagen:"
+msgstr "Access to the following directories was denied:"
+
+#: templates//php_language_extract.tpl:81
+msgid "Unter Linux könnten folgende Befehle weiterhelfen"
+msgstr "If your operating system is Linux the following command may help you"
+
 #: templates//settings.tpl:16
 msgid "zur Datenbank hinzugefügt"
 msgstr "added to the database"

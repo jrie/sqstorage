@@ -77,5 +77,5 @@
 {t}Neue Revision:{/t}
 {t}Zugang wurde verweigert. Bitte überprüfe die Zugangsdaten{/t}
 {t}Die gewählte Datenbank existiert nicht und konnte nicht erstellt werden{/t}
-
-
+{t}Zugriff auf folgende Verzeichnisse fehlgeschlagen:{/t}
+{t}Unter Linux könnten folgende Befehle weiterhelfen{/t}

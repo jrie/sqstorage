@@ -846,6 +846,14 @@ msgid "Die gewählte Datenbank existiert nicht und konnte nicht erstellt werden"
 msgstr ""
 "Die gewählte Datenbank existiert nicht und konnte nicht erstellt werden"
 
+#: templates//php_language_extract.tpl:80
+msgid "Zugriff auf folgende Verzeichnisse fehlgeschlagen:"
+msgstr "Zugriff auf folgende Verzeichnisse fehlgeschlagen:"
+
+#: templates//php_language_extract.tpl:81
+msgid "Unter Linux könnten folgende Befehle weiterhelfen"
+msgstr "Unter Linux könnten folgende Befehle weiterhelfen"
+
 #: templates//settings.tpl:16
 msgid "zur Datenbank hinzugefügt"
 msgstr "zur Datenbank hinzugefügt"
