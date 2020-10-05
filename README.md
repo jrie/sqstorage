@@ -47,7 +47,10 @@ The directories `smartyfolders/` and `languages/locale/` need to be **writeable 
 
 ```
 chown -R www-data smartyfolders/
+chgrp -R www-data smartyfolders/
+
 chown -R www-data languages/locale/
+chgrp -R www-data languages/locale/
 ```
 
 should work in most cases.
