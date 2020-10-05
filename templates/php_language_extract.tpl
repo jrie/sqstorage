@@ -75,6 +75,7 @@
 {t}keine Änderungen durchgeführt{/t}
 {t}Alte Revision:{/t}
 {t}Neue Revision:{/t}
-
+{t}Zugang wurde verweigert. Bitte überprüfe die Zugangsdaten{/t}
+{t}Die gewählte Datenbank existiert nicht und konnte nicht erstellt werden{/t}
 
 

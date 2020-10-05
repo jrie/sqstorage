@@ -64,7 +64,6 @@ if(file_exists('./support/dba.php')){
   }
 }
 
-
 if(isset($_POST['dbset'])){
   if (CheckDBCredentials($_POST['dbhost'],$_POST['dbuser'],$_POST['dbpass'],$_POST['dbname'],$_POST['dbport'])){
 
