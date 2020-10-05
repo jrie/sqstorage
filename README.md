@@ -3,7 +3,8 @@
 A easy to use and super quick way to organize your inventory, storage and storage areas.
 
 ### Note
-Right now sqStorage is available in German and English. Feel free to add your own translation (see LANGUAGE.md for details on how to do so).
+Right now sqStorage is available in German and English. Feel free to add your own translation.
+See [LANGUAGE.md](LANGUAGE.md) for details on how to do so.
 
 ### Installation and usage
 
