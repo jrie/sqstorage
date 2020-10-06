@@ -1,16 +1,16 @@
 {include file="head.tpl" title="{t}Installation{/t}"}
 {include file="navinst.tpl" target="index.php" request=$REQUEST}
 
-        <center><h2>{t}sqStorage Installation / Aktualiserung{/t}</h2></center>
+        <center><h2>{t}sqStorage Installation / Aktualiserung{/t}</h2>
 
         {if count($error) > 0}
-
+          {foreach $error as $err}
             <div class="alert alert-danger" role="alert">
-                {foreach $error as $err}
-                <h6>{$err}</h6>
-                {/foreach}
-            </div>
 
+                <h6>{$err}</h6>
+
+            </div>
+          {/foreach}
 
         {/if}
 
@@ -22,7 +22,7 @@
             </div>
         {/if}
 
-
+        </center>
 
           <div class="content">
             {if $success}
@@ -75,8 +75,15 @@
                 <input type="submit" class="btn form-control btn-success" value="{t}Verbinungsdaten eintragen{/t}">
             {else}
                 {if count($MigMessages) < 1}
-                <input type="hidden" name="dbwork" value="1">
-                <input type="submit" value="{t}Datenbank installieren / aktualisieren{/t}" class="btn form-control btn-success">
+                  {if count($error) < 1}
+                    <input type="hidden" name="dbwork" value="1">
+                    <input type="submit" value="{t}Datenbank installieren / aktualisieren{/t}" class="btn form-control btn-success">
+                    </form>
+                  {else}
+                    <form method="post">
+                    <input type="submit" value="{t}Erneut prüfen{/t}" class="btn form-control btn-info">
+                    </form>
+                  {/if}
                 {else}
 
                         <div class="alert alert-success" role="success">
@@ -89,7 +96,7 @@
             {/if}
 
 
-            </form>
+
         </div>
 
 

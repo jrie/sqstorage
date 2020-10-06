@@ -406,11 +406,15 @@ msgstr "Datensatz"
 msgid "Verbinungsdaten eintragen"
 msgstr "Zugangsdaten eingeben"
 
-#: templates//installpage.tpl:79
+#: templates//installpage.tpl:80
 #, fuzzy
 #| msgid "Eintragen / Aktualisieren"
 msgid "Datenbank installieren / aktualisieren"
 msgstr "Eintragen / Aktualisieren"
+
+#: templates//installpage.tpl:84
+msgid "Erneut prüfen"
+msgstr "Erneut prüfen"
 
 #: templates//inventory.tpl:1 templates//nav.tpl:8
 #: templates//php_language_extract.tpl:29

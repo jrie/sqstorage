@@ -1,8 +1,7 @@
 <body>
 <nav class="navbar navbar-light bg-light">
     <a href="{$urlBase}/index{$urlPostFix}"><img class="logo" src="./img/sqstorage.png" alt="sqStorage logo" /></a>
-    <ul class="nav">
-    </ul>
+
 
 
     <div class="dropdown">
@@ -22,7 +21,6 @@
     </div>
 
 
-    <ul class="nav">
-    </ul>
+
 </nav>
 <p id="msgbox"></p>

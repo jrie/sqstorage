@@ -381,8 +381,12 @@ msgstr ""
 msgid "Verbinungsdaten eintragen"
 msgstr ""
 
-#: templates//installpage.tpl:79
+#: templates//installpage.tpl:80
 msgid "Datenbank installieren / aktualisieren"
+msgstr ""
+
+#: templates//installpage.tpl:84
+msgid "Erneut prüfen"
 msgstr ""
 
 #: templates//inventory.tpl:1 templates//nav.tpl:8

@@ -400,9 +400,13 @@ msgstr "Record"
 msgid "Verbinungsdaten eintragen"
 msgstr "Enter credentials"
 
-#: templates//installpage.tpl:79
+#: templates//installpage.tpl:80
 msgid "Datenbank installieren / aktualisieren"
 msgstr "Install / update database"
+
+#: templates//installpage.tpl:84
+msgid "Erneut prüfen"
+msgstr "Check again"
 
 #: templates//inventory.tpl:1 templates//nav.tpl:8
 #: templates//php_language_extract.tpl:29
