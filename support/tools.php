@@ -6,14 +6,15 @@
 
 
 
-function CheckDBCredentials($host,$user,$password,$name,$port){
+function CheckDBCredentials($host,$user,$password,$name,$port,$silent=false){
   global $error;
+
   $tmp = error_reporting();
   error_reporting(0);
   $mysqli_connection = new MySQLi($host,$user,$password,"",$port);
   error_reporting($tmp);
   if ($mysqli_connection->connect_error) {
-      $error[] = gettext("Zugang wurde verweigert. Bitte überprüfe die Zugangsdaten");
+      if(!$silent)$error[] = gettext("Zugang wurde verweigert. Bitte überprüfe die Zugangsdaten");
       return false;
   }
   else {
