@@ -6,7 +6,7 @@
  */
 $wsun="www-data";
 if(function_exists("posix_getpwuid")){
-$poss[] =  posix_getpwuid(posix_geteuid());
+$poss =  posix_getpwuid(posix_geteuid());
 $wsun=$poss['name'];
 }else{
   $wsun = get_current_user();
