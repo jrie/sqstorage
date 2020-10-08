@@ -22,7 +22,8 @@ To install sqStorage perform the following steps
 * Set the required folder permission
 	* The webserver required write permissions to the following directories  
 	* `smartyfiles/` ,`languages/locale/` and `support/`
-	* `chown -R www-data smartyfiles/`, `chown -R www-data languages/locale/` and `chown -R www-data support/` should work in most cases.
+	* On Linux `chown -R www-data smartyfiles/`, `chown -R www-data languages/locale/` and `chown -R www-data support/` should work in most cases. Alternatively you can `chmod +x setfolderpermssions.sh` and execute using `./setfolderpermssions.sh` if you are using bash.
+  
 * Visit sqStorage with your browser and you will be redirected to the install page
 	* Select whether you want to use pretty urls (rewrite module for the webserver is required to be activated)
 	* Select whether you want to use the registration and login system
