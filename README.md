@@ -22,7 +22,7 @@ To install sqStorage perform the following steps
 * Set the required folder permission
 	* The webserver required write permissions to the following directories  
 	* `smartyfiles/` ,`languages/locale/` and `support/`
-	* `chown -R www-data smartyfiles/` , `chown -R www-data languages/locale/` and `chown -R www-data support/` should work in most cases.
+	* `chown -R www-data smartyfiles/`, `chown -R www-data languages/locale/` and `chown -R www-data support/` should work in most cases.
 * Visit sqStorage with your browser and you will be redirected to the install page
 	* Select whether you want to use pretty urls (rewrite module for the webserver is required to be activated)
 	* Select whether you want to use the registration and login system
@@ -30,7 +30,7 @@ To install sqStorage perform the following steps
 	*  Save the credentials
 	*  Click the install / update button
 
-Your sgStorage installation is completeled
+Your sgStorage installation is completed.
 
 #### Update your installation
 * Download the files and replace the existing  with the new ones
