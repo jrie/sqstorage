@@ -374,45 +374,65 @@ msgstr "Installation"
 msgid "sqStorage Installation / Aktualiserung"
 msgstr "Eintragen / Aktualisieren"
 
-#: templates//installpage.tpl:42 templates//installpage.tpl:44
+#: templates//installpage.tpl:40
+msgid "Saubere Adressen"
+msgstr "Saubere Adressen"
+
+#: templates//installpage.tpl:44
+msgid ""
+"Verwende z.B. http://example.com/inventory anstatt http://example.com/"
+"inventory.php"
+msgstr ""
+"Verwende z.B. http://example.com/inventory anstatt http://example.com/"
+"inventory.php"
+
+#: templates//installpage.tpl:50
+msgid "Zutrittskontrolle"
+msgstr "Zutrittskontrolle"
+
+#: templates//installpage.tpl:54
+msgid "Verwende die Benutzerregistrierung und Zutrittskontrolle"
+msgstr "Verwende die Benutzerregistrierung und Zutrittskontrolle"
+
+#: templates//installpage.tpl:61 templates//installpage.tpl:63
 #, fuzzy
 #| msgid "Benutzer"
 msgid "Datenbank-Benutzer"
 msgstr "Benutzer"
 
-#: templates//installpage.tpl:49 templates//installpage.tpl:51
+#: templates//installpage.tpl:68 templates//installpage.tpl:70
 #, fuzzy
 #| msgid "Passwort"
 msgid "Datenbank-Passwort"
 msgstr "Passwort"
 
-#: templates//installpage.tpl:56 templates//installpage.tpl:58
+#: templates//installpage.tpl:75 templates//installpage.tpl:77
 msgid "Datenbank-Name"
 msgstr "Datenbank-Name"
 
-#: templates//installpage.tpl:63 templates//installpage.tpl:65
+#: templates//installpage.tpl:82 templates//installpage.tpl:84
 msgid "Datenbank-Server"
 msgstr "Datenbank-Server"
 
-#: templates//installpage.tpl:70 templates//installpage.tpl:72
+#: templates//installpage.tpl:89 templates//installpage.tpl:91
 #, fuzzy
 #| msgid "Datensatz"
 msgid "Datenbank-Port"
 msgstr "Datensatz"
 
-#: templates//installpage.tpl:75
+#: templates//installpage.tpl:94
 #, fuzzy
 #| msgid "Zugangsdaten eingeben"
 msgid "Verbinungsdaten eintragen"
 msgstr "Zugangsdaten eingeben"
 
-#: templates//installpage.tpl:80
+#: templates//installpage.tpl:99
 #, fuzzy
 #| msgid "Eintragen / Aktualisieren"
 msgid "Datenbank installieren / aktualisieren"
 msgstr "Eintragen / Aktualisieren"
 
-#: templates//installpage.tpl:84
+#: templates//installpage.tpl:103
 msgid "Erneut prüfen"
 msgstr "Erneut prüfen"
 

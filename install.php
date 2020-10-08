@@ -46,6 +46,7 @@ $nodba = true;
  * Check user supplied credentials create db if required
  */
 if(isset($_POST['dbset'])){
+
   if (CheckDBCredentials($_POST['dbhost'],$_POST['dbuser'],$_POST['dbpass'],$_POST['dbname'],$_POST['dbport'],true)){
     $path_to_file = './support/dba.php';
     $file_contents = file_get_contents($path_to_file);
@@ -54,6 +55,16 @@ if(isset($_POST['dbset'])){
     $file_contents = str_replace("DB::\$dbName = 'tlv'", "DB::\$dbName = '". $_POST['dbname'] ."'",$file_contents);
     $file_contents = str_replace("DB::\$host = 'localhost'", "DB::\$host = '". $_POST['dbhost'] ."'",$file_contents);
     $file_contents = str_replace("DB::\$port = '3306'", "DB::\$port = '". $_POST['dbport'] ."'",$file_contents);
+    $ispretty = "false;";
+    if(isset($_POST['prettyurl'])){
+      $ispretty = "true;";
+    }
+    $file_contents = str_replace("\$usePrettyURLs = true;", "\$usePrettyURLs = ". $ispretty ,$file_contents);
+    if(isset($_POST['userctl'])){
+      $file_contents = str_replace("\$useRegistration = false;", "\$useRegistration = true;" ,$file_contents);
+    }
+
+
     file_put_contents($path_to_file,$file_contents);
     DB::$user = $_POST['dbuser'];
     DB::$password = $_POST['dbpass'];

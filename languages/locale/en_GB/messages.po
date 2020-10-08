@@ -370,41 +370,61 @@ msgstr "Installation"
 msgid "sqStorage Installation / Aktualiserung"
 msgstr "sqStorage Installation / Update"
 
-#: templates//installpage.tpl:42 templates//installpage.tpl:44
+#: templates//installpage.tpl:40
+msgid "Saubere Adressen"
+msgstr "Use pretty urls"
+
+#: templates//installpage.tpl:44
+msgid ""
+"Verwende z.B. http://example.com/inventory anstatt http://example.com/"
+"inventory.php"
+msgstr ""
+"Use f.e. http://example.com/inventory instead of http://example.com/"
+"inventory.php"
+
+#: templates//installpage.tpl:50
+msgid "Zutrittskontrolle"
+msgstr "Access control"
+
+#: templates//installpage.tpl:54
+msgid "Verwende die Benutzerregistrierung und Zutrittskontrolle"
+msgstr "Using the user registration and access control"
+
+#: templates//installpage.tpl:61 templates//installpage.tpl:63
 #, fuzzy
 #| msgid "Benutzer"
 msgid "Datenbank-Benutzer"
 msgstr "User"
 
-#: templates//installpage.tpl:49 templates//installpage.tpl:51
+#: templates//installpage.tpl:68 templates//installpage.tpl:70
 #, fuzzy
 #| msgid "Passwort"
 msgid "Datenbank-Passwort"
 msgstr "Password"
 
-#: templates//installpage.tpl:56 templates//installpage.tpl:58
+#: templates//installpage.tpl:75 templates//installpage.tpl:77
 msgid "Datenbank-Name"
 msgstr "Database name"
 
-#: templates//installpage.tpl:63 templates//installpage.tpl:65
+#: templates//installpage.tpl:82 templates//installpage.tpl:84
 msgid "Datenbank-Server"
 msgstr "Database server"
 
-#: templates//installpage.tpl:70 templates//installpage.tpl:72
+#: templates//installpage.tpl:89 templates//installpage.tpl:91
 #, fuzzy
 #| msgid "Datensatz"
 msgid "Datenbank-Port"
 msgstr "Record"
 
-#: templates//installpage.tpl:75
+#: templates//installpage.tpl:94
 msgid "Verbinungsdaten eintragen"
 msgstr "Enter credentials"
 
-#: templates//installpage.tpl:80
+#: templates//installpage.tpl:99
 msgid "Datenbank installieren / aktualisieren"
 msgstr "Install / update database"
 
-#: templates//installpage.tpl:84
+#: templates//installpage.tpl:103
 msgid "Erneut prüfen"
 msgstr "Check again"
 

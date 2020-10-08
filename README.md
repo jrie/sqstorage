@@ -14,56 +14,50 @@ Right now sqStorage is available in German and English. Feel free to add your ow
 * a MySQL-compatible database server (e.g. MariaDB)
 * a web server, e.g. nginx or Apache.
 
-#### Database
+#### Installation
+To install sqStorage perform the following steps
+* Download the files
+* Place the files in the target directory (accessible for web-server)
+* Set the required folder permission
+	* The webserver required write permissions to the following directories  
+	* `smartyfiles/` ,`languages/locale/` and `support/`
+	* `chown -R www-data smartyfiles/` , `chown -R www-data languages/locale/` and `chown -R www-data support/` should work in most cases.
+* Visit sqStorage with your browser and you will be redirected to the install page
+	* Select whether you want to use pretty urls (rewrite module for the webserver is required to be activated)
+	* Select whether you want to use the registration and login system
+	*  Enter the database credentials 
+	*  Save the credentials
+	*  Click the install / update button
+
+Your sgStorage installation is completeled
+
+#### Update your installation
+* Download the files and replace the existing  with the new ones
+* Visit the install.php page of your installation with your browser
+* Click the install / update button
+
+
+#### Settings
+All this settings can be configured in `support/dba.php`
+##### Database
 
 Default database: `tlv`
-
 Default username: `tlvUser`
-
 Default password: `tlvUser`
-
 Default server: `localhost`
-
 Default port: `3306`
-
 Default useRegistration: `false`
-
 Default usePrettyURLs: `true`
-
-All this settings can be configured in `support/dba-example.php` by changing the `DB::dbName`, `DB::$user` and `DB::$password` variables. 
-
 
 ***Please note the user registration and login/logout*** can be enabled by setting the variable `$useRegistration` to `true`, otherwise the default disables this feature by setting this to `false`.
 
-
 Also `usePrettyURLs` can be set to `false` in order to disable pretty urls. ***This might resolve some errors on Raspberry OS***.
 
+##### Permissions
 
-If your database is on a different server, you might want to use the IP or hostname instead of `localhost`. Afterwards make a copy of `dba-example.php` and rename it to `dba.php` in order for sqStorage to read out this configuration file.
+The directories `smartyfiles/` , `support/` and `languages/locale/` need to be **writeable** for the webserver.
 
-#### Permissions
-
-The directories `smartyfiles/` and `languages/locale/` need to be **writeable** for the webserver.
-
-`chown -R www-data smartyfiles/` and `chown -R www-data languages/locale/` should work in most cases.
-
-#### First run
-
-- Once user and database are created, open `bootDB.php`. This will create all DB tables necessary.
-- Open sqstorage in your webbrowser and create a admin account.
-  * this can be done only once after installation!
-  * If you mess up, you will have to drop/truncate the `users` table in order to prompt for admin account registration again. You will have to open `bootDB.php` again to recreate the tables.
-  
-#### Custom fields
-
-If you are upgrading of an earlier version of sqStorage, the custom fields code might have changed. This fields had been implemented earlier but where of no practical use. Still possible so, you might have to **update your database** in order to make use of the latest features.
-
-##### Updating the database for usage of custom fields
-In any case it is a good idea to open the database and **dropping** the `customFields` and `fieldData` tables. After dropping the tables, visit or execute `bootdb.php` to let the tables be created. After that, you can use custom fields.
-
-##### Updating the database for upload of images for items
-If not `images` are present in the database, simply open `bootDB.php`, afterwards image upload for items is available.
-
+`chown -R www-data smartyfiles/`, `chown -R www-data support/` and `chown -R www-data languages/locale/` should work in most cases.
 
 #### German talking src ressource
 The whole idea behind sqStorage or "Tom's Inventarverwaltung" can be found at the german bulletin board NGB.to over https://ngb.to/threads/39122-Webbasierte-Mini-Lagerverwaltung

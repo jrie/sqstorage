@@ -35,6 +35,25 @@
             <form class="inputForm" accept-charset="utf-8" method="POST" action="install.php">
 
             {if $dbform}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">{t}Saubere Adressen{/t}</span>
+                    </div>
+                      <div class="custom-control custom-switch">
+                        <input type="checkbox" name="prettyurl" class="custom-control-input" id="customSwitches" >
+                        <label class="custom-control-label" for="customSwitches">{t}Verwende z.B. http://example.com/inventory anstatt http://example.com/inventory.php{/t}</label>
+                      </div>
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">{t}Zutrittskontrolle{/t}</span>
+                    </div>
+                      <div class="custom-control custom-switch">
+                        <input type="checkbox" name="userctl" class="custom-control-input" id="customSwitches2" >
+                        <label class="custom-control-label" for="customSwitches2">{t}Verwende die Benutzerregistrierung und Zutrittskontrolle{/t}</label>
+                      </div>
+                </div>
 
                 <input type="hidden" name="dbset" value="1">
                 <div class="input-group mb-3">
