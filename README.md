@@ -44,16 +44,22 @@ All this settings can be configured in `support/dba.php`
 #### Database
 
 Default database: `tlv`
+
 Default username: `tlvUser`
+
 Default password: `tlvUser`
+
 Default server: `localhost`
+
 Default port: `3306`
+
 Default useRegistration: `false`
+
 Default usePrettyURLs: `true`
 
 ***Please note the user registration and login/logout*** can be enabled by setting the variable `$useRegistration` to `true`, otherwise the default disables this feature by setting this to `false`.
 
-Also `usePrettyURLs` can be set to `false` in order to disable pretty urls. ***This might resolve some errors on Raspberry OS***.
+Also `$usePrettyURLs` can be set to `false` in order to disable pretty urls. ***This might resolve some errors on Raspberry OS***.
 
 #### Permissions and error 500
 
