@@ -35,7 +35,7 @@ function initLang($locale)
     copy($filename, $filename_new);
   }
   $domain_new = "{$domain}_{$mtime}";
-
+  if(!file_exists($filename_new)) $domain_new = "{$domain}";
   $suff =  ".UTF-8";
   if (isset($_SERVER['WINDIR'])) {
     if (strlen($_SERVER['WINDIR']) > 1) {

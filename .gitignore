@@ -4,3 +4,4 @@ composer.lock
 vendor/*
 support/dba.php
 
+smartyfolders/touchfile.txt

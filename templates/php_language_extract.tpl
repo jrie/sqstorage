@@ -65,5 +65,17 @@
 {t}Administrator{/t}
 {t}Gast{/t}
 {t}Benutzer{/t}
-
-
+{t}Datenbank-Verbindung nicht möglich. Bitte kontrolliere die Zugangsdaten{/t}
+{t}Datenbank-Verbindung hergestellt{/t}
+{t}Die Datei support/dba.php ist nicht vorhanden und konnte auch nicht erstellt werden.{/t}
+{t}Setze die entsprechende Berechtigung so, dass Dein Webserver diese erstellen und bearbeiten kann oder erstelle die Datei manuell und gewähre darauf Schreibrechte für den Webserver{/t}
+{t}Der Webserver kann die Datei support/dba.php nicht ändern{/t}
+{t}Bitte erlaube dem Webserver Schreibzugriff auf die Datei{/t}
+{t}Datenbank ist auf dem aktuellen Stand{/t}
+{t}keine Änderungen durchgeführt{/t}
+{t}Alte Revision:{/t}
+{t}Neue Revision:{/t}
+{t}Zugang wurde verweigert. Bitte überprüfe die Zugangsdaten{/t}
+{t}Die gewählte Datenbank existiert nicht und konnte nicht erstellt werden{/t}
+{t}Zugriff auf folgende Verzeichnisse fehlgeschlagen:{/t}
+{t}Unter Linux könnten folgende Befehle weiterhelfen{/t}
