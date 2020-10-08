@@ -16,9 +16,9 @@ See [LANGUAGE.md](LANGUAGE.md) for details on how to do so.
 * a web server, e.g. nginx or Apache.
 
 #### Installation
-To install sqStorage perform the following steps
+To install sqStorage perform the following steps:
 * Download the files
-* Place the files in the target directory (accessible for web-server)
+* Place the files in the target directory (accessible for the web-server)
 * Set the required folder permission
 	* The webserver required write permissions to the following directories  
 	* `smartyfiles/` ,`languages/locale/` and `support/`
