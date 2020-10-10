@@ -216,9 +216,8 @@ msgid "Standardwert doppelt."
 msgstr "Default value duplicated."
 
 #: templates//datafields.tpl:202
-#, fuzzy
 msgid " nicht in Standardwerten enthalten."
-msgstr "not inside default values."
+msgstr " not inside default values."
 
 #: templates//datafields.tpl:204
 msgid "Standardwert nicht in Auswahlwerten enthalten."
@@ -391,16 +390,12 @@ msgid "Verwende die Benutzerregistrierung und Zutrittskontrolle"
 msgstr "Using the user registration and access control"
 
 #: templates//installpage.tpl:61 templates//installpage.tpl:63
-#, fuzzy
-#| msgid "Benutzer"
 msgid "Datenbank-Benutzer"
-msgstr "User"
+msgstr "Database user"
 
 #: templates//installpage.tpl:68 templates//installpage.tpl:70
-#, fuzzy
-#| msgid "Passwort"
 msgid "Datenbank-Passwort"
-msgstr "Password"
+msgstr "Database password"
 
 #: templates//installpage.tpl:75 templates//installpage.tpl:77
 msgid "Datenbank-Name"
@@ -411,10 +406,8 @@ msgid "Datenbank-Server"
 msgstr "Database server"
 
 #: templates//installpage.tpl:89 templates//installpage.tpl:91
-#, fuzzy
-#| msgid "Datensatz"
 msgid "Datenbank-Port"
-msgstr "Record"
+msgstr "Database port"
 
 #: templates//installpage.tpl:94
 msgid "Verbinungsdaten eintragen"
@@ -822,7 +815,7 @@ msgid ""
 msgstr ""
 "Please set the file access permissions to allow your webserver to create and "
 "edit the file or create the file manually and grant write permission to the "
-"webserver "
+"webserver"
 
 #: templates//php_language_extract.tpl:72
 msgid "Der Webserver kann die Datei support/dba.php nicht ändern"
@@ -853,12 +846,8 @@ msgid "Zugang wurde verweigert. Bitte überprüfe die Zugangsdaten"
 msgstr "Access denied. Please check the credentials"
 
 #: templates//php_language_extract.tpl:79
-#, fuzzy
-#| msgid ""
-#| "Die Datei support/dba.php ist nicht vorhanden und konnte auch nicht "
-#| "erstellt werden."
 msgid "Die gewählte Datenbank existiert nicht und konnte nicht erstellt werden"
-msgstr "The file support/dba.php is missing and creating it failed."
+msgstr "The selected database doesn't exists and could not be created"
 
 #: templates//php_language_extract.tpl:80
 msgid "Zugriff auf folgende Verzeichnisse fehlgeschlagen:"
@@ -869,10 +858,8 @@ msgid "Unter Linux könnten folgende Befehle weiterhelfen"
 msgstr "If your operating system is Linux the following command may help you"
 
 #: templates//php_language_extract.tpl:82
-#, fuzzy
-#| msgid "mit verknüpften Altdaten entfernt."
 msgid "1 Datensatz mit verknüpften Altdaten entfernt."
-msgstr "remove together with linked old records."
+msgstr "remove 1 record together with linked old records."
 
 #: templates//php_language_extract.tpl:83
 msgid "1 Eintrag wurde gelöscht."
@@ -893,16 +880,12 @@ msgid "Einträge wurden gelöscht."
 msgstr "Entries were deleted."
 
 #: templates//php_language_extract.tpl:87
-#, fuzzy
-#| msgid "Einzelwert: Zeichenfolge mit bis zu < 512 Zeichen"
 msgid "Einzelwert: Zeichenfolge mit bis zu < 256 Zeichen"
-msgstr "Single value: String with less than 512 character"
+msgstr "Single value: String with less than 256 character"
 
 #: templates//php_language_extract.tpl:88
-#, fuzzy
-#| msgid "Fehler: E-Mail-Adresse \"%s\" ungültig."
 msgid "E-Mail-Adresse ungültig!"
-msgstr "Error: Invalid email address \"%s\"."
+msgstr "Invalid email address"
 
 #: templates//php_language_extract.tpl:90
 msgid ""
@@ -919,18 +902,13 @@ msgid "Fehler: Der letzte Administrator kann nicht gelöscht werden!"
 msgstr "The last administrator cannot be deleted!"
 
 #: templates//php_language_extract.tpl:92
-#, fuzzy
-#| msgid ""
-#| "Setze die entsprechende Berechtigung so, dass Dein Webserver diese "
-#| "erstellen und bearbeiten kann oder erstelle die Datei manuell und gewähre "
-#| "darauf Schreibrechte für den Webserver"
 msgid ""
 "Setze die entsprechende Berechtigung so, dass Dein Webserver diese erstellen "
 "und bearbeiten kann"
 msgstr ""
 "Please set the file access permissions to allow your webserver to create and "
 "edit the file or create the file manually and grant write permission to the "
-"webserver "
+"webserver"
 
 #: templates//php_language_extract.tpl:93
 msgid ""
@@ -988,8 +966,6 @@ msgid "Einstellungen speichern"
 msgstr "Save settings"
 
 #: templates//settings.tpl:144
-#, fuzzy
-#| msgid "sqStorage Installation / Aktualiserung"
 msgid "Installation und Aktualisierung"
 msgstr "sqStorage Installation / Update"
 
