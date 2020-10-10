@@ -38,6 +38,14 @@ Your sgStorage installation is completed.
 * Visit the install.php page of your installation with your browser
 * Click the install / update button
 
+#### Enable / disable the installation/update
+The ***Installer*** `install.php` is only enabled if a file named `allow_install` exists within the `support/` directory. 
+This file is installed by default. 
+If sqStorage is accessible from outside your home network, you should delete this file either
+* manually after the installation is completed or
+* by using `settings.php` (login feature enabled)
+To later update your installation, simple create the file manually
+
 
 ### Manual configuration/settings
 All this settings can be configured in `support/dba.php`
