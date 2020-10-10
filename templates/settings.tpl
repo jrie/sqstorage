@@ -136,8 +136,34 @@
                     </li>
                 </ul>
             </form>
+            <hr />
+            <form accept-charset="utf-8" id="mailform" method="POST" action="">
+                <input type="hidden" id="install" name="target" value="install" />
+                <ul class="categories list-group">
+                    <li class="alert alert-info">
+                        <span class="list-span">{t}Installation und Aktualisierung{/t}</span>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon7">{t}Installation{/t}</span>
+                            </div>
+                            <div class="form-check form-check-inline ml-3">
+                                <input class="form-check-input" type="radio" name="allow_install" id="install_off" value="deny" {if $install_allowed}checked="checked"{/if}>
+                                <label class="form-check-label" for="install_off">{t}verbieten{/t}</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="allow_install" id="install_on" value="allow" {if !$install_allowed}checked="checked"{/if}>
+                                <label class="form-check-label" for="install_on">{t}erlauben{/t}</label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary float-right">{t}Einstellungen speichern{/t}</button>
+                    </li>
+                </ul>
+            </form>
         {/if}
         </div>
+
 
 
 {$target = "transfer.php"}

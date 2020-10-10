@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.4.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-Basepath: ../../..\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -364,7 +364,7 @@ msgstr "'Bild wirklich entfernen?'"
 msgid "Fehler"
 msgstr "Fehler"
 
-#: templates//installpage.tpl:1
+#: templates//installpage.tpl:1 templates//settings.tpl:149
 msgid "Installation"
 msgstr "Installation"
 
@@ -432,7 +432,7 @@ msgstr "Zugangsdaten eingeben"
 msgid "Datenbank installieren / aktualisieren"
 msgstr "Eintragen / Aktualisieren"
 
-#: templates//installpage.tpl:103
+#: templates//installpage.tpl:103 templates//php_language_extract.tpl:89
 msgid "Erneut prüfen"
 msgstr "Erneut prüfen"
 
@@ -878,6 +878,72 @@ msgstr "Zugriff auf folgende Verzeichnisse fehlgeschlagen:"
 msgid "Unter Linux könnten folgende Befehle weiterhelfen"
 msgstr "Unter Linux könnten folgende Befehle weiterhelfen"
 
+#: templates//php_language_extract.tpl:82
+msgid "1 Datensatz mit verknüpften Altdaten entfernt."
+msgstr "1 Datensatz mit verknüpften Altdaten entfernt."
+
+#: templates//php_language_extract.tpl:83
+msgid "1 Eintrag wurde gelöscht."
+msgstr "1 Eintrag wurde gelöscht."
+
+#: templates//php_language_extract.tpl:84
+msgid "Datensätze mit verknüpften Altdaten entfernt."
+msgstr "Einzelwert: Zeichenfolge mit bis zu < 256 Zeichen"
+
+#: templates//php_language_extract.tpl:85
+msgid "Die Installation ist momentan nicht erlaubt"
+msgstr "Die Installation ist momentan nicht erlaubt"
+
+#: templates//php_language_extract.tpl:86
+msgid "Einträge wurden gelöscht."
+msgstr "Einträge wurden gelöscht."
+
+#: templates//php_language_extract.tpl:87
+msgid "Einzelwert: Zeichenfolge mit bis zu < 256 Zeichen"
+msgstr "Einzelwert: Zeichenfolge mit bis zu < 256 Zeichen"
+
+#: templates//php_language_extract.tpl:88
+msgid "E-Mail-Adresse ungültig!"
+msgstr "E-Mail-Adresse ungültig!"
+
+#: templates//php_language_extract.tpl:90
+msgid ""
+"Erstelle eine Datei mit dem Namen allow_install im Verzeichnis support um "
+"die Installation zu erlauben."
+msgstr ""
+"Erstelle eine Datei mit dem Namen allow_install im Verzeichnis support um "
+"die Installation zu erlauben."
+
+#: templates//php_language_extract.tpl:91
+#, fuzzy
+#| msgid "Fehler: Der letzte Administrator kann nicht gelöscht werden!"
+msgid "Fehler: Der letzte Administrator kann nicht gelöscht werden!"
+msgstr "Fehler: Der letzte Administrator kann nicht gelöscht werden!"
+
+#: templates//php_language_extract.tpl:92
+#, fuzzy
+#| msgid ""
+#| "Setze die entsprechende Berechtigung so, dass Dein Webserver diese "
+#| "erstellen und bearbeiten kann oder erstelle die Datei manuell und gewähre "
+#| "darauf Schreibrechte für den Webserver"
+msgid ""
+"Setze die entsprechende Berechtigung so, dass Dein Webserver diese erstellen "
+"und bearbeiten kann"
+msgstr ""
+"Setze die entsprechende Berechtigung so, dass Dein Webserver diese erstellen "
+"und bearbeiten kann oder erstelle die Datei manuell und gewähre darauf "
+"Schreibrechte für den Webserver"
+
+#: templates//php_language_extract.tpl:93
+msgid ""
+"Verwendest Du eine bestehende Installation und die Benutzerverwaltung, "
+"kannst Du diese Datei als Administrator über das Einstellungen erstellen und "
+"nach der Aktualisierung auch wieder entfernen."
+msgstr ""
+"Verwendest Du eine bestehende Installation und die Benutzerverwaltung, "
+"kannst Du diese Datei als Administrator über das Einstellungen erstellen und "
+"nach der Aktualisierung auch wieder entfernen."
+
 #: templates//settings.tpl:16
 msgid "zur Datenbank hinzugefügt"
 msgstr "zur Datenbank hinzugefügt"
@@ -919,15 +985,29 @@ msgstr "deaktivieren"
 msgid "aktivieren"
 msgstr "aktivieren"
 
-#: templates//settings.tpl:135
+#: templates//settings.tpl:135 templates//settings.tpl:160
 msgid "Einstellungen speichern"
 msgstr "Einstellungen speichern"
 
-#: templates//settings.tpl:155
+#: templates//settings.tpl:144
+#, fuzzy
+#| msgid "Eintragen / Aktualisieren"
+msgid "Installation und Aktualisierung"
+msgstr "Eintragen / Aktualisieren"
+
+#: templates//settings.tpl:153
+msgid "verbieten"
+msgstr "verbieten"
+
+#: templates//settings.tpl:157
+msgid "erlauben"
+msgstr "erlauben"
+
+#: templates//settings.tpl:181
 msgid "Benutzer wirklich entfernen?"
 msgstr "Benutzer wirklich entfernen?"
 
-#: templates//settings.tpl:155
+#: templates//settings.tpl:181
 msgid "Der letzte Administrator kann nicht gelöscht werden!"
 msgstr "Der letzte Administrator kann nicht gelöscht werden!"
 
@@ -972,9 +1052,6 @@ msgstr "Keine Gegenstände gefunden."
 #~ msgid "Mailversand"
 #~ msgstr "Mailversand"
 
-#~ msgid "Einzelwert: Zeichenfolge mit bis zu < 256 Zeichen"
-#~ msgstr "Einzelwert: Zeichenfolge mit bis zu < 256 Zeichen"
-
 #~ msgid ""
 #~ "Einzelauswahl, durch Semikolon getrennt: erlaubt \"Neu\" oder \"Gebraucht"
 #~ "\" oder \"Refurbished\" wenn \"Neu;Gebraucht;Refurbished\" angegeben. Und "
@@ -992,21 +1069,6 @@ msgstr "Keine Gegenstände gefunden."
 #~ "Mehrfachauswahl, durch Semikolon getrennt: erlaubt \"Neu\" und oder "
 #~ "\"Netzwerk\", wenn \"Neu;Netzwerk\" angegeben. Und oder numerische Werte "
 #~ "(Ganzzahl, Gleitkommanzahlen)."
-
-#~ msgid "1 Datensatz mit verknüpften Altdaten entfernt."
-#~ msgstr "1 Datensatz mit verknüpften Altdaten entfernt."
-
-#~ msgid "Datensätze mit verknüpften Altdaten entfernt."
-#~ msgstr "Einzelwert: Zeichenfolge mit bis zu < 256 Zeichen"
-
-#~ msgid "1 Eintrag wurde gelöscht."
-#~ msgstr "1 Eintrag wurde gelöscht."
-
-#~ msgid "Einträge wurden gelöscht."
-#~ msgstr "Einträge wurden gelöscht."
-
-#~ msgid "E-Mail-Adresse ungültig!"
-#~ msgstr "E-Mail-Adresse ungültig!"
 
 #, fuzzy
 #~| msgid ""
@@ -1043,11 +1105,6 @@ msgstr "Keine Gegenstände gefunden."
 
 #~ msgid "Der Benutzer \"%s\" existiert bereits."
 #~ msgstr "Der Benutzer \"%s\" existiert bereits."
-
-#, fuzzy
-#~| msgid "Fehler: Der letzte Administrator kann nicht gelöscht werden!"
-#~ msgid "Fehler: Der letzte Administrator kann nicht gelöscht werden!"
-#~ msgstr "Fehler: Der letzte Administrator kann nicht gelöscht werden!"
 
 #~ msgid "Zeichen lang sein. Aktuelle Zeichen"
 #~ msgstr "Zeichen lang sein. Aktuelle Zeichen"

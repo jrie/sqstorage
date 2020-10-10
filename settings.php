@@ -1,5 +1,6 @@
 <?php
 $requireAdmin = true;
+$user="";
 require('login.php');
 $error = "";
 $success = "";
@@ -10,6 +11,8 @@ $smarty->assign('urlBase', $urlBase);
 require_once('./support/dba.php');
 if ($usePrettyURLs) $smarty->assign('urlPostFix', '');
 else $smarty->assign('urlPostFix', '.php');
+
+$install_allowed = false;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['target'] == 'mail') {
   try {
@@ -22,7 +25,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['target'] == 'mail') {
   }
   DB::$error_handler = 'meekrodb_error_handler';
   DB::$throw_exception_on_error = false;
-} elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
+}elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['target'] == 'install'){
+  if(file_exists($basedir . "/support/allow_install")) $install_allowed = true;
+  if (isset($_POST['allow_install'])){
+    if($_POST['allow_install']== "allow"){
+        touch ($basedir . "/support/allow_install");
+    }else{
+        unlink ($basedir . "/support/allow_install");
+    }
+  }
+}elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
   DB::$error_handler = false;
   DB::$throw_exception_on_error = true;
   try {
@@ -125,7 +137,7 @@ if (is_array($mailDB) > 0) {
 
 
 $users = DB::query('SELECT u.id, u.username, u.mailaddress, g.name as usergroupname, g.id as usergroupid FROM users u LEFT JOIN users_groups ugs ON(ugs.userid = u.id) LEFT JOIN usergroups g ON(g.id = ugs.usergroupid) ORDER BY u.username ASC');
-
+$smarty->assign('install_allowed',$install_allowed);
 $smarty->assign('mailSettings', $mailSettings);
 $smarty->assign('success', $success);
 $smarty->assign('isEdit', $isEdit);

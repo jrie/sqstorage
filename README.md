@@ -81,20 +81,20 @@ should work in most cases.
 
 #### First run
 
-- Once user and database are created, open `bootDB.php`. This will create all DB tables necessary.
-- Open sqstorage in your webbrowser and create a admin account.
+- Once you installation is completed, visit the main page `index.php` to open sqStorage
+- If you decided to use the login feature, you will be asked to create an admin account.
   * this can be done only once after installation!
-  * If you mess up, you will have to drop/truncate the `users` table in order to prompt for admin account registration again. You will have to open `bootDB.php` again to recreate the tables.
+  * If you mess up, you will have to truncate the `users` table in order to prompt for admin account registration again.
   
-#### Custom fields
+#### Custom fields and image upload
 
-If you are upgrading of an earlier version of sqStorage, the custom fields code might have changed. This fields had been implemented earlier but where of no practical use. Still possible so, you might have to **update your database** in order to make use of the latest features.
+If you are upgrading of an earlier version of sqStorage, 
+* the custom fields code might have changed. This fields had been implemented earlier but where of no practical use. 
 
-##### Updating the database for usage of custom fields
-In any case it is a good idea to open the database and **dropping** the `customFields` and `fieldData` tables. After dropping the tables, visit or execute `bootdb.php` to let the tables be created. After that, you can use custom fields.
+* the option to upload images was added
 
-##### Updating the database for upload of images for items
-If not `images` are present in the database, simply open `bootDB.php`, afterwards image upload for items is available.
+Still possible so, you might have to **update your database** by visiting the `install.php` script and updating your database in order to make use of the latest features.
+
 
 ### German talking src ressource
 The whole idea behind sqStorage or "Tom's Inventarverwaltung" can be found at the german bulletin board NGB.to over https://ngb.to/threads/39122-Webbasierte-Mini-Lagerverwaltung

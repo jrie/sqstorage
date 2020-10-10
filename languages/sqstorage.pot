@@ -349,7 +349,7 @@ msgstr ""
 msgid "Fehler"
 msgstr ""
 
-#: templates//installpage.tpl:1
+#: templates//installpage.tpl:1 templates//settings.tpl:149
 msgid "Installation"
 msgstr ""
 
@@ -403,7 +403,7 @@ msgstr ""
 msgid "Datenbank installieren / aktualisieren"
 msgstr ""
 
-#: templates//installpage.tpl:103
+#: templates//installpage.tpl:103 templates//php_language_extract.tpl:89
 msgid "Erneut prüfen"
 msgstr ""
 
@@ -822,6 +822,57 @@ msgstr ""
 msgid "Unter Linux könnten folgende Befehle weiterhelfen"
 msgstr ""
 
+#: templates//php_language_extract.tpl:82
+msgid "1 Datensatz mit verknüpften Altdaten entfernt."
+msgstr ""
+
+#: templates//php_language_extract.tpl:83
+msgid "1 Eintrag wurde gelöscht."
+msgstr ""
+
+#: templates//php_language_extract.tpl:84
+msgid "Datensätze mit verknüpften Altdaten entfernt."
+msgstr ""
+
+#: templates//php_language_extract.tpl:85
+msgid "Die Installation ist momentan nicht erlaubt"
+msgstr ""
+
+#: templates//php_language_extract.tpl:86
+msgid "Einträge wurden gelöscht."
+msgstr ""
+
+#: templates//php_language_extract.tpl:87
+msgid "Einzelwert: Zeichenfolge mit bis zu < 256 Zeichen"
+msgstr ""
+
+#: templates//php_language_extract.tpl:88
+msgid "E-Mail-Adresse ungültig!"
+msgstr ""
+
+#: templates//php_language_extract.tpl:90
+msgid ""
+"Erstelle eine Datei mit dem Namen allow_install im Verzeichnis support um "
+"die Installation zu erlauben."
+msgstr ""
+
+#: templates//php_language_extract.tpl:91
+msgid "Fehler: Der letzte Administrator kann nicht gelöscht werden!"
+msgstr ""
+
+#: templates//php_language_extract.tpl:92
+msgid ""
+"Setze die entsprechende Berechtigung so, dass Dein Webserver diese erstellen "
+"und bearbeiten kann"
+msgstr ""
+
+#: templates//php_language_extract.tpl:93
+msgid ""
+"Verwendest Du eine bestehende Installation und die Benutzerverwaltung, "
+"kannst Du diese Datei als Administrator über das Einstellungen erstellen und "
+"nach der Aktualisierung auch wieder entfernen."
+msgstr ""
+
 #: templates//settings.tpl:16
 msgid "zur Datenbank hinzugefügt"
 msgstr ""
@@ -863,15 +914,27 @@ msgstr ""
 msgid "aktivieren"
 msgstr ""
 
-#: templates//settings.tpl:135
+#: templates//settings.tpl:135 templates//settings.tpl:160
 msgid "Einstellungen speichern"
 msgstr ""
 
-#: templates//settings.tpl:155
+#: templates//settings.tpl:144
+msgid "Installation und Aktualisierung"
+msgstr ""
+
+#: templates//settings.tpl:153
+msgid "verbieten"
+msgstr ""
+
+#: templates//settings.tpl:157
+msgid "erlauben"
+msgstr ""
+
+#: templates//settings.tpl:181
 msgid "Benutzer wirklich entfernen?"
 msgstr ""
 
-#: templates//settings.tpl:155
+#: templates//settings.tpl:181
 msgid "Der letzte Administrator kann nicht gelöscht werden!"
 msgstr ""
 
