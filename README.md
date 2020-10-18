@@ -38,6 +38,14 @@ Your sgStorage installation is completed.
 * Visit the install.php page of your installation with your browser
 * Click the install / update button
 
+#### Enable / disable the installation/update
+The ***Installer*** `install.php` is only enabled if a file named `allow_install` exists within the `support/` directory. 
+This file is installed by default. 
+If sqStorage is accessible from outside your home network, you should delete this file either
+* manually after the installation is completed or
+* by using `settings.php` (login feature enabled)
+To later update your installation, simple create the file manually
+
 
 ### Manual configuration/settings
 All this settings can be configured in `support/dba.php`
@@ -81,20 +89,25 @@ should work in most cases.
 
 #### First run
 
-- Once user and database are created, open `bootDB.php`. This will create all DB tables necessary.
-- Open sqstorage in your webbrowser and create a admin account.
+- Once you installation is completed, visit the main page `index.php` to open sqStorage
+- If you decided to use the login feature, you will be asked to create an admin account.
   * this can be done only once after installation!
-  * If you mess up, you will have to drop/truncate the `users` table in order to prompt for admin account registration again. You will have to open `bootDB.php` again to recreate the tables.
+  * If you mess up, you will have to truncate the `users` table in order to prompt for admin account registration again.
   
-#### Custom fields
+#### Custom fields and image upload
 
-If you are upgrading of an earlier version of sqStorage, the custom fields code might have changed. This fields had been implemented earlier but where of no practical use. Still possible so, you might have to **update your database** in order to make use of the latest features.
+If you are upgrading of an earlier version of sqStorage, 
+* the custom fields code might have changed. This fields had been implemented earlier but where of no practical use. 
 
-##### Updating the database for usage of custom fields
-In any case it is a good idea to open the database and **dropping** the `customFields` and `fieldData` tables. After dropping the tables, visit or execute `bootdb.php` to let the tables be created. After that, you can use custom fields.
+* the option to upload images was added
 
-##### Updating the database for upload of images for items
-If not `images` are present in the database, simply open `bootDB.php`, afterwards image upload for items is available.
+Still possible so, you might have to **update your database** by visiting the `install.php` script and updating your database in order to make use of the latest features.
+
+### Troubleshooting
+`Fatal error: Uncaught Error: Class 'Locale' not found` If this error message is shown, the php package intl is not activated. If you're using Windows and XAMPP to run this app, you can enable it by editing the php.ini file in your XAMPP-php directory (Standard-installation: `C:\xampp\php\php.ini`).
+Remove the semicolon in front of 
+`;extension=php_intl.dll`
+and restart the Apache webserver.
 
 ### German talking src ressource
 The whole idea behind sqStorage or "Tom's Inventarverwaltung" can be found at the german bulletin board NGB.to over https://ngb.to/threads/39122-Webbasierte-Mini-Lagerverwaltung

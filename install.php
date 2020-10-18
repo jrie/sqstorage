@@ -99,9 +99,8 @@ if(file_exists('./support/dba.php')){
 }else{
   if(!@copy('./support/dba-example.php','./support/dba.php')){
     $error[] = gettext("Die Datei support/dba.php ist nicht vorhanden und konnte auch nicht erstellt werden.");
-    $error[] = gettext("Setze die entsprechende Berechtigung so, dass Dein Webserver diese erstellen und bearbeiten kann oder erstelle die Datei manuell und gewähre darauf Schreibrechte für den Webserver"). "<br>" . gettext("Unter Linux könnten folgende Befehle weiterhelfen");
-    $error[] = "<b>Option 1:</b><br>sudo chown -R $wsun ./support/<br>sudo chgrp -R $wsun ./support/";
-    $error[] = "<b>Option 2:</b><br>sudo cp ./support/dba-example.php ./support/dba.php<br>sudo chown $wsun ./support/dba.php<br>sudo chgrp $wsun ./support/dba.php";
+    $error[] = gettext("Setze die entsprechende Berechtigung so, dass Dein Webserver diese erstellen und bearbeiten kann"). "<br>" . gettext("Unter Linux könnten folgende Befehle weiterhelfen");
+    $error[] = "<b>" . gettext("Unter Linux könnten folgende Befehle weiterhelfen") . "</b><br>sudo chown -R $wsun ./support/<br>sudo chgrp -R $wsun ./support/";
     $nodba = true;
   }else{
     $dbform = true;

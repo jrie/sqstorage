@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.4.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: templates//accessdenied.tpl:1
@@ -216,9 +216,8 @@ msgid "Standardwert doppelt."
 msgstr "Default value duplicated."
 
 #: templates//datafields.tpl:202
-#, fuzzy
 msgid " nicht in Standardwerten enthalten."
-msgstr "not inside default values."
+msgstr " not inside default values."
 
 #: templates//datafields.tpl:204
 msgid "Standardwert nicht in Auswahlwerten enthalten."
@@ -362,7 +361,7 @@ msgstr "Really remove picture?"
 msgid "Fehler"
 msgstr "Error"
 
-#: templates//installpage.tpl:1
+#: templates//installpage.tpl:1 templates//settings.tpl:149
 msgid "Installation"
 msgstr "Installation"
 
@@ -391,16 +390,12 @@ msgid "Verwende die Benutzerregistrierung und Zutrittskontrolle"
 msgstr "Using the user registration and access control"
 
 #: templates//installpage.tpl:61 templates//installpage.tpl:63
-#, fuzzy
-#| msgid "Benutzer"
 msgid "Datenbank-Benutzer"
-msgstr "User"
+msgstr "Database user"
 
 #: templates//installpage.tpl:68 templates//installpage.tpl:70
-#, fuzzy
-#| msgid "Passwort"
 msgid "Datenbank-Passwort"
-msgstr "Password"
+msgstr "Database password"
 
 #: templates//installpage.tpl:75 templates//installpage.tpl:77
 msgid "Datenbank-Name"
@@ -411,10 +406,8 @@ msgid "Datenbank-Server"
 msgstr "Database server"
 
 #: templates//installpage.tpl:89 templates//installpage.tpl:91
-#, fuzzy
-#| msgid "Datensatz"
 msgid "Datenbank-Port"
-msgstr "Record"
+msgstr "Database port"
 
 #: templates//installpage.tpl:94
 msgid "Verbinungsdaten eintragen"
@@ -424,7 +417,7 @@ msgstr "Enter credentials"
 msgid "Datenbank installieren / aktualisieren"
 msgstr "Install / update database"
 
-#: templates//installpage.tpl:103
+#: templates//installpage.tpl:103 templates//php_language_extract.tpl:89
 msgid "Erneut prüfen"
 msgstr "Check again"
 
@@ -822,7 +815,7 @@ msgid ""
 msgstr ""
 "Please set the file access permissions to allow your webserver to create and "
 "edit the file or create the file manually and grant write permission to the "
-"webserver "
+"webserver"
 
 #: templates//php_language_extract.tpl:72
 msgid "Der Webserver kann die Datei support/dba.php nicht ändern"
@@ -853,12 +846,8 @@ msgid "Zugang wurde verweigert. Bitte überprüfe die Zugangsdaten"
 msgstr "Access denied. Please check the credentials"
 
 #: templates//php_language_extract.tpl:79
-#, fuzzy
-#| msgid ""
-#| "Die Datei support/dba.php ist nicht vorhanden und konnte auch nicht "
-#| "erstellt werden."
 msgid "Die gewählte Datenbank existiert nicht und konnte nicht erstellt werden"
-msgstr "The file support/dba.php is missing and creating it failed."
+msgstr "The selected database doesn't exists and could not be created"
 
 #: templates//php_language_extract.tpl:80
 msgid "Zugriff auf folgende Verzeichnisse fehlgeschlagen:"
@@ -867,6 +856,69 @@ msgstr "Access to the following directories was denied:"
 #: templates//php_language_extract.tpl:81
 msgid "Unter Linux könnten folgende Befehle weiterhelfen"
 msgstr "If your operating system is Linux the following command may help you"
+
+#: templates//php_language_extract.tpl:82
+msgid "1 Datensatz mit verknüpften Altdaten entfernt."
+msgstr "remove 1 record together with linked old records."
+
+#: templates//php_language_extract.tpl:83
+msgid "1 Eintrag wurde gelöscht."
+msgstr "1 entry was deleted."
+
+#: templates//php_language_extract.tpl:84
+#, fuzzy
+#| msgid "mit verknüpften Altdaten entfernt."
+msgid "Datensätze mit verknüpften Altdaten entfernt."
+msgstr "remove together with linked old records."
+
+#: templates//php_language_extract.tpl:85
+msgid "Die Installation ist momentan nicht erlaubt"
+msgstr "Installation is currently not allowed"
+
+#: templates//php_language_extract.tpl:86
+msgid "Einträge wurden gelöscht."
+msgstr "Entries were deleted."
+
+#: templates//php_language_extract.tpl:87
+msgid "Einzelwert: Zeichenfolge mit bis zu < 256 Zeichen"
+msgstr "Single value: String with less than 256 character"
+
+#: templates//php_language_extract.tpl:88
+msgid "E-Mail-Adresse ungültig!"
+msgstr "Invalid email address"
+
+#: templates//php_language_extract.tpl:90
+msgid ""
+"Erstelle eine Datei mit dem Namen allow_install im Verzeichnis support um "
+"die Installation zu erlauben."
+msgstr ""
+"Create a file named \"allow_install\" in the support directory to allow "
+"installation."
+
+#: templates//php_language_extract.tpl:91
+#, fuzzy
+#| msgid "Der letzte Administrator kann nicht gelöscht werden!"
+msgid "Fehler: Der letzte Administrator kann nicht gelöscht werden!"
+msgstr "The last administrator cannot be deleted!"
+
+#: templates//php_language_extract.tpl:92
+msgid ""
+"Setze die entsprechende Berechtigung so, dass Dein Webserver diese erstellen "
+"und bearbeiten kann"
+msgstr ""
+"Please set the file access permissions to allow your webserver to create and "
+"edit the file or create the file manually and grant write permission to the "
+"webserver"
+
+#: templates//php_language_extract.tpl:93
+msgid ""
+"Verwendest Du eine bestehende Installation und die Benutzerverwaltung, "
+"kannst Du diese Datei als Administrator über das Einstellungen erstellen und "
+"nach der Aktualisierung auch wieder entfernen."
+msgstr ""
+"If you are about to updating an existing installation and also using the "
+"login feature, you can create this file in the Settings and also delete it "
+"afterwards."
 
 #: templates//settings.tpl:16
 msgid "zur Datenbank hinzugefügt"
@@ -909,15 +961,27 @@ msgstr "deactivate"
 msgid "aktivieren"
 msgstr "activate"
 
-#: templates//settings.tpl:135
+#: templates//settings.tpl:135 templates//settings.tpl:160
 msgid "Einstellungen speichern"
 msgstr "Save settings"
 
-#: templates//settings.tpl:155
+#: templates//settings.tpl:144
+msgid "Installation und Aktualisierung"
+msgstr "sqStorage Installation / Update"
+
+#: templates//settings.tpl:153
+msgid "verbieten"
+msgstr "deny"
+
+#: templates//settings.tpl:157
+msgid "erlauben"
+msgstr "allow"
+
+#: templates//settings.tpl:181
 msgid "Benutzer wirklich entfernen?"
 msgstr "Really remove the user?"
 
-#: templates//settings.tpl:155
+#: templates//settings.tpl:181
 msgid "Der letzte Administrator kann nicht gelöscht werden!"
 msgstr "The last administrator cannot be deleted!"
 

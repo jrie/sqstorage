@@ -79,3 +79,15 @@
 {t}Die gewählte Datenbank existiert nicht und konnte nicht erstellt werden{/t}
 {t}Zugriff auf folgende Verzeichnisse fehlgeschlagen:{/t}
 {t}Unter Linux könnten folgende Befehle weiterhelfen{/t}
+{t}1 Datensatz mit verknüpften Altdaten entfernt.{/t}
+{t}1 Eintrag wurde gelöscht.{/t}
+{t}Datensätze mit verknüpften Altdaten entfernt.{/t}
+{t}Die Installation ist momentan nicht erlaubt{/t}
+{t}Einträge wurden gelöscht.{/t}
+{t}Einzelwert: Zeichenfolge mit bis zu < 256 Zeichen{/t}
+{t}E-Mail-Adresse ungültig!{/t}
+{t}Erneut prüfen{/t}
+{t}Erstelle eine Datei mit dem Namen allow_install im Verzeichnis support um die Installation zu erlauben.{/t}
+{t}Fehler: Der letzte Administrator kann nicht gelöscht werden!{/t}
+{t}Setze die entsprechende Berechtigung so, dass Dein Webserver diese erstellen und bearbeiten kann{/t}
+{t}Verwendest Du eine bestehende Installation und die Benutzerverwaltung, kannst Du diese Datei als Administrator über das Einstellungen erstellen und nach der Aktualisierung auch wieder entfernen.{/t}
