@@ -161,6 +161,10 @@ body {
     padding-left: 0px;
 }
 
+.thumbnail {
+    max-height: 100px;
+}
+
 .list-span {
     margin-right: 0.1em;
     display: inline-block;
@@ -200,7 +204,7 @@ a.far:hover {
 
 .categories li.alert-info .list-span:nth-child(0n+2),
 .categories li.list-group-item .list-span:nth-child(0n+2) {
-    min-width: 15%;
+    min-width: 17%;
 }
 
 .storage-area li.alert-info .list-span,
