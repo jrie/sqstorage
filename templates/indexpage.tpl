@@ -20,7 +20,7 @@
 
             <div id="errorForm" class="alert alert-danger hidden" role="alert">{t}Nicht gespeichert, es befinden sich Fehler in der Formular-Eingabe.{/t}</div>
 
-            <form class="inputForm" accept-charset="utf-8" method="POST" action="index.php">
+            <form class="inputForm" accept-charset="utf-8" method="POST" action="index.php" enctype="multipart/form-data">
 
                 {if $isEdit}<input type="hidden" value="{$item.id}" name="itemUpdateId" />{/if}
 
@@ -340,6 +340,10 @@
                 {/foreach}
                 </div>
 
+                {if !$isEdit}
+                    <input type="file" name="images[]" multiple="multiple" accept="image/png, image/jpeg" placeholder="{t}Bilder Upload{/t}"/>
+                {/if}
+
                 <div style="float: right;">
                 {if $isEdit}
                     <button type="submit" class="btn btn-danger">{t}Überschreiben{/t}</button>
@@ -353,7 +357,7 @@
             {if $isEdit}
                 <h2 class="clearfix">{t}Bilder des Gegenstandes{/t}</h2>
                 <form method="POST" accept-charset="utf-8" action="index.php" enctype="multipart/form-data">
-                    <input name="images[]" required="required" type="file" multiple="multiple" accept="image/png, image/jpeg" placeholder="{t}Bild Upload{/t}"/>
+                    <input name="images[]" required="required" type="file" multiple="multiple" accept="image/png, image/jpeg" placeholder="{t}Bilder Upload{/t}"/>
                     <input type="hidden" value="{$item.id}" name="editItem" />
                     <input type="submit" class="submit" value="{t}Bilder hochladen{/t}"/>
                 </form>

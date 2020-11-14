@@ -20,7 +20,7 @@
                 <ul class="list-group">
 
 
-                        <li class="alert alert-info"><span class="list-span">{t}Kategorien{/t}</span><span class="list-span">{t}Bezeichnung{/t}</span><span class="list-span">{t}Anzahl{/t}</span><span class="list-span">{t}Bemerkung{/t}</span><span class="list-span">{t}Unterkategorien{/t}</span><span class="list-span">{t}Hinzugefügt{/t}</span><span class="list-span">{t}Aktionen{/t}</span><span class="list-span">{t}Zuweisen{/t}</span>
+                        <li class="alert alert-info"><span class="list-span">{t}Kategorien{/t}</span><span class="list-span">{t}Bild{/t}</span><span class="list-span">{t}Bezeichnung{/t}</span><span class="list-span">{t}Anzahl{/t}</span><span class="list-span">{t}Bemerkung{/t}</span><span class="list-span">{t}Unterkategorien{/t}</span><span class="list-span">{t}Hinzugefügt{/t}</span><span class="list-span">{t}Zuweisen{/t}</span>
                         </li>
                 {if isset($itemstore.items)}
                     {foreach $itemstore.items as $item}
@@ -40,14 +40,21 @@
                         {assign var="category" value=$categories.$catid}
                         <li class="list-group-item">
                             <button class="btn smallButton" name="remove" data-name="{$item.label}" value="{$item.id}" type="submit"><i class="fas fa-times-circle"></i></button>
-                            <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" class="list-span">{$category.name}</a>
-                            <span class="list-span"><a href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}{if $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i>{/if}</a></span>
-                            <span class="list-span">{$item.amount}</span>
+                            <a class="list-span" href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}">{$category.name}</a>
+                            
+                            {if $item.thumb == ''}
+                                <span class="list-span">Kein Bild</span>
+                            {else}
+                                <img class="list-span thumbnail" src="data:image;base64,{$item.thumb}"/>
+                            {/if}
+
+                            <a class="list-span" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}</a>
+
+							<span class="list-span">{$item.amount}</span>
                             <span class="list-span">{$item.comment}</span>
 
                             <span class="list-span">{$implodedSubCats}</span>
                             <span class="list-span">{$dateexploded.0}</span>
-                            <a class="list-span" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
 
                             <div class="dropdown float-right">
                                 <select autocomplete="off" id="item_{$item.id}" class="btn btn-primary dropdown-toggle switchStorage" data-itemamount="{$item.amount}" data-value="0"  data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -105,7 +112,7 @@
                 <ul class="list-group">
 
 
-                        <li class="alert alert-info"><span class="list-span">{t}Kategorien{/t}</span><span class="list-span">{t}Bezeichnung{/t}</span><span class="list-span">{t}Anzahl{/t}</span><span class="list-span">{t}Bemerkung{/t}</span><span class="list-span">{t}Unterkategorien{/t}</span><span class="list-span">{t}Hinzugefügt{/t}</span><span class="list-span">{t}Aktionen{/t}</span><span class="list-span">{t}Zuweisen{/t}</span>
+                        <li class="alert alert-info"><span class="list-span">{t}Kategorien{/t}</span><span class="list-span">{t}Bild{/t}</span><span class="list-span">{t}Bezeichnung{/t}</span><span class="list-span">{t}Anzahl{/t}</span><span class="list-span">{t}Bemerkung{/t}</span><span class="list-span">{t}Unterkategorien{/t}</span><span class="list-span">{t}Hinzugefügt{/t}</span><span class="list-span">{t}Zuweisen{/t}</span>
                         </li>
                 {if isset($itemstore.items)}
                     {foreach $itemstore.items as $item}
@@ -124,15 +131,22 @@
                         {assign var="catid" value=$item.headcategory}
                         {assign var="category" value=$categories.$catid}
                         <li class="list-group-item">
+                            
                             <button class="btn smallButton" name="remove" data-name="{$item.label}" value="{$item.id}" type="submit"><i class="fas fa-times-circle"></i></button>
-                            <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" class="list-span">{$category.name}</a>
-                            <span class="list-span"><a href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}{if $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i>{/if}</a></span>
+                            <a class="list-span" href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}">{$category.name}</a>
+
+                            {if $item.thumb == ''}
+                                <span class="list-span">Kein Bild</span>
+                            {else}
+                                <img class="list-span thumbnail" src="data:image;base64,{$item.thumb}"/>
+                            {/if}
+
+                            <a class="list-span" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}</a>
                             <span class="list-span">{$item.amount}</span>
                             <span class="list-span">{$item.comment}</span>
 
                             <span class="list-span">{$implodedSubCats}</span>
                             <span class="list-span">{$dateexploded.0}</span>
-                            <a class="list-span" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
 
                             <div class="dropdown float-right">
                                 <select autocomplete="off" id="item_{$item.id}" class="btn btn-primary dropdown-toggle switchStorage" data-value="0"  data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -189,7 +203,7 @@
                 <ul class="list-group">
 
 
-                        <li class="alert alert-info"><span class="list-span">{t}Kategorien{/t}</span><span class="list-span">{t}Bezeichnung{/t}</span><span class="list-span">{t}Anzahl{/t}</span><span class="list-span">{t}Bemerkung{/t}</span><span class="list-span">{t}Unterkategorien{/t}</span><span class="list-span">{t}Hinzugefügt{/t}</span><span class="list-span">{t}Aktionen{/t}</span><span class="list-span">{t}Zuweisen{/t}</span>
+                        <li class="alert alert-info"><span class="list-span">{t}Kategorien{/t}</span><span class="list-span">{t}Bild{/t}</span><span class="list-span">{t}Bezeichnung{/t}</span><span class="list-span">{t}Anzahl{/t}</span><span class="list-span">{t}Bemerkung{/t}</span><span class="list-span">{t}Unterkategorien{/t}</span><span class="list-span">{t}Hinzugefügt{/t}</span><span class="list-span">{t}Zuweisen{/t}</span>
                         </li>
                 {if isset($itemstore.items)}
                     {foreach $itemstore.items as $item}
@@ -209,14 +223,21 @@
                         {assign var="category" value=$categories.$catid}
                         <li class="list-group-item">
                             <button class="btn smallButton" name="remove" data-name="{$item.label}" value="{$item.id}" type="submit"><i class="fas fa-times-circle"></i></button>
-                            <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" class="list-span">{$category.name}</a>
-                            <span class="list-span"><a href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}{if $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i>{/if}</a></span>
+                            <a class="list-span" href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}">{$category.name}</a>
+                            
+                            {if $item.thumb == ''}
+                                <span class="list-span">Kein Bild</span>
+                            {else}
+                                <img class="list-span thumbnail" src="data:image;base64,{$item.thumb}"/>
+                            {/if}
+                            
+                            <a class="list-span" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}</a>
+
                             <span class="list-span">{$item.amount}</span>
                             <span class="list-span">{$item.comment}</span>
 
                             <span class="list-span">{$implodedSubCats}</span>
                             <span class="list-span">{$dateexploded.0}</span>
-                            <a class="list-span" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
 
                             <div class="dropdown float-right">
                                 <select autocomplete="off" id="item_{$item.id}" class="btn btn-primary dropdown-toggle switchStorage" data-value="0"  data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

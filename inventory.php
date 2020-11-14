@@ -42,9 +42,8 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
   $storeId = intval($_GET['storageid']);
   $storages = DB::query('SELECT id, label, amount FROM storages ORDER BY label ASC');
   $store = DB::queryFirstRow('SELECT id, label, amount FROM storages WHERE id=%d', $storeId);
-  $items = DB::query('SELECT * FROM items WHERE storageid=%d', $storeId);
-
-
+  $items = DB::query('SELECT items.*, images.thumb FROM `items` LEFT JOIN `images` ON items.id = images.itemId WHERE storageid=%d GROUP BY items.id', $storeId);
+  
   $myitem[$storeId]['storage'] = $store;
   $myitem[$storeId]['positionen'] = 0;
   $myitem[$storeId]['itemcount'] = 0;
@@ -61,7 +60,7 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
   $parse['showemptystorages'] = false;
   $categoryId = intval($_GET['subcategory']);
   $category = DB::queryFirstRow('SELECT id, name, amount from subCategories WHERE id=%d', $categoryId);
-  $items = DB::query('SELECT * FROM items WHERE subCategories LIKE %s', ('%,' . $categoryId . ',%'));
+  $items = DB::query('SELECT items.*, images.thumb FROM `items` LEFT JOIN `images` ON items.id = images.itemId WHERE subCategories LIKE %s GROUP BY items.id', ('%,' . $categoryId . ',%'));
 
   for ($x = 0; $x < count($items); $x++) {
     $item = $items[$x];
@@ -72,9 +71,6 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
     $myitem[$storeId]['storage'] = $store[$storeId];
     if (!isset($myitem[$storeId]['positionen'])) $myitem[$storeId]['positionen'] = 0;
     if (!isset($myitem[$storeId]['itemcount'])) $myitem[$storeId]['itemcount'] = 0;
-
-    $hasImages = DB::query('SELECT `id` FROM `images` WHERE `itemId`=%d LIMIT 1', intval($items[$x]['id']));
-    if (DB::affectedRows() == 1) $items[$x]['hasImages'] = true;
 
     $myitem[$storeId]['items'][] = $items[$x];
     $myitem[$storeId]['positionen']++;
@@ -89,7 +85,7 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
   $storeId = intval($_GET['storageid']);
   $itemId = intval($_GET['itemid']);
 
-  $item = DB::queryFirstRow('SELECT * FROM items WHERE id=%d', $itemId);
+  $item = DB::queryFirstRow('SELECT items.*, images.thumb FROM `items` LEFT JOIN `images` ON items.id = images.itemId WHERE id=%d GROUP BY items.id', $itemId);
   $setamount = $item['amount'];
   if (isset($_GET['amount']) && intval($_GET['amount'])) $setamount = intval($_GET['amount']);
   if ($item['storageid'] == $storeId) {
@@ -141,10 +137,10 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
   for ($x = 0; $x < count($subCategories); $x++) {
     $subCSQL .= " find_in_set('" . $subCategories[$x]['id'] . "',subcategories) <> 0 OR ";
   }
-  $sql = "Select * from items WHERE ";
+  $sql = "SELECT items.*, images.thumb FROM `items` LEFT JOIN `images` ON items.id = images.itemId WHERE ";
   if (count($headCategories) > 0)    $sql .= " headcategory IN %li OR ";
   $sql .= $subCSQL;
-  $sql .= " (label LIKE %ss OR comment LIKE %ss OR serialnumber LIKE %ss) ";
+  $sql .= " (label LIKE %ss OR comment LIKE %ss OR serialnumber LIKE %ss)  GROUP BY items.id";
 
 
   if (count($headCategories) > 0) {
@@ -178,7 +174,7 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
   $parse['showemptystorages'] = false;
   $categoryId = intval($_GET['category']);
   $category = DB::queryFirstRow('SELECT id, name, amount from headCategories WHERE id=%d', $categoryId);
-  $items = DB::query('SELECT * FROM items WHERE headcategory=%d', $categoryId);
+  $items = DB::query('SELECT items.*, images.thumb FROM `items` LEFT JOIN `images` ON items.id = images.itemId WHERE headcategory=%d GROUP BY items.id', $categoryId);
 
   for ($x = 0; $x < count($items); $x++) {
     $item = $items[$x];
@@ -189,8 +185,6 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
     $myitem[$storeId]['storage'] = $store[$storeId];
     if (!isset($myitem[$storeId]['positionen'])) $myitem[$storeId]['positionen'] = 0;
     if (!isset($myitem[$storeId]['itemcount'])) $myitem[$storeId]['itemcount'] = 0;
-    $hasImages = DB::query('SELECT `id` FROM `images` WHERE `itemId`=%d LIMIT 1', intval($items[$x]['id']));
-    if (DB::affectedRows() == 1) $items[$x]['hasImages'] = true;
     $myitem[$storeId]['items'][] = $items[$x];
     $myitem[$storeId]['positionen']++;
     $myitem[$storeId]['itemcount'] += $items[$x]['amount'];
@@ -202,7 +196,7 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
     $store[$storeId]['label'] = gettext('Unterkategorie') . ": " . $subCategory['name'];
     $myitem[$storeId]['positionen'] = 0;
     $myitem[$storeId]['itemcount'] = 0;
-    $items = DB::query('SELECT * FROM items WHERE subcategories LIKE %ss', ',' . $subCategory['id'] . ',');
+    $items = DB::query('SELECT items.*, images.thumb FROM `items` LEFT JOIN `images` ON items.id = images.itemId WHERE subcategories LIKE %ss GROUP BY items.id', ',' . $subCategory['id'] . ',');
     for ($x = 0; $x < count($items); $x++) {
       $item = $items[$x];
 
@@ -222,16 +216,13 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
   //--
   $storagebyid = array();
   $myitem = array();
-  $loseItems = DB::query('SELECT * FROM items WHERE storageid=0');
+  $loseItems = DB::query('SELECT items.*, images.thumb FROM `items` LEFT JOIN `images` ON items.id = images.itemId WHERE storageid=0 GROUP BY items.id');
   if (count($loseItems) > 0) {
     $myitem[0]['storage']['id'] = "0";
     $myitem[0]['positionen'] = 0;
     $myitem[0]['itemcount'] = 0;
   }
   for ($x = 0; $x < count($loseItems); $x++) {
-    $hasImages = DB::query('SELECT `id` FROM `images` WHERE `itemId`=%d LIMIT 1', intval($$loseItems[$x]['id']));
-    if (DB::affectedRows() == 1) $$loseItems[$x]['hasImages'] = true;
-
     $myitem[0]['items'][] = $loseItems[$x];
     $myitem[0]['positionen']++;
     $myitem[0]['itemcount'] += $loseItems[$x]['amount'];
@@ -242,12 +233,9 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
     $myitem[$store['id']]['storage'] = $store;
     $myitem[$store['id']]['positionen'] = 0;
     $myitem[$store['id']]['itemcount'] = 0;
-    $items = DB::query('SELECT * FROM items WHERE storageid=%d', $store['id']);
+    $items = DB::query('SELECT items.*, images.thumb FROM `items` LEFT JOIN `images` ON items.id = images.itemId WHERE storageid=%d GROUP BY items.id', $store['id']);
 
     for ($x = 0; $x < count($items); $x++) {
-      $hasImages = DB::query('SELECT `id` FROM `images` WHERE `itemId`=%d LIMIT 1', intval($items[$x]['id']));
-      if (DB::affectedRows() == 1) $items[$x]['hasImages'] = true;
-
       $myitem[$store['id']]['items'][] = $items[$x];
       $myitem[$store['id']]['positionen']++;
       $myitem[$store['id']]['itemcount'] += $items[$x]['amount'];

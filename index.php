@@ -55,9 +55,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getImageId'])) {
 
   echo json_encode($targetData);
   die();
-} else if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES) && count($_FILES) != 0) {
+} else if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['editItem']) && isset($_FILES) && count($_FILES) != 0) {
   if (!isset($_FILES['images'])) die();
-  if (!isset($_POST['editItem'])) die();
 
   $itemId = intval($_POST['editItem']);
 
@@ -147,6 +146,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getImageId'])) {
   } else {
     $item = DB::insert('items', array('label' => $_POST['label'], 'comment' => $comment, 'serialnumber' => $serialNumber, 'amount' => $amount, 'headcategory' => $category['id'], 'subcategories' => (',' . implode($subIds, ',') . ','), 'storageid' => $storage['id']));
     $itemCreationId = DB::insertId();
+    
+    if(isset($_FILES) && count($_FILES) != 0 && isset($_FILES['images']) && !isset($_POST['editItem'])){
+
+      $count = count($_FILES['images']['tmp_name']);
+      for ($x = 0; $x < $count; ++$x) {
+        $tmpName = $_FILES['images']['tmp_name'][$x];
+  
+        $imageData = imagecreatefromstring(file_get_contents(addslashes($tmpName)));
+        $imageLarge = imagescale($imageData, 1920);
+        ob_start();
+        imagejpeg($imageLarge);
+        $imageData64 = base64_encode(ob_get_clean());
+  
+        $imageThumbnail = imagescale($imageData, 200);
+        ob_start();
+        imagejpeg($imageThumbnail);
+        $imageThumbnailData64 = base64_encode(ob_get_clean());
+  
+        $imageInfo = getimagesize($tmpName);
+  
+        DB::query('INSERT INTO `images` VALUES(NULL, %d, %d, %d, %s, %s)', $itemCreationId, $imageInfo[0], $imageInfo[1], $imageThumbnailData64, $imageData64);
+      }
+    }
+
   }
 
   foreach(array_keys($_POST) as $key) {
