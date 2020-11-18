@@ -18,10 +18,16 @@
                     <span class="small">({$itemstore.positionen} {if $itemstore.positionen == 1}{t}Position{/t}{else}{t}Positionen{/t}{/if}, {$itemstore.itemcount} {if $itemstore.itemcount == 1}{t}Gegenstand{/t}{else}{t}Gegenstände{/t}{/if})</span>
                 </h4>
                 <ul class="list-group">
-
-
-                        <li class="alert alert-info"><span class="list-span">{t}Kategorien{/t}</span><span class="list-span">{t}Bezeichnung{/t}</span><span class="list-span">{t}Anzahl{/t}</span><span class="list-span">{t}Bemerkung{/t}</span><span class="list-span">{t}Unterkategorien{/t}</span><span class="list-span">{t}Hinzugefügt{/t}</span><span class="list-span">{t}Aktionen{/t}</span><span class="list-span">{t}Zuweisen{/t}</span>
-                        </li>
+                    <li class="alert alert-info">
+                        <span class="list-span">{t}Kategorien{/t}</span>
+                        <span class="list-span">{t}Bezeichnung{/t}</span>
+                        <span class="list-span">{t}Anzahl{/t}</span>
+                        <span class="list-span">{t}Bemerkung{/t}</span>
+                        <span class="list-span">{t}Unterkategorien{/t}</span>
+                        <span class="list-span">{t}Hinzugefügt{/t}</span>
+                        <span class="list-span">{t}Aktionen{/t}</span>
+                        <span class="list-span">{t}Zuweisen{/t}</span>
+                    </li>
                 {if isset($itemstore.items)}
                     {foreach $itemstore.items as $item}
 
@@ -103,10 +109,16 @@
                     <span class="small">({$itemstore.positionen} {if $itemstore.positionen == 1}{t}Position{/t}{else}{t}Positionen{/t}{/if}, {$itemstore.itemcount} {if $itemstore.itemcount == 1}{t}Gegenstand{/t}{else}{t}Gegenstände{/t}{/if})</span>
                 </h4>
                 <ul class="list-group">
-
-
-                        <li class="alert alert-info"><span class="list-span">{t}Kategorien{/t}</span><span class="list-span">{t}Bezeichnung{/t}</span><span class="list-span">{t}Anzahl{/t}</span><span class="list-span">{t}Bemerkung{/t}</span><span class="list-span">{t}Unterkategorien{/t}</span><span class="list-span">{t}Hinzugefügt{/t}</span><span class="list-span">{t}Aktionen{/t}</span><span class="list-span">{t}Zuweisen{/t}</span>
-                        </li>
+                    <li class="alert alert-info">
+                        <span class="list-span">{t}Kategorien{/t}</span>
+                        <span class="list-span">{t}Bezeichnung{/t}</span>
+                        <span class="list-span">{t}Anzahl{/t}</span>
+                        <span class="list-span">{t}Bemerkung{/t}</span>
+                        <span class="list-span">{t}Unterkategorien{/t}</span>
+                        <span class="list-span">{t}Hinzugefügt{/t}</span>
+                        <span class="list-span">{t}Aktionen{/t}</span>
+                        <span class="list-span">{t}Zuweisen{/t}</span>
+                    </li>
                 {if isset($itemstore.items)}
                     {foreach $itemstore.items as $item}
 
@@ -187,10 +199,16 @@
                     <span class="small">({$itemstore.positionen} {if $itemstore.positionen == 1}{t}Position{/t}{else}{t}Positionen{/t}{/if}, {$itemstore.itemcount} {if $itemstore.itemcount == 1}{t}Gegenstand{/t}{else}{t}Gegenstände{/t}{/if})</span>
                 </h4>
                 <ul class="list-group">
-
-
-                        <li class="alert alert-info"><span class="list-span">{t}Kategorien{/t}</span><span class="list-span">{t}Bezeichnung{/t}</span><span class="list-span">{t}Anzahl{/t}</span><span class="list-span">{t}Bemerkung{/t}</span><span class="list-span">{t}Unterkategorien{/t}</span><span class="list-span">{t}Hinzugefügt{/t}</span><span class="list-span">{t}Aktionen{/t}</span><span class="list-span">{t}Zuweisen{/t}</span>
-                        </li>
+                    <li class="alert alert-info">
+                        <span class="list-span">{t}Kategorien{/t}</span>
+                        <span class="list-span">{t}Bezeichnung{/t}</span>
+                        <span class="list-span">{t}Anzahl{/t}</span>
+                        <span class="list-span">{t}Bemerkung{/t}</span>
+                        <span class="list-span">{t}Unterkategorien{/t}</span>
+                        <span class="list-span">{t}Hinzugefügt{/t}</span>
+                        <span class="list-span">{t}Aktionen{/t}</span>
+                        <span class="list-span">{t}Zuweisen{/t}</span>
+                    </li>
                 {if isset($itemstore.items)}
                     {foreach $itemstore.items as $item}
 
