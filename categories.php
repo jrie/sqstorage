@@ -24,7 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
       DB::update('subCategories', array('headcategory' => $newCategory['id']), 'id=%d', intval($_GET['setCategoryId']));
     }
 
-    header("location: $urlBase/categories");
+    if ($usePrettyURLs) header("location: $urlBase/categories");
+    else header("location: $urlBase/categories.php");
     die();
   } else if (isset($_GET['resetSubcategoryId']) && !empty($_GET['resetSubcategoryId'])) {
     $subCategory = DB::queryFirstRow('SELECT `id`, `amount`, `headcategory` FROM `subCategories` WHERE id=%d', intval($_GET['resetSubcategoryId']));
@@ -35,7 +36,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     }
 
     DB::update('subCategories', array('headcategory' => NULL), 'id=%d', $subCategory['id']);
-    header("location: $urlBase/categories");
+
+    if ($usePrettyURLs) header("location: $urlBase/categories");
+    else header("location: $urlBase/categories.php");
+
     die();
   } else if (isset($_GET['to']) && !empty($_GET['to']) && (isset($_GET['headCategory']) || isset($_GET['subCategory']))) {
     if (isset($_GET['headCategory']) && !empty($_GET['headCategory'])) {
