@@ -53,6 +53,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     DB::delete('headCategories', "id=%d", intval($_GET['removeCategory']));
     if (DB::affectedRows() === 1) $alert = '<div class="alert alert-info" role="alert"><p>' . gettext('Kategorie entfernt.') . '</p></div>';
   } else if (isset($_GET['removeSubcategory']) && !empty($_GET['removeSubcategory'])) {
+    $subCategory = DB::queryFirstRow('SELECT `id`, `amount`, `headcategory` FROM `subCategories` WHERE id=%d', intval($_GET['removeSubcategory']));
+    $previousCategory = DB::queryFirstRow('SELECT `id`, `amount` FROM `headCategories` WHERE `id`=%d',  $subCategory['headcategory']);
+    DB::update('headCategories', array('amount' => intval($previousCategory['amount']) - $subCategory['amount']), 'id=%d',  $previousCategory['id']);
+
     DB::delete('subCategories', "id=%d", intval($_GET['removeSubcategory']));
     if (DB::affectedRows() === 1) $alert = '<div class="alert alert-info" role="alert"><p>' . gettext('Unterkategorie entfernt.') . '</p></div>';
   }
