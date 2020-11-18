@@ -399,8 +399,8 @@ ul.existingFields li {
 }
 
 i.picture {
-    margin-left: 12px;
-    margin-right: -24px;
+    margin-right: 12px;
+    color: inherit;
 }
 
 .uploadedImages {
