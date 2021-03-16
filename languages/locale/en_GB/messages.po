@@ -800,7 +800,7 @@ msgstr "Comment"
 #: templates//inventory.tpl:27 templates//inventory.tpl:118
 #: templates//inventory.tpl:208
 msgid "Hinzugefügt"
-msgstr "Add"
+msgstr "Added"
 
 #: templates//inventory.tpl:29 templates//inventory.tpl:71
 #: templates//inventory.tpl:120 templates//inventory.tpl:162
