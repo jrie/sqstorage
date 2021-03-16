@@ -1,61 +1,53 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=UTF-8\n"
 
-#: templates//accessdenied.tpl:1
-msgid "Zugriff verweigert"
-msgstr ""
-
-#: templates//accessdenied.tpl:16 templates//php_language_extract.tpl:59
-msgid "Zugriff verweigert!"
-msgstr ""
-
 #: templates//categories.tpl:1 templates//categories.tpl:5
-#: templates//datafields.tpl:147 templates//inventory.tpl:23
-#: templates//inventory.tpl:108 templates//inventory.tpl:192
-#: templates//nav.tpl:9 templates//php_language_extract.tpl:33
+#: templates//datafields.tpl:147 templates//php_language_extract.tpl:33
+#: templates//inventory.tpl:22 templates//inventory.tpl:113
+#: templates//inventory.tpl:203 templates//nav.tpl:9
 msgid "Kategorien"
 msgstr ""
 
 #: templates//categories.tpl:5 templates//categories.tpl:11
-#: templates//indexpage.tpl:210 templates//indexpage.tpl:213
-#: templates//indexpage.tpl:215 templates//inventory.tpl:23
-#: templates//inventory.tpl:108 templates//inventory.tpl:192
+#: templates//inventory.tpl:24 templates//inventory.tpl:115
+#: templates//inventory.tpl:205 templates//indexpage.tpl:210
+#: templates//indexpage.tpl:213 templates//indexpage.tpl:215
 msgid "Anzahl"
 msgstr ""
 
 #: templates//categories.tpl:5 templates//categories.tpl:7
 #: templates//categories.tpl:11 templates//categories.tpl:14
-#: templates//inventory.tpl:18 templates//inventory.tpl:103
-#: templates//inventory.tpl:187
+#: templates//inventory.tpl:18 templates//inventory.tpl:109
+#: templates//inventory.tpl:199
 msgid "Positionen"
 msgstr ""
 
 #: templates//categories.tpl:5 templates//categories.tpl:11
-#: templates//inventory.tpl:23 templates//inventory.tpl:108
-#: templates//inventory.tpl:192 templates//settings.tpl:103
+#: templates//inventory.tpl:28 templates//inventory.tpl:119
+#: templates//inventory.tpl:209 templates//settings.tpl:103
 msgid "Aktionen"
 msgstr ""
 
 #: templates//categories.tpl:7 templates//categories.tpl:14
-#: templates//inventory.tpl:18 templates//inventory.tpl:103
-#: templates//inventory.tpl:187
+#: templates//inventory.tpl:18 templates//inventory.tpl:109
+#: templates//inventory.tpl:199
 msgid "Gegenstand"
 msgstr ""
 
 #: templates//categories.tpl:7 templates//categories.tpl:14
-#: templates//inventory.tpl:18 templates//inventory.tpl:103
-#: templates//inventory.tpl:187
+#: templates//inventory.tpl:18 templates//inventory.tpl:109
+#: templates//inventory.tpl:199
 msgid "Gegenstände"
 msgstr ""
 
 #: templates//categories.tpl:7 templates//categories.tpl:14
-#: templates//inventory.tpl:18 templates//inventory.tpl:103
-#: templates//inventory.tpl:187
+#: templates//inventory.tpl:18 templates//inventory.tpl:109
+#: templates//inventory.tpl:199
 msgid "Position"
 msgstr ""
 
-#: templates//categories.tpl:11 templates//inventory.tpl:23
-#: templates//inventory.tpl:108 templates//inventory.tpl:192
+#: templates//categories.tpl:11 templates//inventory.tpl:26
+#: templates//inventory.tpl:117 templates//inventory.tpl:207
 msgid "Unterkategorien"
 msgstr ""
 
@@ -83,8 +75,70 @@ msgstr ""
 msgid "Unterkategorie umbenennen?"
 msgstr ""
 
-#: templates//datafields.tpl:1 templates//nav.tpl:11
-#: templates//php_language_extract.tpl:6
+#: templates//installpage.tpl:1 templates//settings.tpl:149
+msgid "Installation"
+msgstr ""
+
+#: templates//installpage.tpl:4
+msgid "sqStorage Installation / Aktualisierung"
+msgstr ""
+
+#: templates//installpage.tpl:30 templates//indexpage.tpl:11
+msgid "zur Datenbank hinzugefügt."
+msgstr ""
+
+#: templates//installpage.tpl:40
+msgid "Saubere Adressen"
+msgstr ""
+
+#: templates//installpage.tpl:44
+msgid ""
+"Verwende z.B. http://example.com/inventory anstatt http://example.com/"
+"inventory.php"
+msgstr ""
+
+#: templates//installpage.tpl:50
+msgid "Zutrittskontrolle"
+msgstr ""
+
+#: templates//installpage.tpl:54
+msgid "Verwende die Benutzerregistrierung und Zutrittskontrolle"
+msgstr ""
+
+#: templates//installpage.tpl:61 templates//installpage.tpl:63
+msgid "Datenbank-Benutzer"
+msgstr ""
+
+#: templates//installpage.tpl:68 templates//installpage.tpl:70
+msgid "Datenbank-Passwort"
+msgstr ""
+
+#: templates//installpage.tpl:75 templates//installpage.tpl:77
+msgid "Datenbank-Name"
+msgstr ""
+
+#: templates//installpage.tpl:82 templates//installpage.tpl:84
+msgid "Datenbank-Server"
+msgstr ""
+
+#: templates//installpage.tpl:89 templates//installpage.tpl:91
+msgid "Datenbank-Port"
+msgstr ""
+
+#: templates//installpage.tpl:94
+msgid "Verbinungsdaten eintragen"
+msgstr ""
+
+#: templates//installpage.tpl:99
+msgid "Datenbank installieren / aktualisieren"
+msgstr ""
+
+#: templates//installpage.tpl:103 templates//php_language_extract.tpl:89
+msgid "Erneut prüfen"
+msgstr ""
+
+#: templates//datafields.tpl:1 templates//php_language_extract.tpl:6
+#: templates//nav.tpl:11
 msgid "Datenfelder"
 msgstr ""
 
@@ -189,8 +243,8 @@ msgstr ""
 msgid "Bestehende Datenfelder"
 msgstr ""
 
-#: templates//datafields.tpl:147 templates//indexpage.tpl:87
-#: templates//indexpage.tpl:89 templates//php_language_extract.tpl:30
+#: templates//datafields.tpl:147 templates//php_language_extract.tpl:30
+#: templates//indexpage.tpl:87 templates//indexpage.tpl:89
 msgid "Kategorie"
 msgstr ""
 
@@ -255,287 +309,7 @@ msgstr ""
 msgid "wirklich löschen?"
 msgstr ""
 
-#: templates//footer.tpl:2 templates//php_language_extract.tpl:34
-msgid "Kontakt"
-msgstr ""
-
-#: templates//footer.tpl:3 templates//php_language_extract.tpl:28
-msgid "Github"
-msgstr ""
-
-#: templates//indexpage.tpl:1 templates//indexpage.tpl:347
-#: templates//nav.tpl:7 templates//php_language_extract.tpl:15
-#: templates//settings.tpl:90
-msgid "Eintragen"
-msgstr ""
-
-#: templates//indexpage.tpl:11 templates//installpage.tpl:30
-msgid "zur Datenbank hinzugefügt."
-msgstr ""
-
-#: templates//indexpage.tpl:17
-msgid "Eintrag zur Bearbeitung:"
-msgstr ""
-
-#: templates//indexpage.tpl:29 templates//indexpage.tpl:32
-#: templates//indexpage.tpl:34 templates//inventory.tpl:23
-#: templates//inventory.tpl:108 templates//inventory.tpl:192
-msgid "Bezeichnung"
-msgstr ""
-
-#: templates//indexpage.tpl:32 templates//indexpage.tpl:34
-msgid "Bezeichnung oder Name"
-msgstr ""
-
-#: templates//indexpage.tpl:45 templates//indexpage.tpl:47
-#: templates//indexpage.tpl:63 templates//indexpage.tpl:65
-msgid "Lagerplatz"
-msgstr ""
-
-#: templates//indexpage.tpl:71 templates//indexpage.tpl:75
-#: templates//indexpage.tpl:77 templates//inventory.tpl:23
-#: templates//inventory.tpl:108 templates//inventory.tpl:192
-msgid "Bemerkung"
-msgstr ""
-
-#: templates//indexpage.tpl:103 templates//indexpage.tpl:105
-msgid "Netzwerk/Hardware"
-msgstr ""
-
-#: templates//indexpage.tpl:184 templates//indexpage.tpl:187
-#: templates//indexpage.tpl:202 templates//indexpage.tpl:204
-#: templates//php_language_extract.tpl:53
-msgid "Unterkategorie"
-msgstr ""
-
-#: templates//indexpage.tpl:202 templates//indexpage.tpl:204
-msgid "Router,wlan,fritzBox"
-msgstr ""
-
-#: templates//indexpage.tpl:221 templates//indexpage.tpl:224
-msgid "Seriennummer"
-msgstr ""
-
-#: templates//indexpage.tpl:224 templates//indexpage.tpl:226
-msgid "Seriennummer/Artikelnummer"
-msgstr ""
-
-#: templates//indexpage.tpl:345 templates//settings.tpl:88
-msgid "Überschreiben"
-msgstr ""
-
-#: templates//indexpage.tpl:354
-msgid "Bilder des Gegenstandes"
-msgstr ""
-
-#: templates//indexpage.tpl:356
-msgid "Bild Upload"
-msgstr ""
-
-#: templates//indexpage.tpl:358
-msgid "Bilder hochladen"
-msgstr ""
-
-#: templates//indexpage.tpl:366
-msgid "Bild entfernen"
-msgstr ""
-
-#: templates//indexpage.tpl:380
-msgid "'Bild wirklich entfernen?'"
-msgstr ""
-
-#: templates//indexpage.tpl:473 templates//indexpage.tpl:483
-#: templates//indexpage.tpl:493
-msgid "Fehler"
-msgstr ""
-
-#: templates//installpage.tpl:1 templates//settings.tpl:149
-msgid "Installation"
-msgstr ""
-
-#: templates//installpage.tpl:4
-msgid "sqStorage Installation / Aktualiserung"
-msgstr ""
-
-#: templates//installpage.tpl:40
-msgid "Saubere Adressen"
-msgstr ""
-
-#: templates//installpage.tpl:44
-msgid ""
-"Verwende z.B. http://example.com/inventory anstatt http://example.com/"
-"inventory.php"
-msgstr ""
-
-#: templates//installpage.tpl:50
-msgid "Zutrittskontrolle"
-msgstr ""
-
-#: templates//installpage.tpl:54
-msgid "Verwende die Benutzerregistrierung und Zutrittskontrolle"
-msgstr ""
-
-#: templates//installpage.tpl:61 templates//installpage.tpl:63
-msgid "Datenbank-Benutzer"
-msgstr ""
-
-#: templates//installpage.tpl:68 templates//installpage.tpl:70
-msgid "Datenbank-Passwort"
-msgstr ""
-
-#: templates//installpage.tpl:75 templates//installpage.tpl:77
-msgid "Datenbank-Name"
-msgstr ""
-
-#: templates//installpage.tpl:82 templates//installpage.tpl:84
-msgid "Datenbank-Server"
-msgstr ""
-
-#: templates//installpage.tpl:89 templates//installpage.tpl:91
-msgid "Datenbank-Port"
-msgstr ""
-
-#: templates//installpage.tpl:94
-msgid "Verbinungsdaten eintragen"
-msgstr ""
-
-#: templates//installpage.tpl:99
-msgid "Datenbank installieren / aktualisieren"
-msgstr ""
-
-#: templates//installpage.tpl:103 templates//php_language_extract.tpl:89
-msgid "Erneut prüfen"
-msgstr ""
-
-#: templates//inventory.tpl:1 templates//nav.tpl:8
-#: templates//php_language_extract.tpl:29
-msgid "Inventar"
-msgstr ""
-
-#: templates//inventory.tpl:15 templates//inventory.tpl:17
-#: templates//inventory.tpl:100 templates//inventory.tpl:102
-#: templates//inventory.tpl:184 templates//inventory.tpl:186
-msgid "Unsortiert"
-msgstr ""
-
-#: templates//inventory.tpl:23 templates//inventory.tpl:108
-#: templates//inventory.tpl:192
-msgid "Hinzugefügt"
-msgstr ""
-
-#: templates//inventory.tpl:23 templates//inventory.tpl:65
-#: templates//inventory.tpl:108 templates//inventory.tpl:150
-#: templates//inventory.tpl:192 templates//inventory.tpl:234
-msgid "Zuweisen"
-msgstr ""
-
-#: templates//inventory.tpl:44 templates//inventory.tpl:129
-#: templates//inventory.tpl:213
-msgid "Gegenstand hat Bilder"
-msgstr ""
-
-#: templates//inventory.tpl:79 templates//inventory.tpl:87
-#: templates//inventory.tpl:164 templates//inventory.tpl:248
-msgid "Keine Gegenstände gefunden"
-msgstr ""
-
-#: templates//inventory.tpl:267 templates//transfer.tpl:46
-msgid ""
-"Von diesem Artikel sind mehrere Stück am Lagerplatz. Wie viele sollen zum "
-"neuen Lagerort transferiert werden?"
-msgstr ""
-
-#: templates//inventory.tpl:269 templates//transfer.tpl:48
-msgid "Von diesem Artikel sind nicht genug Einheiten vorhanden."
-msgstr ""
-
-#: templates//inventory.tpl:270 templates//transfer.tpl:49
-msgid "Anzahl kann nicht negativ sein."
-msgstr ""
-
-#: templates//inventory.tpl:301
-msgid "Lagerplatz wirklich entfernen?"
-msgstr ""
-
-#: templates//inventory.tpl:301
-msgid "Position wirklich entfernen?"
-msgstr ""
-
-#: templates//login.tpl:1
-msgid "Login und Registrierung"
-msgstr ""
-
-#: templates//login.tpl:34
-msgid "Neue Admin-Zugangsdaten eingeben"
-msgstr ""
-
-#: templates//login.tpl:37
-msgid "Neue Zugangsdaten eingeben"
-msgstr ""
-
-#: templates//login.tpl:39
-msgid "Zugangsdaten eingeben"
-msgstr ""
-
-#: templates//login.tpl:44 templates//settings.tpl:32
-#: templates//settings.tpl:37 templates//settings.tpl:39
-#: templates//settings.tpl:103
-msgid "Benutzername"
-msgstr ""
-
-#: templates//login.tpl:53 templates//settings.tpl:46
-#: templates//settings.tpl:49 templates//settings.tpl:51
-#: templates//settings.tpl:103
-msgid "E-Mail"
-msgstr ""
-
-#: templates//login.tpl:65
-msgid "Passwort"
-msgstr ""
-
-#: templates//login.tpl:74
-msgid "Passwort wiederholen"
-msgstr ""
-
-#: templates//login.tpl:87
-msgid "Angemeldet bleiben?"
-msgstr ""
-
-#: templates//login.tpl:92
-msgid "Speichern"
-msgstr ""
-
-#: templates//login.tpl:92
-msgid "Anmelden"
-msgstr ""
-
-#: templates//login.tpl:102
-msgid "Anfordern"
-msgstr ""
-
-#: templates//login.tpl:112
-msgid "Zugangsdaten vergessen"
-msgstr ""
-
-#: templates//nav.tpl:10 templates//php_language_extract.tpl:52
-#: templates//transfer.tpl:1 templates//transfer.tpl:31
-msgid "Transferieren"
-msgstr ""
-
-#: templates//nav.tpl:15 templates//php_language_extract.tpl:12
-#: templates//settings.tpl:1
-msgid "Einstellungen"
-msgstr ""
-
-#: templates//nav.tpl:22 templates//php_language_extract.tpl:50
-msgid "Suche"
-msgstr ""
-
-#: templates//nav.tpl:23 templates//php_language_extract.tpl:51
-msgid "Suchen"
-msgstr ""
-
-#: templates//nav.tpl:49 templates//php_language_extract.tpl:1
+#: templates//php_language_extract.tpl:1 templates//nav.tpl:49
 msgid "Abmelden"
 msgstr ""
 
@@ -571,8 +345,18 @@ msgstr ""
 msgid "Die Passwörter stimmen nicht überein!"
 msgstr ""
 
+#: templates//php_language_extract.tpl:12 templates//settings.tpl:1
+#: templates//nav.tpl:15
+msgid "Einstellungen"
+msgstr ""
+
 #: templates//php_language_extract.tpl:14
 msgid "Einträge"
+msgstr ""
+
+#: templates//php_language_extract.tpl:15 templates//settings.tpl:90
+#: templates//indexpage.tpl:1 templates//indexpage.tpl:347 templates//nav.tpl:7
+msgid "Eintragen"
 msgstr ""
 
 #: templates//php_language_extract.tpl:16
@@ -630,12 +414,25 @@ msgid ""
 "geändert werden!"
 msgstr ""
 
+#: templates//php_language_extract.tpl:28 templates//footer.tpl:3
+msgid "Github"
+msgstr ""
+
+#: templates//php_language_extract.tpl:29 templates//inventory.tpl:1
+#: templates//nav.tpl:8
+msgid "Inventar"
+msgstr ""
+
 #: templates//php_language_extract.tpl:31
 msgid "Kategorie entfernt."
 msgstr ""
 
 #: templates//php_language_extract.tpl:32
 msgid "Kategorie umbenannt."
+msgstr ""
+
+#: templates//php_language_extract.tpl:34 templates//footer.tpl:2
+msgid "Kontakt"
 msgstr ""
 
 #: templates//php_language_extract.tpl:35
@@ -703,6 +500,25 @@ msgstr ""
 msgid "sqStorage Passwortänderung"
 msgstr ""
 
+#: templates//php_language_extract.tpl:50 templates//nav.tpl:22
+msgid "Suche"
+msgstr ""
+
+#: templates//php_language_extract.tpl:51 templates//nav.tpl:23
+msgid "Suchen"
+msgstr ""
+
+#: templates//php_language_extract.tpl:52 templates//transfer.tpl:1
+#: templates//transfer.tpl:31 templates//nav.tpl:10
+msgid "Transferieren"
+msgstr ""
+
+#: templates//php_language_extract.tpl:53 templates//indexpage.tpl:184
+#: templates//indexpage.tpl:187 templates//indexpage.tpl:202
+#: templates//indexpage.tpl:204
+msgid "Unterkategorie"
+msgstr ""
+
 #: templates//php_language_extract.tpl:54
 msgid "Unterkategorie entfernt."
 msgstr ""
@@ -723,10 +539,14 @@ msgstr ""
 msgid "Zugangsdaten ungültig"
 msgstr ""
 
+#: templates//php_language_extract.tpl:59 templates//accessdenied.tpl:16
+msgid "Zugriff verweigert!"
+msgstr ""
+
 #: templates//php_language_extract.tpl:60
 msgid ""
 "Um das Passwort für sqStorage zu ändern bitte den folgenden Link aufrufen: "
-"<a href=\"%s\">%s</a>rn"
+"<a href=\"%s\">%s</a>"
 msgstr ""
 
 #: templates//php_language_extract.tpl:61
@@ -873,6 +693,95 @@ msgid ""
 "nach der Aktualisierung auch wieder entfernen."
 msgstr ""
 
+#: templates//transfer.tpl:8 templates//transfer.tpl:26
+msgid "Quelle"
+msgstr ""
+
+#: templates//transfer.tpl:17 templates//transfer.tpl:30
+msgid "Ziel"
+msgstr ""
+
+#: templates//transfer.tpl:27
+msgid "Quelle wählen."
+msgstr ""
+
+#: templates//transfer.tpl:31
+msgid "Ziel wählen."
+msgstr ""
+
+#: templates//transfer.tpl:46 templates//inventory.tpl:285
+msgid ""
+"Von diesem Artikel sind mehrere Stück am Lagerplatz. Wie viele sollen zum "
+"neuen Lagerort transferiert werden?"
+msgstr ""
+
+#: templates//transfer.tpl:48 templates//inventory.tpl:287
+msgid "Von diesem Artikel sind nicht genug Einheiten vorhanden."
+msgstr ""
+
+#: templates//transfer.tpl:49 templates//inventory.tpl:288
+msgid "Anzahl kann nicht negativ sein."
+msgstr ""
+
+#: templates//transfer.tpl:156
+msgid "Quelle wählen"
+msgstr ""
+
+#: templates//transfer.tpl:157
+msgid "Ziel wählen"
+msgstr ""
+
+#: templates//transfer.tpl:176
+msgid "Keine Gegenstände gefunden."
+msgstr ""
+
+#: templates//inventory.tpl:15 templates//inventory.tpl:17
+#: templates//inventory.tpl:106 templates//inventory.tpl:108
+#: templates//inventory.tpl:196 templates//inventory.tpl:198
+msgid "Unsortiert"
+msgstr ""
+
+#: templates//inventory.tpl:23 templates//inventory.tpl:114
+#: templates//inventory.tpl:204 templates//indexpage.tpl:29
+#: templates//indexpage.tpl:32 templates//indexpage.tpl:34
+msgid "Bezeichnung"
+msgstr ""
+
+#: templates//inventory.tpl:25 templates//inventory.tpl:116
+#: templates//inventory.tpl:206 templates//indexpage.tpl:71
+#: templates//indexpage.tpl:75 templates//indexpage.tpl:77
+msgid "Bemerkung"
+msgstr ""
+
+#: templates//inventory.tpl:27 templates//inventory.tpl:118
+#: templates//inventory.tpl:208
+msgid "Hinzugefügt"
+msgstr ""
+
+#: templates//inventory.tpl:29 templates//inventory.tpl:71
+#: templates//inventory.tpl:120 templates//inventory.tpl:162
+#: templates//inventory.tpl:210 templates//inventory.tpl:252
+msgid "Zuweisen"
+msgstr ""
+
+#: templates//inventory.tpl:50 templates//inventory.tpl:141
+#: templates//inventory.tpl:231
+msgid "Gegenstand hat Bilder"
+msgstr ""
+
+#: templates//inventory.tpl:85 templates//inventory.tpl:93
+#: templates//inventory.tpl:176 templates//inventory.tpl:266
+msgid "Keine Gegenstände gefunden"
+msgstr ""
+
+#: templates//inventory.tpl:319
+msgid "Lagerplatz wirklich entfernen?"
+msgstr ""
+
+#: templates//inventory.tpl:319
+msgid "Position wirklich entfernen?"
+msgstr ""
+
 #: templates//settings.tpl:16
 msgid "zur Datenbank hinzugefügt"
 msgstr ""
@@ -881,9 +790,25 @@ msgstr ""
 msgid "Benutzer zur Bearbeitung:"
 msgstr ""
 
+#: templates//settings.tpl:32 templates//settings.tpl:37
+#: templates//settings.tpl:39 templates//settings.tpl:103
+#: templates//login.tpl:44
+msgid "Benutzername"
+msgstr ""
+
+#: templates//settings.tpl:46 templates//settings.tpl:49
+#: templates//settings.tpl:51 templates//settings.tpl:103
+#: templates//login.tpl:53
+msgid "E-Mail"
+msgstr ""
+
 #: templates//settings.tpl:61 templates//settings.tpl:77
 #: templates//settings.tpl:80
 msgid "Benutzergruppe"
+msgstr ""
+
+#: templates//settings.tpl:88 templates//indexpage.tpl:345
+msgid "Überschreiben"
 msgstr ""
 
 #: templates//settings.tpl:102
@@ -938,30 +863,104 @@ msgstr ""
 msgid "Der letzte Administrator kann nicht gelöscht werden!"
 msgstr ""
 
-#: templates//transfer.tpl:8 templates//transfer.tpl:26
-msgid "Quelle"
+#: templates//indexpage.tpl:17
+msgid "Eintrag zur Bearbeitung:"
 msgstr ""
 
-#: templates//transfer.tpl:17 templates//transfer.tpl:30
-msgid "Ziel"
+#: templates//indexpage.tpl:32 templates//indexpage.tpl:34
+msgid "Bezeichnung oder Name"
 msgstr ""
 
-#: templates//transfer.tpl:27
-msgid "Quelle wählen."
+#: templates//indexpage.tpl:45 templates//indexpage.tpl:47
+#: templates//indexpage.tpl:63 templates//indexpage.tpl:65
+msgid "Lagerplatz"
 msgstr ""
 
-#: templates//transfer.tpl:31
-msgid "Ziel wählen."
+#: templates//indexpage.tpl:103 templates//indexpage.tpl:105
+msgid "Netzwerk/Hardware"
 msgstr ""
 
-#: templates//transfer.tpl:156
-msgid "Quelle wählen"
+#: templates//indexpage.tpl:202 templates//indexpage.tpl:204
+msgid "Router,wlan,fritzBox"
 msgstr ""
 
-#: templates//transfer.tpl:157
-msgid "Ziel wählen"
+#: templates//indexpage.tpl:221 templates//indexpage.tpl:224
+msgid "Seriennummer"
 msgstr ""
 
-#: templates//transfer.tpl:176
-msgid "Keine Gegenstände gefunden."
+#: templates//indexpage.tpl:224 templates//indexpage.tpl:226
+msgid "Seriennummer/Artikelnummer"
+msgstr ""
+
+#: templates//indexpage.tpl:354
+msgid "Bilder des Gegenstandes"
+msgstr ""
+
+#: templates//indexpage.tpl:356
+msgid "Bild Upload"
+msgstr ""
+
+#: templates//indexpage.tpl:358
+msgid "Bilder hochladen"
+msgstr ""
+
+#: templates//indexpage.tpl:366
+msgid "Bild entfernen"
+msgstr ""
+
+#: templates//indexpage.tpl:380
+msgid "'Bild wirklich entfernen?'"
+msgstr ""
+
+#: templates//indexpage.tpl:473 templates//indexpage.tpl:483
+#: templates//indexpage.tpl:493
+msgid "Fehler"
+msgstr ""
+
+#: templates//accessdenied.tpl:1
+msgid "Zugriff verweigert"
+msgstr ""
+
+#: templates//login.tpl:1
+msgid "Login und Registrierung"
+msgstr ""
+
+#: templates//login.tpl:34
+msgid "Neue Admin-Zugangsdaten eingeben"
+msgstr ""
+
+#: templates//login.tpl:37
+msgid "Neue Zugangsdaten eingeben"
+msgstr ""
+
+#: templates//login.tpl:39
+msgid "Zugangsdaten eingeben"
+msgstr ""
+
+#: templates//login.tpl:65
+msgid "Passwort"
+msgstr ""
+
+#: templates//login.tpl:74
+msgid "Passwort wiederholen"
+msgstr ""
+
+#: templates//login.tpl:87
+msgid "Angemeldet bleiben?"
+msgstr ""
+
+#: templates//login.tpl:92
+msgid "Speichern"
+msgstr ""
+
+#: templates//login.tpl:92
+msgid "Anmelden"
+msgstr ""
+
+#: templates//login.tpl:102
+msgid "Anfordern"
+msgstr ""
+
+#: templates//login.tpl:112
+msgid "Zugangsdaten vergessen"
 msgstr ""

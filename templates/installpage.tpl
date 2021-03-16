@@ -1,7 +1,7 @@
 {include file="head.tpl" title="{t}Installation{/t}"}
 {include file="navinst.tpl" target="index.php" request=$REQUEST}
 
-        <center><h2>{t}sqStorage Installation / Aktualiserung{/t}</h2>
+        <center><h2>{t}sqStorage Installation / Aktualisierung{/t}</h2>
 
         {if count($error) > 0}
           {foreach $error as $err}
