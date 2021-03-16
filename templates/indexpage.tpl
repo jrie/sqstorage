@@ -377,7 +377,7 @@
         <script type="text/javascript">
             function removeImage(evt) {
                 evt.preventDefault()
-                if (window.confirm({/literal}{t}'Bild wirklich entfernen?'{/t}{literal})) {
+                if (window.confirm('{/literal}{t}Bild wirklich entfernen?{/t}{literal}')) {
                     let imgContainer = evt.target.parentNode.parentNode
                     let imgRemovalRequest = new XMLHttpRequest()
 
@@ -391,7 +391,7 @@
                     }
 
                     imgRemovalRequest.addEventListener('readystatechange', handleDeleteRequest)
-                    if (evt.target.parentNode.dataset['imageid'] == undefined) imageId = evt.target.dataset['imageid']
+                    if (evt.target.parentNode.dataset['imageid'] === undefined) imageId = evt.target.dataset['imageid']
                     else imageId = evt.target.parentNode.dataset['imageid']
 
                     imgRemovalRequest.open("GET", "index.php?removeImageId=" + imageId);

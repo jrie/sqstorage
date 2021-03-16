@@ -546,7 +546,7 @@ msgstr ""
 #: templates//php_language_extract.tpl:60
 msgid ""
 "Um das Passwort für sqStorage zu ändern bitte den folgenden Link aufrufen: "
-"<a href=\"%s\">%s</a>"
+"<a href=\"%s\">%s</a>rn"
 msgstr ""
 
 #: templates//php_language_extract.tpl:61
@@ -909,7 +909,7 @@ msgid "Bild entfernen"
 msgstr ""
 
 #: templates//indexpage.tpl:380
-msgid "'Bild wirklich entfernen?'"
+msgid "Bild wirklich entfernen?"
 msgstr ""
 
 #: templates//indexpage.tpl:473 templates//indexpage.tpl:483

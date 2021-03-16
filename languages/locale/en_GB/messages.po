@@ -573,10 +573,10 @@ msgstr "Access denied!"
 #: templates//php_language_extract.tpl:60
 msgid ""
 "Um das Passwort für sqStorage zu ändern bitte den folgenden Link aufrufen: "
-"<a href=\"%s\">%s</a>"
+"<a href=\"%s\">%s</a>rn"
 msgstr ""
-"In order to change the password for usage of sqStorage please follow this "
-"link: <a href=\"%s\">%s</a>"
+"To change the password for sqStorage please use the following link:<a href="
+"\"%s\">%s</a>"
 
 #: templates//php_language_extract.tpl:61
 msgid "Fehler: Benutzername \"%s\" enthält nicht zugelassene Zeichen."
@@ -953,7 +953,7 @@ msgid "Bild entfernen"
 msgstr "Remove picture"
 
 #: templates//indexpage.tpl:380
-msgid "'Bild wirklich entfernen?'"
+msgid "Bild wirklich entfernen?"
 msgstr "Really remove picture?"
 
 #: templates//indexpage.tpl:473 templates//indexpage.tpl:483
@@ -1009,15 +1009,18 @@ msgstr "Request"
 msgid "Zugangsdaten vergessen"
 msgstr "Credentials forgotten"
 
-#~ msgid "sqStorage Installation / Aktualiserung"
-#~ msgstr "sqStorage Installation / Update"
-
 #~ msgid ""
 #~ "Um das Passwort für sqStorage zu ändern bitte den folgenden Link "
-#~ "aufrufen: <a href=\"%s\">%s</a>rn"
+#~ "aufrufen: <a href=\"%s\">%s</a>"
 #~ msgstr ""
-#~ "To change the password for sqStorage please use the following link:<a "
-#~ "href=\"%s\">%s</a>"
+#~ "In order to change the password for usage of sqStorage please follow this "
+#~ "link: <a href=\"%s\">%s</a>"
+
+#~ msgid "'Bild wirklich entfernen?'"
+#~ msgstr "Really remove picture?"
+
+#~ msgid "sqStorage Installation / Aktualiserung"
+#~ msgstr "sqStorage Installation / Update"
 
 #~ msgid ""
 #~ "Von diesem Artikel sind mehrere Stück am Lagerplatz. Wieviele sollen zum "

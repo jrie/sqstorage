@@ -574,10 +574,10 @@ msgstr "Zugriff verweigert!"
 #: templates//php_language_extract.tpl:60
 msgid ""
 "Um das Passwort für sqStorage zu ändern bitte den folgenden Link aufrufen: "
-"<a href=\"%s\">%s</a>"
+"<a href=\"%s\">%s</a>rn"
 msgstr ""
 "Um das Passwort für sqStorage zu ändern bitte den folgenden Link aufrufen: "
-"<a href=\"%s\">%s</a>"
+"<a href=\"%s\">%s</a>rn"
 
 #: templates//php_language_extract.tpl:61
 msgid "Fehler: Benutzername \"%s\" enthält nicht zugelassene Zeichen."
@@ -959,8 +959,8 @@ msgid "Bild entfernen"
 msgstr "Bild entfernen"
 
 #: templates//indexpage.tpl:380
-msgid "'Bild wirklich entfernen?'"
-msgstr "'Bild wirklich entfernen?'"
+msgid "Bild wirklich entfernen?"
+msgstr "Bild wirklich entfernen?"
 
 #: templates//indexpage.tpl:473 templates//indexpage.tpl:483
 #: templates//indexpage.tpl:493
@@ -1017,7 +1017,10 @@ msgstr "Zugangsdaten vergessen"
 
 #~ msgid ""
 #~ "Um das Passwort für sqStorage zu ändern bitte den folgenden Link "
-#~ "aufrufen: <a href=\"%s\">%s</a>rn"
+#~ "aufrufen: <a href=\"%s\">%s</a>"
 #~ msgstr ""
 #~ "Um das Passwort für sqStorage zu ändern bitte den folgenden Link "
-#~ "aufrufen: <a href=\"%s\">%s</a>rn"
+#~ "aufrufen: <a href=\"%s\">%s</a>"
+
+#~ msgid "'Bild wirklich entfernen?'"
+#~ msgstr "'Bild wirklich entfernen?'"
