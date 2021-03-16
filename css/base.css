@@ -400,7 +400,8 @@ ul.existingFields li {
 
 i.picture {
     margin-right: 12px;
-    color: inherit;
+    color: #0056b3;
+    cursor: arrow;
 }
 
 .uploadedImages {
