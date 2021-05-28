@@ -47,7 +47,7 @@
                         <li class="list-group-item">
                             <button class="btn smallButton" name="remove" data-name="{$item.label}" value="{$item.id}" type="submit"><i class="fas fa-times-circle"></i></button>
                             <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" class="list-span">{$category.name}</a>
-                            <span class="list-span">{if $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i>{/if}<a href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span>
+                            <span class="list-span">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i>{/if}<a href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span>
                             <span class="list-span">{$item.amount}</span>
                             <span class="list-span">{$item.comment}</span>
 
@@ -138,7 +138,7 @@
                         <li class="list-group-item">
                             <button class="btn smallButton" name="remove" data-name="{$item.label}" value="{$item.id}" type="submit"><i class="fas fa-times-circle"></i></button>
                             <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" class="list-span">{$category.name}</a>
-                            <span class="list-span">{if $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i>{/if}<a href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span>
+                            <span class="list-span">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i>{/if}<a href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span>
                             <span class="list-span">{$item.amount}</span>
                             <span class="list-span">{$item.comment}</span>
 
@@ -228,7 +228,7 @@
                         <li class="list-group-item">
                             <button class="btn smallButton" name="remove" data-name="{$item.label}" value="{$item.id}" type="submit"><i class="fas fa-times-circle"></i></button>
                             <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" class="list-span">{$category.name}</a>
-                            <span class="list-span">{if $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i>{/if}<a href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span>
+                            <span class="list-span">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i>{/if}<a href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span>
                             <span class="list-span">{$item.amount}</span>
                             <span class="list-span">{$item.comment}</span>
 
