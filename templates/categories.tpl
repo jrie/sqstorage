@@ -57,8 +57,8 @@
                     let newName = window.prompt(targetType + ' "' + evt.target.dataset['name'] + '"', '')
 
                     if (newName !== null && newName.length !== 0) {
-                        if (evt.target.name === 'editCategory') window.location.href = '{/literal}{$urlBase}{literal}/categories{$urlPostFix}?headCategory=' + evt.target.dataset['id'] + '&to=' + encodeURIComponent(newName)
-                        else window.location.href = '{/literal}{$urlBase}{literal}/categories?subCategory=' + evt.target.dataset['id'] + '&to=' + encodeURIComponent(newName)
+                        if (evt.target.name === 'editCategory') window.location.href = '{/literal}{$urlBase}{literal}/categories{/literal}{$urlPostFix}{literal}?headCategory=' + evt.target.dataset['id'] + '&to=' + encodeURIComponent(newName)
+                        else window.location.href = '{/literal}{$urlBase}{literal}/categories{/literal}{$urlPostFix}{literal}?subCategory=' + evt.target.dataset['id'] + '&to=' + encodeURIComponent(newName)
                     }
 
                     return false
@@ -70,11 +70,11 @@
                 dropDown.addEventListener('change', function (evt) {
                     let subcategoryId = evt.target.dataset['originid']
                     if (evt.target.value === '-1') {
-                        window.location.href = '{/literal}{$urlBase}{literal}/categories?resetSubcategoryId=' + subcategoryId
+                        window.location.href = '{/literal}{$urlBase}{literal}/categories{/literal}{$urlPostFix}{literal}?resetSubcategoryId=' + subcategoryId
                         return
                     }
 
-                    window.location.href = '{/literal}{$urlBase}{literal}/categories?setCategoryId=' + subcategoryId + '&to=' + evt.target.value
+                    window.location.href = '{/literal}{$urlBase}{literal}/categories{/literal}{$urlPostFix}{literal}?setCategoryId=' + subcategoryId + '&to=' + evt.target.value
                 })
             }
         </script>
