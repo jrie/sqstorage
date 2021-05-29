@@ -133,7 +133,7 @@
                             {/if}
                             {$hasData = false}
                             {$options = []}
-                            {foreach explode(';', $field.fieldValues) as $value}
+                            {foreach explode(';', rtrim($field.fieldValues, ';')) as $value}
                                 {if $existingData !== null && in_array($value, $existingData)}
                                     {$options[]= "<option value=\"{$value}\" selected=\"selected\">{$value}</option>"}
                                     {$hasData = true}
@@ -256,7 +256,7 @@
 
                             {$hasData = false}
                             {$options = []}
-                            {foreach explode(';', $field.fieldValues) as $value}
+                            {foreach explode(';', rtrim($field.fieldValues, ';')) as $value}
                                 {if $existingData !== null && in_array($value, $existingData)}
                                     {$options[]= "<option value=\"{$value}\" selected=\"selected\">{$value}</option>"}
                                     {$hasData = true}
@@ -308,10 +308,13 @@
                                 {$readonly = ' readonly="readonly"'}
                                 <div class="dropdown">
                                     <select class="btn btn-secondary dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="cf{$field.id}" data-default="{$field.default}" data-nosettitle="true" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <option value="-1" selected="selected" data-default="{$field.default}">{$field.label}</option>
-                                    {foreach explode(';', $field.fieldValues) as $value}
+
+                                    <option value="-1" data-default="{$field.default}">{$field.label}</option>
+                                    {foreach explode(';', rtrim($field.fieldValues, ';')) as $value}
                                         {if $value === $field.default}
                                             <option value="{$value}">{$value}</option>'
+                                        {else if $value === $existingData}
+                                            <option value="{$value}" selected="selected">{$value}</option>'
                                         {else}
                                             <option value="{$value}">{$value}</option>'
                                         {/if}
