@@ -3,9 +3,10 @@ version: "3.0"
 services:
   php:
     image: sqstorage:master
+    build: .
     volumes:
-      - "app:/app"
-      - "./dba.php:/app/support/dba.php:ro"
+      - "./:/app"
+      - "./dba.php:/app/support/dba.php:rw"
 
   db:
     image: mariadb:10.4
@@ -21,7 +22,7 @@ services:
       - "1337:80"
     volumes:
       - "./nginx.conf:/etc/nginx/conf.d/default.conf"
-      - "app:/app"
+      - "./:/app"
 
 volumes:
   app:

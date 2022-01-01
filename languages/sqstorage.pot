@@ -126,7 +126,7 @@ msgid "Datenbank-Port"
 msgstr ""
 
 #: templates//installpage.tpl:94
-msgid "Verbinungsdaten eintragen"
+msgid "Verbindungsdaten eintragen"
 msgstr ""
 
 #: templates//installpage.tpl:99

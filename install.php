@@ -150,10 +150,4 @@ function IsDirWriteable($folder){
   return $tmp;
 }
 
-
-
-
-
-
-
 exit;
