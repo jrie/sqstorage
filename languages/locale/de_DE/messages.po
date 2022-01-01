@@ -139,8 +139,8 @@ msgid "Datenbank-Port"
 msgstr "Datenbank-Port"
 
 #: templates//installpage.tpl:94
-msgid "Verbinungsdaten eintragen"
-msgstr "Verbinungsdaten eintragen"
+msgid "Verbindungsdaten eintragen"
+msgstr "Verbindungsdaten eintragen"
 
 #: templates//installpage.tpl:99
 msgid "Datenbank installieren / aktualisieren"

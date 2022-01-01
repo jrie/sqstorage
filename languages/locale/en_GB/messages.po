@@ -139,7 +139,7 @@ msgid "Datenbank-Port"
 msgstr "Database port"
 
 #: templates//installpage.tpl:94
-msgid "Verbinungsdaten eintragen"
+msgid "Verbindungsdaten eintragen"
 msgstr "Enter credentials"
 
 #: templates//installpage.tpl:99

@@ -91,7 +91,7 @@
                         <input type="text" name="dbport" maxlength="5" class="form-control" required="required" placeholder="3306" aria-label="{t}Datenbank-Port{/t}" aria-describedby="basic-addon1" value="{if isset($POST.dbport)}{$POST.dbport}{else}3306{/if}">
                 </div>
 
-                <input type="submit" class="btn form-control btn-success" value="{t}Verbinungsdaten eintragen{/t}">
+                <input type="submit" class="btn form-control btn-success" value="{t}Verbindungsdaten eintragen{/t}">
             {else}
                 {if count($MigMessages) < 1}
                   {if count($error) < 1}
