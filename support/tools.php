@@ -1,11 +1,4 @@
 <?php
-
-
-
-
-
-
-
 function CheckDBCredentials($host,$user,$password,$name,$port,$silent=false){
   global $error;
 
