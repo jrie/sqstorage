@@ -1,6 +1,6 @@
 FROM php:7-fpm-buster
 
-COPY sqstorage-master/ /app/
+COPY ./ /app/
 RUN chown www-data:www-data -R /app/
 
 VOLUME /app
