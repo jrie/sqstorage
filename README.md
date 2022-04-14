@@ -12,6 +12,7 @@ See [LANGUAGE.md](LANGUAGE.md) for details on how to do so.
 
 * PHP version 7.0 and upwards
   * PHP extensions: `mysqli`, `gettext`, `intl`
+  * PHP extension `gd` on Raspberry OS
 * a MySQL-compatible database server (e.g. MariaDB)
 * a web server, e.g. nginx or Apache.
 
