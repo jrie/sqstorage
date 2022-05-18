@@ -7,11 +7,12 @@
   <link rel="stylesheet" href="./fonts/fontawesome/css/regular.css">
   <link rel="stylesheet" href="./fonts/fontawesome/css/fontawesome.css">
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <?php
-    require_once('./includer.php');
+  require_once('./includer.php');
 
-//    require_once('./support/dba.php');
-    if ($usePrettyURLs) $smarty->assign('urlPostFix', '');
-    else $smarty->assign('urlPostFix', '.php');
+  //    require_once('./support/dba.php');
+  if ($usePrettyURLs) $smarty->assign('urlPostFix', '');
+  else $smarty->assign('urlPostFix', '.php');
   ?>
 </head>
