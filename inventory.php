@@ -144,20 +144,48 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
   $sql = "Select * from items WHERE ";
   if (count($headCategories) > 0)    $sql .= " headcategory IN %li OR ";
   $sql .= $subCSQL;
-  $sql .= " (label LIKE %ss OR comment LIKE %ss OR serialnumber LIKE %ss) ";
+  //$sql .= " (label LIKE %ss OR comment LIKE %ss OR serialnumber LIKE %ss) "; // Previous Syntax
+  
+  // Custom fields search
+  $sql .= " (label LIKE %ss OR comment LIKE %ss OR serialnumber LIKE %ss ";
+  $customFields = DB::query('SELECT id, dataType FROM customFields WHERE dataType = 5 OR label LIKE %ss OR fieldValues LIKE %ss', $searchValue, $searchValue);
+  $customItemIds = [];
+  for ($x = 0; $x < count($customFields); ++$x) {
+    if ((int) $customFields[$x]['dataType'] === 5) {
+      $fieldData = DB::query("SELECT itemId FROM fieldData WHERE fieldId=%d AND string LIKE %ss", $customFields[$x]['id'], $searchValue);
+    } else {
+      $fieldData = DB::query("SELECT itemId FROM fieldData WHERE fieldId=%d", $customFields[$x]['id']);
+    }
+    
+    foreach ($fieldData as $keyItem) {
+      $customItemIds[] = $keyItem['itemId'];
+    }  
+  }
 
+  if (count($customItemIds) > 0) {
+    // SQL with custom item fields
+    $sql .= " OR id IN %li)";
 
-  if (count($headCategories) > 0) {
-    $items = DB::query($sql, $headCategories, $searchValue, $searchValue, $searchValue);
+    if (count($headCategories) > 0) {
+      $items = DB::query($sql, $headCategories, $searchValue, $searchValue, $searchValue, $customItemIds);
+    } else {
+      $items = DB::query($sql, $searchValue, $searchValue, $searchValue, $customItemIds);
+    }
+    
   } else {
-    $items = DB::query($sql, $searchValue, $searchValue, $searchValue);
+    // Regular search
+    $sql .= ")";
+    if (count($headCategories) > 0) {
+      $items = DB::query($sql, $headCategories, $searchValue, $searchValue, $searchValue);
+    } else {
+      $items = DB::query($sql, $searchValue, $searchValue, $searchValue);
+    }  
   }
 
   $storages = DB::query('SELECT * FROM storages ORDER BY label ASC');
   for ($y = 0; $y < count($storages); $y++) {
     $store[$storages[$y]['id']] = $storages[$y];
   }
-
 
   for ($x = 0; $x < count($items); $x++) {
     $item = $items[$x];
