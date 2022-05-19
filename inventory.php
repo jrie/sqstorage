@@ -150,8 +150,19 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
   $sql .= " (label LIKE %ss OR comment LIKE %ss OR serialnumber LIKE %ss ";
   $customFields = DB::query('SELECT id, dataType FROM customFields WHERE dataType = 5 OR label LIKE %ss OR fieldValues LIKE %ss', $searchValue, $searchValue);
   $customItemIds = [];
+
   for ($x = 0; $x < count($customFields); ++$x) {
-    if ((int) $customFields[$x]['dataType'] === 5) {
+    if ((int) $customFields[$x]['dataType'] === 0) {
+      $fieldData = DB::query("SELECT itemId FROM fieldData WHERE fieldId=%d AND intNeg = %i", $customFields[$x]['id'], $searchValue);
+    } else if ((int) $customFields[$x]['dataType'] === 1) {
+      $fieldData = DB::query("SELECT itemId FROM fieldData WHERE fieldId=%d AND intPos = %i", $customFields[$x]['id'], $searchValue);
+    } else if ((int) $customFields[$x]['dataType'] === 2) {
+      $fieldData = DB::query("SELECT itemId FROM fieldData WHERE fieldId=%d AND intNegPos = %i", $customFields[$x]['id'], $searchValue);
+    } else if ((int) $customFields[$x]['dataType'] === 3) {
+      $fieldData = DB::query("SELECT itemId FROM fieldData WHERE fieldId=%d AND floatNeg = %d", $customFields[$x]['id'], $searchValue);
+    } else if ((int) $customFields[$x]['dataType'] === 4) {
+      $fieldData = DB::query("SELECT itemId FROM fieldData WHERE fieldId=%d AND floatPos = %d", $customFields[$x]['id'], $searchValue);
+    } else if ((int) $customFields[$x]['dataType'] === 5) {
       $fieldData = DB::query("SELECT itemId FROM fieldData WHERE fieldId=%d AND string LIKE %ss", $customFields[$x]['id'], $searchValue);
     } else if ((int) $customFields[$x]['dataType'] === 6) {
       $fieldData = DB::query("SELECT itemId FROM fieldData WHERE fieldId=%d AND selection LIKE %ss", $customFields[$x]['id'], $searchValue);
