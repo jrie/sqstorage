@@ -1,12 +1,9 @@
 <?php
 
-if(!file_exists('./support/dba.php')){
+if (!file_exists('./support/dba.php')) {
   header("Location: install.php");
   exit();
 }
-
-
-
 
 require('login.php');
 
@@ -17,16 +14,16 @@ $smarty->assign('urlBase', $urlBase);
 
 
 require_once('./includer.php');
-if (!CheckDBCredentials(DB::$host, DB::$user, DB::$password, DB::$dbName,DB::$port)){
-  header("Location: install.php");
-  exit();
-}
-$tbls = DB::tableList();
-if(count($tbls) == 0){
+if (!CheckDBCredentials(DB::$host, DB::$user, DB::$password, DB::$dbName, DB::$port)) {
   header("Location: install.php");
   exit();
 }
 
+$tbls = DB::tableList();
+if (count($tbls) == 0) {
+  header("Location: install.php");
+  exit();
+}
 
 if ($usePrettyURLs) $smarty->assign('urlPostFix', '');
 else $smarty->assign('urlPostFix', '.php');
@@ -66,9 +63,37 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getImageId'])) {
   // Check for zero length image size items due to "upload_max_size" php.ini errors
   // And display a message to inform the user about this
   for ($x = 0; $x < $count; ++$x) {
-    if ($_FILES['images']['size'][$x] === 0) {
-      $tmpName = $_FILES['images']['name'][$x]; 
-      echo '<!DOCTYPE html><head><title>sqStorage image upload error</title></head><body><div class="alert"><h1>sqStorage PHP Error<br>File image upload error due to size</h1><p>Error uploading image file: "' . $tmpName . '"<br><br>Visit and try to fix the PHP "upload_max_filesize" parameter, see for details: <a href="https://www.php.net/manual/en/ini.core.php#ini.upload-max-filesize">https://www.php.net/manual/en/ini.core.php#ini.upload-max-filesize</a><br><br><a href="'. $_SERVER['HTTP_REFERER'] . '">Click here to return to the previous page.</a></p></div></body></html>';
+    if ($_FILES['images']['size'][$x] !== 0) {
+      $tmpName = $_FILES['images']['name'][$x];
+?>
+      <!DOCTYPE html>
+
+      <head>
+        <title>sqStorage - Image upload error</title>
+        <link rel="stylesheet" href="./css/bootstrap/bootstrap.css">
+        <link rel="stylesheet" href="./css/base.css">
+        <link rel="stylesheet" href="./fonts/fontawesome/css/solid.css">
+        <link rel="stylesheet" href="./fonts/fontawesome/css/regular.css">
+        <link rel="stylesheet" href="./fonts/fontawesome/css/fontawesome.css">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+      </head>
+
+      <body>
+        <nav class="navbar navbar-light bg-light">
+          <a href="<?php echo $urlBase; ?>/index<?php echo $urlPostFix;?>"><img class="logo" src="./img/sqstorage.png" alt="sqStorage logo" /></a>
+        </nav>
+        <div class="content">
+          <div class="alert alert-danger">
+            <?php
+            echo '<h2>File image upload error due to size</h2><br><p>Error uploading image file: "<b>' . $tmpName . '</b>"<br><br>Visit and try to fix the PHP "upload_max_filesize" parameter, see for details: <a href="https://www.php.net/manual/en/ini.core.php#ini.upload-max-filesize">https://www.php.net/manual/en/ini.core.php#ini.upload-max-filesize</a><br><br><a href="' . $_SERVER['HTTP_REFERER'] . '">Click here to return to the previous page.</a></p>';
+            ?>
+          </div>
+        </div>
+      </body>
+
+      </html>
+<?php
       die();
     }
   }
@@ -90,10 +115,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getImageId'])) {
     $imageInfo = getimagesize($tmpName);
     DB::query('INSERT INTO `images` VALUES(NULL, %d, %d, %d, %s, %s)', $itemId, $imageInfo[0], $imageInfo[1], $imageThumbnailData64, $imageData64);
   }
-  
+
   header('Location: ' . $_SERVER['HTTP_REFERER']);
   die();
-
 } else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $amount = isset($_POST['amount']) && !empty($_POST['amount']) ? $_POST['amount'] : 1;
   $serialNumber = isset($_POST['serialnumber']) && !empty($_POST['serialnumber']) ? $_POST['serialnumber'] : NULL;
@@ -159,7 +183,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getImageId'])) {
     $itemCreationId = DB::insertId();
   }
 
-  foreach(array_keys($_POST) as $key) {
+  foreach (array_keys($_POST) as $key) {
     if (strncmp($key, 'cfd_', 4) === 0) {
       $fieldKey = intVal(explode('_', $key, 2)[1]);
       $value = $_POST[$key];
@@ -181,20 +205,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getImageId'])) {
             case 1:
             case 2:
               $convertedValue = intval($value);
-            break;
+              break;
             case 3:
             case 4:
               $convertedValue = doubleval($value);
-            break;
+              break;
             default:
               $convertedValue = $value;
-            break;
+              break;
           }
         }
 
         $existing = DB::queryFirstRow('SELECT `id` FROM `fieldData` WHERE `itemId`=%d AND `fieldId`=%d', intval($itemCreationId), intval($field['id']));
-        if ($existing == null) DB::insert('fieldData', [$fieldType => $convertedValue, 'itemId' => intval($itemCreationId),'fieldId' => intval($field['id'])]);
-        else DB::update('fieldData', [$fieldType => $convertedValue, 'itemId' => intval($itemCreationId),'fieldId' => intval($field['id'])], 'id=%d', $existing['id']);
+        if ($existing == null) DB::insert('fieldData', [$fieldType => $convertedValue, 'itemId' => intval($itemCreationId), 'fieldId' => intval($field['id'])]);
+        else DB::update('fieldData', [$fieldType => $convertedValue, 'itemId' => intval($itemCreationId), 'fieldId' => intval($field['id'])], 'id=%d', $existing['id']);
       }
     }
   }
