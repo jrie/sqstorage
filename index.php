@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getImageId'])) {
   for ($x = 0; $x < $count; ++$x) {
     if ($_FILES['images']['size'][$x] === 0) {
       $tmpName = $_FILES['images']['name'][$x]; 
-      echo '<!DOCTYPE html><head><title>sqStorage image upload error</title></head><body><div class="error"><h1>sqStorage PHP Error<br>File image upload error due to size</h1><p>Error uploading image file: "' . $tmpName . '"<br><br>Visit and try to fix the PHP "upload_max_filesize" parameter, see for details: <a href="https://www.php.net/manual/en/ini.core.php#ini.upload-max-filesize">https://www.php.net/manual/en/ini.core.php#ini.upload-max-filesize</a></p></div></body></html>';
+      echo '<!DOCTYPE html><head><title>sqStorage image upload error</title></head><body><div class="alert"><h1>sqStorage PHP Error<br>File image upload error due to size</h1><p>Error uploading image file: "' . $tmpName . '"<br><br>Visit and try to fix the PHP "upload_max_filesize" parameter, see for details: <a href="https://www.php.net/manual/en/ini.core.php#ini.upload-max-filesize">https://www.php.net/manual/en/ini.core.php#ini.upload-max-filesize</a><br><br><a href="'. $_SERVER['HTTP_REFERER'] . '">Click here to return to the previous page.</a></p></div></body></html>';
       die();
     }
   }
