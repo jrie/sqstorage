@@ -65,35 +65,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getImageId'])) {
   for ($x = 0; $x < $count; ++$x) {
     if ($_FILES['images']['size'][$x] === 0) {
       $tmpName = $_FILES['images']['name'][$x];
-?>
-      <!DOCTYPE html>
-
-      <head>
-        <title>sqStorage - Image upload error</title>
-        <link rel="stylesheet" href="./css/bootstrap/bootstrap.css">
-        <link rel="stylesheet" href="./css/base.css">
-        <link rel="stylesheet" href="./fonts/fontawesome/css/solid.css">
-        <link rel="stylesheet" href="./fonts/fontawesome/css/regular.css">
-        <link rel="stylesheet" href="./fonts/fontawesome/css/fontawesome.css">
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-      </head>
-
-      <body>
-        <nav class="navbar navbar-light bg-light">
-          <a href="<?php echo $urlBase; ?>/index<?php echo $urlPostFix;?>"><img class="logo" src="./img/sqstorage.png" alt="sqStorage logo" /></a>
-        </nav>
-        <div class="content">
-          <div class="alert alert-danger">
-            <?php
-            echo '<h2>File image upload error due to size</h2><br><p>Error uploading image file: "<b>' . $tmpName . '</b>"<br><br>Visit and try to fix the PHP "upload_max_filesize" parameter, see for details: <a href="https://www.php.net/manual/en/ini.core.php#ini.upload-max-filesize">https://www.php.net/manual/en/ini.core.php#ini.upload-max-filesize</a><br><br><a href="' . $_SERVER['HTTP_REFERER'] . '">Click here to return to the previous page.</a></p>';
-            ?>
-          </div>
-        </div>
-      </body>
-
-      </html>
-<?php
+      echo '<!DOCTYPE html>' . PHP_EOL . '<head>' . PHP_EOL . '<title>sqStorage - Image upload error</title>' . PHP_EOL . '<link rel="stylesheet" href="./css/bootstrap/bootstrap.css">' . PHP_EOL . '';
+      echo '<link rel="stylesheet" href="./css/base.css">' . PHP_EOL . '<link rel="stylesheet" href="./fonts/fontawesome/css/solid.css"><link rel="stylesheet" href="./fonts/fontawesome/css/regular.css"><link rel="stylesheet" href="./fonts/fontawesome/css/fontawesome.css">' . PHP_EOL . '';
+      echo '<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">' . PHP_EOL . '';
+      echo '</head>' . PHP_EOL . '<body>' . PHP_EOL . '<nav class="navbar navbar-light bg-light">' . PHP_EOL . '<a href="'.  $urlBase . '/index' . $urlPostFix . '"><img class="logo" src="./img/sqstorage.png" alt="sqStorage logo" /></a>' . PHP_EOL . '</nav>';
+      echo '<div class="content">' . PHP_EOL . '<div class="alert alert-danger">' . PHP_EOL . '';
+      echo '<h2>File image upload error due to size</h2><br><p>Error uploading image file: "<b>' . $tmpName . '</b>"<br><br>Visit and try to fix the PHP "upload_max_filesize" parameter, see for details: <a href="https://www.php.net/manual/en/ini.core.php#ini.upload-max-filesize">https://www.php.net/manual/en/ini.core.php#ini.upload-max-filesize</a><br><br><a href="' . $_SERVER['HTTP_REFERER'] . '">Click here to return to the previous page.</a></p>';
+      echo '</div>' . PHP_EOL . '</div>' . PHP_EOL . '</body>' . PHP_EOL . '</html>';
       die();
     }
   }
