@@ -62,25 +62,35 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getImageId'])) {
   $itemId = intval($_POST['editItem']);
 
   $count = count($_FILES['images']['tmp_name']);
+
+  // Check for zero length image size items due to "upload_max_size" php.ini errors
+  // And display a message to inform the user about this
+  for ($x = 0; $x < $count; ++$x) {
+    if ($_FILES['images']['size'][$x] === 0) {
+      $tmpName = $_FILES['images']['name'][$x]; 
+      echo '<!DOCTYPE html><head><title>sqStorage image upload error</title></head><body><div class="error"><h1>sqStorage PHP Error<br>File image upload error due to size</h1><p>Error uploading image file: "' . $tmpName . '"<br><br>Visit and try to fix the PHP "upload_max_filesize" parameter, see for details: <a href="https://www.php.net/manual/en/ini.core.php#ini.upload-max-filesize">https://www.php.net/manual/en/ini.core.php#ini.upload-max-filesize</a></p></div></body></html>';
+      die();
+    }
+  }
+
   for ($x = 0; $x < $count; ++$x) {
     $tmpName = $_FILES['images']['tmp_name'][$x];
 
     $imageData = imagecreatefromstring(file_get_contents(addslashes($tmpName)));
     $imageLarge = imagescale($imageData, 1920);
     ob_start();
-    imagejpeg($imageLarge);
+    imagepng($imageLarge);
     $imageData64 = base64_encode(ob_get_clean());
 
     $imageThumbnail = imagescale($imageData, 200);
     ob_start();
-    imagejpeg($imageThumbnail);
+    imagepng($imageThumbnail);
     $imageThumbnailData64 = base64_encode(ob_get_clean());
 
     $imageInfo = getimagesize($tmpName);
-
     DB::query('INSERT INTO `images` VALUES(NULL, %d, %d, %d, %s, %s)', $itemId, $imageInfo[0], $imageInfo[1], $imageThumbnailData64, $imageData64);
   }
-
+  
   header('Location: ' . $_SERVER['HTTP_REFERER']);
   die();
 
