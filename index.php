@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getImageId'])) {
   // Check for zero length image size items due to "upload_max_size" php.ini errors
   // And display a message to inform the user about this
   for ($x = 0; $x < $count; ++$x) {
-    if ($_FILES['images']['size'][$x] !== 0) {
+    if ($_FILES['images']['size'][$x] === 0) {
       $tmpName = $_FILES['images']['name'][$x];
 ?>
       <!DOCTYPE html>
