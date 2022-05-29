@@ -44,16 +44,19 @@
                 {assign var="dateexploded" value=" "|explode:$item.date}
                 {assign var="catid" value=$item.headcategory}
                 {assign var="category" value=$categories.$catid}
-                <li class="list-group-item">
+                <li class="list-group-item" data-id="{$item.id}">
                     <button class="btn smallButton" name="remove" data-name="{$item.label}" value="{$item.id}" type="submit"><i class="fas fa-times-circle"></i></button>
                     <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" class="list-span">{$category.name}</a>
-                    <span class="list-span listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i>{/if}<a href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span>
-                    <span class="list-span listing-amount">{$item.amount}</span>
-                    <span class="list-span listing-comment">{$item.comment}</span>
+                    <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i><img class="item-picture" data-id="{$item.id}" src="data:image/png;base64,{$item.thumb}">{/if}
+                            <a class="listing-label quick-edit" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
+                    <div class="list-span"><span class="listing-amount quick-edit">{$item.amount}</span></div>
+                    <div class="list-span"><span class="listing-comment quick-edit">{$item.comment}</span></div>
 
-                    <span class="list-span listing-subcategories">{$implodedSubCats}</span>
-                    <span class="list-span listing-dateadded">{$dateexploded.0}</span>
-                    <a class="list-span listing-edititem" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
+                    <div class="list-span"><span class="listing-subcategories">{$implodedSubCats}</span></div>
+                    <div class="list-span"><span class="listing-dateadded">{$dateexploded.0}</span></div>
+                    <a tabindex="-1" href="#" class="save-inline-edit inactive" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
+                    <a tabindex="-1" href="#" class="open-inline-edit" data-id="{$item.id}"><i class="fas fa-eraser"></i></a>
+                    <a href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
 
                     <div class="dropdown float-right">
                         <select autocomplete="off" id="item_{$item.id}" class="btn btn-primary dropdown-toggle switchStorage listing-switchstorage" data-itemamount="{$item.amount}" data-value="0" data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -136,16 +139,19 @@
                 {assign var="dateexploded" value=" "|explode:$item.date}
                 {assign var="catid" value=$item.headcategory}
                 {assign var="category" value=$categories.$catid}
-                <li class="list-group-item">
+                <li class="list-group-item" data-id="{$item.id}">
                     <button class="btn smallButton" name="remove" data-name="{$item.label}" value="{$item.id}" type="submit"><i class="fas fa-times-circle"></i></button>
                     <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" class="list-span">{$category.name}</a>
-                    <span class="list-span listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i>{/if}<a href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span>
-                    <span class="list-span listing-amount">{$item.amount}</span>
-                    <span class="list-span listing-comment">{$item.comment}</span>
+                    <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i><img class="item-picture" data-id="{$item.id}" src="data:image/png;base64,{$item.thumb}">{/if}
+                            <a class="listing-label quick-edit" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
+                    <div class="list-span"><span class="listing-amount quick-edit">{$item.amount}</span></div>
+                    <div class="list-span"><span class="listing-comment quick-edit">{$item.comment}</span></div>
 
-                    <span class="list-span listing-subcategories">{$implodedSubCats}</span>
-                    <span class="list-span listing-dateadded">{$dateexploded.0}</span>
-                    <a class="list-span listing-edititem" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
+                    <div class="list-span"><span class="listing-subcategories">{$implodedSubCats}</span></div>
+                    <div class="list-span"><span class="listing-dateadded">{$dateexploded.0}</span></div>
+                    <a tabindex="-1" href="#" class="save-inline-edit inactive" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
+                    <a tabindex="-1" href="#" class="open-inline-edit" data-id="{$item.id}"><i class="fas fa-eraser"></i></a>
+                    <a href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
 
                     <div class="dropdown float-right">
                         <select autocomplete="off" id="item_{$item.id}" class="btn btn-primary dropdown-toggle switchStorage listing-switchstorage" data-value="0" data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -227,16 +233,19 @@
                 {assign var="dateexploded" value=" "|explode:$item.date}
                 {assign var="catid" value=$item.headcategory}
                 {assign var="category" value=$categories.$catid}
-                <li class="list-group-item">
+                <li class="list-group-item" data-id="{$item.id}">
                     <button class="btn smallButton" name="remove" data-name="{$item.label}" value="{$item.id}" type="submit"><i class="fas fa-times-circle"></i></button>
                     <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" class="list-span">{$category.name}</a>
-                    <span class="list-span listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i>{/if}<a href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span>
-                    <span class="list-span listing-amount">{$item.amount}</span>
-                    <span class="list-span listing-comment">{$item.comment}</span>
+                    <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i><img class="item-picture" data-id="{$item.id}" src="data:image/png;base64,{$item.thumb}">{/if}
+                            <a class="listing-label quick-edit" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
+                    <div class="list-span"><span class="listing-amount quick-edit">{$item.amount}</span></div>
+                    <div class="list-span"><span class="listing-comment quick-edit">{$item.comment}</span></div>
 
-                    <span class="list-span listing-subcategories">{$implodedSubCats}</span>
-                    <span class="list-span listing-dateadded">{$dateexploded.0}</span>
-                    <a class="list-span listing-edititem" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
+                    <div class="list-span"><span class="listing-subcategories">{$implodedSubCats}</span></div>
+                    <div class="list-span"><span class="listing-dateadded">{$dateexploded.0}</span></div>
+                    <a tabindex="-1" href="#" class="save-inline-edit inactive" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
+                    <a tabindex="-1" href="#" class="open-inline-edit" data-id="{$item.id}"><i class="fas fa-eraser"></i></a>
+                    <a href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
 
                     <div class="dropdown float-right">
                         <select autocomplete="off" id="item_{$item.id}" class="btn btn-primary dropdown-toggle switchStorage listing-switchstorage" data-value="0" data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -298,8 +307,14 @@
         alert('{/literal}{$urlBase}{literal}/inventory?storageid=' + itemid + '&itemid=' + storageid);
     }
 
-    let switches = document.querySelectorAll('.btn.switchStorage')
+    let imgListings = document.querySelectorAll('.listing-hasimages')
+    for (let listing of imgListings) {
+        listing.addEventListener('click', function(evt) {
+            evt.target.parentNode.querySelector('img.item-picture').classList.toggle('active')
+        })
+    }
 
+    let switches = document.querySelectorAll('.btn.switchStorage')
     for (let item of switches) {
         item.addEventListener('change', function(evt) {
             if (evt.target.value === '-1') return
@@ -325,6 +340,94 @@
             if (!window.confirm(targetType + ' "' + target.dataset['name'] + '"')) evt.preventDefault()
         })
     }
+
+    let inlineEdits = document.querySelectorAll('.open-inline-edit')
+    for (let editButton of inlineEdits) {
+        editButton.addEventListener('click', function(evt) {
+            evt.preventDefault()
+
+            if (evt.target.parentNode.nodeName === 'LI') {
+                return
+            }
+
+            evt.target.parentNode.classList.toggle('active')
+
+            const targetId = parseInt(evt.target.parentNode.dataset['id'])
+            document.querySelector('.save-inline-edit[data-id="' + targetId + '"]').classList.add('inactive')
+
+            if (evt.target.parentNode.classList.contains('active')) {
+                let imgDisplay = evt.target.parentNode.parentNode.querySelector('.listing-hasimages > i')
+                if (imgDisplay !== null) {
+                    imgDisplay.classList.toggle('hidden')
+                }
+
+                let targetRowEdits = document.querySelectorAll('li[data-id="' + targetId + '"] .quick-edit')
+                for (let field of targetRowEdits) {
+                    let input = document.createElement('input')
+                    input.value = field.textContent
+                    input.className = 'quick-edit'
+                    input.dataset['id'] = targetId
+
+                    const originalContent = encodeURI(input.value.trim())
+                    input.addEventListener('keyup', function(evt) {
+                        const inputValue = encodeURI(evt.target.value.trim())
+                        let dataTarget = document.querySelector('.save-inline-edit[data-id="' + targetId + '"]')
+
+                        if (inputValue === originalContent) {
+                            evt.target.classList.remove('edit-dirty')
+
+                            let dirtyField = document.querySelector('.edit-dirty[data-id="' + targetId + '"]')
+                            if (dirtyField === null) {
+                                dataTarget.classList.add('inactive')
+                            }
+
+                            delete evt.target.dataset['dirtyValue']
+                        } else {
+                            evt.target.dataset['dirtyValue'] = inputValue
+                            evt.target.classList.add('edit-dirty')
+                            dataTarget.classList.remove('inactive')
+                        }
+                    })
+
+                    field.classList.add('hidden')
+                    field.classList.add('hide-quick')
+                    field.parentNode.insertBefore(input, field)
+                }
+            } else {
+                let targetRowEdits = document.querySelectorAll('li[data-id="' + targetId + '"] input.quick-edit')
+                evt.target.parentNode.parentNode.querySelector('.listing-hasimages').children[0].classList.toggle('hidden')
+                for (let field of targetRowEdits) {
+                    field.parentNode.removeChild(field)
+                }
+
+                let originalColumns = document.querySelectorAll('li[data-id="' + targetId + '"] .hide-quick.quick-edit')
+                for (let field of originalColumns) {
+                    field.classList.remove('hide-quick')
+                    field.classList.remove('hidden')
+                }
+
+            }
+        })
+    }
+
+    let inlineSaves = document.querySelectorAll('.save-inline-edit')
+    for (let saveButton of inlineSaves) {
+        saveButton.addEventListener('click', function(evt) {
+            evt.preventDefault()
+            evt.target.parentNode.classList.toggle('inactive')
+
+            if (evt.target.parentNode.classList.contains('inactive')) {
+                return
+            }
+        })
+    }
+
+    window.addEventListener('beforeunload', function(evt) {
+        let dirtyField = document.querySelector('.edit-dirty')
+        if (dirtyField !== null) {
+            evt.preventDefault()
+        }
+    })
 </script>
 {/literal}
 {include file="bodyend.tpl"}
