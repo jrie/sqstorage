@@ -217,7 +217,7 @@ if ((isset($_GET['editItem']) && !empty($_GET['editItem'])) || (isset($_POST['ed
   $imageList = DB::query('SELECT `id`, `thumb`, `sizeX`, `sizeY` FROM `images` WHERE `itemId`=%d', $item['id']);
 } else {
   $customData = null;
-  if (isset($item)) $imageList = DB::query('SELECT `id`, `thumb`, `sizeX`, `sizeY` FROM `images` WHERE `itemId`=%d', intval($item['id']));
+  //if (isset($item)) $imageList = DB::query('SELECT `id`, `thumb`, `sizeX`, `sizeY` FROM `images` WHERE `itemId`=%d', intval($item['id']));
 }
 
 $smarty->assign('imageList', $imageList);
