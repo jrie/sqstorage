@@ -304,12 +304,17 @@
     }
 
     function MoveItem(itemid, storageid) {
-        alert('{/literal}{$urlBase}{literal}/inventory?storageid=' + itemid + '&itemid=' + storageid);
+        alert('{/literal}{$urlBase}{literal}/inventory{/literal}{$urlPostFix}{literal}?storageid=' + itemid + '&itemid=' + storageid);
     }
 
     let imgListings = document.querySelectorAll('.listing-hasimages')
     for (let listing of imgListings) {
         listing.addEventListener('click', function(evt) {
+            if (evt.target.nodeName === 'INPUT') {
+                evt.preventDefault()
+                return
+            }
+
             evt.target.parentNode.querySelector('img.item-picture').classList.toggle('active')
         })
     }
@@ -326,7 +331,7 @@
                 amountTrans = toTransfer
             }
 
-            window.location.href = '{/literal}{$urlBase}{literal}/inventory?storageid=' + evt.target.value + '&itemid=' + evt.target.dataset['id'] + '&amount=' + amountTrans.toString();
+            window.location.href = '{/literal}{$urlBase}{literal}/inventory{/literal}{$urlPostFix}{literal}?storageid=' + evt.target.value + '&itemid=' + evt.target.dataset['id'] + '&amount=' + amountTrans.toString();
         })
     }
 
@@ -356,17 +361,24 @@
             document.querySelector('.save-inline-edit[data-id="' + targetId + '"]').classList.add('inactive')
 
             if (evt.target.parentNode.classList.contains('active')) {
-                let imgDisplay = evt.target.parentNode.parentNode.querySelector('.listing-hasimages > i')
+                const imgDisplay = evt.target.parentNode.parentNode.querySelector('.listing-hasimages > i')
                 if (imgDisplay !== null) {
-                    imgDisplay.classList.toggle('hidden')
+                    imgDisplay.classList.add('hidden')
                 }
 
                 let targetRowEdits = document.querySelectorAll('li[data-id="' + targetId + '"] .quick-edit')
-                for (let field of targetRowEdits) {
+                for (const field of targetRowEdits) {
                     let input = document.createElement('input')
                     input.value = field.textContent
                     input.className = 'quick-edit'
                     input.dataset['id'] = targetId
+
+                    for (const className of field.classList.values()) {
+                        if (className.startsWith('listing-')) {
+                            input.dataset['dataTarget'] = className
+                            break
+                        }
+                    }
 
                     const originalContent = encodeURI(input.value.trim())
                     input.addEventListener('keyup', function(evt) {
@@ -405,7 +417,6 @@
                     field.classList.remove('hide-quick')
                     field.classList.remove('hidden')
                 }
-
             }
         })
     }
@@ -414,11 +425,62 @@
     for (let saveButton of inlineSaves) {
         saveButton.addEventListener('click', function(evt) {
             evt.preventDefault()
-            evt.target.parentNode.classList.toggle('inactive')
 
-            if (evt.target.parentNode.classList.contains('inactive')) {
+            if (evt.target.parentNode.nodeName === 'LI') {
+                return
+            } else if (evt.target.parentNode.classList.contains('inactive')) {
                 return
             }
+
+            const targetId = evt.target.parentNode.dataset['id']
+            const fields = document.querySelectorAll('input.quick-edit.edit-dirty[data-id="' + targetId + '"]')
+            const itemButton = evt.target
+
+            if (fields.length === 0) {
+                return
+            } else {
+                let formData = new FormData();
+                let xmlRequest = new XMLHttpRequest()
+                xmlRequest.open('POST', '{/literal}{$urlBase}{literal}/inventory{/literal}{$urlPostFix}{literal}')
+                formData.append('listing-itemId', targetId)
+                for (const field of fields) {
+                    const fieldValue = encodeURI(field.value.trim())
+                    formData.append(field.dataset['dataTarget'], fieldValue)
+                }
+
+                xmlRequest.addEventListener('error', function(evt) {
+                    console.log(evt)
+                    alert('{/literal}{t}Es trat ein Fehler beim speichen der Inhalte auf. Siehe der Browser Entwickler-Konsole.{/t}{literal}')
+                })
+
+                xmlRequest.addEventListener('loadend', function(evt) {
+                    if (evt.target.responseText === 'OK') {
+                        let targetRowEdits = document.querySelectorAll('li[data-id="' + targetId + '"] input.quick-edit')
+                        let originalColumns = document.querySelectorAll('li[data-id="' + targetId + '"] .hide-quick.quick-edit')
+                        itemButton.parentNode.parentNode.querySelector('.listing-hasimages').children[0].classList.toggle('hidden')
+
+                        for (let x = 0; x < targetRowEdits.length; ++x) {
+                            originalColumns[x].textContent = decodeURI(targetRowEdits[x].value)
+                            originalColumns[x].classList.remove('hide-quick')
+                            originalColumns[x].classList.remove('hidden')
+                            targetRowEdits[x].parentNode.removeChild(targetRowEdits[x])
+                        }
+
+                        itemButton.classList.remove('active')
+                        itemButton.parentNode.classList.add('inactive')
+                        document.querySelector('.open-inline-edit.active[data-id="' + targetId + '"]').classList.remove('active')
+                        alert('{/literal}{t}Der Eintrag wurde erfolgreich aktualisiert.{/t}{literal}')
+                    } else if (evt.target.responseText === 'AMOUNT_TYPE') {
+                        alert('{/literal}{t}Die Anzahl darf nur gesamte Einheiten umfassen.{/t}{literal}')
+                    } else {
+                        console.log(evt)
+                        alert('{/literal}{t}Bei dem Versuch zu speichern trat ein Fehler auf.{/t}{literal}')
+                    }
+                })
+
+                xmlRequest.send(formData)
+            }
+
         })
     }
 
