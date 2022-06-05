@@ -54,9 +54,9 @@
 
                     <div class="list-span"><span class="listing-subcategories">{$implodedSubCats}</span></div>
                     <div class="list-span"><span class="listing-dateadded">{$dateexploded.0}</span></div>
-                    <a tabindex="-1" href="#" class="save-inline-edit inactive" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
-                    <a tabindex="-1" href="#" class="open-inline-edit" data-id="{$item.id}"><i class="fas fa-eraser"></i></a>
-                    <a href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
+                    <a tabindex="-1" href="#" class="save-inline-edit inactive" title="{t}Schnelle Bearbeitung speichern{/t}" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
+                    <a tabindex="-1" href="#" class="open-inline-edit" title="{t}Schnelle Bearbeitung{/t}" data-id="{$item.id}"><i class="fas fa-eraser"></i></a>
+                    <a title="{t}Ausführliche Bearbeitung{/t}" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
 
                     <div class="dropdown float-right">
                         <select autocomplete="off" id="item_{$item.id}" class="btn btn-primary dropdown-toggle switchStorage listing-switchstorage" data-itemamount="{$item.amount}" data-value="0" data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -149,9 +149,9 @@
 
                     <div class="list-span"><span class="listing-subcategories">{$implodedSubCats}</span></div>
                     <div class="list-span"><span class="listing-dateadded">{$dateexploded.0}</span></div>
-                    <a tabindex="-1" href="#" class="save-inline-edit inactive" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
-                    <a tabindex="-1" href="#" class="open-inline-edit" data-id="{$item.id}"><i class="fas fa-eraser"></i></a>
-                    <a href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
+                    <a tabindex="-1" href="#" class="save-inline-edit inactive" title="{t}Schnelle Bearbeitung speichern{/t}" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
+                    <a tabindex="-1" href="#" class="open-inline-edit" title="{t}Schnelle Bearbeitung{/t}" data-id="{$item.id}"><i class="fas fa-eraser"></i></a>
+                    <a title="{t}Ausführliche Bearbeitung{/t}" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
 
                     <div class="dropdown float-right">
                         <select autocomplete="off" id="item_{$item.id}" class="btn btn-primary dropdown-toggle switchStorage listing-switchstorage" data-value="0" data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -243,9 +243,9 @@
 
                     <div class="list-span"><span class="listing-subcategories">{$implodedSubCats}</span></div>
                     <div class="list-span"><span class="listing-dateadded">{$dateexploded.0}</span></div>
-                    <a tabindex="-1" href="#" class="save-inline-edit inactive" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
-                    <a tabindex="-1" href="#" class="open-inline-edit" data-id="{$item.id}"><i class="fas fa-eraser"></i></a>
-                    <a href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
+                    <a tabindex="-1" href="#" class="save-inline-edit inactive" title="{t}Schnelle Bearbeitung speichern{/t}" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
+                    <a tabindex="-1" href="#" class="open-inline-edit" title="{t}Schnelle Bearbeitung{/t}" data-id="{$item.id}"><i class="fas fa-eraser"></i></a>
+                    <a title="{t}Ausführliche Bearbeitung{/t}" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
 
                     <div class="dropdown float-right">
                         <select autocomplete="off" id="item_{$item.id}" class="btn btn-primary dropdown-toggle switchStorage listing-switchstorage" data-value="0" data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
