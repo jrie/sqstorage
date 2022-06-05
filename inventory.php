@@ -32,6 +32,43 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   } else if (isset($_POST['removeStorage']) && !empty($_POST['removeStorage'])) {
     DB::update('items', array('storageid' => 0), 'storageid=%d', $_POST['removeStorage']);
     DB::query('DELETE FROM `storages` WHERE id=%d', $_POST['removeStorage']);
+  } else if (isset($_POST['listing-itemId'])) {
+    $targetItem = DB::queryFirstRow('SELECT id FROM items WHERE id=%d LIMIT 1', (int)$_POST['listing-itemId']);
+    if (!isset($targetItem['id'])) {
+      die();
+    }
+
+    $targetId = (int) $targetItem['id'];
+
+    $itemKeys = ['listing-label', 'listing-amount', 'listing-comment'];
+    $dbUpdateArray = array();
+
+    foreach($_POST as $key => $value) {
+      if (in_array($key, $itemKeys)) {
+        $itemKey = explode('listing-', $key, 2);
+        if (isset($itemKey[1])) {
+          $decodedValue = urldecode($value);
+          if ($itemKey[1] === 'amount') {
+            // Check if the amount value consists only of digits
+            // or trigger a error in Javascript
+            if (!ctype_digit($decodedValue)) {
+              echo 'AMOUNT_TYPE';
+              die();
+            }
+          }
+          $dbUpdateArray[$itemKey[1]] = $decodedValue;
+        }
+      }
+    }
+
+    if (count($dbUpdateArray) !== 0) {
+      DB::update('items', $dbUpdateArray, 'id=%d', $targetId);
+      echo 'OK';
+      die();
+    } else {
+      echo 'FAIL';
+      die();
+    }
   }
 }
 
