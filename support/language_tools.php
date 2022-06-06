@@ -20,6 +20,8 @@ if (isset($_REQUEST['lang'])) {
 }
 
 $langCurrent = $_SESSION['lang'];
+session_write_close();
+session_start();
 initLang($_SESSION['lang']);
 
 
