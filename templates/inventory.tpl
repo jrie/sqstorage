@@ -451,7 +451,7 @@
 
                 xmlRequest.addEventListener('error', function(evt) {
                     console.log(evt)
-                    alert('{/literal}{t}Es trat ein Fehler beim speichen der Inhalte auf. Siehe der Browser Entwickler-Konsole.{/t}{literal}')
+                    alert('{/literal}{t}Es trat ein Fehler bei dem Speichern der Inhalte auf. Die Browser Entwickler-Konsole enthält Details.{/t}{literal}')
                 })
 
                 xmlRequest.addEventListener('loadend', function(evt) {
@@ -475,7 +475,7 @@
                         alert('{/literal}{t}Die Anzahl darf nur gesamte Einheiten umfassen.{/t}{literal}')
                     } else {
                         console.log(evt)
-                        alert('{/literal}{t}Bei dem Versuch zu speichern trat ein Fehler auf.{/t}{literal}')
+                        alert('{/literal}{t}Bei dem Versuch zu speichern trat ein Fehler auf. Die Browser Entwickler-Konsole enthält Details.{/t}{literal}')
                     }
                 })
 
