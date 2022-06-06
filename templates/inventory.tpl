@@ -12,7 +12,7 @@
         {if $parse.showemptystorages || $itemstore.itemcount > 0 }
         <hr>
         <div class="storage-area">
-            <button class="btn smallButton" name="removeStorage" data-name="{if isset($itemstore.storage.label)}{$itemstore.storage.label}{else}{t}Unsortiert{/t}{/if}" value="{$itemstore.storage.id}" type="submit"><i class="fas fa-times-circle"></i></button>
+            <button title="{t}Lagerplatz löschen{/t}" class="btn smallButton" name="removeStorage" data-name="{if isset($itemstore.storage.label)}{$itemstore.storage.label}{else}{t}Unsortiert{/t}{/if}" value="{$itemstore.storage.id}" type="submit"><i class="fas fa-times-circle"></i></button>
             <h4 class="text-dark">
                 <a href="{$urlBase}/inventory{$urlPostFix}?storageid={$itemstore.storage.id}">{if isset($itemstore.storage.label)}{$itemstore.storage.label}{else}{t}Unsortiert{/t}{/if}</a>&nbsp;
                 <span class="small">({$itemstore.positionen} {if $itemstore.positionen == 1}{t}Position{/t}{else}{t}Positionen{/t}{/if}, {$itemstore.itemcount} {if $itemstore.itemcount == 1}{t}Gegenstand{/t}{else}{t}Gegenstände{/t}{/if})</span>
@@ -45,7 +45,7 @@
                 {assign var="catid" value=$item.headcategory}
                 {assign var="category" value=$categories.$catid}
                 <li class="list-group-item" data-id="{$item.id}">
-                    <button class="btn smallButton" name="remove" data-name="{$item.label}" value="{$item.id}" type="submit"><i class="fas fa-times-circle"></i></button>
+                    <button title="{t}Position löschen{/t}" class="btn smallButton" name="remove" data-name="{$item.label}" value="{$item.id}" type="submit"><i class="fas fa-times-circle"></i></button>
                     <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" class="list-span">{$category.name}</a>
                     <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i><img class="item-picture" data-id="{$item.id}" src="data:image/png;base64,{$item.thumb}">{/if}
                             <a class="listing-label quick-edit" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
@@ -107,7 +107,6 @@
         {if $parse.showemptystorages || $itemstore.itemcount > 0 }
         <hr>
         <div class="storage-area">
-            <button class="btn smallButton" name="removeStorage" data-name="{if isset($itemstore.storage.label)}{$itemstore.storage.label}{else}{t}Unsortiert{/t}{/if}" value="{$itemstore.storage.id}" type="submit"><i class="fas fa-times-circle"></i></button>
             <h4 class="text-dark">
                 {if isset($itemstore.storage.label)}{$itemstore.storage.label}{else}{t}Unsortiert{/t}{/if}&nbsp;
                 <span class="small">({$itemstore.positionen} {if $itemstore.positionen == 1}{t}Position{/t}{else}{t}Positionen{/t}{/if}, {$itemstore.itemcount} {if $itemstore.itemcount == 1}{t}Gegenstand{/t}{else}{t}Gegenstände{/t}{/if})</span>
@@ -140,7 +139,7 @@
                 {assign var="catid" value=$item.headcategory}
                 {assign var="category" value=$categories.$catid}
                 <li class="list-group-item" data-id="{$item.id}">
-                    <button class="btn smallButton" name="remove" data-name="{$item.label}" value="{$item.id}" type="submit"><i class="fas fa-times-circle"></i></button>
+                    <button class="btn smallButton" title="{t}Position löschen{/t}" name="remove" data-name="{$item.label}" value="{$item.id}" type="submit"><i class="fas fa-times-circle"></i></button>
                     <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" class="list-span">{$category.name}</a>
                     <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i><img class="item-picture" data-id="{$item.id}" src="data:image/png;base64,{$item.thumb}">{/if}
                             <a class="listing-label quick-edit" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
@@ -201,7 +200,7 @@
         {if $parse.showemptystorages || $itemstore.itemcount > 0 }
         <hr>
         <div class="storage-area">
-            <button class="btn smallButton" name="removeStorage" data-name="{if isset($itemstore.storage.label)}{$itemstore.storage.label}{else}{t}Unsortiert{/t}{/if}" value="{$itemstore.storage.id}" type="submit"><i class="fas fa-times-circle"></i></button>
+            <button title="{t}Unterkategorie löschen{/t}" class="btn smallButton" name="removeStorage" data-name="{if isset($itemstore.storage.label)}{$itemstore.storage.label}{else}{t}Unsortiert{/t}{/if}" value="{$itemstore.storage.id}" type="submit"><i class="fas fa-times-circle"></i></button>
             <h4 class="text-dark">
                 {if isset($itemstore.storage.label)}{$itemstore.storage.label}{else}{t}Unsortiert{/t}{/if}&nbsp;
                 <span class="small">({$itemstore.positionen} {if $itemstore.positionen == 1}{t}Position{/t}{else}{t}Positionen{/t}{/if}, {$itemstore.itemcount} {if $itemstore.itemcount == 1}{t}Gegenstand{/t}{else}{t}Gegenstände{/t}{/if})</span>
@@ -234,7 +233,7 @@
                 {assign var="catid" value=$item.headcategory}
                 {assign var="category" value=$categories.$catid}
                 <li class="list-group-item" data-id="{$item.id}">
-                    <button class="btn smallButton" name="remove" data-name="{$item.label}" value="{$item.id}" type="submit"><i class="fas fa-times-circle"></i></button>
+                    <button title="{t}Position löschen{/t}" class="btn smallButton" name="remove" data-name="{$item.label}" value="{$item.id}" type="submit"><i class="fas fa-times-circle"></i></button>
                     <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" class="list-span">{$category.name}</a>
                     <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i><img class="item-picture" data-id="{$item.id}" src="data:image/png;base64,{$item.thumb}">{/if}
                             <a class="listing-label quick-edit" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
@@ -313,6 +312,8 @@
             if (evt.target.nodeName === 'INPUT') {
                 evt.preventDefault()
                 return
+            } else if (evt.target.nodeName === 'A') {
+                return
             }
 
             evt.target.parentNode.querySelector('img.item-picture').classList.toggle('active')
@@ -358,7 +359,7 @@
             evt.target.parentNode.classList.toggle('active')
 
             const targetId = parseInt(evt.target.parentNode.dataset['id'])
-            document.querySelector('.save-inline-edit[data-id="' + targetId + '"]').classList.add('inactive')
+            evt.target.parentNode.parentNode.querySelector('.save-inline-edit[data-id="' + targetId + '"]').classList.add('inactive')
 
             if (evt.target.parentNode.classList.contains('active')) {
                 const imgDisplay = evt.target.parentNode.parentNode.querySelector('.listing-hasimages > i')
@@ -366,7 +367,7 @@
                     imgDisplay.classList.add('hidden')
                 }
 
-                let targetRowEdits = document.querySelectorAll('li[data-id="' + targetId + '"] .quick-edit')
+                let targetRowEdits = evt.target.parentNode.parentNode.querySelectorAll('li[data-id="' + targetId + '"] .quick-edit')
                 for (const field of targetRowEdits) {
                     let input = document.createElement('input')
                     input.value = field.textContent
@@ -383,7 +384,7 @@
                     const originalContent = encodeURI(input.value.trim())
                     input.addEventListener('keyup', function(evt) {
                         const inputValue = encodeURI(evt.target.value.trim())
-                        let dataTarget = document.querySelector('.save-inline-edit[data-id="' + targetId + '"]')
+                        let dataTarget = evt.target.parentNode.parentNode.querySelector('.save-inline-edit[data-id="' + targetId + '"]')
 
                         if (inputValue === originalContent) {
                             evt.target.classList.remove('edit-dirty')
@@ -406,13 +407,13 @@
                     field.parentNode.insertBefore(input, field)
                 }
             } else {
-                let targetRowEdits = document.querySelectorAll('li[data-id="' + targetId + '"] input.quick-edit')
+                let targetRowEdits = evt.target.parentNode.parentNode.querySelectorAll('li[data-id="' + targetId + '"] input.quick-edit')
                 evt.target.parentNode.parentNode.querySelector('.listing-hasimages').children[0].classList.toggle('hidden')
                 for (let field of targetRowEdits) {
                     field.parentNode.removeChild(field)
                 }
 
-                let originalColumns = document.querySelectorAll('li[data-id="' + targetId + '"] .hide-quick.quick-edit')
+                let originalColumns = evt.target.parentNode.parentNode.querySelectorAll('li[data-id="' + targetId + '"] .hide-quick.quick-edit')
                 for (let field of originalColumns) {
                     field.classList.remove('hide-quick')
                     field.classList.remove('hidden')
@@ -455,8 +456,8 @@
 
                 xmlRequest.addEventListener('loadend', function(evt) {
                     if (evt.target.responseText === 'OK') {
-                        let targetRowEdits = document.querySelectorAll('li[data-id="' + targetId + '"] input.quick-edit')
-                        let originalColumns = document.querySelectorAll('li[data-id="' + targetId + '"] .hide-quick.quick-edit')
+                        let targetRowEdits = itemButton.parentNode.parentNode.querySelectorAll('li[data-id="' + targetId + '"] input.quick-edit')
+                        let originalColumns = itemButton.parentNode.parentNode.querySelectorAll('li[data-id="' + targetId + '"] .hide-quick.quick-edit')
                         itemButton.parentNode.parentNode.querySelector('.listing-hasimages').children[0].classList.toggle('hidden')
 
                         for (let x = 0; x < targetRowEdits.length; ++x) {
@@ -468,7 +469,7 @@
 
                         itemButton.classList.remove('active')
                         itemButton.parentNode.classList.add('inactive')
-                        document.querySelector('.open-inline-edit.active[data-id="' + targetId + '"]').classList.remove('active')
+                        itemButton.parentNode.parentNode.querySelector('.open-inline-edit.active[data-id="' + targetId + '"]').classList.remove('active')
                         alert('{/literal}{t}Der Eintrag wurde erfolgreich aktualisiert.{/t}{literal}')
                     } else if (evt.target.responseText === 'AMOUNT_TYPE') {
                         alert('{/literal}{t}Die Anzahl darf nur gesamte Einheiten umfassen.{/t}{literal}')
