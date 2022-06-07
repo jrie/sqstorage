@@ -1,5 +1,6 @@
 <?php
-define('LANGUAGEDIR', $basedir . '/languages/locale/');
+//define('LANGUAGEDIR', $basedir . '/languages/locale/');
+define('LANGUAGEDIR', 'languages/locale/');
 
 $langsLabels = array(
   'en_GB' => 'English',
@@ -20,10 +21,7 @@ if (isset($_REQUEST['lang'])) {
 }
 
 $langCurrent = $_SESSION['lang'];
-session_write_close();
-session_start();
 initLang($_SESSION['lang']);
-
 
 function initLang($locale)
 {
@@ -34,11 +32,13 @@ function initLang($locale)
   $filename = "$locales_root".$locale."/LC_MESSAGES/$domain.mo";
   $mtime = filemtime($filename); // check its modification time
   $filename_new = "$locales_root".$locale."/LC_MESSAGES/{$domain}_{$mtime}.mo";
+ 
   if (!file_exists($filename_new)) { // check if we have created it before
     copy($filename, $filename_new);
   }
   $domain_new = "{$domain}_{$mtime}";
   if(!file_exists($filename_new)) $domain_new = "{$domain}";
+ 
   $suff =  ".UTF-8";
   if (isset($_SERVER['WINDIR'])) {
     if (strlen($_SERVER['WINDIR']) > 1) {
@@ -55,12 +55,12 @@ function initLang($locale)
     }
   }
 
-  \Locale::setDefault(str_replace('_', '-', $locale));
+  Locale::setDefault(str_replace('_', '-', $locale));
+  putenv('LANGUAGE=' . $locale . $suff);
   putenv('LC_ALL=' . $locale . $suff);
   putenv('LANG=' . $locale . $suff);
-  setlocale(LC_ALL, "");
+  setlocale(LC_ALL, 'de_DE');
   setlocale(LC_ALL, $locale . $suff);
-  setlocale(LC_CTYPE, $locale . $suff);
   bindtextdomain($domain_new, LANGUAGEDIR);
   textdomain($domain_new);
 }
