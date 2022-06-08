@@ -110,6 +110,9 @@ Remove the semicolon in front of
 `;extension=php_intl.dll`
 and restart the Apache webserver.
 
+##### Language selection in Windows XAMPP
+If you're running a Windows XAMPP development system, you need to start xampp-control by command line. Start the command line [WIN+R -> cmd.exe] and enter the command `set LANG=en_GB` (or de_DE, or ... you know) and start xampp-control `c:\xampp\xampp-control.exe`
+
 ### German talking src ressource
 The whole idea behind sqStorage or "Tom's Inventarverwaltung" can be found at the german bulletin board NGB.to over https://ngb.to/threads/39122-Webbasierte-Mini-Lagerverwaltung
 
