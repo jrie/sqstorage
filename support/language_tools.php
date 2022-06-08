@@ -1,6 +1,6 @@
 <?php
 //define('LANGUAGEDIR', $basedir . '/languages/locale/');
-define('LANGUAGEDIR', 'languages/locale/');
+define('LANGUAGEDIR', str_replace('/', DIRECTORY_SEPARATOR, 'languages/locale/'));
 
 $langsLabels = array(
   'en_GB' => 'English',
@@ -9,10 +9,11 @@ $langsLabels = array(
 $langsAvailable = array_keys($langsLabels);
 $defaultLanguage = 'de_DE';
 
-if (!isset($_SESSION)) {
+if (session_status() == PHP_SESSION_NONE) {
   session_start();
-  $_SESSION['lang'] = $defaultLanguage;
 }
+
+$_SESSION['lang'] = $defaultLanguage;
 
 if (isset($_REQUEST['lang'])) {
   if (in_array($_REQUEST['lang'], $langsAvailable)) {
@@ -30,17 +31,20 @@ function initLang($locale)
 
   // path to the .MO file that we should monitor
   $filename = "$locales_root".$locale."/LC_MESSAGES/$domain.mo";
+  $filename = str_replace('/', DIRECTORY_SEPARATOR, $filename);
   $mtime = filemtime($filename); // check its modification time
   $filename_new = "$locales_root".$locale."/LC_MESSAGES/{$domain}_{$mtime}.mo";
+  $filename_new = str_replace('/', DIRECTORY_SEPARATOR, $filename_new);
  
   if (!file_exists($filename_new)) { // check if we have created it before
     copy($filename, $filename_new);
   }
+  
   $domain_new = "{$domain}_{$mtime}";
   if(!file_exists($filename_new)) $domain_new = "{$domain}";
- 
+
   $suff =  ".UTF-8";
-  if (isset($_SERVER['WINDIR'])) {
+    if (isset($_SERVER['WINDIR'])) {
     if (strlen($_SERVER['WINDIR']) > 1) {
       $suff = "";
       switch ($locale) {
@@ -54,7 +58,7 @@ function initLang($locale)
       }
     }
   }
-
+  
   Locale::setDefault(str_replace('_', '-', $locale));
   putenv('LANGUAGE=' . $locale . $suff);
   putenv('LC_ALL=' . $locale . $suff);
@@ -63,4 +67,5 @@ function initLang($locale)
   setlocale(LC_ALL, $locale . $suff);
   bindtextdomain($domain_new, LANGUAGEDIR);
   textdomain($domain_new);
+  
 }
