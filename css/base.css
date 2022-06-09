@@ -482,11 +482,11 @@ i.picture {
     visibility: hidden;
     z-index: 99999;
     position: fixed;
-
+    max-height: 100%;
+    max-width: 100%;
 }
 
 .imageOverlay.active {
-    position: relative;
     display: block;
     visibility: visible;
     overflow: scroll;
