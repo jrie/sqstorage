@@ -356,7 +356,7 @@
             {if $isEdit}
                 <h2 class="clearfix">{t}Bilder des Gegenstandes{/t}</h2>
                 <form method="POST" accept-charset="utf-8" action="index.php" enctype="multipart/form-data">
-                    <input name="images[]" required="required" type="file" multiple="multiple" accept="image/png, image/jpeg" placeholder="{t}Bild Upload{/t}"/>
+                    <input name="images[]" required="required" type="file" multiple="multiple" accept="image/png, image/jpeg, image/jpg, image/webp, image/gif, image/bmp" placeholder="{t}Bild Upload{/t}"/>
                     <input type="hidden" value="{$item.id}" name="editItem" />
                     <input type="submit" class="submit" value="{t}Bilder hochladen{/t}"/>
                 </form>
