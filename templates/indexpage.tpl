@@ -362,7 +362,7 @@
                 </form>
                 {if $imageList != null}
                 <div class="imageOverlay"><img class="overlayedImaged" /></div>
-                <div style="flex" class="uploadedImages">
+                <div class="uploadedImages">
                     {foreach $imageList as $image}
                     <div class="imgDiv">
                         <a class="imageLink" data-imageid="{$image['id']}" href="#"><img src="data:image;base64,{$image['thumb']}"/></a>
@@ -423,6 +423,8 @@
                                 imgOverlay.children[0].src = 'data:image;base64,' + responseJson['data']
                                 imgOverlay.classList.add('active')
                                 imgOverlay.addEventListener('click', hidePreview)
+                                imgOverlay.style.left = ((window.innerWidth * 0.5) - (imgOverlay.clientWidth * 0.5)) + 'px';
+                                imgOverlay.style.top = ((window.innerHeight * 0.5) - (imgOverlay.clientHeight * 0.5)) + 'px';
                             }
                         }
                     }
