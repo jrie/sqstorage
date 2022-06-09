@@ -486,6 +486,7 @@ i.picture {
 }
 
 .imageOverlay.active {
+    position: relative;
     display: block;
     visibility: visible;
     overflow: scroll;

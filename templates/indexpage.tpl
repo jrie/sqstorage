@@ -407,11 +407,17 @@
 
                 let imgSrc = evt.target.parentNode
                 let imgLoader = new XMLHttpRequest()
+                let imgOverlay = document.querySelector('.imageOverlay')
+
+                function handleImgResize(evt) {
+                    imgOverlay.style.left = Math.floor((1 - (imgOverlay.clientWidth / window.innerWidth)) * 50) + '%'
+                    imgOverlay.style.top = Math.floor((1 - (imgOverlay.clientHeight / window.innerHeight)) * 50) + '%'
+                }
 
                 function hidePreview(evt) {
-                    let imgOverlay = document.querySelector('.imageOverlay')
                     imgOverlay.classList.remove('active')
                     imgOverlay.removeEventListener('click', hidePreview)
+                    window.removeEventListener('resize', handleImgResize)            
                 }
 
                 function handleRequest(evt) {
@@ -419,14 +425,14 @@
                         if (evt.target.status === 200) {
                             let responseJson = JSON.parse(evt.target.responseText)
                             if (responseJson['status'] === 'OK') {
-                                let imgOverlay = document.querySelector('.imageOverlay')
+                                imgOverlay.children[0].addEventListener('loadend', function(evt) {
+                                    handleImgResize()
+                                })
+
+                                window.addEventListener('resize', handleImgResize)
                                 imgOverlay.children[0].src = 'data:image;base64,' + responseJson['data']
                                 imgOverlay.classList.add('active')
                                 imgOverlay.addEventListener('click', hidePreview)
-                                window.setTimeout(function() {
-                                imgOverlay.style.left = ((Math.round(window.innerWidth * 0.5)) - (Math.round(imgOverlay.children[0].width * 0.5))) + 'px';
-                                imgOverlay.style.top = ((Math.round(window.innerHeight * 0.5)) - (Math.round(imgOverlay.children[0].height * 0.5))) + 'px';
-                                }, 200)
                             }
                         }
                     }
