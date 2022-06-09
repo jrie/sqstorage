@@ -78,19 +78,49 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getImageId'])) {
 
   for ($x = 0; $x < $count; ++$x) {
     $tmpName = $_FILES['images']['tmp_name'][$x];
-
+    
+    $imageInfo = getimagesize($tmpName);
+    $imgMime = $imageInfo['mime'];
     $imageData = imagecreatefromstring(file_get_contents(addslashes($tmpName)));
     $imageLarge = imagescale($imageData, 1920);
-    ob_start();
-    imagepng($imageLarge);
-    $imageData64 = base64_encode(ob_get_clean());
-
     $imageThumbnail = imagescale($imageData, 200);
+    
     ob_start();
-    imagepng($imageThumbnail);
+    if ($imgMime == 'image/png') {
+      imagepng($imageLarge);
+    } else if ($imgMime == 'image/jpeg') {
+      imagejpeg($imageLarge);
+    } else if ($imgMime == 'image/gif') {
+      imagegif($imageLarge);
+    } else if ($imgMime == 'image/webp') {
+      imagewebp($imageLarge);
+    } else if ($imgMime == 'image/bmp') {
+      imagebmp($imageLarge);
+    } else {
+      // Img type not supported
+      // Show message to user
+      exit();
+    }
+    
+    $imageData64 = base64_encode(ob_get_clean());
+    
+    if ($imgMime == 'image/png') {
+      imagepng($imageThumbnail);
+    } else if ($imgMime == 'image/jpeg') {
+      imagejpeg($imageThumbnail);
+    } else if ($imgMime == 'image/gif') {
+      imagegif($imageThumbnail);
+    } else if ($imgMime == 'image/webp') {
+      imagewebp($imageThumbnail);
+    } else if ($imgMime == 'image/bmp') {
+      imagebmp($imageThumbnail);
+    } else {
+      // Img type not supported
+      // Show message to user
+      exit();
+    }
+    
     $imageThumbnailData64 = base64_encode(ob_get_clean());
-
-    $imageInfo = getimagesize($tmpName);
     DB::query('INSERT INTO `images` VALUES(NULL, %d, %d, %d, %s, %s)', $itemId, $imageInfo[0], $imageInfo[1], $imageThumbnailData64, $imageData64);
   }
 
