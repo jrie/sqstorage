@@ -19,14 +19,6 @@ $header_template = <<<EOD
         <option value="en_GB">English</option>
         <option value="de_DE">Deutsch</option>
       </select>
-      <script type ="text/javascript">
-          let langSelection = document.querySelector('select[name="lang"').addEventListener('change', function (evt) {
-              let langValue = evt.target.options[evt.target.selectedIndex].value
-              let srcUri = window.location.href.toString().replace(/.lang=.[^\&\/]*/, '')
-              if (srcUri.indexOf('?') === -1) window.location.href = srcUri + '?lang=' + langValue
-              else window.location.href = srcUri + '&lang=' + langValue
-          })
-      </script>
     </div>
   </nav>
   <center>
@@ -36,7 +28,17 @@ $footer_template = <<<EOD
 </center>
 <footer class="footer">
   <script type="text/javascript">
-    eval(unescape("%64%6f%63%75%6d%65%6e%74%2e%77%72%69%74%65%28%27%3c%61%20%68%72%65%66%3d%22%6d%61%69%6c%74%6f%3a%6a%61%6e%40%64%77%72%6f%78%2e%6e%65%74%3f%73%75%62%6a%65%63%74%3d%73%71%73%74%6f%72%61%67%65%22%20%63%6c%61%73%73%3d%22%62%74%6e%20%62%74%6e%2d%69%6e%66%6f%22%20%74%61%62%69%6e%64%65%78%3d%22%2d%31%22%3e%4b%6f%6e%74%61%6b%74%3c%2f%61%3e%27%29%3b"))</script><a class="btn btn-info" tabIndex="-1" target="_blank" href="https://github.com/jrie/sqstorage">Github</a></footer></script>';
+    eval(unescape('%64%6f%63%75%6d%65%6e%74%2e%77%72%69%74%65%28%27%3c%61%20%68%72%65%66%3d%22%6d%61%69%6c%74%6f%3a%6a%61%6e%40%64%77%72%6f%78%2e%6e%65%74%3f%73%75%62%6a%65%63%74%3d%73%71%73%74%6f%72%61%67%65%22%20%63%6c%61%73%73%3d%22%62%74%6e%20%62%74%6e%2d%69%6e%66%6f%22%20%74%61%62%69%6e%64%65%78%3d%22%2d%31%22%3e%4b%6f%6e%74%61%6b%74%3c%2f%61%3e%27%29%3b'))</script>
+    <a class="btn btn-info" tabIndex="-1" target="_blank" href="https://github.com/jrie/sqstorage">Github</a>
+    <script type ="text/javascript">
+      let langSelection = document.querySelector('select[name="lang"').addEventListener('change', function (evt) {
+          let langValue = evt.target.options[evt.target.selectedIndex].value
+          let srcUri = window.location.href.toString().replace(/.lang=.[^\&\/]*/, '')
+          if (srcUri.indexOf('?') === -1) window.location.href = srcUri + '?lang=' + langValue
+          else window.location.href = srcUri + '&lang=' + langValue
+      })
+      </script>
+    </footer>
 </body></html>
 EOD;
 
