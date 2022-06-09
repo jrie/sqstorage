@@ -13,7 +13,9 @@ if (session_status() == PHP_SESSION_NONE) {
   session_start();
 }
 
-$_SESSION['lang'] = $defaultLanguage;
+if (!isset($_SESSION['lang'])) {
+  $_SESSION['lang'] = $defaultLanguage;
+}
 
 if (isset($_REQUEST['lang'])) {
   if (in_array($_REQUEST['lang'], $langsAvailable)) {
