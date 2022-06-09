@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getImageId'])) {
     $imageInfo = getimagesize($tmpName);
     $imgMime = $imageInfo['mime'];
     $imageData = imagecreatefromstring(file_get_contents(addslashes($tmpName)));
-    $imageLarge = imagescale($imageData, 1920);
+    $imageLarge = $imageData; // Keep the original upload size
     $imageThumbnail = imagescale($imageData, 200);
     
     if ($imgMime == 'image/png') {
