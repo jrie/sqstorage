@@ -423,8 +423,10 @@
                                 imgOverlay.children[0].src = 'data:image;base64,' + responseJson['data']
                                 imgOverlay.classList.add('active')
                                 imgOverlay.addEventListener('click', hidePreview)
-                                imgOverlay.style.left = ((window.innerWidth * 0.5) - (imgOverlay.clientWidth * 0.5)) + 'px';
-                                imgOverlay.style.top = ((window.innerHeight * 0.5) - (imgOverlay.clientHeight * 0.5)) + 'px';
+                                window.setTimeout(function() {
+                                imgOverlay.style.left = ((Math.round(window.innerWidth * 0.5)) - (Math.round(imgOverlay.children[0].width * 0.5))) + 'px';
+                                imgOverlay.style.top = ((Math.round(window.innerHeight * 0.5)) - (Math.round(imgOverlay.children[0].height * 0.5))) + 'px';
+                                }, 200)
                             }
                         }
                     }

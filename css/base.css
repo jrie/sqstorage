@@ -488,15 +488,14 @@ i.picture {
 .imageOverlay.active {
     display: block;
     visibility: visible;
-    top: 0px;
-    left: 0px;
-    max-height: 100%;
-    max-width: 100%;
     overflow: scroll;
-    text-align: center;
     background-color: rgba(225,225,225,0.8);
     cursor: zoom-out;
+}
 
+.imageOverlay.active img {
+    max-height: 100%;
+    max-width: 100%;
 }
 
 .removeImageOverlay {
