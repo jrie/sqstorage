@@ -425,10 +425,7 @@
                         if (evt.target.status === 200) {
                             let responseJson = JSON.parse(evt.target.responseText)
                             if (responseJson['status'] === 'OK') {
-                                imgOverlay.children[0].addEventListener('loadend', function(evt) {
-                                    handleImgResize()
-                                })
-
+                                imgOverlay.children[0].addEventListener('loadend', handleImgResize)
                                 window.addEventListener('resize', handleImgResize)
                                 imgOverlay.children[0].src = 'data:image;base64,' + responseJson['data']
                                 imgOverlay.classList.add('active')
