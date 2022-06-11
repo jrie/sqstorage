@@ -182,6 +182,7 @@ body {
     visibility: visible;
     position: absolute;
     z-index: 100000;
+    max-height: 200px;
 }
 
 .open-inline-edit,
