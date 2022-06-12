@@ -24,7 +24,7 @@ then
   cat tmpX.txt >> tmpout.txt
 done
   rm tmpX.txt
-STEP=11
+STEP=1
 fi
 
 if [ $STEP == "1" ]
