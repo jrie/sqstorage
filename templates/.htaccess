@@ -1,0 +1,11 @@
+<Files .htaccess>
+Order allow,deny
+Deny from all
+Satisfy all
+</Files>
+
+<Files "*">
+  order allow,deny
+  deny from all
+  satisfy all
+</Files>
