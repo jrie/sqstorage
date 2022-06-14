@@ -46,6 +46,7 @@ if (isset($useRegistration) && !$useRegistration) {
   $createFirstAdmin = false;
   $showActivation = false;
   $hasUsers = DB::queryFirstRow('SELECT id FROM users LIMIT 1');
+  $user = NULL;
   if ($hasUsers === NULL) {
     $showActivation = true;
     $createFirstAdmin = true;
@@ -53,7 +54,7 @@ if (isset($useRegistration) && !$useRegistration) {
 
   if ($createFirstAdmin || (isset($_REQUEST['activate']) && !empty($_REQUEST['activate']))) {
     DB::delete('users_tokens', 'valid_until < NOW()');
-    
+
     if (!$createFirstAdmin) {
       $userId = substr($_REQUEST['activate'], 0, -32);
       $activationToken = substr($_REQUEST['activate'], -32);
@@ -65,9 +66,9 @@ if (isset($useRegistration) && !$useRegistration) {
           break;
         }
       }
-    }  
-    
-    if ($createFirstAdmin || $user) {
+    }
+  
+    if ($createFirstAdmin || !is_null($user)) {
       if (isset($_POST['password'])) {
         $errors = [];
 
@@ -140,6 +141,7 @@ if (isset($useRegistration) && !$useRegistration) {
     } else {
       $error = gettext('Der Aktivierungslink ist nicht mehr gültig.');
     }
+
   } else if (isset($_POST['password']) && !empty($_POST['password'])) {
     $user = DB::queryFirstRow('SELECT u.id, u.username, u.password, g.usergroupid FROM users u LEFT JOIN users_groups g ON(g.userid=u.id) WHERE u.username=%s LIMIT 1', $_POST['username']);
     if ($user && password_verify($_POST['password'], $user['password'])) {
@@ -165,7 +167,7 @@ if (isset($useRegistration) && !$useRegistration) {
       $user = $user[0];
       $token = bin2hex(openssl_random_pseudo_bytes(16));
       $hashedToken = password_hash($token, PASSWORD_DEFAULT);
-      DB::insert('users_tokens', array('userid' => $user['id'], 'token' => $hashedToken, 'valid_until' => DB::sqlEval('NOW( ) + INTERVAL 24 HOUR')));
+      DB::insert('users_tokens', array('userid' => $user['id'], 'token' => $hashedToken, 'valid_until' => DB::sqlEval('NOW() + INTERVAL 24 HOUR')));
       $mailSettings = json_decode(DB::queryFirstField('SELECT jsondoc FROM settings WHERE namespace="mail" LIMIT 1'));
 
       if ($mailSettings->enabled && filter_var($mailSettings->senderAddress, FILTER_VALIDATE_EMAIL)) {
