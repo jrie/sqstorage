@@ -45,15 +45,15 @@ if (isset($useRegistration) && !$useRegistration) {
   $showRecover = isset($_GET['recover']);
   $createFirstAdmin = false;
   $showActivation = false;
-  DB::query('SELECT id FROM users LIMIT 1');
-  if (DB::count() == 0) {
+  $hasUsers = DB::queryFirstRow('SELECT id FROM users LIMIT 1');
+  if ($hasUsers === NULL) {
     $showActivation = true;
     $createFirstAdmin = true;
   }
 
   if ($createFirstAdmin || (isset($_REQUEST['activate']) && !empty($_REQUEST['activate']))) {
     DB::delete('users_tokens', 'valid_until < NOW()');
-
+    
     if (!$createFirstAdmin) {
       $userId = substr($_REQUEST['activate'], 0, -32);
       $activationToken = substr($_REQUEST['activate'], -32);
@@ -65,7 +65,8 @@ if (isset($useRegistration) && !$useRegistration) {
           break;
         }
       }
-    }
+    }  
+    
     if ($createFirstAdmin || $user) {
       if (isset($_POST['password'])) {
         $errors = [];
@@ -171,7 +172,7 @@ if (isset($useRegistration) && !$useRegistration) {
         $header[] = 'MIME-Version: 1.0';
         $header[] = 'Content-type: text/html; charset=utf-8';
         $header[] = 'From: ' . $mailSettings->senderAddress;
-        mail($user['mailaddress'], gettext('sqStorage Passwortänderung'), sprintf(gettext("Um das Passwort für sqStorage zu ändern bitte den folgenden Link aufrufen: <a href=\"%s\">%s</a>"), dirname($_SERVER['HTTP_REFERER']) . $urlBase . '/login?activate=' . $user['id'] . $token, dirname($_SERVER['HTTP_REFERER']) . $urlBase . '/login?activate=' . $user['id'] . $token), implode("\r\n", $header));
+        mail($user['mailaddress'], gettext('sqStorage Passwortänderung'), sprintf(gettext("Um das Passwort für sqStorage zu ändern bitte den folgenden Link aufrufen: <a href=\"%s\">%s</a>"), $urlBase . '/login?activate=' . $user['id'] . $token, $urlBase . '/login?activate=' . $user['id'] . $token), implode("\r\n", $header));
         $error = gettext('Falls ein Benutzerkonto gefunden wird, erhalten Sie nun eine Mail mit einem Link zum Zurücksetzen des Passworts.');
       } else {
         $error = gettext('Momentan können keine E-Mails versendet werden, bitte später noch einmal versuchen, oder einen Administrator kontaktieren.');
