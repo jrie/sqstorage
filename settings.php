@@ -125,7 +125,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' || !empty($error) || ($_SERVER['REQUEST_
 }
 
 $mailDB = DB::queryFirstField('SELECT jsondoc FROM settings WHERE namespace="mail" LIMIT 1');
-if (is_array($mailDB) > 0) {
+
+if ($mailDB !== NULL) {
   $mailSet = json_decode($mailDB);
   $mailSettings['senderAddress'] = $mailSet->senderAddress;
   $mailSettings['enabled'] = $mailSet->enabled;
@@ -133,8 +134,6 @@ if (is_array($mailDB) > 0) {
   $mailSettings['senderAddress'] = "";
   $mailSettings['enabled'] = false;
 }
-
-
 
 $users = DB::query('SELECT u.id, u.username, u.mailaddress, g.name as usergroupname, g.id as usergroupid FROM users u LEFT JOIN users_groups ugs ON(ugs.userid = u.id) LEFT JOIN usergroups g ON(g.id = ugs.usergroupid) ORDER BY u.username ASC');
 $smarty->assign('install_allowed',$install_allowed);
