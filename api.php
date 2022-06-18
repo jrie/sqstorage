@@ -12305,6 +12305,7 @@ namespace Tqdev\PhpCrudApi {
 
 // file: src/index.php
 namespace Tqdev\PhpCrudApi {
+  $ug = 999;
         function fGetDBCreds($label){
           static $dba;
           if($dba == ""){
@@ -12326,7 +12327,21 @@ namespace Tqdev\PhpCrudApi {
             }
         }
 
+        function fGetUserGroupID($userid){
+          if($userid < 1) return 999;
+          $conn = new \mysqli(fGetDBCreds('DB::$host'), fGetDBCreds('DB::$user'), fGetDBCreds('DB::$password'), fGetDBCreds('DB::$dbName'));
+          $sql = "SELECT usergroupid FROM users_groups WHERE userid = " . intval($userid);
+          $result = $conn->query($sql);
+          if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
 
+              return $row['usergroupid'];
+            }
+          } else {
+            return 999;
+          }
+        }
 
 
     use Tqdev\PhpCrudApi\Api;
@@ -12343,13 +12358,46 @@ namespace Tqdev\PhpCrudApi {
           'password' => fGetDBCreds('DB::$password'),
           'database' => fGetDBCreds('DB::$dbName'),
           'middlewares' => 'dbAuth,authorization',
-          'authorization.tableHandler' => function ($operation, $tableName) {
-            return $tableName != 'users';
-          },
+
           "dbAuth.usersTable" => 'users', //: The table that is used to store the users in ("users")
           "dbAuth.usernameColumn" => 'username', //: The users table column that holds usernames ("username")
           "dbAuth.passwordColumn" => 'password', //: The users table column that holds passwords ("password")
-          "dbAuth.returnedColumns"=> 'username',
+          "dbAuth.returnedColumns"=> 'id, username',
+
+
+          'authorization.tableHandler' => function ($operation, $tableName) {
+
+                              global $ug;
+                              $ug = 999;
+
+                              if(isset($_SESSION['user']['id'])){
+
+
+                                  $ug = fGetUserGroupID($_SESSION['user']['id']);
+
+                                  $_SESSION['user']['usergroupid'] = $ug;
+                              }else{
+                                if(isset($_SESSION['authenticated']))
+
+                                  $ug = $_SESSION['user']['usergroupid'];
+
+                              }
+
+
+                                if($ug == 2){
+                                      if($operation  == "list") return true;
+                                      if($operation  == "read") return true;
+                                      return false;
+                                }
+                                if($ug == 999) return false;
+
+
+
+
+            return $tableName != 'users';
+          },
+
+
 
           'tables'  => 'customfields,fielddata,headcategories,images,items,storages,subcategories,users',
          'debug' => false,
@@ -12371,6 +12419,8 @@ namespace Tqdev\PhpCrudApi {
     $api = new Api($config);
     $response = $api->handle($request);
     ResponseUtils::output($response);
+
+
 
     //file_put_contents('request.log',RequestUtils::toString($request)."===\n",FILE_APPEND);
     //file_put_contents('request.log',ResponseUtils::toString($response)."===\n",FILE_APPEND);

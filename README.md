@@ -104,6 +104,10 @@ If you are upgrading of an earlier version of sqStorage,
 
 Still possible so, you might have to **update your database** by visiting the `install.php` script and updating your database in order to make use of the latest features.
 
+### REST-API
+sqStorage provides a REST-API for data access and manipuluation.
+See [REST_API.md](REST_API.md) for details on how to use it.
+
 ### Troubleshooting
 `Fatal error: Uncaught Error: Class 'Locale' not found` If this error message is shown, the php package intl is not activated. If you're using Windows and XAMPP to run this app, you can enable it by editing the php.ini file in your XAMPP-php directory (Standard-installation: `C:\xampp\php\php.ini`).
 Remove the semicolon in front of 
