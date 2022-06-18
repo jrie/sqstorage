@@ -12334,15 +12334,39 @@ namespace Tqdev\PhpCrudApi {
     use Tqdev\PhpCrudApi\RequestFactory;
     use Tqdev\PhpCrudApi\ResponseUtils;
 
-    $config = new Config([
+    if (strpos("--". fGetDBCreds('$useRegistration'),'-rue',0)){
+      $config = new Config([
         // 'driver' => 'mysql',
           'address' => fGetDBCreds('DB::$host'),
           'port' => fGetDBCreds('DB::$port'),
           'username' => fGetDBCreds('DB::$user'),
           'password' => fGetDBCreds('DB::$password'),
           'database' => fGetDBCreds('DB::$dbName'),
-        // 'debug' => false
-    ]);
+          'middlewares' => 'dbAuth,authorization',
+          'authorization.tableHandler' => function ($operation, $tableName) {
+            return $tableName != 'users';
+          },
+          "dbAuth.usersTable" => 'users', //: The table that is used to store the users in ("users")
+          "dbAuth.usernameColumn" => 'username', //: The users table column that holds usernames ("username")
+          "dbAuth.passwordColumn" => 'password', //: The users table column that holds passwords ("password")
+          "dbAuth.returnedColumns"=> 'username',
+
+          'tables'  => 'customfields,fielddata,headcategories,images,items,storages,subcategories,users',
+         'debug' => false,
+      ]);
+    }else{
+
+      $config = new Config([
+            // 'driver' => 'mysql',
+              'address' => fGetDBCreds('DB::$host'),
+              'port' => fGetDBCreds('DB::$port'),
+              'username' => fGetDBCreds('DB::$user'),
+              'password' => fGetDBCreds('DB::$password'),
+              'database' => fGetDBCreds('DB::$dbName'),
+              'tables'  => 'customfields,fielddata,headcategories,images,items,storages,subcategories',
+              'debug' => false,
+      ]);
+    }
     $request = RequestFactory::fromGlobals();
     $api = new Api($config);
     $response = $api->handle($request);
