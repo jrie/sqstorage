@@ -12399,7 +12399,7 @@ namespace Tqdev\PhpCrudApi {
 
 
 
-          'tables'  => 'customfields,fielddata,headcategories,images,items,storages,subcategories,users',
+          'tables'  => 'customfields,fielddata,headCategories,images,items,storages,subCategories,users',
          'debug' => false,
       ]);
     }else{
@@ -12411,7 +12411,7 @@ namespace Tqdev\PhpCrudApi {
               'username' => fGetDBCreds('DB::$user'),
               'password' => fGetDBCreds('DB::$password'),
               'database' => fGetDBCreds('DB::$dbName'),
-              'tables'  => 'customfields,fielddata,headcategories,images,items,storages,subcategories',
+              'tables'  => 'customfields,fielddata,headCategories,images,items,storages,subCategories',
               'debug' => false,
       ]);
     }
