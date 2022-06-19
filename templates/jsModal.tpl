@@ -39,9 +39,10 @@ function saveModal(){
       var field = document.getElementById("UpdateField").value
       var table = document.getElementById("UpdateTable").value
       var newval = document.getElementById("newval").value
-      alert("Change " + table + " : " + field + " with id " + id + " to :"  + newval)
+
       SetFieldData(table,field,id,newval)
       closeModal()
+      location.reload()
 }
 
 
