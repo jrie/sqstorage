@@ -21,13 +21,18 @@ window.onclick = function(event) {
 }
 
 
-function changeSingleValue(table,field,dataid){
+function changeSingleValue(table,field,dataid,refresh){
       openModal()
       document.getElementById("UpdateID").value = dataid
       document.getElementById("newval").value = GetFieldData(table,field,dataid)
 
       document.getElementById("UpdateField").value = field
       document.getElementById("UpdateTable").value = table
+      if(refresh){
+        document.getElementById("refresh").value = "1"
+      }else{
+        document.getElementById("refresh").value = "0"
+      }
 
 }
 
@@ -39,10 +44,11 @@ function saveModal(){
       var field = document.getElementById("UpdateField").value
       var table = document.getElementById("UpdateTable").value
       var newval = document.getElementById("newval").value
-
+      var refresh = false;
+      if(document.getElementById("refresh").value == "1"){refresh = true}
       SetFieldData(table,field,id,newval)
       closeModal()
-      location.reload()
+      if(refresh){location.reload()}
 }
 
 

@@ -17,6 +17,7 @@
                 <input type="hidden" value="" id="UpdateID" name="UpdateID" />
                 <input type="hidden" value="" id="UpdateField" name="UpdateField" />
                 <input type="hidden" value="" id="UpdateTable" name="UpdateTable" />
+                <input type="hidden" value="" id="refresh" name="refresh" />
 
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
