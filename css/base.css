@@ -5,7 +5,8 @@ body {
     font-size: 0.75em;
 }
 
-.content {
+.content,
+.content.roleguest {
     padding: 0.5rem 1rem;
     margin-bottom: 240px;
 }
