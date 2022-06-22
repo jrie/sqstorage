@@ -1,9 +1,15 @@
 <?php
 
-use function PHPSTORM_META\map;
+require('login.php');
 
-require('login.php'); ?>
-<?php
+if ($useRegistration) {
+  if (!isset($user) || !isset($user['usergroupid']) || intval($user['usergroupid']) === 2) {
+    $error = gettext('Zugriff verweigert!');
+    include('accessdenied.php');
+    die();
+  }
+}
+
 require_once('support/urlBase.php');
 $smarty->assign('urlBase', $urlBase);
 

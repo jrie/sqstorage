@@ -1,5 +1,15 @@
 <?php
 include_once('head.php');
+include_once('login.php');
+
+if ($useRegistration) {
+  if (!isset($user) || !isset($user['usergroupid']) || intval($user['usergroupid']) === 2) {
+    $error = gettext('Zugriff verweigert!');
+    include('accessdenied.php');
+    die();
+  }
+}
+
 DB::$usenull = false;
 
 $items = DB::query('SELECT `id`, `label`, `subcategories` FROM `items`');
