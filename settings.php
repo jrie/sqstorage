@@ -1,9 +1,16 @@
 <?php
-$requireAdmin = true;
 $user="";
 require('login.php');
 $error = "";
 $success = "";
+
+if ($useRegistration) {
+  if (!isset($user) || !isset($user['usergroupid']) || intval($user['usergroupid']) === 2) {
+    $error = gettext('Zugriff verweigert!');
+    include('accessdenied.php');
+    die();
+  }
+}
 
 require_once('support/urlBase.php');
 $smarty->assign('urlBase', $urlBase);
@@ -107,13 +114,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' || !empty($error) || ($_SERVER['REQUEST_
           die();
         }
       } else if ($isAdd) {
-        $user = DB::queryFirstRow('SELECT u.id, u.username, u.mailaddress, g.name as usergroupname, g.id as usergroupid FROM users u LEFT JOIN users_groups ugs ON(ugs.userid = u.id) LEFT JOIN usergroups g ON(g.id = ugs.usergroupid) WHERE u.id = %i LIMIT 1', $_GET['editUser']);
+        $user = DB::queryFirstRow('SELECT u.id, u.username, u.mailaddress, g.name as usergroupname, g.id as usergroupid FROM users u LEFT JOIN users_groups ugs ON(ugs.userid = u.id) LEFT JOIN usergroups g ON(g.id = ugs.usergroupid) WHERE u.id = %i LIMIT 1', $_GET['addUser']);
       }
     }
   } else {
     if (isset($_GET['removeUser']) && !empty($_GET['removeUser'])) {
-      $countAdmins = DB::query('SELECT count(*) as cnt, userid FROM users_groups WHERE usergroupid=1 LIMIT 1');
-      if ($countAdmins['cnt'] == 1 && $countAdmins['userid'] == $_GET['removeUSER']) {
+      $adminAccounts = DB::query('SELECT userid FROM users_groups WHERE usergroupid=1 LIMIT 2');
+      if (count($adminAccounts) === 1 && $adminAccounts['userid'] == $_GET['removeUser']) {
         $error = gettext('Fehler: Der letzte Administrator kann nicht gelöscht werden!');
       } else {
         $user = DB::delete('users', 'id=%d', $_GET['removeUser']);
