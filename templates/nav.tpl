@@ -1,11 +1,11 @@
 <body>
     <nav class="navbar navbar-light bg-light">
         {if isset($useRegistration) && !$useRegistration}
-        <a href="{$urlBase}/index{$urlPostFix}"><img class="logo" src="./img/sqstorage.png" alt="sqStorage logo" width="205" height="56" /></a>
+        <a href="{$urlBase}/index{$urlPostFix}"><img class="logo" src="./img/sqstorage.webp" alt="sqStorage logo" width="205" height="56" /></a>
         {else if isset($SESSION.user) && intval($SESSION.user.usergroupid) === 2}
-        <a href="{$urlBase}/inventory{$urlPostFix}"><img class="logo" src="./img/sqstorage.png" alt="sqStorage logo" width="205" height="56" /></a>
+        <a href="{$urlBase}/inventory{$urlPostFix}"><img class="logo" src="./img/sqstorage.webp" alt="sqStorage logo" width="205" height="56" /></a>
         {else if isset($SESSION.user) && intval($SESSION.user.usergroupid) !== 2}
-        <a href="{$urlBase}/index{$urlPostFix}"><img class="logo" src="./img/sqstorage.png" alt="sqStorage logo" width="205" height="56" /></a>
+        <a href="{$urlBase}/index{$urlPostFix}"><img class="logo" src="./img/sqstorage.webp" alt="sqStorage logo" width="205" height="56" /></a>
         {/if}
         <ul class="nav">
             {$pages = ['index.php' => '', 'inventory.php' => '', 'categories.php' => '', 'transfer.php' => '', 'datafields.php' => '', 'settings.php' => '']}
