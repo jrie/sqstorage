@@ -1,4 +1,5 @@
-<?php require('login.php');
+<?php
+require_once('login.php');
 require_once('support/urlBase.php');
 $smarty->assign('urlBase', $urlBase);
 
@@ -13,7 +14,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     $subCategory = DB::queryFirstRow('SELECT `id`, `amount`, `headcategory` FROM `subCategories` WHERE id=%d', intval($_GET['setCategoryId']));
     $previousCategory = DB::queryFirstRow('SELECT `id`, `amount` FROM `headCategories` WHERE `id`=%d',  $subCategory['headcategory']);
-
 
     if ($previousCategory['id'] !== $newCategory['id']) {
       DB::update('headCategories', array('amount' => intval($previousCategory['amount']) - $subCategory['amount']), 'id=%d',  $previousCategory['id']);
