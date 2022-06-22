@@ -10,9 +10,5 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <?php
   require_once('./includer.php');
-
-  //    require_once('./support/dba.php');
-  if ($usePrettyURLs) $smarty->assign('urlPostFix', '');
-  else $smarty->assign('urlPostFix', '.php');
   ?>
 </head>
