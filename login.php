@@ -1,44 +1,61 @@
 <?php
-session_start();
+
+if (session_status() !== PHP_SESSION_ACTIVE) {
+  session_start();
+}
 
 require_once('includer.php');
 require_once('support/urlBase.php');
 $smarty->assign('urlBase', $urlBase);
 
 require_once('./support/dba.php');
-if ($usePrettyURLs) $smarty->assign('urlPostFix', '');
-else $smarty->assign('urlPostFix', '.php');
+
+if (!$usePrettyURLs) {
+  $urlPostFix = '.php';
+} else {
+  $urlPostFix = '';
+}
+
+$smarty->assign('urlPostFix', $urlPostFix);
+
+if (isset($useRegistration) && !$useRegistration) {
+  $smarty->assign('useRegistration', FALSE);
+  $smarty->assign('isGuest', FALSE);
+} else {
+  $smarty->assign('useRegistration', TRUE);
+  $smarty->assign('isGuest', FALSE);
+}
 
 if (isset($useRegistration) && !$useRegistration) {
   $activate = "";
   if (isset($_GET['activate'])) $activate = $_GET['activate'];
   $smarty->assign('activate', $activate);
-
   if (isset($_POST)) $smarty->assign('POST', $_POST);
   if (isset($error)) $smarty->assign('error', $error);
-} else {
+  } else {
   if (isset($_GET['logout'])) {
     unset($_SESSION['authenticated']);
     unset($_SESSION['user']);
-    header('Location: ' . $urlBase . '/index');
+    header('Location: ' . $urlBase . '/index' . $urlPostFix);
     exit;
   }
 
   if (!empty($_SESSION['authenticated'])) {
     $user = DB::queryFirstRow('SELECT u.id, u.username, u.password, g.usergroupid FROM users u LEFT JOIN users_groups g ON(g.userid=u.id) WHERE u.id=%i LIMIT 1', $_SESSION['user']['id']);
-    if ($user) {
+    if ($user !== NULL) {
       $_SESSION['authenticated'] = true;
       $_SESSION['user'] = ['username' => $user['username'], 'id' => $user['id'], 'usergroupid' => $user['usergroupid']];
+      
+      if (intval($user['usergroupid']) === 2) {
+        $smarty->assign('isGuest', TRUE);
+      } else {
+        $smarty->assign('isGuest', FALSE);
+      }
     } else {
-      header('Location: '. $urlBase . '/index?logout');
+      header('Location: '. $urlBase . '/index' . $urlPostFix . '?logout');
       exit;
     }
 
-    if (@$requireAdmin && $user['usergroupid'] != 1) {
-      $error = gettext('Zugriff verweigert!');
-      include('accessdenied.php');
-      exit;
-    }
     return;
   }
 
@@ -120,7 +137,7 @@ if (isset($useRegistration) && !$useRegistration) {
               }
               $_SESSION['authenticated'] = true;
               $_SESSION['user'] = ['id' => $userId];
-              header('Location: '. $urlBase . '/index');
+              header('Location: '. $urlBase . '/index' . $urlPostFix);
               exit;
             }
           } catch (Exception $e) {
@@ -147,28 +164,27 @@ if (isset($useRegistration) && !$useRegistration) {
     if ($user && password_verify($_POST['password'], $user['password'])) {
       $_SESSION['authenticated'] = true;
       $_SESSION['user'] = ['id' => $user['id']];
-      header('Location: '. $urlBase . '/index');
+      header('Location: '. $urlBase . '/index'. $urlPostFix);
       exit;
     } else {
       $error = gettext('Zugangsdaten ungültig');
     }
   } else if ($showRecover && ((isset($_POST['username']) && !empty($_POST['username'])) || isset($_POST['mailaddress']) && !empty($_POST['mailaddress']))) {
     if (empty($_POST['mailaddress'])) {
-      $user = DB::query('SELECT id, username, mailaddress FROM users WHERE username=%s', $_POST['username']);
+      $user = DB::queryFirstRow('SELECT id, username, mailaddress FROM users WHERE username=%s LIMIT 1', $_POST['username']);
     } else if (empty($_POST['username'])) {
-      $user = DB::query('SELECT id, username, mailaddress FROM users WHERE mailaddress=%s', $_POST['mailaddress']);
+      $user = DB::queryFirstRow('SELECT id, username, mailaddress FROM users WHERE mailaddress=%s LIMIT 1', $_POST['mailaddress']);
     } else {
-      $user = DB::query('SELECT id, username, mailaddress FROM users WHERE username=%s AND mailaddress=%s', $_POST['username'], $_POST['mailaddress']);
+      $user = DB::queryFirstRow('SELECT id, username, mailaddress FROM users WHERE username=%s AND mailaddress=%s LIMIT 1', $_POST['username'], $_POST['mailaddress']);
     }
-    $countUsers = DB::count();
-    if ($countUsers > 1) {
-      $error = gettext('Bitte Benutzername und E-Mail-Adresse angeben.');
-    } else if ($countUsers == 1) {
-      $user = $user[0];
+
+    if ($user !== NULL) {
       $token = bin2hex(openssl_random_pseudo_bytes(16));
       $hashedToken = password_hash($token, PASSWORD_DEFAULT);
-      DB::insert('users_tokens', array('userid' => $user['id'], 'token' => $hashedToken, 'valid_until' => DB::sqlEval('NOW() + INTERVAL 24 HOUR')));
-      $mailSettings = json_decode(DB::queryFirstField('SELECT jsondoc FROM settings WHERE namespace="mail" LIMIT 1'));
+      $mailSettings = json_decode(DB::queryFirstField('SELECT jsondoc FROM settings WHERE namespace="mail"'));
+      if (!empty($mailSettings)) {
+        DB::insert('users_tokens', array('userid' => $user['id'], 'token' => $hashedToken, 'valid_until' => DB::sqlEval('NOW() + INTERVAL 24 HOUR')));
+      }
 
       if ($mailSettings->enabled && filter_var($mailSettings->senderAddress, FILTER_VALIDATE_EMAIL)) {
         $header[] = 'MIME-Version: 1.0';
