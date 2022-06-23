@@ -1,21 +1,58 @@
 {include file="head.tpl" title="{t}Kategorien{/t}"}
 {include file="nav.tpl" target="categories.php" request=$REQUEST}
-<div class="content">
+
+<div class="content {if $isGuest}roleguest{/if}">
     {$alert}
     <hr />
     <ul class="categories list-group">
-        <li class="alert alert-info"><span class="list-span">{t}Kategorien{/t}</span><span class="list-span">{t}Anzahl{/t}</span><span class="list-span">{t}Positionen{/t}</span><span class="list-span">{t}Aktionen{/t}</span></li>
+        <li class="alert alert-info">
+            <span class="list-span">{t}Kategorien{/t}</span>
+            <span class="list-span">{t}Anzahl{/t}</span>
+            <span class="list-span">{t}Positionen{/t}</span>
+            {if !$isGuest}
+            <span class="list-span">{t}Aktionen{/t}</span>
+            {/if}
+        </li>
         {foreach $headCategories as $category}
-        <li class="list-group-item"><a name="removeCategory" tabindex="-1" data-name="{$category.name}" href="{$urlBase}/categories{$urlPostFix}?removeCategory={$category.id}" title="{t}Kategorie löschen{/t}" class="removalButton fas fa-times-circle btn"></a><a class="list-span" data-name="{$category.name}" href="{$urlBase}/inventory{$urlPostFix}?category={$category.id}">{$category.name}</a><span class="list-span">{$category.amount} {if $category.amount == 1}{t}Gegenstand{/t}{else}{t}Gegenstände{/t}{/if}</span><span class="list-span">{$category.positions} {if $category.positions == 1}{t}Position{/t}{else}{t}Positionen{/t}{/if}</span><a title="{t}Kategorie umbenennen{/t}" class="fas fa-edit editCategory" href="#" name="editCategory" data-name="{$category.name}" data-id="{$category.id}"></a></li>
+        <li class="list-group-item">
+            {if !$isGuest}
+            <a name="removeCategory" tabindex="-1" data-name="{$category.name}" href="{$urlBase}/categories{$urlPostFix}?removeCategory={$category.id}" title="{t}Kategorie löschen{/t}" class="removalButton fas fa-times-circle btn"></a>
+            {/if}
+            <a class="list-span" data-name="{$category.name}" href="{$urlBase}/inventory{$urlPostFix}?category={$category.id}">{$category.name}</a>
+            <span class="list-span">{$category.amount} {if $category.amount == 1}{t}Gegenstand{/t}{else}{t}Gegenstände{/t}{/if}</span>
+            <span class="list-span">{$category.positions} {if $category.positions == 1}{t}Position{/t}{else}{t}Positionen{/t}{/if}</span>
+            {if !$isGuest}
+            <a title="{t}Kategorie umbenennen{/t}" class="fas fa-edit editCategory" href="#" name="editCategory" data-name="{$category.name}" data-id="{$category.id}"></a>
+            {/if}
+        </li>
         {/foreach}
     </ul>
     <hr />
 
     <ul class="categories list-group">
-        <li class="alert alert-info"><span class="list-span">{t}Unterkategorien{/t}</span><span class="list-span">{t}Anzahl{/t}</span><span class="list-span">{t}Positionen{/t}</span><span class="list-span">{t}Aktionen{/t}</span><span class="list-span">{t}Oberkategorie{/t}</span></li>
-
+        <li class="alert alert-info">
+            <span class="list-span">{t}Unterkategorien{/t}</span>
+            <span class="list-span">{t}Anzahl{/t}</span>
+            <span class="list-span">{t}Positionen{/t}</span>
+            {if !$isGuest}
+            <span class="list-span">{t}Aktionen{/t}</span>
+            {/if}
+            <span class="list-span">{t}Oberkategorie{/t}</span>
+        </li>
         {foreach $subCategories as $category}
-        <li class="list-group-item"><a name="removeSubcategory" tabindex="-1" data-name="{$category.name}" href="{$urlBase}/categories{$urlPostFix}?removeSubcategory={$category.id}" title="{t}Unterkategorie löschen{/t}" class="removalButton fas fa-times-circle btn"></a><a class="list-span" data-name="{$category.name}" href="{$urlBase}/inventory{$urlPostFix}?subcategory={$category.id}">{$category.name}</a><span class="list-span">{$category.amount} {if $category.amount == 1}{t}Gegenstand{/t}{else}{t}Gegenstände{/t}{/if}</span><span class="list-span">{$category.positions} {if $category.positions == 1}{t}Position{/t}{else}{t}Positionen{/t}{/if}</span><a title="{t}Unterkategorie umbenennen{/t}" class="fas fa-edit editCategory" href="#" name="editSubcategory" data-name="{$category.name}" data-id="{$category.id}"></a>
+        <li class="list-group-item">
+
+            {if !$isGuest}
+            <a name="removeSubcategory" tabindex="-1" data-name="{$category.name}" href="{$urlBase}/categories{$urlPostFix}?removeSubcategory={$category.id}" title="{t}Unterkategorie löschen{/t}" class="removalButton fas fa-times-circle btn"></a>
+            {/if}
+            <a class="list-span" data-name="{$category.name}" href="{$urlBase}/inventory{$urlPostFix}?subcategory={$category.id}">{$category.name}</a>
+            <span class="list-span">{$category.amount} {if $category.amount == 1}{t}Gegenstand{/t}{else}{t}Gegenstände{/t}{/if}</span>
+            <span class="list-span">{$category.positions} {if $category.positions == 1}{t}Position{/t}{else}{t}Positionen{/t}{/if}</span>
+            {if !$isGuest}
+            <a title="{t}Unterkategorie umbenennen{/t}" class="fas fa-edit editCategory" href="#" name="editSubcategory" data-name="{$category.name}" data-id="{$category.id}"></a>
+            {/if}
+
+            {if !$isGuest}
             <div class="dropdown list-span">
                 <select class="btn btn-secondary dropdown-toggle categoryDropdowns" type="button" data-originid="{$category.id}" tabindex="-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" autocomplete="off">
 
@@ -34,8 +71,20 @@
                     {/foreach}
                 </select>
             </div>
-
-
+            {else}
+            <div class="list-span">
+                {if $category.headcategory === NULL}
+                    {t}Keine{/t}
+                {else}
+                    {foreach $headCategories as $headCategory} {
+                        {if $headCategory.id == $category.headcategory}
+                            {$headCategory.name}
+                        {break}
+                        {/if}
+                    {/foreach}
+                {/if}
+            </div>
+            {/if}
         </li>
 
         {/foreach}

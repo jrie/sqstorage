@@ -25,8 +25,18 @@ if (count($tbls) == 0) {
   exit();
 }
 
-if ($usePrettyURLs) $smarty->assign('urlPostFix', '');
-else $smarty->assign('urlPostFix', '.php');
+if ($useRegistration) {
+  if (!isset($user) || !isset($user['usergroupid']) || intval($user['usergroupid']) === 2) {
+    header('Location: '. $urlBase . '/inventory' . $urlPostFix);
+    die();
+  }
+}
+
+if ($usePrettyURLs) {
+  $smarty->assign('urlPostFix', '');
+} else {
+  $smarty->assign('urlPostFix', '.php');
+}
 
 $imageList = null;
 
@@ -147,16 +157,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getImageId'])) {
 
   // Custom fields
   if (isset($_POST['itemUpdateId']) && !empty($_POST['itemUpdateId'])) {
-    $existingItem = DB::queryFirstRow('SELECT * FROM items WHERE id=%d', intVal($_POST['itemUpdateId']));
+    $existingItem = DB::queryFirstRow('SELECT * FROM items WHERE id=%d LIMIT 1', intval($_POST['itemUpdateId']));
 
-    $category = DB::queryFirstRow('SELECT id,amount FROM headCategories WHERE id=%d', intVal($existingItem['headcategory']));
-    DB::update('headCategories', array('amount' => $category['amount'] - intVal($existingItem['amount'])), 'id=%d', $category['id']);
+    $category = DB::queryFirstRow('SELECT id,amount FROM headCategories WHERE id=%d LIMIT 1', intval($existingItem['headcategory']));
+    if ($category !== NULL && $existingItem !== NULL) {
+      DB::update('headCategories', array('amount' => intval($category['amount']) - intval($existingItem['amount'])), 'id=%d', $category['id']);
+    }
 
     $exitingSubCategories = explode(',', $existingItem['subcategories']);
     foreach ($exitingSubCategories as $subcategoryId) {
       $subCategory = DB::queryFirstRow('SELECT id, amount FROM subCategories WHERE id=%d', $subcategoryId);
       if ($subCategory !== null) {
-        DB::update('subCategories', array('amount' => $subCategory['amount'] - intVal($existingItem['amount'])), 'id=%d', $subCategory['id']);
+        DB::update('subCategories', array('amount' => $subCategory['amount'] - intval($existingItem['amount'])), 'id=%d', $subCategory['id']);
       }
     }
 
@@ -206,13 +218,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getImageId'])) {
 
   foreach (array_keys($_POST) as $key) {
     if (strncmp($key, 'cfd_', 4) === 0) {
-      $fieldKey = intVal(explode('_', $key, 2)[1]);
+      $fieldKey = intval(explode('_', $key, 2)[1]);
       $value = $_POST[$key];
       $field = DB::queryFirstRow('SELECT `id`, `dataType`, `fieldValues`, `default` FROM `customFields` WHERE `id`=%d', $fieldKey);
       if ($field !== null) {
         $fieldType = null;
         foreach ($fieldTypesPos as $key => $index) {
-          if ($index === intVal($field['dataType'])) {
+          if ($index === intval($field['dataType'])) {
             $fieldType = $key;
             break;
           }
@@ -274,8 +286,13 @@ $customFields = DB::query('SELECT * FROM customFields');
 
 $smarty->assign('success', $success);
 $smarty->assign('isEdit', $isEdit);
-if ($isEdit) $smarty->assign('editCategory', $item['headcategory']);
-else $smarty->assign('editCategory', -1);
+
+if ($isEdit) {
+  $smarty->assign('editCategory', $item['headcategory']);
+} else {
+  $smarty->assign('editCategory', -1);
+}
+
 $smarty->assign('item', $item);
 $smarty->assign('storages', $storages);
 $smarty->assign('categories', $categories);

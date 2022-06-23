@@ -8,7 +8,7 @@ require_once('support/dba.php');
 if (!$usePrettyURLs) $smarty->assign('urlPostfix', '.php');
 else $smarty->assign('urlPostfix', '');
 
-if (isset($error)) $smart->assign('error', $error);
+if (isset($error)) $smarty->assign('error', $error);
 
 $smarty->assign('SESSION', $_SESSION);
 
