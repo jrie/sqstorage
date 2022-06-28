@@ -150,7 +150,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getImageId'])) {
   header('Location: ' . $_SERVER['HTTP_REFERER']);
   die();
 } else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  $amount = isset($_POST['amount']) && !empty($_POST['amount']) ? $_POST['amount'] : 1;
+  $amount = isset($_POST['amount']) && !empty($_POST['amount']) ? (int) $_POST['amount'] : 1;
+  if ($amount < 1 || strlen( (string) $amount) > 19) {
+    die();
+  }
+
   $serialNumber = isset($_POST['serialnumber']) && !empty($_POST['serialnumber']) ? $_POST['serialnumber'] : NULL;
   $comment = isset($_POST['comment']) && !empty($_POST['comment']) ? $_POST['comment'] : NULL;
   $subcategories = isset($_POST['subcategories']) && !empty($_POST['subcategories']) ? explode(',', $_POST['subcategories']) : NULL;
