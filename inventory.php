@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       if (in_array($key, $itemKeys)) {
         $itemKey = explode('listing-', $key, 2);
         if (isset($itemKey[1])) {
-          $decodedValue = urldecode($value);
+          $decodedValue = urldecode(trim($value));
           if ($itemKey[1] === 'amount') {
             // Check if the amount value consists only of digits
             // or trigger a error in Javascript
@@ -72,6 +72,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
               die();
             }
             $targetAmountAfter = (int) $value;
+          } else if ($itemKey[1] === 'label') {
+            if (empty(trim($value))) {
+              continue;
+            }
           }
           $dbUpdateArray[$itemKey[1]] = $decodedValue;
         }
