@@ -410,18 +410,34 @@
                     input.value = field.textContent
                     input.className = 'quick-edit'
                     input.dataset['id'] = targetId
+                    input.type = 'text'
 
                     for (const className of field.classList.values()) {
                         if (className.startsWith('listing-')) {
+                            if (className.endsWith('label')) {
+                                input.maxLength = '64'
+                                input.minLength = '1'
+                                input.placeholder = '{/literal}{t}Bezeichnung{/t}{literal}'
+                                input.required = 'required'
+                            } else if (className.endsWith('comment')) {
+                                input.maxLength = '255'
+                            } else if (className.endsWith('amount')) {
+                                input.type = 'number'
+                                input.maxLength = '19'
+                                input.minLength = '1'
+                                input.min = '1'
+                                input.required = 'required'
+                            }
+
                             input.dataset['dataTarget'] = className
                             break
                         }
                     }
 
-                    const originalContent = encodeURI(input.value.trim())
+                    const originalContent = encodeURI(input.value)
                     input.addEventListener('keyup', function(evt) {
                         const inputValue = encodeURI(evt.target.value.trim())
-                        let dataTarget = evt.target.parentNode.parentNode.querySelector('.save-inline-edit[data-id="' + targetId + '"]')
+                        let dataTarget = evt.target.parentNode.parentNode.parentNode.querySelector('.save-inline-edit[data-id="' + targetId + '"]')
 
                         if (inputValue === originalContent) {
                             evt.target.classList.remove('edit-dirty')
@@ -482,6 +498,12 @@
                 xmlRequest.open('POST', '{/literal}{$urlBase}{literal}/inventory{/literal}{$urlPostFix}{literal}')
                 formData.append('listing-itemId', targetId)
                 for (const field of fields) {
+                    if (field.value.trim().length < 1) {
+                        if (field.dataset['dataTarget'] === 'listing-label') {
+                            alert('{/literal}{t}Die Bezeichnung kann nicht leer sein.{/t}{literal}')
+                            return
+                        }
+                    }
                     const fieldValue = encodeURI(field.value.trim())
                     formData.append(field.dataset['dataTarget'], fieldValue)
                 }
