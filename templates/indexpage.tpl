@@ -60,9 +60,9 @@
                     </div>
 
                 {if $isEdit && $item.storageid != 0}
-                    <input type="text" name="storage" id="storage" maxlength="32" class="form-control" placeholder="{t}Lagerplatz{/t}" required="required" autocomplete="off" value="{$currentStorage.label}">
+                    <input type="text" name="storage" id="storage" maxlength="64" class="form-control" placeholder="{t}Lagerplatz{/t}" required="required" autocomplete="off" value="{$currentStorage.label}">
                 {else}
-                    <input type="text" name="storage" id="storage" maxlength="32" class="form-control" placeholder="{t}Lagerplatz{/t}" required="required" autocomplete="off">
+                    <input type="text" name="storage" id="storage" maxlength="64" class="form-control" placeholder="{t}Lagerplatz{/t}" required="required" autocomplete="off">
                 {/if}
                 </div>
 
@@ -210,9 +210,9 @@
                         <span class="input-group-text" id="basic-addon4">{t}Anzahl{/t}</span>
                     </div>
                     {if !$isEdit}
-                        <input type="text" autocomplete="off" name="amount" class="form-control" placeholder="1" aria-label="{t}Anzahl{/t}" aria-describedby="basic-addon4">
+                        <input type="number" maxlength="19" min="1" autocomplete="off" name="amount" required="required" class="form-control" placeholder="1" aria-label="{t}Anzahl{/t}" aria-describedby="basic-addon4">
                     {else}
-                        <input type="text" autocomplete="off" name="amount" class="form-control" placeholder="1" aria-label="{t}Anzahl{/t}" aria-describedby="basic-addon4" value="{$item.amount}">
+                        <input type="number" maxlength="19" min="1" autocomplete="off" name="amount" required="required" class="form-control" placeholder="1" aria-label="{t}Anzahl{/t}" aria-describedby="basic-addon4" value="{$item.amount}">
                     {/if}
                 </div>
 
@@ -221,9 +221,9 @@
                         <span class="input-group-text" id="basic-addon6">{t}Seriennummer{/t}</span>
                     </div>
                     {if !$isEdit}
-                        <input type="text" name="serialnumber" class="form-control" placeholder="{t}Seriennummer/Artikelnummer{/t}" aria-label="{t}Seriennummer{/t}" aria-describedby="basic-addon6">
+                        <input type="text" maxlenght="64" name="serialnumber" class="form-control" placeholder="{t}Seriennummer/Artikelnummer{/t}" aria-label="{t}Seriennummer{/t}" aria-describedby="basic-addon6">
                     {else}
-                        <input type="text" name="serialnumber" class="form-control" placeholder="{t}Seriennummer/Artikelnummer{/t}" aria-label="Seriennummer" aria-describedby="basic-addon6" value="{$item.serialnumber}">
+                        <input type="text" maxlength="64" name="serialnumber" class="form-control" placeholder="{t}Seriennummer/Artikelnummer{/t}" aria-label="Seriennummer" aria-describedby="basic-addon6" value="{$item.serialnumber}">
                     {/if}
                 </div>
 
