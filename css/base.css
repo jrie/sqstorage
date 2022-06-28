@@ -101,13 +101,15 @@ body {
     font-style: italic;
 }
 
-.input-group .form-control:required::placeholder {
+.input-group .form-control:required::placeholder,
+input.quick-edit:required::placeholder {
     color: #a00;
     font-style: italic;
 }
 
 .input-group .form-control:required:hover::placeholder,
-.input-group .form-control:required:focus::placeholder {
+.input-group .form-control:required:focus::placeholder,
+input.quick-edit:required:focus::placeholder {
     color: red;
 }
 
@@ -207,8 +209,9 @@ body {
 
 input.quick-edit {
     width: 100%;
-    padding: 0px;
     font-weight: normal;
+    padding-left: 1ch;
+    padding-right: 1ch;
 }
 
 .headSubcategories {
