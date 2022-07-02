@@ -333,9 +333,14 @@
         while (true) {
             let transferAmount = parseInt(prompt("{/literal}{t}Von diesem Artikel sind mehrere Stück am Lagerplatz. Wie viele sollen zum neuen Lagerort transferiert werden?{/t}{literal}", maxAmount))
             if (isNaN(transferAmount)) return -1
-            if (transferAmount > maxAmount) alert("{/literal}{t}Von diesem Artikel sind nicht genug Einheiten vorhanden.{/t}{literal}")
-            else if (transferAmount < 0) alert("{/literal}{t}Anzahl kann nicht negativ sein.{/t}{literal}")
-            else return transferAmount
+            
+            if (transferAmount > maxAmount) {
+                alert("{/literal}{t}Von diesem Artikel sind nicht genug Einheiten vorhanden.{/t}{literal}")
+            } else if (transferAmount < 0) {
+                alert("{/literal}{t}Anzahl kann nicht negativ sein.{/t}{literal}")
+            } else {
+                return transferAmount
+            }
         }
     }
 
@@ -533,7 +538,7 @@
                             targetRowEdits[x].parentNode.removeChild(targetRowEdits[x])
                         }
 
-                        
+
                         itemButton.classList.remove('active')
                         itemButton.classList.add('inactive')
                         itemButton.parentNode.classList.add('inactive')
