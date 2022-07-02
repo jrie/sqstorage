@@ -222,13 +222,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getImageId'])) {
 
   foreach (array_keys($_POST) as $key) {
     if (strncmp($key, 'cfd_', 4) === 0) {
-      $fieldKey = intval(explode('_', $key, 2)[1]);
+      $fieldKey = (int) explode('_', $key, 2)[1];
       $value = $_POST[$key];
       $field = DB::queryFirstRow('SELECT `id`, `dataType`, `fieldValues`, `default` FROM `customFields` WHERE `id`=%d', $fieldKey);
       if ($field !== null) {
         $fieldType = null;
         foreach ($fieldTypesPos as $key => $index) {
-          if ($index === intval($field['dataType'])) {
+          if ($index == (int) $field['dataType']) {
             $fieldType = $key;
             break;
           }

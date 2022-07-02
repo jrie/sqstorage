@@ -46,7 +46,7 @@ if (isset($useRegistration) && !$useRegistration) {
       $_SESSION['authenticated'] = true;
       $_SESSION['user'] = ['username' => $user['username'], 'id' => $user['id'], 'usergroupid' => $user['usergroupid']];
       
-      if (intval($user['usergroupid']) === 2) {
+      if ((int)$user['usergroupid'] === 2) {
         $smarty->assign('isGuest', TRUE);
       } else {
         $smarty->assign('isGuest', FALSE);

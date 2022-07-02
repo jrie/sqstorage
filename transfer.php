@@ -3,7 +3,7 @@
 require('login.php');
 
 if ($useRegistration) {
-  if (!isset($user) || !isset($user['usergroupid']) || intval($user['usergroupid']) === 2) {
+  if (!isset($user) || !isset($user['usergroupid']) || (int)$user['usergroupid'] === 2) {
     $error = gettext('Zugriff verweigert!');
     include('accessdenied.php');
     die();
@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     require_once('./vendor/autoload.php');
     require_once('./support/dba.php');
 
-    $storageId = intVal($_GET['getId']);
+    $storageId = (int)$_GET['getId'];
     $items = DB::query('SELECT id, label, amount FROM items WHERE storageid=%d', $storageId);
     echo json_encode($items);
     die();
@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     require_once('./vendor/autoload.php');
     require_once('./support/dba.php');
 
-    $targetStorageId = intVal(trim($_GET['transferTarget'], '"'));
+    $targetStorageId = (int)trim($_GET['transferTarget'], '"');
     $transferIds = explode(',', trim($_GET['transferIds'], '"'));
     $transferAmounts = explode(',', trim($_GET['transferAmounts'], '"'));
 
@@ -43,17 +43,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
       $destStorage = DB::queryFirstRow('SELECT id, amount FROM storages WHERE id=%d', $targetStorageId);
       $existingDest = DB::queryFirstRow('SELECT id, amount FROM items WHERE label=%s AND storageid=%d', $item['label'], $destStorage['id']);
 
-      $leftAmount = intVal($item['amount']) - intVal($transferAmounts[$index]);
+      $leftAmount = (int)$item['amount'] - (int)$transferAmounts[$index];
       if ($leftAmount != 0) DB::update('items', array('amount' => $leftAmount), "id=%d", $itemId);
 
       if ($existingDest === null) {
         $insertarray = array();
         foreach ($item as $key => $value) if ($key != 'id') $insertarray[$key] = $value;
-        $insertarray['storageid'] = intVal($destStorage['id']);
-        $insertarray['amount'] = intVal($transferAmounts[$index]);
+        $insertarray['storageid'] = (int)$destStorage['id'];
+        $insertarray['amount'] = (int)$transferAmounts[$index];
         DB::insert("items", $insertarray);
       } else {
-        DB::update('items', array('amount' => $existingDest['amount'] + intVal($transferAmounts[$index])), "id=%d", $existingDest['id']);
+        DB::update('items', array('amount' => $existingDest['amount'] + (int)$transferAmounts[$index]), "id=%d", $existingDest['id']);
         DB::update('images', array('itemId' => $existingDest['id']), "id=%d", $itemId);
 
         // NOTE: Add extra check to add/rewrite field data to target merge item or to delete field data instead?
@@ -62,8 +62,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
       }
       if ($leftAmount === 0) DB::delete('items', "id=%d", $item['id']);
 
-      DB::update('storages', array('amount' => intVal($srcStorage['amount']) - intVal($transferAmounts[$index])), 'id=%d', $srcStorage['id']);
-      DB::update('storages', array('amount' => intVal($destStorage['amount']) + intVal($transferAmounts[$index])), 'id=%d', $destStorage['id']);
+      DB::update('storages', array('amount' => (int)$srcStorage['amount'] - (int)$transferAmounts[$index]), 'id=%d', $srcStorage['id']);
+      DB::update('storages', array('amount' => (int)$destStorage['amount'] + (int)$transferAmounts[$index]), 'id=%d', $destStorage['id']);
     }
     echo 'transferred';
     die();

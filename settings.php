@@ -5,7 +5,7 @@ $error = "";
 $success = "";
 
 if ($useRegistration) {
-  if (!isset($user) || !isset($user['usergroupid']) || intval($user['usergroupid']) === 2) {
+  if (!isset($user) || !isset($user['usergroupid']) || (int)$user['usergroupid'] === 2) {
     $error = gettext('Zugriff verweigert!');
     include('accessdenied.php');
     die();

@@ -2,7 +2,7 @@
 require('login.php');
 
 if ($useRegistration) {
-  if (!isset($user) || !isset($user['usergroupid']) || intval($user['usergroupid']) === 2) {
+  if (!isset($user) || !isset($user['usergroupid']) || (int)$user['usergroupid'] === 2) {
     $error = gettext('Zugriff verweigert!');
     include('accessdenied.php');
     die();
@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     die();
   }
 
-  $existingId = intval($_POST['existingId']);
+  $existingId = (int)$_POST['existingId'];
 
   if ($_POST['doDelete'] === '-1') {
     $dataName = trim($_POST['fieldName']);
@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $existingField = DB::queryFirstRow('SELECT `id`, `label`, `dataType` FROM `customFields` WHERE `id`=%d', $existingId);
       if ($existingField['dataType'] !== $dataType) DB::update('customFields', array('label' => $dataName, 'default' => $dataDefault, 'dataType' => $dataType, 'defaultVisible' => $defaultVisible, 'visibleIn' => $visibleIn, 'fieldValues' => $dataValues), 'id=%d', $existingField['id']);
       else DB::update('customFields', array('label' => $dataName, 'default' => $dataDefault, 'dataType' => $dataType, 'defaultVisible' => $defaultVisible, 'visibleIn' => $visibleIn, 'fieldValues' => $dataValues), 'id=%d', $existingField['id']);
-      if ($existingField !== null && intval($existingField['dataType']) !== intval($dataType)) {
+      if ($existingField !== null && (int)$existingField['dataType'] !== (int)$dataType) {
         DB::delete('fieldData', 'fieldId=%d', $existingField['id']);
         if (DB::affectedRows() != 0) $resetEntries = DB::affectedRows() . ' ' . (DB::affectedRows() === 1 ? gettext('1 Datensatz mit verknüpften Altdaten entfernt.' ) : DB::affectedRows() . ' ' . gettext('Datensätze mit verknüpften Altdaten entfernt.'));
       }

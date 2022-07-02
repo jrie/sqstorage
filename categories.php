@@ -10,25 +10,25 @@ else $smarty->assign('urlPostFix', '.php');
 $alert = "";
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   if (isset($_GET['setCategoryId']) && !empty($_GET['setCategoryId']) && isset($_GET['to']) && !empty($_GET['to'])) {
-    $newCategory = DB::queryFirstRow('SELECT `id`, `amount` FROM `headCategories` WHERE `id`=%d', intval($_GET['to']));
+    $newCategory = DB::queryFirstRow('SELECT `id`, `amount` FROM `headCategories` WHERE `id`=%d', (int)$_GET['to']);
 
-    $subCategory = DB::queryFirstRow('SELECT `id`, `amount`, `headcategory` FROM `subCategories` WHERE id=%d', intval($_GET['setCategoryId']));
+    $subCategory = DB::queryFirstRow('SELECT `id`, `amount`, `headcategory` FROM `subCategories` WHERE id=%d', (int)$_GET['setCategoryId']);
     $previousCategory = DB::queryFirstRow('SELECT `id`, `amount` FROM `headCategories` WHERE `id`=%d',  $subCategory['headcategory']);
 
     if ($previousCategory['id'] !== $newCategory['id']) {
-      DB::update('headCategories', array('amount' => intval($previousCategory['amount']) - $subCategory['amount']), 'id=%d',  $previousCategory['id']);
+      DB::update('headCategories', array('amount' => (int)$previousCategory['amount'] - (int)$subCategory['amount']), 'id=%d',  $previousCategory['id']);
       if ($newCategory !== null) {
-        DB::update('headCategories', array('amount' => intval($newCategory['amount']) + $subCategory['amount']), 'id=%d',  $newCategory['id']);
+        DB::update('headCategories', array('amount' => (int)$newCategory['amount'] + (int)$subCategory['amount']), 'id=%d',  $newCategory['id']);
       }
 
-      DB::update('subCategories', array('headcategory' => $newCategory['id']), 'id=%d', intval($_GET['setCategoryId']));
+      DB::update('subCategories', array('headcategory' => $newCategory['id']), 'id=%d', (int)$_GET['setCategoryId']);
     }
 
     if ($usePrettyURLs) header("location: $urlBase/categories");
     else header("location: $urlBase/categories.php");
     die();
   } else if (isset($_GET['resetSubcategoryId']) && !empty($_GET['resetSubcategoryId'])) {
-    $subCategory = DB::queryFirstRow('SELECT `id`, `amount`, `headcategory` FROM `subCategories` WHERE id=%d', intval($_GET['resetSubcategoryId']));
+    $subCategory = DB::queryFirstRow('SELECT `id`, `amount`, `headcategory` FROM `subCategories` WHERE id=%d', (int)$_GET['resetSubcategoryId']);
 
     $previousCategory = DB::queryFirstRow('SELECT `id`, `amount` FROM `headCategories` WHERE `id`=%d',  $subCategory['headcategory']);
     if ($previousCategory !== null) {
@@ -43,21 +43,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     die();
   } else if (isset($_GET['to']) && !empty($_GET['to']) && (isset($_GET['headCategory']) || isset($_GET['subCategory']))) {
     if (isset($_GET['headCategory']) && !empty($_GET['headCategory'])) {
-      DB::update('headCategories', array('name' => $_GET['to']), 'id=%d', intval($_GET['headCategory']));
+      DB::update('headCategories', array('name' => $_GET['to']), 'id=%d', (int)$_GET['headCategory']);
       if (DB::affectedRows() === 1) $alert = '<div class="alert alert-info" role="alert"><p>' . gettext('Kategorie umbenannt.') . '</p></div>';
     } else {
-      DB::update('subCategories', array('name' => $_GET['to']), 'id=%d', intval($_GET['subCategory']));
+      DB::update('subCategories', array('name' => $_GET['to']), 'id=%d', (int)$_GET['subCategory']);
       if (DB::affectedRows() === 1) $alert = '<div class="alert alert-info" role="alert"><p>' . gettext('Unterkategorie umbenannt.') . '</p></div>';
     }
   } else if (isset($_GET['removeCategory']) && !empty($_GET['removeCategory'])) {
-    DB::delete('headCategories', "id=%d", intval($_GET['removeCategory']));
+    DB::delete('headCategories', "id=%d", (int)$_GET['removeCategory']);
     if (DB::affectedRows() === 1) $alert = '<div class="alert alert-info" role="alert"><p>' . gettext('Kategorie entfernt.') . '</p></div>';
   } else if (isset($_GET['removeSubcategory']) && !empty($_GET['removeSubcategory'])) {
-    $subCategory = DB::queryFirstRow('SELECT `id`, `amount`, `headcategory` FROM `subCategories` WHERE id=%d', intval($_GET['removeSubcategory']));
+    $subCategory = DB::queryFirstRow('SELECT `id`, `amount`, `headcategory` FROM `subCategories` WHERE id=%d', (int)$_GET['removeSubcategory']);
     $previousCategory = DB::queryFirstRow('SELECT `id`, `amount` FROM `headCategories` WHERE `id`=%d',  $subCategory['headcategory']);
     if ($previousCategory !== NULL && $subCategory !== NULL) {
-      DB::update('headCategories', array('amount' => intval($previousCategory['amount']) - $subCategory['amount']), 'id=%d',  $previousCategory['id']);  
-      DB::delete('subCategories', "id=%d", intval($_GET['removeSubcategory']));
+      DB::update('headCategories', array('amount' => (int)$previousCategory['amount'] - $subCategory['amount']), 'id=%d',  $previousCategory['id']);  
+      DB::delete('subCategories', "id=%d", (int)$_GET['removeSubcategory']);
       if (DB::affectedRows() === 1) $alert = '<div class="alert alert-info" role="alert"><p>' . gettext('Unterkategorie entfernt.') . '</p></div>';
     }
   }

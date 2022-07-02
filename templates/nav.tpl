@@ -2,9 +2,9 @@
     <nav class="navbar navbar-light bg-light">
         {if isset($useRegistration) && !$useRegistration}
         <a href="{$urlBase}/index{$urlPostFix}"><img class="logo" src="./img/sqstorage.webp" alt="sqStorage logo" width="205" height="56" /></a>
-        {else if isset($SESSION.user) && intval($SESSION.user.usergroupid) === 2}
+        {else if isset($SESSION.user) && (int)$SESSION.user.usergroupid === 2}
         <a href="{$urlBase}/inventory{$urlPostFix}"><img class="logo" src="./img/sqstorage.webp" alt="sqStorage logo" width="205" height="56" /></a>
-        {else if isset($SESSION.user) && intval($SESSION.user.usergroupid) !== 2}
+        {else if isset($SESSION.user) && (int)$SESSION.user.usergroupid !== 2}
         <a href="{$urlBase}/index{$urlPostFix}"><img class="logo" src="./img/sqstorage.webp" alt="sqStorage logo" width="205" height="56" /></a>
         {/if}
         <ul class="nav">
@@ -13,7 +13,7 @@
 
             {if isset($useRegistration) && !$useRegistration}
             <li class="nav-item"><a href="{$urlBase}/index{$urlPostFix}" class="nav-link {$pages['index.php']}">{t}Eintragen{/t}</a></li>
-            {else if isset($SESSION.user) && intval($SESSION.user.usergroupid) !== 2}
+            {else if isset($SESSION.user) && (int)$SESSION.user.usergroupid !== 2}
             <li class="nav-item"><a href="{$urlBase}/index{$urlPostFix}" class="nav-link {$pages['index.php']}">{t}Eintragen{/t}</a></li>
             {/if}
 
@@ -22,17 +22,17 @@
 
             {if isset($useRegistration) && !$useRegistration}
             <li class="nav-item"><a href="{$urlBase}/transfer{$urlPostFix}" class="nav-link {$pages['transfer.php']}">{t}Transferieren{/t}</a></li>
-            {else if isset($SESSION.user) && intval($SESSION.user.usergroupid) !== 2}
+            {else if isset($SESSION.user) && (int)$SESSION.user.usergroupid !== 2}
             <li class="nav-item"><a href="{$urlBase}/transfer{$urlPostFix}" class="nav-link {$pages['transfer.php']}">{t}Transferieren{/t}</a></li>
             {/if}
 
             {if isset($useRegistration) && !$useRegistration}
             <li class="nav-item"><a href="{$urlBase}/datafields{$urlPostFix}" class="nav-link {$pages['datafields.php']}">{t}Datenfelder{/t}</a></li>
-            {else if isset($SESSION.user) && intval($SESSION.user.usergroupid) !== 2}
+            {else if isset($SESSION.user) && (int)$SESSION.user.usergroupid !== 2}
             <li class="nav-item"><a href="{$urlBase}/datafields{$urlPostFix}" class="nav-link {$pages['datafields.php']}">{t}Datenfelder{/t}</a></li>
             {/if}
 
-            {if isset($SESSION.user) && isset($SESSION.user.usergroupid) && intval($SESSION.user.usergroupid) === 1}
+            {if isset($SESSION.user) && isset($SESSION.user.usergroupid) && (int)$SESSION.user.usergroupid === 1}
             <li class="nav-item"><a href="{$urlBase}/settings{$urlPostFix}" class="nav-link {$pages['settings.php']}">{t}Einstellungen{/t}</a></li>
             {/if}
         </ul>
