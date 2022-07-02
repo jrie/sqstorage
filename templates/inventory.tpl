@@ -396,7 +396,10 @@
             evt.target.parentNode.classList.toggle('active')
 
             const targetId = parseInt(evt.target.parentNode.dataset['id'])
-            evt.target.parentNode.parentNode.querySelector('.save-inline-edit[data-id="' + targetId + '"]').classList.add('inactive')
+            let inlineEditSaver = evt.target.parentNode.parentNode.querySelector('.save-inline-edit[data-id="' + targetId + '"]')
+            if (inlineEditSaver !== null) {
+                inlineEditSaver.classList.add('inactive')
+            }
 
             if (evt.target.parentNode.classList.contains('active')) {
                 const imgDisplay = evt.target.parentNode.parentNode.querySelector('.listing-hasimages > i')
@@ -411,6 +414,12 @@
                     input.className = 'quick-edit'
                     input.dataset['id'] = targetId
                     input.type = 'text'
+
+                    input.addEventListener('keydown', function(evt) {
+                        if (evt.key === 'Enter') {
+                            evt.preventDefault();
+                        }
+                    })
 
                     for (const className of field.classList.values()) {
                         if (className.startsWith('listing-')) {
@@ -453,6 +462,10 @@
                             evt.target.classList.add('edit-dirty')
                             dataTarget.classList.remove('inactive')
                         }
+
+                        if (evt.key === 'Enter') {
+                            inlineEditSaver.dispatchEvent(new Event('click'))
+                        }
                     })
 
                     field.classList.add('hidden')
@@ -480,24 +493,18 @@
         saveButton.addEventListener('click', function(evt) {
             evt.preventDefault()
 
-            if (evt.target.parentNode.nodeName === 'LI') {
-                return
-            } else if (evt.target.parentNode.classList.contains('inactive')) {
-                return
-            }
-
             const targetId = evt.target.parentNode.dataset['id']
-            const fields = document.querySelectorAll('input.quick-edit.edit-dirty[data-id="' + targetId + '"]')
+            const dirtyFields = document.querySelectorAll('input.quick-edit.edit-dirty[data-id="' + targetId + '"]')
             const itemButton = evt.target
 
-            if (fields.length === 0) {
+            if (dirtyFields.length === 0) {
                 return
             } else {
                 let formData = new FormData();
                 let xmlRequest = new XMLHttpRequest()
                 xmlRequest.open('POST', '{/literal}{$urlBase}{literal}/inventory{/literal}{$urlPostFix}{literal}')
                 formData.append('listing-itemId', targetId)
-                for (const field of fields) {
+                for (const field of dirtyFields) {
                     if (field.value.trim().length < 1) {
                         if (field.dataset['dataTarget'] === 'listing-label') {
                             alert('{/literal}{t}Die Bezeichnung kann nicht leer sein.{/t}{literal}')
@@ -526,7 +533,9 @@
                             targetRowEdits[x].parentNode.removeChild(targetRowEdits[x])
                         }
 
+                        
                         itemButton.classList.remove('active')
+                        itemButton.classList.add('inactive')
                         itemButton.parentNode.classList.add('inactive')
                         itemButton.parentNode.parentNode.querySelector('.open-inline-edit.active[data-id="' + targetId + '"]').classList.remove('active')
                         alert('{/literal}{t}Der Eintrag wurde erfolgreich aktualisiert.{/t}{literal}')
