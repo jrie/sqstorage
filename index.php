@@ -26,7 +26,7 @@ if (count($tbls) == 0) {
 }
 
 if ($useRegistration) {
-  if (!isset($user) || !isset($user['usergroupid']) || intval($user['usergroupid']) === 2) {
+  if (!isset($user) || !isset($user['usergroupid']) || (int)$user['usergroupid'] === 2) {
     header('Location: '. $urlBase . '/inventory' . $urlPostFix);
     die();
   }
@@ -41,7 +41,7 @@ if ($usePrettyURLs) {
 $imageList = null;
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getImageId'])) {
-  $targetImage = DB::queryFirstRow('SELECT `imageData` FROM `images` WHERE `id`=%d', intval($_GET['getImageId']));
+  $targetImage = DB::queryFirstRow('SELECT `imageData` FROM `images` WHERE `id`=%d', (int)$_GET['getImageId']);
   $targetData = [];
   if ($targetImage != null) {
     $targetData['status'] = 'OK';
@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getImageId'])) {
 
   die();
 } else if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['removeImageId'])) {
-  DB::query('DELETE FROM `images` WHERE id=%d LIMIT 1', intval($_GET['removeImageId']));
+  DB::query('DELETE FROM `images` WHERE id=%d LIMIT 1', (int)$_GET['removeImageId']);
   $targetData = [];
 
   if (DB::affectedRows() == 1) {
@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getImageId'])) {
   if (!isset($_FILES['images'])) die();
   if (!isset($_POST['editItem'])) die();
 
-  $itemId = intval($_POST['editItem']);
+  $itemId = (int)$_POST['editItem'];
 
   $count = count($_FILES['images']['tmp_name']);
 
@@ -161,18 +161,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getImageId'])) {
 
   // Custom fields
   if (isset($_POST['itemUpdateId']) && !empty($_POST['itemUpdateId'])) {
-    $existingItem = DB::queryFirstRow('SELECT * FROM items WHERE id=%d LIMIT 1', intval($_POST['itemUpdateId']));
+    $existingItem = DB::queryFirstRow('SELECT * FROM items WHERE id=%d LIMIT 1', (int)$_POST['itemUpdateId']);
 
-    $category = DB::queryFirstRow('SELECT id,amount FROM headCategories WHERE id=%d LIMIT 1', intval($existingItem['headcategory']));
+    $category = DB::queryFirstRow('SELECT id,amount FROM headCategories WHERE id=%d LIMIT 1', (int)$existingItem['headcategory']);
     if ($category !== NULL && $existingItem !== NULL) {
-      DB::update('headCategories', array('amount' => intval($category['amount']) - intval($existingItem['amount'])), 'id=%d', $category['id']);
+      DB::update('headCategories', array('amount' => (int)$category['amount'] - (int)$existingItem['amount']), 'id=%d', $category['id']);
     }
 
     $exitingSubCategories = explode(',', $existingItem['subcategories']);
     foreach ($exitingSubCategories as $subcategoryId) {
       $subCategory = DB::queryFirstRow('SELECT id, amount FROM subCategories WHERE id=%d', $subcategoryId);
       if ($subCategory !== null) {
-        DB::update('subCategories', array('amount' => $subCategory['amount'] - intval($existingItem['amount'])), 'id=%d', $subCategory['id']);
+        DB::update('subCategories', array('amount' => $subCategory['amount'] - (int)$existingItem['amount']), 'id=%d', $subCategory['id']);
       }
     }
 
@@ -241,7 +241,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getImageId'])) {
             case 0:
             case 1:
             case 2:
-              $convertedValue = intval($value);
+              $convertedValue = (int)$value;
               break;
             case 3:
             case 4:
@@ -253,9 +253,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getImageId'])) {
           }
         }
 
-        $existing = DB::queryFirstRow('SELECT `id` FROM `fieldData` WHERE `itemId`=%d AND `fieldId`=%d', intval($itemCreationId), intval($field['id']));
-        if ($existing == null) DB::insert('fieldData', [$fieldType => $convertedValue, 'itemId' => intval($itemCreationId), 'fieldId' => intval($field['id'])]);
-        else DB::update('fieldData', [$fieldType => $convertedValue, 'itemId' => intval($itemCreationId), 'fieldId' => intval($field['id'])], 'id=%d', $existing['id']);
+        $existing = DB::queryFirstRow('SELECT `id` FROM `fieldData` WHERE `itemId`=%d AND `fieldId`=%d', (int)$itemCreationId, (int)$field['id']);
+        if ($existing == null) DB::insert('fieldData', [$fieldType => $convertedValue, 'itemId' => (int)$itemCreationId, 'fieldId' => (int)$field['id']]);
+        else DB::update('fieldData', [$fieldType => $convertedValue, 'itemId' => (int)$itemCreationId, 'fieldId' => (int)$field['id']], 'id=%d', $existing['id']);
       }
     }
   }
@@ -266,17 +266,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getImageId'])) {
 $isEdit = false;
 $imageList = null;
 if ((isset($_GET['editItem']) && !empty($_GET['editItem'])) || (isset($_POST['editItem']) && !empty($_POST['editItem']))) {
-  if (isset($_GET['editItem'])) $itemId = intval($_GET['editItem']);
-  else if (isset($_POST['editItem'])) $itemId = intval($_POST['editItem']);
+  if (isset($_GET['editItem'])) $itemId = (int)$_GET['editItem'];
+  else if (isset($_POST['editItem'])) $itemId = (int)$_POST['editItem'];
 
   $item = DB::queryFirstRow('SELECT * FROM `items` WHERE `id`=%d', $itemId);
-  $customData = DB::query('SELECT * FROM `fieldData` WHERE `itemId`=%d', intval($item['id']));
+  $customData = DB::query('SELECT * FROM `fieldData` WHERE `itemId`=%d', (int)$item['id']);
   $isEdit = true;
 
   $imageList = DB::query('SELECT `id`, `thumb`, `sizeX`, `sizeY` FROM `images` WHERE `itemId`=%d', $item['id']);
 } else {
   $customData = null;
-  //if (isset($item)) $imageList = DB::query('SELECT `id`, `thumb`, `sizeX`, `sizeY` FROM `images` WHERE `itemId`=%d', intval($item['id']));
+  //if (isset($item)) $imageList = DB::query('SELECT `id`, `thumb`, `sizeX`, `sizeY` FROM `images` WHERE `itemId`=%d', (int)$item['id']);
 }
 
 $smarty->assign('imageList', $imageList);
