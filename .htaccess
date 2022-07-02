@@ -24,6 +24,9 @@ RewriteRule ^categories/([0-9]+)$ inventory.php?category=$1 [QSA,L]
 RewriteRule ^transfer$ transfer.php [L]
 RewriteRule ^transfer/$ transfer.php [L]
 
+RewriteRule ^api/(.*)$ api.php/$1 [QSA,L]	
+
+
 RewriteRule ^datafields$ datafields.php [L]
 RewriteRule ^datafields/$ datafields.php [L]
 
