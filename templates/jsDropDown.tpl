@@ -14,8 +14,11 @@ function forceMouseOut (input, itemContainer) {
 
 function setSelectValue (evt) {
   let target = null
-  if (evt.target.dataset['targetid'].startsWith('#', 0)) target = document.querySelector(evt.target.dataset['targetid'])
-  else target = document.querySelector('select[data-targetindex="' + evt.target.dataset['targetindex'] + '"]')
+  if (evt.target.dataset['targetid'].startsWith('#', 0)) {
+    target = document.querySelector(evt.target.dataset['targetid'])
+  } else {
+    target = document.querySelector('select[data-targetindex="' + evt.target.dataset['targetindex'] + '"]')
+  }
 
   target.selectedIndex = parseInt(evt.target.dataset['idx'])
   for (let spanChild of target.parentNode.children[0].children[2].children) spanChild.removeAttribute('selected')
@@ -37,7 +40,7 @@ function isInTargetNode (startNode, targetNode, limit) {
   return isInTargetNode(startNode.parentNode, targetNode, limit)
 }
 
-function searchValue (input, itemContainer) {
+function searchValue(input, itemContainer) {
   let searchValue = input.value.trim().toLowerCase()
   if (searchValue.length === 0) {
     for (let child of itemContainer.children) {
@@ -131,11 +134,19 @@ for (let item of dropDowns) {
             }
           }
 
-          if (subTarget.dataset['targetid'].startsWith('#', 0)) target = document.querySelector(subTarget.dataset['targetid'])
-          else target = document.querySelector('select[data-targetindex="' + subTarget.dataset['targetindex'] + '"]')
+          if (subTarget.dataset['targetid'].startsWith('#', 0)) {
+            target = document.querySelector(subTarget.dataset['targetid'])
+          } else {
+            target = document.querySelector('select[data-targetindex="' + subTarget.dataset['targetindex'] + '"]')
+          }
 
-          for (let option of target.options) option.removeAttribute('selected')
-          for (let index of selected) target.options[index].setAttribute('selected', 'selected')
+          for (let option of target.options) {
+            option.removeAttribute('selected')
+          }
+          
+          for (let index of selected) {
+            target.options[index].setAttribute('selected', 'selected')
+          }
 
           let event = new Event('change')
           target.dispatchEvent(event)
@@ -158,8 +169,6 @@ for (let item of dropDowns) {
             }
           }
 
-          let originalOffset = evt.layerY;
-
           let subTarget = evt.target.parentNode.parentNode
           let selected = []
           let options = []
@@ -178,53 +187,96 @@ for (let item of dropDowns) {
           }
 
           let target = null
-          if (subTarget.dataset['targetid'].startsWith('#', 0)) target = document.querySelector(subTarget.dataset['targetid'])
-          else target = document.querySelector('select[data-targetindex="' + subTarget.dataset['targetindex'] + '"]')
+          if (subTarget.dataset['targetid'].startsWith('#', 0)) {
+            target = document.querySelector(subTarget.dataset['targetid'])
+          } else {
+            target = document.querySelector('select[data-targetindex="' + subTarget.dataset['targetindex'] + '"]')
+          }
 
-          for (let option of target.options) option.removeAttribute('selected')
-          for (let index of selected) target.options[index].setAttribute('selected', 'selected')
+          for (let option of target.options) {
+            option.removeAttribute('selected')
+          }
+
+          for (let index of selected) {
+            target.options[index].setAttribute('selected', 'selected')
+          }
 
           if (selected.length === 0) {
             options[0].checked = true
             options[0].parentNode.parentNode.setAttribute('selected', 'selected')
           }
 
-          let event = new Event('change')
-          target.dispatchEvent(event)
-          evt.target.parentNode.parentNode.parentNode.scrollTo(0, originalOffset - 60)
+          target.dispatchEvent(new Event('change'))
+          target.focus()
         })
       }
 
       label.addEventListener('focus', function () { toggleDropdown(input, itemContainer) })
       label.addEventListener('blur', function () { forceMouseOut(input, itemContainer) })
       label.addEventListener('keypress', function (evt) {
-        if (evt.keyCode === 13 || evt.charCode === 32) {
-          evt.target.children[0].click()
+        if (evt.key === 'Enter' || evt.key === " ") {
+          evt.preventDefault()
+          evt.target.click()
+          evt.target.parentNode.children[0].focus()
         }
       })
 
       label.setAttribute('tabindex', '0')
       dropDownItem.setAttribute('tabindex', '-1')
       dropDownItem.appendChild(label)
+
+      dropDownItem.addEventListener('keydown', function (evt) {
+        if (evt.key === 'ArrowUp' && evt.target.parentNode.previousSibling !== null) {
+          evt.preventDefault()
+          evt.target.parentNode.previousSibling.children[0].focus()
+          evt.target.parentNode.parentNode.scrollBy(0, -evt.target.parentNode.clientHeight)
+          
+        } else if (evt.key === 'ArrowDown' && evt.target.parentNode.nextSibling !== null) {
+          evt.preventDefault()
+          evt.target.parentNode.nextSibling.children[0].focus()
+        }
+      })
     } else {
       dropDownItem.appendChild(document.createTextNode(option.innerText))
 
       dropDownItem.setAttribute('tabindex', '0')
-      dropDownItem.addEventListener('keypress', function (evt) {
-        if (evt.keyCode === 13 || evt.charCode === 32) {
+      dropDownItem.addEventListener('keydown', function (evt) {
+        if (evt.key === 'ArrowUp' && evt.target.previousSibling !== null) {
+          evt.target.previousSibling.focus()
+        } else if (evt.key === 'ArrowDown' && evt.target.nextSibling !== null) {
+          evt.target.nextSibling.focus()
+        }
+      })
+
+      dropDownItem.addEventListener('keyup', function (evt) {
+        if (evt.key === 'Enter' || evt.key === ' ') {
+          evt.stopPropagation()
           evt.target.click()
         }
       })
     }
 
-    dropDownItem.addEventListener('focus', function () { toggleDropdown(input, itemContainer) })
-    dropDownItem.addEventListener('blur', function () { forceMouseOut(input, itemContainer) })
-    dropDownItem.addEventListener('click', function () { toggleDropdown(input, itemContainer) })
+    dropDownItem.addEventListener('focus', function () {
+      toggleDropdown(input, itemContainer)
+    })
+
+    dropDownItem.addEventListener('blur', function () {
+      forceMouseOut(input, itemContainer)
+    })
+
+    dropDownItem.addEventListener('click', function (evt) {
+      evt.stopPropagation()
+      toggleDropdown(input, itemContainer)
+    })
+
     itemContainer.appendChild(dropDownItem)
     dropDownItem.dataset['idx'] = optionIndex++
     dropDownItem.dataset['targetindex'] = targetIndex
-    if (item.getAttribute('id') !== null) dropDownItem.dataset['targetid'] = '#' + item.getAttribute('id')
-    else if (item.className !== '') dropDownItem.dataset['targetid'] = targetIndex
+    if (item.getAttribute('id') !== null) {
+      dropDownItem.dataset['targetid'] = '#' + item.getAttribute('id')
+    } else if (item.className !== '') {
+      dropDownItem.dataset['targetid'] = targetIndex
+    }
 
     if (multiple === null) dropDownItem.addEventListener('click', setSelectValue)
   }
@@ -263,9 +315,17 @@ for (let item of dropDowns) {
   input.setAttribute('tabindex', '0')
 
   //input.addEventListener('blur', function () { forceMouseOut(input, itemContainer) }) // TODO: Readd on new Opera and Firefox versions
-  input.addEventListener('focus', function () { toggleDropdown(input, itemContainer) })
-  input.addEventListener('keyup', function () { searchValue(input, itemContainer) })
-  icon.addEventListener('click', function () { toggleDropdown(input, itemContainer) })
+  input.addEventListener('focus', function () {
+    toggleDropdown(input, itemContainer)
+  })
+
+  input.addEventListener('keyup', function (evt) {
+    searchValue(input, itemContainer)
+  })
+  
+  icon.addEventListener('click', function () {
+    toggleDropdown(input, itemContainer)
+  })
 
   input.addEventListener('blur', function (evt) {
     if (!isInTargetNode(evt.relatedTarget, container, 8)) forceMouseOut(input, itemContainer)
