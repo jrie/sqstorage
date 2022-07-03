@@ -23,8 +23,7 @@ function setSelectValue (evt) {
   target.selectedIndex = parseInt(evt.target.dataset['idx'])
   for (let spanChild of target.parentNode.children[0].children[2].children) spanChild.removeAttribute('selected')
   target.parentNode.children[0].children[2].children[target.selectedIndex].setAttribute('selected', 'selected')
-  let event = new Event('change')
-  target.dispatchEvent(event)
+  target.dispatchEvent(new window.Event('change'))
 
   if (target.dataset['nosettitle'] === undefined) {
     for (let child of evt.target.parentNode.parentNode.children) {
@@ -148,8 +147,7 @@ for (let item of dropDowns) {
             target.options[index].setAttribute('selected', 'selected')
           }
 
-          let event = new Event('change')
-          target.dispatchEvent(event)
+          target.dispatchEvent(new window.Event('change'))
           evt.target.parentNode.parentNode.parentNode.scrollTo(0,0)
         })
       } else {
@@ -206,13 +204,10 @@ for (let item of dropDowns) {
             options[0].parentNode.parentNode.setAttribute('selected', 'selected')
           }
 
-          target.dispatchEvent(new Event('change'))
+          target.dispatchEvent(new window.Event('change'))
           target.focus()
         })
       }
-
-      //label.addEventListener('focus', function () { toggleDropdown(input, itemContainer) })
-      //label.addEventListener('blur', function () { forceMouseOut(input, itemContainer) })
 
       label.addEventListener('keypress', function (evt) {
         if (evt.key === 'Enter' || evt.key === ' ') {
@@ -223,6 +218,14 @@ for (let item of dropDowns) {
       })
 
       label.setAttribute('tabindex', '0')
+      label.addEventListener('keyup', function (evt) {
+        if (evt.key === 'Tab') {
+          if (evt.shiftKey && evt.target.parentNode.nextSibling === null) {
+            toggleDropdown(input, itemContainer)
+          }
+        }
+      })
+
       dropDownItem.setAttribute('tabindex', '-1')
       dropDownItem.appendChild(label)
 
@@ -231,10 +234,13 @@ for (let item of dropDowns) {
           evt.preventDefault()
           evt.target.parentNode.previousSibling.children[0].focus()
           evt.target.parentNode.parentNode.scrollBy(0, -evt.target.parentNode.clientHeight)
-          
         } else if (evt.key === 'ArrowDown' && evt.target.parentNode.nextSibling !== null) {
           evt.preventDefault()
           evt.target.parentNode.nextSibling.children[0].focus()
+        } else if (evt.key === 'Tab') {
+          if (!evt.shiftKey && evt.target.parentNode.nextSibling === null) {
+            forceMouseOut(input, itemContainer)
+          }
         }
       })
     } else {
@@ -354,5 +360,4 @@ for (let item of dropDowns) {
   item.classList.add('nodisplay')
   targetIndex++
 }
-
 {/literal}
