@@ -185,7 +185,7 @@ input.quick-edit:required:focus::placeholder {
     visibility: visible;
     position: absolute;
     z-index: 100000;
-    max-height: 200px;
+    max-height: 24em;
 }
 
 .open-inline-edit,
