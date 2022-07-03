@@ -40,7 +40,7 @@ function isInTargetNode (startNode, targetNode, limit) {
   return isInTargetNode(startNode.parentNode, targetNode, limit)
 }
 
-function searchValue(input, itemContainer) {
+function searchValue (input, itemContainer) {
   let searchValue = input.value.trim().toLowerCase()
   if (searchValue.length === 0) {
     for (let child of itemContainer.children) {
@@ -211,13 +211,14 @@ for (let item of dropDowns) {
         })
       }
 
-      label.addEventListener('focus', function () { toggleDropdown(input, itemContainer) })
-      label.addEventListener('blur', function () { forceMouseOut(input, itemContainer) })
+      //label.addEventListener('focus', function () { toggleDropdown(input, itemContainer) })
+      //label.addEventListener('blur', function () { forceMouseOut(input, itemContainer) })
+
       label.addEventListener('keypress', function (evt) {
-        if (evt.key === 'Enter' || evt.key === " ") {
+        if (evt.key === 'Enter' || evt.key === ' ') {
           evt.preventDefault()
           evt.target.click()
-          evt.target.parentNode.children[0].focus()
+          evt.target.focus()
         }
       })
 
