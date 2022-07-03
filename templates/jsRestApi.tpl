@@ -4,7 +4,7 @@
 
 function GetFieldData(table,field,id){
     var ret_value = null;
-    var API_URL = '/api/records/:table/:id?include=:field'
+    var API_URL = 'api/records/:table/:id?include=:field'
     var URL = API_URL.replace(':id', id)
         URL = URL.replace(':table', table)
         URL = URL.replace(':field', field)
@@ -24,7 +24,7 @@ function GetFieldData(table,field,id){
 
 function SetFieldData(table,field,id,data){
     var ret_value = null;
-    var API_URL = '/api/records/:table/:id'
+    var API_URL = 'api/records/:table/:id'
     var URL = API_URL.replace(':id', id)
         URL = URL.replace(':table', table)
 
