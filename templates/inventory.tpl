@@ -336,7 +336,7 @@
         while (true) {
             let transferAmount = parseInt(prompt("{/literal}{t}Von diesem Artikel sind mehrere Stück am Lagerplatz. Wie viele sollen zum neuen Lagerort transferiert werden?{/t}{literal}", maxAmount))
             if (isNaN(transferAmount)) return -1
-            
+
             if (transferAmount > maxAmount) {
                 alert("{/literal}{t}Von diesem Artikel sind nicht genug Einheiten vorhanden.{/t}{literal}")
             } else if (transferAmount < 0) {
@@ -393,6 +393,7 @@
     }
 
     let inlineEdits = document.querySelectorAll('.open-inline-edit')
+
     for (let editButton of inlineEdits) {
         editButton.addEventListener('click', function(evt) {
             evt.preventDefault()
@@ -452,7 +453,8 @@
                     }
 
                     const originalContent = encodeURI(input.value)
-                    input.addEventListener('keyup', function(evt) {
+
+                    function updateDirtyState(evt) {
                         const inputValue = encodeURI(evt.target.value.trim())
                         let dataTarget = evt.target.parentNode.parentNode.parentNode.querySelector('.save-inline-edit[data-id="' + targetId + '"]')
 
@@ -471,10 +473,13 @@
                             dataTarget.classList.remove('inactive')
                         }
 
-                        if (evt.key === 'Enter') {
+                        if (evt.key !== undefined && evt.key === 'Enter') {
                             inlineEditSaver.dispatchEvent(new Event('click'))
                         }
-                    })
+                    }
+                    
+                    input.addEventListener('keyup', updateDirtyState)
+                    input.addEventListener('click', updateDirtyState)
 
                     field.classList.add('hidden')
                     field.classList.add('hide-quick')
