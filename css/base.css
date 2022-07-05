@@ -322,6 +322,10 @@ a.far:hover {
     margin-right: 3.4em;
 }
 
+.content.roleguest .list-span:first-child {
+    margin: 0px;
+}
+
 .input-group .dropdown-toggle {
     min-width: 11rem;
 }
