@@ -142,7 +142,11 @@ if ($mailDB !== NULL) {
   $mailSettings['enabled'] = false;
 }
 
+if(!in_array('failcount',DB::columnList('users'))){
+  $users = DB::query('SELECT u.id, u.username, u.mailaddress, g.name as usergroupname, g.id as usergroupid FROM users u LEFT JOIN users_groups ugs ON(ugs.userid = u.id) LEFT JOIN usergroups g ON(g.id = ugs.usergroupid) ORDER BY u.username ASC');
+}else{
 $users = DB::query('SELECT u.id, u.username, u.mailaddress, u.api_access, g.name as usergroupname, g.id as usergroupid FROM users u LEFT JOIN users_groups ugs ON(ugs.userid = u.id) LEFT JOIN usergroups g ON(g.id = ugs.usergroupid) ORDER BY u.username ASC');
+}
 $smarty->assign('install_allowed',$install_allowed);
 $smarty->assign('mailSettings', $mailSettings);
 $smarty->assign('success', $success);

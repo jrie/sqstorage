@@ -8068,6 +8068,12 @@ namespace Tqdev\PhpCrudApi\Middleware {
                 $pdo_statement = $this->db->pdo()->query($sql);
                 $myresult = $pdo_statement->fetchAll();
                 $isallowed = false;
+                $tableuptodate = false;
+
+
+                if(isset($fc['lastfail'])){
+                  $tableuptodate = true;
+
                 foreach ($myresult as $fc){
                       if($fc['username'] == $username){
                         if ( abs( time()-$fc['lastfail'] ) > 900 ) $isallowed = true; // last failed login try happened more than 15 minutes ago, let's have another try
@@ -8080,7 +8086,9 @@ namespace Tqdev\PhpCrudApi\Middleware {
                         if ($fc['api_access'] == 0) $isallowed = false;
                       }
                 }
-
+                }else{
+                  $isallowed = true;
+                }
 
 
 
@@ -8149,20 +8157,19 @@ namespace Tqdev\PhpCrudApi\Middleware {
                             }
                             unset($user[$passwordColumnName]);
                             $_SESSION['user'] = $user;
-
-                            $sql = "Update users SET failcount = 0, lastfail = 0 WHERE id = " . $uid;
-                            $pdo_statement = $this->db->pdo()->query($sql);
-
+                            if($tableuptodate){
+                              $sql = "Update users SET failcount = 0, lastfail = 0 WHERE id = " . $uid;
+                              $pdo_statement = $this->db->pdo()->query($sql);
+                            }
 
 
                             return $this->responder->success($user);
                         }
                     }
-
-                    $sql = "Update users SET failcount = failcount +1 , lastfail = " . time() . " WHERE id = " . $uid;
-                    $pdo_statement = $this->db->pdo()->query($sql);
-
-
+                    if($tableuptodate){
+                      $sql = "Update users SET failcount = failcount +1 , lastfail = " . time() . " WHERE id = " . $uid;
+                      $pdo_statement = $this->db->pdo()->query($sql);
+                    }
 
 
                     return $this->responder->error(ErrorCode::AUTHENTICATION_FAILED, $username);
@@ -12447,7 +12454,7 @@ namespace Tqdev\PhpCrudApi {
 
 
 
-          'tables'  => 'customfields,fielddata,headcategories,images,items,storages,subcategories,users',
+          'tables'  => 'customfields,fielddata,headCategories,images,items,storages,subCategories,users',
          'debug' => false,
       ]);
     }else{
@@ -12459,7 +12466,7 @@ namespace Tqdev\PhpCrudApi {
               'username' => fGetDBCreds('DB::$user'),
               'password' => fGetDBCreds('DB::$password'),
               'database' => fGetDBCreds('DB::$dbName'),
-              'tables'  => 'customfields,fielddata,headcategories,images,items,storages,subcategories',
+              'tables'  => 'customfields,fielddata,headCategories,images,items,storages,subCategories',
               'debug' => false,
       ]);
     }
