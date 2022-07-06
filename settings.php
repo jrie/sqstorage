@@ -61,12 +61,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['target'] == 'mail') {
         throw new Exception(sprintf(gettext('Fehler: Dies ist der letzte Administrator, die Gruppe kann nicht auf "%s" geändert werden!'), $_POST['usergroupname']));
       }
 
-      $user = DB::update('users', array('username' => trim($_POST['username']), 'mailaddress' => $_POST['mailaddress']), 'id=%i', $_POST['userUpdateId']);
+      $user = DB::update('users', array('username' => trim($_POST['username']), 'mailaddress' => $_POST['mailaddress'], 'api_access' => $_POST['userapikey']), 'id=%i', $_POST['userUpdateId']);
       $usergroup = DB::insertUpdate('users_groups', array('userid' => $_POST['userUpdateId'], 'usergroupid' => $_POST['usergroupid']), array('usergroupid' => $_POST['usergroupid']));
     } else {
       $token = bin2hex(openssl_random_pseudo_bytes(16));
       $hashedToken = password_hash($token, PASSWORD_DEFAULT);
-      $userId = DB::insert('users', array('username' => trim($_POST['username']), 'mailaddress' => $_POST['mailaddress']));
+      $userId = DB::insert('users', array('username' => trim($_POST['username']), 'api_access' => $_POST['userapikey'], 'mailaddress' => $_POST['mailaddress']));
       $userId = DB::insertId();
       $usergroup = DB::insertUpdate('users_groups', array('userid' => $userId, 'usergroupid' => $_POST['usergroupid']), array('usergroupid' => $_POST['usergroupid']));
       DB::insert('users_tokens', array('userid' => $userId, 'token' => $hashedToken, 'valid_until' => DB::sqlEval('NOW( ) + INTERVAL 1 WEEK')));
@@ -87,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['target'] == 'mail') {
   } catch (Exception $e) {
     $error = $e->getMessage();
     if (strncmp($error, "Duplicate", 9) === 0) $error = sprintf(gettext('Der Benutzer "%s" existiert bereits.'), $user['username']);
-    $user = DB::queryFirstRow('SELECT u.id, u.username, u.mailaddress, g.name as usergroupname, g.id as usergroupid FROM users u LEFT JOIN users_groups ugs ON(ugs.userid = u.id) LEFT JOIN usergroups g ON(g.id = ugs.usergroupid) WHERE u.id = %i LIMIT 1', $user['id']);
+    $user = DB::queryFirstRow('SELECT u.id, u.username, u.mailaddress, u.api_access, g.name as usergroupname, g.id as usergroupid FROM users u LEFT JOIN users_groups ugs ON(ugs.userid = u.id) LEFT JOIN usergroups g ON(g.id = ugs.usergroupid) WHERE u.id = %i LIMIT 1', $user['id']);
   }
   DB::$error_handler = 'meekrodb_error_handler';
   DB::$throw_exception_on_error = false;
@@ -108,13 +108,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' || !empty($error) || ($_SERVER['REQUEST_
   if ($isEdit || $isAdd) {
     if (empty($error)) {
       if ($isEdit) {
-        $user = DB::queryFirstRow('SELECT u.id, u.username, u.mailaddress, g.name as usergroupname, g.id as usergroupid FROM users u LEFT JOIN users_groups ugs ON(ugs.userid = u.id) LEFT JOIN usergroups g ON(g.id = ugs.usergroupid) WHERE u.id = %i LIMIT 1', $_GET['editUser']);
+        $user = DB::queryFirstRow('SELECT u.id, u.username, u.mailaddress, u.api_access, g.name as usergroupname, g.id as usergroupid FROM users u LEFT JOIN users_groups ugs ON(ugs.userid = u.id) LEFT JOIN usergroups g ON(g.id = ugs.usergroupid) WHERE u.id = %i LIMIT 1', $_GET['editUser']);
         if ($user == null) {
           header('Location: '. $urlBase . '/index');
           die();
         }
       } else if ($isAdd) {
-        $user = DB::queryFirstRow('SELECT u.id, u.username, u.mailaddress, g.name as usergroupname, g.id as usergroupid FROM users u LEFT JOIN users_groups ugs ON(ugs.userid = u.id) LEFT JOIN usergroups g ON(g.id = ugs.usergroupid) WHERE u.id = %i LIMIT 1', $_GET['addUser']);
+        $user = DB::queryFirstRow('SELECT u.id, u.username, u.mailaddress,  u.api_access,  g.name as usergroupname, g.id as usergroupid FROM users u LEFT JOIN users_groups ugs ON(ugs.userid = u.id) LEFT JOIN usergroups g ON(g.id = ugs.usergroupid) WHERE u.id = %i LIMIT 1', $_GET['addUser']);
       }
     }
   } else {
@@ -135,14 +135,14 @@ $mailDB = DB::queryFirstField('SELECT jsondoc FROM settings WHERE namespace="mai
 
 if ($mailDB !== NULL) {
   $mailSet = json_decode($mailDB);
-  $mailSettings['senderAddress'] = $mailSet->senderAddress;
-  $mailSettings['enabled'] = $mailSet->enabled;
+  $mailSettings['senderAddress'] = @$mailSet->senderAddress;
+  $mailSettings['enabled'] = @$mailSet->enabled;
 } else {
   $mailSettings['senderAddress'] = "";
   $mailSettings['enabled'] = false;
 }
 
-$users = DB::query('SELECT u.id, u.username, u.mailaddress, g.name as usergroupname, g.id as usergroupid FROM users u LEFT JOIN users_groups ugs ON(ugs.userid = u.id) LEFT JOIN usergroups g ON(g.id = ugs.usergroupid) ORDER BY u.username ASC');
+$users = DB::query('SELECT u.id, u.username, u.mailaddress, u.api_access, g.name as usergroupname, g.id as usergroupid FROM users u LEFT JOIN users_groups ugs ON(ugs.userid = u.id) LEFT JOIN usergroups g ON(g.id = ugs.usergroupid) ORDER BY u.username ASC');
 $smarty->assign('install_allowed',$install_allowed);
 $smarty->assign('mailSettings', $mailSettings);
 $smarty->assign('success', $success);

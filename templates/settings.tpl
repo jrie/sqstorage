@@ -73,6 +73,9 @@
                 </div>
             </div>
 
+
+
+
             {if (!$isEdit && !$error) || $currentUsergroup == null}
             <input type="text" class="form-control" id="usergroupname" name="usergroupname" readonly="readonly" required="required" autocomplete="off" placeholder="{t}Benutzergruppe{/t}">
             <input type="hidden" value="" id="usergroupid" name="usergroupid" />
@@ -80,8 +83,36 @@
             <input type="text" class="form-control" id="usergroupname" name="usergroupname" readonly="readonly" required="required" autocomplete="off" placeholder="{t}Benutzergruppe{/t} " value="{$user.usergroupname}">
             <input type="hidden" value="{$user.usergroupid}" id="usergroupid" name="usergroupid" />
             {/if}
-
         </div>
+
+
+
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <div class="dropdown">
+                    <select class="btn btn-secondary dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="userapiDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                        <option value="-1" selected="selected">{t}API Zugriff{/t}</option>
+                        <option value="0">{t}verbieten{/t}</option>
+                        <option value="1">{t}erlauben{/t}</option>
+                    </select>
+                </div>
+            </div>
+            {if (!$isEdit && !$error) || $currentUsergroup == null}
+            <input type="text" class="form-control" id="userapi" name="userapi" readonly="readonly" required="required" autocomplete="off" placeholder="{t}API Zugriff{/t}">
+            <input type="hidden" value="" id="userapikey" name="userapikey" />
+            {else}
+            <input type="text" class="form-control" id="userapi" name="userapi" readonly="readonly" required="required" autocomplete="off" placeholder="{t}API Zugriff{/t} " value="{if $user.api_access == 1}{t}erlauben{/t}{else}{t}verbieten{/t}{/if}">
+            <input type="hidden" value="{$user.api_access}" id="userapikey" name="userapikey" />
+            {/if}
+          </div>
+
+
+
+
+
+
 
         <div style="float: right;">
             {if $isEdit}
@@ -102,9 +133,9 @@
     <a class="btn btn-primary addUser" href="{$urlBase}/settings{$urlPostFix}?addUser">{t}Neuer Benutzer{/t}</a>
     <hr />
     <ul class="categories list-group">
-        <li class="alert alert-info"><span class="list-span">{t}Benutzername{/t}</span><span class="list-span">{t}E-Mail{/t}</span><span class="list-span">{t}Gruppe{/t}</span><span class="list-span">{t}Aktionen{/t}</span></li>
+        <li class="alert alert-info"><span class="list-span">{t}Benutzername{/t}</span><span class="list-span">{t}E-Mail{/t}</span><span class="list-span">{t}Gruppe{/t}</span><span class="list-span">{t}API Zugriff{/t}</span><span class="list-span">{t}Aktionen{/t}</span></li>
         {foreach $users as $user}
-        <li class="list-group-item"><a title="{t}Benutzer löschen{/t}" name="removeUser" data-name="{$user.username}" data-id="{$user.usergroupid}" href="{$urlBase}/settings{$urlPostFix}?removeUser={$user.id}" class="removalButton fas fa-times-circle btn"></a><span class="list-span">{$user.username}</span><span class="list-span">{$user.mailaddress}</span><span class="list-span">{$user.usergroupname}</span><a class="fas fa-edit editUser" href="#" name="editUser" data-name="{$user.username}" data-id="{$user.id}"></a></li>
+        <li class="list-group-item"><a title="{t}Benutzer löschen{/t}" name="removeUser" data-name="{$user.username}" data-id="{$user.usergroupid}" href="{$urlBase}/settings{$urlPostFix}?removeUser={$user.id}" class="removalButton fas fa-times-circle btn"></a><span class="list-span">{$user.username}</span><span class="list-span">{$user.mailaddress}</span><span class="list-span">{$user.usergroupname}</span><span class="list-span">{if $user.api_access == 1}<i class="fas fa-circle-check"></i>{else}<i class="fas fa-ban"></i>{/if}</span><a class="fas fa-edit editUser" href="#" name="editUser" data-name="{$user.username}" data-id="{$user.id}"></a></li>
         {/foreach}
     </ul>
     <hr />
@@ -215,6 +246,24 @@
             usergroupdropdown.value = '-1'
         })
     }
+
+
+    let userapidropdown = document.querySelector('#userapiDropdown')
+    if (userapidropdown !== null) {
+        userapidropdown.addEventListener('change', function(evt) {
+            let userapidropdown = evt.target
+            let usergroupname = document.querySelector('#userapi')
+            let usergroupid = document.querySelector('#userapikey')
+            if (parseInt(userapidropdown.value) === -1) {
+                usergroupname.value = ''
+                return
+            }
+            usergroupname.value = userapidropdown.options[userapidropdown.selectedIndex].text
+            usergroupid.value = userapidropdown.value
+            userapidropdown.value = '-1'
+        })
+    }
+
 </script>
 {/literal}
 {include file="bodyend.tpl"}
