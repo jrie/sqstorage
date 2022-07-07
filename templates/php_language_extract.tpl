@@ -91,3 +91,5 @@
 {t}Fehler: Der letzte Administrator kann nicht gelöscht werden!{/t}
 {t}Setze die entsprechende Berechtigung so, dass Dein Webserver diese erstellen und bearbeiten kann{/t}
 {t}Verwendest Du eine bestehende Installation und die Benutzerverwaltung, kannst Du diese Datei als Administrator über das Einstellungen erstellen und nach der Aktualisierung auch wieder entfernen.{/t}
+{t}Anmeldung für weitere XXX Sekunden gesperrt{/t}
+{t}Zu viele Anmeldeversuche. Bitte später nochmal versuchen{/t}

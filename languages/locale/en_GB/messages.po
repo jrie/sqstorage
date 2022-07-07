@@ -997,6 +997,14 @@ msgstr ""
 "login feature, you can create this file in the Settings and also delete it "
 "afterwards."
 
+#: templates//php_language_extract.tpl:94
+msgid "Anmeldung für weitere XXX Sekunden gesperrt"
+msgstr "Login is blocked for another XXX seconds"
+
+#: templates//php_language_extract.tpl:95
+msgid "Zu viele Anmeldeversuche. Bitte später nochmal versuchen"
+msgstr "Too many login attempts. Please try again later"
+
 #: templates//settings.tpl:16
 msgid "zur Datenbank hinzugefügt"
 msgstr "added to the database"
@@ -1024,6 +1032,10 @@ msgstr "deny"
 #: templates//settings.tpl:191
 msgid "erlauben"
 msgstr "allow"
+
+#: templates//settings.tpl:133 templates//settings.tpl:138
+msgid "Bitte die Datenbank aktualisieren"
+msgstr "Please update your database installation"
 
 #: templates//settings.tpl:133
 msgid "Neuer Benutzer"

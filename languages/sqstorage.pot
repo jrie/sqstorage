@@ -949,6 +949,14 @@ msgid ""
 "nach der Aktualisierung auch wieder entfernen."
 msgstr ""
 
+#: templates//php_language_extract.tpl:94
+msgid "Anmeldung für weitere XXX Sekunden gesperrt"
+msgstr ""
+
+#: templates//php_language_extract.tpl:95
+msgid "Zu viele Anmeldeversuche. Bitte später nochmal versuchen"
+msgstr ""
+
 #: templates//settings.tpl:16
 msgid "zur Datenbank hinzugefügt"
 msgstr ""
@@ -975,6 +983,10 @@ msgstr ""
 #: templates//settings.tpl:98 templates//settings.tpl:106
 #: templates//settings.tpl:191
 msgid "erlauben"
+msgstr ""
+
+#: templates//settings.tpl:133 templates//settings.tpl:138
+msgid "Bitte die Datenbank aktualisieren"
 msgstr ""
 
 #: templates//settings.tpl:133
