@@ -8071,10 +8071,12 @@ namespace Tqdev\PhpCrudApi\Middleware {
                 $tableuptodate = false;
 
 
-                if(isset($fc['lastfail'])){
+                if(array_key_exists('lastfail',$myresult[0])){
                   $tableuptodate = true;
 
                 foreach ($myresult as $fc){
+
+
                       if($fc['username'] == $username){
                         if ( abs( time()-$fc['lastfail'] ) > 900 ) $isallowed = true; // last failed login try happened more than 15 minutes ago, let's have another try
                         if ($fc['failcount'] < 3) $isallowed = true;  // 3 login tries without delay
