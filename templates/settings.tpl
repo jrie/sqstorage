@@ -130,7 +130,7 @@
     </div>
     {/if}
 
-    {if !isset($user.api_access)}<a href='install.php'>{t}Bitte die Datenbank aktualisieren{/t}</a>{else}<a class="btn btn-primary addUser" href="{$urlBase}/settings{$urlPostFix}?addUser">{t}Neuer Benutzer{/t}</a>{/if}
+    {if !isset($users.0.api_access)}<a href='install.php'>{t}Bitte die Datenbank aktualisieren{/t}</a>{else}<a class="btn btn-primary addUser" href="{$urlBase}/settings{$urlPostFix}?addUser">{t}Neuer Benutzer{/t}</a>{/if}
     <hr />
     <ul class="categories list-group">
         <li class="alert alert-info"><span class="list-span">{t}Benutzername{/t}</span><span class="list-span">{t}E-Mail{/t}</span><span class="list-span">{t}Gruppe{/t}</span><span class="list-span">{t}API Zugriff{/t}</span><span class="list-span">{t}Aktionen{/t}</span></li>
