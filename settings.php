@@ -20,6 +20,7 @@ if ($usePrettyURLs) $smarty->assign('urlPostFix', '');
 else $smarty->assign('urlPostFix', '.php');
 
 $install_allowed = false;
+if(file_exists($basedir . "/support/allow_install")) $install_allowed = true;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['target'] == 'mail') {
   try {
@@ -33,12 +34,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['target'] == 'mail') {
   DB::$error_handler = 'meekrodb_error_handler';
   DB::$throw_exception_on_error = false;
 }elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['target'] == 'install'){
-  if(file_exists($basedir . "/support/allow_install")) $install_allowed = true;
   if (isset($_POST['allow_install'])){
     if($_POST['allow_install']== "allow"){
         touch ($basedir . "/support/allow_install");
+        $install_allowed = true;
     }else{
         unlink ($basedir . "/support/allow_install");
+        $install_allowed = false;
     }
   }
 }elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
