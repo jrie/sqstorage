@@ -23,15 +23,15 @@
 
             <ul class="list-group">
                 <li class="alert alert-info">
-                    <span class="list-span">{t}Kategorien{/t}</span>
-                    <span class="list-span">{t}Bezeichnung{/t}</span>
-                    <span class="list-span">{t}Anzahl{/t}</span>
-                    <span class="list-span">{t}Bemerkung{/t}</span>
-                    <span class="list-span">{t}Unterkategorien{/t}</span>
-                    <span class="list-span">{t}Hinzugefügt{/t}</span>
+                    <span class="list-span" title="{t}Kategorien{/t}">{t}Kategorien{/t}</span>
+                    <span class="list-span" title="{t}Bezeichnung{/t}">{t}Bezeichnung{/t}</span>
+                    <span class="list-span" title="{t}Anzahl{/t}">{t}Anzahl{/t}</span>
+                    <span class="list-span" title="{t}Bemerkung{/t}">{t}Bemerkung{/t}</span>
+                    <span class="list-span" title="{t}Unterkategorien{/t}">{t}Unterkategorien{/t}</span>
+                    <span class="list-span" title="{t}Hinzugefügt{/t}">{t}Hinzugefügt{/t}</span>
                     {if !$isGuest}
-                    <span class="list-span">{t}Aktionen{/t}</span>
-                    <span class="list-span">{t}Zuweisen{/t}</span>
+                    <span class="list-span" title="{t}Aktionen{/t}">{t}Aktionen{/t}</span>
+                    <span class="list-span" title="{t}Zuweisen{/t}">{t}Zuweisen{/t}</span>
                     {else}
                     <span class="list-span"></span>
                     <span class="list-span"></span>
@@ -55,19 +55,19 @@
                 {assign var="category" value=$categories.$catid}
                 <li class="list-group-item" data-id="{$item.id}">
                     {if !$isGuest}
-                    <button title="{t}Position löschen{/t}" class="btn smallButton" name="remove" data-name="{$item.label}" value="{$item.id}" type="submit"><i class="fas fa-times-circle"></i></button>
+                    <button class="btn smallButton" title="{t}Position löschen{/t}" name="remove" data-name="{$item.label}" value="{$item.id}" type="submit"><i class="fas fa-times-circle"></i></button>
                     {else}
                     <div class="list-span"></div>
                     {/if}
 
-                    <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" class="list-span">{$category.name}</a>
+                    <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" title="{$category.name}" class="list-span">{$category.name}</a>
                     <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i><img class="item-picture" data-id="{$item.id}" src="data:image/png;base64,{$item.thumb}">{/if}
-                            <a class="listing-label quick-edit" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
+                            <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
                     <div class="list-span"><span class="listing-amount quick-edit">{$item.amount}</span></div>
-                    <div class="list-span"><span class="listing-comment quick-edit">{$item.comment}</span></div>
+                    <div class="list-span"><span class="listing-comment quick-edit" title="{$item.comment}">{$item.comment}</span></div>
 
-                    <div class="list-span"><span class="listing-subcategories">{$implodedSubCats}</span></div>
-                    <div class="list-span"><span class="listing-dateadded">{$dateexploded.0}</span></div>
+                    <div class="list-span"><span class="listing-subcategories" title="{$implodedSubCats}">{$implodedSubCats}</span></div>
+                    <div class="list-span"><span class="listing-dateadded" title="{$dateexploded.0}">{$dateexploded.0}</span></div>
                     {if !$isGuest}
                     <a tabindex="-1" href="#" class="save-inline-edit inactive" title="{t}Schnelle Bearbeitung speichern{/t}" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
                     <a tabindex="-1" href="#" class="open-inline-edit" title="{t}Schnelle Bearbeitung{/t}" data-id="{$item.id}"><i class="fas fa-eraser"></i></a>
@@ -135,15 +135,15 @@
             </h4>
             <ul class="list-group">
                 <li class="alert alert-info">
-                    <span class="list-span">{t}Kategorien{/t}</span>
-                    <span class="list-span">{t}Bezeichnung{/t}</span>
-                    <span class="list-span">{t}Anzahl{/t}</span>
-                    <span class="list-span">{t}Bemerkung{/t}</span>
-                    <span class="list-span">{t}Unterkategorien{/t}</span>
-                    <span class="list-span">{t}Hinzugefügt{/t}</span>
+                    <span class="list-span" title="{t}Kategorien{/t}">{t}Kategorien{/t}</span>
+                    <span class="list-span" title="{t}Bezeichnung{/t}">{t}Bezeichnung{/t}</span>
+                    <span class="list-span" title="{t}Anzahl{/t}">{t}Anzahl{/t}</span>
+                    <span class="list-span" title="{t}Bemerkung{/t}">{t}Bemerkung{/t}</span>
+                    <span class="list-span" title="{t}Unterkategorien{/t}">{t}Unterkategorien{/t}</span>
+                    <span class="list-span" title="{t}Hinzugefügt{/t}">{t}Hinzugefügt{/t}</span>
                     {if !$isGuest}
-                    <span class="list-span">{t}Aktionen{/t}</span>
-                    <span class="list-span">{t}Zuweisen{/t}</span>
+                    <span class="list-span" title="{t}Aktionen{/t}">{t}Aktionen{/t}</span>
+                    <span class="list-span" title="{t}Zuweisen{/t}">{t}Zuweisen{/t}</span>
                     {/if}
                 </li>
                 {if isset($itemstore.items)}
@@ -169,15 +169,14 @@
                     <div class="list-span"></div>
                     {/if}
 
-                    <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" class="list-span">{$category.name}</a>
+                    <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" title="{$category.name}" class="list-span">{$category.name}</a>
                     <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i><img class="item-picture" data-id="{$item.id}" src="data:image/png;base64,{$item.thumb}">{/if}
-                            <a class="listing-label quick-edit" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
+                            <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
                     <div class="list-span"><span class="listing-amount quick-edit">{$item.amount}</span></div>
-                    <div class="list-span"><span class="listing-comment quick-edit">{$item.comment}</span></div>
+                    <div class="list-span"><span class="listing-comment quick-edit" title="{$item.comment}">{$item.comment}</span></div>
 
-                    <div class="list-span"><span class="listing-subcategories">{$implodedSubCats}</span></div>
-                    <div class="list-span"><span class="listing-dateadded">{$dateexploded.0}</span></div>
-
+                    <div class="list-span"><span class="listing-subcategories" title="{$implodedSubCats}">{$implodedSubCats}</span></div>
+                    <div class="list-span"><span class="listing-dateadded" title="{$dateexploded.0}">{$dateexploded.0}</span></div>
                     {if !$isGuest}
                     <a tabindex="-1" href="#" class="save-inline-edit inactive" title="{t}Schnelle Bearbeitung speichern{/t}" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
                     <a tabindex="-1" href="#" class="open-inline-edit" title="{t}Schnelle Bearbeitung{/t}" data-id="{$item.id}"><i class="fas fa-eraser"></i></a>
@@ -239,15 +238,15 @@
             </h4>
             <ul class="list-group">
                 <li class="alert alert-info">
-                    <span class="list-span">{t}Kategorien{/t}</span>
-                    <span class="list-span">{t}Bezeichnung{/t}</span>
-                    <span class="list-span">{t}Anzahl{/t}</span>
-                    <span class="list-span">{t}Bemerkung{/t}</span>
-                    <span class="list-span">{t}Unterkategorien{/t}</span>
-                    <span class="list-span">{t}Hinzugefügt{/t}</span>
+                    <span class="list-span" title="{t}Kategorien{/t}">{t}Kategorien{/t}</span>
+                    <span class="list-span" title="{t}Bezeichnung{/t}">{t}Bezeichnung{/t}</span>
+                    <span class="list-span" title="{t}Anzahl{/t}">{t}Anzahl{/t}</span>
+                    <span class="list-span" title="{t}Bemerkung{/t}">{t}Bemerkung{/t}</span>
+                    <span class="list-span" title="{t}Unterkategorien{/t}">{t}Unterkategorien{/t}</span>
+                    <span class="list-span" title="{t}Hinzugefügt{/t}">{t}Hinzugefügt{/t}</span>
                     {if !$isGuest}
-                    <span class="list-span">{t}Aktionen{/t}</span>
-                    <span class="list-span">{t}Zuweisen{/t}</span>
+                    <span class="list-span" title="{t}Aktionen{/t}">{t}Aktionen{/t}</span>
+                    <span class="list-span" title="{t}Zuweisen{/t}">{t}Zuweisen{/t}</span>
                     {/if}
                 </li>
                 {if isset($itemstore.items)}
@@ -268,19 +267,19 @@
                 {assign var="category" value=$categories.$catid}
                 <li class="list-group-item" data-id="{$item.id}">
                     {if !$isGuest}
-                    <button title="{t}Position löschen{/t}" class="btn smallButton" name="remove" data-name="{$item.label}" value="{$item.id}" type="submit"><i class="fas fa-times-circle"></i></button>
+                    <button class="btn smallButton" title="{t}Position löschen{/t}" name="remove" data-name="{$item.label}" value="{$item.id}" type="submit"><i class="fas fa-times-circle"></i></button>
                     {else}
                     <div class="list-span"></div>
                     {/if}
 
-                    <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" class="list-span">{$category.name}</a>
+                    <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" title="{$category.name}" class="list-span">{$category.name}</a>
                     <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i><img class="item-picture" data-id="{$item.id}" src="data:image/png;base64,{$item.thumb}">{/if}
-                            <a class="listing-label quick-edit" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
+                            <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
                     <div class="list-span"><span class="listing-amount quick-edit">{$item.amount}</span></div>
-                    <div class="list-span"><span class="listing-comment quick-edit">{$item.comment}</span></div>
+                    <div class="list-span"><span class="listing-comment quick-edit" title="{$item.comment}">{$item.comment}</span></div>
 
-                    <div class="list-span"><span class="listing-subcategories">{$implodedSubCats}</span></div>
-                    <div class="list-span"><span class="listing-dateadded">{$dateexploded.0}</span></div>
+                    <div class="list-span"><span class="listing-subcategories" title="{$implodedSubCats}">{$implodedSubCats}</span></div>
+                    <div class="list-span"><span class="listing-dateadded" title="{$dateexploded.0}">{$dateexploded.0}</span></div>
                     {if !$isGuest}
                     <a tabindex="-1" href="#" class="save-inline-edit inactive" title="{t}Schnelle Bearbeitung speichern{/t}" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
                     <a tabindex="-1" href="#" class="open-inline-edit" title="{t}Schnelle Bearbeitung{/t}" data-id="{$item.id}"><i class="fas fa-eraser"></i></a>
@@ -477,7 +476,7 @@
                             inlineEditSaver.dispatchEvent(new Event('click'))
                         }
                     }
-                    
+
                     input.addEventListener('keyup', updateDirtyState)
                     input.addEventListener('click', updateDirtyState)
 

@@ -6,11 +6,11 @@
     <hr />
     <ul class="categories list-group">
         <li class="alert alert-info">
-            <span class="list-span">{t}Kategorien{/t}</span>
-            <span class="list-span">{t}Anzahl{/t}</span>
-            <span class="list-span">{t}Positionen{/t}</span>
+            <span class="list-span" title="{t}Kategorien{/t}">{t}Kategorien{/t}</span>
+            <span class=" list-span" title="{t}Anzahl{/t}">{t}Anzahl{/t}</span>
+            <span class="list-span" title="{t}Positionen{/t}">{t}Positionen{/t}</span>
             {if !$isGuest}
-            <span class="list-span">{t}Aktionen{/t}</span>
+            <span class="list-span" title="{t}Aktionen{/t}">{t}Aktionen{/t}</span>
             {/if}
         </li>
         {foreach $headCategories as $category}
@@ -18,7 +18,7 @@
             {if !$isGuest}
             <a name="removeCategory" tabindex="-1" data-name="{$category.name}" href="{$urlBase}/categories{$urlPostFix}?removeCategory={$category.id}" title="{t}Kategorie löschen{/t}" class="removalButton fas fa-times-circle btn"></a>
             {/if}
-            <a class="list-span" data-name="{$category.name}" href="{$urlBase}/inventory{$urlPostFix}?category={$category.id}">{$category.name}</a>
+            <a class="list-span" data-name="{$category.name}" title="{$category.name}" href="{$urlBase}/inventory{$urlPostFix}?category={$category.id}">{$category.name}</a>
             <span class="list-span">{$category.amount} {if $category.amount == 1}{t}Gegenstand{/t}{else}{t}Gegenstände{/t}{/if}</span>
             <span class="list-span">{$category.positions} {if $category.positions == 1}{t}Position{/t}{else}{t}Positionen{/t}{/if}</span>
             {if !$isGuest}
@@ -31,13 +31,13 @@
 
     <ul class="categories list-group">
         <li class="alert alert-info">
-            <span class="list-span">{t}Unterkategorien{/t}</span>
-            <span class="list-span">{t}Anzahl{/t}</span>
-            <span class="list-span">{t}Positionen{/t}</span>
+            <span class="list-span" title="{t}Unterkategorien{/t}">{t}Unterkategorien{/t}</span>
+            <span class="list-span" title="{t}Anzahl{/t}">{t}Anzahl{/t}</span>
+            <span class="list-span" title="{t}Positionen{/t}">{t}Positionen{/t}</span>
             {if !$isGuest}
-            <span class="list-span">{t}Aktionen{/t}</span>
+            <span class="list-span" title="{t}Aktionen{/t}">{t}Aktionen{/t}</span>
             {/if}
-            <span class="list-span">{t}Oberkategorie{/t}</span>
+            <span class="list-span" title="{t}Oberkategorie{/t}">{t}Oberkategorie{/t}</span>
         </li>
         {foreach $subCategories as $category}
         <li class="list-group-item">
@@ -45,7 +45,7 @@
             {if !$isGuest}
             <a name="removeSubcategory" tabindex="-1" data-name="{$category.name}" href="{$urlBase}/categories{$urlPostFix}?removeSubcategory={$category.id}" title="{t}Unterkategorie löschen{/t}" class="removalButton fas fa-times-circle btn"></a>
             {/if}
-            <a class="list-span" data-name="{$category.name}" href="{$urlBase}/inventory{$urlPostFix}?subcategory={$category.id}">{$category.name}</a>
+            <a class="list-span" data-name="{$category.name}" title="{$category.name}" href="{$urlBase}/inventory{$urlPostFix}?subcategory={$category.id}">{$category.name}</a>
             <span class="list-span">{$category.amount} {if $category.amount == 1}{t}Gegenstand{/t}{else}{t}Gegenstände{/t}{/if}</span>
             <span class="list-span">{$category.positions} {if $category.positions == 1}{t}Position{/t}{else}{t}Positionen{/t}{/if}</span>
             {if !$isGuest}
