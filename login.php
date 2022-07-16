@@ -45,7 +45,7 @@ if (isset($useRegistration) && !$useRegistration) {
     if ($user !== NULL) {
       $_SESSION['authenticated'] = true;
       $_SESSION['user'] = ['username' => $user['username'], 'id' => $user['id'], 'usergroupid' => $user['usergroupid']];
-      
+
       if ((int)$user['usergroupid'] === 2) {
         $smarty->assign('isGuest', TRUE);
       } else {
@@ -84,7 +84,7 @@ if (isset($useRegistration) && !$useRegistration) {
         }
       }
     }
-  
+
     if ($createFirstAdmin || !is_null($user)) {
       if (isset($_POST['password'])) {
         $errors = [];
@@ -161,13 +161,12 @@ if (isset($useRegistration) && !$useRegistration) {
 
   } else if (isset($_POST['password']) && !empty($_POST['password'])) {
     $user = DB::queryFirstRow('SELECT u.id, u.username, u.password, g.usergroupid FROM users u LEFT JOIN users_groups g ON(g.userid=u.id) WHERE u.username=%s LIMIT 1', $_POST['username']);
-    if ($user && password_verify($_POST['password'], $user['password'])) {
-      $_SESSION['authenticated'] = true;
-      $_SESSION['user'] = ['id' => $user['id']];
+//    if ($user && password_verify($_POST['password'], $user['password'])) {
+    if(Login($_POST['username'],$_POST['password'],$error)){
       header('Location: '. $urlBase . '/index'. $urlPostFix);
       exit;
     } else {
-      $error = gettext('Zugangsdaten ungültig');
+      if($error == "")$error = gettext('Zugangsdaten ungültig');  //if error is not set yet, invalid login, otherwise too many login failures
     }
   } else if ($showRecover && ((isset($_POST['username']) && !empty($_POST['username'])) || isset($_POST['mailaddress']) && !empty($_POST['mailaddress']))) {
     if (empty($_POST['mailaddress'])) {

@@ -8062,6 +8062,42 @@ namespace Tqdev\PhpCrudApi\Middleware {
                 $passwordFormFieldName = $this->getProperty('passwordFormField', 'password');
                 $newPasswordFormFieldName = $this->getProperty('newPasswordFormField', 'newPassword');
                 $username = isset($body->$usernameFormFieldName) ? $body->$usernameFormFieldName : '';
+
+
+                $sql = "SELECT * FROM users";
+                $pdo_statement = $this->db->pdo()->query($sql);
+                $myresult = $pdo_statement->fetchAll();
+                $isallowed = false;
+                $tableuptodate = false;
+
+
+                if(array_key_exists('lastfail',$myresult[0])){
+                  $tableuptodate = true;
+
+                foreach ($myresult as $fc){
+
+
+                      if($fc['username'] == $username){
+                        if ( abs( time()-$fc['lastfail'] ) > 900 ) $isallowed = true; // last failed login try happened more than 15 minutes ago, let's have another try
+                        if ($fc['failcount'] < 3) $isallowed = true;  // 3 login tries without delay
+                        if ($fc['failcount'] < 9){
+                          sleep($fc['failcount']);
+                          $isallowed = true;
+
+                        }
+                        if ($fc['api_access'] == 0) $isallowed = false;
+                      }
+                }
+                }else{
+                  $isallowed = true;
+                }
+
+
+
+
+                if(!$isallowed) return $this->responder->error(ErrorCode::AUTHENTICATION_FAILED, $username);
+
+
                 $password = isset($body->$passwordFormFieldName) ? $body->$passwordFormFieldName : '';
                 $newPassword = isset($body->$newPasswordFormFieldName) ? $body->$newPasswordFormFieldName : '';
                 $tableName = $this->getProperty('usersTable', 'users');
@@ -8106,6 +8142,15 @@ namespace Tqdev\PhpCrudApi\Middleware {
                     return $this->responder->error(ErrorCode::AUTHENTICATION_FAILED, $username);
                 }
                 if ($path == 'login') {
+
+                  foreach ($myresult as $fc){
+                    if($fc['username'] == $username){
+                      $uid = $fc['id'];
+                    }
+                  }
+
+
+
                     $users = $this->db->selectAll($table, $columnNames, $condition, $columnOrdering, 0, 1);
                     foreach ($users as $user) {
                         if (password_verify($password, $user[$passwordColumnName]) == 1) {
@@ -8114,9 +8159,21 @@ namespace Tqdev\PhpCrudApi\Middleware {
                             }
                             unset($user[$passwordColumnName]);
                             $_SESSION['user'] = $user;
+                            if($tableuptodate){
+                              $sql = "Update users SET failcount = 0, lastfail = 0 WHERE id = " . $uid;
+                              $pdo_statement = $this->db->pdo()->query($sql);
+                            }
+
+
                             return $this->responder->success($user);
                         }
                     }
+                    if($tableuptodate){
+                      $sql = "Update users SET failcount = failcount +1 , lastfail = " . time() . " WHERE id = " . $uid;
+                      $pdo_statement = $this->db->pdo()->query($sql);
+                    }
+
+
                     return $this->responder->error(ErrorCode::AUTHENTICATION_FAILED, $username);
                 }
                 if ($path == 'password') {
