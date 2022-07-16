@@ -167,11 +167,21 @@ input.quick-edit:required:focus::placeholder {
     margin-right: 0.1em;
     display: inline-block;
     font-size: 0.75rem;
+    vertical-align: top;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 70%;
+}
+
+.list-span a,
+.list-span i,
+.list-span img {
+    vertical-align: top;
 }
 
 .listing-hasimages {
     cursor: pointer;
-    text-align: center;
 }
 
 .item-picture {
@@ -330,8 +340,9 @@ a.far:hover {
     min-width: 11rem;
 }
 
-.dropdown.list-span {
+div.dropdown.list-span {
     margin-left: 13%;
+    overflow: visible;
 }
 
 .list-group-item:nth-of-type(2n+2) {
@@ -464,9 +475,8 @@ ul.existingFields li {
 }
 
 i.picture {
-    margin-right: 12px;
+    margin-right: 0.3em;
     color: #0056b3;
-    cursor: arrow;
 }
 
 .uploadedImages {
