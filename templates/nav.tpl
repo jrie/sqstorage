@@ -1,11 +1,12 @@
 <body>
     <nav class="navbar navbar-light bg-light">
+        {assign var="logoGfx" value='<picture class="logo" alt="sqStorage logo"><source srcset="img/sqstorage.webp" type="image/webp" width="205" height="56"><img src="img/sqstorage.png" width="205" height="56"></picture>'}
         {if isset($useRegistration) && !$useRegistration}
-        <a href="{$urlBase}/index{$urlPostFix}"><img class="logo" src="./img/sqstorage.webp" alt="sqStorage logo" width="205" height="56" /></a>
+        <a href="{$urlBase}/index{$urlPostFix}">{$logoGfx}</a>
         {else if isset($SESSION.user) && (int)$SESSION.user.usergroupid === 2}
-        <a href="{$urlBase}/inventory{$urlPostFix}"><img class="logo" src="./img/sqstorage.webp" alt="sqStorage logo" width="205" height="56" /></a>
+        <a href="{$urlBase}/inventory{$urlPostFix}">{$logoGfx}</a>
         {else if isset($SESSION.user) && (int)$SESSION.user.usergroupid !== 2}
-        <a href="{$urlBase}/index{$urlPostFix}"><img class="logo" src="./img/sqstorage.webp" alt="sqStorage logo" width="205" height="56" /></a>
+        <a href="{$urlBase}/index{$urlPostFix}">{$logoGfx}</a>
         {/if}
         <ul class="nav">
             {$pages = ['index.php' => '', 'inventory.php' => '', 'categories.php' => '', 'transfer.php' => '', 'datafields.php' => '', 'settings.php' => '']}
