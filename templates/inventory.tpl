@@ -43,9 +43,11 @@
 
                 {assign var="subCats" value=","|explode:$item.subcategories}
                 {$subCategories=array()}
+                {$subNames=array()}
                 {foreach $subCats as $subCat}
                 {if isset($subcategories.$subCat)}
                 {$subCategories[] ="<a href='{$urlBase}/inventory{$urlPostFix}?subcategory={$subcategories.$subCat.id}'>{$subcategories.$subCat.name}</a>"}
+                {$subNames[]=$subcategories.$subCat.name}
                 {/if}
                 {/foreach}
 
@@ -66,7 +68,7 @@
                     <div class="list-span"><span class="listing-amount quick-edit">{$item.amount}</span></div>
                     <div class="list-span"><span class="listing-comment quick-edit" title="{$item.comment}">{$item.comment}</span></div>
 
-                    <div class="list-span"><span class="listing-subcategories" title="{$implodedSubCats}">{$implodedSubCats}</span></div>
+                    <div class="list-span"><span class="listing-subcategories" title="{", "|implode:$subNames}">{$implodedSubCats}</span></div>
                     <div class="list-span"><span class="listing-dateadded" title="{$dateexploded.0}">{$dateexploded.0}</span></div>
                     {if !$isGuest}
                     <a tabindex="-1" href="#" class="save-inline-edit inactive" title="{t}Schnelle Bearbeitung speichern{/t}" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
@@ -155,6 +157,7 @@
                 {foreach $subCats as $subCat}
                 {if isset($subcategories.$subCat)}
                 {$subCategories[] ="<a href='{$urlBase}/inventory{$urlPostFix}?subcategory={$subcategories.$subCat.id}'>{$subcategories.$subCat.name}</a>"}
+                {$subNames[]=$subcategories.$subCat.name}
                 {/if}
                 {/foreach}
 
@@ -175,7 +178,7 @@
                     <div class="list-span"><span class="listing-amount quick-edit">{$item.amount}</span></div>
                     <div class="list-span"><span class="listing-comment quick-edit" title="{$item.comment}">{$item.comment}</span></div>
 
-                    <div class="list-span"><span class="listing-subcategories" title="{$implodedSubCats}">{$implodedSubCats}</span></div>
+                    <div class="list-span"><span class="listing-subcategories" title="{", "|implode:$subNames}">{$implodedSubCats}</span></div>
                     <div class="list-span"><span class="listing-dateadded" title="{$dateexploded.0}">{$dateexploded.0}</span></div>
                     {if !$isGuest}
                     <a tabindex="-1" href="#" class="save-inline-edit inactive" title="{t}Schnelle Bearbeitung speichern{/t}" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
@@ -258,6 +261,7 @@
                 {foreach $subCats as $subCat}
                 {if isset($subcategories.$subCat)}
                 {$subCategories[] ="<a href='{$urlBase}/inventory{$urlPostFix}?subcategory={$subcategories.$subCat.id}'>{$subcategories.$subCat.name}</a>"}
+                {$subNames[]=$subcategories.$subCat.name}
                 {/if}
                 {/foreach}
 
@@ -278,7 +282,7 @@
                     <div class="list-span"><span class="listing-amount quick-edit">{$item.amount}</span></div>
                     <div class="list-span"><span class="listing-comment quick-edit" title="{$item.comment}">{$item.comment}</span></div>
 
-                    <div class="list-span"><span class="listing-subcategories" title="{$implodedSubCats}">{$implodedSubCats}</span></div>
+                    <div class="list-span"><span class="listing-subcategories" title="{", "|implode:$subNames}">{$implodedSubCats}</span></div>
                     <div class="list-span"><span class="listing-dateadded" title="{$dateexploded.0}">{$dateexploded.0}</span></div>
                     {if !$isGuest}
                     <a tabindex="-1" href="#" class="save-inline-edit inactive" title="{t}Schnelle Bearbeitung speichern{/t}" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
