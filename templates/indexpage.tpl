@@ -39,7 +39,7 @@
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <div class="dropdown">
-                            <select class="btn btn-secondary dropdown-toggle" type="button" tabindex="-1" id="storageDropdown" data-toggle="dropdown" data-nosettitle="true" aria-haspopup="true" aria-expanded="false" autocomplete="off">
+                            <select class="btn dropdown-toggle" type="button" tabindex="-1" id="storageDropdown" data-toggle="dropdown" data-nosettitle="true" aria-haspopup="true" aria-expanded="false" autocomplete="off">
 
                             {if $isEdit && $item.storageid != 0}
                                     <option value="-1">{t}Lagerplatz{/t}</option>
@@ -82,7 +82,7 @@
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <div class="dropdown">
-                            <select class="btn btn-secondary dropdown-toggle" tabindex="-1" autocomplete="off" data-nosettitle="true" type="button" id="categoryDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" data-nosettitle="true" type="button" id="categoryDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {if $isEdit}
                                 <option value="-1">{t}Kategorie{/t}</option>
                             {else}
@@ -127,9 +127,9 @@
                                 {$readonly = ' readonly="readonly"'}
                             <div class="dropdown">
                             {if $field.dataType === '6'}
-                                <select class="btn btn-secondary dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="cf{$field.id}" data-default="{$field.default}" data-nosettitle="true" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="cf{$field.id}" data-default="{$field.default}" data-nosettitle="true" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {else}
-                                <select class="btn btn-secondary dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="cf{$field.id}" data-default="{$field.default}" multiple="multiple" data-nosettitle="true" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="cf{$field.id}" data-default="{$field.default}" multiple="multiple" data-nosettitle="true" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {/if}
                             {$hasData = false}
                             {$options = []}
@@ -177,7 +177,7 @@
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <div class="dropdown">
-                            <select class="btn btn-secondary dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="subcategoryDropdown" multiple="multiple" size="3" data-nosettitle="true" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="subcategoryDropdown" multiple="multiple" size="3" data-nosettitle="true" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {$subCat = array()}
                                     {$subCategories = array()}
                                     {if $isEdit && !empty($item.subcategories)}
@@ -249,9 +249,9 @@
 
                             <div class="dropdown">
                             {if $field.dataType === '6'}
-                                <select class="btn btn-secondary dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="cf{$field.id}" data-default="{$field.default}" data-nosettitle="true" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="cf{$field.id}" data-default="{$field.default}" data-nosettitle="true" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {else}
-                                <select class="btn btn-secondary dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="cf{$field.id}" data-default="{$field.default}" multiple="multiple" data-nosettitle="true" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="cf{$field.id}" data-default="{$field.default}" multiple="multiple" data-nosettitle="true" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {/if}
 
                             {$hasData = false}
@@ -307,7 +307,7 @@
                             {if $field.dataType === '6' || $field.dataType === '7'}
                                 {$readonly = ' readonly="readonly"'}
                                 <div class="dropdown">
-                                    <select class="btn btn-secondary dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="cf{$field.id}" data-default="{$field.default}" data-nosettitle="true" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="cf{$field.id}" data-default="{$field.default}" data-nosettitle="true" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
                                     <option value="-1" data-default="{$field.default}">{$field.label}</option>
                                     {foreach explode(';', rtrim($field.fieldValues, ';')) as $value}

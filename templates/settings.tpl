@@ -56,7 +56,7 @@
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <div class="dropdown">
-                    <select class="btn btn-secondary dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="usergroupDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="usergroupDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
                         <option value="-1" selected="selected">{t}Benutzergruppe{/t}</option>
 
@@ -91,7 +91,7 @@
           <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <div class="dropdown">
-                    <select class="btn btn-secondary dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="userapiDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="userapiDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
                         <option value="-1" selected="selected">{t}API Zugriff{/t}</option>
                         <option value="0">{t}verbieten{/t}</option>

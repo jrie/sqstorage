@@ -11,9 +11,6 @@
             </div>
             <form class="inputForm" accept-charset="utf-8" method="POST" action="">
             <div class="modal-body">
-
-
-
                 <input type="hidden" value="" id="UpdateID" name="UpdateID" />
                 <input type="hidden" value="" id="UpdateField" name="UpdateField" />
                 <input type="hidden" value="" id="UpdateTable" name="UpdateTable" />

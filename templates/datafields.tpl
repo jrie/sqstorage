@@ -27,7 +27,7 @@
                     <span class="input-group-text" id="basic-addon1">{t}Datentyp{/t}</span>
                 </div>
                 <div class="dropdown float-left">
-                    <select name="dataType" autocomplete="off" required class="btn btn-primary dropdown-toggle switchdatatype" type="button" tabindex="-1" aria-haspopup="true" aria-expanded="false">
+                    <select name="dataType" autocomplete="off" required class="btn dropdown-toggle switchdatatype" type="button" tabindex="-1" aria-haspopup="true" aria-expanded="false">
 
                         <option value="-1" selected="selected">{t}Datentyp{/t}</option>
                         {foreach $fieldTypes as $type => $value}
@@ -83,7 +83,7 @@
                     <span class="input-group-text" id="basic-addon6">{t}Sichtbarkeit{/t}</span>
                 </div>
                 <div class="dropdown float-left">
-                    <select name="visibleInCategories" multiple="yes" autocomplete="off" required class="btn btn-primary dropdown-toggle switchvisiblity" type="button" tabindex="-1" aria-haspopup="true" aria-expanded="false">
+                    <select name="visibleInCategories" multiple="yes" autocomplete="off" required class="btn dropdown-toggle switchvisiblity" type="button" tabindex="-1" aria-haspopup="true" aria-expanded="false">
 
                         <option value="-1" selected="selected">{t}Überall sichtbar{/t}</option>
                         {foreach $headCategories as $headCategory}

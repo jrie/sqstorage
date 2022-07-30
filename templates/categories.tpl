@@ -54,7 +54,7 @@
 
             {if !$isGuest}
             <div class="dropdown list-span">
-                <select class="btn btn-secondary dropdown-toggle categoryDropdowns" type="button" data-originid="{$category.id}" tabindex="-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" autocomplete="off">
+                <select class="btn dropdown-toggle categoryDropdowns" type="button" data-originid="{$category.id}" tabindex="-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" autocomplete="off">
 
                     {if $category.headcategory != 0}
                     <option value="-1">{t}Keine{/t}</option>

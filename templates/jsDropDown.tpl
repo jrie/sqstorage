@@ -1,5 +1,5 @@
 {literal}
-let dropDowns = document.querySelectorAll('select')
+let dropDowns = document.getElementsByTagName('select')
 
 function toggleDropdown (input, container) {
   container.classList.remove('hide')

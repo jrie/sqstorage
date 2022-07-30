@@ -79,7 +79,7 @@
 
                     {if !$isGuest}
                     <div class="dropdown float-right">
-                        <select autocomplete="off" id="item_{$item.id}" class="btn btn-primary dropdown-toggle switchStorage listing-switchstorage" data-itemamount="{$item.amount}" data-value="0" data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <select autocomplete="off" id="item_{$item.id}" class="btn dropdown-toggle switchStorage listing-switchstorage" data-itemamount="{$item.amount}" data-value="0" data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {$hasStorage = false}
                             {foreach $storages as $storage}
                             {if ($storage.id == $item.storageid)}
@@ -168,13 +168,13 @@
                 {assign var="category" value=$categories.$catid}
                 <li class="list-group-item" data-id="{$item.id}">
                     {if !$isGuest}
-                    <button class="btn smallButton" title="{t}Position löschen{/t}" name="remove" data-name="{$item.label}" value="{$item.id}" type="submit"><i class="fas fa-times-circle"></i></button>
+                    <button class="btn smallButton" title="{t}Position löschen{/t}" name="remove" data-name="{$item.label}" value="{$item.id}" type="submit"><i class="fa fas fa-times-circle"></i></button>
                     {else}
                     <div class="list-span"></div>
                     {/if}
 
                     <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" title="{$category.name}" class="list-span">{$category.name}</a>
-                    <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i><img class="item-picture" data-id="{$item.id}" src="data:image/png;base64,{$item.thumb}">{/if}
+                    <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fa fas fa-images"></i><img class="item-picture" data-id="{$item.id}" src="data:image/png;base64,{$item.thumb}">{/if}
                             <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
                     <div class="list-span"><span class="listing-amount quick-edit">{$item.amount}</span></div>
                     <div class="list-span"><span class="listing-comment quick-edit" title="{$item.comment}">{$item.comment}</span></div>
@@ -189,7 +189,7 @@
 
                     {if !$isGuest}
                     <div class="dropdown float-right">
-                        <select autocomplete="off" id="item_{$item.id}" class="btn btn-primary dropdown-toggle switchStorage listing-switchstorage" data-itemamount="{$item.amount}" data-value="0" data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <select autocomplete="off" id="item_{$item.id}" class="btn dropdown-toggle switchStorage listing-switchstorage" data-itemamount="{$item.amount}" data-value="0" data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {$hasStorage = false}
                             {foreach $storages as $storage}
                             {if ($storage.id == $item.storageid)}
@@ -293,7 +293,7 @@
 
                     {if !$isGuest}
                     <div class="dropdown float-right">
-                        <select autocomplete="off" id="item_{$item.id}" class="btn btn-primary dropdown-toggle switchStorage listing-switchstorage" data-itemamount="{$item.amount}" data-value="0" data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <select autocomplete="off" id="item_{$item.id}" class="btn dropdown-toggle switchStorage listing-switchstorage" data-itemamount="{$item.amount}" data-value="0" data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {$hasStorage = false}
                             {foreach $storages as $storage}
                             {if ($storage.id == $item.storageid)}
