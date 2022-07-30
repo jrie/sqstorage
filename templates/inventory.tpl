@@ -14,10 +14,10 @@
         <div class="storage-area">
             {$itemhasstorage = false}
             {if !$isGuest}
-            <button title="{t}Lagerplatz löschen{/t}" class="btn smallButton" name="removeStorage" data-name="{if isset($itemstore.storage.label)}{$itemstore.storage.label}{$itemhasstorage = true}{else}{t}Unsortiert{/t}{/if}" value="{$itemstore.storage.id}" type="submit"><i class="fas fa-times-circle"></i></button>
+            {if isset($itemstore.storage.label)}<button title="{t}Lagerplatz löschen{/t}" class="btn smallButton" name="removeStorage" data-name="{if isset($itemstore.storage.label)}{$itemstore.storage.label}{$itemhasstorage = true}{else}{t}Unsortiert{/t}{/if}" value="{$itemstore.storage.id}" type="submit"><i class="fas fa-times-circle"></i></button>{/if}
             {/if}
             <h4 class="text-dark">
-                <a href="{$urlBase}/inventory{$urlPostFix}?storageid={$itemstore.storage.id}">{if isset($itemstore.storage.label)}{$itemstore.storage.label}{else}{t}Unsortiert{/t}{/if}</a>&nbsp;
+                {if isset($itemstore.storage.label)}<a href="{$urlBase}/inventory{$urlPostFix}?storageid={$itemstore.storage.id}">{if isset($itemstore.storage.label)}{$itemstore.storage.label}{else}{t}Unsortiert{/t}{/if}</a>{else}{t}Unsortiert{/t}{/if}&nbsp;
                 {if $itemhasstorage}{if !$isGuest}{if isset($itemstore.storage.id)}<a title="{t}Schnelle Bearbeitung{/t}" onclick="changeSingleValue('storages','label',{$itemstore.storage.id},true);" href="javascript:void(0)"><i class="fas fa-edit fa-xs"></i></a>{/if}{/if}{/if}
                 <span class="small">({$itemstore.positionen} {if $itemstore.positionen == 1}{t}Position{/t}{else}{t}Positionen{/t}{/if}, {$itemstore.itemcount} {if $itemstore.itemcount == 1}{t}Gegenstand{/t}{else}{t}Gegenstände{/t}{/if})</span>
             </h4>
@@ -69,7 +69,7 @@
                     <div class="list-span"><span class="listing-amount quick-edit">{$item.amount}</span></div>
                     <div class="list-span"><span class="listing-comment quick-edit" title="{$item.comment}">{$item.comment}</span></div>
 
-                    <div class="list-span"><span class="listing-subcategories" title="{", "|implode:$subNames}">{$implodedSubCats}</span></div>
+                    <div class="list-span"><span class="listing-subcategories" title="{" , "|implode:$subNames}">{$implodedSubCats}</span></div>
                     <div class="list-span"><span class="listing-dateadded" title="{$dateexploded.0}">{$dateexploded.0}</span></div>
                     {if !$isGuest}
                     <a tabindex="-1" href="#" class="save-inline-edit inactive" title="{t}Schnelle Bearbeitung speichern{/t}" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
@@ -283,7 +283,7 @@
                     <div class="list-span"><span class="listing-amount quick-edit">{$item.amount}</span></div>
                     <div class="list-span"><span class="listing-comment quick-edit" title="{$item.comment}">{$item.comment}</span></div>
 
-                    <div class="list-span"><span class="listing-subcategories" title="{", "|implode:$subNames}">{$implodedSubCats}</span></div>
+                    <div class="list-span"><span class="listing-subcategories" title="{" , "|implode:$subNames}">{$implodedSubCats}</span></div>
                     <div class="list-span"><span class="listing-dateadded" title="{$dateexploded.0}">{$dateexploded.0}</span></div>
                     {if !$isGuest}
                     <a tabindex="-1" href="#" class="save-inline-edit inactive" title="{t}Schnelle Bearbeitung speichern{/t}" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
