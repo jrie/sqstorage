@@ -4,7 +4,7 @@
     <div class="content">
 
         <div class="dropdown float-left storeSrcDiv">
-            <select value="-1" autocomplete="off" class="btn btn-primary dropdown-toggle switchStorage" id="storeSrc" type="button" tabindex="-1" data-type="storeSrc" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <select value="-1" autocomplete="off" class="btn dropdown-toggle switchStorage" id="storeSrc" type="button" tabindex="-1" data-type="storeSrc" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <option selected="selected" value="-1">{t}Quelle{/t}</option>';
             {foreach $storages as $storage}
                 <option value="{$storage.id}">{$storage.label}</option>
@@ -13,7 +13,7 @@
         </div>
 
         <div class="dropdown float-left storeDestDiv">
-            <select value="-1" autocomplete="off" class="btn btn-primary dropdown-toggle switchStorage" id="storeDest" type="button" tabindex="-1" data-type="storeDest" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <select value="-1" autocomplete="off" class="btn dropdown-toggle switchStorage" id="storeDest" type="button" tabindex="-1" data-type="storeDest" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <option selected="selected" value="-1">{t}Ziel{/t}</option>
 
             {foreach $storages as $storage}
@@ -30,10 +30,11 @@
             <h2>{t}Ziel{/t}</h2>
             <div class="data" data-type="dest">{t}Ziel wählen.{/t}</div><button id="transferButton" class="btn btn-primary float-right">{t}Transferieren{/t}</button>
         </div>
-
+        
+        <div class="clearfix"></div>
         </div>
 
-{$target = "transfer.php"}
+{$target="transfer.php"}
 
 {include file="footer.tpl"}
 {literal}
@@ -52,6 +53,7 @@
             }
 
             function transferItem(evt) {
+                evt.preventDefault()
                 if (evt.target.dataset['sid'] === document.querySelector('.switchStorage[data-type="storeDest"]').value || parseInt(document.querySelector('.switchStorage[data-type="storeDest"]').value) === -1) return
                 if (evt.target.parentNode.dataset['type'] === 'src') {
                     let target = document.querySelector('.storageListing.storeDest .data')
@@ -112,6 +114,7 @@
             }
 
             function transferItems(evt) {
+                evt.preventDefault()
                 if (transferItemIds.length === 0) return
 
                 let targetId = parseInt(document.querySelector('.switchStorage[data-type="storeDest"]').value)
