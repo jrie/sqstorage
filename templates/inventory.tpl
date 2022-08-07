@@ -24,12 +24,12 @@
 
             <ul class="list-group">
                 <li class="alert alert-info">
-                    <span class="list-span" title="{t}Kategorien{/t}">{t}Kategorien{/t}</span>
-                    <span class="list-span" title="{t}Bezeichnung{/t}">{t}Bezeichnung{/t}</span>
-                    <span class="list-span" title="{t}Anzahl{/t}">{t}Anzahl{/t}</span>
-                    <span class="list-span" title="{t}Bemerkung{/t}">{t}Bemerkung{/t}</span>
-                    <span class="list-span" title="{t}Unterkategorien{/t}">{t}Unterkategorien{/t}</span>
-                    <span class="list-span" title="{t}Hinzugefügt{/t}">{t}Hinzugefügt{/t}</span>
+                    <span class="list-span header sortable" data-index="1" title="{t}Kategorien{/t}">{t}Kategorien{/t}</span>
+                    <span class="list-span header sortable" data-index="2" title="{t}Bezeichnung{/t}">{t}Bezeichnung{/t}</span>
+                    <span class="list-span header sortable" data-index="3" title="{t}Anzahl{/t}">{t}Anzahl{/t}</span>
+                    <span class="list-span header sortable" data-index="4" title="{t}Bemerkung{/t}">{t}Bemerkung{/t}</span>
+                    <span class="list-span header sortable" data-index="5" title="{t}Unterkategorien{/t}">{t}Unterkategorien{/t}</span>
+                    <span class="list-span header sortable" data-index="6" title="{t}Hinzugefügt{/t}">{t}Hinzugefügt{/t}</span>
                     {if !$isGuest}
                     <span class="list-span" title="{t}Aktionen{/t}">{t}Aktionen{/t}</span>
                     <span class="list-span" title="{t}Zuweisen{/t}">{t}Zuweisen{/t}</span>
@@ -65,57 +65,62 @@
 
                     <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" title="{$category.name}" class="list-span">{$category.name}</a>
                     <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i><img class="item-picture" data-id="{$item.id}" src="data:image/png;base64,{$item.thumb}">{/if}
+                            {if !$isGuest}
                             <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
-                    <div class="list-span"><span class="listing-amount quick-edit">{$item.amount}</span></div>
-                    <div class="list-span"><span class="listing-comment quick-edit" title="{$item.comment}">{$item.comment}</span></div>
-
-                    <div class="list-span"><span class="listing-subcategories" title="{" , "|implode:$subNames}">{$implodedSubCats}</span></div>
-                    <div class="list-span"><span class="listing-dateadded" title="{$dateexploded.0}">{$dateexploded.0}</span></div>
-                    {if !$isGuest}
-                    <a tabindex="-1" href="#" class="save-inline-edit inactive" title="{t}Schnelle Bearbeitung speichern{/t}" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
-                    <a tabindex="-1" href="#" class="open-inline-edit" title="{t}Schnelle Bearbeitung{/t}" data-id="{$item.id}"><i class="fas fa-eraser"></i></a>
-                    <a title="{t}Ausführliche Bearbeitung{/t}" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
-                    {/if}
-
-                    {if !$isGuest}
-                    <div class="dropdown float-right">
-                        <select autocomplete="off" id="item_{$item.id}" class="btn dropdown-toggle switchStorage listing-switchstorage" data-itemamount="{$item.amount}" data-value="0" data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {$hasStorage = false}
-                            {foreach $storages as $storage}
-                            {if ($storage.id == $item.storageid)}
-                            {$hasStorage = true}
-                            <option selected="selected" value="-1">{$storage.label}</option>
-                            {break}
-                            {/if}
-                            {/foreach}
-
-                            {if !$hasStorage}
-                            <option selected="selected" value="-1">{t}Zuweisen{/t}</option>
-                            {/if}
-
-                            {foreach $storages as $storage}
-                            {if ($storage.id != $item.storageid)}
-                            <option value="{$storage.id}">{$storage.label}</option>
-                            {/if}
-                            {/foreach}
-                        </select>
-                    </div>
-                    {/if}
-                </li>
-
-                {/foreach}
-                {else}
-                <li class="list-group-item"><span>{t}Keine Gegenstände gefunden{/t}</span></li>
-                {/if}
-            </ul>
+                    {else}
+                    <span class="listing-label" title="{$item.label}">{$item.label}</span></span>
         </div>
-        {else}
-        <!--<h1>Keine Teile verdammt</h1>-->
+        {/if}
+        <div class="list-span"><span class="listing-amount quick-edit">{$item.amount}</span></div>
+        <div class="list-span"><span class="listing-comment quick-edit" title="{$item.comment}">{$item.comment}</span></div>
+
+        <div class="list-span"><span class="listing-subcategories" title="{" , "|implode:$subNames}">{$implodedSubCats}</span></div>
+        <div class="list-span"><span class="listing-dateadded" title="{$dateexploded.0}">{$dateexploded.0}</span></div>
+        {if !$isGuest}
+        <a tabindex="-1" href="#" class="save-inline-edit inactive" title="{t}Schnelle Bearbeitung speichern{/t}" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
+        <a tabindex="-1" href="#" class="open-inline-edit" title="{t}Schnelle Bearbeitung{/t}" data-id="{$item.id}"><i class="fas fa-eraser"></i></a>
+        <a title="{t}Ausführliche Bearbeitung{/t}" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
         {/if}
 
+        {if !$isGuest}
+        <div class="dropdown float-right">
+            <select autocomplete="off" id="item_{$item.id}" class="btn dropdown-toggle switchStorage listing-switchstorage" data-itemamount="{$item.amount}" data-value="0" data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {$hasStorage = false}
+                {foreach $storages as $storage}
+                {if ($storage.id == $item.storageid)}
+                {$hasStorage = true}
+                <option selected="selected" value="-1">{$storage.label}</option>
+                {break}
+                {/if}
+                {/foreach}
+
+                {if !$hasStorage}
+                <option selected="selected" value="-1">{t}Zuweisen{/t}</option>
+                {/if}
+
+                {foreach $storages as $storage}
+                {if ($storage.id != $item.storageid)}
+                <option value="{$storage.id}">{$storage.label}</option>
+                {/if}
+                {/foreach}
+            </select>
+        </div>
+        {/if}
+        </li>
+
         {/foreach}
-        {if !$hasdata}<li class="list-group-item"><span>{t}Keine Gegenstände gefunden{/t}</span></li>{/if}
-    </form>
+        {else}
+        <li class="list-group-item"><span>{t}Keine Gegenstände gefunden{/t}</span></li>
+        {/if}
+        </ul>
+</div>
+{else}
+<!--<h1>Keine Teile verdammt</h1>-->
+{/if}
+
+{/foreach}
+{if !$hasdata}<li class="list-group-item"><span>{t}Keine Gegenstände gefunden{/t}</span></li>{/if}
+</form>
 
 </div>
 <!-------------------------------------------------------------------------------------------------------------->
@@ -138,12 +143,12 @@
             </h4>
             <ul class="list-group">
                 <li class="alert alert-info">
-                    <span class="list-span" title="{t}Kategorien{/t}">{t}Kategorien{/t}</span>
-                    <span class="list-span" title="{t}Bezeichnung{/t}">{t}Bezeichnung{/t}</span>
-                    <span class="list-span" title="{t}Anzahl{/t}">{t}Anzahl{/t}</span>
-                    <span class="list-span" title="{t}Bemerkung{/t}">{t}Bemerkung{/t}</span>
-                    <span class="list-span" title="{t}Unterkategorien{/t}">{t}Unterkategorien{/t}</span>
-                    <span class="list-span" title="{t}Hinzugefügt{/t}">{t}Hinzugefügt{/t}</span>
+                    <span class="list-span header sortable" data-index="1" title="{t}Kategorien{/t}">{t}Kategorien{/t}</span>
+                    <span class="list-span header sortable" data-index="2" title="{t}Bezeichnung{/t}">{t}Bezeichnung{/t}</span>
+                    <span class="list-span header sortable" data-index="3" title="{t}Anzahl{/t}">{t}Anzahl{/t}</span>
+                    <span class="list-span header sortable" data-index="4" title="{t}Bemerkung{/t}">{t}Bemerkung{/t}</span>
+                    <span class="list-span header sortable" data-index="5" title="{t}Unterkategorien{/t}">{t}Unterkategorien{/t}</span>
+                    <span class="list-span header sortable" data-index="6" title="{t}Hinzugefügt{/t}">{t}Hinzugefügt{/t}</span>
                     {if !$isGuest}
                     <span class="list-span" title="{t}Aktionen{/t}">{t}Aktionen{/t}</span>
                     <span class="list-span" title="{t}Zuweisen{/t}">{t}Zuweisen{/t}</span>
@@ -175,53 +180,58 @@
 
                     <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" title="{$category.name}" class="list-span">{$category.name}</a>
                     <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fa fas fa-images"></i><img class="item-picture" data-id="{$item.id}" src="data:image/png;base64,{$item.thumb}">{/if}
+                            {if !$isGuest}
                             <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
-                    <div class="list-span"><span class="listing-amount quick-edit">{$item.amount}</span></div>
-                    <div class="list-span"><span class="listing-comment quick-edit" title="{$item.comment}">{$item.comment}</span></div>
-
-                    <div class="list-span"><span class="listing-subcategories" title="{", "|implode:$subNames}">{$implodedSubCats}</span></div>
-                    <div class="list-span"><span class="listing-dateadded" title="{$dateexploded.0}">{$dateexploded.0}</span></div>
-                    {if !$isGuest}
-                    <a tabindex="-1" href="#" class="save-inline-edit inactive" title="{t}Schnelle Bearbeitung speichern{/t}" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
-                    <a tabindex="-1" href="#" class="open-inline-edit" title="{t}Schnelle Bearbeitung{/t}" data-id="{$item.id}"><i class="fas fa-eraser"></i></a>
-                    <a title="{t}Ausführliche Bearbeitung{/t}" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
-                    {/if}
-
-                    {if !$isGuest}
-                    <div class="dropdown float-right">
-                        <select autocomplete="off" id="item_{$item.id}" class="btn dropdown-toggle switchStorage listing-switchstorage" data-itemamount="{$item.amount}" data-value="0" data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {$hasStorage = false}
-                            {foreach $storages as $storage}
-                            {if ($storage.id == $item.storageid)}
-                            {$hasStorage = true}
-                            <option selected="selected" value="-1">{$storage.label}</option>
-                            {break}
-                            {/if}
-                            {/foreach}
-
-                            {if !$hasStorage}
-                            <option selected="selected" value="-1">{t}Zuweisen{/t}</option>
-                            {/if}
-
-                            {foreach $storages as $storage}
-                            {if ($storage.id != $item.storageid)}
-                            <option value="{$storage.id}">{$storage.label}</option>
-                            {/if}
-                            {/foreach}
-                        </select>
-                    </div>
-                    {/if}
-                </li>
-
-                {/foreach}
-                {else}
-                <li class="list-group-item"><span>{t}Keine Gegenstände gefunden{/t}</span></li>
-                {/if}
-            </ul>
+                    {else}
+                    <span class="listing-label" title="{$item.label}">{$item.label}</span></span>
         </div>
         {/if}
+        <div class="list-span"><span class="listing-amount quick-edit">{$item.amount}</span></div>
+        <div class="list-span"><span class="listing-comment quick-edit" title="{$item.comment}">{$item.comment}</span></div>
+
+        <div class="list-span"><span class="listing-subcategories" title="{" , "|implode:$subNames}">{$implodedSubCats}</span></div>
+        <div class="list-span"><span class="listing-dateadded" title="{$dateexploded.0}">{$dateexploded.0}</span></div>
+        {if !$isGuest}
+        <a tabindex="-1" href="#" class="save-inline-edit inactive" title="{t}Schnelle Bearbeitung speichern{/t}" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
+        <a tabindex="-1" href="#" class="open-inline-edit" title="{t}Schnelle Bearbeitung{/t}" data-id="{$item.id}"><i class="fas fa-eraser"></i></a>
+        <a title="{t}Ausführliche Bearbeitung{/t}" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
+        {/if}
+
+        {if !$isGuest}
+        <div class="dropdown float-right">
+            <select autocomplete="off" id="item_{$item.id}" class="btn dropdown-toggle switchStorage listing-switchstorage" data-itemamount="{$item.amount}" data-value="0" data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {$hasStorage = false}
+                {foreach $storages as $storage}
+                {if ($storage.id == $item.storageid)}
+                {$hasStorage = true}
+                <option selected="selected" value="-1">{$storage.label}</option>
+                {break}
+                {/if}
+                {/foreach}
+
+                {if !$hasStorage}
+                <option selected="selected" value="-1">{t}Zuweisen{/t}</option>
+                {/if}
+
+                {foreach $storages as $storage}
+                {if ($storage.id != $item.storageid)}
+                <option value="{$storage.id}">{$storage.label}</option>
+                {/if}
+                {/foreach}
+            </select>
+        </div>
+        {/if}
+        </li>
+
         {/foreach}
-    </form>
+        {else}
+        <li class="list-group-item"><span>{t}Keine Gegenstände gefunden{/t}</span></li>
+        {/if}
+        </ul>
+</div>
+{/if}
+{/foreach}
+</form>
 </div>
 <!-------------------------------------------------------------------------------------------------------------->
 {elseif $parse.mode == "subcategory"}
@@ -242,12 +252,12 @@
             </h4>
             <ul class="list-group">
                 <li class="alert alert-info">
-                    <span class="list-span" title="{t}Kategorien{/t}">{t}Kategorien{/t}</span>
-                    <span class="list-span" title="{t}Bezeichnung{/t}">{t}Bezeichnung{/t}</span>
-                    <span class="list-span" title="{t}Anzahl{/t}">{t}Anzahl{/t}</span>
-                    <span class="list-span" title="{t}Bemerkung{/t}">{t}Bemerkung{/t}</span>
-                    <span class="list-span" title="{t}Unterkategorien{/t}">{t}Unterkategorien{/t}</span>
-                    <span class="list-span" title="{t}Hinzugefügt{/t}">{t}Hinzugefügt{/t}</span>
+                    <span class="list-span header sortable" data-index="1" title="{t}Kategorien{/t}">{t}Kategorien{/t}</span>
+                    <span class="list-span header sortable" data-index="2" title="{t}Bezeichnung{/t}">{t}Bezeichnung{/t}</span>
+                    <span class="list-span header sortable" data-index="3" title="{t}Anzahl{/t}">{t}Anzahl{/t}</span>
+                    <span class="list-span header sortable" data-index="4" title="{t}Bemerkung{/t}">{t}Bemerkung{/t}</span>
+                    <span class="list-span header sortable" data-index="5" title="{t}Unterkategorien{/t}">{t}Unterkategorien{/t}</span>
+                    <span class="list-span header sortable" data-index="6" title="{t}Hinzugefügt{/t}">{t}Hinzugefügt{/t}</span>
                     {if !$isGuest}
                     <span class="list-span" title="{t}Aktionen{/t}">{t}Aktionen{/t}</span>
                     <span class="list-span" title="{t}Zuweisen{/t}">{t}Zuweisen{/t}</span>
@@ -279,56 +289,61 @@
 
                     <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" title="{$category.name}" class="list-span">{$category.name}</a>
                     <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i><img class="item-picture" data-id="{$item.id}" src="data:image/png;base64,{$item.thumb}">{/if}
+                            {if !$isGuest}
                             <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
-                    <div class="list-span"><span class="listing-amount quick-edit">{$item.amount}</span></div>
-                    <div class="list-span"><span class="listing-comment quick-edit" title="{$item.comment}">{$item.comment}</span></div>
-
-                    <div class="list-span"><span class="listing-subcategories" title="{" , "|implode:$subNames}">{$implodedSubCats}</span></div>
-                    <div class="list-span"><span class="listing-dateadded" title="{$dateexploded.0}">{$dateexploded.0}</span></div>
-                    {if !$isGuest}
-                    <a tabindex="-1" href="#" class="save-inline-edit inactive" title="{t}Schnelle Bearbeitung speichern{/t}" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
-                    <a tabindex="-1" href="#" class="open-inline-edit" title="{t}Schnelle Bearbeitung{/t}" data-id="{$item.id}"><i class="fas fa-eraser"></i></a>
-                    <a title="{t}Ausführliche Bearbeitung{/t}" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
-                    {/if}
-
-                    {if !$isGuest}
-                    <div class="dropdown float-right">
-                        <select autocomplete="off" id="item_{$item.id}" class="btn dropdown-toggle switchStorage listing-switchstorage" data-itemamount="{$item.amount}" data-value="0" data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {$hasStorage = false}
-                            {foreach $storages as $storage}
-                            {if ($storage.id == $item.storageid)}
-                            {$hasStorage = true}
-                            <option selected="selected" value="-1">{$storage.label}</option>
-                            {break}
-                            {/if}
-                            {/foreach}
-
-                            {if !$hasStorage}
-                            <option selected="selected" value="-1">{t}Zuweisen{/t}</option>
-                            {/if}
-
-                            {foreach $storages as $storage}
-                            {if ($storage.id != $item.storageid)}
-                            <option value="{$storage.id}">{$storage.label}</option>
-                            {/if}
-                            {/foreach}
-                        </select>
-                    </div>
-                    {/if}
-                </li>
-
-                {/foreach}
-                {else}
-                <li class="list-group-item"><span>{t}Keine Gegenstände gefunden{/t}</span></li>
-                {/if}
-            </ul>
+                    {else}
+                    <span class="listing-label" title="{$item.label}">{$item.label}</span></span>
         </div>
-        {else}
-        <!--<h1>Keine Teile verdammt</h1>-->
         {/if}
+        <div class="list-span"><span class="listing-amount quick-edit">{$item.amount}</span></div>
+        <div class="list-span"><span class="listing-comment quick-edit" title="{$item.comment}">{$item.comment}</span></div>
+
+        <div class="list-span"><span class="listing-subcategories" title="{" , "|implode:$subNames}">{$implodedSubCats}</span></div>
+        <div class="list-span"><span class="listing-dateadded" title="{$dateexploded.0}">{$dateexploded.0}</span></div>
+        {if !$isGuest}
+        <a tabindex="-1" href="#" class="save-inline-edit inactive" title="{t}Schnelle Bearbeitung speichern{/t}" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
+        <a tabindex="-1" href="#" class="open-inline-edit" title="{t}Schnelle Bearbeitung{/t}" data-id="{$item.id}"><i class="fas fa-eraser"></i></a>
+        <a title="{t}Ausführliche Bearbeitung{/t}" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
+        {/if}
+
+        {if !$isGuest}
+        <div class="dropdown float-right">
+            <select autocomplete="off" id="item_{$item.id}" class="btn dropdown-toggle switchStorage listing-switchstorage" data-itemamount="{$item.amount}" data-value="0" data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {$hasStorage = false}
+                {foreach $storages as $storage}
+                {if ($storage.id == $item.storageid)}
+                {$hasStorage = true}
+                <option selected="selected" value="-1">{$storage.label}</option>
+                {break}
+                {/if}
+                {/foreach}
+
+                {if !$hasStorage}
+                <option selected="selected" value="-1">{t}Zuweisen{/t}</option>
+                {/if}
+
+                {foreach $storages as $storage}
+                {if ($storage.id != $item.storageid)}
+                <option value="{$storage.id}">{$storage.label}</option>
+                {/if}
+                {/foreach}
+            </select>
+        </div>
+        {/if}
+        </li>
+
         {/foreach}
+        {else}
+        <li class="list-group-item"><span>{t}Keine Gegenstände gefunden{/t}</span></li>
         {/if}
-    </form>
+        </ul>
+</div>
+{else}
+<!--<h1>Keine Teile verdammt</h1>-->
+{/if}
+{/foreach}
+{/if}
+</form>
 </div>
 
 {if isset($dump)}
@@ -576,6 +591,90 @@
             evt.preventDefault()
         }
     })
+
+    let activeSortIndex = -2
+    let originalOrderIds = []
+    let currentActive = null
+    let previousActive = null
+
+    function doSort(evt) {
+        const sortByIndex = parseInt(evt.target.dataset['index']) - 1
+        let listItems = evt.target.parentNode.parentNode.querySelectorAll('li.list-group-item')
+        let sortItems = []
+
+        currentActive = document.querySelector('span.header.orderup, span.header.orderdown')
+        let doRestore = false
+        if (currentActive !== null && currentActive !== previousActive) {
+            doRestore = true
+        }
+
+        previousActive = currentActive
+
+
+        if (activeSortIndex === -1 || doRestore) {
+            let activeListItems = currentActive.parentNode.parentNode.querySelectorAll('li.list-group-item')
+            for (const originalId of originalOrderIds) {
+                for (const listItem of activeListItems) {
+                    if (listItem.dataset['id'] === originalId) {
+                        currentActive.parentNode.parentNode.appendChild(listItem)
+                        break
+                    }
+                }
+            }
+
+            currentActive.classList.remove('orderup')
+            currentActive.classList.remove('orderdown')
+            if (!doRestore || activeSortIndex === -1) {
+                previousActive = null
+                originalOrderIds = []
+                activeSortIndex = -2;
+                return
+            }
+        }
+
+        for (const listItem of listItems) {
+            const itemRow = listItem.querySelectorAll('.list-span')
+            if (activeSortIndex === -2) {
+                originalOrderIds.push(listItem.dataset['id'])
+            }
+            sortItems.push(itemRow[sortByIndex].outerText.trim())
+        }
+
+        if (activeSortIndex !== sortByIndex) {
+            sortItems.sort(new Intl.Collator('de').compare)
+            activeSortIndex = sortByIndex
+            evt.target.classList.add('orderup')
+        } else {
+            evt.target.classList.remove('orderup')
+            evt.target.classList.add('orderdown')
+            sortItems.reverse()
+            activeSortIndex = -1
+        }
+
+
+        let listItemArray = Array.from(listItems)
+        for (const sortValue of sortItems) {
+            let currentIndex = 0
+            for (const listItem of listItemArray) {
+                const itemRow = listItem.querySelectorAll('.list-span')
+                const sortText = itemRow[sortByIndex].outerText.trim()
+                if (sortText === sortValue) {
+                    evt.target.parentNode.parentNode.appendChild(listItem)
+                    listItemArray.splice(currentIndex, 1)
+                    break
+                } else {
+                    ++currentIndex
+                }
+            }
+        }
+    }
+
+
+    let sortAbles = document.querySelectorAll('span.header.sortable')
+    for (let sortAble of sortAbles) {
+        sortAble.addEventListener('click', doSort)
+        sortAble.classList.add('pointer')
+    }
 </script>
 {/literal}
 {include file="bodyend.tpl"}
