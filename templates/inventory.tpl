@@ -4,8 +4,6 @@
 {$hasdata=false}
 {$selectid=0}
 
-{assign var="langShortCode" value="_"|explode:$langCurrent}
-
 {if $parse.mode == "default"}
 <div class="content {if $isGuest}roleguest{/if}">
     <form id="inventoryForm" method="POST" action="{$urlBase}/inventory{$urlPostFix}">
@@ -643,7 +641,7 @@
         }
 
         if (activeSortIndex !== sortByIndex) {
-            sortItems.sort(new Intl.Collator('{/literal}{$langShortCode[0]}{literal}').compare)
+            sortItems.sort(new Intl.Collator('{/literal}{$langShortCode}{literal}').compare)
             activeSortIndex = sortByIndex
             evt.target.classList.add('orderup')
         } else {
