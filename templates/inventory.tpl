@@ -26,16 +26,13 @@
                 <li class="alert alert-info">
                     <span class="list-span header sortable" data-index="1" title="{t}Kategorien{/t}">{t}Kategorien{/t}</span>
                     <span class="list-span header sortable" data-index="2" title="{t}Bezeichnung{/t}">{t}Bezeichnung{/t}</span>
-                    <span class="list-span header sortable" data-index="3" title="{t}Anzahl{/t}">{t}Anzahl{/t}</span>
+                    <span class="list-span header sortable" data-index="3" data-sort="number" title="{t}Anzahl{/t}">{t}Anzahl{/t}</span>
                     <span class="list-span header sortable" data-index="4" title="{t}Bemerkung{/t}">{t}Bemerkung{/t}</span>
                     <span class="list-span header sortable" data-index="5" title="{t}Unterkategorien{/t}">{t}Unterkategorien{/t}</span>
-                    <span class="list-span header sortable" data-index="6" title="{t}Hinzugefügt{/t}">{t}Hinzugefügt{/t}</span>
+                    <span class="list-span header sortable" data-index="6" data-sort="date" title="{t}Hinzugefügt{/t}">{t}Hinzugefügt{/t}</span>
                     {if !$isGuest}
                     <span class="list-span" title="{t}Aktionen{/t}">{t}Aktionen{/t}</span>
                     <span class="list-span" title="{t}Zuweisen{/t}">{t}Zuweisen{/t}</span>
-                    {else}
-                    <span class="list-span"></span>
-                    <span class="list-span"></span>
                     {/if}
                 </li>
 
@@ -145,18 +142,18 @@
                 <li class="alert alert-info">
                     <span class="list-span header sortable" data-index="1" title="{t}Kategorien{/t}">{t}Kategorien{/t}</span>
                     <span class="list-span header sortable" data-index="2" title="{t}Bezeichnung{/t}">{t}Bezeichnung{/t}</span>
-                    <span class="list-span header sortable" data-index="3" title="{t}Anzahl{/t}">{t}Anzahl{/t}</span>
+                    <span class="list-span header sortable" data-index="3" data-sort="number" title="{t}Anzahl{/t}">{t}Anzahl{/t}</span>
                     <span class="list-span header sortable" data-index="4" title="{t}Bemerkung{/t}">{t}Bemerkung{/t}</span>
                     <span class="list-span header sortable" data-index="5" title="{t}Unterkategorien{/t}">{t}Unterkategorien{/t}</span>
-                    <span class="list-span header sortable" data-index="6" title="{t}Hinzugefügt{/t}">{t}Hinzugefügt{/t}</span>
+                    <span class="list-span header sortable" data-index="6" data-sort="date" title="{t}Hinzugefügt{/t}">{t}Hinzugefügt{/t}</span>
                     {if !$isGuest}
                     <span class="list-span" title="{t}Aktionen{/t}">{t}Aktionen{/t}</span>
                     <span class="list-span" title="{t}Zuweisen{/t}">{t}Zuweisen{/t}</span>
                     {/if}
                 </li>
+                
                 {if isset($itemstore.items)}
                 {foreach $itemstore.items as $item}
-
 
                 {assign var="subCats" value=","|explode:$item.subcategories}
                 {$subCategories=array()}
@@ -254,18 +251,18 @@
                 <li class="alert alert-info">
                     <span class="list-span header sortable" data-index="1" title="{t}Kategorien{/t}">{t}Kategorien{/t}</span>
                     <span class="list-span header sortable" data-index="2" title="{t}Bezeichnung{/t}">{t}Bezeichnung{/t}</span>
-                    <span class="list-span header sortable" data-index="3" title="{t}Anzahl{/t}">{t}Anzahl{/t}</span>
+                    <span class="list-span header sortable" data-index="3" data-sort="number" title="{t}Anzahl{/t}">{t}Anzahl{/t}</span>
                     <span class="list-span header sortable" data-index="4" title="{t}Bemerkung{/t}">{t}Bemerkung{/t}</span>
                     <span class="list-span header sortable" data-index="5" title="{t}Unterkategorien{/t}">{t}Unterkategorien{/t}</span>
-                    <span class="list-span header sortable" data-index="6" title="{t}Hinzugefügt{/t}">{t}Hinzugefügt{/t}</span>
+                    <span class="list-span header sortable" data-index="6" data-sort="date" title="{t}Hinzugefügt{/t}">{t}Hinzugefügt{/t}</span>
                     {if !$isGuest}
                     <span class="list-span" title="{t}Aktionen{/t}">{t}Aktionen{/t}</span>
                     <span class="list-span" title="{t}Zuweisen{/t}">{t}Zuweisen{/t}</span>
                     {/if}
                 </li>
+
                 {if isset($itemstore.items)}
                 {foreach $itemstore.items as $item}
-
 
                 {assign var="subCats" value=","|explode:$item.subcategories}
                 {$subCategories=array()}
@@ -641,7 +638,13 @@
         }
 
         if (activeSortIndex !== sortByIndex) {
-            sortItems.sort(new Intl.Collator('{/literal}{$langShortCode}{literal}').compare)
+            if (evt.target.dataset['sort'] === undefined || evt.target.dataset['sort'] === 'date') {
+                // Default sorting and "2022-12-31" sorting
+                sortItems.sort(new Intl.Collator('{/literal}{$langShortCode}{literal}').compare)
+            } else if (evt.target.dataset['sort'] === 'number') {
+                // Number sorting
+                sortItems.sort(new Intl.Collator('{/literal}{$langShortCode}{literal}', { 'numeric': true }).compare)
+            }
             activeSortIndex = sortByIndex
             evt.target.classList.add('orderup')
         } else {

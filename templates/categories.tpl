@@ -6,9 +6,9 @@
     <hr />
     <ul class="categories list-group">
         <li class="alert alert-info">
-            <span class="list-span" title="{t}Kategorien{/t}">{t}Kategorien{/t}</span>
-            <span class=" list-span" title="{t}Anzahl{/t}">{t}Anzahl{/t}</span>
-            <span class="list-span" title="{t}Positionen{/t}">{t}Positionen{/t}</span>
+            <span class="list-span header sortable" data-index="1" title="{t}Kategorien{/t}">{t}Kategorien{/t}</span>
+            <span class=" list-span header sortable" data-index="2" data-sort="number" title="{t}Anzahl{/t}">{t}Anzahl{/t}</span>
+            <span class="list-span header sortable" data-index="3" data-sort="number" title="{t}Positionen{/t}">{t}Positionen{/t}</span>
             {if !$isGuest}
             <span class="list-span" title="{t}Aktionen{/t}">{t}Aktionen{/t}</span>
             {/if}
@@ -31,9 +31,9 @@
 
     <ul class="categories list-group">
         <li class="alert alert-info">
-            <span class="list-span" title="{t}Unterkategorien{/t}">{t}Unterkategorien{/t}</span>
-            <span class="list-span" title="{t}Anzahl{/t}">{t}Anzahl{/t}</span>
-            <span class="list-span" title="{t}Positionen{/t}">{t}Positionen{/t}</span>
+            <span class="list-span header sortable" data-index="1" title="{t}Unterkategorien{/t}">{t}Unterkategorien{/t}</span>
+            <span class="list-span header sortable" data-index="2" data-sort="number" title="{t}Anzahl{/t}">{t}Anzahl{/t}</span>
+            <span class="list-span header sortable" data-index="3" data-sort="number" title="{t}Positionen{/t}">{t}Positionen{/t}</span>
             {if !$isGuest}
             <span class="list-span" title="{t}Aktionen{/t}">{t}Aktionen{/t}</span>
             {/if}
@@ -74,14 +74,14 @@
             {else}
             <div class="list-span">
                 {if $category.headcategory === NULL}
-                    {t}Keine{/t}
+                {t}Keine{/t}
                 {else}
-                    {foreach $headCategories as $headCategory} {
-                        {if $headCategory.id == $category.headcategory}
-                            {$headCategory.name}
-                        {break}
-                        {/if}
-                    {/foreach}
+                {foreach $headCategories as $headCategory} {
+                {if $headCategory.id == $category.headcategory}
+                {$headCategory.name}
+                {break}
+                {/if}
+                {/foreach}
                 {/if}
             </div>
             {/if}
@@ -129,6 +129,96 @@
 
             window.location.href = '{/literal}{$urlBase}{literal}/categories{/literal}{$urlPostFix}{literal}?setCategoryId=' + subcategoryId + '&to=' + evt.target.value
         })
+    }
+
+    let activeSortIndex = -2
+    let originalOrderIds = []
+    let currentActive = null
+    let previousActive = null
+
+    function doSort(evt) {
+        const sortByIndex = parseInt(evt.target.dataset['index']) - 1
+        let listItems = evt.target.parentNode.parentNode.querySelectorAll('li.list-group-item')
+        let sortItems = []
+
+        currentActive = document.querySelector('span.header.orderup, span.header.orderdown')
+        let doRestore = false
+        if (currentActive !== null && currentActive !== previousActive) {
+            doRestore = true
+        }
+
+        previousActive = currentActive
+
+
+        if (activeSortIndex === -1 || doRestore) {
+            let activeListItems = currentActive.parentNode.parentNode.querySelectorAll('li.list-group-item')
+            for (const originalId of originalOrderIds) {
+                for (const listItem of activeListItems) {
+                    if (listItem.dataset['id'] === originalId) {
+                        currentActive.parentNode.parentNode.appendChild(listItem)
+                        break
+                    }
+                }
+            }
+
+            currentActive.classList.remove('orderup')
+            currentActive.classList.remove('orderdown')
+            if (!doRestore || activeSortIndex === -1) {
+                previousActive = null
+                originalOrderIds = []
+                activeSortIndex = -2;
+                return
+            }
+        }
+
+        for (const listItem of listItems) {
+            const itemRow = listItem.querySelectorAll('.list-span')
+            if (activeSortIndex === -2) {
+                originalOrderIds.push(listItem.dataset['id'])
+            }
+            sortItems.push(itemRow[sortByIndex].outerText.trim())
+        }
+
+        if (activeSortIndex !== sortByIndex) {
+            if (evt.target.dataset['sort'] === undefined || evt.target.dataset['sort'] === 'date') {
+                // Default sorting and "2022-12-31" sorting
+                sortItems.sort(new Intl.Collator('{/literal}{$langShortCode}{literal}').compare)
+            } else if (evt.target.dataset['sort'] === 'number') {
+                // Number sorting
+                sortItems.sort(new Intl.Collator('{/literal}{$langShortCode}{literal}', { 'numeric': true }).compare)
+            }
+            activeSortIndex = sortByIndex
+            evt.target.classList.add('orderup')
+        } else {
+            evt.target.classList.remove('orderup')
+            evt.target.classList.add('orderdown')
+            sortItems.reverse()
+            activeSortIndex = -1
+        }
+
+
+        let listItemArray = Array.from(listItems)
+        for (const sortValue of sortItems) {
+            let currentIndex = 0
+            for (const listItem of listItemArray) {
+                const itemRow = listItem.querySelectorAll('.list-span')
+                const sortText = itemRow[sortByIndex].outerText.trim()
+                if (sortText === sortValue) {
+                    evt.target.parentNode.parentNode.appendChild(listItem)
+                    listItemArray.splice(currentIndex, 1)
+                    break
+                } else {
+                    ++currentIndex
+                }
+            }
+        }
+    }
+
+
+    let sortAbles = document.querySelectorAll('span.header.sortable')
+    for (let sortAble of sortAbles) {
+        sortAble.addEventListener('click', doSort)
+        sortAble.classList.add('pointer')
     }
 </script>
 {/literal}
