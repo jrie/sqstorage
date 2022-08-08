@@ -12,6 +12,8 @@ if (isset($langsAvailable)) {
   $smarty->assign('langsLabels', $langsLabels);
   $smarty->assign('langCurrent', $langCurrent);
   $smarty->assign('langShortCode', explode('_', $langCurrent, 2)[0]);
+} else {
+  $smarty->assign('langShortCode', 'de');
 }
 
 if (session_status() == PHP_SESSION_ACTIVE) {
