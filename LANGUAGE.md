@@ -43,7 +43,7 @@ support/language_tools.php
     'yourLanguage' => 'SpecialNameOfYourLanguage'
 );`
 
-#### Howto: Example - new language `en_GB`
+#### Howto: Example - new language `de_CH`
 Copy the directory `languages/locale/de_DE` to `languages/locale/de_CH`
 Open `languages/locale/de_CH/messages.po` with you PO-Editor
 Optional: Update the file from the **languages/sqstorage.pot** file
