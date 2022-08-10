@@ -392,7 +392,7 @@
                 if (toTransfer <= 0) return
                 amountTrans = toTransfer
             }
-            document.cookie = "inventoryScroll=" + (window.scrollY + 50) + "; samesite=Strict;"
+            document.cookie = "inventoryScroll=" + window.scrollY + "; samesite=Strict;"
             window.location.href = '{/literal}{$urlBase}{literal}/inventory{/literal}{$urlPostFix}{literal}?storageid=' + evt.target.value + '&itemid=' + evt.target.dataset['id'] + '&amount=' + amountTrans.toString();
         })
     }
