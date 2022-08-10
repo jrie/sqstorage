@@ -151,7 +151,7 @@
                     <span class="list-span" title="{t}Zuweisen{/t}">{t}Zuweisen{/t}</span>
                     {/if}
                 </li>
-                
+
                 {if isset($itemstore.items)}
                 {foreach $itemstore.items as $item}
 
@@ -392,7 +392,7 @@
                 if (toTransfer <= 0) return
                 amountTrans = toTransfer
             }
-
+            document.cookie = "inventoryScroll=" + (window.scrollY + 50) + "; samesite=Strict;"
             window.location.href = '{/literal}{$urlBase}{literal}/inventory{/literal}{$urlPostFix}{literal}?storageid=' + evt.target.value + '&itemid=' + evt.target.dataset['id'] + '&amount=' + amountTrans.toString();
         })
     }
@@ -643,7 +643,9 @@
                 sortItems.sort(new Intl.Collator('{/literal}{$langShortCode}{literal}').compare)
             } else if (evt.target.dataset['sort'] === 'number') {
                 // Number sorting
-                sortItems.sort(new Intl.Collator('{/literal}{$langShortCode}{literal}', { 'numeric': true }).compare)
+                sortItems.sort(new Intl.Collator('{/literal}{$langShortCode}{literal}', {
+                    'numeric': true
+                }).compare)
             }
             activeSortIndex = sortByIndex
             evt.target.classList.add('orderup')
@@ -677,6 +679,16 @@
     for (let sortAble of sortAbles) {
         sortAble.addEventListener('click', doSort)
         sortAble.classList.add('pointer')
+    }
+
+    if (document.cookie.indexOf('inventoryScroll=') !== -1) {
+        for (let cookie of document.cookie.split(';')) {
+            if (cookie.trim().startsWith('inventoryScroll=')) {
+                window.scrollTo(0, parseInt(cookie.split('=', 2)[1]))
+                document.cookie = "inventoryScroll=0; samesite=Strict; expires=Thu, 01 Jan 1970 00:00:00 GMT;"
+                break
+            }
+        }
     }
 </script>
 {/literal}
