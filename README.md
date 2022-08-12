@@ -124,8 +124,5 @@ If you're running a Windows XAMPP development system, you need to start xampp-co
 ### German talking src ressource
 The whole idea behind sqStorage or "Thom's Inventarverwaltung" can be found at the german bulletin board NGB.to over https://ngb.to/threads/39122-Webbasierte-Mini-Lagerverwaltung
 
-#### Support the development
-Finally there is a way, besides providing feedback, to feed back and support the development of sqStroage using PayPal.me at https://paypal.me/dwroxnet
-
 ### Last but not least
-Have fun using sqStorage and do not hesitate to write a email or issue, if you miss something!
+Have fun using sqStorage.
