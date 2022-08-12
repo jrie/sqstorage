@@ -2,6 +2,10 @@
 
 A easy to use and super quick way to organize your inventory, storage and storage areas.
 
+### Official website
+
+There is a new website at https://sqstorage.net where you can actively support the development by renting paid hosting and support. This offer is for private and business users equally. Also, you can get a subdomain at `yourname`.sqstorage.net and password protected access in addition to the optional user system of sqStorage. If you do not feel like renting hosting and support, you always can make a donation using PayPal.me at https://paypal.me/dwroxnet .
+
 ### Note
 Right now sqStorage is available in German and English. Feel free to add your own translation.
 See [LANGUAGE.md](LANGUAGE.md) for details on how to do so.
@@ -118,11 +122,7 @@ and restart the Apache webserver.
 If you're running a Windows XAMPP development system, you need to start xampp-control by command line. Start the command line [WIN+R -> cmd.exe] and enter the command `set LANG=en_GB` (or de_DE, or ... you know) and start xampp-control `c:\xampp\xampp-control.exe`
 
 ### German talking src ressource
-The whole idea behind sqStorage or "Tom's Inventarverwaltung" can be found at the german bulletin board NGB.to over https://ngb.to/threads/39122-Webbasierte-Mini-Lagerverwaltung
-
-#### Chatroom
-There is a **Matrix chat room** at ***Tilde.fun*** where development and or general talk about features and such can be brought in:
-https://chat.tilde.fun/#/room/#sqstorage:tilde.fun
+The whole idea behind sqStorage or "Thom's Inventarverwaltung" can be found at the german bulletin board NGB.to over https://ngb.to/threads/39122-Webbasierte-Mini-Lagerverwaltung
 
 #### Support the development
 Finally there is a way, besides providing feedback, to feed back and support the development of sqStroage using PayPal.me at https://paypal.me/dwroxnet
