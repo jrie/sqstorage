@@ -708,12 +708,14 @@
         if(icon.classList.contains('fa-minimize')) {
             //ist sichtbar -> soll unsichtbar werden
             table.style.height = '0px'
+            table.style.overflow = 'hidden'
             icon.className = 'fas fa-xs fa-expand'
             link.title = {/literal}'{t}Aufklappen{/t}'{literal}
             document.cookie  = 'collapsedstorage_'+ tableid +'=1; samesite=Strict;'
         } else {
             //ist unsichtbar -> soll sichtbar werden
             table.style.height = table.dataset['originalheight'] + 'px'
+            table.style.overflow = 'unset'
             icon.className = 'fas fa-xs fa-minimize'
             link.title = {/literal}'{t}Zuklappen{/t}'{literal}
             document.cookie  = 'collapsedstorage_'+ tableid +'=0; samesite=Strict;'
@@ -734,7 +736,7 @@
             const itind = element.id.substring(9)
 
             element.dataset['originalheight'] = element.clientHeight
-            element.style = 'transition: all 300ms ease-out; overflow: hidden; height:' + element.clientHeight + 'px;'
+            element.style = 'transition: all 300ms ease-out; height:' + element.clientHeight + 'px;'
             let cv = getCookie("collapsedstorage_"+ itind, 0)
             if(cv == '1') {
                 toggletableview(itind)
