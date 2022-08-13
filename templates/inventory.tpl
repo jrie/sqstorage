@@ -700,48 +700,46 @@
         }
     }
 
-    function toggletableview(tableid){
-            let ToHideIcon = "fa-solid fa-xs fa-minimize"
-            let ToHideText = {/literal}"{t}Zuklappen{/t}"{literal}
-            let ToShowIcon = "fa-solid fa-xs fa-expand"
-            let ToShowText = {/literal}"{t}Aufklappen{/t}"{literal}
-            let table = "itemlist_" + tableid
-            let icon = "toggleicon_" + tableid
-            let link = "togglebtn_" + tableid
+    function toggletableview(tableid) {
+        let table = document.getElementById('itemlist_' + tableid)
+        let icon = document.getElementById('toggleicon_' + tableid)
+        let link = document.getElementById('togglebtn_' + tableid)
 
-            if(document.getElementById(table).style.display == ''){
-                //ist sichtbar -> soll unsichtbar werden
-                document.getElementById(table).style.display = 'none'
-                document.getElementById(icon).setAttribute("class", ToShowIcon);
-                document.getElementById(link).setAttribute("title", ToShowText);
-                document.cookie  = "collapsedstorage_"+ tableid +" = 1; samesite=Strict;"
-            }else{
-                //ist unsichtbar -> soll sichtbar werden
-                document.getElementById(table).style.display = ''
-                document.getElementById(icon).setAttribute("class", ToHideIcon);
-                document.getElementById(link).setAttribute("title", ToHideText);
-                document.cookie  = "collapsedstorage_"+ tableid +" = 0; samesite=Strict;"
-            }
+        if(icon.classList.contains('fa-minimize')) {
+            //ist sichtbar -> soll unsichtbar werden
+            table.style.height = '0px'
+            icon.className = 'fas fa-xs fa-expand'
+            link.title = {/literal}'{t}Aufklappen{/t}'{literal}
+            document.cookie  = 'collapsedstorage_'+ tableid +'=1; samesite=Strict;'
+        } else {
+            //ist unsichtbar -> soll sichtbar werden
+            table.style.height = table.dataset['originalheight'] + 'px'
+            icon.className = 'fas fa-xs fa-minimize'
+            link.title = {/literal}'{t}Zuklappen{/t}'{literal}
+            document.cookie  = 'collapsedstorage_'+ tableid +'=0; samesite=Strict;'
+        }
     }
 
     function getCookie (name,defaultvalue) {
-	      let value = `; ${document.cookie}`;
-	      let parts = value.split(`; ${name}=`);
-	      if (parts.length === 2) return parts.pop().split(';').shift();
-        return defaultvalue;
+        const value = '; ' + document.cookie
+        let parts = value.split('; ' + name + '=')
+        if (parts.length === 2) return parts.pop().split(';').shift()
 
+        return defaultvalue
     }
 
-    function SetCollapsed(){
-                let elements = document.getElementsByClassName("collapsestorage");
-                for (var i = 0; i < elements.length; i++) {
-                  let itid = elements.item(i).id;
-                  let itind = itid.substring(9);
-                  let cv = getCookie("collapsedstorage_"+ itind,0);
-                  if(cv == '1'){
-                          toggletableview(itind);
-                  }
-                }
+    function SetCollapsed() {
+        let collapseStorage = document.getElementsByClassName("collapsestorage")
+        for (let element of collapseStorage) {
+            const itind = element.id.substring(9)
+
+            element.dataset['originalheight'] = element.clientHeight
+            element.style = 'transition: all 300ms ease-out; overflow: hidden; height:' + element.clientHeight + 'px;'
+            let cv = getCookie("collapsedstorage_"+ itind, 0)
+            if(cv == '1') {
+                toggletableview(itind)
+            }
+        }
     }
 
 

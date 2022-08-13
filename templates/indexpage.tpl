@@ -343,12 +343,8 @@
                 {/foreach}
                 </div>
                 {if !$isEdit}
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon4">{t}Bilder des Gegenstandes{/t}</span>
-                        </div>
-                        <input class="form-control" name="images[]" type="file" multiple="multiple" accept="image/png, image/jpeg, image/jpg, image/webp, image/gif, image/bmp" placeholder="{t}Bild Upload{/t}"/>
-                    </div>
+                    <h2 class="clearfix">{t}Bilder des Gegenstandes{/t}</h2>
+                    <input class="form-control" name="images[]" type="file" multiple="multiple" accept="image/png, image/jpeg, image/jpg, image/webp, image/gif, image/bmp" placeholder="{t}Bild Upload{/t}"/>
                 {/if}
 
                 <div style="float: right;">
