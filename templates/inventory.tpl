@@ -20,9 +20,11 @@
                 {if isset($itemstore.storage.label)}<a href="{$urlBase}/inventory{$urlPostFix}?storageid={$itemstore.storage.id}">{if isset($itemstore.storage.label)}{$itemstore.storage.label}{else}{t}Unsortiert{/t}{/if}</a>{else}{t}Unsortiert{/t}{/if}&nbsp;
                 {if $itemhasstorage}{if !$isGuest}{if isset($itemstore.storage.id)}<a title="{t}Schnelle Bearbeitung{/t}" onclick="changeSingleValue('storages','label',{$itemstore.storage.id},true);" href="javascript:void(0)"><i class="fas fa-edit fa-xs"></i></a>{/if}{/if}{/if}
                 <span class="small">({$itemstore.positionen} {if $itemstore.positionen == 1}{t}Position{/t}{else}{t}Positionen{/t}{/if}, {$itemstore.itemcount} {if $itemstore.itemcount == 1}{t}Gegenstand{/t}{else}{t}Gegenstände{/t}{/if})</span>
+                <a title="{t}Zuklappen{/t}" id="togglebtn_{$itemstore.storage.id}" onclick='toggletableview("{$itemstore.storage.id}");' href="javascript:void(0)">
+                <i class="fa-solid fa-xs fa-minimize" id="toggleicon_{$itemstore.storage.id}"></i></a>
             </h4>
 
-            <ul class="list-group">
+            <ul class="list-group collapsestorage" id="itemlist_{$itemstore.storage.id}">
                 <li class="alert alert-info">
                     <span class="list-span header sortable" data-index="1" title="{t}Kategorien{/t}">{t}Kategorien{/t}</span>
                     <span class="list-span header sortable" data-index="2" title="{t}Bezeichnung{/t}">{t}Bezeichnung{/t}</span>
@@ -137,6 +139,7 @@
                 {/if}
 
                 <span class="small">({$itemstore.positionen} {if $itemstore.positionen == 1}{t}Position{/t}{else}{t}Positionen{/t}{/if}, {$itemstore.itemcount} {if $itemstore.itemcount == 1}{t}Gegenstand{/t}{else}{t}Gegenstände{/t}{/if})</span>
+
             </h4>
             <ul class="list-group">
                 <li class="alert alert-info">
@@ -589,6 +592,12 @@
         }
     })
 
+    window.addEventListener('load', function(evt) {
+            SetCollapsed();
+    })
+
+
+
     let activeSortIndex = -2
     let originalOrderIds = []
     let currentActive = null
@@ -690,6 +699,51 @@
             }
         }
     }
+
+    function toggletableview(tableid) {
+        let table = document.getElementById('itemlist_' + tableid)
+        let icon = document.getElementById('toggleicon_' + tableid)
+        let link = document.getElementById('togglebtn_' + tableid)
+
+        if(icon.classList.contains('fa-minimize')) {
+            //ist sichtbar -> soll unsichtbar werden
+            table.style.height = '0px'
+            icon.className = 'fas fa-xs fa-expand'
+            link.title = {/literal}'{t}Aufklappen{/t}'{literal}
+            document.cookie  = 'collapsedstorage_'+ tableid +'=1; samesite=Strict;'
+        } else {
+            //ist unsichtbar -> soll sichtbar werden
+            table.style.height = table.dataset['originalheight'] + 'px'
+            icon.className = 'fas fa-xs fa-minimize'
+            link.title = {/literal}'{t}Zuklappen{/t}'{literal}
+            document.cookie  = 'collapsedstorage_'+ tableid +'=0; samesite=Strict;'
+        }
+    }
+
+    function getCookie (name,defaultvalue) {
+        const value = '; ' + document.cookie
+        let parts = value.split('; ' + name + '=')
+        if (parts.length === 2) return parts.pop().split(';').shift()
+
+        return defaultvalue
+    }
+
+    function SetCollapsed() {
+        let collapseStorage = document.getElementsByClassName("collapsestorage")
+        for (let element of collapseStorage) {
+            const itind = element.id.substring(9)
+
+            element.dataset['originalheight'] = element.clientHeight
+            element.style = 'transition: all 300ms ease-out; overflow: hidden; height:' + element.clientHeight + 'px;'
+            let cv = getCookie("collapsedstorage_"+ itind, 0)
+            if(cv == '1') {
+                toggletableview(itind)
+            }
+        }
+    }
+
+
+
 </script>
 {/literal}
 {include file="bodyend.tpl"}
