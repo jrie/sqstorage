@@ -20,7 +20,7 @@
 
             <div id="errorForm" class="alert alert-danger hidden" role="alert">{t}Nicht gespeichert, es befinden sich Fehler in der Formular-Eingabe.{/t}</div>
 
-            <form class="inputForm" accept-charset="utf-8" method="POST" action="index.php">
+            <form class="inputForm" accept-charset="utf-8" method="POST" action="index.php" {if !$isEdit}enctype="multipart/form-data"{/if}>
 
                 {if $isEdit}<input type="hidden" value="{$item.id}" name="itemUpdateId" />{/if}
 
@@ -342,6 +342,14 @@
                     {/if}
                 {/foreach}
                 </div>
+                {if !$isEdit}
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon4">{t}Bilder des Gegenstandes{/t}</span>
+                        </div>
+                        <input class="form-control" name="images[]" type="file" multiple="multiple" accept="image/png, image/jpeg, image/jpg, image/webp, image/gif, image/bmp" placeholder="{t}Bild Upload{/t}"/>
+                    </div>
+                {/if}
 
                 <div style="float: right;">
                 {if $isEdit}
@@ -417,7 +425,7 @@
                 function hidePreview(evt) {
                     imgOverlay.classList.remove('active')
                     imgOverlay.removeEventListener('click', hidePreview)
-                    window.removeEventListener('resize', handleImgResize)            
+                    window.removeEventListener('resize', handleImgResize)
                 }
 
                 function handleRequest(evt) {

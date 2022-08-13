@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getImageId'])) {
 
   echo json_encode($targetData);
   die();
-} else if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES) && count($_FILES) != 0) {
+} else if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES) && count($_FILES) != 0 && isset($_POST['editItem'])) {
   if (!isset($_FILES['images'])) die();
   if (!isset($_POST['editItem'])) die();
 
@@ -88,13 +88,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getImageId'])) {
 
   for ($x = 0; $x < $count; ++$x) {
     $tmpName = $_FILES['images']['tmp_name'][$x];
-    
+
     $imageInfo = getimagesize($tmpName);
     $imgMime = $imageInfo['mime'];
     $imageData = imagecreatefromstring(file_get_contents(addslashes($tmpName)));
     $imageLarge = $imageData; // Keep the original upload size
     $imageThumbnail = imagescale($imageData, 200);
-    
+
     if ($imgMime == 'image/png') {
       ob_start();
       imagepng($imageLarge);
@@ -116,10 +116,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getImageId'])) {
       echo 'The selected image format is not supported.';
       exit();
     }
-    
+
     $imageData64 = base64_encode(ob_get_clean());
     ob_clean();
-    
+
     if ($imgMime == 'image/png') {
       ob_start();
       imagepng($imageThumbnail);
@@ -141,7 +141,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getImageId'])) {
       echo 'The selected image format is not supported.';
       exit();
     }
-    
+
     $imageThumbnailData64 = base64_encode(ob_get_clean());
     ob_clean();
     DB::query('INSERT INTO `images` VALUES(NULL, %d, %d, %d, %s, %s)', $itemId, $imageInfo[0], $imageInfo[1], $imageThumbnailData64, $imageData64);
@@ -218,6 +218,72 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getImageId'])) {
   } else {
     $item = DB::insert('items', array('label' => $_POST['label'], 'comment' => $comment, 'serialnumber' => $serialNumber, 'amount' => $amount, 'headcategory' => $category['id'], 'subcategories' => (',' . implode(',', $subIds) . ','), 'storageid' => $storage['id']));
     $itemCreationId = DB::insertId();
+    if(isset($_FILES['images'])){
+      $count = count($_FILES['images']['tmp_name']);
+      if($count > 0){
+        for ($x = 0; $x < $count; ++$x) {
+          $tmpName = $_FILES['images']['tmp_name'][$x];
+          if(strlen($tmpName)>0 ){
+          $imageInfo = getimagesize($tmpName);
+          $imgMime = $imageInfo['mime'];
+          $imageData = imagecreatefromstring(file_get_contents(addslashes($tmpName)));
+          $imageLarge = $imageData; // Keep the original upload size
+          $imageThumbnail = imagescale($imageData, 200);
+
+          if ($imgMime == 'image/png') {
+            ob_start();
+            imagepng($imageLarge);
+          } else if ($imgMime == 'image/jpeg') {
+            ob_start();
+            imagejpeg($imageLarge);
+          } else if ($imgMime == 'image/gif') {
+            ob_start();
+            imagegif($imageLarge);
+          } else if ($imgMime == 'image/webp') {
+            ob_start();
+            imagewebp($imageLarge);
+          } else if ($imgMime == 'image/bmp') {
+            ob_start();
+            imagebmp($imageLarge);
+          } else {
+            // Img type not supported
+            // Show a proper message to user
+            echo 'The selected image format is not supported.';
+            exit();
+          }
+
+          $imageData64 = base64_encode(ob_get_clean());
+          ob_clean();
+
+          if ($imgMime == 'image/png') {
+            ob_start();
+            imagepng($imageThumbnail);
+          } else if ($imgMime == 'image/jpeg') {
+            ob_start();
+            imagejpeg($imageThumbnail);
+          } else if ($imgMime == 'image/gif') {
+            ob_start();
+            imagegif($imageThumbnail);
+          } else if ($imgMime == 'image/webp') {
+            ob_start();
+            imagewebp($imageThumbnail);
+          } else if ($imgMime == 'image/bmp') {
+            ob_start();
+            imagebmp($imageThumbnail);
+          } else {
+            // Img type not supported
+            // Show a proper message to user
+            echo 'The selected image format is not supported.';
+            exit();
+          }
+
+          $imageThumbnailData64 = base64_encode(ob_get_clean());
+          ob_clean();
+          DB::query('INSERT INTO `images` VALUES(NULL, %d, %d, %d, %s, %s)', $itemCreationId, $imageInfo[0], $imageInfo[1], $imageThumbnailData64, $imageData64);
+          }
+        }
+      }
+    }
   }
 
   foreach (array_keys($_POST) as $key) {
