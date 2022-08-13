@@ -20,9 +20,11 @@
                 {if isset($itemstore.storage.label)}<a href="{$urlBase}/inventory{$urlPostFix}?storageid={$itemstore.storage.id}">{if isset($itemstore.storage.label)}{$itemstore.storage.label}{else}{t}Unsortiert{/t}{/if}</a>{else}{t}Unsortiert{/t}{/if}&nbsp;
                 {if $itemhasstorage}{if !$isGuest}{if isset($itemstore.storage.id)}<a title="{t}Schnelle Bearbeitung{/t}" onclick="changeSingleValue('storages','label',{$itemstore.storage.id},true);" href="javascript:void(0)"><i class="fas fa-edit fa-xs"></i></a>{/if}{/if}{/if}
                 <span class="small">({$itemstore.positionen} {if $itemstore.positionen == 1}{t}Position{/t}{else}{t}Positionen{/t}{/if}, {$itemstore.itemcount} {if $itemstore.itemcount == 1}{t}Gegenstand{/t}{else}{t}Gegenstände{/t}{/if})</span>
+                <a title="{t}Zuklappen{/t}" id="togglebtn_{$itemstore.storage.id}" onclick='toggletableview("{$itemstore.storage.id}");' href="javascript:void(0)">
+                <i class="fa-solid fa-xs fa-minimize" id="toggleicon_{$itemstore.storage.id}"></i></a>
             </h4>
 
-            <ul class="list-group">
+            <ul class="list-group collapsestorage" id="itemlist_{$itemstore.storage.id}">
                 <li class="alert alert-info">
                     <span class="list-span header sortable" data-index="1" title="{t}Kategorien{/t}">{t}Kategorien{/t}</span>
                     <span class="list-span header sortable" data-index="2" title="{t}Bezeichnung{/t}">{t}Bezeichnung{/t}</span>
@@ -137,6 +139,7 @@
                 {/if}
 
                 <span class="small">({$itemstore.positionen} {if $itemstore.positionen == 1}{t}Position{/t}{else}{t}Positionen{/t}{/if}, {$itemstore.itemcount} {if $itemstore.itemcount == 1}{t}Gegenstand{/t}{else}{t}Gegenstände{/t}{/if})</span>
+
             </h4>
             <ul class="list-group">
                 <li class="alert alert-info">
@@ -589,6 +592,12 @@
         }
     })
 
+    window.addEventListener('load', function(evt) {
+            SetCollapsed();
+    })
+
+
+
     let activeSortIndex = -2
     let originalOrderIds = []
     let currentActive = null
@@ -690,6 +699,53 @@
             }
         }
     }
+
+    function toggletableview(tableid){
+            let ToHideIcon = "fa-solid fa-xs fa-minimize"
+            let ToHideText = {/literal}"{t}Zuklappen{/t}"{literal}
+            let ToShowIcon = "fa-solid fa-xs fa-expand"
+            let ToShowText = {/literal}"{t}Aufklappen{/t}"{literal}
+            let table = "itemlist_" + tableid
+            let icon = "toggleicon_" + tableid
+            let link = "togglebtn_" + tableid
+
+            if(document.getElementById(table).style.display == ''){
+                //ist sichtbar -> soll unsichtbar werden
+                document.getElementById(table).style.display = 'none'
+                document.getElementById(icon).setAttribute("class", ToShowIcon);
+                document.getElementById(link).setAttribute("title", ToShowText);
+                document.cookie  = "collapsedstorage_"+ tableid +" = 1; samesite=Strict;"
+            }else{
+                //ist unsichtbar -> soll sichtbar werden
+                document.getElementById(table).style.display = ''
+                document.getElementById(icon).setAttribute("class", ToHideIcon);
+                document.getElementById(link).setAttribute("title", ToHideText);
+                document.cookie  = "collapsedstorage_"+ tableid +" = 0; samesite=Strict;"
+            }
+    }
+
+    function getCookie (name,defaultvalue) {
+	      let value = `; ${document.cookie}`;
+	      let parts = value.split(`; ${name}=`);
+	      if (parts.length === 2) return parts.pop().split(';').shift();
+        return defaultvalue;
+
+    }
+
+    function SetCollapsed(){
+                let elements = document.getElementsByClassName("collapsestorage");
+                for (var i = 0; i < elements.length; i++) {
+                  let itid = elements.item(i).id;
+                  let itind = itid.substring(9);
+                  let cv = getCookie("collapsedstorage_"+ itind,0);
+                  if(cv == '1'){
+                          toggletableview(itind);
+                  }
+                }
+    }
+
+
+
 </script>
 {/literal}
 {include file="bodyend.tpl"}
