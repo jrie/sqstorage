@@ -379,7 +379,7 @@
             } else if (evt.target.nodeName === 'A') {
                 return
             }
-
+                        evt.target.parentNode.querySelector('img.item-picture').setAttribute('src','data:image/*;charset=utf-8;base64,' + GetItemThumb( evt.target.parentNode.querySelector('img.item-picture').getAttribute('data-id') ) )
             evt.target.parentNode.querySelector('img.item-picture').classList.toggle('active')
         })
     }
@@ -741,7 +741,7 @@
                     if (evt.target.style.height === '0px') {
                         evt.target.style.overflow = 'hidden'
                         return
-                    } 
+                    }
 
                    evt.target.style.overflow = 'visible'
                 }, 0.6)
