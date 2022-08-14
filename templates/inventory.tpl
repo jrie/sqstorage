@@ -707,15 +707,14 @@
 
         if(icon.classList.contains('fa-minimize')) {
             //ist sichtbar -> soll unsichtbar werden
-            table.style.height = '0px'
             table.style.overflow = 'hidden'
+            table.style.height = '0px'
             icon.className = 'fas fa-xs fa-expand'
             link.title = {/literal}'{t}Aufklappen{/t}'{literal}
             document.cookie  = 'collapsedstorage_'+ tableid +'=1; samesite=Strict;'
         } else {
             //ist unsichtbar -> soll sichtbar werden
             table.style.height = table.dataset['originalheight'] + 'px'
-            table.style.overflow = 'unset'
             icon.className = 'fas fa-xs fa-minimize'
             link.title = {/literal}'{t}Zuklappen{/t}'{literal}
             document.cookie  = 'collapsedstorage_'+ tableid +'=0; samesite=Strict;'
@@ -737,6 +736,16 @@
 
             element.dataset['originalheight'] = element.clientHeight
             element.style = 'transition: all 300ms ease-out; height:' + element.clientHeight + 'px;'
+            element.addEventListener('transitionend', function (evt) {
+                window.setTimeout(function() {
+                    if (evt.target.style.height === '0px') {
+                        evt.target.style.overflow = 'hidden'
+                        return
+                    } 
+
+                   evt.target.style.overflow = 'visible'
+                }, 0.6)
+            })
             let cv = getCookie("collapsedstorage_"+ itind, 0)
             if(cv == '1') {
                 toggletableview(itind)
