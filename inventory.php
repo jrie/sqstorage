@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!empty($item['subcategories'])) {
       foreach (explode(',', $item['subcategories']) as $subCategory) {
         $subCategoryDB = DB::queryFirstRow('SELECT `id`, `amount` FROM `subCategories` WHERE `id`=%d', (int)$subCategory);
-        
+
         if ($subCategoryDB != null) {
           DB::update('subCategories', array('amount' => (int)$subCategoryDB['amount'] - (int)$item['amount']), 'id=%d', $subCategoryDB['id']);
         }
@@ -107,25 +107,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 //----- P0 - OK
 $success = false;
+$itesWithImages = DB::queryFirstColumn("SELECT  DISTINCT  itemId FROM images");
+
 //----- P1 + OK
 if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['itemid'])) {
   $storeId = (int)$_GET['storageid'];
   $storages = DB::query('SELECT id, label, amount FROM storages ORDER BY label ASC');
   $store = DB::queryFirstRow('SELECT id, label, amount FROM storages WHERE id=%d', $storeId);
   $items = DB::query('SELECT * FROM items WHERE storageid=%d', $storeId);
-
-
   $myitem[$storeId]['storage'] = $store;
   $myitem[$storeId]['positionen'] = 0;
   $myitem[$storeId]['itemcount'] = 0;
   for ($x = 0; $x < count($items); $x++) {
-    $dbImage = DB::queryFirstRow('SELECT `id`, `thumb` FROM `images` WHERE `itemId`=%d LIMIT 1', (int)$items[$x]['id']);
 
-    if ($dbImage !== null) {
+
+    if (in_array($items[$x]['id'], $itesWithImages  )) {
       $items[$x]['hasImages'] = true;
-      $items[$x]['thumb'] = $dbImage['thumb'];
+      $items[$x]['thumb'] = "";
     }
-    
+
     $myitem[$storeId]['items'][] = $items[$x];
     $myitem[$storeId]['positionen']++;
     $myitem[$storeId]['itemcount'] += $items[$x]['amount'];
@@ -146,7 +146,7 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
   $myitem[$storeId]['storage'] = $store[$storeId];
   $myitem[$storeId]['positionen'] = 0;
   $myitem[$storeId]['itemcount'] = 0;
-  
+
   for ($x = 0; $x < count($items); $x++) {
     $item = $items[$x];
     $store[$storeId]['id'] = $storeId;
@@ -156,11 +156,9 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
     if (!isset($myitem[$storeId]['positionen'])) $myitem[$storeId]['positionen'] = 0;
     if (!isset($myitem[$storeId]['itemcount'])) $myitem[$storeId]['itemcount'] = 0;
 
-    $dbImage = DB::queryFirstRow('SELECT `id`, `thumb` FROM `images` WHERE `itemId`=%d LIMIT 1', (int)$items[$x]['id']);
-
-    if ($dbImage !== null) {
+    if (in_array($items[$x]['id'], $itesWithImages  )) {
       $items[$x]['hasImages'] = true;
-      $items[$x]['thumb'] = $dbImage['thumb'];
+      $items[$x]['thumb'] = "";
     }
 
     $myitem[$storeId]['items'][] = $items[$x];
@@ -232,7 +230,7 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
   if (count($headCategories) > 0)    $sql .= " headcategory IN %li OR ";
   $sql .= $subCSQL;
   //$sql .= " (label LIKE %ss OR comment LIKE %ss OR serialnumber LIKE %ss) "; // Previous Syntax
-  
+
   // Custom fields search
   $sql .= " (label LIKE %ss OR comment LIKE %ss OR serialnumber LIKE %ss ";
   $customFields = DB::query('SELECT id, dataType FROM customFields WHERE dataType = 5 OR label LIKE %ss OR fieldValues LIKE %ss', $searchValue, $searchValue);
@@ -258,10 +256,10 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
     } else {
       $fieldData = DB::query("SELECT itemId FROM fieldData WHERE fieldId=%d", $customFields[$x]['id']);
     }
-    
+
     foreach ($fieldData as $keyItem) {
       $customItemIds[] = $keyItem['itemId'];
-    }  
+    }
   }
 
   if (count($customItemIds) > 0) {
@@ -273,7 +271,7 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
     } else {
       $items = DB::query($sql, $searchValue, $searchValue, $searchValue, $customItemIds);
     }
-    
+
   } else {
     // Regular search
     $sql .= ")";
@@ -281,7 +279,7 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
       $items = DB::query($sql, $headCategories, $searchValue, $searchValue, $searchValue);
     } else {
       $items = DB::query($sql, $searchValue, $searchValue, $searchValue);
-    }  
+    }
   }
 
   $storages = DB::query('SELECT * FROM storages ORDER BY label ASC');
@@ -289,15 +287,17 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
     $store[$storages[$y]['id']] = $storages[$y];
   }
 
+
+
+
   for ($x = 0; $x < count($items); $x++) {
     $item = $items[$x];
-    $dbImage = DB::queryFirstRow('SELECT `id`, `thumb` FROM `images` WHERE `itemId`=%d LIMIT 1', (int)$items[$x]['id']);
-
-    if ($dbImage !== null) {
+    if (in_array($items[$x]['id'], $itesWithImages  )) {
       $items[$x]['hasImages'] = true;
-      $items[$x]['thumb'] = $dbImage['thumb'];
+      $items[$x]['thumb'] = "";
     }
-    
+
+
     $storeId = $item['storageid'];
     $myitem[$storeId]['storage'] = $store[$storeId];
     if (!isset($myitem[$storeId]['positionen'])) $myitem[$storeId]['positionen'] = 0;
@@ -325,6 +325,7 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
   $myitem[$storeId]['positionen'] = 0;
   $myitem[$storeId]['itemcount'] = 0;
 
+
   for ($x = 0; $x < count($items); $x++) {
     $item = $items[$x];
     $store[$storeId]['id'] = 0;
@@ -334,16 +335,16 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
     if (!isset($myitem[$storeId]['positionen'])) $myitem[$storeId]['positionen'] = 0;
     if (!isset($myitem[$storeId]['itemcount'])) $myitem[$storeId]['itemcount'] = 0;
 
-    $dbImage = DB::queryFirstRow('SELECT `id`, `thumb` FROM `images` WHERE `itemId`=%d LIMIT 1', (int)$items[$x]['id']);
-    if ($dbImage !== null) {
+    if (in_array($items[$x]['id'], $itesWithImages  )) {
       $items[$x]['hasImages'] = true;
-      $items[$x]['thumb'] = $dbImage['thumb'];
+      $items[$x]['thumb'] = "";
     }
 
     $myitem[$storeId]['items'][] = $items[$x];
     $myitem[$storeId]['positionen']++;
     $myitem[$storeId]['itemcount'] += $items[$x]['amount'];
   }
+
 
   $availsubcats = DB::query('SELECT * FROM subCategories WHERE headcategory=%d ORDER BY name ASC', $categoryId);
   foreach ($availsubcats as $subCategory) {
@@ -354,14 +355,14 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
     $store[$storeId]['id'] = $storeId;
 
     $items = DB::query('SELECT * FROM items WHERE subcategories LIKE %ss', ',' . $subCategory['id'] . ',');
+    $itesWithImages = DB::queryFirstColumn("SELECT  DISTINCT  itemId FROM images");
     for ($x = 0; $x < count($items); $x++) {
       $item = $items[$x];
 
-      $dbImage = DB::queryFirstRow('SELECT `id`, `thumb` FROM `images` WHERE `itemId`=%d LIMIT 1', (int)$items[$x]['id']);
-      if ($dbImage !== null) {
-        $items[$x]['hasImages'] = true;
-        $items[$x]['thumb'] = $dbImage['thumb'];
-      }
+    if (in_array($items[$x]['id'], $itesWithImages  )) {
+      $items[$x]['hasImages'] = true;
+      $items[$x]['thumb'] = "";
+    }
 
       $myitem[$storeId]['storage'] = $store[$storeId];
       $myitem[$storeId]['items'][] = $items[$x];
@@ -385,11 +386,12 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
     $myitem[0]['positionen'] = 0;
     $myitem[0]['itemcount'] = 0;
   }
+
+
   for ($x = 0; $x < count($loseItems); $x++) {
-    $dbImage = DB::queryFirstRow('SELECT `id`, `thumb` FROM `images` WHERE `itemId`=%d LIMIT 1', (int)$loseItems[$x]['id']);
-    if ($dbImage !== null) {
+    if (in_array($loseItems[$x]['id'], $itesWithImages  )) {
       $loseItems[$x]['hasImages'] = true;
-      $loseItems[$x]['thumb'] = $dbImage['thumb'];
+      $loseItems[$x]['thumb'] = "";
     }
 
     $myitem[0]['items'][] = $loseItems[$x];
@@ -405,10 +407,9 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
     $items = DB::query('SELECT * FROM items WHERE storageid=%d', $store['id']);
 
     for ($x = 0; $x < count($items); $x++) {
-      $dbImage = DB::queryFirstRow('SELECT `id`, `thumb` FROM `images` WHERE `itemId`=%d LIMIT 1', (int)$items[$x]['id']);
-      if ($dbImage !== null) {
+      if (in_array($items[$x]['id'], $itesWithImages  )) {
         $items[$x]['hasImages'] = true;
-        $items[$x]['thumb'] = $dbImage['thumb'];
+        $items[$x]['thumb'] = "";
       }
 
       $myitem[$store['id']]['items'][] = $items[$x];

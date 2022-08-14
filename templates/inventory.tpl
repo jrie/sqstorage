@@ -380,7 +380,10 @@
                 return
             }
 
-            evt.target.parentNode.querySelector('img.item-picture').classList.toggle('active')
+            evt.target.parentNode.querySelector('img.item-picture').setAttribute('src','data:image/jpeg;charset=utf-8;base64,' + GetItemImage( evt.target.parentNode.querySelector('img.item-picture').getAttribute('data-id') ) )
+
+
+            evt.target.parentNode.querySelector('img.item-picture').classList.toggle('active');
         })
     }
 
@@ -707,7 +710,6 @@
 
         if(icon.classList.contains('fa-minimize')) {
             //ist sichtbar -> soll unsichtbar werden
-            table.style.overflow = 'hidden'
             table.style.height = '0px'
             icon.className = 'fas fa-xs fa-expand'
             link.title = {/literal}'{t}Aufklappen{/t}'{literal}
@@ -735,17 +737,7 @@
             const itind = element.id.substring(9)
 
             element.dataset['originalheight'] = element.clientHeight
-            element.style = 'transition: all 300ms ease-out; height:' + element.clientHeight + 'px;'
-            element.addEventListener('transitionend', function (evt) {
-                window.setTimeout(function() {
-                    if (evt.target.style.height === '0px') {
-                        evt.target.style.overflow = 'hidden'
-                        return
-                    } 
-
-                   evt.target.style.overflow = 'visible'
-                }, 0.6)
-            })
+            element.style = 'transition: all 300ms ease-out; overflow: hidden; height:' + element.clientHeight + 'px;'
             let cv = getCookie("collapsedstorage_"+ itind, 0)
             if(cv == '1') {
                 toggletableview(itind)
