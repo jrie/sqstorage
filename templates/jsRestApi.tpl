@@ -3,7 +3,7 @@
 
 
 
-function GetItemImage(itemId){
+function GetItemThumb(itemId){
   let ret_value = null
   let API_URL = 'api/records/images?filter=itemId,eq,:itemId&include=thumb&size=1'
 
