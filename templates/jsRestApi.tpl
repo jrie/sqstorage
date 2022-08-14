@@ -2,14 +2,14 @@
 
 function GetItemImage(itemId){
   let ret_value = null
-  let API_URL = 'api/records/images?filter=itemId,eq,:itemId&include=imageData&size=1'
+  let API_URL = 'api/records/images?filter=itemId,eq,:itemId&include=thumb&size=1'
 
   let URL = API_URL.replace(':itemId', itemId)
   const xmlhttp = new XMLHttpRequest()
   xmlhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       const newCharacterJSON = JSON.parse(xmlhttp.responseText)
-      ret_value = newCharacterJSON["records"][0]['imageData']
+      ret_value = newCharacterJSON["records"][0]['thumb']
     }
   }
 
