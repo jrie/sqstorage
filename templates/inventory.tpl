@@ -379,7 +379,7 @@
             } else if (evt.target.nodeName === 'A') {
                 return
             }
-                        evt.target.parentNode.querySelector('img.item-picture').setAttribute('src','data:image/png;charset=utf-8;base64,' + GetItemImage( evt.target.parentNode.querySelector('img.item-picture').getAttribute('data-id') ) )
+                        evt.target.parentNode.querySelector('img.item-picture').setAttribute('src','data:image/*;charset=utf-8;base64,' + GetItemImage( evt.target.parentNode.querySelector('img.item-picture').getAttribute('data-id') ) )
             evt.target.parentNode.querySelector('img.item-picture').classList.toggle('active')
         })
     }
