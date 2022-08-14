@@ -13,4 +13,5 @@ require_once($basedir . '/support/tools_users.php');
 
 require_once($basedir . '/support/language_tools.php');
 require_once($basedir . '/support/smartyconfig.php');
+require_once($basedir . '/support/barcode.php');
 
