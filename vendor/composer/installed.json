@@ -20,7 +20,7 @@
             },
             "time": "2021-06-29T04:31:23+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "classmap": [
                     "db.class.php"
