@@ -93,3 +93,4 @@
 {t}Verwendest Du eine bestehende Installation und die Benutzerverwaltung, kannst Du diese Datei als Administrator über das Einstellungen erstellen und nach der Aktualisierung auch wieder entfernen.{/t}
 {t}Anmeldung für weitere XXX Sekunden gesperrt{/t}
 {t}Zu viele Anmeldeversuche. Bitte später nochmal versuchen{/t}
+{t}Unkategorisiert{/t}

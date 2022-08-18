@@ -433,6 +433,7 @@ for ($x = 0; $x < count($categoryarray); $x++) {
   $tmp = $categoryarray[$x];
   $categories[$tmp['id']] = $tmp;
 }
+$categories[1899999999999999999] = ['id' => 1899999999999999999 , 'name' => gettext("Unkategorisiert"), 'amount' => 0];
 
 $subcategories = array();
 $subarray = DB::query('SELECT * FROM subCategories');

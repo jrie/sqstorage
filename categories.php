@@ -52,15 +52,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   } else if (isset($_GET['removeCategory']) && !empty($_GET['removeCategory'])) {
     DB::delete('headCategories', "id=%d", (int)$_GET['removeCategory']);
     if (DB::affectedRows() === 1) $alert = '<div class="alert alert-info" role="alert"><p>' . gettext('Kategorie entfernt.') . '</p></div>';
+    DB::query('UPDATE items set headcategory = 1899999999999999999 WHERE headcategory = %i',$_GET['removeCategory']);
+
+
   } else if (isset($_GET['removeSubcategory']) && !empty($_GET['removeSubcategory'])) {
     $subCategory = DB::queryFirstRow('SELECT `id`, `amount`, `headcategory` FROM `subCategories` WHERE `id`=%d', (int)$_GET['removeSubcategory']);
     $previousCategory = DB::queryFirstRow('SELECT `id`, `amount` FROM `headCategories` WHERE `id`=%d',  $subCategory['headcategory']);
     if ($subCategory !== NULL) {
       if ($previousCategory !== NULL) {
-        DB::update('headCategories', array('amount' => (int)$previousCategory['amount'] - $subCategory['amount']), 'id=%d',  $previousCategory['id']);  
+        DB::update('headCategories', array('amount' => (int)$previousCategory['amount'] - $subCategory['amount']), 'id=%d',  $previousCategory['id']);
       }
       DB::delete('subCategories', "id=%d", (int)$_GET['removeSubcategory']);
       if (DB::affectedRows() === 1) $alert = '<div class="alert alert-info" role="alert"><p>' . gettext('Unterkategorie entfernt.') . '</p></div>';
+
+      DB::query('Update items set subcategories=REPLACE(subcategories,",' . (int)$_GET['removeSubcategory']  . ',","," ) ');
     }
   }
 }
