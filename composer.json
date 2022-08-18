@@ -17,9 +17,9 @@
         }
     ],
 	"require": {
-		"php": ">=7.0",
-		"smarty/smarty": "~3.1",
+		"php": ">=7.1",
         "smarty-gettext/smarty-gettext": "^1.6",
-		"sergeytsalkov/meekrodb": "^2.4"
+		"sergeytsalkov/meekrodb": "^2.4",
+		"smarty/smarty": "^4.2"
 	}
 }
