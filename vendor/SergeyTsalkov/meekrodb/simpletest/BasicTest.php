@@ -23,15 +23,17 @@ class BasicTest extends SimpleTest {
     `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
     `signature` VARCHAR( 255 ) NULL DEFAULT 'donewriting'
     ) ENGINE = InnoDB");
-    
-    $mysqli = DB::get();
-    DB::disconnect();
-    @$this->assert($mysqli->server_info === null);
+
+    DB::query("CREATE TABLE `fake%s_table` (
+    `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+    `name` VARCHAR( 255 ) NULL DEFAULT 'blah'
+    ) ENGINE = InnoDB");
   }
   
   function test_1_5_empty_table() {
     $counter = DB::queryFirstField("SELECT COUNT(*) FROM accounts");
     $this->assert($counter === strval(0));
+    $this->assert(DB::lastQuery() === 'SELECT COUNT(*) FROM accounts');
     
     $row = DB::queryFirstRow("SELECT * FROM accounts");
     $this->assert($row === null);
@@ -95,16 +97,6 @@ class BasicTest extends SimpleTest {
     $password = DB::queryFirstField("SELECT password FROM accounts WHERE favorite_word IS NULL");
     $this->assert($password === 'goodbye');
     
-    DB::$usenull = false;
-    DB::insertUpdate('accounts', array(
-      'id' => 3,
-      'favorite_word' => null,
-    ));
-    
-    $password = DB::queryFirstField("SELECT password FROM accounts WHERE favorite_word=%s AND favorite_word=%s", null, '');
-    $this->assert($password === 'goodbye');
-    
-    DB::$usenull = true;
     DB::insertUpdate('accounts', array(
       'id' => 3,
       'favorite_word' => null,
@@ -156,19 +148,27 @@ class BasicTest extends SimpleTest {
     $results = DB::query("SELECT * FROM accounts WHERE username!=%s", "Charlie's Friend");
     $this->assert(count($results) === 3);
     
-    $columnlist = DB::columnList('accounts');
-    $this->assert(count($columnlist) === 8);
-    $this->assert($columnlist[0] === 'id');
-    $this->assert($columnlist[5] === 'height');
+    $columnList = DB::columnList('accounts');
+    $columnKeys = array_keys($columnList);
+    $this->assert(count($columnList) === 8);
+    $this->assert($columnList['id']['type'] == 'int(11)');
+    $this->assert($columnList['height']['type'] == 'double');
+    $this->assert($columnKeys[5] == 'height');
     
     $tablelist = DB::tableList();
-    $this->assert(count($tablelist) === 2);
+    $this->assert(count($tablelist) === 3);
     $this->assert($tablelist[0] === 'accounts');
     
     $tablelist = null;
     $tablelist = DB::tableList(DB::$dbName);
-    $this->assert(count($tablelist) === 2);
+    $this->assert(count($tablelist) === 3);
     $this->assert($tablelist[0] === 'accounts');
+
+    $date = DB::queryFirstField("SELECT DATE_FORMAT(birthday, '%%m/%%d/%%Y') FROM accounts WHERE username=%s", "Charlie's Friend");
+    $this->assert($date === '09/10/2000');
+
+    $date = DB::queryFirstField("SELECT DATE_FORMAT('2009-10-04 22:23:00', '%m/%d/%Y')");;
+    $this->assert($date === '10/04/2009');
   }
   
   function test_4_1_query() {
@@ -186,7 +186,7 @@ class BasicTest extends SimpleTest {
     $true = DB::update('accounts', array(
       'password' => DB::sqleval("REPEAT('blah', %i)", 4),
       'favorite_word' => null,
-      ), 'username=%s', 'newguy');
+      ), 'username=%s_name', array('name' => 'newguy'));
     
     $row = null;
     $row = DB::queryOneRow("SELECT * FROM accounts WHERE username=%s", 'newguy');
@@ -278,10 +278,10 @@ class BasicTest extends SimpleTest {
 
     $columns = DB::columnList('store data');
     $this->assert(count($columns) === 2);
-    $this->assert($columns[1] === 'picture');
+    $this->assert($columns['picture']['type'] === 'blob');
     
     
-    $smile = file_get_contents('smile1.jpg');
+    $smile = file_get_contents(__DIR__ . '/smile1.jpg');
     DB::insert('store data', array(
       'picture' => $smile,
     ));
@@ -414,7 +414,26 @@ class BasicTest extends SimpleTest {
     DB::update('profile',array('signature'=> "%li "),"id = %d",1);
     $signature = DB::queryFirstField("SELECT signature FROM profile WHERE id=%i", 1);
     $this->assert($signature === "%li ");
+  }
 
+  function test_902_faketable() {
+    DB::insert('fake%s_table', array('name' => 'karen'));
+    $count = DB::queryFirstField("SELECT COUNT(*) FROM %b", 'fake%s_table');
+    $this->assert($count === '1');
+    DB::update('fake%s_table', array('name' => 'haren%s'), 'name=%s_name', array('name' => 'karen'));
+    DB::delete('fake%s_table', 'name=%s0', 'haren%s');
+    $count = DB::queryFirstField("SELECT COUNT(*) FROM %b", 'fake%s_table');
+    $this->assert($count === '0');
+  }
+
+  function test_10_parse() {
+    $parsed_query = DB::parse("SELECT * FROM %b WHERE id=%i AND name=%s", 'accounts', 5, 'Joe');
+    $correct_query = "SELECT * FROM `accounts` WHERE id=5 AND name='Joe'";
+    $this->assert($parsed_query === $correct_query);
+
+    $parsed_query = DB::parse("SELECT DATE_FORMAT(birthday, '%%Y-%%M-%%d %%h:%%i:%%s') AS mydate FROM accounts WHERE id=%i", 5);
+    $correct_query = "SELECT DATE_FORMAT(birthday, '%Y-%M-%d %h:%i:%s') AS mydate FROM accounts WHERE id=5";
+    $this->assert($parsed_query === $correct_query);
   }
 
 

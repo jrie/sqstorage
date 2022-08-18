@@ -1,5 +1,5 @@
 {
-    "name": "SergeyTsalkov/meekrodb",
+    "name": "sergeytsalkov/meekrodb",
     "description": "The Simple PHP/MySQL Library",
     "homepage": "http://www.meekro.com",
     "support": {
@@ -19,7 +19,7 @@
         }
     ],
     "require": {
-        "php": ">=5.2.0"
+        "php": ">=5.3.0"
     },
     "autoload": {
         "classmap": [
