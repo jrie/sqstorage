@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   } else if (isset($_GET['removeCategory']) && !empty($_GET['removeCategory'])) {
     DB::delete('headCategories', "id=%d", (int)$_GET['removeCategory']);
     if (DB::affectedRows() === 1) $alert = '<div class="alert alert-info" role="alert"><p>' . gettext('Kategorie entfernt.') . '</p></div>';
-    DB::query('UPDATE items set headcategory = 1899999999999999999 WHERE headcategory = %i',$_GET['removeCategory']);
+    DB::query('UPDATE items set headcategory = 99999999 WHERE headcategory = %i',$_GET['removeCategory']);
 
 
   } else if (isset($_GET['removeSubcategory']) && !empty($_GET['removeSubcategory'])) {
