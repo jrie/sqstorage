@@ -12,7 +12,6 @@ class ComposerStaticInit2039c1f14e7d9aca2ef9bc2c7837b7ae
     );
 
     public static $classMap = array (
-        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'DB' => __DIR__ . '/..' . '/sergeytsalkov/meekrodb/db.class.php',
         'DBTransaction' => __DIR__ . '/..' . '/sergeytsalkov/meekrodb/db.class.php',
         'MeekroDB' => __DIR__ . '/..' . '/sergeytsalkov/meekrodb/db.class.php',

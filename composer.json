@@ -18,7 +18,7 @@
     ],
 	"require": {
 		"php": ">=7.1",
-		"sergeytsalkov/meekrodb": "2.4",
+		"sergeytsalkov/meekrodb": "^2.4",
         "smarty-gettext/smarty-gettext": "^1.6",
 		"smarty/smarty": "^4.2"
 	}
