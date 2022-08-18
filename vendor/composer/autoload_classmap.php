@@ -7,12 +7,12 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
-    'DB' => $vendorDir . '/SergeyTsalkov/meekrodb/db.class.php',
-    'DBHelper' => $vendorDir . '/SergeyTsalkov/meekrodb/db.class.php',
-    'DBTransaction' => $vendorDir . '/SergeyTsalkov/meekrodb/db.class.php',
-    'MeekroDB' => $vendorDir . '/SergeyTsalkov/meekrodb/db.class.php',
-    'MeekroDBEval' => $vendorDir . '/SergeyTsalkov/meekrodb/db.class.php',
-    'MeekroDBException' => $vendorDir . '/SergeyTsalkov/meekrodb/db.class.php',
+    'DB' => $vendorDir . '/sergeytsalkov/meekrodb/db.class.php',
+    'DBTransaction' => $vendorDir . '/sergeytsalkov/meekrodb/db.class.php',
+    'MeekroDB' => $vendorDir . '/sergeytsalkov/meekrodb/db.class.php',
+    'MeekroDBEval' => $vendorDir . '/sergeytsalkov/meekrodb/db.class.php',
+    'MeekroDBException' => $vendorDir . '/sergeytsalkov/meekrodb/db.class.php',
+    'MeekroDBWalk' => $vendorDir . '/sergeytsalkov/meekrodb/db.class.php',
     'Smarty' => $vendorDir . '/smarty/smarty/libs/Smarty.class.php',
     'SmartyCompilerException' => $vendorDir . '/smarty/smarty/libs/sysplugins/smartycompilerexception.php',
     'SmartyException' => $vendorDir . '/smarty/smarty/libs/sysplugins/smartyexception.php',
@@ -182,5 +182,5 @@ return array(
     'Smarty_Variable' => $vendorDir . '/smarty/smarty/libs/sysplugins/smarty_variable.php',
     'TPC_yyStackEntry' => $vendorDir . '/smarty/smarty/libs/sysplugins/smarty_internal_configfileparser.php',
     'TP_yyStackEntry' => $vendorDir . '/smarty/smarty/libs/sysplugins/smarty_internal_templateparser.php',
-    'WhereClause' => $vendorDir . '/SergeyTsalkov/meekrodb/db.class.php',
+    'WhereClause' => $vendorDir . '/sergeytsalkov/meekrodb/db.class.php',
 );
