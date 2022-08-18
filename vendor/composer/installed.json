@@ -1,26 +1,26 @@
 {
     "packages": [
         {
-            "name": "sergeytsalkov/meekrodb",
-            "version": "v2.4",
-            "version_normalized": "2.4.0.0",
+            "name": "SergeyTsalkov/meekrodb",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SergeyTsalkov/meekrodb.git",
-                "reference": "e30c240d54bc81f58c58507a9ed768032eb494a5"
+                "reference": "8e19d9d6c331b9c5d8b90630b70b20f65dc0b903"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SergeyTsalkov/meekrodb/zipball/e30c240d54bc81f58c58507a9ed768032eb494a5",
-                "reference": "e30c240d54bc81f58c58507a9ed768032eb494a5",
+                "url": "https://api.github.com/repos/SergeyTsalkov/meekrodb/zipball/8e19d9d6c331b9c5d8b90630b70b20f65dc0b903",
+                "reference": "8e19d9d6c331b9c5d8b90630b70b20f65dc0b903",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0"
+                "php": ">=5.2.0"
             },
-            "time": "2021-06-29T04:31:23+00:00",
+            "time": "2019-01-26T17:46:13+00:00",
             "type": "library",
-            "installation-source": "dist",
+            "installation-source": "source",
             "autoload": {
                 "classmap": [
                     "db.class.php"
@@ -45,10 +45,10 @@
             ],
             "support": {
                 "email": "support@meekro.com",
-                "source": "https://github.com/SergeyTsalkov/meekrodb/tree/v2.4",
+                "source": "https://github.com/SergeyTsalkov/meekrodb/tree/master",
                 "issues": "https://github.com/SergeyTsalkov/meekrodb/issues"
             },
-            "install-path": "../sergeytsalkov/meekrodb"
+            "install-path": "../SergeyTsalkov/meekrodb"
         },
         {
             "name": "smarty-gettext/smarty-gettext",

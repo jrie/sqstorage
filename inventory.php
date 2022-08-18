@@ -107,7 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 //----- P0 - OK
 $success = false;
-$itesWithImages = DB::queryFirstColumn("SELECT  DISTINCT  itemId FROM images");
+$itesWithImages = DB::queryFirstColumn("SELECT DISTINCT itemId FROM images");
 
 //----- P1 + OK
 if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['itemid'])) {
@@ -123,7 +123,6 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
 
     if (in_array($items[$x]['id'], $itesWithImages  )) {
       $items[$x]['hasImages'] = true;
-      $items[$x]['thumb'] = "";
     }
 
     $myitem[$storeId]['items'][] = $items[$x];
@@ -158,7 +157,6 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
 
     if (in_array($items[$x]['id'], $itesWithImages  )) {
       $items[$x]['hasImages'] = true;
-      $items[$x]['thumb'] = "";
     }
 
     $myitem[$storeId]['items'][] = $items[$x];
@@ -294,7 +292,6 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
     $item = $items[$x];
     if (in_array($items[$x]['id'], $itesWithImages  )) {
       $items[$x]['hasImages'] = true;
-      $items[$x]['thumb'] = "";
     }
 
 
@@ -337,7 +334,6 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
 
     if (in_array($items[$x]['id'], $itesWithImages  )) {
       $items[$x]['hasImages'] = true;
-      $items[$x]['thumb'] = "";
     }
 
     $myitem[$storeId]['items'][] = $items[$x];
@@ -361,7 +357,6 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
 
     if (in_array($items[$x]['id'], $itesWithImages  )) {
       $items[$x]['hasImages'] = true;
-      $items[$x]['thumb'] = "";
     }
 
       $myitem[$storeId]['storage'] = $store[$storeId];
@@ -391,7 +386,6 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
   for ($x = 0; $x < count($loseItems); $x++) {
     if (in_array($loseItems[$x]['id'], $itesWithImages  )) {
       $loseItems[$x]['hasImages'] = true;
-      $loseItems[$x]['thumb'] = "";
     }
 
     $myitem[0]['items'][] = $loseItems[$x];
@@ -409,7 +403,6 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
     for ($x = 0; $x < count($items); $x++) {
       if (in_array($items[$x]['id'], $itesWithImages  )) {
         $items[$x]['hasImages'] = true;
-        $items[$x]['thumb'] = "";
       }
 
       $myitem[$store['id']]['items'][] = $items[$x];

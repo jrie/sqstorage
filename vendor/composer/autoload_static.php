@@ -13,12 +13,12 @@ class ComposerStaticInit2039c1f14e7d9aca2ef9bc2c7837b7ae
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'DB' => __DIR__ . '/..' . '/sergeytsalkov/meekrodb/db.class.php',
-        'DBTransaction' => __DIR__ . '/..' . '/sergeytsalkov/meekrodb/db.class.php',
-        'MeekroDB' => __DIR__ . '/..' . '/sergeytsalkov/meekrodb/db.class.php',
-        'MeekroDBEval' => __DIR__ . '/..' . '/sergeytsalkov/meekrodb/db.class.php',
-        'MeekroDBException' => __DIR__ . '/..' . '/sergeytsalkov/meekrodb/db.class.php',
-        'MeekroDBWalk' => __DIR__ . '/..' . '/sergeytsalkov/meekrodb/db.class.php',
+        'DB' => __DIR__ . '/..' . '/SergeyTsalkov/meekrodb/db.class.php',
+        'DBHelper' => __DIR__ . '/..' . '/SergeyTsalkov/meekrodb/db.class.php',
+        'DBTransaction' => __DIR__ . '/..' . '/SergeyTsalkov/meekrodb/db.class.php',
+        'MeekroDB' => __DIR__ . '/..' . '/SergeyTsalkov/meekrodb/db.class.php',
+        'MeekroDBEval' => __DIR__ . '/..' . '/SergeyTsalkov/meekrodb/db.class.php',
+        'MeekroDBException' => __DIR__ . '/..' . '/SergeyTsalkov/meekrodb/db.class.php',
         'Smarty' => __DIR__ . '/..' . '/smarty/smarty/libs/Smarty.class.php',
         'SmartyCompilerException' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smartycompilerexception.php',
         'SmartyException' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smartyexception.php',
@@ -188,7 +188,7 @@ class ComposerStaticInit2039c1f14e7d9aca2ef9bc2c7837b7ae
         'Smarty_Variable' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_variable.php',
         'TPC_yyStackEntry' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_configfileparser.php',
         'TP_yyStackEntry' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_templateparser.php',
-        'WhereClause' => __DIR__ . '/..' . '/sergeytsalkov/meekrodb/db.class.php',
+        'WhereClause' => __DIR__ . '/..' . '/SergeyTsalkov/meekrodb/db.class.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
