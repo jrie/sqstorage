@@ -62,11 +62,8 @@
                     <div class="list-span"></div>
                     {/if}
 
-                    {if $catid != 1899999999999999999}
+
                     <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" title="{$category.name}" class="list-span">{$category.name}</a>
-                    {else}
-                    <a href="#" title="{$category.name}" class="list-span">{$category.name}</a>
-                    {/if}
                     <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i><img class="item-picture" data-id="{$item.id}" src="data:image/png;base64,{$item.thumb}">{/if}
                             {if !$isGuest}
                             <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
