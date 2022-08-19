@@ -350,7 +350,8 @@ $smarty->assign('imageList', $imageList);
 if (!isset($item)) $item = array();
 $storages = DB::query('SELECT `id`, `label` FROM storages');
 $categories = DB::query('SELECT `id`, `name` FROM headCategories');
-$categories[] = ['id' => 99999999 , 'name' => gettext("Unkategorisiert"), 'amount' => 0];
+$categories[0] = ['id' => 0 , 'name' => gettext("Unkategorisiert"), 'amount' => 0];
+
 $subcategories = DB::query('SELECT `id`, `name` FROM subCategories');
 
 $customFields = DB::query('SELECT * FROM customFields');

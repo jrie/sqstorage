@@ -21,6 +21,10 @@ if (session_status() == PHP_SESSION_ACTIVE) {
 }
 
 //** un-comment the following line to show the debug console
-//$smarty->debugging = true;
+if(file_exists('support/smarty_debug')){
+  $smarty->debugging = true;
+}else{
+  $smarty->debugging = false;
+}
 $smarty->force_compile = false;
 //$smarty->display('index.tpl');
