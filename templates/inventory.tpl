@@ -63,9 +63,9 @@
                     {/if}
 
                     <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" title="{$category.name}" class="list-span">{$category.name}</a>
-                    <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i><img class="item-picture" data-id="{$item.id}" src="data:image/png;base64,{$item.thumb}">{/if}
-                            {if !$isGuest}
-                            <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
+                    <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i><img class="item-picture" data-id="{$item.id}" src="">{/if}
+                    {if !$isGuest}
+                    <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
                     {else}
                     <span class="listing-label" title="{$item.label}">{$item.label}</span></span>
         </div>
@@ -179,9 +179,9 @@
                     {/if}
 
                     <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" title="{$category.name}" class="list-span">{$category.name}</a>
-                    <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fa fas fa-images"></i><img class="item-picture" data-id="{$item.id}" src="data:image/png;base64,{$item.thumb}">{/if}
-                            {if !$isGuest}
-                            <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
+                    <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fa fas fa-images"></i><img class="item-picture" data-id="{$item.id}" src="">{/if}
+                    {if !$isGuest}
+                    <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
                     {else}
                     <span class="listing-label" title="{$item.label}">{$item.label}</span></span>
         </div>
@@ -288,9 +288,9 @@
                     {/if}
 
                     <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" title="{$category.name}" class="list-span">{$category.name}</a>
-                    <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i><img class="item-picture" data-id="{$item.id}" src="data:image/png;base64,{$item.thumb}">{/if}
-                            {if !$isGuest}
-                            <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
+                    <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i><img class="item-picture" data-id="{$item.id}" src="">{/if}
+                    {if !$isGuest}
+                    <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
                     {else}
                     <span class="listing-label" title="{$item.label}">{$item.label}</span></span>
         </div>
@@ -379,8 +379,9 @@
             } else if (evt.target.nodeName === 'A') {
                 return
             }
-                        evt.target.parentNode.querySelector('img.item-picture').setAttribute('src','data:image/*;charset=utf-8;base64,' + GetItemThumb( evt.target.parentNode.querySelector('img.item-picture').getAttribute('data-id') ) )
-            evt.target.parentNode.querySelector('img.item-picture').classList.toggle('active')
+            let itemPicture = evt.target.parentNode.querySelector('img.item-picture')
+            itemPicture.setAttribute('src','data:image/*;charset=utf-8;base64,' + GetItemThumb( itemPicture.dataset['id'] ) )
+            itemPicture.classList.toggle('active')
         })
     }
 
