@@ -185,7 +185,9 @@
                 sortItems.sort(new Intl.Collator('{/literal}{$langShortCode}{literal}').compare)
             } else if (evt.target.dataset['sort'] === 'number') {
                 // Number sorting
-                sortItems.sort(new Intl.Collator('{/literal}{$langShortCode}{literal}', { 'numeric': true }).compare)
+                sortItems.sort(new Intl.Collator('{/literal}{$langShortCode}{literal}', {
+                    'numeric': true
+                }).compare)
             }
             activeSortIndex = sortByIndex
             evt.target.classList.add('orderup')
