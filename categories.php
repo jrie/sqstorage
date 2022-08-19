@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   } else if (isset($_GET['removeCategory']) && !empty($_GET['removeCategory'])) {
     DB::delete('headCategories', "id=%d", (int)$_GET['removeCategory']);
     if (DB::affectedRows() === 1) $alert = '<div class="alert alert-info" role="alert"><p>' . gettext('Kategorie entfernt.') . '</p></div>';
-    DB::query('UPDATE items set headcategory = 0 WHERE headcategory = %i',$_GET['removeCategory']);
+    DB::query('UPDATE items SET headcategory = 0 WHERE headcategory = %i',$_GET['removeCategory']);
     DB::query('UPDATE subCategories SET headcategory = 0 WHERE headcategory = %i',$_GET['removeCategory']);
 
 
@@ -72,6 +72,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 }
 
 $headCategories = DB::query('SELECT `id`, `name`, `amount` FROM `headCategories` ORDER BY name ASC');
+foreach($headCategories as $key => $category) {
+  if ((int) $category['id'] === 0) {
+    unset($headCategories[$key]);
+    break;
+  }
+}
+
 foreach($headCategories as $key => $category) {
   $positions = DB::query('SELECT NULL FROM `items` WHERE `headcategory`=%d', $category['id']);
   $headCategories[$key]['positions'] = DB::affectedRows();
