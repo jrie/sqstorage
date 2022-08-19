@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
       DB::delete('subCategories', "id=%d", (int)$_GET['removeSubcategory']);
       if (DB::affectedRows() === 1) $alert = '<div class="alert alert-info" role="alert"><p>' . gettext('Unterkategorie entfernt.') . '</p></div>';
 
-      DB::query('Update items set subcategories=REPLACE(subcategories,",' . (int)$_GET['removeSubcategory']  . ',","," ) ');
+      DB::query('UPDATE items SET subcategories=REPLACE(subcategories,",' . (int)$_GET['removeSubcategory']  . ',","," ) ');
     }
   }
 }
