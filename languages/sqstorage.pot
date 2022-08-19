@@ -11,7 +11,7 @@ msgstr ""
 
 #: templates//categories.tpl:1 templates//categories.tpl:9
 #: templates//datafields.tpl:147 templates//inventory.tpl:29
-#: templates//inventory.tpl:146 templates//inventory.tpl:255
+#: templates//inventory.tpl:150 templates//inventory.tpl:263
 #: templates//nav.tpl:22 templates//php_language_extract.tpl:33
 msgid "Kategorien"
 msgstr ""
@@ -19,20 +19,20 @@ msgstr ""
 #: templates//categories.tpl:10 templates//categories.tpl:35
 #: templates//indexpage.tpl:210 templates//indexpage.tpl:213
 #: templates//indexpage.tpl:215 templates//inventory.tpl:31
-#: templates//inventory.tpl:148 templates//inventory.tpl:257
+#: templates//inventory.tpl:152 templates//inventory.tpl:265
 msgid "Anzahl"
 msgstr ""
 
 #: templates//categories.tpl:11 templates//categories.tpl:23
 #: templates//categories.tpl:36 templates//categories.tpl:50
-#: templates//inventory.tpl:22 templates//inventory.tpl:141
-#: templates//inventory.tpl:251
+#: templates//inventory.tpl:22 templates//inventory.tpl:145
+#: templates//inventory.tpl:259
 msgid "Positionen"
 msgstr ""
 
 #: templates//categories.tpl:13 templates//categories.tpl:38
-#: templates//inventory.tpl:36 templates//inventory.tpl:153
-#: templates//inventory.tpl:262 templates//settings.tpl:136
+#: templates//inventory.tpl:36 templates//inventory.tpl:157
+#: templates//inventory.tpl:270 templates//settings.tpl:136
 msgid "Aktionen"
 msgstr ""
 
@@ -41,20 +41,20 @@ msgid "Kategorie löschen"
 msgstr ""
 
 #: templates//categories.tpl:22 templates//categories.tpl:49
-#: templates//inventory.tpl:22 templates//inventory.tpl:141
-#: templates//inventory.tpl:251
+#: templates//inventory.tpl:22 templates//inventory.tpl:145
+#: templates//inventory.tpl:259
 msgid "Gegenstand"
 msgstr ""
 
 #: templates//categories.tpl:22 templates//categories.tpl:49
-#: templates//inventory.tpl:22 templates//inventory.tpl:141
-#: templates//inventory.tpl:251
+#: templates//inventory.tpl:22 templates//inventory.tpl:145
+#: templates//inventory.tpl:259
 msgid "Gegenstände"
 msgstr ""
 
 #: templates//categories.tpl:23 templates//categories.tpl:50
-#: templates//inventory.tpl:22 templates//inventory.tpl:141
-#: templates//inventory.tpl:251
+#: templates//inventory.tpl:22 templates//inventory.tpl:145
+#: templates//inventory.tpl:259
 msgid "Position"
 msgstr ""
 
@@ -63,7 +63,7 @@ msgid "Kategorie umbenennen"
 msgstr ""
 
 #: templates//categories.tpl:34 templates//inventory.tpl:33
-#: templates//inventory.tpl:150 templates//inventory.tpl:259
+#: templates//inventory.tpl:154 templates//inventory.tpl:267
 msgid "Unterkategorien"
 msgstr ""
 
@@ -71,7 +71,7 @@ msgstr ""
 msgid "Oberkategorie"
 msgstr ""
 
-#: templates//categories.tpl:46 templates//inventory.tpl:246
+#: templates//categories.tpl:46 templates//inventory.tpl:254
 msgid "Unterkategorie löschen"
 msgstr ""
 
@@ -280,7 +280,7 @@ msgstr ""
 msgid "Github"
 msgstr ""
 
-#: templates//indexpage.tpl:1 templates//indexpage.tpl:350
+#: templates//indexpage.tpl:1 templates//indexpage.tpl:354
 #: templates//nav.tpl:16 templates//nav.tpl:18
 #: templates//php_language_extract.tpl:15 templates//settings.tpl:121
 msgid "Eintragen"
@@ -296,8 +296,8 @@ msgstr ""
 
 #: templates//indexpage.tpl:29 templates//indexpage.tpl:32
 #: templates//indexpage.tpl:34 templates//inventory.tpl:30
-#: templates//inventory.tpl:147 templates//inventory.tpl:256
-#: templates//inventory.tpl:457
+#: templates//inventory.tpl:151 templates//inventory.tpl:264
+#: templates//inventory.tpl:469
 msgid "Bezeichnung"
 msgstr ""
 
@@ -312,7 +312,7 @@ msgstr ""
 
 #: templates//indexpage.tpl:71 templates//indexpage.tpl:75
 #: templates//indexpage.tpl:77 templates//inventory.tpl:32
-#: templates//inventory.tpl:149 templates//inventory.tpl:258
+#: templates//inventory.tpl:153 templates//inventory.tpl:266
 msgid "Bemerkung"
 msgstr ""
 
@@ -338,32 +338,32 @@ msgstr ""
 msgid "Seriennummer/Artikelnummer"
 msgstr ""
 
-#: templates//indexpage.tpl:348 templates//settings.tpl:119
-msgid "Überschreiben"
-msgstr ""
-
-#: templates//indexpage.tpl:357
+#: templates//indexpage.tpl:346 templates//indexpage.tpl:361
 msgid "Bilder des Gegenstandes"
 msgstr ""
 
-#: templates//indexpage.tpl:359
+#: templates//indexpage.tpl:347 templates//indexpage.tpl:363
 msgid "Bild Upload"
 msgstr ""
 
-#: templates//indexpage.tpl:361
+#: templates//indexpage.tpl:352 templates//settings.tpl:119
+msgid "Überschreiben"
+msgstr ""
+
+#: templates//indexpage.tpl:365
 msgid "Bilder hochladen"
 msgstr ""
 
-#: templates//indexpage.tpl:369
+#: templates//indexpage.tpl:373
 msgid "Bild entfernen"
 msgstr ""
 
-#: templates//indexpage.tpl:383
+#: templates//indexpage.tpl:387
 msgid "Bild wirklich entfernen?"
 msgstr ""
 
-#: templates//indexpage.tpl:483 templates//indexpage.tpl:493
-#: templates//indexpage.tpl:503
+#: templates//indexpage.tpl:487 templates//indexpage.tpl:497
+#: templates//indexpage.tpl:507
 msgid "Fehler"
 msgstr ""
 
@@ -435,104 +435,104 @@ msgid "Lagerplatz löschen"
 msgstr ""
 
 #: templates//inventory.tpl:17 templates//inventory.tpl:20
-#: templates//inventory.tpl:136 templates//inventory.tpl:138
-#: templates//inventory.tpl:246 templates//inventory.tpl:250
+#: templates//inventory.tpl:140 templates//inventory.tpl:142
+#: templates//inventory.tpl:254 templates//inventory.tpl:258
 msgid "Unsortiert"
 msgstr ""
 
-#: templates//inventory.tpl:21 templates//inventory.tpl:80
-#: templates//inventory.tpl:196 templates//inventory.tpl:305
+#: templates//inventory.tpl:21 templates//inventory.tpl:84
+#: templates//inventory.tpl:204 templates//inventory.tpl:317
 #: templates//modal.tpl:7
 msgid "Schnelle Bearbeitung"
 msgstr ""
 
-#: templates//inventory.tpl:23 templates//inventory.tpl:705
+#: templates//inventory.tpl:23 templates//inventory.tpl:731
 msgid "Zuklappen"
 msgstr ""
 
-#: templates//inventory.tpl:34 templates//inventory.tpl:151
-#: templates//inventory.tpl:260
+#: templates//inventory.tpl:34 templates//inventory.tpl:155
+#: templates//inventory.tpl:268
 msgid "Hinzugefügt"
 msgstr ""
 
-#: templates//inventory.tpl:37 templates//inventory.tpl:97
-#: templates//inventory.tpl:154 templates//inventory.tpl:213
-#: templates//inventory.tpl:263 templates//inventory.tpl:322
+#: templates//inventory.tpl:37 templates//inventory.tpl:101
+#: templates//inventory.tpl:158 templates//inventory.tpl:221
+#: templates//inventory.tpl:271 templates//inventory.tpl:334
 msgid "Zuweisen"
 msgstr ""
 
-#: templates//inventory.tpl:60 templates//inventory.tpl:176
-#: templates//inventory.tpl:285
+#: templates//inventory.tpl:60 templates//inventory.tpl:180
+#: templates//inventory.tpl:293
 msgid "Position löschen"
 msgstr ""
 
-#: templates//inventory.tpl:66 templates//inventory.tpl:182
-#: templates//inventory.tpl:291
+#: templates//inventory.tpl:70 templates//inventory.tpl:190
+#: templates//inventory.tpl:303
 msgid "Gegenstand hat Bilder"
 msgstr ""
 
-#: templates//inventory.tpl:79 templates//inventory.tpl:195
-#: templates//inventory.tpl:304
+#: templates//inventory.tpl:83 templates//inventory.tpl:203
+#: templates//inventory.tpl:316
 msgid "Schnelle Bearbeitung speichern"
 msgstr ""
 
-#: templates//inventory.tpl:81 templates//inventory.tpl:197
-#: templates//inventory.tpl:306
+#: templates//inventory.tpl:85 templates//inventory.tpl:205
+#: templates//inventory.tpl:318
 msgid "Ausführliche Bearbeitung"
 msgstr ""
 
-#: templates//inventory.tpl:112 templates//inventory.tpl:121
-#: templates//inventory.tpl:228 templates//inventory.tpl:337
+#: templates//inventory.tpl:116 templates//inventory.tpl:125
+#: templates//inventory.tpl:236 templates//inventory.tpl:349
 msgid "Keine Gegenstände gefunden"
 msgstr ""
 
-#: templates//inventory.tpl:356 templates//transfer.tpl:47
+#: templates//inventory.tpl:368 templates//transfer.tpl:47
 msgid ""
 "Von diesem Artikel sind mehrere Stück am Lagerplatz. Wie viele sollen zum "
 "neuen Lagerort transferiert werden?"
 msgstr ""
 
-#: templates//inventory.tpl:360 templates//transfer.tpl:49
+#: templates//inventory.tpl:372 templates//transfer.tpl:49
 msgid "Von diesem Artikel sind nicht genug Einheiten vorhanden."
 msgstr ""
 
-#: templates//inventory.tpl:362 templates//transfer.tpl:50
+#: templates//inventory.tpl:374 templates//transfer.tpl:50
 msgid "Anzahl kann nicht negativ sein."
 msgstr ""
 
-#: templates//inventory.tpl:408
+#: templates//inventory.tpl:420
 msgid "Lagerplatz wirklich entfernen?"
 msgstr ""
 
-#: templates//inventory.tpl:408
+#: templates//inventory.tpl:420
 msgid "Position wirklich entfernen?"
 msgstr ""
 
-#: templates//inventory.tpl:542
+#: templates//inventory.tpl:554
 msgid "Die Bezeichnung kann nicht leer sein."
 msgstr ""
 
-#: templates//inventory.tpl:552
+#: templates//inventory.tpl:564
 msgid ""
 "Es trat ein Fehler bei dem Speichern der Inhalte auf. Die Browser Entwickler-"
 "Konsole enthält Details."
 msgstr ""
 
-#: templates//inventory.tpl:573
+#: templates//inventory.tpl:585
 msgid "Der Eintrag wurde erfolgreich aktualisiert."
 msgstr ""
 
-#: templates//inventory.tpl:575
+#: templates//inventory.tpl:587
 msgid "Die Anzahl darf nur gesamte Einheiten umfassen."
 msgstr ""
 
-#: templates//inventory.tpl:578
+#: templates//inventory.tpl:590
 msgid ""
 "Bei dem Versuch zu speichern trat ein Fehler auf. Die Browser Entwickler-"
 "Konsole enthält Details."
 msgstr ""
 
-#: templates//inventory.tpl:707
+#: templates//inventory.tpl:725
 msgid "Aufklappen"
 msgstr ""
 
@@ -963,6 +963,10 @@ msgstr ""
 
 #: templates//php_language_extract.tpl:95
 msgid "Zu viele Anmeldeversuche. Bitte später nochmal versuchen"
+msgstr ""
+
+#: templates//php_language_extract.tpl:96
+msgid "Unkategorisiert"
 msgstr ""
 
 #: templates//settings.tpl:16
