@@ -26,5 +26,8 @@ if(file_exists('support/smarty_debug')){
 }else{
   $smarty->debugging = false;
 }
-$smarty->force_compile = true;
-//$smarty->display('index.tpl');
+if(file_exists('support/smarty_force_compile')){
+  $smarty->force_compile = true;
+}else{
+  $smarty->force_compile = false;
+}
