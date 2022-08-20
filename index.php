@@ -351,12 +351,14 @@ if (!isset($item)) $item = array();
 $storages = DB::query('SELECT `id`, `label` FROM storages');
 $categories = DB::query('SELECT `id`, `name` FROM headCategories');
 
-$categories[0]['name'] = gettext("Unkategorisiert");
-$categories[0]['id'] = 0;
-if(!isset($categories[0]['amount'])) $categories[0]['amount'] = 0;
+foreach ($categories as $key => $category) {
+  if ((int) $category['id'] === 0) {
+    unset($categories[$key]);
+    break;
+  }
+}
 
 $subcategories = DB::query('SELECT `id`, `name` FROM subCategories');
-
 $customFields = DB::query('SELECT * FROM customFields');
 
 $smarty->assign('success', $success);
