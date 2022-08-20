@@ -7,3 +7,4 @@ support/dba.php
 smartyfolders/touchfile.txt
 support/smarty_debug
 patch.diff
+support/smarty_force_compile
