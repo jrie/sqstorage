@@ -165,6 +165,7 @@
 
                 {assign var="subCats" value=","|explode:$item.subcategories}
                 {$subCategories=array()}
+                {$subNames=array()}
                 {foreach $subCats as $subCat}
                 {if isset($subcategories.$subCat)}
                 {$subCategories[] ="<a href='{$urlBase}/inventory{$urlPostFix}?subcategory={$subcategories.$subCat.id}'>{$subcategories.$subCat.name}</a>"}
@@ -279,6 +280,7 @@
 
                 {assign var="subCats" value=","|explode:$item.subcategories}
                 {$subCategories=array()}
+                {$subNames=array()}
                 {foreach $subCats as $subCat}
                 {if isset($subcategories.$subCat)}
                 {$subCategories[] ="<a href='{$urlBase}/inventory{$urlPostFix}?subcategory={$subcategories.$subCat.id}'>{$subcategories.$subCat.name}</a>"}

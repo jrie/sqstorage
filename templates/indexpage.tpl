@@ -343,8 +343,8 @@
                 {/foreach}
                 </div>
                 {if !$isEdit}
-                    <h2 class="clearfix">{t}Bilder des Gegenstandes{/t}</h2>
-                    <input class="form-control" name="images[]" type="file" multiple="multiple" accept="image/png, image/jpeg, image/jpg, image/webp, image/gif, image/bmp" placeholder="{t}Bild Upload{/t}"/>
+                    <h4 class="clearfix">{t}Bilder des Gegenstandes{/t}</h4>
+                    <input name="images[]" type="file" multiple="multiple" accept="image/png, image/jpeg, image/jpg, image/webp, image/gif, image/bmp" placeholder="{t}Bild Upload{/t}"/>
                 {/if}
 
                 <div style="float: right;">
@@ -358,7 +358,7 @@
             </form>
 
             {if $isEdit}
-                <h2 class="clearfix">{t}Bilder des Gegenstandes{/t}</h2>
+                <h4 class="clearfix">{t}Bilder des Gegenstandes{/t}</h4>
                 <form method="POST" accept-charset="utf-8" action="index.php" enctype="multipart/form-data">
                     <input name="images[]" required="required" type="file" multiple="multiple" accept="image/png, image/jpeg, image/jpg, image/webp, image/gif, image/bmp" placeholder="{t}Bild Upload{/t}"/>
                     <input type="hidden" value="{$item.id}" name="editItem" />
