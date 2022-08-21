@@ -20,3 +20,77 @@ function CheckDBCredentials($host,$user,$password,$name,$port,$silent=false){
     }
   }
 }
+
+
+function GetNonEmptyArrayValues($ArrayGet){
+  $out = array();
+  for($x = 0; $x < count($ArrayGet);$x++){
+      if($ArrayGet[$x] != "") $out[] = $ArrayGet[$x];
+  }
+  return $out;
+}
+
+
+function GetDataFields($tocheck,$cfconf,$cfdata,$itemid){
+
+  //tocheck z.b. ['all',1,2]
+  //cfconfig[ CategoryID oder All][customFieldsID][id/label/dataType/defau...]
+  //cfdata
+  $retval = array();
+  foreach($tocheck as $catmark){
+      if(isset( $cfconf[$catmark] )){
+          foreach( $cfconf[$catmark] as $cfid  => $cfdata  ){
+              $dfval = $cfdata['default'];
+
+              if( isset($cfdata[$itemid][$cfid])  ){
+                $dfval = $cfdata[$itemid][$cfid];
+              }
+              $retval[$cfdata['label']] = $dfval;
+
+
+          }
+      }
+  }
+  return $retval;
+}
+
+
+function GetItemBasedCFD($customFieldsRaw){
+  // retvat[itemID][customFieldID]
+    $fnames = array('intNeg','intPos','intNegPos','floatNeg','floatPos','string','selection','mselection');
+    $cflookupfield = array();
+    for($x = 0; $x < count($customFieldsRaw);$x++){
+      $cflookupfield[ $customFieldsRaw[$x]['id'] ] = $customFieldsRaw[$x]['datatype'];
+    }
+    $out = array();
+    $cfb = DB::query('SELECT * FROM fieldData');
+    for($x=0;$x < count($cfb);$x++){
+        $cf = $cfb[$x];
+        $lookupfield = $fnames[ $cf['fieldId']  ];
+        $out[$cf['itemID']][$cf['fieldId']] = $cf[$lookupfield];
+    }
+return $out;
+}
+
+
+function GetCustomFieldsConfiguration(){
+  // workdb [ CategoryID oder All][customFieldsID]
+  $workcfsw = array();
+  $cfs = DB::query("Select * from customFields");
+  for ($x=0;$x < count($cfs); $x++){
+      $cfsw[$cfs[$x]['id']] = $cfs[$x];
+  }
+  foreach($cfsw as $CustFldID => $CustFData){
+    $assignedto = GetNonEmptyArrayValues( explode(";",$CustFData['visibleIn'])   );
+    $cfsw[$CustFldID]['assi'] = $assignedto;
+    for($x =0; $x < count($assignedto);$x++){
+        if($assignedto[$x] == "-1"){
+          $catkey = 'all';
+        }else{
+          $catkey = $assignedto[$x];
+        }
+      $workcfsw[$catkey][$CustFldID] = $CustFData;
+    }
+  }
+  return $workcfsw;
+}
