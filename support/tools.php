@@ -39,13 +39,12 @@ function GetDataFields($tocheck,$cfconf,$cfdata,$itemid){
   $retval = array();
   foreach($tocheck as $catmark){
       if(isset( $cfconf[$catmark] )){
-          foreach( $cfconf[$catmark] as $cfid  => $cfdata  ){
-              $dfval = $cfdata['default'];
-
+          foreach( $cfconf[$catmark] as $cfid  => $cfsdata  ){
+              $dfval = $cfsdata['default'];
               if( isset($cfdata[$itemid][$cfid])  ){
                 $dfval = $cfdata[$itemid][$cfid];
               }
-              $retval[$cfdata['label']] = $dfval;
+              $retval[$cfsdata['label']] = $dfval;
 
 
           }
@@ -60,15 +59,16 @@ function GetItemBasedCFD($customFieldsRaw){
     $fnames = array('intNeg','intPos','intNegPos','floatNeg','floatPos','string','selection','mselection');
     $cflookupfield = array();
     for($x = 0; $x < count($customFieldsRaw);$x++){
-      $cflookupfield[ $customFieldsRaw[$x]['id'] ] = $customFieldsRaw[$x]['datatype'];
+      $cflookupfield[ $customFieldsRaw[$x]['id'] ] = $customFieldsRaw[$x]['dataType'];
     }
     $out = array();
     $cfb = DB::query('SELECT * FROM fieldData');
     for($x=0;$x < count($cfb);$x++){
         $cf = $cfb[$x];
-        $lookupfield = $fnames[ $cf['fieldId']  ];
-        $out[$cf['itemID']][$cf['fieldId']] = $cf[$lookupfield];
+        $lookupfield = $fnames[ $cflookupfield[ $cf['fieldId'] ]  ];
+        $out[$cf['itemId']][$cf['fieldId']] = $cf[$lookupfield];
     }
+
 return $out;
 }
 

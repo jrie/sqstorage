@@ -450,8 +450,12 @@ if (!isset($items)) $items = array();
  * CustomFields....
  */
 //GetCustomFieldsConfiguration() -->>  retval[ CategoryID oder All][customFieldsID][id/label/dataType/defau...]
-$cfdata = DB::query('SELECT * FROM fieldData');
+
 $cfconf = GetCustomFieldsConfiguration();
+$cfraw = DB::query('SELECT * FROM customFields');
+$cfdata = GetItemBasedCFD($cfraw);
+
+
 foreach($myitem as $itemL1 => $itemD1){
       for($x = 0; $x < count($itemD1['items']);$x++){
             $tocheck = array();
@@ -462,6 +466,9 @@ foreach($myitem as $itemL1 => $itemD1){
 
       }
 }
+
+
+
  /**
   * ....customFields
   */
