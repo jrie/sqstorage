@@ -40,16 +40,11 @@ function GetDataFields($tocheck,$cfconf,$cfdata,$itemid){
   foreach($tocheck as $catmark){
       if(isset( $cfconf[$catmark] )){
           foreach( $cfconf[$catmark] as $cfid  => $cfsdata  ){
-              $dfval = $cfsdata['default'];
-
-              //$dfval .= " (default)";
-
               if( isset($cfdata[$itemid][$cfid])  ){
-                $dfval = $cfdata[$itemid][$cfid];
+                $retval[$cfsdata['label']] = $cfdata[$itemid][$cfid];
+              }else{
+                $retval[$cfsdata['label']] = $cfsdata['default'];
               }
-              $retval[$cfsdata['label']] = $dfval;
-
-
           }
       }
   }
