@@ -446,6 +446,35 @@ for ($x = 0; $x < count($subarray); $x++) {
 }
 if (!isset($items)) $items = array();
 
+/**
+ * CustomFields....
+ */
+//GetCustomFieldsConfiguration() -->>  retval[ CategoryID oder All][customFieldsID][id/label/dataType/defau...]
+
+$cfraw = DB::query('SELECT * FROM customFields');
+$cfconf = GetCustomFieldsConfiguration($cfraw);
+
+$cfdata = GetItemBasedCFD($cfraw);
+
+
+foreach($myitem as $itemL1 => $itemD1){
+      for($x = 0; $x < count($itemD1['items']);$x++){
+            $tocheck = array();
+            $tocheck[] = 'all';
+            $tocheck[] = $itemD1['items'][$x]['headcategory'];
+            //$itemdatafields = GetDataFields($tocheck,$cfconf,$cfdata);
+            $myitem[$itemL1]['items'][$x]['customFields'] = GetDataFields($tocheck,$cfconf,$cfdata,$itemD1['items'][$x]['id']);
+
+      }
+}
+
+
+
+ /**
+  * ....customFields
+  */
+
+
 //$smarty->assign('dump',print_r(array($sql,$categories,$subcategories,$storages,$myitem,$items),true));
 //$smarty->assign('dump',print_r(array($myitem,$items),true));
 
