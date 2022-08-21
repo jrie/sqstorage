@@ -451,8 +451,9 @@ if (!isset($items)) $items = array();
  */
 //GetCustomFieldsConfiguration() -->>  retval[ CategoryID oder All][customFieldsID][id/label/dataType/defau...]
 
-$cfconf = GetCustomFieldsConfiguration();
 $cfraw = DB::query('SELECT * FROM customFields');
+$cfconf = GetCustomFieldsConfiguration($cfraw);
+
 $cfdata = GetItemBasedCFD($cfraw);
 
 

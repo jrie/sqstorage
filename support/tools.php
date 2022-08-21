@@ -41,6 +41,9 @@ function GetDataFields($tocheck,$cfconf,$cfdata,$itemid){
       if(isset( $cfconf[$catmark] )){
           foreach( $cfconf[$catmark] as $cfid  => $cfsdata  ){
               $dfval = $cfsdata['default'];
+
+              //$dfval .= " (default)";
+
               if( isset($cfdata[$itemid][$cfid])  ){
                 $dfval = $cfdata[$itemid][$cfid];
               }
@@ -73,10 +76,9 @@ return $out;
 }
 
 
-function GetCustomFieldsConfiguration(){
+function GetCustomFieldsConfiguration($cfs){
   // workdb [ CategoryID oder All][customFieldsID]
   $workcfsw = array();
-  $cfs = DB::query("Select * from customFields");
   for ($x=0;$x < count($cfs); $x++){
       $cfsw[$cfs[$x]['id']] = $cfs[$x];
   }
