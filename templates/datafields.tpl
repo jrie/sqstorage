@@ -87,7 +87,9 @@
 
                         <option value="-1" selected="selected">{t}Überall sichtbar{/t}</option>
                         {foreach $headCategories as $headCategory}
+                        {if $headCategory['id'] != 0}
                             <option value="{$headCategory['id']}">{$headCategory['name']}</option>
+                        {/if}
                         {/foreach}
 
                     </select>
