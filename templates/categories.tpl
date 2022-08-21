@@ -14,7 +14,7 @@
             {/if}
         </li>
         {foreach $headCategories as $category}
-        <li class="list-group-item">
+        <li class="list-group-item" data-id="{$category.id}">
             {if !$isGuest}
             <a name="removeCategory" tabindex="-1" data-name="{$category.name}" href="{$urlBase}/categories{$urlPostFix}?removeCategory={$category.id}" title="{t}Kategorie löschen{/t}" class="removalButton fas fa-times-circle btn"></a>
             {/if}
@@ -40,7 +40,7 @@
             <span class="list-span" title="{t}Oberkategorie{/t}">{t}Oberkategorie{/t}</span>
         </li>
         {foreach $subCategories as $category}
-        <li class="list-group-item">
+        <li class="list-group-item" data-id="{$category.id}">
 
             {if !$isGuest}
             <a name="removeSubcategory" tabindex="-1" data-name="{$category.name}" href="{$urlBase}/categories{$urlPostFix}?removeSubcategory={$category.id}" title="{t}Unterkategorie löschen{/t}" class="removalButton fas fa-times-circle btn"></a>
