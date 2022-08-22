@@ -8,10 +8,12 @@ Satisfy all
 RewriteEngine on
 RewriteRule (js|css|img|fonts)/(.*) $1/$2
 RewriteRule ^index$ index.php [L]
-RewriteRule ^index/editItem=([0-9]+)$ index.php?editItem=$1 [QSA,L]
+
+RewriteRule ^entry$ entry.php [L]
+RewriteRule ^entry/editItem=([0-9]+)$ entry.php?editItem=$1 [QSA,L]
 
 RewriteRule ^items/$ inventory.php [L]
-RewriteRule ^items/new$ index.php [L]
+RewriteRule ^items/new$ entry.php [L]
 
 RewriteRule ^inventory$ inventory.php [L]
 RewriteRule ^inventory/$ inventory.php [L]
