@@ -1,4 +1,11 @@
 <?php
+
+/**
+ *  Miscellaneous functions
+ *  CheckDBCredentials($host,$user,$password,$name,$port,$silent=false) -> checks database credentials for validity
+ *  GetNonEmptyArrayValues($ArrayGet) -> cleans empty elements from array  ['',12,'','ab',''] -> [12,'ab']
+ */
+
 function CheckDBCredentials($host,$user,$password,$name,$port,$silent=false){
   global $error;
 
@@ -30,9 +37,21 @@ function GetNonEmptyArrayValues($ArrayGet){
   return $out;
 }
 
+/**
+ * End Miscellaneous functions
+ */
 
+
+/**
+ *  CustomFields Functions
+ *  GetDataFields($tocheck,$cfconf,$cfdata,$itemid) Return all custom datafields for an item
+ *  GetItemBasedCFD($customFieldsRaw)
+ *     retvat[itemID][customFieldID]
+ *  GetCustomFieldsConfiguration($cfs)
+ *      workdb [ CategoryID oder All][customFieldsID]
+ *
+ */
 function GetDataFields($tocheck,$cfconf,$cfdata,$itemid){
-
   //tocheck z.b. ['all',1,2]
   //cfconfig[ CategoryID oder All][customFieldsID][id/label/dataType/defau...]
   //cfdata
@@ -91,3 +110,47 @@ function GetCustomFieldsConfiguration($cfs){
   }
   return $workcfsw;
 }
+/**
+ *  End CustomFields Functions
+ */
+
+/**
+ *   Settings Tools
+ *   SettingsGet($namespace) -> get all namespace - settings in ass. arry
+ *   SettingsGetSingle($namespace,$setting,$default="")  -> get a specific setting from namespace, if missing return default
+ *   SettingsSet($namespace,$setting,$value) -> Saves a setting and value into the namespace, is namespace or setting doesn't exist it will be created
+ *
+ */
+function SettingsGet($namespace){
+  $res = DB::queryFirstRow('SELECT * FROM settings WHERE `namespace` LIKE %s ',$namespace);
+  if($res === null) return $res;
+  return json_decode($res['jsondoc'],true);
+}
+
+function SettingsGetSingle($namespace,$setting,$default=""){
+$res = DB::queryFirstRow('SELECT * FROM settings WHERE `namespace` LIKE %s ',$namespace);
+if($res === null) return $default;
+$tmp = json_decode($res['jsondoc'],true);
+if(!isset($tmp[$setting]))return $default;
+return $tmp[$setting];
+}
+
+function SettingsSet($namespace,$setting,$value){
+   $oldSettings = SettingsGet($namespace);
+   if($oldSettings === null){
+      $oldSettings = array();
+      $update = false;
+   }else{
+      $update = true;
+   }
+   $oldSettings[$setting] = $value;
+   $json = json_encode($oldSettings);
+   if($update){
+        DB::query('UPDATE settings SET jsondoc = %s WHERE `namespace`LIKE %s',$json,$namespace);
+   }else{
+        DB::query('INSERT INTO settings (`namespace`,`jsondoc`) VALUES (%s,%s)', $namespace,$json);
+   }
+}
+/**
+ * End Settings Tools
+ */
