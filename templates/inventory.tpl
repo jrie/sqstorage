@@ -83,7 +83,7 @@
         {if !$isGuest}
         <a tabindex="-1" href="#" class="save-inline-edit inactive" title="{t}Schnelle Bearbeitung speichern{/t}" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
         <a tabindex="-1" href="#" class="open-inline-edit" title="{t}Schnelle Bearbeitung{/t}" data-id="{$item.id}"><i class="fas fa-eraser"></i></a>
-        <a title="{t}Ausführliche Bearbeitung{/t}" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
+        <a title="{t}Ausführliche Bearbeitung{/t}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
         {/if}
 
         {if !$isGuest}
@@ -205,7 +205,7 @@
         {if !$isGuest}
         <a tabindex="-1" href="#" class="save-inline-edit inactive" title="{t}Schnelle Bearbeitung speichern{/t}" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
         <a tabindex="-1" href="#" class="open-inline-edit" title="{t}Schnelle Bearbeitung{/t}" data-id="{$item.id}"><i class="fas fa-eraser"></i></a>
-        <a title="{t}Ausführliche Bearbeitung{/t}" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
+        <a title="{t}Ausführliche Bearbeitung{/t}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
         {/if}
 
         {if !$isGuest}
