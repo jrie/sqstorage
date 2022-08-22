@@ -21,7 +21,7 @@
                 {if $itemhasstorage}{if !$isGuest}{if isset($itemstore.storage.id)}<a title="{t}Schnelle Bearbeitung{/t}" onclick="changeSingleValue('storages','label',{$itemstore.storage.id},true);" href="javascript:void(0)"><i class="fas fa-edit fa-xs"></i></a>{/if}{/if}{/if}
                 <span class="small">({$itemstore.positionen} {if $itemstore.positionen == 1}{t}Position{/t}{else}{t}Positionen{/t}{/if}, {$itemstore.itemcount} {if $itemstore.itemcount == 1}{t}Gegenstand{/t}{else}{t}Gegenstände{/t}{/if})</span>
                 <a title="{t}Zuklappen{/t}" id="togglebtn_{$itemstore.storage.id}" onclick='toggletableview("{$itemstore.storage.id}");' href="javascript:void(0)">
-                    <i class="fa-solid fa-xs fa-minimize" id="toggleicon_{$itemstore.storage.id}"></i></a>
+                <i class="fa-solid fa-xs fa-minimize" id="toggleicon_{$itemstore.storage.id}"></i></a>
             </h4>
 
             <ul class="list-group collapsestorage" id="itemlist_{$itemstore.storage.id}">
@@ -69,8 +69,8 @@
                     {/if}
 
                     <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i><img class="item-picture" data-id="{$item.id}" src="">{/if}
-                            {if !$isGuest}
-                            <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
+                    {if !$isGuest}
+                    <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
                     {else}
                     <span class="listing-label" title="{$item.label}">{$item.label}</span></span>
         </div>
@@ -191,8 +191,8 @@
                     {/if}
 
                     <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fa fas fa-images"></i><img class="item-picture" data-id="{$item.id}" src="">{/if}
-                            {if !$isGuest}
-                            <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
+                    {if !$isGuest}
+                    <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
                     {else}
                     <span class="listing-label" title="{$item.label}">{$item.label}</span></span>
         </div>
@@ -302,8 +302,8 @@
                     {/if}
 
                     <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i><img class="item-picture" data-id="{$item.id}" src="">{/if}
-                            {if !$isGuest}
-                            <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
+                    {if !$isGuest}
+                    <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
                     {else}
                     <span class="listing-label" title="{$item.label}">{$item.label}</span></span>
         </div>
@@ -399,7 +399,7 @@
                 openedImage.classList.toggle('active')
             }
 
-            itemPicture.setAttribute('src', 'data:image/*;charset=utf-8;base64,' + GetItemThumb(itemPicture.dataset['id']))
+            itemPicture.setAttribute('src','data:image/*;charset=utf-8;base64,' + GetItemThumb( itemPicture.dataset['id'] ) )
             itemPicture.classList.toggle('active')
         })
     }
@@ -613,7 +613,7 @@
     })
 
     window.addEventListener('load', function(evt) {
-        SetCollapsed();
+            SetCollapsed();
     })
 
 
@@ -725,29 +725,23 @@
         let icon = document.getElementById('toggleicon_' + tableid)
         let link = document.getElementById('togglebtn_' + tableid)
 
-        if (icon.classList.contains('fa-minimize')) {
+        if(icon.classList.contains('fa-minimize')) {
             //ist sichtbar -> soll unsichtbar werden
             table.style.overflow = 'hidden'
             table.style.height = '0px'
             icon.className = 'fas fa-xs fa-expand'
-            link.title = {
-                /literal}'{t}Aufklappen{/t
-            }
-            '{literal}
-            document.cookie = 'collapsedstorage_' + tableid + '=1; samesite=Strict;'
+            link.title = {/literal}'{t}Aufklappen{/t}'{literal}
+            document.cookie  = 'collapsedstorage_'+ tableid +'=1; samesite=Strict;'
         } else {
             //ist unsichtbar -> soll sichtbar werden
             table.style.height = table.dataset['originalheight'] + 'px'
             icon.className = 'fas fa-xs fa-minimize'
-            link.title = {
-                /literal}'{t}Zuklappen{/t
-            }
-            '{literal}
-            document.cookie = 'collapsedstorage_' + tableid + '=0; samesite=Strict;'
+            link.title = {/literal}'{t}Zuklappen{/t}'{literal}
+            document.cookie  = 'collapsedstorage_'+ tableid +'=0; samesite=Strict;'
         }
     }
 
-    function getCookie(name, defaultvalue) {
+    function getCookie (name,defaultvalue) {
         const value = '; ' + document.cookie
         let parts = value.split('; ' + name + '=')
         if (parts.length === 2) return parts.pop().split(';').shift()
@@ -762,22 +756,25 @@
 
             element.dataset['originalheight'] = element.clientHeight
             element.style = 'transition: all 300ms ease-out; height:' + element.clientHeight + 'px;'
-            element.addEventListener('transitionend', function(evt) {
+            element.addEventListener('transitionend', function (evt) {
                 window.setTimeout(function() {
                     if (evt.target.style.height === '0px') {
                         evt.target.style.overflow = 'hidden'
                         return
                     }
 
-                    evt.target.style.overflow = 'visible'
+                   evt.target.style.overflow = 'visible'
                 }, 0.6)
             })
-            let cv = getCookie("collapsedstorage_" + itind, 0)
-            if (cv == '1') {
+            let cv = getCookie("collapsedstorage_"+ itind, 0)
+            if(cv == '1') {
                 toggletableview(itind)
             }
         }
     }
+
+
+
 </script>
 {/literal}
 {include file="bodyend.tpl"}
