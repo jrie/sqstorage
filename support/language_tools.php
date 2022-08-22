@@ -4,7 +4,8 @@ define('LANGUAGEDIR', str_replace('/', DIRECTORY_SEPARATOR, 'languages/locale/')
 
 $langsLabels = array(
   'en_GB' => 'English',
-  'de_DE' => 'Deutsch'
+  'de_DE' => 'Deutsch',
+  'pl_PL' => 'Polski'
 );
 $langsAvailable = array_keys($langsLabels);
 $defaultLanguage = 'de_DE';
@@ -56,6 +57,10 @@ function initLang($locale)
 
         case "en_GB":
           $locale = "eng";
+          break;
+        
+        case "pl_PL":
+          $locale = "pol";
           break;
       }
     }
