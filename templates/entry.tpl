@@ -401,7 +401,7 @@
                     if (evt.target.parentNode.dataset['imageid'] === undefined) imageId = evt.target.dataset['imageid']
                     else imageId = evt.target.parentNode.dataset['imageid']
 
-                    imgRemovalRequest.open("GET", "index.php?removeImageId=" + imageId);
+                    imgRemovalRequest.open("GET", "index{/literal}{$urlPostFix}{literal}?removeImageId=" + imageId);
                     imgRemovalRequest.send()
                 }
             }
@@ -440,7 +440,7 @@
                 }
 
                 imgLoader.addEventListener('readystatechange', handleRequest)
-                imgLoader.open("GET", "index{/literal]{$urlPostFix}{literal]?getImageId=" + evt.target.parentNode.dataset['imageid']);
+                imgLoader.open("GET", "index{/literal}{$urlPostFix}{literal}?getImageId=" + evt.target.parentNode.dataset['imageid']);
                 imgLoader.send();
             }
 
