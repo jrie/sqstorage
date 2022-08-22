@@ -384,6 +384,6 @@ $smarty->assign('dataExamples', $dataExamples);
 if (isset($_POST)) $smarty->assign('POST', $_POST);
 $smarty->assign('SESSION', $_SESSION);
 $smarty->assign('REQUEST', $_SERVER['REQUEST_URI']);
-$smarty->display('index.tpl');
+$smarty->display('entry.tpl');
 
 exit;

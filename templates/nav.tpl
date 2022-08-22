@@ -9,13 +9,13 @@
         <a href="{$urlBase}/index{$urlPostFix}">{$logoGfx}</a>
         {/if}
         <ul class="nav">
-            {$pages = ['index.php' => '', 'inventory.php' => '', 'categories.php' => '', 'transfer.php' => '', 'datafields.php' => '', 'settings.php' => '']}
+            {$pages = ['index.php' => '', 'entry.php' => '', 'inventory.php' => '', 'categories.php' => '', 'transfer.php' => '', 'datafields.php' => '', 'settings.php' => '']}
             {$pages[$target] = 'activePage'}
 
             {if isset($useRegistration) && !$useRegistration}
-            <li class="nav-item"><a href="{$urlBase}/index{$urlPostFix}" class="nav-link {$pages['index.php']}">{t}Eintragen{/t}</a></li>
+            <li class="nav-item"><a href="{$urlBase}/entry{$urlPostFix}" class="nav-link {$pages['entry.php']}">{t}Eintragen{/t}</a></li>
             {else if isset($SESSION.user) && (int)$SESSION.user.usergroupid !== 2}
-            <li class="nav-item"><a href="{$urlBase}/index{$urlPostFix}" class="nav-link {$pages['index.php']}">{t}Eintragen{/t}</a></li>
+            <li class="nav-item"><a href="{$urlBase}/entry{$urlPostFix}" class="nav-link {$pages['entry.php']}">{t}Eintragen{/t}</a></li>
             {/if}
 
             <li class="nav-item"><a href="{$urlBase}/inventory{$urlPostFix}" class="nav-link {$pages['inventory.php']}">{t}Inventar{/t}</a></li>
