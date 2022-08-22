@@ -392,7 +392,13 @@
             } else if (evt.target.nodeName === 'A') {
                 return
             }
+
             let itemPicture = evt.target.parentNode.querySelector('img.item-picture')
+            let openedImage = document.querySelector('img.item-picture.active')
+            if (openedImage !== null && openedImage !== itemPicture) {
+                openedImage.classList.toggle('active')
+            }
+
             itemPicture.setAttribute('src','data:image/*;charset=utf-8;base64,' + GetItemThumb( itemPicture.dataset['id'] ) )
             itemPicture.classList.toggle('active')
         })
