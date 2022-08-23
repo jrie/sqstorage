@@ -1,5 +1,5 @@
 {include file="head.tpl" title="{t}Datenfelder{/t}"}
-{include file="nav.tpl" target="datafields.php" request=$REQUEST}}
+{include file="nav.tpl" target="datafields.php" request=$REQUEST}
 
 
 
