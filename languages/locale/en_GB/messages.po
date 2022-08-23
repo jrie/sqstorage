@@ -10,20 +10,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.1\n"
-
-#: templates//accessdenied.tpl:1
-msgid "Zugriff verweigert"
-msgstr "Access denied"
-
-#: templates//accessdenied.tpl:16 templates//php_language_extract.tpl:59
-msgid "Zugriff verweigert!"
-msgstr "Access denied!"
+"X-Generator: Poedit 3.1.1\n"
 
 #: templates//categories.tpl:1 templates//categories.tpl:9
 #: templates//datafields.tpl:149 templates//inventory.tpl:29
 #: templates//inventory.tpl:151 templates//inventory.tpl:262
-#: templates//nav.tpl:22 templates//php_language_extract.tpl:33
+#: templates//nav.tpl:22
 msgid "Kategorien"
 msgstr "Categories"
 
@@ -111,14 +103,165 @@ msgstr "Rename the category?"
 msgid "Unterkategorie umbenennen?"
 msgstr "Rename the subcategory?"
 
-#: templates//datafields.tpl:1 templates//nav.tpl:31 templates//nav.tpl:33
-#: templates//php_language_extract.tpl:6
-msgid "Datenfelder"
-msgstr "Data fields"
+#: templates//index.tpl:1
+msgid "sqStorage"
+msgstr "sqStorage"
 
-#: templates//datafields.tpl:7 templates//entry.tpl:21
+#: templates//installpage.tpl:1 templates//settings.tpl:183
+msgid "Installation"
+msgstr "Installation"
+
+#: templates//installpage.tpl:4
+msgid "sqStorage Installation / Aktualisierung"
+msgstr "sqStroage Installation / Update"
+
+#: templates//installpage.tpl:30 templates//entry.tpl:11
+msgid "zur Datenbank hinzugefügt."
+msgstr "added to the database."
+
+#: templates//installpage.tpl:40
+msgid "Saubere Adressen"
+msgstr "Use pretty urls"
+
+#: templates//installpage.tpl:44
+msgid ""
+"Verwende z.B. http://example.com/inventory anstatt http://example.com/"
+"inventory.php"
+msgstr ""
+"Use f.e. http://example.com/inventory instead of http://example.com/"
+"inventory.php"
+
+#: templates//installpage.tpl:50
+msgid "Zutrittskontrolle"
+msgstr "Access control"
+
+#: templates//installpage.tpl:54
+msgid "Verwende die Benutzerregistrierung und Zutrittskontrolle"
+msgstr "Using the user registration and access control"
+
+#: templates//installpage.tpl:61 templates//installpage.tpl:63
+msgid "Datenbank-Benutzer"
+msgstr "Database user"
+
+#: templates//installpage.tpl:68 templates//installpage.tpl:70
+msgid "Datenbank-Passwort"
+msgstr "Database password"
+
+#: templates//installpage.tpl:75 templates//installpage.tpl:77
+msgid "Datenbank-Name"
+msgstr "Database name"
+
+#: templates//installpage.tpl:82 templates//installpage.tpl:84
+msgid "Datenbank-Server"
+msgstr "Database server"
+
+#: templates//installpage.tpl:89 templates//installpage.tpl:91
+msgid "Datenbank-Port"
+msgstr "Database port"
+
+#: templates//installpage.tpl:94
+msgid "Verbindungsdaten eintragen"
+msgstr "Enter credentials"
+
+#: templates//installpage.tpl:99
+msgid "Datenbank installieren / aktualisieren"
+msgstr "Install / update database"
+
+#: templates//installpage.tpl:103 templates//php_language_extract.tpl:31
+msgid "Erneut prüfen"
+msgstr "Check again"
+
+#: templates//entry.tpl:1 templates//entry.tpl:354 templates//settings.tpl:121
+#: templates//nav.tpl:16 templates//nav.tpl:18
+msgid "Eintragen"
+msgstr "Enter"
+
+#: templates//entry.tpl:17
+msgid "Eintrag zur Bearbeitung:"
+msgstr "Item to edit:"
+
+#: templates//entry.tpl:21 templates//datafields.tpl:7
 msgid "Nicht gespeichert, es befinden sich Fehler in der Formular-Eingabe."
 msgstr "Not saved, there are errors in the formular input."
+
+#: templates//entry.tpl:29 templates//entry.tpl:32 templates//entry.tpl:34
+#: templates//inventory.tpl:30 templates//inventory.tpl:152
+#: templates//inventory.tpl:263 templates//inventory.tpl:477
+msgid "Bezeichnung"
+msgstr "Description"
+
+#: templates//entry.tpl:32 templates//entry.tpl:34
+msgid "Bezeichnung oder Name"
+msgstr "Description or name"
+
+#: templates//entry.tpl:45 templates//entry.tpl:47 templates//entry.tpl:63
+#: templates//entry.tpl:65
+msgid "Lagerplatz"
+msgstr "Storage area"
+
+#: templates//entry.tpl:71 templates//entry.tpl:75 templates//entry.tpl:77
+#: templates//inventory.tpl:32 templates//inventory.tpl:154
+#: templates//inventory.tpl:265
+msgid "Bemerkung"
+msgstr "Comment"
+
+#: templates//entry.tpl:87 templates//entry.tpl:89
+#: templates//datafields.tpl:149 templates//php_language_extract.tpl:40
+msgid "Kategorie"
+msgstr "Category"
+
+#: templates//entry.tpl:103 templates//entry.tpl:105
+msgid "Netzwerk/Hardware"
+msgstr "Network/Hardware"
+
+#: templates//entry.tpl:184 templates//entry.tpl:187 templates//entry.tpl:202
+#: templates//entry.tpl:204 templates//php_language_extract.tpl:63
+msgid "Unterkategorie"
+msgstr "Subcategory"
+
+#: templates//entry.tpl:202 templates//entry.tpl:204
+msgid "Router,wlan,fritzBox"
+msgstr "Router,WiFi,FritzBox"
+
+#: templates//entry.tpl:221 templates//entry.tpl:224
+msgid "Seriennummer"
+msgstr "Serialnumber"
+
+#: templates//entry.tpl:224 templates//entry.tpl:226
+msgid "Seriennummer/Artikelnummer"
+msgstr "Serialnumber/Productnumber"
+
+#: templates//entry.tpl:346 templates//entry.tpl:361
+msgid "Bilder des Gegenstandes"
+msgstr "Picture of this item"
+
+#: templates//entry.tpl:347 templates//entry.tpl:363
+msgid "Bild Upload"
+msgstr "Upload pictures"
+
+#: templates//entry.tpl:352 templates//settings.tpl:119
+msgid "Überschreiben"
+msgstr "Overwrite"
+
+#: templates//entry.tpl:365
+msgid "Bilder hochladen"
+msgstr "Upload picture"
+
+#: templates//entry.tpl:373
+msgid "Bild entfernen"
+msgstr "Remove picture"
+
+#: templates//entry.tpl:387
+msgid "Bild wirklich entfernen?"
+msgstr "Really remove picture?"
+
+#: templates//entry.tpl:487 templates//entry.tpl:497 templates//entry.tpl:507
+msgid "Fehler"
+msgstr "Error"
+
+#: templates//datafields.tpl:1 templates//nav.tpl:31 templates//nav.tpl:33
+msgid "Datenfelder"
+msgstr "Data fields"
 
 #: templates//datafields.tpl:12
 msgid "Feld entfernt:"
@@ -145,7 +288,7 @@ msgstr "Type of data"
 msgid "Beispielwerte"
 msgstr "Example values"
 
-#: templates//datafields.tpl:45 templates//php_language_extract.tpl:9
+#: templates//datafields.tpl:45 templates//php_language_extract.tpl:13
 msgid "Datentyp Beispielwerte"
 msgstr "Data type example values"
 
@@ -219,11 +362,6 @@ msgstr "Delete field"
 msgid "Bestehende Datenfelder"
 msgstr "Existing data fields"
 
-#: templates//datafields.tpl:149 templates//entry.tpl:87
-#: templates//entry.tpl:89 templates//php_language_extract.tpl:30
-msgid "Kategorie"
-msgstr "Category"
-
 #: templates//datafields.tpl:186
 msgid "ist doppelt enthalten."
 msgstr "is duplicated."
@@ -277,7 +415,7 @@ msgstr "needs to be between"
 msgid "Zeichen lang sein."
 msgstr "characters long."
 
-#: templates//datafields.tpl:355 templates//php_language_extract.tpl:13
+#: templates//datafields.tpl:355
 msgid "Eintrag"
 msgstr "Entry"
 
@@ -285,164 +423,382 @@ msgstr "Entry"
 msgid "wirklich löschen?"
 msgstr "really delete?"
 
-#: templates//entry.tpl:1 templates//entry.tpl:354 templates//nav.tpl:16
-#: templates//nav.tpl:18 templates//php_language_extract.tpl:15
-#: templates//settings.tpl:121
-msgid "Eintragen"
-msgstr "Enter"
+#: templates//php_language_extract.tpl:1
+msgid "1 Datensatz mit verknüpften Altdaten entfernt."
+msgstr "remove 1 record together with linked old records."
 
-#: templates//entry.tpl:11 templates//installpage.tpl:30
-msgid "zur Datenbank hinzugefügt."
-msgstr "added to the database."
+#: templates//php_language_extract.tpl:2
+msgid "1 Eintrag wurde gelöscht."
+msgstr "1 entry was deleted."
 
-#: templates//entry.tpl:17
-msgid "Eintrag zur Bearbeitung:"
-msgstr "Item to edit:"
+#: templates//php_language_extract.tpl:3
+msgid "Absender-Mailadresse ungültig."
+msgstr "Invalid sender email address."
 
-#: templates//entry.tpl:29 templates//entry.tpl:32 templates//entry.tpl:34
-#: templates//inventory.tpl:30 templates//inventory.tpl:152
-#: templates//inventory.tpl:263 templates//inventory.tpl:477
-msgid "Bezeichnung"
-msgstr "Description"
+#: templates//php_language_extract.tpl:4
+msgid "Alte Revision:"
+msgstr "Old revision:"
 
-#: templates//entry.tpl:32 templates//entry.tpl:34
-msgid "Bezeichnung oder Name"
-msgstr "Description or name"
+#: templates//php_language_extract.tpl:5
+msgid "Anmeldung für weitere XXX Sekunden gesperrt"
+msgstr "Login is blocked for another XXX seconds"
 
-#: templates//entry.tpl:45 templates//entry.tpl:47 templates//entry.tpl:63
-#: templates//entry.tpl:65
-msgid "Lagerplatz"
-msgstr "Storage area"
+#: templates//php_language_extract.tpl:6
+msgid "Benutzername enthält nicht zugelassene Zeichen."
+msgstr "Username contains illegal characters."
 
-#: templates//entry.tpl:71 templates//entry.tpl:75 templates//entry.tpl:77
-#: templates//inventory.tpl:32 templates//inventory.tpl:154
-#: templates//inventory.tpl:265
-msgid "Bemerkung"
-msgstr "Comment"
+#: templates//php_language_extract.tpl:7
+msgid "Benutzername ist erforderlich."
+msgstr "Username is required."
 
-#: templates//entry.tpl:103 templates//entry.tpl:105
-msgid "Netzwerk/Hardware"
-msgstr "Network/Hardware"
+#: templates//php_language_extract.tpl:8
+msgid "Bitte erlaube dem Webserver Schreibzugriff auf die Datei"
+msgstr "Please set write permission to the file"
 
-#: templates//entry.tpl:184 templates//entry.tpl:187 templates//entry.tpl:202
-#: templates//entry.tpl:204 templates//php_language_extract.tpl:53
-msgid "Unterkategorie"
-msgstr "Subcategory"
+#: templates//php_language_extract.tpl:9
+msgid "Datenbank ist auf dem aktuellen Stand"
+msgstr "Database is up to date"
 
-#: templates//entry.tpl:202 templates//entry.tpl:204
-msgid "Router,wlan,fritzBox"
-msgstr "Router,WiFi,FritzBox"
+#: templates//php_language_extract.tpl:10
+msgid "Datenbank-Verbindung hergestellt"
+msgstr "Database connected"
 
-#: templates//entry.tpl:221 templates//entry.tpl:224
-msgid "Seriennummer"
-msgstr "Serialnumber"
+#: templates//php_language_extract.tpl:11
+msgid "Datenbank-Verbindung nicht möglich. Bitte kontrolliere die Zugangsdaten"
+msgstr "Database connection failed. please check the credentials"
 
-#: templates//entry.tpl:224 templates//entry.tpl:226
-msgid "Seriennummer/Artikelnummer"
-msgstr "Serialnumber/Productnumber"
+#: templates//php_language_extract.tpl:12
+msgid "Datensätze mit verknüpften Altdaten entfernt."
+msgstr "Records with old linked data removed."
 
-#: templates//entry.tpl:346 templates//entry.tpl:361
-msgid "Bilder des Gegenstandes"
-msgstr "Picture of this item"
+#: templates//php_language_extract.tpl:14
+msgid "Der Aktivierungslink ist nicht mehr gültig."
+msgstr "The activation link is expired."
 
-#: templates//entry.tpl:347 templates//entry.tpl:363
-msgid "Bild Upload"
-msgstr "Upload pictures"
+#: templates//php_language_extract.tpl:15
+msgid "Der Benutzer \"%s\" existiert bereits."
+msgstr "The user \"%s\" exists already."
 
-#: templates//entry.tpl:352 templates//settings.tpl:119
-msgid "Überschreiben"
-msgstr "Overwrite"
+#: templates//php_language_extract.tpl:16
+msgid "Der Webserver kann die Datei support/dba.php nicht ändern"
+msgstr "Unable to edit the file support/dba.php"
 
-#: templates//entry.tpl:365
-msgid "Bilder hochladen"
-msgstr "Upload picture"
-
-#: templates//entry.tpl:373
-msgid "Bild entfernen"
-msgstr "Remove picture"
-
-#: templates//entry.tpl:387
-msgid "Bild wirklich entfernen?"
-msgstr "Really remove picture?"
-
-#: templates//entry.tpl:487 templates//entry.tpl:497 templates//entry.tpl:507
-msgid "Fehler"
-msgstr "Error"
-
-#: templates//footer.tpl:3 templates//php_language_extract.tpl:34
-msgid "Kontakt"
-msgstr "Contact"
-
-#: templates//footer.tpl:4 templates//php_language_extract.tpl:28
-msgid "Github"
-msgstr "Github"
-
-#: templates//index.tpl:1
-msgid "SQStorage"
-msgstr "SQStorage"
-
-#: templates//installpage.tpl:1 templates//settings.tpl:183
-msgid "Installation"
-msgstr "Installation"
-
-#: templates//installpage.tpl:4
-msgid "sqStorage Installation / Aktualisierung"
-msgstr "sqStroage Installation / Update"
-
-#: templates//installpage.tpl:40
-msgid "Saubere Adressen"
-msgstr "Use pretty urls"
-
-#: templates//installpage.tpl:44
+#: templates//php_language_extract.tpl:17
 msgid ""
-"Verwende z.B. http://example.com/inventory anstatt http://example.com/"
-"inventory.php"
+"Die Datei support/dba.php ist nicht vorhanden und konnte auch nicht erstellt "
+"werden."
+msgstr "The file support/dba.php is missing and creating it failed."
+
+#: templates//php_language_extract.tpl:18
+msgid "Die gewählte Datenbank existiert nicht und konnte nicht erstellt werden"
+msgstr "The selected database doesn't exists and could not be created"
+
+#: templates//php_language_extract.tpl:19
+msgid "Die Installation ist momentan nicht erlaubt"
+msgstr "Installation is currently not allowed"
+
+#: templates//php_language_extract.tpl:20
+msgid "Die Passwörter stimmen nicht überein!"
+msgstr "The passwords didn't match!"
+
+#: templates//php_language_extract.tpl:21
+msgid "Einträge wurden gelöscht."
+msgstr "Entries were deleted."
+
+#: templates//php_language_extract.tpl:22
+msgid ""
+"Einzelauswahl, durch Semikolon getrennt: erlaubt \"Neu\" oder \"Gebraucht\" "
+"oder \"Refurbished\" wenn \"Neu;Gebraucht;Refurbished\" angegeben. Und oder "
+"numerische Werte (Ganzzahl, Gleitkommazahlen)"
 msgstr ""
-"Use f.e. http://example.com/inventory instead of http://example.com/"
-"inventory.php"
+"Single choice, semicolon separated: If \"New;Used,Refurbished\" is entered, "
+"\"New\", \"Used\" and \"Refurbished\" additional to numeric values (inter, "
+"decimal) will be available"
 
-#: templates//installpage.tpl:50
-msgid "Zutrittskontrolle"
-msgstr "Access control"
+#: templates//php_language_extract.tpl:23
+msgid "Einzelauswahl (Single-Dropdown)"
+msgstr "Single choice (single dropdown)"
 
-#: templates//installpage.tpl:54
-msgid "Verwende die Benutzerregistrierung und Zutrittskontrolle"
-msgstr "Using the user registration and access control"
+#: templates//php_language_extract.tpl:24
+msgid "Einzelwert: -10 oder -2 oder 2000 oder 4000"
+msgstr "Single value: -10 or .291 or 4016"
 
-#: templates//installpage.tpl:61 templates//installpage.tpl:63
-msgid "Datenbank-Benutzer"
-msgstr "Database user"
+#: templates//php_language_extract.tpl:25
+msgid "Einzelwert: -11.4 oder -0.032 kleiner gleich 0"
+msgstr "Single value: -11.4 or -0.032 , less than 0"
 
-#: templates//installpage.tpl:68 templates//installpage.tpl:70
-msgid "Datenbank-Passwort"
-msgstr "Database password"
+#: templates//php_language_extract.tpl:26
+msgid "Einzelwert: -131 oder -7019 oder kleiner gleich 0"
+msgstr "Single value:-131 or-7019 or less than 0 or 0"
 
-#: templates//installpage.tpl:75 templates//installpage.tpl:77
-msgid "Datenbank-Name"
-msgstr "Database name"
+#: templates//php_language_extract.tpl:27
+msgid "Einzelwert: 1 oder 291 oder 4016, größer gleich 0"
+msgstr "Single value: 1 or 291 or 4016, not less than 0"
 
-#: templates//installpage.tpl:82 templates//installpage.tpl:84
-msgid "Datenbank-Server"
-msgstr "Database server"
+#: templates//php_language_extract.tpl:28
+msgid "Einzelwert: 3.4172 oder 5.179 oder 27.4"
+msgstr "Single value: 3.4172 or 5.179 or 27.4"
 
-#: templates//installpage.tpl:89 templates//installpage.tpl:91
-msgid "Datenbank-Port"
-msgstr "Database port"
+#: templates//php_language_extract.tpl:29
+msgid "Einzelwert: Zeichenfolge mit bis zu < 256 Zeichen"
+msgstr "Single value: String with less than 256 character"
 
-#: templates//installpage.tpl:94
-msgid "Verbindungsdaten eintragen"
-msgstr "Enter credentials"
+#: templates//php_language_extract.tpl:30
+msgid "E-Mail-Adresse ungültig!"
+msgstr "Invalid email address!"
 
-#: templates//installpage.tpl:99
-msgid "Datenbank installieren / aktualisieren"
-msgstr "Install / update database"
+#: templates//php_language_extract.tpl:32
+msgid ""
+"Erstelle eine Datei mit dem Namen allow_install im Verzeichnis support um "
+"die Installation zu erlauben."
+msgstr ""
+"Create a file named \"allow_install\" in the support directory to allow "
+"installation."
 
-#: templates//installpage.tpl:103 templates//php_language_extract.tpl:87
-msgid "Erneut prüfen"
-msgstr "Check again"
+#: templates//php_language_extract.tpl:33
+msgid ""
+"Es können zur Zeit keine E-Mails vom System versendet werden.<br />Bitte "
+"diesen Einladungslink an den Benutzer weiterleiten:<br /><a href=\"%s\">%s</"
+"a>"
+msgstr ""
+"The system is currently unable to send mails. <br /> Please forward this "
+"invitation link to the user: <br />/><a href=\"%s\">%s</a>"
+
+#: templates//php_language_extract.tpl:34
+msgid "Es waren keine Einträge mit dem Datenfeld verknüpft."
+msgstr "No entries were linked to the data field."
+
+#: templates//php_language_extract.tpl:35
+msgid ""
+"Falls ein Benutzerkonto gefunden wird, erhalten Sie nun eine Mail mit einem "
+"Link zum Zurücksetzen des Passworts."
+msgstr ""
+"If a user account was found, you'll receive an email containing the link to "
+"reset your password."
+
+#: templates//php_language_extract.tpl:36
+msgid "Fehler: Benutzername \"%s\" enthält nicht zugelassene Zeichen."
+msgstr "Error: Username \"%s\" contains illegal characters."
+
+#: templates//php_language_extract.tpl:37
+msgid "Fehler: Der letzte Administrator kann nicht gelöscht werden!"
+msgstr "Failure: The last administrator cannot be deleted!"
+
+#: templates//php_language_extract.tpl:38
+msgid ""
+"Fehler: Dies ist der letzte Administrator, die Gruppe kann nicht auf \"%s\" "
+"geändert werden!"
+msgstr ""
+"Error: This is the last administrator, the user group can not be changed to "
+"\"%s\"!"
+
+#: templates//php_language_extract.tpl:39
+msgid "Fehler: E-Mail-Adresse \"%s\" ungültig."
+msgstr "Error: Invalid email address \"%s\"."
+
+#: templates//php_language_extract.tpl:41
+msgid "Kategorie entfernt."
+msgstr "Category removed."
+
+#: templates//php_language_extract.tpl:42
+msgid "Kategorie umbenannt."
+msgstr "Category renamed."
+
+#: templates//php_language_extract.tpl:43
+msgid "keine Änderungen durchgeführt"
+msgstr "no changes applied"
+
+#: templates//php_language_extract.tpl:44
+msgid ""
+"Mehrfachauswahl, durch Semikolon getrennt: erlaubt \"Neu\" und oder "
+"\"Netzwerk\", wenn \"Neu;Netzwerk\" angegeben. Und oder numerische Werte "
+"(Ganzzahl, Gleitkommanzahlen)."
+msgstr ""
+"Multiple choice, semicolon separated: If \"New;Used,Refurbished\" is "
+"entered, \"New\", \"Used\" and \"Refurbished\" additional to numeric values "
+"(decimal or inter) will be available."
+
+#: templates//php_language_extract.tpl:45
+msgid "Mehrfachauswahl (Multi-Dropdown)"
+msgstr "Multiple choice (multi-dropdown)"
+
+#: templates//php_language_extract.tpl:46
+msgid ""
+"Momentan können keine E-Mails versendet werden, bitte später noch einmal "
+"versuchen, oder einen Administrator kontaktieren."
+msgstr ""
+"Emails cannot be sent at the moment, please try again later or contact an "
+"administrator."
+
+#: templates//php_language_extract.tpl:47
+msgid "Negative Ganzzahl"
+msgstr "Negative integer"
+
+#: templates//php_language_extract.tpl:48
+msgid "Negative oder positive Ganzzahl"
+msgstr "Negative or positive integer"
+
+#: templates//php_language_extract.tpl:49
+msgid "Negative oder positive Gleitkommazahl"
+msgstr "Negative or positive floating point number"
+
+#: templates//php_language_extract.tpl:50
+msgid "Neue Revision:"
+msgstr "New revision:"
+
+#: templates//php_language_extract.tpl:51
+msgid "Passwort muß einen Großbuchstaben enthalten!"
+msgstr "Password must contain an uppercase letter!"
+
+#: templates//php_language_extract.tpl:52
+msgid "Passwort muß einen Kleinbuchstaben enthalten!"
+msgstr "Password must contain a lowercase letter!"
+
+#: templates//php_language_extract.tpl:53
+msgid "Passwort muß eine Zahl enthalten!"
+msgstr "Password must contain a number!"
+
+#: templates//php_language_extract.tpl:54
+msgid "Passwort zu kurz, mindestens 8 Zeichen!"
+msgstr "Password too short, at least 8 characters!"
+
+#: templates//php_language_extract.tpl:55
+msgid "Positive Ganzzahl"
+msgstr "Positive integer"
+
+#: templates//php_language_extract.tpl:56
+msgid "Positive Gleitkommazahl"
+msgstr "Positive floating point number"
+
+#: templates//php_language_extract.tpl:57
+msgid ""
+"Setze die entsprechende Berechtigung so, dass Dein Webserver diese erstellen "
+"und bearbeiten kann"
+msgstr ""
+"Please set the file access permissions to allow your webserver to create and "
+"edit the file or create the file manually and grant write permission to the "
+"webserver"
+
+#: templates//php_language_extract.tpl:58
+msgid "Sie haben eine Einladung für sqStorage erhalten: <a href=\"%s\">%s</a>"
+msgstr "You received an invitation to sqStorage: <a href=\"%s\">%s</a>"
+
+#: templates//php_language_extract.tpl:59
+msgid "sqStorage Einladung"
+msgstr "sqStorage invite"
+
+#: templates//php_language_extract.tpl:60
+msgid "sqStorage Passwortänderung"
+msgstr "sqStorage password change"
+
+#: templates//php_language_extract.tpl:61
+msgid ""
+"Um das Passwort für sqStorage zu ändern bitte den folgenden Link aufrufen: "
+"<a href=\"%s\">%s</a>"
+msgstr ""
+"In order to change the password for usage of sqStorage please follow this "
+"link: <a href=\"%s\">%s</a>"
+
+#: templates//php_language_extract.tpl:62
+msgid "Unkategorisiert"
+msgstr "Uncategorized"
+
+#: templates//php_language_extract.tpl:64
+msgid "Unterkategorie entfernt."
+msgstr "Subcategory removed."
+
+#: templates//php_language_extract.tpl:65
+msgid "Unterkategorie umbenannt."
+msgstr "Subcategory renamed."
+
+#: templates//php_language_extract.tpl:66
+msgid "Unter Linux könnten folgende Befehle weiterhelfen"
+msgstr "If your operating system is Linux the following command may help you"
+
+#: templates//php_language_extract.tpl:67
+msgid ""
+"Verwendest Du eine bestehende Installation und die Benutzerverwaltung, "
+"kannst Du diese Datei als Administrator über das Einstellungen erstellen und "
+"nach der Aktualisierung auch wieder entfernen."
+msgstr ""
+"If you are about to updating an existing installation and also using the "
+"login feature, you can create this file in the Settings and also delete it "
+"afterwards."
+
+#: templates//php_language_extract.tpl:68
+msgid "Zeichenfolge < 512 Zeichen"
+msgstr "String <512 characters"
+
+#: templates//php_language_extract.tpl:69
+msgid "Zugangsdaten ungültig"
+msgstr "Invalid credentials"
+
+#: templates//php_language_extract.tpl:70
+msgid "Zugang wurde verweigert. Bitte überprüfe die Zugangsdaten"
+msgstr "Access denied. Please check the credentials"
+
+#: templates//php_language_extract.tpl:71
+msgid "Zugriff auf folgende Verzeichnisse fehlgeschlagen:"
+msgstr "Access to the following directories was denied:"
+
+#: templates//php_language_extract.tpl:72 templates//accessdenied.tpl:16
+msgid "Zugriff verweigert!"
+msgstr "Access denied!"
+
+#: templates//php_language_extract.tpl:73
+msgid "Zu viele Anmeldeversuche. Bitte später nochmal versuchen"
+msgstr "Too many login attempts. Please try again later"
+
+#: templates//transfer.tpl:1 templates//transfer.tpl:31 templates//nav.tpl:25
+#: templates//nav.tpl:27
+msgid "Transferieren"
+msgstr "Transfer"
+
+#: templates//transfer.tpl:8 templates//transfer.tpl:26
+msgid "Quelle"
+msgstr "Source"
+
+#: templates//transfer.tpl:17 templates//transfer.tpl:30
+msgid "Ziel"
+msgstr "Target"
+
+#: templates//transfer.tpl:27
+msgid "Quelle wählen."
+msgstr "Select source."
+
+#: templates//transfer.tpl:31
+msgid "Ziel wählen."
+msgstr "Select target."
+
+#: templates//transfer.tpl:47 templates//inventory.tpl:369
+msgid ""
+"Von diesem Artikel sind mehrere Stück am Lagerplatz. Wie viele sollen zum "
+"neuen Lagerort transferiert werden?"
+msgstr ""
+"There is more than one unit of this article in storage. How many should be "
+"transferred?"
+
+#: templates//transfer.tpl:49 templates//inventory.tpl:373
+msgid "Von diesem Artikel sind nicht genug Einheiten vorhanden."
+msgstr "Not enough units of the item available."
+
+#: templates//transfer.tpl:50 templates//inventory.tpl:375
+msgid "Anzahl kann nicht negativ sein."
+msgstr "Amount cannot be negative."
+
+#: templates//transfer.tpl:159
+msgid "Quelle wählen"
+msgstr "Choose source"
+
+#: templates//transfer.tpl:160
+msgid "Ziel wählen"
+msgstr "Choose target"
+
+#: templates//transfer.tpl:179
+msgid "Keine Gegenstände gefunden."
+msgstr "No items found."
 
 #: templates//inventory.tpl:1 templates//nav.tpl:21
-#: templates//php_language_extract.tpl:29
 msgid "Inventar"
 msgstr "Inventory"
 
@@ -502,22 +858,6 @@ msgstr "Full edit"
 msgid "Keine Gegenstände gefunden"
 msgstr "No items found"
 
-#: templates//inventory.tpl:369 templates//transfer.tpl:47
-msgid ""
-"Von diesem Artikel sind mehrere Stück am Lagerplatz. Wie viele sollen zum "
-"neuen Lagerort transferiert werden?"
-msgstr ""
-"There is more than one unit of this article in storage. How many should be "
-"transferred?"
-
-#: templates//inventory.tpl:373 templates//transfer.tpl:49
-msgid "Von diesem Artikel sind nicht genug Einheiten vorhanden."
-msgstr "Not enough units of the item available."
-
-#: templates//inventory.tpl:375 templates//transfer.tpl:50
-msgid "Anzahl kann nicht negativ sein."
-msgstr "Amount cannot be negative."
-
 #: templates//inventory.tpl:428
 msgid "Lagerplatz wirklich entfernen?"
 msgstr "Really remove storage area?"
@@ -558,510 +898,9 @@ msgstr ""
 msgid "Aufklappen"
 msgstr "Expand"
 
-#: templates//login.tpl:1
-msgid "Login und Registrierung"
-msgstr "Login and registration"
-
-#: templates//login.tpl:34
-msgid "Neue Admin-Zugangsdaten eingeben"
-msgstr "Enter the new administrator credentials"
-
-#: templates//login.tpl:37
-msgid "Neue Zugangsdaten eingeben"
-msgstr "Enter the new credentials"
-
-#: templates//login.tpl:39
-msgid "Zugangsdaten eingeben"
-msgstr "Enter credentials"
-
-#: templates//login.tpl:44 templates//settings.tpl:32
-#: templates//settings.tpl:37 templates//settings.tpl:39
-#: templates//settings.tpl:136
-msgid "Benutzername"
-msgstr "Username"
-
-#: templates//login.tpl:53 templates//settings.tpl:46
-#: templates//settings.tpl:49 templates//settings.tpl:51
-#: templates//settings.tpl:136
-msgid "E-Mail"
-msgstr "E-Mail"
-
-#: templates//login.tpl:65
-msgid "Passwort"
-msgstr "Password"
-
-#: templates//login.tpl:74
-msgid "Passwort wiederholen"
-msgstr "Repeat password"
-
-#: templates//login.tpl:87
-msgid "Angemeldet bleiben?"
-msgstr "Stay signed in?"
-
-#: templates//login.tpl:92 templates//modal.tpl:34
-msgid "Speichern"
-msgstr "Save"
-
-#: templates//login.tpl:92
-msgid "Anmelden"
-msgstr "Sign in"
-
-#: templates//login.tpl:102
-msgid "Anfordern"
-msgstr "Request"
-
-#: templates//login.tpl:112
-msgid "Zugangsdaten vergessen"
-msgstr "Credentials forgotten"
-
-#: templates//modal.tpl:21 templates//modal.tpl:24
-msgid "Neuer Wert"
-msgstr "New value"
-
-#: templates//modal.tpl:33
-msgid "Abbrechen"
-msgstr "Cancel"
-
-#: templates//nav.tpl:25 templates//nav.tpl:27
-#: templates//php_language_extract.tpl:52 templates//transfer.tpl:1
-#: templates//transfer.tpl:31
-msgid "Transferieren"
-msgstr "Transfer"
-
-#: templates//nav.tpl:37 templates//php_language_extract.tpl:12
-#: templates//settings.tpl:1
+#: templates//settings.tpl:1 templates//nav.tpl:37
 msgid "Einstellungen"
 msgstr "Settings"
-
-#: templates//nav.tpl:42 templates//php_language_extract.tpl:50
-msgid "Suche"
-msgstr "Search"
-
-#: templates//nav.tpl:43 templates//php_language_extract.tpl:51
-msgid "Suchen"
-msgstr "Search"
-
-#: templates//nav.tpl:64 templates//php_language_extract.tpl:1
-msgid "Abmelden"
-msgstr "Sign out"
-
-#: templates//php_language_extract.tpl:2
-msgid "Absender-Mailadresse ungültig."
-msgstr "Invalid sender email address."
-
-#: templates//php_language_extract.tpl:3
-msgid "Benutzername enthält nicht zugelassene Zeichen."
-msgstr "Username contains illegal characters."
-
-#: templates//php_language_extract.tpl:4
-msgid "Benutzername ist erforderlich."
-msgstr "Username is required."
-
-#: templates//php_language_extract.tpl:5
-msgid "Bitte Benutzername und E-Mail-Adresse angeben."
-msgstr "Please enter your username and email address."
-
-#: templates//php_language_extract.tpl:7
-msgid "Datensatz"
-msgstr "Record"
-
-#: templates//php_language_extract.tpl:8
-msgid "Datensätze"
-msgstr "Records"
-
-#: templates//php_language_extract.tpl:10
-msgid "Der Aktivierungslink ist nicht mehr gültig."
-msgstr "The activation link is expired."
-
-#: templates//php_language_extract.tpl:11
-msgid "Die Passwörter stimmen nicht überein!"
-msgstr "The passwords didn't match!"
-
-#: templates//php_language_extract.tpl:14
-msgid "Einträge"
-msgstr "Entries"
-
-#: templates//php_language_extract.tpl:16
-msgid "Einzelauswahl (Single-Dropdown)"
-msgstr "Single choice (single dropdown)"
-
-#: templates//php_language_extract.tpl:17
-msgid ""
-"Einzelauswahl, durch Komma getrennt: erlaubt \"Neu\" oder \"Gebraucht\" oder "
-"\"Refurbished\" wenn \"Neu,Gebraucht,Refurbished\" angegeben. Und oder "
-"numerische Werte (Ganzzahl, Gleitkommazahlen)"
-msgstr ""
-"Single choice, comma separated: If \"New,Used,Refurbished\" is entered, \"New"
-"\", \"Used\" and \"Refurbished\" additional to numeric values (inter, "
-"decimal) will be available"
-
-#: templates//php_language_extract.tpl:18
-msgid "Einzelwert: 1 oder 291 oder 4016, größer gleich 0"
-msgstr "Single value: 1 or 291 or 4016, not less than 0"
-
-#: templates//php_language_extract.tpl:19
-msgid "Einzelwert: -10 oder -2 oder 2000 oder 4000"
-msgstr "Single value: -10 or .291 or 4016"
-
-#: templates//php_language_extract.tpl:20
-msgid "Einzelwert: -11.4 oder -0.032 kleiner gleich 0"
-msgstr "Single value: -11.4 or -0.032 , less than 0"
-
-#: templates//php_language_extract.tpl:21
-msgid "Einzelwert: -131 oder -7019 oder kleiner gleich 0"
-msgstr "Single value:-131 or-7019 or less than 0 or 0"
-
-#: templates//php_language_extract.tpl:22
-msgid "Einzelwert: 3.4172 oder 5.179 oder 27.4"
-msgstr "Single value: 3.4172 or 5.179 or 27.4"
-
-#: templates//php_language_extract.tpl:23
-msgid "Einzelwert: Zeichenfolge mit bis zu < 512 Zeichen"
-msgstr "Single value: String with less than 512 character"
-
-#: templates//php_language_extract.tpl:24
-msgid "Es waren keine Einträge mit dem Datenfeld verknüpft."
-msgstr "No entries were linked to the data field."
-
-#: templates//php_language_extract.tpl:25
-msgid "Es wurden"
-msgstr "It were"
-
-#: templates//php_language_extract.tpl:26
-msgid ""
-"Falls ein Benutzerkonto gefunden wird, erhalten Sie nun eine Mail mit einem "
-"Link zum Zurücksetzen des Passworts."
-msgstr ""
-"If a user account was found, you'll receive an email containing the link to "
-"reset your password."
-
-#: templates//php_language_extract.tpl:27
-msgid ""
-"Fehler: Dies ist der letzte Administrator, die Gruppe kann nicht auf \"%s\" "
-"geändert werden!"
-msgstr ""
-"Error: This is the last administrator, the user group can not be changed to "
-"\"%s\"!"
-
-#: templates//php_language_extract.tpl:31
-msgid "Kategorie entfernt."
-msgstr "Category removed."
-
-#: templates//php_language_extract.tpl:32
-msgid "Kategorie umbenannt."
-msgstr "Category renamed."
-
-#: templates//php_language_extract.tpl:35
-msgid "Mehrfachauswahl (Multi-Dropdown)"
-msgstr "Multiple choice (multi-dropdown)"
-
-#: templates//php_language_extract.tpl:36
-msgid ""
-"Mehrfachauswahl, durch Komma getrennt: erlaubt \"Neu\" und oder \"Netzwerk"
-"\", wenn \"Neu,Netzwerk\" angegeben. Und oder numerische Werte (Ganzzahl, "
-"Gleitkommanzahlen)."
-msgstr ""
-"Multiple choice, comma separated: If \"New,Used,Refurbished\" is entered, "
-"\"New\", \"Used\" and \"Refurbished\" additional to numeric values (decimal "
-"or inter) will be available."
-
-#: templates//php_language_extract.tpl:37
-msgid "mit verknüpften Altdaten entfernt."
-msgstr "remove together with linked old records."
-
-#: templates//php_language_extract.tpl:38
-msgid ""
-"Momentan können keine E-Mails versendet werden, bitte später noch einmal "
-"versuchen, oder einen Administrator kontaktieren."
-msgstr ""
-"Emails cannot be sent at the moment, please try again later or contact an "
-"administrator."
-
-#: templates//php_language_extract.tpl:39
-msgid "Negative Ganzzahl"
-msgstr "Negative integer"
-
-#: templates//php_language_extract.tpl:40
-msgid "Negative oder positive Ganzzahl"
-msgstr "Negative or positive integer"
-
-#: templates//php_language_extract.tpl:41
-msgid "Negative oder positive Gleitkommazahl"
-msgstr "Negative or positive floating point number"
-
-#: templates//php_language_extract.tpl:42
-msgid "Passwort muß eine Zahl enthalten!"
-msgstr "Password must contain a number!"
-
-#: templates//php_language_extract.tpl:43
-msgid "Passwort muß einen Großbuchstaben enthalten!"
-msgstr "Password must contain an uppercase letter!"
-
-#: templates//php_language_extract.tpl:44
-msgid "Passwort muß einen Kleinbuchstaben enthalten!"
-msgstr "Password must contain a lowercase letter!"
-
-#: templates//php_language_extract.tpl:45
-msgid "Passwort zu kurz, mindestens 8 Zeichen!"
-msgstr "Password too short, at least 8 characters!"
-
-#: templates//php_language_extract.tpl:46
-msgid "Positive Ganzzahl"
-msgstr "Positive integer"
-
-#: templates//php_language_extract.tpl:47
-msgid "Positive Gleitkommazahl"
-msgstr "Positive floating point number"
-
-#: templates//php_language_extract.tpl:48
-msgid "sqStorage Einladung"
-msgstr "sqStorage invite"
-
-#: templates//php_language_extract.tpl:49
-msgid "sqStorage Passwortänderung"
-msgstr "sqStorage password change"
-
-#: templates//php_language_extract.tpl:54
-msgid "Unterkategorie entfernt."
-msgstr "Subcategory removed."
-
-#: templates//php_language_extract.tpl:55
-msgid "Unterkategorie umbenannt."
-msgstr "Subcategory renamed."
-
-#: templates//php_language_extract.tpl:56
-msgid "verknüpfter Informationen gelöscht."
-msgstr "linked information deleted."
-
-#: templates//php_language_extract.tpl:57
-msgid "Zeichenfolge < 512 Zeichen"
-msgstr "String <512 characters"
-
-#: templates//php_language_extract.tpl:58
-msgid "Zugangsdaten ungültig"
-msgstr "Invalid credentials"
-
-#: templates//php_language_extract.tpl:60
-msgid ""
-"Um das Passwort für sqStorage zu ändern bitte den folgenden Link aufrufen: "
-"<a href=\"%s\">%s</a>rn"
-msgstr ""
-"To change the password for sqStorage please use the following link:<a href="
-"\"%s\">%s</a>"
-
-#: templates//php_language_extract.tpl:61
-msgid ""
-"Sie haben eine Einladung für sqStorage erhalten: <a href=\"%s\">%s</a>rn"
-msgstr "You received an invitation to sqStorage: <a href=\"%s\">%s</a>"
-
-#: templates//php_language_extract.tpl:62
-msgid ""
-"Es können zur Zeit keine Mails vom System versendet werden.<br />Bitte "
-"diesen Einladungslink an den Benutzer weiterleiten:<br /><a href=\"%s\">%s</"
-"a>rn"
-msgstr ""
-"The system is currently unable to send mails. <br /> Please forward this "
-"invitation link to the user: <br />/><a href=\"%s\">%s</a>"
-
-#: templates//php_language_extract.tpl:63
-msgid "Administrator"
-msgstr "Administrator"
-
-#: templates//php_language_extract.tpl:64
-msgid "Gast"
-msgstr "Visitor"
-
-#: templates//php_language_extract.tpl:65
-msgid "Benutzer"
-msgstr "User"
-
-#: templates//php_language_extract.tpl:66
-msgid "Datenbank-Verbindung nicht möglich. Bitte kontrolliere die Zugangsdaten"
-msgstr "Database connection failed. please check the credentials"
-
-#: templates//php_language_extract.tpl:67
-msgid "Datenbank-Verbindung hergestellt"
-msgstr "Database connected"
-
-#: templates//php_language_extract.tpl:68
-msgid ""
-"Die Datei support/dba.php ist nicht vorhanden und konnte auch nicht erstellt "
-"werden."
-msgstr "The file support/dba.php is missing and creating it failed."
-
-#: templates//php_language_extract.tpl:69
-msgid ""
-"Setze die entsprechende Berechtigung so, dass Dein Webserver diese erstellen "
-"und bearbeiten kann oder erstelle die Datei manuell und gewähre darauf "
-"Schreibrechte für den Webserver"
-msgstr ""
-"Please set the file access permissions to allow your webserver to create and "
-"edit the file or create the file manually and grant write permission to the "
-"webserver"
-
-#: templates//php_language_extract.tpl:70
-msgid "Der Webserver kann die Datei support/dba.php nicht ändern"
-msgstr "Unable to edit the file support/dba.php"
-
-#: templates//php_language_extract.tpl:71
-msgid "Bitte erlaube dem Webserver Schreibzugriff auf die Datei"
-msgstr "Please set write permission to the file"
-
-#: templates//php_language_extract.tpl:72
-msgid "Datenbank ist auf dem aktuellen Stand"
-msgstr "Database is up to date"
-
-#: templates//php_language_extract.tpl:73
-msgid "keine Änderungen durchgeführt"
-msgstr "no changes applied"
-
-#: templates//php_language_extract.tpl:74
-msgid "Alte Revision:"
-msgstr "Old revision:"
-
-#: templates//php_language_extract.tpl:75
-msgid "Neue Revision:"
-msgstr "New revision:"
-
-#: templates//php_language_extract.tpl:76
-msgid "Zugang wurde verweigert. Bitte überprüfe die Zugangsdaten"
-msgstr "Access denied. Please check the credentials"
-
-#: templates//php_language_extract.tpl:77
-msgid "Die gewählte Datenbank existiert nicht und konnte nicht erstellt werden"
-msgstr "The selected database doesn't exists and could not be created"
-
-#: templates//php_language_extract.tpl:78
-msgid "Zugriff auf folgende Verzeichnisse fehlgeschlagen:"
-msgstr "Access to the following directories was denied:"
-
-#: templates//php_language_extract.tpl:79
-msgid "Unter Linux könnten folgende Befehle weiterhelfen"
-msgstr "If your operating system is Linux the following command may help you"
-
-#: templates//php_language_extract.tpl:80
-msgid "1 Datensatz mit verknüpften Altdaten entfernt."
-msgstr "remove 1 record together with linked old records."
-
-#: templates//php_language_extract.tpl:81
-msgid "1 Eintrag wurde gelöscht."
-msgstr "1 entry was deleted."
-
-#: templates//php_language_extract.tpl:82
-msgid "Datensätze mit verknüpften Altdaten entfernt."
-msgstr "Records with old linked data removed."
-
-#: templates//php_language_extract.tpl:83
-msgid "Die Installation ist momentan nicht erlaubt"
-msgstr "Installation is currently not allowed"
-
-#: templates//php_language_extract.tpl:84
-msgid "Einträge wurden gelöscht."
-msgstr "Entries were deleted."
-
-#: templates//php_language_extract.tpl:85
-msgid "Einzelwert: Zeichenfolge mit bis zu < 256 Zeichen"
-msgstr "Single value: String with less than 256 character"
-
-#: templates//php_language_extract.tpl:86
-msgid "E-Mail-Adresse ungültig!"
-msgstr "Invalid email address!"
-
-#: templates//php_language_extract.tpl:88
-msgid ""
-"Erstelle eine Datei mit dem Namen allow_install im Verzeichnis support um "
-"die Installation zu erlauben."
-msgstr ""
-"Create a file named \"allow_install\" in the support directory to allow "
-"installation."
-
-#: templates//php_language_extract.tpl:89
-msgid "Fehler: Der letzte Administrator kann nicht gelöscht werden!"
-msgstr "Failure: The last administrator cannot be deleted!"
-
-#: templates//php_language_extract.tpl:90
-msgid ""
-"Setze die entsprechende Berechtigung so, dass Dein Webserver diese erstellen "
-"und bearbeiten kann"
-msgstr ""
-"Please set the file access permissions to allow your webserver to create and "
-"edit the file or create the file manually and grant write permission to the "
-"webserver"
-
-#: templates//php_language_extract.tpl:91
-msgid ""
-"Verwendest Du eine bestehende Installation und die Benutzerverwaltung, "
-"kannst Du diese Datei als Administrator über das Einstellungen erstellen und "
-"nach der Aktualisierung auch wieder entfernen."
-msgstr ""
-"If you are about to updating an existing installation and also using the "
-"login feature, you can create this file in the Settings and also delete it "
-"afterwards."
-
-#: templates//php_language_extract.tpl:92
-msgid "Anmeldung für weitere XXX Sekunden gesperrt"
-msgstr "Login is blocked for another XXX seconds"
-
-#: templates//php_language_extract.tpl:93
-msgid "Zu viele Anmeldeversuche. Bitte später nochmal versuchen"
-msgstr "Too many login attempts. Please try again later"
-
-#: templates//php_language_extract.tpl:94
-msgid "Unkategorisiert"
-msgstr "Uncategorized"
-
-#: templates//php_language_extract.tpl:95
-msgid ""
-"Einzelauswahl, durch Semikolon getrennt: erlaubt \"Neu\" oder \"Gebraucht\" "
-"oder \"Refurbished\" wenn \"Neu;Gebraucht;Refurbished\" angegeben. Und oder "
-"numerische Werte (Ganzzahl, Gleitkommazahlen)"
-msgstr ""
-"Single choice, semicolon separated: If \"New;Used,Refurbished\" is entered, "
-"\"New\", \"Used\" and \"Refurbished\" additional to numeric values (inter, "
-"decimal) will be available"
-
-#: templates//php_language_extract.tpl:96
-msgid ""
-"Mehrfachauswahl, durch Semikolon getrennt: erlaubt \"Neu\" und oder "
-"\"Netzwerk\", wenn \"Neu;Netzwerk\" angegeben. Und oder numerische Werte "
-"(Ganzzahl, Gleitkommanzahlen)."
-msgstr ""
-"Multiple choice, semicolon separated: If \"New;Used,Refurbished\" is "
-"entered, \"New\", \"Used\" and \"Refurbished\" additional to numeric values "
-"(decimal or inter) will be available."
-
-#: templates//php_language_extract.tpl:97
-msgid "Der Benutzer \"%s\" existiert bereits."
-msgstr "The user \"%s\" exists already."
-
-#: templates//php_language_extract.tpl:98
-msgid ""
-"Es können zur Zeit keine E-Mails vom System versendet werden.<br />Bitte "
-"diesen Einladungslink an den Benutzer weiterleiten:<br /><a href=\"%s\">%s</"
-"a>"
-msgstr ""
-"The system is currently unable to send mails. <br /> Please forward this "
-"invitation link to the user: <br />/><a href=\"%s\">%s</a>"
-
-#: templates//php_language_extract.tpl:99
-msgid "Fehler: Benutzername \"%s\" enthält nicht zugelassene Zeichen."
-msgstr "Error: Username \"%s\" contains illegal characters."
-
-#: templates//php_language_extract.tpl:100
-msgid "Fehler: E-Mail-Adresse \"%s\" ungültig."
-msgstr "Error: Invalid email address \"%s\"."
-
-#: templates//php_language_extract.tpl:101
-msgid "Sie haben eine Einladung für sqStorage erhalten: <a href=\"%s\">%s</a>"
-msgstr "You received an invitation to sqStorage: <a href=\"%s\">%s</a>"
-
-#: templates//php_language_extract.tpl:102
-msgid ""
-"Um das Passwort für sqStorage zu ändern bitte den folgenden Link aufrufen: "
-"<a href=\"%s\">%s</a>"
-msgstr ""
-"In order to change the password for usage of sqStorage please follow this "
-"link: <a href=\"%s\">%s</a>"
 
 #: templates//settings.tpl:16
 msgid "zur Datenbank hinzugefügt"
@@ -1070,6 +909,18 @@ msgstr "added to the database"
 #: templates//settings.tpl:22
 msgid "Benutzer zur Bearbeitung:"
 msgstr "User for editing:"
+
+#: templates//settings.tpl:32 templates//settings.tpl:37
+#: templates//settings.tpl:39 templates//settings.tpl:136
+#: templates//login.tpl:44
+msgid "Benutzername"
+msgstr "Username"
+
+#: templates//settings.tpl:46 templates//settings.tpl:49
+#: templates//settings.tpl:51 templates//settings.tpl:136
+#: templates//login.tpl:53
+msgid "E-Mail"
+msgstr "E-Mail"
 
 #: templates//settings.tpl:61 templates//settings.tpl:80
 #: templates//settings.tpl:83
@@ -1143,33 +994,163 @@ msgstr "Really remove the user?"
 msgid "Der letzte Administrator kann nicht gelöscht werden!"
 msgstr "The last administrator cannot be deleted!"
 
-#: templates//transfer.tpl:8 templates//transfer.tpl:26
-msgid "Quelle"
-msgstr "Source"
+#: templates//accessdenied.tpl:1
+msgid "Zugriff verweigert"
+msgstr "Access denied"
 
-#: templates//transfer.tpl:17 templates//transfer.tpl:30
-msgid "Ziel"
-msgstr "Target"
+#: templates//nav.tpl:42
+msgid "Suche"
+msgstr "Search"
 
-#: templates//transfer.tpl:27
-msgid "Quelle wählen."
-msgstr "Select source."
+#: templates//nav.tpl:43
+msgid "Suchen"
+msgstr "Search"
 
-#: templates//transfer.tpl:31
-msgid "Ziel wählen."
-msgstr "Select target."
+#: templates//nav.tpl:64
+msgid "Abmelden"
+msgstr "Sign out"
 
-#: templates//transfer.tpl:159
-msgid "Quelle wählen"
-msgstr "Choose source"
+#: templates//footer.tpl:3
+msgid "Kontakt"
+msgstr "Contact"
 
-#: templates//transfer.tpl:160
-msgid "Ziel wählen"
-msgstr "Choose target"
+#: templates//footer.tpl:4
+msgid "Github"
+msgstr "Github"
 
-#: templates//transfer.tpl:179
-msgid "Keine Gegenstände gefunden."
-msgstr "No items found."
+#: templates//login.tpl:1
+msgid "Login und Registrierung"
+msgstr "Login and registration"
+
+#: templates//login.tpl:34
+msgid "Neue Admin-Zugangsdaten eingeben"
+msgstr "Enter the new administrator credentials"
+
+#: templates//login.tpl:37
+msgid "Neue Zugangsdaten eingeben"
+msgstr "Enter the new credentials"
+
+#: templates//login.tpl:39
+msgid "Zugangsdaten eingeben"
+msgstr "Enter credentials"
+
+#: templates//login.tpl:65
+msgid "Passwort"
+msgstr "Password"
+
+#: templates//login.tpl:74
+msgid "Passwort wiederholen"
+msgstr "Repeat password"
+
+#: templates//login.tpl:87
+msgid "Angemeldet bleiben?"
+msgstr "Stay signed in?"
+
+#: templates//login.tpl:92 templates//modal.tpl:34
+msgid "Speichern"
+msgstr "Save"
+
+#: templates//login.tpl:92
+msgid "Anmelden"
+msgstr "Sign in"
+
+#: templates//login.tpl:102
+msgid "Anfordern"
+msgstr "Request"
+
+#: templates//login.tpl:112
+msgid "Zugangsdaten vergessen"
+msgstr "Credentials forgotten"
+
+#: templates//modal.tpl:21 templates//modal.tpl:24
+msgid "Neuer Wert"
+msgstr "New value"
+
+#: templates//modal.tpl:33
+msgid "Abbrechen"
+msgstr "Cancel"
+
+#~ msgid "SQStorage"
+#~ msgstr "SQStorage"
+
+#~ msgid "Bitte Benutzername und E-Mail-Adresse angeben."
+#~ msgstr "Please enter your username and email address."
+
+#~ msgid "Datensatz"
+#~ msgstr "Record"
+
+#~ msgid "Datensätze"
+#~ msgstr "Records"
+
+#~ msgid "Einträge"
+#~ msgstr "Entries"
+
+#~ msgid ""
+#~ "Einzelauswahl, durch Komma getrennt: erlaubt \"Neu\" oder \"Gebraucht\" "
+#~ "oder \"Refurbished\" wenn \"Neu,Gebraucht,Refurbished\" angegeben. Und "
+#~ "oder numerische Werte (Ganzzahl, Gleitkommazahlen)"
+#~ msgstr ""
+#~ "Single choice, comma separated: If \"New,Used,Refurbished\" is entered, "
+#~ "\"New\", \"Used\" and \"Refurbished\" additional to numeric values "
+#~ "(inter, decimal) will be available"
+
+#~ msgid "Einzelwert: Zeichenfolge mit bis zu < 512 Zeichen"
+#~ msgstr "Single value: String with less than 512 character"
+
+#~ msgid "Es wurden"
+#~ msgstr "It were"
+
+#~ msgid ""
+#~ "Mehrfachauswahl, durch Komma getrennt: erlaubt \"Neu\" und oder "
+#~ "\"Netzwerk\", wenn \"Neu,Netzwerk\" angegeben. Und oder numerische Werte "
+#~ "(Ganzzahl, Gleitkommanzahlen)."
+#~ msgstr ""
+#~ "Multiple choice, comma separated: If \"New,Used,Refurbished\" is entered, "
+#~ "\"New\", \"Used\" and \"Refurbished\" additional to numeric values "
+#~ "(decimal or inter) will be available."
+
+#~ msgid "mit verknüpften Altdaten entfernt."
+#~ msgstr "remove together with linked old records."
+
+#~ msgid "verknüpfter Informationen gelöscht."
+#~ msgstr "linked information deleted."
+
+#~ msgid ""
+#~ "Um das Passwort für sqStorage zu ändern bitte den folgenden Link "
+#~ "aufrufen: <a href=\"%s\">%s</a>rn"
+#~ msgstr ""
+#~ "To change the password for sqStorage please use the following link:<a "
+#~ "href=\"%s\">%s</a>"
+
+#~ msgid ""
+#~ "Sie haben eine Einladung für sqStorage erhalten: <a href=\"%s\">%s</a>rn"
+#~ msgstr "You received an invitation to sqStorage: <a href=\"%s\">%s</a>"
+
+#~ msgid ""
+#~ "Es können zur Zeit keine Mails vom System versendet werden.<br />Bitte "
+#~ "diesen Einladungslink an den Benutzer weiterleiten:<br /><a "
+#~ "href=\"%s\">%s</a>rn"
+#~ msgstr ""
+#~ "The system is currently unable to send mails. <br /> Please forward this "
+#~ "invitation link to the user: <br />/><a href=\"%s\">%s</a>"
+
+#~ msgid "Administrator"
+#~ msgstr "Administrator"
+
+#~ msgid "Gast"
+#~ msgstr "Visitor"
+
+#~ msgid "Benutzer"
+#~ msgstr "User"
+
+#~ msgid ""
+#~ "Setze die entsprechende Berechtigung so, dass Dein Webserver diese "
+#~ "erstellen und bearbeiten kann oder erstelle die Datei manuell und gewähre "
+#~ "darauf Schreibrechte für den Webserver"
+#~ msgstr ""
+#~ "Please set the file access permissions to allow your webserver to create "
+#~ "and edit the file or create the file manually and grant write permission "
+#~ "to the webserver"
 
 #~ msgid "'Bild wirklich entfernen?'"
 #~ msgstr "Really remove picture?"
