@@ -1,4 +1,4 @@
-{include file="head.tpl" title="{t}SQStorage{/t}"}
+{include file="head.tpl" title="{t}sqStorage{/t}"}
 {include file="nav.tpl" target="index.php" request=$REQUEST}
 
 
