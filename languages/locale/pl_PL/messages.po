@@ -1,0 +1,1130 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: sqstorage\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Jan <jan@dwrox.net>\n"
+"Language-Team: \n"
+"Language: pl_PL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 "
+"|| n%100>14) ? 1 : 2);\n"
+"X-Generator: Poedit 3.1.1\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#: templates//accessdenied.tpl:1
+msgid "Zugriff verweigert"
+msgstr "Odmowa dostępu"
+
+#: templates//accessdenied.tpl:16 templates//php_language_extract.tpl:59
+msgid "Zugriff verweigert!"
+msgstr "Odmowa dostępu!"
+
+#: templates//categories.tpl:1 templates//categories.tpl:9
+#: templates//datafields.tpl:147 templates//inventory.tpl:29
+#: templates//inventory.tpl:146 templates//inventory.tpl:255
+#: templates//nav.tpl:22 templates//php_language_extract.tpl:33
+msgid "Kategorien"
+msgstr "Kategorie"
+
+#: templates//categories.tpl:10 templates//categories.tpl:35
+#: templates//indexpage.tpl:210 templates//indexpage.tpl:213
+#: templates//indexpage.tpl:215 templates//inventory.tpl:31
+#: templates//inventory.tpl:148 templates//inventory.tpl:257
+msgid "Anzahl"
+msgstr "Ilość"
+
+#: templates//categories.tpl:11 templates//categories.tpl:23
+#: templates//categories.tpl:36 templates//categories.tpl:50
+#: templates//inventory.tpl:22 templates//inventory.tpl:141
+#: templates//inventory.tpl:251
+msgid "Positionen"
+msgstr "Pozycje"
+
+#: templates//categories.tpl:13 templates//categories.tpl:38
+#: templates//inventory.tpl:36 templates//inventory.tpl:153
+#: templates//inventory.tpl:262 templates//settings.tpl:136
+msgid "Aktionen"
+msgstr "Akcje"
+
+#: templates//categories.tpl:19
+msgid "Kategorie löschen"
+msgstr "Usuń kategorię"
+
+#: templates//categories.tpl:22 templates//categories.tpl:49
+#: templates//inventory.tpl:22 templates//inventory.tpl:141
+#: templates//inventory.tpl:251
+msgid "Gegenstand"
+msgstr "Przedmiot"
+
+#: templates//categories.tpl:22 templates//categories.tpl:49
+#: templates//inventory.tpl:22 templates//inventory.tpl:141
+#: templates//inventory.tpl:251
+msgid "Gegenstände"
+msgstr "Przedmioty"
+
+#: templates//categories.tpl:23 templates//categories.tpl:50
+#: templates//inventory.tpl:22 templates//inventory.tpl:141
+#: templates//inventory.tpl:251
+msgid "Position"
+msgstr "Pozycja"
+
+#: templates//categories.tpl:25
+msgid "Kategorie umbenennen"
+msgstr "Zmień nazwę kategorii"
+
+#: templates//categories.tpl:34 templates//inventory.tpl:33
+#: templates//inventory.tpl:150 templates//inventory.tpl:259
+msgid "Unterkategorien"
+msgstr "Podkategorie"
+
+#: templates//categories.tpl:40
+msgid "Oberkategorie"
+msgstr "Główne kategorie"
+
+#: templates//categories.tpl:46 templates//inventory.tpl:246
+msgid "Unterkategorie löschen"
+msgstr "Usuń podkategorię"
+
+#: templates//categories.tpl:52
+msgid "Unterkategorie umbenennen"
+msgstr "Zmień nazwę kategorii"
+
+#: templates//categories.tpl:60 templates//categories.tpl:62
+#: templates//categories.tpl:77
+msgid "Keine"
+msgstr "Żadne"
+
+#: templates//categories.tpl:99
+msgid "Kategorie wirklich entfernen?"
+msgstr "Czy na pewno chcesz usunąć kategorię?"
+
+#: templates//categories.tpl:99
+msgid "Unterkategorie wirklich entfernen?"
+msgstr "Czy na pewno chcesz usunąć podkategorię?"
+
+#: templates//categories.tpl:109
+msgid "Kategorie umbenennen?"
+msgstr "Zmienić nazwę kategorii?"
+
+#: templates//categories.tpl:109
+msgid "Unterkategorie umbenennen?"
+msgstr "Zmienić nazwę podkategorii?"
+
+#: templates//datafields.tpl:1 templates//nav.tpl:31 templates//nav.tpl:33
+#: templates//php_language_extract.tpl:6
+msgid "Datenfelder"
+msgstr "Pola danych"
+
+#: templates//datafields.tpl:7 templates//indexpage.tpl:21
+msgid "Nicht gespeichert, es befinden sich Fehler in der Formular-Eingabe."
+msgstr "Nie zapisano, w danych formularzy znajdują się błędy."
+
+#: templates//datafields.tpl:12
+msgid "Feld entfernt:"
+msgstr "Pole usunięte:"
+
+#: templates//datafields.tpl:16
+msgid "Feld Typ geändert:"
+msgstr "Typ pola zmieniony:"
+
+#: templates//datafields.tpl:20
+msgid "Zur Datenbank hinzugefügt:"
+msgstr "Dodano do bazy danych:"
+
+#: templates//datafields.tpl:23 templates//datafields.tpl:253
+msgid "Auswahl"
+msgstr "Selekcja"
+
+#: templates//datafields.tpl:27 templates//datafields.tpl:32
+#: templates//datafields.tpl:250
+msgid "Datentyp"
+msgstr "Typ danych"
+
+#: templates//datafields.tpl:43 templates//datafields.tpl:45
+msgid "Beispielwerte"
+msgstr "Przykładowe wartości"
+
+#: templates//datafields.tpl:45 templates//php_language_extract.tpl:9
+msgid "Datentyp Beispielwerte"
+msgstr "Przykładowe wartości typu danych"
+
+#: templates//datafields.tpl:51
+msgid "Details"
+msgstr "Szczegóły"
+
+#: templates//datafields.tpl:55 templates//datafields.tpl:57
+#: templates//datafields.tpl:251
+msgid "Feldname"
+msgstr "Nazwa pola"
+
+#: templates//datafields.tpl:62 templates//datafields.tpl:64
+#: templates//datafields.tpl:252
+msgid "Standardwert"
+msgstr "Wartość domyślna"
+
+#: templates//datafields.tpl:64
+msgid "Standardwert: Keine Eingabe gleichsam leer"
+msgstr "Wartość domyślna: Pozostawić pustą w przypadku braku"
+
+#: templates//datafields.tpl:69
+msgid "Feld immer sichtbar?"
+msgstr "Pole zawsze widoczne?"
+
+#: templates//datafields.tpl:73
+msgid "Ja"
+msgstr "Tak"
+
+#: templates//datafields.tpl:77
+msgid "Nein"
+msgstr "Nie"
+
+#: templates//datafields.tpl:83
+msgid "Sichtbarkeit"
+msgstr "Widoczność"
+
+#: templates//datafields.tpl:88
+msgid "Überall sichtbar"
+msgstr "Zawsze widoczne"
+
+#: templates//datafields.tpl:100
+msgid "Auswahlwerte"
+msgstr "Opcje"
+
+#: templates//datafields.tpl:102
+msgid ""
+"Auswahlwerte, durch Semikolon getrennt: 'Neu;Gebraucht;Refurbished' und oder "
+"Dezimal und Gleitkommazahlen."
+msgstr ""
+"Selekcje oddzielone średnikiem: 'Nowy;Używany;Odnowiony' i lub liczba "
+"dziesiętna lub zmienna."
+
+#: templates//datafields.tpl:102
+msgid "Neu;Gebraucht;Refurbished"
+msgstr "Nowy;Używany;Odnowiony"
+
+#: templates//datafields.tpl:104
+msgid "Eintragen / Aktualisieren"
+msgstr "Zarejestruj się / Zaktualizuj"
+
+#: templates//datafields.tpl:105
+msgid "Formular zurücksetzen"
+msgstr "Zresetuj formularz"
+
+#: templates//datafields.tpl:106
+msgid "Feld löschen"
+msgstr "Usuń pole"
+
+#: templates//datafields.tpl:114
+msgid "Bestehende Datenfelder"
+msgstr "Istniejące pola danych"
+
+#: templates//datafields.tpl:147 templates//indexpage.tpl:87
+#: templates//indexpage.tpl:89 templates//php_language_extract.tpl:30
+msgid "Kategorie"
+msgstr "Kategoria"
+
+#: templates//datafields.tpl:184
+msgid "ist doppelt enthalten."
+msgstr "jest zduplikowana."
+
+#: templates//datafields.tpl:186
+msgid "Standardwert doppelt."
+msgstr "Wartość domyślna jest zduplikowana."
+
+#: templates//datafields.tpl:202
+msgid " nicht in Standardwerten enthalten."
+msgstr " nie znajduje się w wartości domyślnej."
+
+#: templates//datafields.tpl:204
+msgid "Standardwert nicht in Auswahlwerten enthalten."
+msgstr "Wartość domyślna nie jest uwzględniona w wartościach zaznaczonych."
+
+#: templates//datafields.tpl:242
+msgid "Ein Feld mit gleichem Namem"
+msgstr "Pole z identyczną nazwą"
+
+#: templates//datafields.tpl:242
+msgid ""
+"ist bereits vorhanden. Das alte Feld muß gelöscht oder umbenannt werden."
+msgstr ""
+"już istnieje. Zduplikowane pole musi zostać usunięte lub należy zmienić jego "
+"nazwę"
+
+#: templates//datafields.tpl:295
+msgid "Der Standardwert darf nur zwischen"
+msgstr "Wartość standardowa może zawierać się jedynie w przedziale"
+
+#: templates//datafields.tpl:295 templates//datafields.tpl:309
+msgid "und"
+msgstr "i"
+
+#: templates//datafields.tpl:295
+#, fuzzy
+msgid "liegen."
+msgstr "leży"
+
+#: templates//datafields.tpl:305 templates//datafields.tpl:309
+msgid "Feld"
+msgstr "Pole"
+
+#: templates//datafields.tpl:305
+msgid "hat keinen Wert."
+msgstr "nie ma wartości."
+
+#: templates//datafields.tpl:309
+msgid "muß zwischen"
+msgstr "musi być w przedziale"
+
+#: templates//datafields.tpl:309
+msgid "Zeichen lang sein."
+msgstr "o długości znaków."
+
+#: templates//datafields.tpl:353 templates//php_language_extract.tpl:13
+msgid "Eintrag"
+msgstr "Wpis"
+
+#: templates//datafields.tpl:353
+msgid "wirklich löschen?"
+msgstr "na pewno usunąć?"
+
+#: templates//footer.tpl:3 templates//php_language_extract.tpl:34
+msgid "Kontakt"
+msgstr "Kontakt"
+
+#: templates//footer.tpl:4 templates//php_language_extract.tpl:28
+msgid "Github"
+msgstr "Github"
+
+#: templates//indexpage.tpl:1 templates//indexpage.tpl:350
+#: templates//nav.tpl:16 templates//nav.tpl:18
+#: templates//php_language_extract.tpl:15 templates//settings.tpl:121
+msgid "Eintragen"
+msgstr "Wpisy"
+
+#: templates//indexpage.tpl:11 templates//installpage.tpl:30
+msgid "zur Datenbank hinzugefügt."
+msgstr "dodano do bazy danych."
+
+#: templates//indexpage.tpl:17
+msgid "Eintrag zur Bearbeitung:"
+msgstr "Wpis do edycji:"
+
+#: templates//indexpage.tpl:29 templates//indexpage.tpl:32
+#: templates//indexpage.tpl:34 templates//inventory.tpl:30
+#: templates//inventory.tpl:147 templates//inventory.tpl:256
+#: templates//inventory.tpl:457
+msgid "Bezeichnung"
+msgstr "Opis"
+
+#: templates//indexpage.tpl:32 templates//indexpage.tpl:34
+msgid "Bezeichnung oder Name"
+msgstr "Opis lub nazwa"
+
+#: templates//indexpage.tpl:45 templates//indexpage.tpl:47
+#: templates//indexpage.tpl:63 templates//indexpage.tpl:65
+msgid "Lagerplatz"
+msgstr "Powierzchnia do magazynowania"
+
+#: templates//indexpage.tpl:71 templates//indexpage.tpl:75
+#: templates//indexpage.tpl:77 templates//inventory.tpl:32
+#: templates//inventory.tpl:149 templates//inventory.tpl:258
+msgid "Bemerkung"
+msgstr "Komentarz"
+
+#: templates//indexpage.tpl:103 templates//indexpage.tpl:105
+msgid "Netzwerk/Hardware"
+msgstr "Sieć/Oprogramowanie"
+
+#: templates//indexpage.tpl:184 templates//indexpage.tpl:187
+#: templates//indexpage.tpl:202 templates//indexpage.tpl:204
+#: templates//php_language_extract.tpl:53
+msgid "Unterkategorie"
+msgstr "Podkategoria"
+
+#: templates//indexpage.tpl:202 templates//indexpage.tpl:204
+msgid "Router,wlan,fritzBox"
+msgstr "Router,WiFi,FritzBox"
+
+#: templates//indexpage.tpl:221 templates//indexpage.tpl:224
+msgid "Seriennummer"
+msgstr "Numer seryjny"
+
+#: templates//indexpage.tpl:224 templates//indexpage.tpl:226
+msgid "Seriennummer/Artikelnummer"
+msgstr "Numer seryjny/Numer produktu"
+
+#: templates//indexpage.tpl:348 templates//settings.tpl:119
+msgid "Überschreiben"
+msgstr "Nadpisać"
+
+#: templates//indexpage.tpl:357
+msgid "Bilder des Gegenstandes"
+msgstr "Zdjęcie przedmiotu"
+
+#: templates//indexpage.tpl:359
+msgid "Bild Upload"
+msgstr "Załadować zdjęcia"
+
+#: templates//indexpage.tpl:361
+msgid "Bilder hochladen"
+msgstr "Załadować zdjęcie"
+
+#: templates//indexpage.tpl:369
+msgid "Bild entfernen"
+msgstr "Usunąć zdjęcie"
+
+#: templates//indexpage.tpl:383
+msgid "Bild wirklich entfernen?"
+msgstr "Na pewno usunąć zdjęcie?"
+
+#: templates//indexpage.tpl:483 templates//indexpage.tpl:493
+#: templates//indexpage.tpl:503
+msgid "Fehler"
+msgstr "Błąd"
+
+#: templates//installpage.tpl:1 templates//settings.tpl:183
+msgid "Installation"
+msgstr "Instalacja"
+
+#: templates//installpage.tpl:4
+msgid "sqStorage Installation / Aktualisierung"
+msgstr "sqStorage Instalacja / Aktualizacja"
+
+#: templates//installpage.tpl:40
+msgid "Saubere Adressen"
+msgstr "Czyste adresy URL"
+
+#: templates//installpage.tpl:44
+msgid ""
+"Verwende z.B. http://example.com/inventory anstatt http://example.com/"
+"inventory.php"
+msgstr ""
+"Użyj np. http://example.com/inventory zamiast http://example.com/inventory."
+"php"
+
+#: templates//installpage.tpl:50
+msgid "Zutrittskontrolle"
+msgstr "Kontrola dostępu"
+
+#: templates//installpage.tpl:54
+msgid "Verwende die Benutzerregistrierung und Zutrittskontrolle"
+msgstr "Korzystanie z rejestracji użytkowników i kontroli dostępu"
+
+#: templates//installpage.tpl:61 templates//installpage.tpl:63
+msgid "Datenbank-Benutzer"
+msgstr "Użytkownik bazy danych"
+
+#: templates//installpage.tpl:68 templates//installpage.tpl:70
+msgid "Datenbank-Passwort"
+msgstr "Hasło bazy danych"
+
+#: templates//installpage.tpl:75 templates//installpage.tpl:77
+msgid "Datenbank-Name"
+msgstr "Nazwa bazy danych"
+
+#: templates//installpage.tpl:82 templates//installpage.tpl:84
+msgid "Datenbank-Server"
+msgstr "Serwer bazy danych"
+
+#: templates//installpage.tpl:89 templates//installpage.tpl:91
+msgid "Datenbank-Port"
+msgstr "Port bazy danych"
+
+#: templates//installpage.tpl:94
+msgid "Verbindungsdaten eintragen"
+msgstr "Wprowadź dane uwierzytelniające"
+
+#: templates//installpage.tpl:99
+msgid "Datenbank installieren / aktualisieren"
+msgstr "Instalacja / Aktualizacja bazy danych "
+
+#: templates//installpage.tpl:103 templates//php_language_extract.tpl:89
+msgid "Erneut prüfen"
+msgstr "Sprawdź ponownie"
+
+#: templates//inventory.tpl:1 templates//nav.tpl:21
+#: templates//php_language_extract.tpl:29
+msgid "Inventar"
+msgstr "Inwentarz"
+
+#: templates//inventory.tpl:17
+msgid "Lagerplatz löschen"
+msgstr "Usuń powierzchnię magazynową"
+
+#: templates//inventory.tpl:17 templates//inventory.tpl:20
+#: templates//inventory.tpl:136 templates//inventory.tpl:138
+#: templates//inventory.tpl:246 templates//inventory.tpl:250
+msgid "Unsortiert"
+msgstr "Nieposortowane"
+
+#: templates//inventory.tpl:21 templates//inventory.tpl:80
+#: templates//inventory.tpl:196 templates//inventory.tpl:305
+#: templates//modal.tpl:7
+msgid "Schnelle Bearbeitung"
+msgstr "Szybka edycja"
+
+#: templates//inventory.tpl:23 templates//inventory.tpl:705
+msgid "Zuklappen"
+msgstr "Zamknij"
+
+#: templates//inventory.tpl:34 templates//inventory.tpl:151
+#: templates//inventory.tpl:260
+msgid "Hinzugefügt"
+msgstr "Dodano"
+
+#: templates//inventory.tpl:37 templates//inventory.tpl:97
+#: templates//inventory.tpl:154 templates//inventory.tpl:213
+#: templates//inventory.tpl:263 templates//inventory.tpl:322
+msgid "Zuweisen"
+msgstr "Przydziel"
+
+#: templates//inventory.tpl:60 templates//inventory.tpl:176
+#: templates//inventory.tpl:285
+msgid "Position löschen"
+msgstr "Usuń pozycję"
+
+#: templates//inventory.tpl:66 templates//inventory.tpl:182
+#: templates//inventory.tpl:291
+msgid "Gegenstand hat Bilder"
+msgstr "Pozycja zawiera zdjęcia"
+
+#: templates//inventory.tpl:79 templates//inventory.tpl:195
+#: templates//inventory.tpl:304
+msgid "Schnelle Bearbeitung speichern"
+msgstr "Zapis szybkiej edycji"
+
+#: templates//inventory.tpl:81 templates//inventory.tpl:197
+#: templates//inventory.tpl:306
+msgid "Ausführliche Bearbeitung"
+msgstr "Pełna edycja"
+
+#: templates//inventory.tpl:112 templates//inventory.tpl:121
+#: templates//inventory.tpl:228 templates//inventory.tpl:337
+msgid "Keine Gegenstände gefunden"
+msgstr "Nie znaleziono pozycji"
+
+#: templates//inventory.tpl:356 templates//transfer.tpl:47
+msgid ""
+"Von diesem Artikel sind mehrere Stück am Lagerplatz. Wie viele sollen zum "
+"neuen Lagerort transferiert werden?"
+msgstr ""
+"W magazynie znajduje się więcej niż jedna jednostka tego produktu. Ile z "
+"nich należy przenieść?"
+
+#: templates//inventory.tpl:360 templates//transfer.tpl:49
+msgid "Von diesem Artikel sind nicht genug Einheiten vorhanden."
+msgstr "Niewystarczająca ilość produktu jest dostępna."
+
+#: templates//inventory.tpl:362 templates//transfer.tpl:50
+msgid "Anzahl kann nicht negativ sein."
+msgstr "Ilość nie może być ujemna."
+
+#: templates//inventory.tpl:408
+msgid "Lagerplatz wirklich entfernen?"
+msgstr "Czy na pewno chcesz usunąć powierzchnię magazynową?"
+
+#: templates//inventory.tpl:408
+msgid "Position wirklich entfernen?"
+msgstr "Czy na pewno chcesz usunąć pozycję?"
+
+#: templates//inventory.tpl:542
+msgid "Die Bezeichnung kann nicht leer sein."
+msgstr "Etykieta nie może być pusta."
+
+#: templates//inventory.tpl:552
+msgid ""
+"Es trat ein Fehler bei dem Speichern der Inhalte auf. Die Browser Entwickler-"
+"Konsole enthält Details."
+msgstr ""
+"Błąd podczas zapisu danych. Konsola deweloperska przeglądarki zawiera "
+"szczegóły tego błędu."
+
+#: templates//inventory.tpl:573
+msgid "Der Eintrag wurde erfolgreich aktualisiert."
+msgstr "Wpis został pomyślnie zaktualizowany."
+
+#: templates//inventory.tpl:575
+msgid "Die Anzahl darf nur gesamte Einheiten umfassen."
+msgstr "Ilość musi być wpisana w pełnych jednostkach."
+
+#: templates//inventory.tpl:578
+msgid ""
+"Bei dem Versuch zu speichern trat ein Fehler auf. Die Browser Entwickler-"
+"Konsole enthält Details."
+msgstr ""
+"Wystąpił błąd przy próbie zapisu. Konsola deweloperska przeglądarki zawiera "
+"szczegóły tego błędu."
+
+#: templates//inventory.tpl:707
+msgid "Aufklappen"
+msgstr "Rozszerz"
+
+#: templates//login.tpl:1
+msgid "Login und Registrierung"
+msgstr "Login i rejestracja"
+
+#: templates//login.tpl:34
+msgid "Neue Admin-Zugangsdaten eingeben"
+msgstr "Wprowadź nowe dane uwierzytelniające administratora"
+
+#: templates//login.tpl:37
+msgid "Neue Zugangsdaten eingeben"
+msgstr "Wprowadź nowe dane uwierzytelniające"
+
+#: templates//login.tpl:39
+msgid "Zugangsdaten eingeben"
+msgstr "Wprowadź dane uwierzytelniające"
+
+#: templates//login.tpl:44 templates//settings.tpl:32
+#: templates//settings.tpl:37 templates//settings.tpl:39
+#: templates//settings.tpl:136
+msgid "Benutzername"
+msgstr "Nazwa użytkownika"
+
+#: templates//login.tpl:53 templates//settings.tpl:46
+#: templates//settings.tpl:49 templates//settings.tpl:51
+#: templates//settings.tpl:136
+msgid "E-Mail"
+msgstr "E-Mail"
+
+#: templates//login.tpl:65
+msgid "Passwort"
+msgstr "Hasło"
+
+#: templates//login.tpl:74
+msgid "Passwort wiederholen"
+msgstr "Powtórz hasło"
+
+#: templates//login.tpl:87
+msgid "Angemeldet bleiben?"
+msgstr "Czy pozostać zalogowanym?"
+
+#: templates//login.tpl:92 templates//modal.tpl:34
+msgid "Speichern"
+msgstr "Zapisz"
+
+#: templates//login.tpl:92
+msgid "Anmelden"
+msgstr "Zaloguj się"
+
+#: templates//login.tpl:102
+msgid "Anfordern"
+msgstr "Prośba"
+
+#: templates//login.tpl:112
+msgid "Zugangsdaten vergessen"
+msgstr "Zapomniane dane uwierzytelniające"
+
+#: templates//modal.tpl:21 templates//modal.tpl:24
+msgid "Neuer Wert"
+msgstr "Nowa wartość"
+
+#: templates//modal.tpl:33
+msgid "Abbrechen"
+msgstr "Anuluj"
+
+#: templates//nav.tpl:25 templates//nav.tpl:27
+#: templates//php_language_extract.tpl:52 templates//transfer.tpl:1
+#: templates//transfer.tpl:31
+msgid "Transferieren"
+msgstr "Transfer"
+
+#: templates//nav.tpl:37 templates//php_language_extract.tpl:12
+#: templates//settings.tpl:1
+msgid "Einstellungen"
+msgstr "Ustawienia"
+
+#: templates//nav.tpl:42 templates//php_language_extract.tpl:50
+msgid "Suche"
+msgstr "Szukaj"
+
+#: templates//nav.tpl:43 templates//php_language_extract.tpl:51
+msgid "Suchen"
+msgstr "Szukaj"
+
+#: templates//nav.tpl:64 templates//php_language_extract.tpl:1
+msgid "Abmelden"
+msgstr "Wyloguj się"
+
+#: templates//php_language_extract.tpl:2
+msgid "Absender-Mailadresse ungültig."
+msgstr "Nieprawidłowy adres e-mail nadawcy."
+
+#: templates//php_language_extract.tpl:3
+msgid "Benutzername enthält nicht zugelassene Zeichen."
+msgstr "Nazwa użytkownika zawiera niedozwolone znaki."
+
+#: templates//php_language_extract.tpl:4
+msgid "Benutzername ist erforderlich."
+msgstr "Nazwa użytkownika jest wymagana."
+
+#: templates//php_language_extract.tpl:5
+msgid "Bitte Benutzername und E-Mail-Adresse angeben."
+msgstr "Proszę wprowadzić nazwę użytkownika i adres e-mail."
+
+#: templates//php_language_extract.tpl:7
+msgid "Datensatz"
+msgstr "Zapis"
+
+#: templates//php_language_extract.tpl:8
+msgid "Datensätze"
+msgstr "Zapisy"
+
+#: templates//php_language_extract.tpl:10
+msgid "Der Aktivierungslink ist nicht mehr gültig."
+msgstr "Link aktywacyjny wygasł."
+
+#: templates//php_language_extract.tpl:11
+msgid "Die Passwörter stimmen nicht überein!"
+msgstr "Hasła nie są identyczne!"
+
+#: templates//php_language_extract.tpl:14
+msgid "Einträge"
+msgstr "Wpisy"
+
+#: templates//php_language_extract.tpl:16
+msgid "Einzelauswahl (Single-Dropdown)"
+msgstr "Pojedynczy wybór (single dropdown)"
+
+#: templates//php_language_extract.tpl:17
+msgid ""
+"Einzelauswahl, durch Komma getrennt: erlaubt \"Neu\" oder \"Gebraucht\" oder "
+"\"Refurbished\" wenn \"Neu,Gebraucht,Refurbished\" angegeben. Und oder "
+"numerische Werte (Ganzzahl, Gleitkommazahlen)"
+msgstr ""
+"Wybór pojedynczy, oddzielony przecinkami: W przypadku wpisania \"Nowy,"
+"Używany,Odnowiony\" \" dostępne będą \"Nowy\", \"Używany\" i \"Odnowiony\". "
+"I lub wartości liczbowe (całkowite, dziesiętne)."
+
+#: templates//php_language_extract.tpl:18
+msgid "Einzelwert: 1 oder 291 oder 4016, größer gleich 0"
+msgstr "Pojedyncza wartość: 1 lub 291 lub 4016, nie mniejsza niż 0"
+
+#: templates//php_language_extract.tpl:19
+msgid "Einzelwert: -10 oder -2 oder 2000 oder 4000"
+msgstr "Pojedyncza wartość: -10 lub -2 lub 2000 lub 4000"
+
+#: templates//php_language_extract.tpl:20
+msgid "Einzelwert: -11.4 oder -0.032 kleiner gleich 0"
+msgstr "Pojedyncza wartość: -11.4 lub -0.032 lub 4016, mniejsza niż 0"
+
+#: templates//php_language_extract.tpl:21
+msgid "Einzelwert: -131 oder -7019 oder kleiner gleich 0"
+msgstr "Pojedyncza wartość: -131 lub -7019 lub mniejsza/równa 0 "
+
+#: templates//php_language_extract.tpl:22
+msgid "Einzelwert: 3.4172 oder 5.179 oder 27.4"
+msgstr "Pojedyncza wartość: 3.4172 lub 5.179 lub 27.4"
+
+#: templates//php_language_extract.tpl:23
+msgid "Einzelwert: Zeichenfolge mit bis zu < 512 Zeichen"
+msgstr "Pojedyncza wartość: Ciąg o długości do < 512 znaków"
+
+#: templates//php_language_extract.tpl:24
+msgid "Es waren keine Einträge mit dem Datenfeld verknüpft."
+msgstr "Żadne wpisy nie zostały powiązane z polem danych."
+
+#: templates//php_language_extract.tpl:25
+msgid "Es wurden"
+msgstr "Było"
+
+#: templates//php_language_extract.tpl:26
+msgid ""
+"Falls ein Benutzerkonto gefunden wird, erhalten Sie nun eine Mail mit einem "
+"Link zum Zurücksetzen des Passworts."
+msgstr ""
+"Jeśli konto użytkownika zostało znalezione, otrzymasz wiadomość e-mail "
+"zawierającą link do zresetowania hasła."
+
+#: templates//php_language_extract.tpl:27
+msgid ""
+"Fehler: Dies ist der letzte Administrator, die Gruppe kann nicht auf \"%s\" "
+"geändert werden!"
+msgstr ""
+"Błąd: To jest ostatni administrator, grupa użytkownika nie może być "
+"zmieniona na \"%s\"!"
+
+#: templates//php_language_extract.tpl:31
+msgid "Kategorie entfernt."
+msgstr "Kategoria usunięta."
+
+#: templates//php_language_extract.tpl:32
+msgid "Kategorie umbenannt."
+msgstr "Nazwa kategorii zmieniona. "
+
+#: templates//php_language_extract.tpl:35
+msgid "Mehrfachauswahl (Multi-Dropdown)"
+msgstr "Wybór wielokrotny (multi-dropdown)"
+
+#: templates//php_language_extract.tpl:36
+msgid ""
+"Mehrfachauswahl, durch Komma getrennt: erlaubt \"Neu\" und oder "
+"\"Netzwerk\", wenn \"Neu,Netzwerk\" angegeben. Und oder numerische Werte "
+"(Ganzzahl, Gleitkommanzahlen)."
+msgstr ""
+"Wybór wielokrotny oddzielony przecinkami: W przypadku wpisania \"Nowy,"
+"Używany,Odnowiony\" \" dostępne będą \"Nowy\", \"Używany\" i \"Odnowiony\". "
+"I lub wartości liczbowe (całkowite, dziesiętne) będą dostępne."
+
+#: templates//php_language_extract.tpl:37
+msgid "mit verknüpften Altdaten entfernt."
+msgstr "usunąć wraz ze starymi zapisami."
+
+#: templates//php_language_extract.tpl:38
+msgid ""
+"Momentan können keine E-Mails versendet werden, bitte später noch einmal "
+"versuchen, oder einen Administrator kontaktieren."
+msgstr ""
+"Wiadomości e-mail nie mogą być obecnie wysyłane, proszę spróbować ponownie "
+"później lub skontaktować się z administratorem."
+
+#: templates//php_language_extract.tpl:39
+msgid "Negative Ganzzahl"
+msgstr "Ujemna liczba całkowita"
+
+#: templates//php_language_extract.tpl:40
+msgid "Negative oder positive Ganzzahl"
+msgstr "Ujemna lub dodatnia liczba całkowita"
+
+#: templates//php_language_extract.tpl:41
+msgid "Negative oder positive Gleitkommazahl"
+msgstr "Ujemna lub dodatnia liczba zmiennoprzecinkowa"
+
+#: templates//php_language_extract.tpl:42
+msgid "Passwort muß eine Zahl enthalten!"
+msgstr "Hasło musi zawierać liczbę!"
+
+#: templates//php_language_extract.tpl:43
+msgid "Passwort muß einen Großbuchstaben enthalten!"
+msgstr "Hasło musi zawierać wielką literę!"
+
+#: templates//php_language_extract.tpl:44
+msgid "Passwort muß einen Kleinbuchstaben enthalten!"
+msgstr "Hasło musi zawierać małą literę!"
+
+#: templates//php_language_extract.tpl:45
+msgid "Passwort zu kurz, mindestens 8 Zeichen!"
+msgstr "Hasło jest za krótkie, musi posiadać co najmniej 8 znaków!"
+
+#: templates//php_language_extract.tpl:46
+msgid "Positive Ganzzahl"
+msgstr "Dodatnia liczba całkowita"
+
+#: templates//php_language_extract.tpl:47
+msgid "Positive Gleitkommazahl"
+msgstr "Dodatnia liczba zmiennoprzecinkowa"
+
+#: templates//php_language_extract.tpl:48
+msgid "sqStorage Einladung"
+msgstr "sqStorage zaproszenie"
+
+#: templates//php_language_extract.tpl:49
+msgid "sqStorage Passwortänderung"
+msgstr "sqStorage zmiana hasła"
+
+#: templates//php_language_extract.tpl:54
+msgid "Unterkategorie entfernt."
+msgstr "Podkategoria usunięta."
+
+#: templates//php_language_extract.tpl:55
+msgid "Unterkategorie umbenannt."
+msgstr "Nazwa podkategorii zmieniona. "
+
+#: templates//php_language_extract.tpl:56
+msgid "verknüpfter Informationen gelöscht."
+msgstr "połączone informacje usunięte."
+
+#: templates//php_language_extract.tpl:57
+msgid "Zeichenfolge < 512 Zeichen"
+msgstr "Ciąg o długości znaków < 512"
+
+#: templates//php_language_extract.tpl:58
+msgid "Zugangsdaten ungültig"
+msgstr "Nieprawidłowe dane uwierzytelniające"
+
+#: templates//php_language_extract.tpl:60
+msgid ""
+"Um das Passwort für sqStorage zu ändern bitte den folgenden Link aufrufen: "
+"<a href=\"%s\">%s</a>rn"
+msgstr ""
+"Aby zmienić hasło do sqStorage użyj następującego linku:<a href=\"%s\">%s</a>"
+
+#: templates//php_language_extract.tpl:61
+msgid "Fehler: Benutzername \"%s\" enthält nicht zugelassene Zeichen."
+msgstr "Błąd: Nazwa użytkownika \"%s\" zawiera niedozwolone znaki."
+
+#: templates//php_language_extract.tpl:62
+msgid "Fehler: E-Mail-Adresse \"%s\" ungültig."
+msgstr "Błąd: Nieprawidłowy adres e-mail \"%s\"."
+
+#: templates//php_language_extract.tpl:63
+msgid ""
+"Sie haben eine Einladung für sqStorage erhalten: <a href=\"%s\">%s</a>rn"
+msgstr "Otrzymałeś zaproszenie do sqStorage: <a href=\"%s\">%s</a>rn"
+
+#: templates//php_language_extract.tpl:64
+msgid ""
+"Es können zur Zeit keine Mails vom System versendet werden.<br />Bitte "
+"diesen Einladungslink an den Benutzer weiterleiten:<br /><a href=\"%s\">%s</"
+"a>rn"
+msgstr ""
+"System nie jest obecnie w stanie wysłać wiadomości. <br /> Proszę przekazać "
+"ten link do zaproszenia użytkownikowi: <br />/><a href=\"%s\">%s</a>"
+
+#: templates//php_language_extract.tpl:65
+msgid "Administrator"
+msgstr "Administrator"
+
+#: templates//php_language_extract.tpl:66
+msgid "Gast"
+msgstr "Odwiedzający"
+
+#: templates//php_language_extract.tpl:67
+msgid "Benutzer"
+msgstr "Użytkownik"
+
+#: templates//php_language_extract.tpl:68
+msgid "Datenbank-Verbindung nicht möglich. Bitte kontrolliere die Zugangsdaten"
+msgstr ""
+"Połączenie z bazą danych nie powiodło się. Proszę sprawdzić dane "
+"uwierzytelniające."
+
+#: templates//php_language_extract.tpl:69
+msgid "Datenbank-Verbindung hergestellt"
+msgstr "Baza danych połączona"
+
+#: templates//php_language_extract.tpl:70
+msgid ""
+"Die Datei support/dba.php ist nicht vorhanden und konnte auch nicht erstellt "
+"werden."
+msgstr "Plik support/dba.php nie istnieje i nie mógł zostać utworzony."
+
+#: templates//php_language_extract.tpl:71
+msgid ""
+"Setze die entsprechende Berechtigung so, dass Dein Webserver diese erstellen "
+"und bearbeiten kann oder erstelle die Datei manuell und gewähre darauf "
+"Schreibrechte für den Webserver"
+msgstr ""
+"Proszę przyznać uprawnienia dostępu do pliku, aby umożliwić serwerowi strony "
+"WWW tworzenie i edycję pliku lub utworzyć plik ręcznie i przyznać "
+"uprawnienia do zapisu dla serwera strony WWW."
+
+#: templates//php_language_extract.tpl:72
+msgid "Der Webserver kann die Datei support/dba.php nicht ändern"
+msgstr "Nie można edytować pliku support/dba.php"
+
+#: templates//php_language_extract.tpl:73
+msgid "Bitte erlaube dem Webserver Schreibzugriff auf die Datei"
+msgstr "Proszę przyznać uprawnienia do zapisu do pliku"
+
+#: templates//php_language_extract.tpl:74
+msgid "Datenbank ist auf dem aktuellen Stand"
+msgstr "Baza danych jest aktualna"
+
+#: templates//php_language_extract.tpl:75
+msgid "keine Änderungen durchgeführt"
+msgstr "nie zastosowano żadnych zmian"
+
+#: templates//php_language_extract.tpl:76
+msgid "Alte Revision:"
+msgstr "Stary przegląd:"
+
+#: templates//php_language_extract.tpl:77
+msgid "Neue Revision:"
+msgstr "Nowy przegląd:"
+
+#: templates//php_language_extract.tpl:78
+msgid "Zugang wurde verweigert. Bitte überprüfe die Zugangsdaten"
+msgstr "Odmowa dostępu. Proszę sprawdzić dane uwierzytelniające."
+
+#: templates//php_language_extract.tpl:79
+msgid "Die gewählte Datenbank existiert nicht und konnte nicht erstellt werden"
+msgstr "Wybrana baza danych nie istnieje i nie mogła zostać utworzona"
+
+#: templates//php_language_extract.tpl:80
+msgid "Zugriff auf folgende Verzeichnisse fehlgeschlagen:"
+msgstr "Odmówiono dostępu do następujących katalogów:"
+
+#: templates//php_language_extract.tpl:81
+msgid "Unter Linux könnten folgende Befehle weiterhelfen"
+msgstr ""
+"Jeśli Twoim systemem operacyjnym jest Linux, to pomocne może być następujące "
+"polecenie"
+
+#: templates//php_language_extract.tpl:82
+msgid "1 Datensatz mit verknüpften Altdaten entfernt."
+msgstr "usunąć 1 zapis wraz z połączonymi starymi zapisami."
+
+#: templates//php_language_extract.tpl:83
+msgid "1 Eintrag wurde gelöscht."
+msgstr "1 wpis został usunięty."
+
+#: templates//php_language_extract.tpl:84
+msgid "Datensätze mit verknüpften Altdaten entfernt."
+msgstr "Usunięto wpisy wraz ze starymi powiązanymi danymi."
+
+#: templates//php_language_extract.tpl:85
+msgid "Die Installation ist momentan nicht erlaubt"
+msgstr "Instalacja nie jest obecnie dozwolona"
+
+#: templates//php_language_extract.tpl:86
+msgid "Einträge wurden gelöscht."
+msgstr "Wpisy zostały usunięte."
+
+#: templates//php_language_extract.tpl:87
+msgid "Einzelwert: Zeichenfolge mit bis zu < 256 Zeichen"
+msgstr "Wartość pojedyncza: Ciąg o długości mniejszej niż 256 znaków"
+
+#: templates//php_language_extract.tpl:88
+msgid "E-Mail-Adresse ungültig!"
+msgstr "Nieprawidłowy adres e-mail!"
+
+#: templates//php_language_extract.tpl:90
+msgid ""
+"Erstelle eine Datei mit dem Namen allow_install im Verzeichnis support um "
+"die Installation zu erlauben."
+msgstr ""
+"Utwórz plik o nazwie \"allow_install\" w katalogu pomocniczym, aby umożliwić "
+"instalację."
+
+#: templates//php_language_extract.tpl:91
+msgid "Fehler: Der letzte Administrator kann nicht gelöscht werden!"
+msgstr "Błąd: Ostatni administrator nie może zostać usunięty!"
+
+#: templates//php_language_extract.tpl:92
+msgid ""
+"Setze die entsprechende Berechtigung so, dass Dein Webserver diese erstellen "
+"und bearbeiten kann"
+msgstr ""
+"Proszę przyznać uprawnienia dostępu do pliku, aby umożliwić serwerowi WWW "
+"tworzenie i edycję pliku lub utworzyć plik ręcznie i przyznać uprawnienia do "
+"zapisu dla serwera WWW."
+
+#: templates//php_language_extract.tpl:93
+msgid ""
+"Verwendest Du eine bestehende Installation und die Benutzerverwaltung, "
+"kannst Du diese Datei als Administrator über das Einstellungen erstellen und "
+"nach der Aktualisierung auch wieder entfernen."
+msgstr ""
+"Jeśli zamierzasz zaktualizować istniejącą instalację i również używać "
+"funkcji logowania, możesz utworzyć ten plik w ustawieniach oraz usunąć go po "
+"zakończeniu aktualizacji."
+
+#: templates//php_language_extract.tpl:94
+msgid "Anmeldung für weitere XXX Sekunden gesperrt"
+msgstr "Logowanie jest zablokowane przez kolejne XXX sekund(y)"
+
+#: templates//php_language_extract.tpl:95
+msgid "Zu viele Anmeldeversuche. Bitte später nochmal versuchen"
+msgstr "Zbyt wiele prób logowania. Proszę spróbować ponownie później"
+
+#: templates//settings.tpl:16
+msgid "zur Datenbank hinzugefügt"
+msgstr "dodano do bazy danych."
+
+#: templates//settings.tpl:22
+msgid "Benutzer zur Bearbeitung:"
+msgstr "Użytkownik do edycji:"
+
+#: templates//settings.tpl:61 templates//settings.tpl:80
+#: templates//settings.tpl:83
+msgid "Benutzergruppe"
+msgstr "Grupa użytkowników"
+
+#: templates//settings.tpl:96 templates//settings.tpl:103
+#: templates//settings.tpl:106 templates//settings.tpl:136
+msgid "API Zugriff"
+msgstr "Dostęp do API"
+
+#: templates//settings.tpl:97 templates//settings.tpl:106
+#: templates//settings.tpl:187
+msgid "verbieten"
+msgstr "odmów"
+
+#: templates//settings.tpl:98 templates//settings.tpl:106
+#: templates//settings.tpl:191
+msgid "erlauben"
+msgstr "zezwól"
+
+#: templates//settings.tpl:133 templates//settings.tpl:138
+msgid "Bitte die Datenbank aktualisieren"
+msgstr "Proszę zaktualizować swoją bazę danych"
+
+#: templates//settings.tpl:133
+msgid "Neuer Benutzer"
+msgstr "Nowy użytkownik"
+
+#: templates//settings.tpl:136
+msgid "Gruppe"
+msgstr "Grupa"
+
+#: templates//settings.tpl:138
+msgid "Benutzer löschen"
+msgstr "Usuń użytkownika"
+
+#: templates//settings.tpl:147
+msgid "E-Mailserver-Einstellungen"
+msgstr "Ustawienia serwera e-mail"
+
+#: templates//settings.tpl:152
+msgid "E-Mail Absenderadresse"
+msgstr "Adres nadawcy wiadomości e-mail"
+
+#: templates//settings.tpl:158
+msgid "E-Mailversand"
+msgstr "Wysyłka przez e-mail"
+
+#: templates//settings.tpl:162
+msgid "deaktivieren"
+msgstr "deaktywuj"
+
+#: templates//settings.tpl:166
+msgid "aktivieren"
+msgstr "aktywuj"
+
+#: templates//settings.tpl:169 templates//settings.tpl:194
+msgid "Einstellungen speichern"
+msgstr "Zapisz ustawienia"
+
+#: templates//settings.tpl:178
+msgid "Installation und Aktualisierung"
+msgstr "Instalacja / Aktualizacja"
+
+#: templates//settings.tpl:214
+msgid "Benutzer wirklich entfernen?"
+msgstr "Czy na pewno chcesz usunąć użytkownika?"
+
+#: templates//settings.tpl:214
+msgid "Der letzte Administrator kann nicht gelöscht werden!"
+msgstr "Ostatni administrator nie może zostać usunięty!"
+
+#: templates//transfer.tpl:8 templates//transfer.tpl:26
+msgid "Quelle"
+msgstr "Żródło"
+
+#: templates//transfer.tpl:17 templates//transfer.tpl:30
+msgid "Ziel"
+msgstr "Cel"
+
+#: templates//transfer.tpl:27
+msgid "Quelle wählen."
+msgstr "Zaznacz źródło"
+
+#: templates//transfer.tpl:31
+msgid "Ziel wählen."
+msgstr "Zaznacz cel"
+
+#: templates//transfer.tpl:159
+msgid "Quelle wählen"
+msgstr "Wybierz źródło"
+
+#: templates//transfer.tpl:160
+msgid "Ziel wählen"
+msgstr "Wybierz cel"
+
+#: templates//transfer.tpl:179
+msgid "Keine Gegenstände gefunden."
+msgstr "Nie znaleziono produktów."
