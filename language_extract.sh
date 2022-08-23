@@ -36,10 +36,12 @@ then
 #      echo "$LINE"
       LINELENGTH=${#LINE}
       let LENGTH=$LINELENGTH-$START-1
-      EXTLINE=${LINE:$START:$LENGTH}
-      if [ "$EXTLINE" != "" ]
+      EXTLINES=${LINE:$START:$LENGTH}
+      if [ "$EXTLINES" != "" ]
       then
+        EXTLINE=$(echo "$EXTLINES" | sed 's/\\"/"/g')
         OUTLINE='{t}'"$EXTLINE"'{/t}'
+        echo $OUTLINE
           ISBUGGY=$(echo "$OUTLINE" | grep -F '\"' | wc -l)
           if [ "$ISBUGGY" == "0" ]
           then
