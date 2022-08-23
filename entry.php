@@ -2,7 +2,7 @@
 
 if (!file_exists('./support/dba.php')) {
   header("Location: install.php");
-  exit();
+  die();
 }
 
 require('login.php');
@@ -16,13 +16,13 @@ $smarty->assign('urlBase', $urlBase);
 require_once('./includer.php');
 if (!CheckDBCredentials(DB::$host, DB::$user, DB::$password, DB::$dbName, DB::$port)) {
   header("Location: install.php");
-  exit();
+  die();
 }
 
 $tbls = DB::tableList();
 if (count($tbls) == 0) {
   header("Location: install.php");
-  exit();
+  die();
 }
 
 if ($useRegistration) {
@@ -114,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getImageId'])) {
       // Img type not supported
       // Show a proper message to user
       echo 'The selected image format is not supported.';
-      exit();
+      die();
     }
 
     $imageData64 = base64_encode(ob_get_clean());
@@ -139,7 +139,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getImageId'])) {
       // Img type not supported
       // Show a proper message to user
       echo 'The selected image format is not supported.';
-      exit();
+      die();
     }
 
     $imageThumbnailData64 = base64_encode(ob_get_clean());
@@ -249,7 +249,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getImageId'])) {
             // Img type not supported
             // Show a proper message to user
             echo 'The selected image format is not supported.';
-            exit();
+            die();
           }
 
           $imageData64 = base64_encode(ob_get_clean());
@@ -274,7 +274,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getImageId'])) {
             // Img type not supported
             // Show a proper message to user
             echo 'The selected image format is not supported.';
-            exit();
+            die();
           }
 
           $imageThumbnailData64 = base64_encode(ob_get_clean());
@@ -386,4 +386,4 @@ $smarty->assign('SESSION', $_SESSION);
 $smarty->assign('REQUEST', $_SERVER['REQUEST_URI']);
 $smarty->display('entry.tpl');
 
-exit;
+die();

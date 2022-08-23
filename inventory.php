@@ -492,4 +492,4 @@ $smarty->assign('_GET', $_GET);
 $smarty->display('inventory.tpl');
 
 
-exit;
+die();

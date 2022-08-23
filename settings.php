@@ -127,7 +127,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' || !empty($error) || ($_SERVER['REQUEST_
       } else {
         $user = DB::delete('users', 'id=%d', $_GET['removeUser']);
         header('Location: '. $urlBase . '/settings');
-        exit;
+        die();
       }
     }
   }

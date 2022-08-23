@@ -2,7 +2,7 @@
 
 if (!file_exists('./support/dba.php')) {
   header("Location: install.php");
-  exit();
+  die();
 }
 
 require('login.php');
@@ -16,13 +16,13 @@ $smarty->assign('urlBase', $urlBase);
 require_once('./includer.php');
 if (!CheckDBCredentials(DB::$host, DB::$user, DB::$password, DB::$dbName, DB::$port)) {
   header("Location: install.php");
-  exit();
+  die();
 }
 
 $tbls = DB::tableList();
 if (count($tbls) == 0) {
   header("Location: install.php");
-  exit();
+  die();
 }
 
 if ($useRegistration) {
@@ -33,16 +33,10 @@ if ($useRegistration) {
     $target = SettingsGetSingle("startpage",$user['username'],"entry");
     header('Location: '. $urlBase . '/' . $target . $urlPostFix);
   }
-}else{
+} else {
     $target = SettingsGetSingle("startpage","defaultuser","entry");
     header('Location: '. $urlBase . '/' . $target . $urlPostFix);
-
-
-
 }
-
-
-
 
 if ($usePrettyURLs) {
   $smarty->assign('urlPostFix', '');
@@ -50,10 +44,9 @@ if ($usePrettyURLs) {
   $smarty->assign('urlPostFix', '.php');
 }
 
-
 if (isset($_POST)) $smarty->assign('POST', $_POST);
 $smarty->assign('SESSION', $_SESSION);
 $smarty->assign('REQUEST', $_SERVER['REQUEST_URI']);
 $smarty->display('index.tpl');
 
-exit;
+die();

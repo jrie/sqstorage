@@ -37,7 +37,7 @@ if (isset($useRegistration) && !$useRegistration) {
     unset($_SESSION['authenticated']);
     unset($_SESSION['user']);
     header('Location: ' . $urlBase . '/index' . $urlPostFix);
-    exit;
+    die();
   }
 
   if (!empty($_SESSION['authenticated'])) {
@@ -53,7 +53,7 @@ if (isset($useRegistration) && !$useRegistration) {
       }
     } else {
       header('Location: '. $urlBase . '/index' . $urlPostFix . '?logout');
-      exit;
+      die();
     }
 
     return;
@@ -138,7 +138,7 @@ if (isset($useRegistration) && !$useRegistration) {
               $_SESSION['authenticated'] = true;
               $_SESSION['user'] = ['id' => $userId];
               header('Location: '. $urlBase . '/index' . $urlPostFix);
-              exit;
+              die();
             }
           } catch (Exception $e) {
             $message = $e->getMessage();
@@ -164,7 +164,7 @@ if (isset($useRegistration) && !$useRegistration) {
 //    if ($user && password_verify($_POST['password'], $user['password'])) {
     if(Login($_POST['username'],$_POST['password'],$error)){
       header('Location: '. $urlBase . '/index'. $urlPostFix);
-      exit;
+      die();
     } else {
       if($error == "")$error = gettext('Zugangsdaten ungültig');  //if error is not set yet, invalid login, otherwise too many login failures
     }
@@ -211,7 +211,7 @@ if (isset($useRegistration) && !$useRegistration) {
   if (isset($error)) $smarty->assign('error', $error);
 
   $smarty->display('login.tpl');
-  exit;
+  die();
 }
 
 
