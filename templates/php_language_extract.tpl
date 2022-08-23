@@ -58,8 +58,6 @@
 {t}Zugangsdaten ungültig{/t}
 {t}Zugriff verweigert!{/t}
 {t}Um das Passwort für sqStorage zu ändern bitte den folgenden Link aufrufen: <a href=\"%s\">%s</a>\r\n{/t}
-{t}Fehler: Benutzername \"%s\" enthält nicht zugelassene Zeichen.{/t}
-{t}Fehler: E-Mail-Adresse \"%s\" ungültig.{/t}
 {t}Sie haben eine Einladung für sqStorage erhalten: <a href=\"%s\">%s</a>\r\n{/t}
 {t}Es können zur Zeit keine Mails vom System versendet werden.<br />Bitte diesen Einladungslink an den Benutzer weiterleiten:<br /><a href=\"%s\">%s</a>\r\n{/t}
 {t}Administrator{/t}
@@ -93,3 +91,12 @@
 {t}Verwendest Du eine bestehende Installation und die Benutzerverwaltung, kannst Du diese Datei als Administrator über das Einstellungen erstellen und nach der Aktualisierung auch wieder entfernen.{/t}
 {t}Anmeldung für weitere XXX Sekunden gesperrt{/t}
 {t}Zu viele Anmeldeversuche. Bitte später nochmal versuchen{/t}
+{t}Unkategorisiert{/t}
+{t}Einzelauswahl, durch Semikolon getrennt: erlaubt "Neu" oder "Gebraucht" oder "Refurbished" wenn "Neu;Gebraucht;Refurbished" angegeben. Und oder numerische Werte (Ganzzahl, Gleitkommazahlen){/t}
+{t}Mehrfachauswahl, durch Semikolon getrennt: erlaubt "Neu" und oder "Netzwerk", wenn "Neu;Netzwerk" angegeben. Und oder numerische Werte (Ganzzahl, Gleitkommanzahlen).{/t}
+{t}Der Benutzer "%s" existiert bereits.{/t}
+{t}Es können zur Zeit keine E-Mails vom System versendet werden.<br />Bitte diesen Einladungslink an den Benutzer weiterleiten:<br /><a href="%s">%s</a>{/t}
+{t}Fehler: Benutzername "%s" enthält nicht zugelassene Zeichen.{/t}
+{t}Fehler: E-Mail-Adresse "%s" ungültig.{/t}
+{t}Sie haben eine Einladung für sqStorage erhalten: <a href="%s">%s</a>{/t}
+{t}Um das Passwort für sqStorage zu ändern bitte den folgenden Link aufrufen: <a href="%s">%s</a>{/t}

@@ -26,10 +26,19 @@ if (count($tbls) == 0) {
 }
 
 if ($useRegistration) {
-  if (!isset($user) || !isset($user['usergroupid']) || (int)$user['usergroupid'] === 2) {
+  if (!isset($user)) {
     header('Location: '. $urlBase . '/inventory' . $urlPostFix);
     die();
+  }else{
+    $target = SettingsGetSingle("startpage",$user['username'],"entry");
+    header('Location: '. $urlBase . '/' . $target . $urlPostFix);
   }
+}else{
+    $target = SettingsGetSingle("startpage","defaultuser","entry");
+    header('Location: '. $urlBase . '/' . $target . $urlPostFix);
+
+
+
 }
 
 
