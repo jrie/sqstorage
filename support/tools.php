@@ -93,6 +93,7 @@ return $out;
 function GetCustomFieldsConfiguration($cfs){
   // workdb [ CategoryID oder All][customFieldsID]
   $workcfsw = array();
+  $cfsw = array();
   for ($x=0;$x < count($cfs); $x++){
       $cfsw[$cfs[$x]['id']] = $cfs[$x];
   }
