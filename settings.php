@@ -18,11 +18,15 @@ $smarty->assign('urlBase', $urlBase);
 require_once('./support/dba.php');
 if ($usePrettyURLs) $smarty->assign('urlPostFix', '');
 else $smarty->assign('urlPostFix', '.php');
-
+if(isset($_POST['target'])){
+  $mtarget = $_POST['target'];
+}else{
+  $mtarget = "";
+}
 $install_allowed = false;
 if(file_exists($basedir . "/support/allow_install")) $install_allowed = true;
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['target'] == 'mail') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'mail') {
   try {
     $senderAddress = filter_var($_POST['senderAddress'], FILTER_VALIDATE_EMAIL);
     if (empty($senderAddress)) throw new Exception(gettext('Absender-Mailadresse ungültig.'));
@@ -33,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['target'] == 'mail') {
   }
   DB::$error_handler = 'meekrodb_error_handler';
   DB::$throw_exception_on_error = false;
-}elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['target'] == 'install'){
+}elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'install'){
   if (isset($_POST['allow_install'])){
     if($_POST['allow_install']== "allow"){
         touch ($basedir . "/support/allow_install");
@@ -64,13 +68,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['target'] == 'mail') {
       }
 
       $user = DB::update('users', array('username' => trim($_POST['username']), 'mailaddress' => $_POST['mailaddress'], 'api_access' => $_POST['userapikey']), 'id=%i', $_POST['userUpdateId']);
-      $usergroup = DB::insertUpdate('users_groups', array('userid' => $_POST['userUpdateId'], 'usergroupid' => $_POST['usergroupid']), array('usergroupid' => $_POST['usergroupid']));
+      AssignUserToGroup($_POST['userUpdateId'],$_POST['usergroupid']);
     } else {
       $token = bin2hex(openssl_random_pseudo_bytes(16));
       $hashedToken = password_hash($token, PASSWORD_DEFAULT);
       $userId = DB::insert('users', array('username' => trim($_POST['username']), 'api_access' => $_POST['userapikey'], 'mailaddress' => $_POST['mailaddress']));
       $userId = DB::insertId();
-      $usergroup = DB::insertUpdate('users_groups', array('userid' => $userId, 'usergroupid' => $_POST['usergroupid']), array('usergroupid' => $_POST['usergroupid']));
+      AssignUserToGroup($userId,$_POST['usergroupid']);
       DB::insert('users_tokens', array('userid' => $userId, 'token' => $hashedToken, 'valid_until' => DB::sqlEval('NOW( ) + INTERVAL 1 WEEK')));
       $mailSettings = json_decode(DB::queryFirstField('SELECT jsondoc FROM settings WHERE namespace="mail" LIMIT 1'));
 
@@ -100,7 +104,7 @@ $isEdit = false;
 $isAdd = false;
 $usergroups = DB::query('SELECT id, name FROM usergroups');
 
-if ($_SERVER['REQUEST_METHOD'] == 'GET' || !empty($error) || ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['target'] == 'mail')) {
+if ($_SERVER['REQUEST_METHOD'] == 'GET' || !empty($error) || ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'mail')) {
   if (isset($_GET['editUser']) && !empty($_GET['editUser'])) {
     $isEdit = true;
   } else if (isset($_GET['addUser'])) {
@@ -125,7 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' || !empty($error) || ($_SERVER['REQUEST_
       if (count($adminAccounts) === 1 && $adminAccounts['userid'] == $_GET['removeUser']) {
         $error = gettext('Fehler: Der letzte Administrator kann nicht gelöscht werden!');
       } else {
-        $user = DB::delete('users', 'id=%d', $_GET['removeUser']);
+        DeleteUser($_GET['removeUser']);
         header('Location: '. $urlBase . '/settings');
         die();
       }

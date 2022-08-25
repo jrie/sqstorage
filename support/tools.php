@@ -155,3 +155,30 @@ function SettingsSet($namespace,$setting,$value){
 /**
  * End Settings Tools
  */
+
+
+ /**
+  * User-Group and User Tools
+  *
+  * AssignUserToGroup($userid,$groupid) -> Assignes a group to a user, if user already in a group the record will be updated
+  *
+  */
+function AssignUserToGroup($userid,$groupid){
+      $isRegisteredUser = DB::queryFirstRow('SELECT * FROM users_groups WHere userid = %i LIMIT 1',$userid);
+      if($isRegisteredUser === null){
+          DB::insert('users_groups', ['userid' => $userid, 'usergroupid' => $groupid ]);
+      }else{
+          DB::query('UPDATE users_groups SET usergroupid = %i WHERE userid = %i',$groupid,$userid);
+      }
+}
+
+function DeleteUser($userid){
+      DB::query('DELETE FROM users_groups WHERE userid = %i',$userid);
+      DB::query('DELETE FROM users WHERE id=%i', $userid);
+}
+
+
+  /**
+   * End User-Group Tools
+   */
+
