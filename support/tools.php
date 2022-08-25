@@ -164,8 +164,8 @@ function SettingsSet($namespace,$setting,$value){
   *
   */
 function AssignUserToGroup($userid,$groupid){
-      $isthere = DB::query('SELECT * FROM users_groups WHere userid = %i',$userid);
-      if($isthere === null){
+      $isRegisteredUser = DB::query('SELECT * FROM users_groups WHere userid = %i LIMIT 1',$userid);
+      if($isRegisteredUser === null){
           DB::insert('users_groups', ['userid' => $userid, 'usergroupid' => $groupid ]);
       }else{
           DB::query('UPDATE users_groups SET usergroupid = %i WHERE userid = %i',$groupid,$userid);
@@ -173,7 +173,7 @@ function AssignUserToGroup($userid,$groupid){
 }
 
 function DeleteUser($userid){
-      DB::query('DELETE FROM users_groups WHere userid = %i',$userid);
+      DB::query('DELETE FROM users_groups WHERE userid = %i',$userid);
       DB::query('DELETE FROM users WHERE id=%i', $userid);
 }
 
