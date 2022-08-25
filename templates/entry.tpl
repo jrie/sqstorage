@@ -440,7 +440,7 @@
                 }
 
                 imgLoader.addEventListener('readystatechange', handleRequest)
-                imgLoader.open("GET", "index{/literal}{$urlPostFix}{literal}?getImageId=" + evt.target.parentNode.dataset['imageid']);
+                imgLoader.open("GET", "entry{/literal}{$urlPostFix}{literal}?getImageId=" + evt.target.parentNode.dataset['imageid']);
                 imgLoader.send();
             }
 
