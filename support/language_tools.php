@@ -74,5 +74,5 @@ function initLang($locale)
   setlocale(LC_ALL, $locale . $suff);
   bindtextdomain($domain_new, LANGUAGEDIR);
   textdomain($domain_new);
-  bind_textdomain_codeset($domain, 'UTF-8');
+  bind_textdomain_codeset($domain_new, 'UTF-8');
 }
