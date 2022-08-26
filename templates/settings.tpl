@@ -130,6 +130,13 @@
     </div>
     {/if}
 
+    {if $update_available}
+    <div class="alert alert-danger" role="alert">
+        <h6></i><a href='install.php'><i class="fa fa-sync"></i>{t}Bitte die Datenbank aktualisieren{/t}<i class="fa fa-sync"></i></a></h6>
+    </div>
+    {/if}
+
+    {if $useRegistration}
     {if !isset($users.0.api_access)}<a href='install.php'>{t}Bitte die Datenbank aktualisieren{/t}</a>{else}<a class="btn btn-primary addUser" href="{$urlBase}/settings{$urlPostFix}?addUser">{t}Neuer Benutzer{/t}</a>{/if}
     <hr />
     <ul class="categories list-group">
@@ -171,6 +178,7 @@
         </ul>
     </form>
     <hr />
+    {/if}
     <form accept-charset="utf-8" id="mailform" method="POST" action="">
         <input type="hidden" id="install" name="target" value="install" />
         <ul class="categories list-group">

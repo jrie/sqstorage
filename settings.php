@@ -153,6 +153,10 @@ if(!in_array('failcount',DB::columnList('users'))){
 }else{
 $users = DB::query('SELECT u.id, u.username, u.mailaddress, u.api_access, g.name as usergroupname, g.id as usergroupid FROM users u LEFT JOIN users_groups ugs ON(ugs.userid = u.id) LEFT JOIN usergroups g ON(g.id = ugs.usergroupid) ORDER BY u.username ASC');
 }
+
+$dbUpdateAvailable = IsDBUpdateAvailable();
+
+$smarty->assign('update_available',$dbUpdateAvailable);
 $smarty->assign('install_allowed',$install_allowed);
 $smarty->assign('mailSettings', $mailSettings);
 $smarty->assign('success', $success);

@@ -33,7 +33,7 @@
             <li class="nav-item"><a href="{$urlBase}/datafields{$urlPostFix}" class="nav-link {$pages['datafields.php']}">{t}Datenfelder{/t}</a></li>
             {/if}
 
-            {if isset($SESSION.user) && isset($SESSION.user.usergroupid) && (int)$SESSION.user.usergroupid === 1}
+            {if (isset($SESSION.user) && isset($SESSION.user.usergroupid) && (int)$SESSION.user.usergroupid === 1) || !$useRegistration}
             <li class="nav-item"><a href="{$urlBase}/settings{$urlPostFix}" class="nav-link {$pages['settings.php']}">{t}Einstellungen{/t}</a></li>
             {/if}
         </ul>
