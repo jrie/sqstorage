@@ -384,7 +384,7 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
   if(!is_array($itemidarray)) $itemidarray = array($itemidarray);
 
 
-  $sql = "Select * from items WHERE id IN %li";
+  $sql = "SELECT * FROM items WHERE id IN %li";
   $items = DB::query($sql, $itemidarray);
 
   $storages = DB::query('SELECT * FROM storages ORDER BY label ASC');
