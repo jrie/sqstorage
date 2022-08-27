@@ -379,13 +379,12 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
   $parse['mode'] = "default";
   $parse['showemptystorages'] = false;
 
-  $storages = DB::query('SELECT id, label, amount FROM storages');
+
   $itemidarray = $_GET['id'];
   if(!is_array($itemidarray)) $itemidarray = array($itemidarray);
 
 
-  $sql = "SELECT * FROM items WHERE id IN %li";
-  $items = DB::query($sql, $itemidarray);
+  $items = DB::query('SELECT * FROM items WHERE id IN %li', $itemidarray);
 
   $storages = DB::query('SELECT * FROM storages ORDER BY label ASC');
   for ($y = 0; $y < count($storages); $y++) {
