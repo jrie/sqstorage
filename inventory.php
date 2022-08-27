@@ -374,7 +374,46 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
 
   //----- P5 - OK
   //----- P6 + OK
+} else if ( isset($_GET['id'])){
+
+  $parse['mode'] = "default";
+  $parse['showemptystorages'] = false;
+
+
+  $itemidarray = $_GET['id'];
+  if(!is_array($itemidarray)) $itemidarray = array($itemidarray);
+
+
+  $items = DB::query('SELECT * FROM items WHERE id IN %li', $itemidarray);
+
+  $storages = DB::query('SELECT * FROM storages ORDER BY label ASC');
+  for ($y = 0; $y < count($storages); $y++) {
+    $store[$storages[$y]['id']] = $storages[$y];
+  }
+
+  for ($x = 0; $x < count($items); $x++) {
+    $item = $items[$x];
+    if (in_array($items[$x]['id'], $itesWithImages  )) {
+      $items[$x]['hasImages'] = true;
+      $items[$x]['thumb'] = "";
+    }
+
+
+    $storeId = $item['storageid'];
+    $myitem[$storeId]['storage'] = $store[$storeId];
+    if (!isset($myitem[$storeId]['positionen'])) $myitem[$storeId]['positionen'] = 0;
+    if (!isset($myitem[$storeId]['itemcount'])) $myitem[$storeId]['itemcount'] = 0;
+    $myitem[$storeId]['items'][] = $items[$x];
+    $myitem[$storeId]['positionen']++;
+    $myitem[$storeId]['itemcount'] += $items[$x]['amount'];
+  }
+
+
+
+
+  //----- P6 - OK
 } else {
+  //----- P7 + OK
   $parse['mode'] = "default";
   $parse['showemptystorages'] = true;
   //--
@@ -418,7 +457,7 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
     }
   }
 }
-//----- P6 - OK
+//----- P7 - OK
 
 $storagebyid = array();
 $storages = DB::query('SELECT id, label FROM storages');
