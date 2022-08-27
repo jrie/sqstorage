@@ -9,7 +9,6 @@ require_once('support/urlBase.php');
 
 if ($usePrettyURLs) $smarty->assign('urlPostFix', '');
 else $smarty->assign('urlPostFix', '.php');
-$isUser = TRUE;
 $smarty->assign('urlBase', $urlBase);
 $smarty->assign('SESSION', $_SESSION);
 $smarty->assign('REQUEST', $_SERVER['REQUEST_URI']);
