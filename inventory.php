@@ -374,7 +374,7 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
 
   //----- P5 - OK
   //----- P6 + OK
-} else if ( isset($_GET['showitem'])){
+} else if ( isset($_GET['id'])){
 
   $parse['mode'] = "default";
   $parse['showemptystorages'] = false;
