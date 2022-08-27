@@ -772,9 +772,7 @@
             }
         }
     }
-
-
-
 </script>
 {/literal}
 {include file="bodyend.tpl"}
+{include file="modal.tpl"}
