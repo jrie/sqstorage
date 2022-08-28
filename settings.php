@@ -163,6 +163,7 @@ $pages = [
   'inventory' => gettext('Inventar'),
   'transfer' => gettext('Transferieren'),
   'datafields' => gettext('Datenfelder'),
+  'welcome' => gettext('Welcome!'),
 ];
 $defaultStartPage = SettingsGetSingle("startpage","defaultuser","entry");
 

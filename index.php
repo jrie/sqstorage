@@ -30,11 +30,11 @@ if ($useRegistration) {
     header('Location: '. $urlBase . '/inventory' . $urlPostFix);
     die();
   }else{
-    $target = SettingsGetSingle("startpage",$user['username'],SettingsGetSingle("startpage","defaultuser","entry"));
+    $target = SettingsGetSingle("startpage",$user['username'],SettingsGetSingle("startpage","defaultuser","welcome"));
     header('Location: '. $urlBase . '/' . $target . $urlPostFix);
   }
 } else {
-    $target = SettingsGetSingle("startpage","defaultuser","entry");
+    $target = SettingsGetSingle("startpage","defaultuser","welcome");
     header('Location: '. $urlBase . '/' . $target . $urlPostFix);
 }
 
