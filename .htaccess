@@ -28,7 +28,7 @@ RewriteRule ^categories/([0-9]+)$ inventory.php?category=$1 [QSA,L]
 RewriteRule ^transfer$ transfer.php [L]
 RewriteRule ^transfer/$ transfer.php [L]
 
-RewriteRule ^api/(.*)$ api.php/$1 [QSA,L]	
+RewriteRule ^api/(.*)$ api.php/$1 [QSA,L]
 
 
 RewriteRule ^datafields$ datafields.php [L]
@@ -45,5 +45,9 @@ RewriteRule ^login/activate=(.*)+$ login.php/activate=$1 [QSA,L]
 
 RewriteRule ^subcategories/$ subcategories.php
 RewriteRule ^subcategories/([0-9]+)$ inventory.php?subcategory=$1 [QSA,L]
+
+RewriteRule ^usersettings$ usersettings.php [L]
+RewriteRule ^usersettings/$ usersettings.php [L]
+
 </IfModule>
 

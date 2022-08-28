@@ -47,6 +47,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'mail') {
         $install_allowed = false;
     }
   }
+
+}elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'startpage'){
+  SettingsSet("startpage","defaultuser",$_POST['startpagekey']);
 }elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
   DB::$error_handler = false;
   DB::$throw_exception_on_error = true;
@@ -155,7 +158,17 @@ $users = DB::query('SELECT u.id, u.username, u.mailaddress, u.api_access, g.name
 }
 
 $dbUpdateAvailable = IsDBUpdateAvailable();
+$pages = [
+  'entry' => gettext("Eintragen"),
+  'inventory' => gettext('Inventar'),
+  'transfer' => gettext('Transferieren'),
+  'datafields' => gettext('Datenfelder'),
+  'welcome' => gettext('Welcome!'),
+];
+$defaultStartPage = SettingsGetSingle("startpage","defaultuser","entry");
 
+$smarty->assign('pages',$pages);
+$smarty->assign('defaultStartPage',$defaultStartPage);
 $smarty->assign('update_available',$dbUpdateAvailable);
 $smarty->assign('install_allowed',$install_allowed);
 $smarty->assign('mailSettings', $mailSettings);
