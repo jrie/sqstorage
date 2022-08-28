@@ -203,6 +203,40 @@
             </li>
         </ul>
     </form>
+    <hr />
+    <form accept-charset="utf-8" id="startpage" method="POST" action="">
+        <input type="hidden" id="install" name="target" value="startpage" />
+        <ul class="categories list-group">
+            <li class="alert alert-info">
+                <span class="list-span">{t}Standard-Startseite{/t}</span>
+            </li>
+            <li class="list-group-item">
+        <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <div class="dropdown">
+                                <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="startpageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <option value="-1" selected="selected">{t}Startseite{/t}</option>
+                                    {foreach $pages as $pagename => $pagelabel}
+                                    {if $pagename == $defaultStartPage}
+                                        {$sel = "selected='selectd'"}
+                                    {else}
+                                        {$sel = ""}
+                                    {/if}
+                                    <option value="{$pagename}" {$sel} >{t}{$pagelabel}{/t}</option>
+                                    {/foreach}
+                                </select>
+                            </div>
+                        </div>
+                      <input type="text" class="form-control" id="startpagename" name="startpagename" readonly="readonly" required="required" autocomplete="off" placeholder="{t}Startseite{/t} " value="{$pages.$defaultStartPage}">
+                      <input type="hidden" value="{$defaultStartPage}" id="startpagekey" name="startpagekey" />
+        </div>
+        <button type="submit" class="btn btn-primary float-right">{t}Einstellungen speichern{/t}</button>
+            </li>
+        </ul>
+    </form>
+
+
+
     {/if}
 </div>
 
@@ -269,6 +303,22 @@
             usergroupname.value = userapidropdown.options[userapidropdown.selectedIndex].text
             usergroupid.value = userapidropdown.value
             userapidropdown.value = '-1'
+        })
+    }
+
+    let startpageselectdropdown = document.querySelector('#startpageDropdown')
+    if (startpageselectdropdown !== null) {
+        startpageselectdropdown.addEventListener('change', function(evt) {
+            let startpageselectdropdown = evt.target
+            let startpagename = document.querySelector('#startpagename')
+            let startpage = document.querySelector('#startpagekey')
+            if (parseInt(startpageselectdropdown.value) === -1) {
+                startpagename.value = ''
+                return
+            }
+            startpagename.value = startpageselectdropdown.options[startpageselectdropdown.selectedIndex].text
+            startpage.value = startpageselectdropdown.value
+            startpageselectdropdown.value = '-1'
         })
     }
 
