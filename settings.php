@@ -50,11 +50,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'mail') {
 
 }elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'startpage'){
   SettingsSet("startpage","defaultuser",$_POST['startpagekey']);
-
-
-
-
-
 }elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
   DB::$error_handler = false;
   DB::$throw_exception_on_error = true;
