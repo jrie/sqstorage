@@ -42,6 +42,15 @@
             <input class="form-control mr-sm-2" name="searchValue" type="search" placeholder="{t}Suche{/t}" aria-label="{t}Suche{/t}">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">{t}Suchen{/t}</button>
         </form>
+
+
+        <ul class="nav">
+            {if isset($SESSION.user)}
+            <li class="nav-item"><a href="{$urlBase}/usersettings" class="nav-link" title="{t}Benutzereinstellungen{/t}"><center><i class="fas fa-gears" title="{t}Benutzereinstellungen{/t}"></i><br /><small>{t}Benutzereinstellungen{/t}</small></center></a></li>
+            <li class="nav-item"><a href="{$urlBase}/index{$urlPostFix}?logout" class="nav-link" title="{t}Abmelden{/t}"><center><i class="fas fa-sign-out-alt" title="{t}Abmelden{/t}"></i><br /><small>{t}Abmelden{/t}</small></center></a></li>
+            {/if}
+        </ul>
+
         <div class="dropdown">
             <select class="form-control mr-sm-2" name="lang">
                 {foreach $langsAvailable as $lang}
@@ -59,10 +68,5 @@
         </div>
 
 
-        <ul class="nav">
-            {if isset($SESSION.user)}
-            <li class="nav-item"><a href="{$urlBase}/index{$urlPostFix}?logout" class="nav-link"><i class="fas fa-sign-out-alt" title="{t}Abmelden{/t}"></i></a></li>
-            {/if}
-        </ul>
     </nav>
     <p id="msgbox"></p>
