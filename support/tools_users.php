@@ -78,3 +78,40 @@ function Login($username,$password,&$error){
 
 
 }
+
+
+function CheckPasswordCompliance($password,$password_repeat,&$errors){
+  $errors = [];
+  if (strlen($password) < 8) {
+    $errors[] = gettext('Passwort zu kurz, mindestens 8 Zeichen!');
+  }
+  if (!preg_match("#[0-9]+#", $password)) {
+    $errors[] = gettext('Passwort muß eine Zahl enthalten!');
+  }
+  if (!preg_match("#[a-z]+#", $password)) {
+    $errors[] = gettext('Passwort muß einen Kleinbuchstaben enthalten!');
+  }
+  if (!preg_match("#[A-Z]+#", $password)) {
+    $errors[] = gettext('Passwort muß einen Großbuchstaben enthalten!');
+  }
+  if ($password != $password_repeat) {
+    $errors[] = gettext('Die Passwörter stimmen nicht überein!');
+  }
+  if(count($errors) > 0) return false;
+  return true;
+}
+
+function SetUserPassword($oldpassword,$newpassword,$newpassword_repeat,&$errors){
+  $errors = array();
+  if(!isset( $_SESSION['user']['id'] )) return false;
+  if(!CheckPasswordCompliance($newpassword,$newpassword_repeat,$errors)) return false;
+  $user = DB::queryFirstRow('SELECT * FROM users WHERE id=%i LIMIT 1', $_SESSION['user']['id']);
+  if ($user && password_verify($oldpassword, $user['password'])) {
+    $newpasshash = password_hash($newpassword, PASSWORD_DEFAULT);
+    DB::query('UPDATE users SET `password` = %s WHERE id =%i ',$newpasshash,$_SESSION['user']['id']);
+    return true;
+  }else{
+    $errors[] = gettext('Zugangsdaten ungültig');
+    return false;
+  }
+}

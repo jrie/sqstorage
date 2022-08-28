@@ -211,26 +211,26 @@
                 <span class="list-span">{t}Standard-Startseite{/t}</span>
             </li>
             <li class="list-group-item">
-        <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <div class="dropdown">
-                                <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="startpageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <option value="-1" selected="selected">{t}Startseite{/t}</option>
-                                    {foreach $pages as $pagename => $pagelabel}
-                                    {if $pagename == $defaultStartPage}
-                                        {$sel = "selected='selectd'"}
-                                    {else}
-                                        {$sel = ""}
-                                    {/if}
-                                    <option value="{$pagename}" {$sel} >{t}{$pagelabel}{/t}</option>
-                                    {/foreach}
-                                </select>
-                            </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="dropdown">
+                            <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="startpageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <option value="-1" selected="selected">{t}Startseite{/t}</option>
+                                {foreach $pages as $pagename => $pagelabel}
+                                {if $pagename == $defaultStartPage}
+                                    {$sel = "selected='selectd'"}
+                                {else}
+                                    {$sel = ""}
+                                {/if}
+                                <option value="{$pagename}" {$sel} >{t}{$pagelabel}{/t}</option>
+                                {/foreach}
+                            </select>
                         </div>
-                      <input type="text" class="form-control" id="startpagename" name="startpagename" readonly="readonly" required="required" autocomplete="off" placeholder="{t}Startseite{/t} " value="{$pages.$defaultStartPage}">
-                      <input type="hidden" value="{$defaultStartPage}" id="startpagekey" name="startpagekey" />
-        </div>
-        <button type="submit" class="btn btn-primary float-right">{t}Einstellungen speichern{/t}</button>
+                    </div>
+                    <input type="text" class="form-control" id="startpagename" name="startpagename" readonly="readonly" required="required" autocomplete="off" placeholder="{t}Startseite{/t} " value="{$pages.$defaultStartPage}">
+                    <input type="hidden" value="{$defaultStartPage}" id="startpagekey" name="startpagekey" />
+                </div>
+                <button type="submit" class="btn btn-primary float-right">{t}Einstellungen speichern{/t}</button>
             </li>
         </ul>
     </form>

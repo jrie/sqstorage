@@ -1,11 +1,11 @@
 <?php
 
-//require('includer.php');
 $basedir = __DIR__;
 require_once($basedir . '/vendor/autoload.php');
 require_once($basedir . '/support/language_tools.php');
 require_once($basedir . '/support/smartyconfig.php');
-require_once('support/urlBase.php');
+require_once($basedir . '/login.php');
+require_once($basedir . '/support/urlBase.php');
 
 if ($usePrettyURLs) $smarty->assign('urlPostFix', '');
 else $smarty->assign('urlPostFix', '.php');
