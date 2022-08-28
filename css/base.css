@@ -1,4 +1,5 @@
 @import url('../fonts/Montserrat/Montserrat.css');
+
 body {
     font-family: 'Montserrat', sans;
     font-weight: 300;
@@ -174,16 +175,16 @@ input.quick-edit:required:focus::placeholder {
     max-width: 70%;
 }
 
-.list-span.header.pointer {
+.header.pointer {
     cursor: pointer;
 }
 
-.list-span.header.orderup,
-.list-span.header.orderdown {
+.header.orderup,
+.header.orderdown {
     text-decoration: underline;
 }
 
-.list-span.header.orderup::after {
+.header.orderup::after {
     content: "\21CA";
     width: 16px;
     height: 16px;
@@ -191,7 +192,7 @@ input.quick-edit:required:focus::placeholder {
     right: -12px;
 }
 
-.list-span.header.orderdown::after {
+.header.orderdown::after {
     content: "\21C8";
     width: 16px;
     height: 16px;
@@ -490,7 +491,8 @@ ul.existingFields li {
     min-width: unset;
 }
 
-.login-box .input-group input, .input-group select {
+.login-box .input-group input,
+.input-group select {
     height: unset;
 }
 
@@ -544,7 +546,7 @@ i.picture {
     display: block;
     visibility: visible;
     overflow: scroll;
-    background-color: rgba(225,225,225,0.8);
+    background-color: rgba(225, 225, 225, 0.8);
     cursor: zoom-out;
 }
 
@@ -734,3 +736,127 @@ input.errorFloat,
 input.errorString {
     background-color: orange;
 }
+
+table.list-group {
+    display: flex;
+    width: 100%;
+    border-radius: 12px 12px 0px 0px;
+}
+
+table.list-group thead {
+    border-radius: 12px 12px 0px 0px;
+}
+
+table.list-group thead,
+table.list-group tbody {
+    display: table;
+}
+
+.table-row {
+    margin: 0px;
+    padding: 0px;
+}
+
+table.list-group thead td,
+table.list-group tbody td {
+    display: table-cell;
+    padding: 1.15em 0px;
+    vertical-align: top;
+}
+
+table.list-group thead td:first-child {
+    padding: 1.15em 0px 0px 2em;
+}
+
+table.list-group tbody td:first-child {
+    padding: 0em 0.5em 0em 2em;
+}
+
+table.list-group thead td:first-of-type table.list-group tbody td:first-of-type {
+    padding-left: 2em;
+}
+
+.table-row.fcategory {
+    width: 12%;
+}
+
+table.list-group tbody .table-row.fcategory {
+    width: 12%;
+    padding-top: 1em;
+}
+
+.table-row.flabel {
+    width: 17%;
+}
+
+tbody .table-row.flabel {
+    width: 17%;
+}
+
+tbody .table-row.flabel a {
+    vertical-align: top;
+}
+
+.table-row.famount {
+    width: 4%;
+}
+
+tbody .table-row.famount {
+    width: 4%;
+}
+
+.table-row.fcomment {
+    width: 14%;
+}
+
+tbody .table-row.fcomment {
+    width: 14%;
+}
+
+.table-row.fsubcategory {
+    width: 13%;
+}
+
+tbody .table-row.fsubcategory {
+    width: 13%;
+}
+
+.table-row.fdateadded {
+    width: 7%;
+}
+
+tbody .table-row.fdateadded {
+    width: 7%;
+}
+
+.table-row.subMenu {
+    width: 20%;
+}
+
+tbody .table-row.subMenu {
+    width: 20%;
+}
+
+.table-row.subMenu>span:last-of-type {
+    margin-left: 3em;
+}
+
+.rowActions .actions {
+    width: fit-content;
+}
+
+.rowActions>div:first-of-type,
+.rowActions>div:last-of-type {
+    float: left;
+    margin-left: 0em;
+}
+
+.table-row.header.subMenu .allocate {
+    margin-left: 5.5em;
+}
+
+.rowActions>div:last-of-type {
+    margin-left: 3em;
+    margin-top: -0.5em;
+}
+
