@@ -3,6 +3,7 @@ $user="";
 require('login.php');
 $error = "";
 $success = "";
+$settingdata = array();
 
 if ($useRegistration) {
   if (!isset($user) || !isset($user['usergroupid']) || (int)$user['usergroupid'] === 2) {
@@ -47,6 +48,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'mail') {
         $install_allowed = false;
     }
   }
+}elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'updater'){
+       if(isset($_POST['branch'])) {
+        $branch = $_POST['branch'];
+          if(in_array($branch,['main','dev','beta'])) SettingsSet('updater','githubbranch',$branch);
+        }
 
 }elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'startpage'){
   SettingsSet("startpage","defaultuser",$_POST['startpagekey']);
@@ -165,8 +171,19 @@ $pages = [
   'datafields' => gettext('Datenfelder'),
   'welcome' => gettext('Welcome!'),
 ];
+
+$settingdata['updater'] = SettingsGet('updater');
+if($settingdata['updater'] === null){
+  SettingsSet('updater','githubuser','jrie');
+  SettingsSet('updater','githubrepo','sqstorage');
+  SettingsSet('updater','githubbranch','main');
+  $settingdata['updater'] = SettingsGet('updater');
+}
+$settingdata['updater']['branches'] = ['main' => gettext("Release"),'beta' => gettext("Betatest"),'dev' => gettext("Entwicklung")];
+
 $defaultStartPage = SettingsGetSingle("startpage","defaultuser","entry");
 
+$smarty->assign('settingdata',$settingdata);
 $smarty->assign('pages',$pages);
 $smarty->assign('defaultStartPage',$defaultStartPage);
 $smarty->assign('update_available',$dbUpdateAvailable);
