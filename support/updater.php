@@ -30,7 +30,7 @@
 
 
 function DownloadMasterZipAndUnpack($user,$repo,$branch,$dir=__DIR__){
-  $docopy = false;
+  $docopy = true;
   if(!file_exists($branch . ".zip")){
     $remoteurl = "https://github.com/$user/$repo/archive/".$branch.".zip";
     $filetmp = file_get_contents($remoteurl);
