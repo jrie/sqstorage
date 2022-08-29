@@ -34,20 +34,20 @@ function DownloadMasterZipAndUnpack($user,$repo,$branch,$dir=__DIR__){
   if(!file_exists($branch . ".zip")){
     $remoteurl = "https://github.com/$user/$repo/archive/".$branch.".zip";
     $filetmp = file_get_contents($remoteurl);
-    file_put_contents($branch .".zip",$filetmp);
+    file_put_contents($dir . "/support/" . $branch .".zip",$filetmp);
   }
   $len=strlen($repo . "-" .$branch . "/");
   $allwriteable = true;
-  if(is_dir('./unpack_temp_dir')) rrmdir('./unpack_temp_dir');
-  mkdir('./unpack_temp_dir');
+  if(is_dir($dir . '/support/unpack_temp_dir')) rrmdir($dir . '/support/unpack_temp_dir');
+  mkdir($dir . '/support/unpack_temp_dir');
   $strFT = "";
   $zip = new ZipArchive;
   if ($zip->open($branch .'.zip') === TRUE) {
-      $zip->extractTo('./unpack_temp_dir/');
+      $zip->extractTo($dir . '/support/unpack_temp_dir/');
       $strFT .= "<table border='1'>";
       for ($i = 0; $i < $zip->numFiles; $i++) {
         $filename = $zip->getNameIndex($i);
-        $currfile = "./unpack_temp_dir/" . $filename;
+        $currfile = $dir . "/support/unpack_temp_dir/" . $filename;
         $newfile = $dir . DIRECTORY_SEPARATOR . substr($filename,$len);
 
         if(!file_exists($newfile)) {
@@ -74,7 +74,7 @@ function DownloadMasterZipAndUnpack($user,$repo,$branch,$dir=__DIR__){
         $out = "<h2>All files can be written, permissions granted</h2>";
         for ($i = 0; $i < $zip->numFiles; $i++) {
           $filename = $zip->getNameIndex($i);
-          $currfile = "./unpack_temp_dir/" . $filename;
+          $currfile = $dir . "/support/unpack_temp_dir/" . $filename;
           $newfile = $dir . DIRECTORY_SEPARATOR . substr($filename,$len);
           if($docopy){
             $lastchar = substr($currfile,-1);
@@ -90,8 +90,8 @@ function DownloadMasterZipAndUnpack($user,$repo,$branch,$dir=__DIR__){
       }
       $zip->close();
       $out .=  $strFT;
-      unlink($branch . '.zip');
-      rrmdir('./unpack_temp_dir');
+      unlink($dir . "/support/" . $branch . '.zip');
+      rrmdir($dir . '/support/unpack_temp_dir');
   } else {
       $out = "</h2>Error - Zip file couldn't be opened</2>";
   }
