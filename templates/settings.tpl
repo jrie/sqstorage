@@ -236,6 +236,45 @@
     </form>
 
 
+    <form accept-charset="utf-8" id="updater" method="POST" action="">
+        <input type="hidden" id="install" name="target" value="updater" />
+        <ul class="categories list-group">
+            <li class="alert alert-info">
+                <span class="list-span">{t}Update-Quelle{/t}</span>
+                <small>
+                  <br /><span><b>{t}Verfügbare Update-Quellen{/t}</b></span>
+                  <br /><span>{t}Release{/t} - {t}Getestete Veröffentlichung{/t}</span>
+                  <br /><span>{t}Betatest{/t} - {t}Noch nich veröffentlichte Funktionen, aber möglicherweise auch mit Fehlern{/t}</span>
+                  <br /><span>{t}Entwicklung{/t} - {t}Aktueller Stand der Entwicklung - mit Vorsicht zu geniesen - Fehler eingeschlossen{/t}</span>
+                </small>
+            </li>
+            <li class="list-group-item">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="dropdown">
+                            <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="branchDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <option value="-1" selected="selected">{t}Entwickungszweig{/t}</option>
+                                {foreach $settingdata.updater.branches  as $branch => $branchlabel}
+                                {if $branch == $settingdata.updater.githubbranch}
+                                    {$sel = "selected='selectd'"}
+                                    {$outputlabel = $branchlabel}
+                                {else}
+                                    {$sel = ""}
+                                {/if}
+                                <option value="{$branch}" {$sel} >{t}{$branchlabel}{/t}</option>
+                                {/foreach}
+                            </select>
+                        </div>
+                    </div>
+                    <input type="text" class="form-control" id="branchlabel" name="branchlabel" readonly="readonly" required="required" autocomplete="off" placeholder="{t}Version{/t} " value="{$outputlabel}">
+                    <input type="hidden" value="{$settingdata.updater.githubbranch}" id="branch" name="branch" />
+                </div>
+                <button type="submit" class="btn btn-primary float-right">{t}Einstellungen speichern{/t}</button>
+            </li>
+        </ul>
+    </form>
+
+
 
     {/if}
 </div>
@@ -319,6 +358,22 @@
             startpagename.value = startpageselectdropdown.options[startpageselectdropdown.selectedIndex].text
             startpage.value = startpageselectdropdown.value
             startpageselectdropdown.value = '-1'
+        })
+    }
+
+    let branchdropdown = document.querySelector('#branchDropdown')
+    if (branchdropdown !== null) {
+        branchdropdown.addEventListener('change', function(evt) {
+            let branchdropdown = evt.target
+            let branchlabel = document.querySelector('#branchlabel')
+            let branch = document.querySelector('#branch')
+            if (parseInt(branchdropdown.value) === -1) {
+                branch.value = ''
+                return
+            }
+            branchlabel.value = branchdropdown.options[branchdropdown.selectedIndex].text
+            branch.value = branchdropdown.value
+            branchdropdown.value = '-1'
         })
     }
 

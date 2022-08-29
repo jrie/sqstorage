@@ -31,7 +31,7 @@
 
 function DownloadMasterZipAndUnpack($user,$repo,$branch,$dir=__DIR__){
   $docopy = true;
-  if(!file_exists($branch . ".zip")){
+  if(!file_exists($dir . "/support/" . $branch . ".zip")){
     $remoteurl = "https://github.com/$user/$repo/archive/".$branch.".zip";
     $filetmp = file_get_contents($remoteurl);
     file_put_contents($dir . "/support/" . $branch .".zip",$filetmp);
@@ -42,7 +42,7 @@ function DownloadMasterZipAndUnpack($user,$repo,$branch,$dir=__DIR__){
   mkdir($dir . '/support/unpack_temp_dir');
   $strFT = "";
   $zip = new ZipArchive;
-  if ($zip->open($branch .'.zip') === TRUE) {
+  if ($zip->open($dir . "/support/" . $branch .'.zip') === TRUE) {
       $zip->extractTo($dir . '/support/unpack_temp_dir/');
       $strFT .= "<table border='1'>";
       for ($i = 0; $i < $zip->numFiles; $i++) {
