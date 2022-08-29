@@ -752,7 +752,7 @@ table.list-group tbody {
     display: table;
 }
 
-.table-row {
+table .table-row {
     margin: 0px;
     padding: 0px;
 }
@@ -762,6 +762,10 @@ table.list-group tbody td {
     display: table-cell;
     padding: 1.15em 0px;
     vertical-align: top;
+}
+
+table.list-group tr {
+    display: table-row-group;
 }
 
 table.list-group thead td:first-child {
