@@ -4,6 +4,8 @@ require('login.php');
 $error = "";
 $success = "";
 $settingdata = array();
+$updatecheck = false;
+$uptodate = false;
 
 if ($useRegistration) {
   if (!isset($user) || !isset($user['usergroupid']) || (int)$user['usergroupid'] === 2) {
@@ -53,6 +55,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'mail') {
         $branch = $_POST['branch'];
           if(in_array($branch,['main','dev','beta'])) SettingsSet('updater','githubbranch',$branch);
         }
+}elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'updatecheck'){
+  require_once('support/updater.php');
+  $updatecheck = true;
+  $updData = SettingsGet('updater');
+  $uptodate = AreFileUpToDate($updData['githubuser'],$updData['githubrepo'],$updData['githubbranch']);
+
+
 
 }elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'startpage'){
   SettingsSet("startpage","defaultuser",$_POST['startpagekey']);
@@ -183,6 +192,8 @@ $settingdata['updater']['branches'] = ['main' => gettext("Release"),'beta' => ge
 
 $defaultStartPage = SettingsGetSingle("startpage","defaultuser","entry");
 
+$smarty->assign('updatecheck',$updatecheck);
+$smarty->assign('uptodate',$uptodate);
 $smarty->assign('settingdata',$settingdata);
 $smarty->assign('pages',$pages);
 $smarty->assign('defaultStartPage',$defaultStartPage);
