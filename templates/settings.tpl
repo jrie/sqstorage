@@ -2,6 +2,22 @@
 {include file="nav.tpl" target="settings.php" request=$REQUEST}
 
 <div class="content">
+    {if $updatecheck}
+      {if $uptodate}
+        <div class="alert alert-success" role="alert">
+          <h6>{t}sqStorage ist aktuell{/t}</h6>
+        </div>
+      {else}
+        <div class="alert alert-danger" role="alert">
+          <h6>{t}Es steht eine Aktualisierung zu Verfügung{/t}</h6>
+        </div>
+      {/if}
+    {else}
+      <form method="POST" id="updatecheckform">
+      <input type="hidden" id="install" name="target" value="updatecheck" />
+      <button type="submit" class="btn btn-primary float-right">{t}Auf Updates prüfen{/t}</button>
+      </form>
+    {/if}
 
 
     {if $isEdit || $isAdd}
