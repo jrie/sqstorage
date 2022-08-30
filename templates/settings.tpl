@@ -253,7 +253,7 @@
                     <div class="input-group-prepend">
                         <div class="dropdown">
                             <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="branchDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <option value="-1" selected="selected">{t}Entwickungszweig{/t}</option>
+                                <option value="-1" selected="selected">{t}Update-Quelle{/t}</option>
                                 {foreach $settingdata.updater.branches  as $branch => $branchlabel}
                                 {if $branch == $settingdata.updater.githubbranch}
                                     {$sel = "selected='selectd'"}
@@ -261,7 +261,7 @@
                                 {else}
                                     {$sel = ""}
                                 {/if}
-                                <option value="{$branch}" {$sel} >{t}{$branchlabel}{/t}</option>
+                                <option class="branchselect" value="{$branch}" {$sel} >{t}{$branchlabel}{/t}</option>
                                 {/foreach}
                             </select>
                         </div>
@@ -269,7 +269,8 @@
                     <input type="text" class="form-control" id="branchlabel" name="branchlabel" readonly="readonly" required="required" autocomplete="off" placeholder="{t}Version{/t} " value="{$outputlabel}">
                     <input type="hidden" value="{$settingdata.updater.githubbranch}" id="branch" name="branch" />
                 </div>
-                <button type="submit" class="btn btn-primary float-right">{t}Einstellungen speichern{/t}</button>
+                <button id="updaterunlockbutton" class="btn btn-primary float-left" onclick="unlockupdater();return false;">{t}Updatequellen-Auswahl aktivieren{/t}</button>
+                <button type="submit" id="updaterbutton" class="btn btn-primary float-right" disabled>{t}Einstellungen speichern{/t}</button>
             </li>
         </ul>
     </form>
@@ -375,6 +376,15 @@
             branch.value = branchdropdown.value
             branchdropdown.value = '-1'
         })
+    }
+
+    function unlockupdater(){
+      document.querySelector('#updaterbutton').disabled =!document.querySelector('#updaterbutton').disabled;
+      if(document.querySelector('#updaterbutton').disabled){
+          document.querySelector('#updaterunlockbutton').innerHTML = {/literal}'{t}Updatequellen-Auswahl aktivieren{/t}'{literal}
+      }else{
+          document.querySelector('#updaterunlockbutton').innerHTML = {/literal}'{t}Updatequellen-Auswahl deaktivieren{/t}'{literal}
+      }
     }
 
 </script>
