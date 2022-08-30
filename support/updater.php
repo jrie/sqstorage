@@ -145,7 +145,7 @@ function AreFileUpToDate($ghuser,$ghrepo,$ghbranch,&$debugData = ""){
         $debugData .= "<td>Match</td>";
       }
 
-      if($localtime > $editts){
+      if($localtime + 60 > $editts){
         $lta = "Local file is newer";
         $newercount++;
       }else{
