@@ -10,7 +10,7 @@
       {else}
         <div class="alert alert-danger" role="alert">
           <h6>{t}Es steht eine Aktualisierung zu Verfügung{/t}</h6>
-          <a href="update.php" title="{t}Aktualisierung{/t}">{t}Aktualisierung{/t}</a>
+          <a href="updater.php" title="{t}Aktualisierung{/t}">{t}Aktualisierung{/t}</a>
         </div>
       {/if}
     {else}
