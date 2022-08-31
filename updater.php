@@ -6,6 +6,7 @@ $success = "";
 $settingdata = array();
 $updatecheck = false;
 $uptodate = false;
+$updatework = false;
 
 if ($useRegistration) {
   if (!isset($user) || !isset($user['usergroupid']) || (int)$user['usergroupid'] === 2) {
@@ -30,7 +31,11 @@ $install_allowed = false;
 if(file_exists($basedir . "/support/allow_install")) $install_allowed = true;
 require_once('./support/updater.php');
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'mail') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'installupdate') {
+  $updatework = true;
+  $settingdata['updater'] = SettingsGet('updater');
+  DownloadMasterZipAndUnpack($settingdata['updater']['githubuser'],$settingdata['updater']['githubrepo'],$settingdata['updater']['githubbranch'], __DIR__,false);
+
 
 }elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'install'){
 
@@ -48,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'mail') {
 $isEdit = false;
 $isAdd = false;
 
-
+$smarty->assign('updatework',$updatework);
 $smarty->assign('updatecheck',$updatecheck);
 $smarty->assign('uptodate',$uptodate);
 $smarty->assign('settingdata',$settingdata);
