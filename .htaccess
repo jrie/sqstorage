@@ -49,5 +49,8 @@ RewriteRule ^subcategories/([0-9]+)$ inventory.php?subcategory=$1 [QSA,L]
 RewriteRule ^usersettings$ usersettings.php [L]
 RewriteRule ^usersettings/$ usersettings.php [L]
 
+RewriteRule ^updater$ updater.php [L]
+RewriteRule ^updater/$ updater.php [L]
+
 </IfModule>
 

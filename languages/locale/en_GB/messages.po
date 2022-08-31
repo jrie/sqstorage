@@ -43,7 +43,7 @@ msgstr "Positions"
 
 #: templates//categories.tpl:13 templates//categories.tpl:38
 #: templates//inventory.tpl:36 templates//inventory.tpl:156
-#: templates//inventory.tpl:265 templates//settings.tpl:143
+#: templates//inventory.tpl:265 templates//settings.tpl:160
 msgid "Aktionen"
 msgstr "Actions"
 
@@ -112,6 +112,7 @@ msgid "Unterkategorie umbenennen?"
 msgstr "Rename the subcategory?"
 
 #: templates//datafields.tpl:1 templates//nav.tpl:31 templates//nav.tpl:33
+#: templates//php_language_extract.tpl:88
 msgid "Datenfelder"
 msgstr "Data fields"
 
@@ -285,7 +286,8 @@ msgid "wirklich löschen?"
 msgstr "really delete?"
 
 #: templates//entry.tpl:1 templates//entry.tpl:354 templates//nav.tpl:16
-#: templates//nav.tpl:18 templates//settings.tpl:121
+#: templates//nav.tpl:18 templates//php_language_extract.tpl:91
+#: templates//settings.tpl:138
 msgid "Eintragen"
 msgstr "Enter"
 
@@ -347,7 +349,7 @@ msgstr "Picture of this item"
 msgid "Bild Upload"
 msgstr "Upload pictures"
 
-#: templates//entry.tpl:352 templates//settings.tpl:119
+#: templates//entry.tpl:352 templates//settings.tpl:136
 msgid "Überschreiben"
 msgstr "Overwrite"
 
@@ -379,7 +381,7 @@ msgstr "Github"
 msgid "sqStorage"
 msgstr "sqStorage"
 
-#: templates//installpage.tpl:1 templates//settings.tpl:191
+#: templates//installpage.tpl:1 templates//settings.tpl:208
 msgid "Installation"
 msgstr "Installation"
 
@@ -440,6 +442,7 @@ msgid "Erneut prüfen"
 msgstr "Check again"
 
 #: templates//inventory.tpl:1 templates//nav.tpl:21
+#: templates//php_language_extract.tpl:96
 msgid "Inventar"
 msgstr "Inventory"
 
@@ -535,7 +538,7 @@ msgstr ""
 "There was an error saving the contents. The browser developer console "
 "contains details."
 
-#: templates//inventory.tpl:587
+#: templates//inventory.tpl:587 templates//php_language_extract.tpl:89
 msgid "Der Eintrag wurde erfolgreich aktualisiert."
 msgstr "The entry was updated succesfully."
 
@@ -571,15 +574,15 @@ msgstr "Enter the new credentials"
 msgid "Zugangsdaten eingeben"
 msgstr "Enter credentials"
 
-#: templates//login.tpl:44 templates//settings.tpl:32
-#: templates//settings.tpl:37 templates//settings.tpl:39
-#: templates//settings.tpl:143
+#: templates//login.tpl:44 templates//settings.tpl:49
+#: templates//settings.tpl:54 templates//settings.tpl:56
+#: templates//settings.tpl:160
 msgid "Benutzername"
 msgstr "Username"
 
-#: templates//login.tpl:53 templates//settings.tpl:46
-#: templates//settings.tpl:49 templates//settings.tpl:51
-#: templates//settings.tpl:143
+#: templates//login.tpl:53 templates//settings.tpl:63
+#: templates//settings.tpl:66 templates//settings.tpl:68
+#: templates//settings.tpl:160
 msgid "E-Mail"
 msgstr "E-Mail"
 
@@ -620,7 +623,8 @@ msgstr "New value"
 msgid "Abbrechen"
 msgstr "Cancel"
 
-#: templates//nav.tpl:25 templates//nav.tpl:27 templates//transfer.tpl:1
+#: templates//nav.tpl:25 templates//nav.tpl:27
+#: templates//php_language_extract.tpl:102 templates//transfer.tpl:1
 #: templates//transfer.tpl:31
 msgid "Transferieren"
 msgstr "Transfer"
@@ -637,7 +641,11 @@ msgstr "Search"
 msgid "Suchen"
 msgstr "Search"
 
-#: templates//nav.tpl:64
+#: templates//nav.tpl:49 templates//usersettings.tpl:1
+msgid "Benutzereinstellungen"
+msgstr "User-settings"
+
+#: templates//nav.tpl:50
 msgid "Abmelden"
 msgstr "Sign out"
 
@@ -963,97 +971,300 @@ msgstr "Access to the following directories was denied:"
 msgid "Zu viele Anmeldeversuche. Bitte später nochmal versuchen"
 msgstr "Too many login attempts. Please try again later"
 
-#: templates//settings.tpl:16
+#: templates//php_language_extract.tpl:74
+msgid " Dateien kopiert. Bitte prüfen ob ein Datenbank-Update vorhanden ist"
+msgstr " Files copied. Please check whether a database update is available"
+
+#: templates//php_language_extract.tpl:75
+msgid " kopiert"
+msgstr "copied"
+
+#: templates//php_language_extract.tpl:76
+msgid ""
+"Abbruch. Die folgenden Dateien konnten nicht beschrieben oder erstellt "
+"werden:"
+msgstr "Abort. The following files could not be written or created:"
+
+#: templates//php_language_extract.tpl:77
+msgid "Aktualisierung abgeschlossen. "
+msgstr "Update completed"
+
+#: templates//php_language_extract.tpl:78
+msgid "Aktualisierung gestartet, lade nun die Aktuelle Version herunter"
+msgstr "Update started, now download the current version"
+
+#: templates//php_language_extract.tpl:79
+msgid ""
+"Alle geprüften Dateien sind älter als jene in der Quelle. Update sollte "
+"durchgeführt werden"
+msgstr ""
+"All checked files are older than those in the source. Update should be "
+"carried out"
+
+#: templates//php_language_extract.tpl:80
+msgid "Benötigte Schreibrechte bestehen. Kopiere nun die Dateien"
+msgstr "The necessary write permissions exist. Now copy the files"
+
+#: templates//php_language_extract.tpl:81 templates//settings.tpl:264
+msgid "Betatest"
+msgstr "Beta test"
+
+#: templates//php_language_extract.tpl:82
+msgid "Bitte stelle sicher, dass alle Dateien vom Webserver beschreibbar sind."
+msgstr "Please make sure that all files are writable from the web server."
+
+#: templates//php_language_extract.tpl:83
+msgid ""
+"Bitte stelle sicher, dass der Webserver Schreibberechtigung für alle Dateien "
+"und Verzeichnisse des Projekts besitzt"
+msgstr ""
+"Please make sure that the web server has write permission for all files and "
+"directories of the project"
+
+#: templates//php_language_extract.tpl:84
+#, fuzzy
+#| msgid "Zugriff auf folgende Verzeichnisse fehlgeschlagen:"
+msgid "Das Erstellen des folgenden Verzeichnisses schlug fehl:"
+msgstr "Access to the following directories was denied:"
+
+#: templates//php_language_extract.tpl:85
+#, fuzzy
+#| msgid "Datentyp"
+msgid "Datei"
+msgstr "Type of data"
+
+#: templates//php_language_extract.tpl:86
+#, fuzzy
+#| msgid "Datensatz"
+msgid "Datei-Datum"
+msgstr "Record"
+
+#: templates//php_language_extract.tpl:87
+msgid "Datei-Datumsabgleich"
+msgstr "File-date check"
+
+#: templates//php_language_extract.tpl:90
+msgid "Die nächste Überprüfung nach folgendem Zeitpunkt stattfinden:"
+msgstr "The next review can take place after the following date:"
+
+#: templates//php_language_extract.tpl:92 templates//settings.tpl:265
+msgid "Entwicklung"
+msgstr "Development"
+
+#: templates//php_language_extract.tpl:93
+#, fuzzy
+#| msgid ""
+#| "Die gewählte Datenbank existiert nicht und konnte nicht erstellt werden"
+msgid "Folgende Datei konnte nicht erstellt werden:"
+msgstr "The selected database doesn't exists and could not be created"
+
+#: templates//php_language_extract.tpl:94
+msgid ""
+"Github beschränkt leider die API-Nutzung, weshalb die Prüfung momentan nicht "
+"stattfinden kann."
+msgstr ""
+"Github unfortunately restricts API use, which is why the test cannot take "
+"place at the moment."
+
+#: templates//php_language_extract.tpl:95
+msgid "Gleich"
+msgstr "Identical"
+
+#: templates//php_language_extract.tpl:97
+msgid "Letzte Änderungen:"
+msgstr "Last changes:"
+
+#: templates//php_language_extract.tpl:98
+msgid "Prüfe ob die Installation aktuell ist."
+msgstr "Check if the installation is up to date."
+
+#: templates//php_language_extract.tpl:99
+msgid "Prüfsumme"
+msgstr "Checksum"
+
+#: templates//php_language_extract.tpl:100
+msgid "Prüfsummenabgleich"
+msgstr "Checksum comparison"
+
+#: templates//php_language_extract.tpl:101 templates//settings.tpl:263
+msgid "Release"
+msgstr "Release"
+
+#: templates//php_language_extract.tpl:103
+msgid "Überprüfe die notwendigen Schreibberechtigungen"
+msgstr "Check the necessary write permissions"
+
+#: templates//php_language_extract.tpl:104
+msgid "Übersprungen, Prüfsummendifferenz"
+msgstr "Skipped, checksum mismatch"
+
+#: templates//php_language_extract.tpl:105
+msgid "Unterschiedlich"
+msgstr "Differently"
+
+#: templates//php_language_extract.tpl:106
+msgid "Vorhandene Datei ist älter"
+msgstr "Existing file is older"
+
+#: templates//php_language_extract.tpl:107
+msgid "Vorhandene Datei ist neuer"
+msgstr "Existing file is newer"
+
+#: templates//php_language_extract.tpl:108 templates//welcome.tpl:1
+msgid "Welcome!"
+msgstr "Welcome!"
+
+#: templates//settings.tpl:8
+#, fuzzy
+#| msgid "sqStorage Einladung"
+msgid "sqStorage ist aktuell"
+msgstr "sqStorage invite"
+
+#: templates//settings.tpl:12
+msgid "Es steht eine Aktualisierung zu Verfügung"
+msgstr "An update is available"
+
+#: templates//settings.tpl:13
+#, fuzzy
+#| msgid "Installation und Aktualisierung"
+msgid "Aktualisierung"
+msgstr "Installation / Update"
+
+#: templates//settings.tpl:19
+#, fuzzy
+#| msgid "Erneut prüfen"
+msgid "Auf Updates prüfen"
+msgstr "Check again"
+
+#: templates//settings.tpl:33
 msgid "zur Datenbank hinzugefügt"
 msgstr "added to the database"
 
-#: templates//settings.tpl:22
+#: templates//settings.tpl:39
 msgid "Benutzer zur Bearbeitung:"
 msgstr "User for editing:"
 
-#: templates//settings.tpl:61 templates//settings.tpl:80
-#: templates//settings.tpl:83
+#: templates//settings.tpl:78 templates//settings.tpl:97
+#: templates//settings.tpl:100
 msgid "Benutzergruppe"
 msgstr "User group"
 
-#: templates//settings.tpl:96 templates//settings.tpl:103
-#: templates//settings.tpl:106 templates//settings.tpl:143
+#: templates//settings.tpl:113 templates//settings.tpl:120
+#: templates//settings.tpl:123 templates//settings.tpl:160
 msgid "API Zugriff"
 msgstr "API access"
 
-#: templates//settings.tpl:97 templates//settings.tpl:106
-#: templates//settings.tpl:195
+#: templates//settings.tpl:114 templates//settings.tpl:123
+#: templates//settings.tpl:212
 msgid "verbieten"
 msgstr "deny"
 
-#: templates//settings.tpl:98 templates//settings.tpl:106
-#: templates//settings.tpl:199
+#: templates//settings.tpl:115 templates//settings.tpl:123
+#: templates//settings.tpl:216
 msgid "erlauben"
 msgstr "allow"
 
-#: templates//settings.tpl:135 templates//settings.tpl:140
-#: templates//settings.tpl:145
+#: templates//settings.tpl:152 templates//settings.tpl:157
+#: templates//settings.tpl:162
 msgid "Bitte die Datenbank aktualisieren"
 msgstr "Please update your database installation"
 
-#: templates//settings.tpl:140
+#: templates//settings.tpl:157
 msgid "Neuer Benutzer"
 msgstr "New user"
 
-#: templates//settings.tpl:143
+#: templates//settings.tpl:160
 msgid "Gruppe"
 msgstr "Group"
 
-#: templates//settings.tpl:145
+#: templates//settings.tpl:162
 msgid "Benutzer löschen"
 msgstr "Remove user"
 
-#: templates//settings.tpl:154
+#: templates//settings.tpl:171
 msgid "E-Mailserver-Einstellungen"
 msgstr "E-Mailserver settings"
 
-#: templates//settings.tpl:159
+#: templates//settings.tpl:176
 msgid "E-Mail Absenderadresse"
 msgstr "E-Mail sender address"
 
-#: templates//settings.tpl:165
+#: templates//settings.tpl:182
 msgid "E-Mailversand"
 msgstr "E-Mail delivery"
 
-#: templates//settings.tpl:169
+#: templates//settings.tpl:186
 msgid "deaktivieren"
 msgstr "deactivate"
 
-#: templates//settings.tpl:173
+#: templates//settings.tpl:190
 msgid "aktivieren"
 msgstr "activate"
 
-#: templates//settings.tpl:176 templates//settings.tpl:202
-#: templates//settings.tpl:233 templates//usersettings.tpl:48
+#: templates//settings.tpl:193 templates//settings.tpl:219
+#: templates//settings.tpl:250 templates//settings.tpl:290
+#: templates//usersettings.tpl:48
 msgid "Einstellungen speichern"
 msgstr "Save settings"
 
-#: templates//settings.tpl:186
+#: templates//settings.tpl:203
 msgid "Installation und Aktualisierung"
 msgstr "Installation / Update"
 
-#: templates//settings.tpl:211
+#: templates//settings.tpl:228
 msgid "Standard-Startseite"
 msgstr "Default home page"
 
-#: templates//settings.tpl:218 templates//settings.tpl:230
+#: templates//settings.tpl:235 templates//settings.tpl:247
 #: templates//usersettings.tpl:26 templates//usersettings.tpl:33
 #: templates//usersettings.tpl:45
 msgid "Startseite"
 msgstr "Home page"
 
-#: templates//settings.tpl:256 templates//usersettings.tpl:107
+#: templates//settings.tpl:260 templates//settings.tpl:273
+#, fuzzy
+#| msgid "Quelle"
+msgid "Update-Quelle"
+msgstr "Source"
+
+#: templates//settings.tpl:262
+msgid "Verfügbare Update-Quellen"
+msgstr "Available update sources"
+
+#: templates//settings.tpl:263
+msgid "Getestete Veröffentlichung"
+msgstr "Tested release"
+
+#: templates//settings.tpl:264
+msgid ""
+"Noch nich veröffentlichte Funktionen, aber möglicherweise auch mit Fehlern"
+msgstr "Features not yet released, but possibly also with bugs"
+
+#: templates//settings.tpl:265
+msgid ""
+"Aktueller Stand der Entwicklung - mit Vorsicht zu geniesen - Fehler "
+"eingeschlossen"
+msgstr "Current state of development - to be used with caution - bugs included"
+
+#: templates//settings.tpl:286
+msgid "Version"
+msgstr "Version"
+
+#: templates//settings.tpl:289 templates//settings.tpl:401
+msgid "Updatequellen-Auswahl aktivieren"
+msgstr "Activate update source selection"
+
+#: templates//settings.tpl:313 templates//usersettings.tpl:107
 msgid "Benutzer wirklich entfernen?"
 msgstr "Really remove the user?"
 
-#: templates//settings.tpl:256 templates//usersettings.tpl:107
+#: templates//settings.tpl:313 templates//usersettings.tpl:107
 msgid "Der letzte Administrator kann nicht gelöscht werden!"
 msgstr "The last administrator cannot be deleted!"
+
+#: templates//settings.tpl:403
+msgid "Updatequellen-Auswahl deaktivieren"
+msgstr "Deactivate update source selection"
 
 #: templates//transfer.tpl:8 templates//transfer.tpl:26
 msgid "Quelle"
@@ -1083,9 +1294,50 @@ msgstr "Choose target"
 msgid "Keine Gegenstände gefunden."
 msgstr "No items found."
 
-#: templates//usersettings.tpl:1
-msgid "Benutzereinstellungen"
-msgstr "User-settings"
+#: templates//updater.tpl:1
+msgid "Aktualisierungs-Manager"
+msgstr "Update Manager"
+
+#: templates//updater.tpl:13
+msgid "Aktualisierung der installation"
+msgstr "Updating the installation"
+
+#: templates//updater.tpl:18
+msgid ""
+"Hier kannst Du Deine Installation von der aktuell gewählten Quelle "
+"aktualisieren"
+msgstr ""
+"Here you can update your installation from the currently selected source"
+
+#: templates//updater.tpl:21
+#, fuzzy
+#| msgid "keine Änderungen durchgeführt"
+msgid "Aktualisierung durchführen"
+msgstr "no changes applied"
+
+#: templates//updater.tpl:29
+msgid "Aktualisierung der Datenbank"
+msgstr "Updating the database"
+
+#: templates//updater.tpl:34
+#, fuzzy
+#| msgid "Bitte die Datenbank aktualisieren"
+msgid "Datenbank-Aktualisierung"
+msgstr "Please update your database installation"
+
+#: templates//updater.tpl:37
+#, fuzzy
+#| msgid "Bitte die Datenbank aktualisieren"
+msgid "Zur Datenbank-Aktualisierung"
+msgstr "Please update your database installation"
+
+#: templates//updater.tpl:45
+#, fuzzy
+#| msgid "Die Installation ist momentan nicht erlaubt"
+msgid ""
+"Die Installation ist momentan nicht erlaubt - bitte zuerst in den "
+"Einstellungen aktivieren"
+msgstr "Installation is currently not allowed"
 
 #: templates//usersettings.tpl:64 templates//usersettings.tpl:67
 msgid "Aktuelles Passwort"
@@ -1099,18 +1351,11 @@ msgstr "New password"
 msgid "Neues Passwort speichern"
 msgstr "Save new password"
 
-#: templates//welcome.tpl:1
-msgid "Welcome!"
-msgstr "Welcome!"
-
 #~ msgid "SQStorage"
 #~ msgstr "SQStorage"
 
 #~ msgid "Bitte Benutzername und E-Mail-Adresse angeben."
 #~ msgstr "Please enter your username and email address."
-
-#~ msgid "Datensatz"
-#~ msgstr "Record"
 
 #~ msgid "Datensätze"
 #~ msgstr "Records"

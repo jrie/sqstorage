@@ -71,3 +71,38 @@
 {t}Zugriff auf folgende Verzeichnisse fehlgeschlagen:{/t}
 {t}Zugriff verweigert!{/t}
 {t}Zu viele Anmeldeversuche. Bitte später nochmal versuchen{/t}
+{t} Dateien kopiert. Bitte prüfen ob ein Datenbank-Update vorhanden ist{/t}
+{t} kopiert{/t}
+{t}Abbruch. Die folgenden Dateien konnten nicht beschrieben oder erstellt werden:{/t}
+{t}Aktualisierung abgeschlossen. {/t}
+{t}Aktualisierung gestartet, lade nun die Aktuelle Version herunter{/t}
+{t}Alle geprüften Dateien sind älter als jene in der Quelle. Update sollte durchgeführt werden{/t}
+{t}Benötigte Schreibrechte bestehen. Kopiere nun die Dateien{/t}
+{t}Betatest{/t}
+{t}Bitte stelle sicher, dass alle Dateien vom Webserver beschreibbar sind.{/t}
+{t}Bitte stelle sicher, dass der Webserver Schreibberechtigung für alle Dateien und Verzeichnisse des Projekts besitzt{/t}
+{t}Das Erstellen des folgenden Verzeichnisses schlug fehl:{/t}
+{t}Datei{/t}
+{t}Datei-Datum{/t}
+{t}Datei-Datumsabgleich{/t}
+{t}Datenfelder{/t}
+{t}Der Eintrag wurde erfolgreich aktualisiert.{/t}
+{t}Die nächste Überprüfung nach folgendem Zeitpunkt stattfinden:{/t}
+{t}Eintragen{/t}
+{t}Entwicklung{/t}
+{t}Folgende Datei konnte nicht erstellt werden:{/t}
+{t}Github beschränkt leider die API-Nutzung, weshalb die Prüfung momentan nicht stattfinden kann.{/t}
+{t}Gleich{/t}
+{t}Inventar{/t}
+{t}Letzte Änderungen:{/t}
+{t}Prüfe ob die Installation aktuell ist.{/t}
+{t}Prüfsumme{/t}
+{t}Prüfsummenabgleich{/t}
+{t}Release{/t}
+{t}Transferieren{/t}
+{t}Überprüfe die notwendigen Schreibberechtigungen{/t}
+{t}Übersprungen, Prüfsummendifferenz{/t}
+{t}Unterschiedlich{/t}
+{t}Vorhandene Datei ist älter{/t}
+{t}Vorhandene Datei ist neuer{/t}
+{t}Welcome!{/t}
