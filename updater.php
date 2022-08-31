@@ -34,16 +34,7 @@ require_once('./support/updater.php');
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'installupdate') {
   $updatework = true;
   $settingdata['updater'] = SettingsGet('updater');
-  DownloadMasterZipAndUnpack($settingdata['updater']['githubuser'],$settingdata['updater']['githubrepo'],$settingdata['updater']['githubbranch'], __DIR__,false);
-
-
-}elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'install'){
-
-}elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'updater'){
-
-}elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'updatecheck'){
-
-}elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'startpage'){
+  DownloadMasterZipAndUnpack($settingdata['updater']['githubuser'],$settingdata['updater']['githubrepo'],$settingdata['updater']['githubbranch'], __DIR__,true);
 
 }elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
