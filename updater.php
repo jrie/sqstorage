@@ -22,8 +22,8 @@ $smarty->assign('urlBase', $urlBase);
 require_once('./support/dba.php');
 if ($usePrettyURLs) $smarty->assign('urlPostFix', '');
 else $smarty->assign('urlPostFix', '.php');
-if(isset($_POST['target'])){
-  $mtarget = $_POST['target'];
+if(isset($_REQUEST['target'])){
+  $mtarget = $_REQUEST['target'];
 }else{
   $mtarget = "";
 }
@@ -31,15 +31,14 @@ $install_allowed = false;
 if(file_exists($basedir . "/support/allow_install")) $install_allowed = true;
 require_once('./support/updater.php');
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'installupdate') {
+if ( $mtarget  == 'installupdate') {
+  $enable = true;
   $updatework = true;
   $settingdata['updater'] = SettingsGet('updater');
-  DownloadMasterZipAndUnpack($settingdata['updater']['githubuser'],$settingdata['updater']['githubrepo'],$settingdata['updater']['githubbranch'], __DIR__,true);
-
-}elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
+  DownloadMasterZipAndUnpack($settingdata['updater']['githubuser'],$settingdata['updater']['githubrepo'],$settingdata['updater']['githubbranch'], __DIR__,$enable);
+  error_log(("Pulling Update"));
+  die;
 }
-
 
 $isEdit = false;
 $isAdd = false;

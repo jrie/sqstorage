@@ -7,9 +7,8 @@
 
 {if $install_allowed}
     <div id="updateprogress"></div>
-     <form accept-charset="utf-8" id="installupdate" method="POST" action="">
-        <input type="hidden" id="install" name="target" value="installupdate" />
-        <ul class="update list-group">
+
+        <ul class="update list-group" id="installupdate">
             <li class="alert alert-info">
                 <span class="list-span">{t}Aktualisierung der installation{/t}</span>
             </li>
@@ -22,7 +21,7 @@
                 <button class="btn btn-primary float-right" id="updaterbutton" onclick="RunTheUpdate();return false;">{t}Aktualisierung durchführen{/t}</button>
             </li>
         </ul>
-    </form>
+
     <hr />
     <form accept-charset="utf-8" id="dbupdate" method="POST" action="install.php">
         <ul class="dbupdate list-group">
@@ -65,16 +64,18 @@
       let inProgress = false;
 
       function updateProgress(){
-        if(inProgress == false){
-            const xhttp = new XMLHttpRequest();
-            xhttp.onload = function() {
-              inProgress = false;
-              document.getElementById("updateprogress").innerHTML = this.responseText;
-              }
-            xhttp.open("GET", "returnstate.php?state=install", true);
-            xhttp.send();
-            inProgress = true;
+        if(DoCheck){
+          if(inProgress == false){
+              const xhttp = new XMLHttpRequest();
+              xhttp.onload = function() {
+                inProgress = false;
+                document.getElementById("updateprogress").innerHTML = this.responseText;
+                }
+              xhttp.open("GET", "returnstate.php?state=install", true);
+              xhttp.send();
+              inProgress = true;
 
+          }
         }
       }
 
@@ -82,22 +83,21 @@
             let int = self.setInterval("updateProgress()", 200);
 /////'updater.php target=installupdate'
             var xhttp = new XMLHttpRequest();
-            xhttp.open("POST", "updater.php", true);
-            xhttp.setRequestHeader("Content-Type", "application/json");
             xhttp.onreadystatechange = function() {
               if (this.readyState == 4 && this.status == 200) {
                 setTimeout(function(){
                   DoCheck = false;
+                  window.stop();
                 }, 1000);
 
 
 
               }
             };
-            var data = {target:'installupdate'};
+            xhttp.open("GET", "updater.php?target=installupdate", true);
             document.getElementById('installupdate').style.display = 'none';
             DoCheck = true;
-            xhttp.send(JSON.stringify(data));
+            xhttp.send();
 
       }
 

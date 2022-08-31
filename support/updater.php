@@ -52,6 +52,7 @@ function DownloadMasterZipAndUnpack($user,$repo,$branch,$dir=__DIR__,$doinstall 
     return false;
   }
   $strFT = "";
+  $zfcount = 1;
   $zip = new ZipArchive;
   if ($zip->open($dir . "/support/" . $branch .'.zip') === TRUE) {
       $zip->extractTo($dir . '/support/unpack_temp_dir/');
@@ -62,6 +63,7 @@ function DownloadMasterZipAndUnpack($user,$repo,$branch,$dir=__DIR__,$doinstall 
       $failed = "";
       for ($i = 0; $i < $zip->numFiles; $i++) {
         $filename = $zip->getNameIndex($i);
+        $zfcount++;
         $currfile = $dir . "/support/unpack_temp_dir/" . $filename;
         $newfile = $dir . DIRECTORY_SEPARATOR . substr($filename,$len);
         $cnt = $i + 1;
@@ -89,7 +91,14 @@ function DownloadMasterZipAndUnpack($user,$repo,$branch,$dir=__DIR__,$doinstall 
           $outputmsg = "<b>FAILED</b> :" . $outputmsgA;
         }
         $outputmsg .= "<br />";
-        WriteUpdateLog($outputmsg);
+        $emptybefore = false;
+        if($zfcount == 10){
+          $emptybefore = true;
+          $zfcount == 0;
+        }
+        WriteUpdateLog($outputmsg,$emptybefore);
+
+        usleep(4799);
         $strFT .= "<tr><td>$currfile</td><td>".$pre."$newfile". $aft ."</td><td>$write</td></tr>";
       }
       $strFT .= "</table>";
@@ -98,6 +107,7 @@ function DownloadMasterZipAndUnpack($user,$repo,$branch,$dir=__DIR__,$doinstall 
 
         $outputmsg = gettext("Benötigte Schreibrechte bestehen. Kopiere nun die Dateien") . "<br />";
         WriteUpdateLog($outputmsg);
+        usleep(1000000);
         $ccnt = 1;
         for ($i = 0; $i < $zip->numFiles; $i++) {
           $ccnt++;
@@ -301,7 +311,7 @@ function WriteUpdateLog($linetowrite, $emptyfilebefore = false,$nodate = false){
     $line = date('Y-m-d H:i:s',time()) . " :" . $linetowrite;
   }
   if($emptyfilebefore){
-    file_put_contents($file, $line);
+    file_put_contents($file, $line,LOCK_EX);
   }else{
     file_put_contents($file, $line, FILE_APPEND | LOCK_EX);
   }

@@ -52,6 +52,5 @@ RewriteRule ^usersettings/$ usersettings.php [L]
 RewriteRule ^updater$ updater.php [L]
 RewriteRule ^updater/$ updater.php [L]
 
-
 </IfModule>
 
