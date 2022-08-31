@@ -6,6 +6,7 @@ $success = "";
 $settingdata = array();
 $updatecheck = false;
 $uptodate = false;
+$ghapi = array();
 
 if ($useRegistration) {
   if (!isset($user) || !isset($user['usergroupid']) || (int)$user['usergroupid'] === 2) {
@@ -59,8 +60,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'mail') {
   require_once('support/updater.php');
   $updatecheck = true;
   $updData = SettingsGet('updater');
-  $uptodate = AreFileUpToDate($updData['githubuser'],$updData['githubrepo'],$updData['githubbranch']);
-
+  $resetTime = 0;
+  $remainingCalls = GetRemainingGithubAPICalls($resetTime);
+  if($remainingCalls < 15){
+    $msg = gettext('Github beschränkt leider die API-Nutzung, weshalb die Prüfung momentan nicht stattfinden kann.');
+    $msg .=  "<br />" . gettext('Die nächste Überprüfung nach folgendem Zeitpunkt stattfinden:'). "<br />" . date('Y-m-d H:i:s',$resetTime);
+    $error = $msg;
+    $updatecheck = false;
+  }else{
+    $uptodate = AreFileUpToDate($updData['githubuser'],$updData['githubrepo'],$updData['githubbranch']);
+  }
 
 
 }elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'startpage'){

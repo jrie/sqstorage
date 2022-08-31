@@ -29,9 +29,10 @@
 
 
 
-function DownloadMasterZipAndUnpack($user,$repo,$branch,$dir=__DIR__){
+function DownloadMasterZipAndUnpack($user,$repo,$branch,$dir=__DIR__,$doinstall = false){
   $docopy = false;
-  $outputmsg = "Update process started, downloading project as zip<br />";
+  if($doinstall) $docopy = true;
+  $outputmsg = gettext("Aktualisierung gestartet, lade nun die Aktuelle Version herunter")."<br />";
   WriteUpdateLog($outputmsg,true);
 
   if(!file_exists($dir . "/support/" . $branch . ".zip")){
@@ -44,8 +45,8 @@ function DownloadMasterZipAndUnpack($user,$repo,$branch,$dir=__DIR__){
   if(is_dir($dir . '/support/unpack_temp_dir')) rrmdir($dir . '/support/unpack_temp_dir');
   mkdir($dir . '/support/unpack_temp_dir');
   if(!is_dir($dir . '/support/unpack_temp_dir')){
-    $outputmsg = "The script is unable to create the required temporary folder" . $dir . '/support/unpack_temp_dir' ."<br />";
-    $outputmsg .= "Please ensure all files and folders are writeable for the user which runs the webserver. <br />";
+    $outputmsg = gettext("Das Erstellen des folgenden Verzeichnisses schlug fehl:")  . $dir . '/support/unpack_temp_dir' ."<br />";
+    $outputmsg .= gettext("Bitte stelle sicher, dass alle Dateien vom Webserver beschreibbar sind.")." <br />";
     WriteUpdateLog($outputmsg);
     @unlink($dir . "/support/" . $branch .".zip");
     return false;
@@ -56,7 +57,7 @@ function DownloadMasterZipAndUnpack($user,$repo,$branch,$dir=__DIR__){
       $zip->extractTo($dir . '/support/unpack_temp_dir/');
       $strFT .= "<table border='1'>";
 
-      $outputmsg = "Checking write permissions for ". $zip->numFiles ." files<br />";
+      $outputmsg = gettext("Überprüfe die notwendigen Schreibberechtigungen")."<br />";
       WriteUpdateLog($outputmsg);
       $failed = "";
       for ($i = 0; $i < $zip->numFiles; $i++) {
@@ -95,7 +96,7 @@ function DownloadMasterZipAndUnpack($user,$repo,$branch,$dir=__DIR__){
       if($allwriteable){
         $out = "<h2>All files can be written, permissions granted</h2>";
 
-        $outputmsg = "All files can be written, starting the copy process<br />";
+        $outputmsg = gettext("Benötigte Schreibrechte bestehen. Kopiere nun die Dateien") . "<br />";
         WriteUpdateLog($outputmsg);
         $ccnt = 1;
         for ($i = 0; $i < $zip->numFiles; $i++) {
@@ -103,7 +104,7 @@ function DownloadMasterZipAndUnpack($user,$repo,$branch,$dir=__DIR__){
           $cnt = $i + 1;
           if($ccnt == 10){
             $ccnt = 1;
-            $outputmsg = str_pad($cnt, 4, '0', STR_PAD_LEFT) . "/" . $zip->numFiles  ." copied<br />";
+            $outputmsg = str_pad($cnt, 4, '0', STR_PAD_LEFT) . "/" . $zip->numFiles  . gettext(" kopiert") . "<br />";
             WriteUpdateLog($outputmsg);
           }
           $filename = $zip->getNameIndex($i);
@@ -118,11 +119,11 @@ function DownloadMasterZipAndUnpack($user,$repo,$branch,$dir=__DIR__){
             }
           }
         }
-        $outputmsg = "Update completed. " . $zip->numFiles  ." files copied. Please check for available database updated <br />";
+        $outputmsg = gettext("Aktualisierung abgeschlossen. ") . $zip->numFiles  . gettext(" Dateien kopiert. Bitte prüfen ob ein Datenbank-Update vorhanden ist") ."<br />";
         WriteUpdateLog($outputmsg,true);
       }else{
           $out = "<h2>Not all required files can be written, action aborted</h2>";
-          $outputmsg = "Aborting, the following files could not be written / created:<br />";
+          $outputmsg = gettext("Abbruch. Die folgenden Dateien konnten nicht beschrieben oder erstellt werden:")."<br />";
           $outputmsg .= $failed;
           WriteUpdateLog($outputmsg,true);
       }
@@ -132,6 +133,11 @@ function DownloadMasterZipAndUnpack($user,$repo,$branch,$dir=__DIR__){
       rrmdir($dir . '/support/unpack_temp_dir');
   } else {
       $out = "</h2>Error - Zip file couldn't be opened</2>";
+      $outputmsg = gettext("Folgende Datei konnte nicht erstellt werden:") . $dir . "/support/" . $branch . '.zip' . "<br />";
+      $outputmsg .= gettext("Bitte stelle sicher, dass der Webserver Schreibberechtigung für alle Dateien und Verzeichnisse des Projekts besitzt");
+      WriteUpdateLog($outputmsg);
+
+
   }
   return $out;
 }
@@ -159,12 +165,12 @@ function rrmdir($dir) {
  ****************************************************************************************************************************************
  */
 function AreFileUpToDate($ghuser,$ghrepo,$ghbranch,&$debugData = ""){
-  $outputmsg = "Checking if all files are up to date<br />";
+  $outputmsg = gettext("Prüfe ob die Installation aktuell ist.") . "<br />";
   WriteUpdateLog($outputmsg,true);
   $out = true;
   $newercount = 0;
-  $debugData .= "<table border='1'>";
-  $debugData .= "<tr><th>File</th><th>Checksum</th><th>Filedate</th><th>CheckSumCheck</th><th>Filetimecheck</th></tr>";
+      $debugData .= "<table border='1'>";
+      $debugData .= "<tr><th>".gettext("Datei")."</th><th>".gettext("Prüfsumme")."</th><th>".gettext("Datei-Datum")."</th><th>".gettext("Prüfsummenabgleich")."</th><th>".gettext("Datei-Datumsabgleich")."</th></tr>";
   $commitdetails = GHGetLastCommitDetails($ghuser,$ghrepo,$ghbranch);
   $sha = $commitdetails['sha'];
   $lastcommitfiles = GHGetCommitFiles($ghuser,$ghrepo,$sha);
@@ -173,23 +179,23 @@ function AreFileUpToDate($ghuser,$ghrepo,$ghbranch,&$debugData = ""){
       $checksum = $filedetails['checksum'];
       $editdate = $filedetails['date'];
       $editts = strtotime($editdate);
-      $debugData .= "<td>$filename</td><td>$checksum</td><td>$editdate - $editts</td>";
+          $debugData .= "<td>$filename</td><td>$checksum</td><td>$editdate - $editts</td>";
       $localchecksum = GitFileHash($filename);
       $localtime = 0;
       if(file_exists($filename)) $localtime = filemtime($filename);
       if($localchecksum !== $checksum){
-        $debugData .= "<td>MisMatch</td>";
+            $debugData .= "<td>".gettext("Unterschiedlich")."</td>";
         $out = false;
-        $debugData .= "<td>Skipped, Checksum mismatch</td>";
+            $debugData .= "<td>". gettext("Übersprungen, Prüfsummendifferenz") ."</td>";
       }else{
-        $debugData .= "<td>Match</td>";
+            $debugData .= "<td>". gettext("Gleich") ."</td>";
       }
 
       if($localtime + 300 > $editts){
-        $lta = "Local file is newer";
+        $lta = gettext("Vorhandene Datei ist neuer");
         $newercount++;
       }else{
-        $lta = "Local file is older";
+        $lta = gettext("Vorhandene Datei ist älter");
       }
       $debugData .= "<td> $lta - $localtime</td>";
       $debugData .= "</tr>";
@@ -197,7 +203,7 @@ function AreFileUpToDate($ghuser,$ghrepo,$ghbranch,&$debugData = ""){
     $debugData .= "</table>";
 
     if($newercount == 0){
-        $debugData .= "<h3>All checked file older than in github - update should be performed</h2>";
+        $debugData .= "<h3>" . gettext("Alle geprüften Dateien sind älter als jene in der Quelle. Update sollte durchgeführt werden")."</h2>";
         $out = false;
     }
     WriteUpdateLog($debugData,false,true);
@@ -207,7 +213,7 @@ function AreFileUpToDate($ghuser,$ghrepo,$ghbranch,&$debugData = ""){
 
 
 function GHGetCommitFiles($ghuser,$ghrepo,$sha){
-    $output = "Requesting list of last committed changed<br />";
+    $output = gettext("Letzte Änderungen:")."<br />";
     WriteUpdateLog($output);
     $commits = array();
     $tmp = GHCUrl("https://api.github.com/repos/$ghuser/$ghrepo/commits/" . $sha);
@@ -284,7 +290,6 @@ function GetRemainingGithubAPICalls(&$resetTime = 0){
         list($dump,$resetTime) = explode(' ', $headerlines[$x]);
       }
   }
-  echo "<pre>" . print_r($headerlines,true)."<pre>";
   return $remaining;
 }
 
