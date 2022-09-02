@@ -1,5 +1,4 @@
 <?php
-$user="";
 require('login.php');
 $error = "";
 $success = "";
@@ -10,7 +9,7 @@ if ($useRegistration) {
     include('accessdenied.php');
     die();
   }
-}
+} 
 
 require_once('support/urlBase.php');
 $smarty->assign('urlBase', $urlBase);
@@ -25,20 +24,13 @@ if(isset($_POST['target'])){
 }
 $errors = array();
 
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'passwordchange') {
   if(SetUserPassword( $_POST['oldPassword'] , $_POST['newPassword1'] , $_POST['newPassword2'],$errors )   ){
     $success = gettext('Der Eintrag wurde erfolgreich aktualisiert.');
   }
-
-}elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'startpage'){
+} elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'startpage') {
   SettingsSet("startpage",$_SESSION['user']['username'],$_POST['startpagekey']);
-}else{
-
-
-
 }
-
 
 $pages = [
   'entry' => gettext("Eintragen"),
@@ -47,7 +39,8 @@ $pages = [
   'datafields' => gettext('Datenfelder'),
   'welcome' => gettext('Welcome!'),
 ];
-$defaultStartPage = SettingsGetSingle("startpage",$user['username'],SettingsGetSingle("startpage","defaultuser","welcome"));
+
+$defaultStartPage = SettingsGetSingle("startpage", $user['username'], SettingsGetSingle("startpage","defaultuser","welcome"));
 
 $smarty->assign('pages',$pages);
 $smarty->assign('defaultStartPage',$defaultStartPage);
