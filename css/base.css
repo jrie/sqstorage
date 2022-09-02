@@ -864,3 +864,12 @@ tbody .table-row.subMenu {
     margin-top: -0.5em;
 }
 
+form#updateForm span.list-span:first-of-type,
+form#startpage span.list-span:first-of-type {
+    min-width: none;
+    max-width: none;
+}
+
+form#updatecheckform [type="submit"] {
+    margin-bottom: 2em;
+}

@@ -18,6 +18,7 @@
       <input type="hidden" id="install" name="target" value="updatecheck" />
       <button type="submit" class="btn btn-primary float-right">{t}Auf Updates prüfen{/t}</button>
       </form>
+      <div class="clearfix"></div>
     {/if}
 
 
@@ -49,49 +50,40 @@
                 <span class="input-group-text" id="basic-addon1">{t}Benutzername{/t}</span>
             </div>
 
-
             {if !$isEdit && !$error}
             <input type="text" name="username" maxlength="20" class="form-control" required="required" placeholder="{t}Benutzername{/t}" aria-label="{t}Benutzername{/t}" aria-describedby="basic-addon1">
             {else}
             <input type="text" name="username" maxlength="20" class="form-control" required="required" placeholder="{t}Benutzername{/t}" aria-label="{t}Benutzername{/t}" aria-describedby="basic-addon1" value="{$user.username}">
             {/if}
-
         </div>
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon7">{t}E-Mail{/t}</span>
             </div>
+
             {if !$isEdit && !$error}
             <input type="email" name="mailaddress" maxlength="254" class="form-control" autocomplete="off" placeholder="{t}E-Mail{/t}" aria-label="{t}E-Mail{/t}" aria-describedby="basic-addon7">
             {else}
             <input type="email" name="mailaddress" maxlength="254" class="form-control" autocomplete="off" placeholder="{t}E-Mail{/t}" aria-label="{t}E-Mail{/t}" aria-describedby="basic-addon7" value="{$user.mailaddress}">
             {/if}
-
         </div>
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <div class="dropdown">
                     <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="usergroupDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
                         <option value="-1" selected="selected">{t}Benutzergruppe{/t}</option>
-
                         {$currentUsergroup=NULL}
-
                         {foreach $usergroups as $usergroup}
                         {if ($isEdit || $error) && $user.usergroupid == $usergroup.id}
                         {$currentUsergroup=$usergroup}
                         {/if}
                         <option value="{$usergroup.id}">{t}{$usergroup.name}{/t}</option>
                         {/foreach}
-
                     </select>
                 </div>
             </div>
-
-
-
 
             {if (!$isEdit && !$error) || $currentUsergroup == null}
             <input type="text" class="form-control" id="usergroupname" name="usergroupname" readonly="readonly" required="required" autocomplete="off" placeholder="{t}Benutzergruppe{/t}">
@@ -102,14 +94,10 @@
             {/if}
         </div>
 
-
-
-
-          <div class="input-group mb-3">
+        <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <div class="dropdown">
                     <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="userapiDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
                         <option value="-1" selected="selected">{t}API Zugriff{/t}</option>
                         <option value="0">{t}verbieten{/t}</option>
                         <option value="1">{t}erlauben{/t}</option>
@@ -123,13 +111,7 @@
             <input type="text" class="form-control" id="userapi" name="userapi" readonly="readonly" required="required" autocomplete="off" placeholder="{t}API Zugriff{/t} " value="{if $user.api_access == 1}{t}erlauben{/t}{else}{t}verbieten{/t}{/if}">
             <input type="hidden" value="{$user.api_access}" id="userapikey" name="userapikey" />
             {/if}
-          </div>
-
-
-
-
-
-
+        </div>
 
         <div style="float: right;">
             {if $isEdit}
@@ -137,7 +119,6 @@
             {else}
             <button type="submit" class="btn btn-primary">{t}Eintragen{/t}</button>
             {/if}
-
         </div>
     </form>
     {else}
@@ -193,10 +174,11 @@
                 <button type="submit" class="btn btn-primary float-right">{t}Einstellungen speichern{/t}</button>
             </li>
         </ul>
+        <div class="clearfix"></div>
     </form>
     <hr />
     {/if}
-    <form accept-charset="utf-8" id="mailform" method="POST" action="">
+    <form accept-charset="utf-8" id="updateForm" method="POST" action="">
         <input type="hidden" id="install" name="target" value="install" />
         <ul class="categories list-group">
             <li class="alert alert-info">
@@ -219,6 +201,7 @@
                 <button type="submit" class="btn btn-primary float-right">{t}Einstellungen speichern{/t}</button>
             </li>
         </ul>
+        <div class="clearfix"></div>
     </form>
     <hr />
     <form accept-charset="utf-8" id="startpage" method="POST" action="">
@@ -250,6 +233,7 @@
                 <button type="submit" class="btn btn-primary float-right">{t}Einstellungen speichern{/t}</button>
             </li>
         </ul>
+        <div class="clearfix"></div>
     </form>
 
 
@@ -290,6 +274,7 @@
                 <button type="submit" id="updaterbutton" class="btn btn-primary float-right" disabled>{t}Einstellungen speichern{/t}</button>
             </li>
         </ul>
+        <div class="clearfix"></div>
     </form>
 
 
