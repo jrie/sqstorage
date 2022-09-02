@@ -3,8 +3,8 @@ require('login.php');
 $error = "";
 $success = "";
 
-if ($useRegistration) {
-  if (!isset($user) || !isset($user['usergroupid']) || (int)$user['usergroupid'] === 2) {
+if ($useRegistration || !isset($user)) {
+  if (!isset($user['username']) || !isset($user['usergroupid']) || (int)$user['usergroupid'] === 2) {
     $error = gettext('Zugriff verweigert!');
     include('accessdenied.php');
     die();
