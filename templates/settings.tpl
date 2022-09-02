@@ -2,6 +2,23 @@
 {include file="nav.tpl" target="settings.php" request=$REQUEST}
 
 <div class="content">
+    {if $updatecheck}
+      {if $uptodate}
+        <div class="alert alert-success" role="alert">
+          <h6>{t}sqStorage ist aktuell{/t}</h6>
+        </div>
+      {else}
+        <div class="alert alert-danger" role="alert">
+          <h6>{t}Es steht eine Aktualisierung zu Verfügung{/t}</h6>
+          <a href="updater.php" title="{t}Aktualisierung{/t}">{t}Aktualisierung{/t}</a>
+        </div>
+      {/if}
+    {else}
+      <form method="POST" id="updatecheckform">
+      <input type="hidden" id="install" name="target" value="updatecheck" />
+      <button type="submit" class="btn btn-primary float-right">{t}Auf Updates prüfen{/t}</button>
+      </form>
+    {/if}
 
 
     {if $isEdit || $isAdd}
@@ -236,6 +253,46 @@
     </form>
 
 
+    <form accept-charset="utf-8" id="updater" method="POST" action="">
+        <input type="hidden" id="install" name="target" value="updater" />
+        <ul class="categories list-group">
+            <li class="alert alert-info">
+                <span class="list-span">{t}Update-Quelle{/t}</span>
+                <small>
+                  <br /><span><b>{t}Verfügbare Update-Quellen{/t}</b></span>
+                  <br /><span>{t}Release{/t} - {t}Getestete Veröffentlichung{/t}</span>
+                  <br /><span>{t}Betatest{/t} - {t}Noch nich veröffentlichte Funktionen, aber möglicherweise auch mit Fehlern{/t}</span>
+                  <br /><span>{t}Entwicklung{/t} - {t}Aktueller Stand der Entwicklung - mit Vorsicht zu geniesen - Fehler eingeschlossen{/t}</span>
+                </small>
+            </li>
+            <li class="list-group-item">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="dropdown">
+                            <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="branchDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <option value="-1" selected="selected">{t}Update-Quelle{/t}</option>
+                                {foreach $settingdata.updater.branches  as $branch => $branchlabel}
+                                {if $branch == $settingdata.updater.githubbranch}
+                                    {$sel = "selected='selectd'"}
+                                    {$outputlabel = $branchlabel}
+                                {else}
+                                    {$sel = ""}
+                                {/if}
+                                <option class="branchselect" value="{$branch}" {$sel} >{t}{$branchlabel}{/t}</option>
+                                {/foreach}
+                            </select>
+                        </div>
+                    </div>
+                    <input type="text" class="form-control" id="branchlabel" name="branchlabel" readonly="readonly" required="required" autocomplete="off" placeholder="{t}Version{/t} " value="{$outputlabel}">
+                    <input type="hidden" value="{$settingdata.updater.githubbranch}" id="branch" name="branch" />
+                </div>
+                <button id="updaterunlockbutton" class="btn btn-primary float-left" onclick="unlockupdater();return false;">{t}Updatequellen-Auswahl aktivieren{/t}</button>
+                <button type="submit" id="updaterbutton" class="btn btn-primary float-right" disabled>{t}Einstellungen speichern{/t}</button>
+            </li>
+        </ul>
+    </form>
+
+
 
     {/if}
 </div>
@@ -320,6 +377,31 @@
             startpage.value = startpageselectdropdown.value
             startpageselectdropdown.value = '-1'
         })
+    }
+
+    let branchdropdown = document.querySelector('#branchDropdown')
+    if (branchdropdown !== null) {
+        branchdropdown.addEventListener('change', function(evt) {
+            let branchdropdown = evt.target
+            let branchlabel = document.querySelector('#branchlabel')
+            let branch = document.querySelector('#branch')
+            if (parseInt(branchdropdown.value) === -1) {
+                branch.value = ''
+                return
+            }
+            branchlabel.value = branchdropdown.options[branchdropdown.selectedIndex].text
+            branch.value = branchdropdown.value
+            branchdropdown.value = '-1'
+        })
+    }
+
+    function unlockupdater(){
+      document.querySelector('#updaterbutton').disabled =!document.querySelector('#updaterbutton').disabled;
+      if(document.querySelector('#updaterbutton').disabled){
+          document.querySelector('#updaterunlockbutton').innerHTML = {/literal}'{t}Updatequellen-Auswahl aktivieren{/t}'{literal}
+      }else{
+          document.querySelector('#updaterunlockbutton').innerHTML = {/literal}'{t}Updatequellen-Auswahl deaktivieren{/t}'{literal}
+      }
     }
 
 </script>

@@ -3,6 +3,10 @@ $user="";
 require('login.php');
 $error = "";
 $success = "";
+$settingdata = array();
+$updatecheck = false;
+$uptodate = false;
+$ghapi = array();
 
 if ($useRegistration) {
   if (!isset($user) || !isset($user['usergroupid']) || (int)$user['usergroupid'] === 2) {
@@ -47,6 +51,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'mail') {
         $install_allowed = false;
     }
   }
+}elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'updater'){
+       if(isset($_POST['branch'])) {
+        $branch = $_POST['branch'];
+          if(in_array($branch,['main','dev','beta'])) SettingsSet('updater','githubbranch',$branch);
+        }
+}elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'updatecheck'){
+  require_once('support/updater.php');
+  $updatecheck = true;
+  $updData = SettingsGet('updater');
+  $resetTime = 0;
+  $remainingCalls = GetRemainingGithubAPICalls($resetTime);
+  if($remainingCalls < 15){
+    $msg = gettext('Github beschränkt leider die API-Nutzung, weshalb die Prüfung momentan nicht stattfinden kann.');
+    $msg .=  "<br />" . gettext('Die nächste Überprüfung nach folgendem Zeitpunkt stattfinden:'). "<br />" . date('Y-m-d H:i:s',$resetTime);
+    $error = $msg;
+    $updatecheck = false;
+  }else{
+    $uptodate = AreFileUpToDate($updData['githubuser'],$updData['githubrepo'],$updData['githubbranch']);
+  }
+
 
 }elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'startpage'){
   SettingsSet("startpage","defaultuser",$_POST['startpagekey']);
@@ -165,8 +189,21 @@ $pages = [
   'datafields' => gettext('Datenfelder'),
   'welcome' => gettext('Welcome!'),
 ];
+
+$settingdata['updater'] = SettingsGet('updater');
+if($settingdata['updater'] === null){
+  SettingsSet('updater','githubuser','jrie');
+  SettingsSet('updater','githubrepo','sqstorage');
+  SettingsSet('updater','githubbranch','main');
+  $settingdata['updater'] = SettingsGet('updater');
+}
+$settingdata['updater']['branches'] = ['main' => gettext("Release"),'beta' => gettext("Betatest"),'dev' => gettext("Entwicklung")];
+
 $defaultStartPage = SettingsGetSingle("startpage","defaultuser","entry");
 
+$smarty->assign('updatecheck',$updatecheck);
+$smarty->assign('uptodate',$uptodate);
+$smarty->assign('settingdata',$settingdata);
 $smarty->assign('pages',$pages);
 $smarty->assign('defaultStartPage',$defaultStartPage);
 $smarty->assign('update_available',$dbUpdateAvailable);
