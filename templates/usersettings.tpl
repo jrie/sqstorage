@@ -26,28 +26,30 @@
                 <span class="list-span">{t}Startseite{/t}</span>
             </li>
             <li class="list-group-item">
-        <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <div class="dropdown">
-                                <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="startpageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <option value="-1" selected="selected">{t}Startseite{/t}</option>
-                                    {foreach $pages as $pagename => $pagelabel}
-                                    {if $pagename == $defaultStartPage}
-                                        {$sel = "selected='selectd'"}
-                                    {else}
-                                        {$sel = ""}
-                                    {/if}
-                                    <option value="{$pagename}" {$sel} >{t}{$pagelabel}{/t}</option>
-                                    {/foreach}
-                                </select>
-                            </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="dropdown">
+                            <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="startpageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <option value="-1" selected="selected">{t}Startseite{/t}</option>
+                                {foreach $pages as $pagename => $pagelabel}
+                                {if $pagename == $defaultStartPage}
+                                    {$sel = "selected='selected'"}
+                                {else}
+                                    {$sel = ""}
+                                {/if}
+                                <option value="{$pagename}" {$sel} >{t}{$pagelabel}{/t}</option>
+                                {/foreach}
+                            </select>
                         </div>
-                      <input type="text" class="form-control" id="startpagename" name="startpagename" readonly="readonly" required="required" autocomplete="off" placeholder="{t}Startseite{/t} " value="{$pages.$defaultStartPage}">
-                      <input type="hidden" value="{$defaultStartPage}" id="startpagekey" name="startpagekey" />
+                    </div>
+                <input type="text" class="form-control" id="startpagename" name="startpagename" readonly="readonly" required="required" autocomplete="off" placeholder="{t}Startseite{/t} " value="{$pages.$defaultStartPage}">
+                <input type="hidden" value="{$defaultStartPage}" id="startpagekey" name="startpagekey" />
         </div>
+
         <button type="submit" class="btn btn-primary float-right">{t}Einstellungen speichern{/t}</button>
             </li>
         </ul>
+        <div class="clearfix"></div>
     </form>
   <hr />
 
@@ -77,14 +79,12 @@
                   </div>
 
                   <input type="password" name="newPassword2" maxlength="254" class="form-control" autocomplete="off" placeholder="{t}Passwort wiederholen{/t}" aria-label="{t}Passwort wiederholen{/t}" aria-describedby="basic-addon3">
-
-
               </div>
-
 
               <button type="submit" class="btn btn-primary float-right">{t}Neues Passwort speichern{/t}</button>
             </li>
         </ul>
+        <div class="clearfix"></div>
     </form>
   <hr />
 
@@ -124,52 +124,46 @@
             return false
         })
     }
-    let usergrpdropdown = document.querySelector('#usergroupDropdown')
-    if (usergrpdropdown !== null) {
-        usergrpdropdown.addEventListener('change', function(evt) {
-            let usergroupdropdown = evt.target
+
+    if (document.querySelector('#usergroupDropdown') !== null) {
+        document.querySelector('#usergroupDropdown').addEventListener('change', function(evt) {
             let usergroupname = document.querySelector('#usergroupname')
             let usergroupid = document.querySelector('#usergroupid')
-            if (parseInt(usergroupdropdown.value) === -1) {
+            if (parseInt(evt.target.value) === -1) {
                 usergroupname.value = ''
                 return
             }
-            usergroupname.value = usergroupdropdown.options[usergroupdropdown.selectedIndex].text
-            usergroupid.value = usergroupdropdown.value
-            usergroupdropdown.value = '-1'
+            usergroupname.value = evt.target.options[evt.target.selectedIndex].text
+            usergroupid.value = evt.target.value
+            evt.target.value = '-1'
         })
     }
 
-
-    let userapidropdown = document.querySelector('#userapiDropdown')
-    if (userapidropdown !== null) {
-        userapidropdown.addEventListener('change', function(evt) {
-            let userapidropdown = evt.target
+    if (document.querySelector('#userapiDropdown') !== null) {
+        document.querySelector('#userapiDropdown').addEventListener('change', function(evt) {
             let usergroupname = document.querySelector('#userapi')
             let usergroupid = document.querySelector('#userapikey')
-            if (parseInt(userapidropdown.value) === -1) {
+            if (parseInt(evt.target.value) === -1) {
                 usergroupname.value = ''
                 return
             }
-            usergroupname.value = userapidropdown.options[userapidropdown.selectedIndex].text
-            usergroupid.value = userapidropdown.value
-            userapidropdown.value = '-1'
+            usergroupname.value = evt.target.options[evt.target.selectedIndex].text
+            usergroupid.value = evt.target.value
+            evt.target.value = '-1'
         })
     }
 
-    let startpageselectdropdown = document.querySelector('#startpageDropdown')
-    if (startpageselectdropdown !== null) {
-        startpageselectdropdown.addEventListener('change', function(evt) {
-            let startpageselectdropdown = evt.target
+    if (document.querySelector('#startpageDropdown') !== null) {
+        document.querySelector('#startpageDropdown').addEventListener('change', function(evt) {
             let startpagename = document.querySelector('#startpagename')
             let startpage = document.querySelector('#startpagekey')
-            if (parseInt(startpageselectdropdown.value) === -1) {
+            if (parseInt(evt.target.value) === -1) {
                 startpagename.value = ''
                 return
             }
-            startpagename.value = startpageselectdropdown.options[startpageselectdropdown.selectedIndex].text
-            startpage.value = startpageselectdropdown.value
-            startpageselectdropdown.value = '-1'
+            startpagename.value = evt.target.options[evt.target.selectedIndex].text
+            startpage.value = evt.target.value
+            evt.target.value = '-1'
         })
     }
 
