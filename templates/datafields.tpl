@@ -282,9 +282,13 @@
 
                 for (let field of dataFields) {
                     let dataValue = ''
-                    if (field.nodeName === 'INPUT' && field.getAttribute('readonly') === null) dataValue = field.value.toString().trim()
-                    else if (field.nodeName === 'SELECT') dataValue = (field.value).toString().trim()
-                    else continue
+                    if (field.nodeName === 'INPUT' && field.getAttribute('readonly') === null) {
+                        dataValue = field.value.toString().trim()
+                    } else if (field.nodeName === 'SELECT') {
+                        dataValue = (field.value).toString().trim()
+                    } else {
+                        continue
+                    }
 
                     if (fieldConverts[field.value] !== undefined) {
                         if (fieldConverts[field.value] === 'int' || fieldConverts[field.value] === 'float') {
