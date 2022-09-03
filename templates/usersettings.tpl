@@ -54,7 +54,7 @@
   <hr />
 
 
-    <form accept-charset="utf-8" id="startpage" method="POST" action="">
+    <form accept-charset="utf-8" id="passchange" method="POST" action="">
         <input type="hidden" id="install" name="target" value="passwordchange" />
         <ul class="categories list-group">
             <li class="alert alert-info">
@@ -87,9 +87,7 @@
         <div class="clearfix"></div>
     </form>
   <hr />
-
-
-</div><!-- end of <div class="content"> -->
+</div>
 
 
 
