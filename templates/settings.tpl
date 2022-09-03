@@ -257,7 +257,7 @@
                                 <option value="-1" selected="selected">{t}Update-Quelle{/t}</option>
                                 {foreach $settingdata.updater.branches  as $branch => $branchlabel}
                                 {if $branch == $settingdata.updater.githubbranch}
-                                    {$sel = "selected='selectd'"}
+                                    {$sel = "selected='selected'"}
                                     {$outputlabel = $branchlabel}
                                 {else}
                                     {$sel = ""}
@@ -315,78 +315,69 @@
             return false
         })
     }
-    let usergrpdropdown = document.querySelector('#usergroupDropdown')
-    if (usergrpdropdown !== null) {
-        usergrpdropdown.addEventListener('change', function(evt) {
-            let usergroupdropdown = evt.target
+
+    if (document.querySelector('#usergroupDropdown') !== null) {
+        document.querySelector('#usergroupDropdown').addEventListener('change', function(evt) {
             let usergroupname = document.querySelector('#usergroupname')
             let usergroupid = document.querySelector('#usergroupid')
-            if (parseInt(usergroupdropdown.value) === -1) {
+            if (parseInt(evt.target.value) === -1) {
                 usergroupname.value = ''
                 return
             }
-            usergroupname.value = usergroupdropdown.options[usergroupdropdown.selectedIndex].text
-            usergroupid.value = usergroupdropdown.value
-            usergroupdropdown.value = '-1'
+            usergroupname.value = evt.target.options[evt.target.selectedIndex].text
+            usergroupid.value = evt.target.value
+            evt.target.value = '-1'
         })
     }
 
 
-    let userapidropdown = document.querySelector('#userapiDropdown')
-    if (userapidropdown !== null) {
-        userapidropdown.addEventListener('change', function(evt) {
-            let userapidropdown = evt.target
+    if (document.querySelector('#userapiDropdown') !== null) {
+        document.querySelector('#userapiDropdown').addEventListener('change', function(evt) {
             let usergroupname = document.querySelector('#userapi')
             let usergroupid = document.querySelector('#userapikey')
-            if (parseInt(userapidropdown.value) === -1) {
+            if (parseInt(evt.target.value) === -1) {
                 usergroupname.value = ''
                 return
             }
-            usergroupname.value = userapidropdown.options[userapidropdown.selectedIndex].text
-            usergroupid.value = userapidropdown.value
-            userapidropdown.value = '-1'
+            usergroupname.value = evt.target.options[evt.target.selectedIndex].text
+            usergroupid.value = evt.target.value
+            evt.target.value = '-1'
         })
     }
 
-    let startpageselectdropdown = document.querySelector('#startpageDropdown')
-    if (startpageselectdropdown !== null) {
-        startpageselectdropdown.addEventListener('change', function(evt) {
-            let startpageselectdropdown = evt.target
-            let startpagename = document.querySelector('#startpagename')
+    if (document.querySelector('#startpageDropdown') !== null) {
+        document.querySelector('#startpageDropdown').addEventListener('change', function(evt) {
             let startpage = document.querySelector('#startpagekey')
-            if (parseInt(startpageselectdropdown.value) === -1) {
-                startpagename.value = ''
+            if (parseInt(evt.target.value) === -1) {
+                document.querySelector('#startpagename').value = ''
                 return
             }
-            startpagename.value = startpageselectdropdown.options[startpageselectdropdown.selectedIndex].text
-            startpage.value = startpageselectdropdown.value
-            startpageselectdropdown.value = '-1'
+            document.querySelector('#startpagename').value = evt.target.options[evt.target.selectedIndex].text
+            startpage.value = evt.target.value
+            evt.target.value = '-1'
         })
     }
 
-    let branchdropdown = document.querySelector('#branchDropdown')
-    if (branchdropdown !== null) {
-        branchdropdown.addEventListener('change', function(evt) {
-            let branchdropdown = evt.target
-            let branchlabel = document.querySelector('#branchlabel')
-            let branch = document.querySelector('#branch')
-            if (parseInt(branchdropdown.value) === -1) {
+    if (document.querySelector('#branchDropdown') !== null) {
+        document.querySelector('#branchDropdown').addEventListener('change', function(evt) {
+            if (parseInt(evt.target.value) === -1) {
                 branch.value = ''
                 return
             }
-            branchlabel.value = branchdropdown.options[branchdropdown.selectedIndex].text
-            branch.value = branchdropdown.value
-            branchdropdown.value = '-1'
+
+            document.querySelector('#branchlabel').value = evt.target.options[evt.target.selectedIndex].text
+            document.querySelector('#branch').value = evt.target.value
+            evt.target.value = '-1'
         })
     }
 
-    function unlockupdater(){
-      document.querySelector('#updaterbutton').disabled =!document.querySelector('#updaterbutton').disabled;
-      if(document.querySelector('#updaterbutton').disabled){
-          document.querySelector('#updaterunlockbutton').innerHTML = {/literal}'{t}Updatequellen-Auswahl aktivieren{/t}'{literal}
-      }else{
-          document.querySelector('#updaterunlockbutton').innerHTML = {/literal}'{t}Updatequellen-Auswahl deaktivieren{/t}'{literal}
-      }
+    function unlockupdater() {
+        document.querySelector('#updaterbutton').disabled = !document.querySelector('#updaterbutton').disabled;
+        if (document.querySelector('#updaterbutton').disabled) {
+            document.querySelector('#updaterunlockbutton').innerHTML = {/literal}'{t}Updatequellen-Auswahl aktivieren{/t}'{literal}
+        } else {
+            document.querySelector('#updaterunlockbutton').innerHTML = {/literal}'{t}Updatequellen-Auswahl deaktivieren{/t}'{literal}
+        }
     }
 
 </script>
