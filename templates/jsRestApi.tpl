@@ -24,7 +24,26 @@ function GetItemThumb(itemId){
 
 }
 
+function GetItemFullimage(itemId){
+  let ret_value = null
+  let API_URL = 'api/records/images?filter=itemId,eq,:itemId&include=imageData&size=1'
 
+  let URL = API_URL.replace(':itemId', itemId)
+  const xmlhttp = new XMLHttpRequest()
+  xmlhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      const newCharacterJSON = JSON.parse(xmlhttp.responseText)
+      ret_value = atob(newCharacterJSON["records"][0]['imageData']);
+    }
+  }
+
+  xmlhttp.open('GET', URL, false)
+  xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest')
+  xmlhttp.send()
+  return ret_value
+
+
+}
 
 function GetFieldData(table, field, id) {
   let ret_value = null
@@ -71,4 +90,7 @@ function SetFieldData (table, field, id, data) {
   xmlhttp.send(body)
   return ret_value
 }
+
+
+
 {/literal}
