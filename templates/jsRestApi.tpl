@@ -45,6 +45,35 @@ function GetItemFullimage(itemId){
 
 }
 
+function GetItemFullimages(itemId){
+  let ret_value = []
+  let API_URL = 'api/records/images?filter=itemId,eq,:itemId&include=imageData'
+
+  let URL = API_URL.replace(':itemId', itemId)
+  const xmlhttp = new XMLHttpRequest()
+  xmlhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      const newCharacterJSON = JSON.parse(xmlhttp.responseText)
+      let ArrLength = Object.keys(newCharacterJSON["records"]).length;
+
+      for(let x=0; x < ArrLength; x++){
+        ret_value.push('data:image/*;charset=utf-8;base64,' + atob(newCharacterJSON["records"][x]['imageData']) );
+      }
+
+
+    }
+
+  }
+
+  xmlhttp.open('GET', URL, false)
+  xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest')
+  xmlhttp.send()
+  return ret_value
+
+
+}
+
+
 function GetFieldData(table, field, id) {
   let ret_value = null
   let API_URL = 'api/records/:table/:id?include=:field'

@@ -778,7 +778,9 @@
           let lightbox = new FsLightbox();
           lightbox.props.initialAnimation = 'initial-animation';
           // set up props, like sources, types, events etc.
-          lightbox.props.sources = ['data:image/*;charset=utf-8;base64,' + GetItemFullimage( ItemID )];
+          //lightbox.props.sources = ['data:image/*;charset=utf-8;base64,' + GetItemFullimage( ItemID )];
+          lightbox.props.type = 'image';
+          lightbox.props.sources = GetItemFullimages( ItemID );
           lightbox.props.onInit = () => console.log('Lightbox initialized!');
 
           lightbox.open();
