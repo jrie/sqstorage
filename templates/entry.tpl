@@ -389,11 +389,9 @@
                     let imgRemovalRequest = new XMLHttpRequest()
 
                     function handleDeleteRequest(evt) {
-                        if (evt.target.readyState === 4) {
-                            if (evt.target.status === 200) {
-                                let responseJson = JSON.parse(evt.target.responseText)
-                                if (responseJson['status'] === 'OK') imgContainer.parentNode.removeChild(imgContainer)
-                            }
+                        if (evt.target.readyState === 4 && evt.target.status === 200) {
+                            let responseJson = JSON.parse(evt.target.responseText)
+                            if (responseJson['status'] === 'OK') imgContainer.parentNode.removeChild(imgContainer)
                         }
                     }
 
@@ -401,7 +399,7 @@
                     if (evt.target.parentNode.dataset['imageid'] === undefined) imageId = evt.target.dataset['imageid']
                     else imageId = evt.target.parentNode.dataset['imageid']
 
-                    imgRemovalRequest.open("GET", "index{/literal}{$urlPostFix}{literal}?removeImageId=" + imageId);
+                    imgRemovalRequest.open("GET", "entry{/literal}{$urlPostFix}{literal}?removeImageId=" + imageId);
                     imgRemovalRequest.send()
                 }
             }
