@@ -359,7 +359,7 @@
 
             {if $isEdit}
                 <h4 class="clearfix">{t}Bilder des Gegenstandes{/t}</h4>
-                <form method="POST" accept-charset="utf-8" action="index{$urlPostFix}" enctype="multipart/form-data">
+                <form method="POST" accept-charset="utf-8" action="entry{$urlPostFix}" enctype="multipart/form-data">
                     <input name="images[]" required="required" type="file" multiple="multiple" accept="image/png, image/jpeg, image/jpg, image/webp, image/gif, image/bmp" placeholder="{t}Bild Upload{/t}"/>
                     <input type="hidden" value="{$item.id}" name="editItem" />
                     <input type="submit" class="submit" value="{t}Bilder hochladen{/t}"/>
