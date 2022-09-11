@@ -145,6 +145,12 @@
             </li>
             <li>
                 <p>
+                    <span class="name">helix</span><br>
+                    Logo design and additional feedback
+                </p>
+            </li>
+            <li>
+                <p>
                     <span class="name">Jan R.</span><a href="https://dwrox.net">dwrox.net</a><br>
                     Project owner, initial and ongoing coding
                 </p>
