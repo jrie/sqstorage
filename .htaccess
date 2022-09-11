@@ -36,8 +36,8 @@ RewriteRule ^datafields/$ datafields.php [L]
 
 RewriteRule ^settings$ settings.php [L]
 RewriteRule ^settings/$ settings.php [L]
-RewriteRule ^settings/editUser=([0-9])+$ settings.php/editUser=$1 [QSA,L]
-RewriteRule ^settings/removeUser=([0-9])+$ settings.php/removeUser=$1 [QSA,L]
+RewriteRule ^settings/editUser=([0-9]+)$ settings.php/editUser=$1 [QSA,L]
+RewriteRule ^settings/removeUser=([0-9]+)$ settings.php/removeUser=$1 [QSA,L]
 RewriteRule ^settings\?addUser$ settings.php?addUser [QSA,L]
 
 RewriteRule ^login$ login.php [L]
