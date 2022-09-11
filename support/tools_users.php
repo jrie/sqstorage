@@ -6,15 +6,13 @@ function AllowLogin($username,&$remaining_seconds){
   $remaining_seconds = 0;
   if(!in_array('failcount',DB::columnList('users'))) return true;
 
-
   $fc = DB::queryFirstRow('Select failcount, lastfail from users WHERE username = %s',$username);
-
-
 
   if (count($fc) == 0) return true;  //no user-record, no problem. Login will assign the error message
   $sinceLastFail = abs( time()-$fc['lastfail'] );
   if ( $sinceLastFail > 900 ) return true; // last failed login try happened more than 15 minutes ago, let's have another try
   if ($fc['failcount'] < 3) return true;  // 3 login tries without delay
+  
   $waittime = 0;
   if ($fc['failcount'] < 9){
       $multi = 10;
@@ -25,16 +23,12 @@ function AllowLogin($username,&$remaining_seconds){
 
       $remaining_seconds = $waittime - $sinceLastFail;
       return false;
-
   }
-
 
   if ($fc['failcount'] < 9){
     sleep($fc['failcount']);
     return true;
   } // less than 10 tries? Why not slow down it slightly, by 1 second per fail
-
-
 
   $remaining_seconds = 900 - $sinceLastFail;
   return false; // still not allowd? So better say 'computer says no'
