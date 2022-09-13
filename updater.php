@@ -34,7 +34,7 @@ require_once('./support/updater.php');
 if ( $mtarget  == 'installupdate') {
   $enable = true;
   $updatework = true;
-  $settingdata['updater'] = SettingsGet('updater');
+  $settingdata['updater'] = SETTINGS::SettingsGet('updater');
   DownloadMasterZipAndUnpack($settingdata['updater']['githubuser'],$settingdata['updater']['githubrepo'],$settingdata['updater']['githubbranch'], __DIR__,$enable);
   error_log(("Pulling Update"));
   die;

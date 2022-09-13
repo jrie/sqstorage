@@ -54,12 +54,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'mail') {
 }elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'updater'){
        if(isset($_POST['branch'])) {
         $branch = $_POST['branch'];
-          if(in_array($branch,['main','dev','beta'])) SettingsSet('updater','githubbranch',$branch);
+          if(in_array($branch,['main','dev','beta'])) SETTINGS::SettingsSet('updater','githubbranch',$branch);
         }
 }elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'updatecheck'){
   require_once('support/updater.php');
   $updatecheck = true;
-  $updData = SettingsGet('updater');
+  $updData = SETTINGS::SettingsGet('updater');
   $resetTime = 0;
   $remainingCalls = GetRemainingGithubAPICalls($resetTime);
   if($remainingCalls < 15){
@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'mail') {
 
 
 }elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'startpage'){
-  SettingsSet("startpage","defaultuser",$_POST['startpagekey']);
+  SETTINGS::SettingsSet("startpage","defaultuser",$_POST['startpagekey']);
 }elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
   DB::$error_handler = false;
   DB::$throw_exception_on_error = true;
@@ -95,20 +95,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'mail') {
       }
 
       $user = DB::update('users', array('username' => trim($_POST['username']), 'mailaddress' => $_POST['mailaddress'], 'api_access' => $_POST['userapikey']), 'id=%i', $_POST['userUpdateId']);
-      AssignUserToGroup($_POST['userUpdateId'],$_POST['usergroupid']);
+      USERS::AssignUserToGroup($_POST['userUpdateId'],$_POST['usergroupid']);
     } else {
       $token = bin2hex(openssl_random_pseudo_bytes(16));
       $hashedToken = password_hash($token, PASSWORD_DEFAULT);
       $userId = DB::insert('users', array('username' => trim($_POST['username']), 'api_access' => $_POST['userapikey'], 'mailaddress' => $_POST['mailaddress']));
       $userId = DB::insertId();
-      AssignUserToGroup($userId,$_POST['usergroupid']);
+      USERS::AssignUserToGroup($userId,$_POST['usergroupid']);
       DB::insert('users_tokens', array('userid' => $userId, 'token' => $hashedToken, 'valid_until' => DB::sqlEval('NOW( ) + INTERVAL 1 WEEK')));
-      $mailSettings = json_decode(DB::queryFirstField('SELECT jsondoc FROM settings WHERE namespace="mail" LIMIT 1'));
+      $mailSettings['enabled'] = SETTINGS::SettingsGetSingle('mail','enabled',false);
+      $mailSettings['senderAddress'] = SETTINGS::SettingsGetSingle('mail','senderAddress',false);
 
-      if ($mailSettings->enabled && filter_var($mailSettings->senderAddress, FILTER_VALIDATE_EMAIL)) {
+
+      if ($mailSettings['enabled'] && filter_var($mailSettings['senderAddress'], FILTER_VALIDATE_EMAIL)) {
         $header[] = 'MIME-Version: 1.0';
         $header[] = 'Content-type: text/html; charset=utf-8';
-        $header[] = 'From: ' . $mailSettings->senderAddress;
+        $header[] = 'From: ' . $mailSettings['senderAddress'];
         mail($_POST['mailaddress'], gettext('sqStorage Einladung'), sprintf(gettext("Sie haben eine Einladung für sqStorage erhalten: <a href=\"%s\">%s</a>"), dirname($_SERVER['HTTP_REFERER']) . '/login?activate=' . $userId . $token, dirname($_SERVER['HTTP_REFERER']) . '/login?activate=' . $userId . $token), implode("\r\n", $header));
       } else {
         DB::commit();
@@ -153,10 +155,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' || !empty($error) || ($_SERVER['REQUEST_
   } else {
     if (isset($_GET['removeUser']) && !empty($_GET['removeUser'])) {
       $adminAccounts = DB::query('SELECT userid FROM users_groups WHERE usergroupid=1 LIMIT 2');
-      if (count($adminAccounts) === 1 && $adminAccounts['userid'] == $_GET['removeUser']) {
+      if (count($adminAccounts) === 1 && $adminAccounts[0]['userid'] == $_GET['removeUser']) {
         $error = gettext('Fehler: Der letzte Administrator kann nicht gelöscht werden!');
       } else {
-        DeleteUser($_GET['removeUser']);
+        USERS::DeleteUser($_GET['removeUser']);
         header('Location: '. $urlBase . '/settings');
         die();
       }
@@ -190,16 +192,16 @@ $pages = [
   'welcome' => gettext('Welcome!'),
 ];
 
-$settingdata['updater'] = SettingsGet('updater');
+$settingdata['updater'] = SETTINGS::SettingsGet('updater');
 if($settingdata['updater'] === null){
-  SettingsSet('updater','githubuser','jrie');
-  SettingsSet('updater','githubrepo','sqstorage');
-  SettingsSet('updater','githubbranch','main');
-  $settingdata['updater'] = SettingsGet('updater');
+  SETTINGS::SettingsSet('updater','githubuser','jrie');
+  SETTINGS::SettingsSet('updater','githubrepo','sqstorage');
+  SETTINGS::SettingsSet('updater','githubbranch','main');
+  $settingdata['updater'] = SETTINGS::SettingsGet('updater');
 }
 $settingdata['updater']['branches'] = ['main' => gettext("Release"),'beta' => gettext("Betatest"),'dev' => gettext("Entwicklung")];
 
-$defaultStartPage = SettingsGetSingle("startpage","defaultuser","entry");
+$defaultStartPage = SETTINGS::SettingsGetSingle("startpage","defaultuser","entry");
 
 $smarty->assign('updatecheck',$updatecheck);
 $smarty->assign('uptodate',$uptodate);
