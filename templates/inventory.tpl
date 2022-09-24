@@ -68,13 +68,17 @@
                     <span title="{$category.name}" class="list-span">{$category.name}</span>
                     {/if}
 
-                    <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i><img class="item-picture" data-id="{$item.id}" src="">{/if}
+                    <div class="list-span">
+                      <span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i><img class="item-picture" data-id="{$item.id}" src="" onclick="displayFullImage('{$item.id}');return false;">{/if}
                     {if !$isGuest}
-                    <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
+                        <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}">{$item.label}</a>
                     {else}
-                    <span class="listing-label" title="{$item.label}">{$item.label}</span></span>
-        </div>
-        {/if}
+                        <span class="listing-label" title="{$item.label}">{$item.label}</span>
+                    {/if}
+                      </span>
+                    </div>
+
+
         <div class="list-span"><span class="listing-amount quick-edit">{$item.amount}</span></div>
         <div class="list-span"><span class="listing-comment quick-edit" title="{$item.comment}">{$item.comment}</span></div>
 
@@ -357,6 +361,9 @@
 <pre>{$dump}</pre>{/if}
 {include file="footer.tpl"}
 {literal}
+
+<script src="js/libs/fslightbox.js"></script>
+
 <script type="text/javascript">
     function NumSelect(maxAmount) {
         while (true) {
@@ -765,6 +772,19 @@
                 toggletableview(itind)
             }
         }
+    }
+
+    function displayFullImage(ItemID){
+          let lightbox = new FsLightbox();
+          lightbox.props.initialAnimation = 'initial-animation';
+          // set up props, like sources, types, events etc.
+          //lightbox.props.sources = ['data:image/*;charset=utf-8;base64,' + GetItemFullimage( ItemID )];
+          lightbox.props.type = 'image';
+          lightbox.props.sources = GetItemFullimages( ItemID );
+          lightbox.props.onInit = () => console.log('Lightbox initialized!');
+
+          lightbox.open();
+
     }
 </script>
 {/literal}
