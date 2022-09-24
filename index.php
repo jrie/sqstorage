@@ -29,7 +29,7 @@ if ($useRegistration) {
   if (!isset($user)) {
     header('Location: '. $urlBase . '/inventory' . $urlPostFix);
     die();
-  }else{
+  } else {
     $target = SETTINGS::SettingsGetSingle("startpage",$user['username'],SETTINGS::SettingsGetSingle("startpage","defaultuser","welcome"));
     header('Location: '. $urlBase . '/' . $target . $urlPostFix);
   }
