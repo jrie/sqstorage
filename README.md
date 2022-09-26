@@ -7,7 +7,7 @@ A easy to use and super quick way to organize your inventory, storage and storag
 There is a new website at https://sqstorage.net where you can actively support the development by renting paid hosting and support. This offer is for private and business users equally. Also, you can get a subdomain at `yourname`.sqstorage.net and password protected access in addition to the optional user system of sqStorage. If you do not feel like renting hosting and support, you always can make a donation using PayPal.me at https://paypal.me/dwroxnet .
 
 ### Note
-Right now sqStorage is available in German and English. Feel free to add your own translation.
+Right now sqStorage is available in German, English and Polish. Feel free to add your own translation.
 See [LANGUAGE.md](LANGUAGE.md) for details on how to do so.
 
 ### Installation and usage
