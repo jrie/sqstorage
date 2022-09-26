@@ -1,12 +1,3 @@
-![Logo sqStorage](https://www.picflash.org/img/2018/12/31/hwxkb96wq17sfvu.png "Logo sqStorage")
-
-A easy to use and super quick way to organize your inventory, storage and storage areas.
-
-## Language and Translations
-At the moment sqStorage is available in German and in English.
-
-***The language locale must be present on the webserver to be served***
-
 ### Updating the language files
 The standard behavior of apache is to cache language files until the server is restarted.
 To avoid the requirement to restart it every time the language file changes, the **message.po** file will be analyzed (time of last edit) and a copy will be linked automatically.
