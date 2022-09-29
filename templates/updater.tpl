@@ -10,7 +10,7 @@
 
         <ul class="update list-group" id="installupdate">
             <li class="alert alert-info">
-                <span class="list-span">{t}Aktualisierung der installation{/t}</span>
+                <span class="list-span">{t}Aktualisierung der Installation{/t}</span>
             </li>
             <li class="list-group-item">
                 <div class="input-group mb-3">
