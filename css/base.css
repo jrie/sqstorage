@@ -133,8 +133,15 @@ input.quick-edit:required:focus::placeholder {
     margin-right: 14px;
 }
 
+.update h2,
+.dbupdate h2 {
+    font-size: 1.5em;
+}
+
 .storage-area .alert-info,
-.categories .alert-info {
+.categories .alert-info,
+.update .alert,
+.dbupdate .alert {
     clear: both;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
@@ -142,7 +149,9 @@ input.quick-edit:required:focus::placeholder {
 }
 
 .storage-area .alert,
-.categories .alert {
+.categories .alert,
+.update .alert,
+.dbupdate .alert {
     list-style-type: none;
     margin: 0px;
 }
