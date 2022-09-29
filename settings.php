@@ -3,6 +3,10 @@ $user="";
 require('login.php');
 $error = "";
 $success = "";
+$settingdata = array();
+$updatecheck = false;
+$uptodate = false;
+$ghapi = array();
 
 if ($useRegistration) {
   if (!isset($user) || !isset($user['usergroupid']) || (int)$user['usergroupid'] === 2) {
@@ -18,11 +22,15 @@ $smarty->assign('urlBase', $urlBase);
 require_once('./support/dba.php');
 if ($usePrettyURLs) $smarty->assign('urlPostFix', '');
 else $smarty->assign('urlPostFix', '.php');
-
+if(isset($_POST['target'])){
+  $mtarget = $_POST['target'];
+}else{
+  $mtarget = "";
+}
 $install_allowed = false;
 if(file_exists($basedir . "/support/allow_install")) $install_allowed = true;
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['target'] == 'mail') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'mail') {
   try {
     $senderAddress = filter_var($_POST['senderAddress'], FILTER_VALIDATE_EMAIL);
     if (empty($senderAddress)) throw new Exception(gettext('Absender-Mailadresse ungültig.'));
@@ -33,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['target'] == 'mail') {
   }
   DB::$error_handler = 'meekrodb_error_handler';
   DB::$throw_exception_on_error = false;
-}elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['target'] == 'install'){
+}elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'install'){
   if (isset($_POST['allow_install'])){
     if($_POST['allow_install']== "allow"){
         touch ($basedir . "/support/allow_install");
@@ -43,6 +51,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['target'] == 'mail') {
         $install_allowed = false;
     }
   }
+}elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'updater'){
+       if(isset($_POST['branch'])) {
+        $branch = $_POST['branch'];
+          if(in_array($branch,['main','dev','beta'])) SETTINGS::SettingsSet('updater','githubbranch',$branch);
+        }
+}elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'updatecheck'){
+  require_once('support/updater.php');
+  $updatecheck = true;
+  $updData = SETTINGS::SettingsGet('updater');
+  $resetTime = 0;
+  $remainingCalls = GetRemainingGithubAPICalls($resetTime);
+  if($remainingCalls < 15){
+    $msg = gettext('Github beschränkt leider die API-Nutzung, weshalb die Prüfung momentan nicht stattfinden kann.');
+    $msg .=  "<br />" . gettext('Die nächste Überprüfung nach folgendem Zeitpunkt stattfinden:'). "<br />" . date('Y-m-d H:i:s',$resetTime);
+    $error = $msg;
+    $updatecheck = false;
+  }else{
+    $uptodate = AreFileUpToDate($updData['githubuser'],$updData['githubrepo'],$updData['githubbranch']);
+  }
+
+
+}elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'startpage'){
+  SETTINGS::SettingsSet("startpage","defaultuser",$_POST['startpagekey']);
 }elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
   DB::$error_handler = false;
   DB::$throw_exception_on_error = true;
@@ -64,20 +95,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['target'] == 'mail') {
       }
 
       $user = DB::update('users', array('username' => trim($_POST['username']), 'mailaddress' => $_POST['mailaddress'], 'api_access' => $_POST['userapikey']), 'id=%i', $_POST['userUpdateId']);
-      $usergroup = DB::insertUpdate('users_groups', array('userid' => $_POST['userUpdateId'], 'usergroupid' => $_POST['usergroupid']), array('usergroupid' => $_POST['usergroupid']));
+      USERS::AssignUserToGroup($_POST['userUpdateId'],$_POST['usergroupid']);
     } else {
       $token = bin2hex(openssl_random_pseudo_bytes(16));
       $hashedToken = password_hash($token, PASSWORD_DEFAULT);
       $userId = DB::insert('users', array('username' => trim($_POST['username']), 'api_access' => $_POST['userapikey'], 'mailaddress' => $_POST['mailaddress']));
       $userId = DB::insertId();
-      $usergroup = DB::insertUpdate('users_groups', array('userid' => $userId, 'usergroupid' => $_POST['usergroupid']), array('usergroupid' => $_POST['usergroupid']));
+      USERS::AssignUserToGroup($userId,$_POST['usergroupid']);
       DB::insert('users_tokens', array('userid' => $userId, 'token' => $hashedToken, 'valid_until' => DB::sqlEval('NOW( ) + INTERVAL 1 WEEK')));
-      $mailSettings = json_decode(DB::queryFirstField('SELECT jsondoc FROM settings WHERE namespace="mail" LIMIT 1'));
+      $mailSettings['enabled'] = SETTINGS::SettingsGetSingle('mail','enabled',false);
+      $mailSettings['senderAddress'] = SETTINGS::SettingsGetSingle('mail','senderAddress',false);
 
-      if ($mailSettings->enabled && filter_var($mailSettings->senderAddress, FILTER_VALIDATE_EMAIL)) {
+
+      if ($mailSettings['enabled'] && filter_var($mailSettings['senderAddress'], FILTER_VALIDATE_EMAIL)) {
         $header[] = 'MIME-Version: 1.0';
         $header[] = 'Content-type: text/html; charset=utf-8';
-        $header[] = 'From: ' . $mailSettings->senderAddress;
+        $header[] = 'From: ' . $mailSettings['senderAddress'];
         mail($_POST['mailaddress'], gettext('sqStorage Einladung'), sprintf(gettext("Sie haben eine Einladung für sqStorage erhalten: <a href=\"%s\">%s</a>"), dirname($_SERVER['HTTP_REFERER']) . '/login?activate=' . $userId . $token, dirname($_SERVER['HTTP_REFERER']) . '/login?activate=' . $userId . $token), implode("\r\n", $header));
       } else {
         DB::commit();
@@ -100,7 +133,7 @@ $isEdit = false;
 $isAdd = false;
 $usergroups = DB::query('SELECT id, name FROM usergroups');
 
-if ($_SERVER['REQUEST_METHOD'] == 'GET' || !empty($error) || ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['target'] == 'mail')) {
+if ($_SERVER['REQUEST_METHOD'] == 'GET' || !empty($error) || ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'mail')) {
   if (isset($_GET['editUser']) && !empty($_GET['editUser'])) {
     $isEdit = true;
   } else if (isset($_GET['addUser'])) {
@@ -122,12 +155,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' || !empty($error) || ($_SERVER['REQUEST_
   } else {
     if (isset($_GET['removeUser']) && !empty($_GET['removeUser'])) {
       $adminAccounts = DB::query('SELECT userid FROM users_groups WHERE usergroupid=1 LIMIT 2');
-      if (count($adminAccounts) === 1 && $adminAccounts['userid'] == $_GET['removeUser']) {
+      if (count($adminAccounts) === 1 && $adminAccounts[0]['userid'] == $_GET['removeUser']) {
         $error = gettext('Fehler: Der letzte Administrator kann nicht gelöscht werden!');
       } else {
-        $user = DB::delete('users', 'id=%d', $_GET['removeUser']);
+        USERS::DeleteUser($_GET['removeUser']);
         header('Location: '. $urlBase . '/settings');
-        exit;
+        die();
       }
     }
   }
@@ -149,6 +182,33 @@ if(!in_array('failcount',DB::columnList('users'))){
 }else{
 $users = DB::query('SELECT u.id, u.username, u.mailaddress, u.api_access, g.name as usergroupname, g.id as usergroupid FROM users u LEFT JOIN users_groups ugs ON(ugs.userid = u.id) LEFT JOIN usergroups g ON(g.id = ugs.usergroupid) ORDER BY u.username ASC');
 }
+
+$dbUpdateAvailable = IsDBUpdateAvailable();
+$pages = [
+  'entry' => gettext("Eintragen"),
+  'inventory' => gettext('Inventar'),
+  'transfer' => gettext('Transferieren'),
+  'datafields' => gettext('Datenfelder'),
+  'welcome' => gettext('Welcome!'),
+];
+
+$settingdata['updater'] = SETTINGS::SettingsGet('updater');
+if($settingdata['updater'] === null){
+  SETTINGS::SettingsSet('updater','githubuser','jrie');
+  SETTINGS::SettingsSet('updater','githubrepo','sqstorage');
+  SETTINGS::SettingsSet('updater','githubbranch','main');
+  $settingdata['updater'] = SETTINGS::SettingsGet('updater');
+}
+$settingdata['updater']['branches'] = ['main' => gettext("Release"),'beta' => gettext("Betatest"),'dev' => gettext("Entwicklung")];
+
+$defaultStartPage = SETTINGS::SettingsGetSingle("startpage","defaultuser","entry");
+
+$smarty->assign('updatecheck',$updatecheck);
+$smarty->assign('uptodate',$uptodate);
+$smarty->assign('settingdata',$settingdata);
+$smarty->assign('pages',$pages);
+$smarty->assign('defaultStartPage',$defaultStartPage);
+$smarty->assign('update_available',$dbUpdateAvailable);
 $smarty->assign('install_allowed',$install_allowed);
 $smarty->assign('mailSettings', $mailSettings);
 $smarty->assign('success', $success);

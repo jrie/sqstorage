@@ -37,7 +37,7 @@ if (isset($useRegistration) && !$useRegistration) {
     unset($_SESSION['authenticated']);
     unset($_SESSION['user']);
     header('Location: ' . $urlBase . '/index' . $urlPostFix);
-    exit;
+    die();
   }
 
   if (!empty($_SESSION['authenticated'])) {
@@ -53,7 +53,7 @@ if (isset($useRegistration) && !$useRegistration) {
       }
     } else {
       header('Location: '. $urlBase . '/index' . $urlPostFix . '?logout');
-      exit;
+      die();
     }
 
     return;
@@ -138,7 +138,7 @@ if (isset($useRegistration) && !$useRegistration) {
               $_SESSION['authenticated'] = true;
               $_SESSION['user'] = ['id' => $userId];
               header('Location: '. $urlBase . '/index' . $urlPostFix);
-              exit;
+              die();
             }
           } catch (Exception $e) {
             $message = $e->getMessage();
@@ -162,9 +162,9 @@ if (isset($useRegistration) && !$useRegistration) {
   } else if (isset($_POST['password']) && !empty($_POST['password'])) {
     $user = DB::queryFirstRow('SELECT u.id, u.username, u.password, g.usergroupid FROM users u LEFT JOIN users_groups g ON(g.userid=u.id) WHERE u.username=%s LIMIT 1', $_POST['username']);
 //    if ($user && password_verify($_POST['password'], $user['password'])) {
-    if(Login($_POST['username'],$_POST['password'],$error)){
+    if(USERS::Login($_POST['username'],$_POST['password'],$error)){
       header('Location: '. $urlBase . '/index'. $urlPostFix);
-      exit;
+      die();
     } else {
       if($error == "")$error = gettext('Zugangsdaten ungültig');  //if error is not set yet, invalid login, otherwise too many login failures
     }
@@ -211,7 +211,7 @@ if (isset($useRegistration) && !$useRegistration) {
   if (isset($error)) $smarty->assign('error', $error);
 
   $smarty->display('login.tpl');
-  exit;
+  die();
 }
 
 

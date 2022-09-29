@@ -75,7 +75,7 @@ if(!file_exists($basedir  . "/support/allow_install")){
     </form>
   <?php
   echo $footer_template;
-  exit();
+  die();
 }
 
 if(count($unwriteable)>0){
@@ -100,5 +100,5 @@ if(count($unwriteable)>0){
   <?php
 
   echo $footer_template;
-  exit();
+  die();
 }

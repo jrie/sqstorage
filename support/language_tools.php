@@ -4,7 +4,8 @@ define('LANGUAGEDIR', str_replace('/', DIRECTORY_SEPARATOR, 'languages/locale/')
 
 $langsLabels = array(
   'en_GB' => 'English',
-  'de_DE' => 'Deutsch'
+  'de_DE' => 'Deutsch',
+  'pl_PL' => 'Polski'
 );
 $langsAvailable = array_keys($langsLabels);
 $defaultLanguage = 'de_DE';
@@ -37,11 +38,11 @@ function initLang($locale)
   $mtime = filemtime($filename); // check its modification time
   $filename_new = "$locales_root".$locale."/LC_MESSAGES/{$domain}_{$mtime}.mo";
   $filename_new = str_replace('/', DIRECTORY_SEPARATOR, $filename_new);
- 
+
   if (!file_exists($filename_new)) { // check if we have created it before
     copy($filename, $filename_new);
   }
-  
+
   $domain_new = "{$domain}_{$mtime}";
   if(!file_exists($filename_new)) $domain_new = "{$domain}";
 
@@ -57,10 +58,14 @@ function initLang($locale)
         case "en_GB":
           $locale = "eng";
           break;
+
+        case "pl_PL":
+          $locale = "pol";
+          break;
       }
     }
   }
-  
+
   Locale::setDefault(str_replace('_', '-', $locale));
   putenv('LANGUAGE=' . $locale . $suff);
   putenv('LC_ALL=' . $locale . $suff);
@@ -69,5 +74,5 @@ function initLang($locale)
   setlocale(LC_ALL, $locale . $suff);
   bindtextdomain($domain_new, LANGUAGEDIR);
   textdomain($domain_new);
-  
+  bind_textdomain_codeset($domain_new, 'UTF-8');
 }

@@ -1,5 +1,5 @@
 {include file="head.tpl" title="{t}Eintragen{/t}"}
-{include file="nav.tpl" target="index.php" request=$REQUEST}
+{include file="nav.tpl" target="entry.php" request=$REQUEST}
         {$dataFieldsByKey=null}
         {foreach $fieldTypesPos as $key => $value}
         {$dataFieldsByKey[$value]=$key}
@@ -20,7 +20,7 @@
 
             <div id="errorForm" class="alert alert-danger hidden" role="alert">{t}Nicht gespeichert, es befinden sich Fehler in der Formular-Eingabe.{/t}</div>
 
-            <form class="inputForm" accept-charset="utf-8" method="POST" action="index.php" {if !$isEdit}enctype="multipart/form-data"{/if}>
+            <form class="inputForm" accept-charset="utf-8" method="POST" action="entry.php" {if !$isEdit}enctype="multipart/form-data"{/if}>
 
                 {if $isEdit}<input type="hidden" value="{$item.id}" name="itemUpdateId" />{/if}
 
@@ -343,8 +343,8 @@
                 {/foreach}
                 </div>
                 {if !$isEdit}
-                    <h2 class="clearfix">{t}Bilder des Gegenstandes{/t}</h2>
-                    <input class="form-control" name="images[]" type="file" multiple="multiple" accept="image/png, image/jpeg, image/jpg, image/webp, image/gif, image/bmp" placeholder="{t}Bild Upload{/t}"/>
+                    <h4 class="clearfix">{t}Bilder des Gegenstandes{/t}</h4>
+                    <input name="images[]" type="file" multiple="multiple" accept="image/png, image/jpeg, image/jpg, image/webp, image/gif, image/bmp" placeholder="{t}Bild Upload{/t}"/>
                 {/if}
 
                 <div style="float: right;">
@@ -358,8 +358,8 @@
             </form>
 
             {if $isEdit}
-                <h2 class="clearfix">{t}Bilder des Gegenstandes{/t}</h2>
-                <form method="POST" accept-charset="utf-8" action="index.php" enctype="multipart/form-data">
+                <h4 class="clearfix">{t}Bilder des Gegenstandes{/t}</h4>
+                <form method="POST" accept-charset="utf-8" action="entry{$urlPostFix}" enctype="multipart/form-data">
                     <input name="images[]" required="required" type="file" multiple="multiple" accept="image/png, image/jpeg, image/jpg, image/webp, image/gif, image/bmp" placeholder="{t}Bild Upload{/t}"/>
                     <input type="hidden" value="{$item.id}" name="editItem" />
                     <input type="submit" class="submit" value="{t}Bilder hochladen{/t}"/>
@@ -389,11 +389,9 @@
                     let imgRemovalRequest = new XMLHttpRequest()
 
                     function handleDeleteRequest(evt) {
-                        if (evt.target.readyState === 4) {
-                            if (evt.target.status === 200) {
-                                let responseJson = JSON.parse(evt.target.responseText)
-                                if (responseJson['status'] === 'OK') imgContainer.parentNode.removeChild(imgContainer)
-                            }
+                        if (evt.target.readyState === 4 && evt.target.status === 200) {
+                            let responseJson = JSON.parse(evt.target.responseText)
+                            if (responseJson['status'] === 'OK') imgContainer.parentNode.removeChild(imgContainer)
                         }
                     }
 
@@ -401,7 +399,7 @@
                     if (evt.target.parentNode.dataset['imageid'] === undefined) imageId = evt.target.dataset['imageid']
                     else imageId = evt.target.parentNode.dataset['imageid']
 
-                    imgRemovalRequest.open("GET", "index.php?removeImageId=" + imageId);
+                    imgRemovalRequest.open("GET", "entry{/literal}{$urlPostFix}{literal}?removeImageId=" + imageId);
                     imgRemovalRequest.send()
                 }
             }
@@ -440,7 +438,7 @@
                 }
 
                 imgLoader.addEventListener('readystatechange', handleRequest)
-                imgLoader.open("GET", "index.php?getImageId=" + evt.target.parentNode.dataset['imageid']);
+                imgLoader.open("GET", "entry{/literal}{$urlPostFix}{literal}?getImageId=" + evt.target.parentNode.dataset['imageid']);
                 imgLoader.send();
             }
 

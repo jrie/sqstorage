@@ -1,4 +1,5 @@
 @import url('../fonts/Montserrat/Montserrat.css');
+
 body {
     font-family: 'Montserrat', sans;
     font-weight: 300;
@@ -174,16 +175,16 @@ input.quick-edit:required:focus::placeholder {
     max-width: 70%;
 }
 
-.list-span.header.pointer {
+.header.pointer {
     cursor: pointer;
 }
 
-.list-span.header.orderup,
-.list-span.header.orderdown {
+.header.orderup,
+.header.orderdown {
     text-decoration: underline;
 }
 
-.list-span.header.orderup::after {
+.header.orderup::after {
     content: "\21CA";
     width: 16px;
     height: 16px;
@@ -191,7 +192,7 @@ input.quick-edit:required:focus::placeholder {
     right: -12px;
 }
 
-.list-span.header.orderdown::after {
+.header.orderdown::after {
     content: "\21C8";
     width: 16px;
     height: 16px;
@@ -490,7 +491,8 @@ ul.existingFields li {
     min-width: unset;
 }
 
-.login-box .input-group input, .input-group select {
+.login-box .input-group input,
+.input-group select {
     height: unset;
 }
 
@@ -544,7 +546,7 @@ i.picture {
     display: block;
     visibility: visible;
     overflow: scroll;
-    background-color: rgba(225,225,225,0.8);
+    background-color: rgba(225, 225, 225, 0.8);
     cursor: zoom-out;
 }
 
@@ -733,4 +735,14 @@ input.errorInt,
 input.errorFloat,
 input.errorString {
     background-color: orange;
+}
+
+form#updateForm span.list-span:first-of-type,
+form#startpage span.list-span:first-of-type {
+    min-width: none;
+    max-width: none;
+}
+
+form#updatecheckform [type="submit"] {
+    margin-bottom: 2em;
 }

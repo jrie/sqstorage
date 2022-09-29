@@ -1,5 +1,5 @@
 {include file="head.tpl" title="{t}Datenfelder{/t}"}
-{include file="nav.tpl" target="datafields.php" request=$REQUEST}}
+{include file="nav.tpl" target="datafields.php" request=$REQUEST}
 
 
 
@@ -87,7 +87,9 @@
 
                         <option value="-1" selected="selected">{t}Überall sichtbar{/t}</option>
                         {foreach $headCategories as $headCategory}
+                        {if $headCategory['id'] != 0}
                             <option value="{$headCategory['id']}">{$headCategory['name']}</option>
+                        {/if}
                         {/foreach}
 
                     </select>
@@ -280,9 +282,13 @@
 
                 for (let field of dataFields) {
                     let dataValue = ''
-                    if (field.nodeName === 'INPUT' && field.getAttribute('readonly') === null) dataValue = field.value.toString().trim()
-                    else if (field.nodeName === 'SELECT') dataValue = (field.value).toString().trim()
-                    else continue
+                    if (field.nodeName === 'INPUT' && field.getAttribute('readonly') === null) {
+                        dataValue = field.value.toString().trim()
+                    } else if (field.nodeName === 'SELECT') {
+                        dataValue = (field.value).toString().trim()
+                    } else {
+                        continue
+                    }
 
                     if (fieldConverts[field.value] !== undefined) {
                         if (fieldConverts[field.value] === 'int' || fieldConverts[field.value] === 'float') {

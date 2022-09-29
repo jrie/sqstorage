@@ -3,7 +3,7 @@
 
 ### REST-API
 
-SQStorage provides a REST API to read, write and delete data
+sqStorage provides a REST API to read, write and delete data
 To achieve that [php-crud-api](https://github.com/mevdschee/php-crud-api "Maurits van der Schees php-crud-api") was included 
 
 ####  API usage

@@ -52,20 +52,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   } else if (isset($_GET['removeCategory']) && !empty($_GET['removeCategory'])) {
     DB::delete('headCategories', "id=%d", (int)$_GET['removeCategory']);
     if (DB::affectedRows() === 1) $alert = '<div class="alert alert-info" role="alert"><p>' . gettext('Kategorie entfernt.') . '</p></div>';
+    DB::query('UPDATE items SET headcategory = 0 WHERE headcategory = %i',$_GET['removeCategory']);
+    DB::query('UPDATE subCategories SET headcategory = 0 WHERE headcategory = %i',$_GET['removeCategory']);
+
+
   } else if (isset($_GET['removeSubcategory']) && !empty($_GET['removeSubcategory'])) {
     $subCategory = DB::queryFirstRow('SELECT `id`, `amount`, `headcategory` FROM `subCategories` WHERE `id`=%d', (int)$_GET['removeSubcategory']);
     $previousCategory = DB::queryFirstRow('SELECT `id`, `amount` FROM `headCategories` WHERE `id`=%d',  $subCategory['headcategory']);
     if ($subCategory !== NULL) {
       if ($previousCategory !== NULL) {
-        DB::update('headCategories', array('amount' => (int)$previousCategory['amount'] - $subCategory['amount']), 'id=%d',  $previousCategory['id']);  
+        DB::update('headCategories', array('amount' => (int)$previousCategory['amount'] - $subCategory['amount']), 'id=%d',  $previousCategory['id']);
       }
       DB::delete('subCategories', "id=%d", (int)$_GET['removeSubcategory']);
       if (DB::affectedRows() === 1) $alert = '<div class="alert alert-info" role="alert"><p>' . gettext('Unterkategorie entfernt.') . '</p></div>';
+
+      DB::query('UPDATE items SET subcategories=REPLACE(subcategories,",' . (int)$_GET['removeSubcategory']  . ',","," ) ');
     }
   }
 }
 
 $headCategories = DB::query('SELECT `id`, `name`, `amount` FROM `headCategories` ORDER BY name ASC');
+foreach($headCategories as $key => $category) {
+  if ((int) $category['id'] === 0) {
+    unset($headCategories[$key]);
+    break;
+  }
+}
+
 foreach($headCategories as $key => $category) {
   $positions = DB::query('SELECT NULL FROM `items` WHERE `headcategory`=%d', $category['id']);
   $headCategories[$key]['positions'] = DB::affectedRows();

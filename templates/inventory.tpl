@@ -62,14 +62,23 @@
                     <div class="list-span"></div>
                     {/if}
 
+                    {if $catid != 0}
                     <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" title="{$category.name}" class="list-span">{$category.name}</a>
-                    <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i><img class="item-picture" data-id="{$item.id}" src="data:image/png;base64,{$item.thumb}">{/if}
-                            {if !$isGuest}
-                            <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
                     {else}
-                    <span class="listing-label" title="{$item.label}">{$item.label}</span></span>
-        </div>
-        {/if}
+                    <span title="{$category.name}" class="list-span">{$category.name}</span>
+                    {/if}
+
+                    <div class="list-span">
+                      <span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i><img class="item-picture" data-id="{$item.id}" src="" onclick="displayFullImage('{$item.id}');return false;">{/if}
+                    {if !$isGuest}
+                        <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}">{$item.label}</a>
+                    {else}
+                        <span class="listing-label" title="{$item.label}">{$item.label}</span>
+                    {/if}
+                      </span>
+                    </div>
+
+
         <div class="list-span"><span class="listing-amount quick-edit">{$item.amount}</span></div>
         <div class="list-span"><span class="listing-comment quick-edit" title="{$item.comment}">{$item.comment}</span></div>
 
@@ -78,10 +87,8 @@
         {if !$isGuest}
         <a tabindex="-1" href="#" class="save-inline-edit inactive" title="{t}Schnelle Bearbeitung speichern{/t}" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
         <a tabindex="-1" href="#" class="open-inline-edit" title="{t}Schnelle Bearbeitung{/t}" data-id="{$item.id}"><i class="fas fa-eraser"></i></a>
-        <a title="{t}Ausführliche Bearbeitung{/t}" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
-        {/if}
+        <a title="{t}Ausführliche Bearbeitung{/t}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
 
-        {if !$isGuest}
         <div class="dropdown float-right">
             <select autocomplete="off" id="item_{$item.id}" class="btn dropdown-toggle switchStorage listing-switchstorage" data-itemamount="{$item.amount}" data-value="0" data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {$hasStorage = false}
@@ -160,6 +167,7 @@
 
                 {assign var="subCats" value=","|explode:$item.subcategories}
                 {$subCategories=array()}
+                {$subNames=array()}
                 {foreach $subCats as $subCat}
                 {if isset($subcategories.$subCat)}
                 {$subCategories[] ="<a href='{$urlBase}/inventory{$urlPostFix}?subcategory={$subcategories.$subCat.id}'>{$subcategories.$subCat.name}</a>"}
@@ -178,10 +186,15 @@
                     <div class="list-span"></div>
                     {/if}
 
+                    {if $catid != 0}
                     <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" title="{$category.name}" class="list-span">{$category.name}</a>
-                    <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fa fas fa-images"></i><img class="item-picture" data-id="{$item.id}" src="data:image/png;base64,{$item.thumb}">{/if}
-                            {if !$isGuest}
-                            <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
+                    {else}
+                    <span title="{$category.name}" class="list-span">{$category.name}</span>
+                    {/if}
+
+                    <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fa fas fa-images"></i><img class="item-picture" data-id="{$item.id}" src="">{/if}
+                    {if !$isGuest}
+                    <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
                     {else}
                     <span class="listing-label" title="{$item.label}">{$item.label}</span></span>
         </div>
@@ -194,10 +207,8 @@
         {if !$isGuest}
         <a tabindex="-1" href="#" class="save-inline-edit inactive" title="{t}Schnelle Bearbeitung speichern{/t}" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
         <a tabindex="-1" href="#" class="open-inline-edit" title="{t}Schnelle Bearbeitung{/t}" data-id="{$item.id}"><i class="fas fa-eraser"></i></a>
-        <a title="{t}Ausführliche Bearbeitung{/t}" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
-        {/if}
+        <a title="{t}Ausführliche Bearbeitung{/t}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
 
-        {if !$isGuest}
         <div class="dropdown float-right">
             <select autocomplete="off" id="item_{$item.id}" class="btn dropdown-toggle switchStorage listing-switchstorage" data-itemamount="{$item.amount}" data-value="0" data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {$hasStorage = false}
@@ -242,10 +253,6 @@
         {if $parse.showemptystorages || $itemstore.itemcount > 0 }
         <hr>
         <div class="storage-area">
-            {if !$isGuest}
-            <button title="{t}Unterkategorie löschen{/t}" class="btn smallButton" name="removeStorage" data-name="{if isset($itemstore.storage.label)}{$itemstore.storage.label}{else}{t}Unsortiert{/t}{/if}" value="{$itemstore.storage.id}" type="submit"><i class="fas fa-times-circle"></i></button>
-            {/if}
-
             <h4 class="text-dark">
                 {if isset($itemstore.storage.label)}{$itemstore.storage.label}{else}{t}Unsortiert{/t}{/if}&nbsp;
                 <span class="small">({$itemstore.positionen} {if $itemstore.positionen == 1}{t}Position{/t}{else}{t}Positionen{/t}{/if}, {$itemstore.itemcount} {if $itemstore.itemcount == 1}{t}Gegenstand{/t}{else}{t}Gegenstände{/t}{/if})</span>
@@ -269,6 +276,7 @@
 
                 {assign var="subCats" value=","|explode:$item.subcategories}
                 {$subCategories=array()}
+                {$subNames=array()}
                 {foreach $subCats as $subCat}
                 {if isset($subcategories.$subCat)}
                 {$subCategories[] ="<a href='{$urlBase}/inventory{$urlPostFix}?subcategory={$subcategories.$subCat.id}'>{$subcategories.$subCat.name}</a>"}
@@ -287,10 +295,15 @@
                     <div class="list-span"></div>
                     {/if}
 
+                    {if $catid != 0}
                     <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" title="{$category.name}" class="list-span">{$category.name}</a>
-                    <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i><img class="item-picture" data-id="{$item.id}" src="data:image/png;base64,{$item.thumb}">{/if}
-                            {if !$isGuest}
-                            <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
+                    {else}
+                    <span title="{$category.name}" class="list-span">{$category.name}</span>
+                    {/if}
+
+                    <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i><img class="item-picture" data-id="{$item.id}" src="">{/if}
+                    {if !$isGuest}
+                    <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
                     {else}
                     <span class="listing-label" title="{$item.label}">{$item.label}</span></span>
         </div>
@@ -303,10 +316,8 @@
         {if !$isGuest}
         <a tabindex="-1" href="#" class="save-inline-edit inactive" title="{t}Schnelle Bearbeitung speichern{/t}" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
         <a tabindex="-1" href="#" class="open-inline-edit" title="{t}Schnelle Bearbeitung{/t}" data-id="{$item.id}"><i class="fas fa-eraser"></i></a>
-        <a title="{t}Ausführliche Bearbeitung{/t}" href="{$urlBase}/index{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
-        {/if}
+        <a title="{t}Ausführliche Bearbeitung{/t}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
 
-        {if !$isGuest}
         <div class="dropdown float-right">
             <select autocomplete="off" id="item_{$item.id}" class="btn dropdown-toggle switchStorage listing-switchstorage" data-itemamount="{$item.amount}" data-value="0" data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {$hasStorage = false}
@@ -350,6 +361,9 @@
 <pre>{$dump}</pre>{/if}
 {include file="footer.tpl"}
 {literal}
+
+<script src="js/libs/fslightbox.js"></script>
+
 <script type="text/javascript">
     function NumSelect(maxAmount) {
         while (true) {
@@ -379,8 +393,15 @@
             } else if (evt.target.nodeName === 'A') {
                 return
             }
-                        evt.target.parentNode.querySelector('img.item-picture').setAttribute('src','data:image/*;charset=utf-8;base64,' + GetItemThumb( evt.target.parentNode.querySelector('img.item-picture').getAttribute('data-id') ) )
-            evt.target.parentNode.querySelector('img.item-picture').classList.toggle('active')
+
+            let itemPicture = evt.target.parentNode.querySelector('img.item-picture')
+            let openedImage = document.querySelector('img.item-picture.active')
+            if (openedImage !== null && openedImage !== itemPicture) {
+                openedImage.classList.toggle('active')
+            }
+
+            itemPicture.setAttribute('src','data:image/*;charset=utf-8;base64,' + GetItemThumb( itemPicture.dataset['id'] ) )
+            itemPicture.classList.toggle('active')
         })
     }
 
@@ -753,8 +774,19 @@
         }
     }
 
+    function displayFullImage(ItemID){
+          let lightbox = new FsLightbox();
+          lightbox.props.initialAnimation = 'initial-animation';
+          // set up props, like sources, types, events etc.
+          //lightbox.props.sources = ['data:image/*;charset=utf-8;base64,' + GetItemFullimage( ItemID )];
+          lightbox.props.type = 'image';
+          lightbox.props.sources = GetItemFullimages( ItemID );
+          lightbox.props.onInit = () => console.log('Lightbox initialized!');
 
+          lightbox.open();
 
+    }
 </script>
 {/literal}
 {include file="bodyend.tpl"}
+{include file="modal.tpl"}

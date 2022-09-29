@@ -73,7 +73,18 @@ Default usePrettyURLs: `true`
 
 ***Please note the user registration and login/logout*** can be enabled by setting the variable `$useRegistration` to `true`, otherwise the default disables this feature by setting this to `false`.
 
-Also `$usePrettyURLs` can be set to `false` in order to disable pretty urls. ***This might resolve some errors on Raspberry OS***.
+If you are planning to use `$usePrettyURLs` on **Raspberry OS** please ensure that the apache2 site configuration allows the usage of `.htaccess`.
+This can be achieved by adding 
+```
+<Directory /var/www/html>
+	Options Indexes FollowSymLinks
+	AllowOverride All
+	Require all granted
+</Directory>
+```
+to the `/etc/apache2/sites-enabled/000-default.conf` site configuration (don't forget to restart apache afterwards `systemctl restart apache2`)
+
+Alternatively `$usePrettyURLs` can be set to `false` in order to disable pretty urls. ***This might resolve some errors on Raspberry OS***.
 
 #### Permissions and error 500
 

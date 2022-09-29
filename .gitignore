@@ -3,5 +3,11 @@ smartyfolders/templates_c/*.php
 composer.lock
 vendor/*
 support/dba.php
-
 smartyfolders/touchfile.txt
+support/smarty_debug
+patch.diff
+support/smarty_force_compile
+workdir/*
+test.php
+inventory2.php
+support/installstate.txt
