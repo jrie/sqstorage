@@ -1030,7 +1030,7 @@ msgid "Aktualisierungs-Manager"
 msgstr ""
 
 #: templates//updater.tpl:13
-msgid "Aktualisierung der installation"
+msgid "Aktualisierung der Installation"
 msgstr ""
 
 #: templates//updater.tpl:18

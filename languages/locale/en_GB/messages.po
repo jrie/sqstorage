@@ -808,7 +808,7 @@ msgstr "Abort. The following files could not be written or created:"
 
 #: templates//php_language_extract.tpl:77
 msgid "Aktualisierung abgeschlossen. "
-msgstr "Update completed"
+msgstr "Update completed."
 
 #: templates//php_language_extract.tpl:78
 msgid "Aktualisierung gestartet, lade nun die Aktuelle Version herunter"
@@ -1081,8 +1081,8 @@ msgid "Aktualisierungs-Manager"
 msgstr "Update Manager"
 
 #: templates//updater.tpl:13
-msgid "Aktualisierung der installation"
-msgstr "Updating the installation"
+msgid "Aktualisierung der Installation"
+msgstr "Update of the installation"
 
 #: templates//updater.tpl:18
 msgid ""
@@ -1329,6 +1329,9 @@ msgstr "New value"
 #: templates//modal.tpl:32
 msgid "Abbrechen"
 msgstr "Cancel"
+
+#~ msgid "Aktualisierung der installation"
+#~ msgstr "Updating the installation"
 
 #~ msgid "SQStorage"
 #~ msgstr "SQStorage"

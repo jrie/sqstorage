@@ -1089,8 +1089,8 @@ msgid "Aktualisierungs-Manager"
 msgstr "Aktualisierungs-Manager"
 
 #: templates//updater.tpl:13
-msgid "Aktualisierung der installation"
-msgstr "Aktualisierung der installation"
+msgid "Aktualisierung der Installation"
+msgstr "Aktualisierung der Installation"
 
 #: templates//updater.tpl:18
 msgid ""
@@ -1342,6 +1342,9 @@ msgstr "Neuer Wert"
 #: templates//modal.tpl:32
 msgid "Abbrechen"
 msgstr "Abbrechen"
+
+#~ msgid "Aktualisierung der installation"
+#~ msgstr "Aktualisierung der installation"
 
 #~ msgid "Bitte Benutzername und E-Mail-Adresse angeben."
 #~ msgstr "Bitte Benutzername und E-Mail-Adresse angeben."
