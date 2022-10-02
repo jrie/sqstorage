@@ -16,7 +16,7 @@ Once you have refreshed a **po** file, compile it into the **message.mo**, overw
 ***PoEdit*** is the recommendend software. Open the `.po` file in PoEdit.
 Now choose to update the translation from **Translation** in the main menu bar and select the `sqstorage.pot` file from within `languages` folder. Next step is the actual translation.
 
-After the translation is done, save the `.mo` and exit **PoEdit**. The translation is now done and is ready to be used.
+After the translation is done, save the `.mo` in the `.po` folder once, and then also into the correct `/LC_MESSAGES/` folder. Then exit **PoEdit**. The translation is now done and is ready to be used. It is recommended to test your translation before publishing/pushing.
 
 ##### Example
 Language: `de_CH`
