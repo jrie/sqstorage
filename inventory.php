@@ -88,8 +88,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
       if ($targetAmountAfter !== $targetAmountBefore) {
         $diffAmount = $targetAmountBefore - $targetAmountAfter;
-
-        DB::update('storages', array('amount' => $storage['amount'] - $diffAmount), 'id=%d', $storage['id']);
+        if ($storage !== null) {
+          DB::update('storages', array('amount' => $storage['amount'] - $diffAmount), 'id=%d', $storage['id']);
+        }
         DB::update('headCategories', array('amount' => $headCategory['amount'] - $diffAmount), 'id=%d', $headCategory['id']);
 
         foreach($subCategoriesData as $id => $amount) {
