@@ -41,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     $targetId = (int) $targetItem['id'];
+    $storage = DB::queryFirstRow('SELECT id, amount FROM storages WHERE id=%d', $targetItem['storageid']);
     $targetAmountBefore = (int) $targetItem['amount'];
     $headCategory = DB::queryFirstRow('SELECT id, amount FROM headCategories WHERE id=%d', (int) $targetItem['headcategory']);
     $subIds = array();
@@ -88,8 +89,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       if ($targetAmountAfter !== $targetAmountBefore) {
         $diffAmount = $targetAmountBefore - $targetAmountAfter;
 
-        DB::update('storages', array('amount' => (int)$storage['amount'] - $diffAmount), 'id=%d', $storage['id']);
-        DB::update('headCategories', array('amount' => (int)$headcategory['amount'] - $diffAmount), 'id=%d', $headcategory['id']);
+        DB::update('storages', array('amount' => $storage['amount'] - $diffAmount), 'id=%d', $storage['id']);
+        DB::update('headCategories', array('amount' => $headCategory['amount'] - $diffAmount), 'id=%d', $headCategory['id']);
 
         foreach($subCategoriesData as $id => $amount) {
           DB::update('subCategories', array('amount' => $amount - $diffAmount), 'id=%d', $id);
