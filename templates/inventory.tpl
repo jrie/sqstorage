@@ -120,6 +120,7 @@
         {/if}
         </ul>
 </div>
+<div class="clearfix"></div>    
 {else}
 <!--<h1>Keine Teile verdammt</h1>-->
 {/if}
@@ -767,12 +768,22 @@
                    evt.target.style.overflow = 'visible'
                 }, 0.6)
             })
+
             let cv = getCookie("collapsedstorage_"+ itind, 0)
             if(cv == '1') {
                 toggletableview(itind)
             }
         }
     }
+
+    window.addEventListener('resize', function(evt) {
+        let collapseStorage = document.getElementsByClassName("collapsestorage")
+        for (let element of collapseStorage) {
+            element.style = 'height: auto;';
+            element.dataset['originalheight'] = element.clientHeight
+            element.style = 'transition: all 300ms ease-out; height:' + element.clientHeight + 'px;'
+        }
+    })
 
     function displayFullImage(ItemID){
           let lightbox = new FsLightbox();
