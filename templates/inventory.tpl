@@ -765,7 +765,8 @@
                         return
                     }
 
-                   evt.target.style.overflow = 'visible'
+                    evt.target.style.overflow = 'visible'
+                    window.dispatchEvent(new window.Event('resize'))
                 }, 0.6)
             })
 
@@ -779,6 +780,10 @@
     window.addEventListener('resize', function(evt) {
         let collapseStorage = document.getElementsByClassName("collapsestorage")
         for (let element of collapseStorage) {
+            if (element.style.overflow === 'hidden') {
+                continue
+            }
+
             element.style = 'height: auto;';
             element.dataset['originalheight'] = element.clientHeight
             element.style = 'transition: all 300ms ease-out; height:' + element.clientHeight + 'px;'
