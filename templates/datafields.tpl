@@ -178,7 +178,9 @@
                                 }
                             }
 
-                            if (isDuplicated) break
+                            if (isDuplicated) {
+                                break
+                            }
                         }
 
                         if (isDuplicated) {
@@ -193,9 +195,9 @@
                         let hasFound = true
                         for (let entryInput of inputEntries) {
                             if (dataEntries.indexOf(entryInput) === -1) {
-                                hasFound = false;
+                                hasFound = false
                                 lastError = entryInput
-                                break;
+                                break
                             }
                         }
 
@@ -247,7 +249,7 @@
                     }
                 }
 
-                let dataFields = evt.target.elements;
+                let dataFields = evt.target.elements
                 let nonValidInputs = {
                     'dataType': ['-1', '{/literal}{t}Datentyp{/t}{literal}', 1, 63],
                     'fieldName': ['', '{/literal}{t}Feldname{/t}{literal}', 1, 63],
@@ -278,7 +280,7 @@
 
                 let fieldConverts = {{/literal}{$fieldConverts}{literal}}
 
-                let dataType = null;
+                let dataType = null
 
                 for (let field of dataFields) {
                     let dataValue = ''
@@ -310,11 +312,11 @@
                         if (dataValue === nonValidInputs[field.name][0] && dataValue !== '') {
                             alert('{/literal}{t}Feld{/t}{literal} "' + nonValidInputs[field.name][1] + '" {/literal}{t}hat keinen Wert.{/t}{literal}')
                             evt.preventDefault()
-                            break;
+                            break
                         } else if (dataValue.length < nonValidInputs[field.name][2] || dataValue.length > nonValidInputs[field.name][3]) {
                             alert('{/literal}{t}Feld{/t}{literal} "' + nonValidInputs[field.name][1] + '" {/literal}{t}muß zwischen{/t}{literal} ' + nonValidInputs[field.name][2].toString() + ' {/literal}{t}und{/t}{literal} ' + nonValidInputs[field.name][3].toString() + ' {/literal}{t}Zeichen lang sein.{/t}{literal}')
                             evt.preventDefault()
-                            break;
+                            break
                         }
                     }
                 }
@@ -334,9 +336,10 @@
 
             function toggleDeleteButton(state) {
                 let target = document.querySelector('form[name="fieldData"] button[name="btnDelete"]')
-                if (state) target.classList.remove('hidden');
-                else {
-                    target.classList.add('hidden');
+                if (state) {
+                    target.classList.remove('hidden')
+                } else {
+                    target.classList.add('hidden')
                     document.querySelector('form[name="fieldData"] input[name="doDelete"]').value = "-1"
                 }
             }
@@ -367,7 +370,7 @@
                     currentSelection.classList.remove('btn-primary')
                 }
 
-                currentSelection = evt.target;
+                currentSelection = evt.target
                 evt.target.classList.add('btn-primary')
                 evt.target.classList.remove('btn-secondary')
                 toggleDeleteButton(true)
@@ -406,8 +409,8 @@
                 document.querySelector('input#defaultVisible1').checked = false
                 document.querySelector('input#defaultVisible2').checked = false
 
-                if (evt.target.dataset['defaultvisible'] === '1') document.querySelector('input#defaultVisible1').checked = true;
-                else document.querySelector('input#defaultVisible2').checked = true;
+                if (evt.target.dataset['defaultvisible'] === '1') document.querySelector('input#defaultVisible1').checked = true
+                else document.querySelector('input#defaultVisible2').checked = true
 
                 setVisiblity()
                 setDataExample()
