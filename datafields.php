@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $visibleIn = ';' . implode(';', $_POST['visibleInCategories']) . ';';
     $dataValues = null;
 
-    if ($_POST['dataType'] === 'selection' || $_POST['dataType'] === 'mselection') $dataValues = $_POST['fieldValues'] . ';';
+    if ($_POST['dataType'] === 'selection' || $_POST['dataType'] === 'mselection') $dataValues = $_POST['fieldValues'];
     if ($dataDefault === '') $dataDefault = null;
     $existingField = null;
     if ($existingId === -1) {
