@@ -28,7 +28,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     $headCategory = DB::queryFirstRow('SELECT `amount` FROM headCategories WHERE id=%d', $item['headcategory']);
-    DB::update('storages', array('amount' => (int)$storage['amount'] - (int)$item['amount']), 'id=%d', $item['storageid']);
+    if ((int)$storage['amount'] - (int)$item['amount'] > 0) {
+      DB::update('storages', array('amount' => (int)$storage['amount'] - (int)$item['amount']), 'id=%d', $item['storageid']);
+    } else {
+      DB::update('storages', array('amount' => 0), 'id=%d', $item['storageid']);
+    }
     DB::update('headCategories', array('amount' => (int)$headCategory['amount'] - (int)$item['amount']), 'id=%d', $item['headcategory']);
     DB::query('DELETE FROM items WHERE id=%d', $_POST['remove']);
   } else if (isset($_POST['removeStorage']) && !empty($_POST['removeStorage'])) {
@@ -428,7 +432,6 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
     $myitem[0]['itemcount'] = 0;
   }
 
-
   for ($x = 0; $x < count($loseItems); $x++) {
     if (in_array($loseItems[$x]['id'], $itesWithImages  )) {
       $loseItems[$x]['hasImages'] = true;
@@ -439,6 +442,7 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
     $myitem[0]['positionen']++;
     $myitem[0]['itemcount'] += $loseItems[$x]['amount'];
   }
+
   $storages = DB::query('SELECT * FROM storages ORDER BY label ASC');
   foreach ($storages as $store) {
     $storagebyid[$store['id']] = $store;
@@ -497,14 +501,15 @@ $cfconf = CF::GetCustomFieldsConfiguration($cfraw);
 
 $cfdata = CF::GetItemBasedCFD($cfraw);
 
-
-foreach($myitem as $itemL1 => $itemD1){
-  for($x = 0; $x < count($itemD1['items']);$x++){
-    $tocheck = array();
-    $tocheck[] = 'all';
-    $tocheck[] = $itemD1['items'][$x]['headcategory'];
-    //$itemdatafields = GetDataFields($tocheck,$cfconf,$cfdata);
-    $myitem[$itemL1]['items'][$x]['customFields'] = CF::GetDataFields($tocheck,$cfconf,$cfdata,$itemD1['items'][$x]['id']);
+foreach($myitem as $itemL1 => $itemD1) {
+  if (isset($itemD1['items'])) {
+    for($x = 0; $x < count($itemD1['items']);$x++){
+      $tocheck = array();
+      $tocheck[] = 'all';
+      $tocheck[] = $itemD1['items'][$x]['headcategory'];
+      //$itemdatafields = GetDataFields($tocheck,$cfconf,$cfdata);
+      $myitem[$itemL1]['items'][$x]['customFields'] = CF::GetDataFields($tocheck,$cfconf,$cfdata,$itemD1['items'][$x]['id']);
+    }
   }
 }
 
