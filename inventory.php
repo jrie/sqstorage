@@ -499,15 +499,16 @@ $cfdata = CF::GetItemBasedCFD($cfraw);
 
 
 foreach($myitem as $itemL1 => $itemD1){
-  for($x = 0; $x < count($itemD1['items']);$x++){
-    $tocheck = array();
-    $tocheck[] = 'all';
-    $tocheck[] = $itemD1['items'][$x]['headcategory'];
-    //$itemdatafields = GetDataFields($tocheck,$cfconf,$cfdata);
-    $myitem[$itemL1]['items'][$x]['customFields'] = CF::GetDataFields($tocheck,$cfconf,$cfdata,$itemD1['items'][$x]['id']);
+  if (isset($itemD1['items'])) {
+    for($x = 0; $x < count($itemD1['items']);$x++){
+      $tocheck = array();
+      $tocheck[] = 'all';
+      $tocheck[] = $itemD1['items'][$x]['headcategory'];
+      //$itemdatafields = GetDataFields($tocheck,$cfconf,$cfdata);
+      $myitem[$itemL1]['items'][$x]['customFields'] = CF::GetDataFields($tocheck,$cfconf,$cfdata,$itemD1['items'][$x]['id']);
+    }
   }
 }
-
 
 
  /**
