@@ -501,7 +501,7 @@ $cfconf = CF::GetCustomFieldsConfiguration($cfraw);
 
 $cfdata = CF::GetItemBasedCFD($cfraw);
 
-foreach($myitem as $itemL1 => $itemD1) {
+foreach($myitem as $itemL1 => $itemD1){
   if (isset($itemD1['items'])) {
     for($x = 0; $x < count($itemD1['items']);$x++){
       $tocheck = array();
