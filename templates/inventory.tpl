@@ -411,8 +411,8 @@
         item.addEventListener('change', function(evt) {
             if (evt.target.value === '-1') return
 
-            let amountTrans = 1
-            if (parseInt(evt.target.dataset['itemamount']) > 1) {
+            let amountTrans = 0
+            if (parseInt(evt.target.dataset['itemamount']) > 0) {
                 let toTransfer = NumSelect(evt.target.dataset['itemamount'])
                 if (toTransfer <= 0) return
                 amountTrans = toTransfer
@@ -484,7 +484,7 @@
                                 input.type = 'number'
                                 input.maxLength = '19'
                                 input.minLength = '1'
-                                input.min = '1'
+                                input.min = '0'
                                 input.required = 'required'
                             }
 

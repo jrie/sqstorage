@@ -64,7 +64,7 @@
                     if (index === -1) {
                         let transferAmount = amount
                         if (amount > 1) transferAmount = NumSelect(amount)
-                        if (transferAmount <= 0) return
+                        if (transferAmount < 0) return
 
                         if (transferAmount === amount) transferTarget = target.appendChild(evt.target.cloneNode(true))
                         else {

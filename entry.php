@@ -150,8 +150,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getImageId'])) {
   header('Location: ' . $_SERVER['HTTP_REFERER']);
   die();
 } else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  $amount = isset($_POST['amount']) && !empty($_POST['amount']) ? (int) $_POST['amount'] : 1;
-  if ($amount < 1 || strlen( (string) $amount) > 19) {
+  $amount = isset($_POST['amount']) && !empty($_POST['amount']) ? (int) $_POST['amount'] : 0;
+  if ($amount < 0 || strlen( (string) $amount) > 19) {
     die();
   }
 
