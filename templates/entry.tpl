@@ -210,9 +210,9 @@
                         <span class="input-group-text" id="basic-addon4">{t}Anzahl{/t}</span>
                     </div>
                     {if !$isEdit}
-                        <input type="number" maxlength="19" min="1" autocomplete="off" name="amount" required="required" class="form-control" placeholder="1" aria-label="{t}Anzahl{/t}" aria-describedby="basic-addon4">
+                        <input type="number" maxlength="19" min="0" autocomplete="off" name="amount" required="required" class="form-control" placeholder="1" aria-label="{t}Anzahl{/t}" aria-describedby="basic-addon4">
                     {else}
-                        <input type="number" maxlength="19" min="1" autocomplete="off" name="amount" required="required" class="form-control" placeholder="1" aria-label="{t}Anzahl{/t}" aria-describedby="basic-addon4" value="{$item.amount}">
+                        <input type="number" maxlength="19" min="0" autocomplete="off" name="amount" required="required" class="form-control" placeholder="1" aria-label="{t}Anzahl{/t}" aria-describedby="basic-addon4" value="{$item.amount}">
                     {/if}
                 </div>
 
