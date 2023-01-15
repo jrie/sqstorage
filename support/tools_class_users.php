@@ -14,7 +14,7 @@
     if(!in_array('failcount',DB::columnList('users'))) return true;
 
     $fc = DB::queryFirstRow('Select failcount, lastfail from users WHERE username = %s',$username);
-
+    if (is_null($fc)) return true;
     if (count($fc) == 0) return true;  //no user-record, no problem. Login will assign the error message
     $sinceLastFail = abs( time()-$fc['lastfail'] );
     if ( $sinceLastFail > 900 ) return true; // last failed login try happened more than 15 minutes ago, let's have another try
@@ -72,7 +72,7 @@
       return true;
     } else {
       $error = gettext('Zugangsdaten ungültig');
-      USERS::RegisterFail($user['id']);
+      if(is_array($user)) USERS::RegisterFail($user['id']);
       return false;
 
     }
