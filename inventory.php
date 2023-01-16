@@ -120,13 +120,11 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
   $storeId = (int)$_GET['storageid'];
   $storages = DB::query('SELECT id, label, amount FROM storages ORDER BY label ASC');
   $store = DB::queryFirstRow('SELECT id, label, amount FROM storages WHERE id=%d', $storeId);
-  $items = DB::query('SELECT * FROM items WHERE storageid=%d', $storeId);
+  $items = DB::query('SELECT * FROM items WHERE storageid=%d ORDER BY label ASC', $storeId);
   $myitem[$storeId]['storage'] = $store;
   $myitem[$storeId]['positionen'] = 0;
   $myitem[$storeId]['itemcount'] = 0;
   for ($x = 0; $x < count($items); $x++) {
-
-
     if (in_array($items[$x]['id'], $itesWithImages  )) {
       $items[$x]['hasImages'] = true;
       $items[$x]['thumb'] = "";
@@ -144,7 +142,7 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
   $parse['showemptystorages'] = true;
   $categoryId = (int)$_GET['subcategory'];
   $category = DB::queryFirstRow('SELECT id, name, amount from subCategories WHERE id=%d', $categoryId);
-  $items = DB::query('SELECT * FROM items WHERE subCategories LIKE %s', ('%,' . $categoryId . ',%'));
+  $items = DB::query('SELECT * FROM items WHERE subCategories LIKE %s ORDER BY label ASC', ('%,' . $categoryId . ',%'));
   $storeId = 0;
 
   $store[$storeId]['id'] = $storeId;
@@ -270,7 +268,7 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
 
   if (count($customItemIds) > 0) {
     // SQL with custom item fields
-    $sql .= " OR id IN %li)";
+    $sql .= " OR id IN %li) ORDER BY label ASC";
 
     if (count($headCategories) > 0) {
       $items = DB::query($sql, $headCategories, $searchValue, $searchValue, $searchValue, $customItemIds);
@@ -280,7 +278,7 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
 
   } else {
     // Regular search
-    $sql .= ")";
+    $sql .= ") ORDER BY label ASC";
     if (count($headCategories) > 0) {
       $items = DB::query($sql, $headCategories, $searchValue, $searchValue, $searchValue);
     } else {
@@ -293,16 +291,12 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
     $store[$storages[$y]['id']] = $storages[$y];
   }
 
-
-
-
   for ($x = 0; $x < count($items); $x++) {
     $item = $items[$x];
     if (in_array($items[$x]['id'], $itesWithImages  )) {
       $items[$x]['hasImages'] = true;
       $items[$x]['thumb'] = "";
     }
-
 
     $storeId = $item['storageid'];
     $myitem[$storeId]['storage'] = $store[$storeId];
@@ -321,7 +315,7 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
   $parse['showemptystorages'] = true;
   $categoryId = (int)$_GET['category'];
   $category = DB::queryFirstRow('SELECT id, name, amount from headCategories WHERE id=%d LIMIT 1', $categoryId);
-  $items = DB::query('SELECT * FROM items WHERE headcategory=%d', $categoryId);
+  $items = DB::query('SELECT * FROM items WHERE headcategory=%d ORDER BY label ASC', $categoryId);
   $storeId = 0;
 
   $store[$storeId]['id'] = $storeId;
@@ -360,7 +354,7 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
     $myitem[$storeId]['itemcount'] = 0;
     $store[$storeId]['id'] = $storeId;
 
-    $items = DB::query('SELECT * FROM items WHERE subcategories LIKE %ss', ',' . $subCategory['id'] . ',');
+    $items = DB::query('SELECT * FROM items WHERE subcategories LIKE %ss ORDER BY label ASC', ',' . $subCategory['id'] . ',');
     $itesWithImages = DB::queryFirstColumn("SELECT  DISTINCT  itemId FROM images");
     for ($x = 0; $x < count($items); $x++) {
       $item = $items[$x];
@@ -390,7 +384,7 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
   if(!is_array($itemidarray)) $itemidarray = array($itemidarray);
 
 
-  $items = DB::query('SELECT * FROM items WHERE id IN %li', $itemidarray);
+  $items = DB::query('SELECT * FROM items WHERE id IN %li ORDER BY label ASC', $itemidarray);
 
   $storages = DB::query('SELECT * FROM storages ORDER BY label ASC');
   for ($y = 0; $y < count($storages); $y++) {
@@ -449,7 +443,7 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
     $myitem[$store['id']]['storage'] = $store;
     $myitem[$store['id']]['positionen'] = 0;
     $myitem[$store['id']]['itemcount'] = 0;
-    $items = DB::query('SELECT * FROM items WHERE storageid=%d', $store['id']);
+    $items = DB::query('SELECT * FROM items WHERE storageid=%d ORDER BY label ASC', $store['id']);
 
     for ($x = 0; $x < count($items); $x++) {
       if (in_array($items[$x]['id'], $itesWithImages  )) {
