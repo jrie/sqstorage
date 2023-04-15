@@ -27,6 +27,9 @@ if(isset($_POST['target'])){
 }else{
   $mtarget = "";
 }
+
+
+
 $install_allowed = false;
 if(file_exists($basedir . "/support/allow_install")) $install_allowed = true;
 
@@ -149,8 +152,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' || !empty($error) || ($_SERVER['REQUEST_
           die();
         }
       } else if ($isAdd) {
-        $user = DB::queryFirstRow('SELECT u.id, u.username, u.mailaddress,  u.api_access,  g.name as usergroupname, g.id as usergroupid FROM users u LEFT JOIN users_groups ugs ON(ugs.userid = u.id) LEFT JOIN usergroups g ON(g.id = ugs.usergroupid) WHERE u.id = %i LIMIT 1', $_GET['addUser']);
+        $user = DB::queryFirstRow('SELECT u.id, u.username, u.mailaddress,  u.api_access,  g.name as usergroupname, g.id as usergroupid FROM users u LEFT JOIN users_groups ugs ON(ugs.userid = u.id) LEFT JOIN usergroups g ON(g.id = ugs.usergroupid) WHERE u.id = %i LIMIT 1', $user['id']);
       }
+    } else {
+      $user = DB::queryFirstRow('SELECT u.id, u.username, u.mailaddress,  u.api_access,  g.name as usergroupname, g.id as usergroupid FROM users u LEFT JOIN users_groups ugs ON(ugs.userid = u.id) LEFT JOIN usergroups g ON(g.id = ugs.usergroupid) WHERE u.id = %i LIMIT 1', $userId);
+
+      
     }
   } else {
     if (isset($_GET['removeUser']) && !empty($_GET['removeUser'])) {
@@ -179,8 +186,8 @@ if ($mailDB !== NULL) {
 
 if(!in_array('failcount',DB::columnList('users'))){
   $users = DB::query('SELECT u.id, u.username, u.mailaddress, g.name as usergroupname, g.id as usergroupid FROM users u LEFT JOIN users_groups ugs ON(ugs.userid = u.id) LEFT JOIN usergroups g ON(g.id = ugs.usergroupid) ORDER BY u.username ASC');
-}else{
-$users = DB::query('SELECT u.id, u.username, u.mailaddress, u.api_access, g.name as usergroupname, g.id as usergroupid FROM users u LEFT JOIN users_groups ugs ON(ugs.userid = u.id) LEFT JOIN usergroups g ON(g.id = ugs.usergroupid) ORDER BY u.username ASC');
+} else {
+  $users = DB::query('SELECT u.id, u.username, u.mailaddress, u.api_access, g.name as usergroupname, g.id as usergroupid FROM users u LEFT JOIN users_groups ugs ON(ugs.userid = u.id) LEFT JOIN usergroups g ON(g.id = ugs.usergroupid) ORDER BY u.username ASC');
 }
 
 $dbUpdateAvailable = IsDBUpdateAvailable();

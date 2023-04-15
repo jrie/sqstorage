@@ -41,7 +41,7 @@ RewriteRule ^settings/removeUser=([0-9]+)$ settings.php/removeUser=$1 [QSA,L]
 RewriteRule ^settings\?addUser$ settings.php?addUser [QSA,L]
 
 RewriteRule ^login$ login.php [L]
-RewriteRule ^login/activate=(.*)+$ login.php/activate=$1 [QSA,L]
+RewriteRule ^login/activate=(.*)+$ login.php?activate=$1 [QSA,L]
 
 RewriteRule ^subcategories/$ subcategories.php
 RewriteRule ^subcategories/([0-9]+)$ inventory.php?subcategory=$1 [QSA,L]

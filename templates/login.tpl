@@ -41,7 +41,7 @@
                         {/if}
                     <form action="{$urlBase}/login{$urlPostFix}{if $showActivation}?activate={$activate}{/if}{if $showRecover}?recover{/if}" method="post">
                         <div class="input-group mb-3">
-                            <input type="text" id="username" name="username" class="form-control" placeholder="{t}Benutzername{/t}" value="{if ($showActivation || $showRecover)}{if isset($POST.username)}{$POST.username}{/if}{else}{if isset($user.username)}{$user.username}{/if}{/if}">
+                            <input type="text" id="username" name="username" class="form-control" placeholder="{t}Benutzername{/t}" value="{if ($showActivation || $showRecover)}{if isset($user.username)}{$user.username}{/if}{else}{if isset($POST.username)}{$POST.username}{/if}{/if}">
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                 <span class="fas fa-user"></span>

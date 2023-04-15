@@ -1,5 +1,4 @@
 <?php
-
 if (session_status() !== PHP_SESSION_ACTIVE) {
   session_start();
 }
@@ -39,9 +38,10 @@ if (isset($useRegistration) && !$useRegistration) {
     header('Location: ' . $urlBase . '/index' . $urlPostFix);
     die();
   }
-
+  
   if (!empty($_SESSION['authenticated'])) {
     $user = DB::queryFirstRow('SELECT u.id, u.username, u.password, g.usergroupid FROM users u LEFT JOIN users_groups g ON(g.userid=u.id) WHERE u.id=%i LIMIT 1', $_SESSION['user']['id']);
+
     if ($user !== NULL) {
       $_SESSION['authenticated'] = true;
       $_SESSION['user'] = ['username' => $user['username'], 'id' => $user['id'], 'usergroupid' => $user['usergroupid']];
@@ -56,7 +56,9 @@ if (isset($useRegistration) && !$useRegistration) {
       die();
     }
 
-    return;
+    if (!isset($_GET['activate'])) {
+      return;
+    }
   }
 
   $showRecover = isset($_GET['recover']);
@@ -69,12 +71,12 @@ if (isset($useRegistration) && !$useRegistration) {
     $createFirstAdmin = true;
   }
 
-  if ($createFirstAdmin || (isset($_REQUEST['activate']) && !empty($_REQUEST['activate']))) {
+  if ($createFirstAdmin || (isset($_GET['activate']) && !empty($_GET['activate']))) {
     DB::delete('users_tokens', 'valid_until < NOW()');
 
     if (!$createFirstAdmin) {
-      $userId = substr($_REQUEST['activate'], 0, -32);
-      $activationToken = substr($_REQUEST['activate'], -32);
+      $userId = substr($_GET['activate'], 0, -32);
+      $activationToken = substr($_GET['activate'], -32);
       $users = DB::query('SELECT u.username, u.password, t.token, t.id as tokenid FROM users u LEFT JOIN users_tokens t ON(t.userid=u.id) WHERE t.userid=%i', $userId);
       foreach ($users as $_user) {
         $verify = password_verify($activationToken, $_user['token']);
@@ -209,7 +211,7 @@ if (isset($useRegistration) && !$useRegistration) {
   $smarty->assign('createFirstAdmin', $createFirstAdmin);
   $smarty->assign('showActivation', $showActivation);
   if (isset($error)) $smarty->assign('error', $error);
-
+  $smarty->assign('user', $user);
   $smarty->display('login.tpl');
   die();
 }
