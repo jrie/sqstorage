@@ -151,13 +151,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' || !empty($error) || ($_SERVER['REQUEST_
           header('Location: '. $urlBase . '/index');
           die();
         }
-      } else if ($isAdd) {
+      } else {
         $user = DB::queryFirstRow('SELECT u.id, u.username, u.mailaddress,  u.api_access,  g.name as usergroupname, g.id as usergroupid FROM users u LEFT JOIN users_groups ugs ON(ugs.userid = u.id) LEFT JOIN usergroups g ON(g.id = ugs.usergroupid) WHERE u.id = %i LIMIT 1', $user['id']);
       }
-    } else {
+    } else if ($isAdd) {
       $user = DB::queryFirstRow('SELECT u.id, u.username, u.mailaddress,  u.api_access,  g.name as usergroupname, g.id as usergroupid FROM users u LEFT JOIN users_groups ugs ON(ugs.userid = u.id) LEFT JOIN usergroups g ON(g.id = ugs.usergroupid) WHERE u.id = %i LIMIT 1', $userId);
-
-      
+    } else {
+      $user = DB::queryFirstRow('SELECT u.id, u.username, u.mailaddress, u.api_access, g.name as usergroupname, g.id as usergroupid FROM users u LEFT JOIN users_groups ugs ON(ugs.userid = u.id) LEFT JOIN usergroups g ON(g.id = ugs.usergroupid) WHERE u.id = %i LIMIT 1', $_GET['editUser']);
+      if ($user == null) {
+        header('Location: '. $urlBase . '/index');
+        die();
+      }
     }
   } else {
     if (isset($_GET['removeUser']) && !empty($_GET['removeUser'])) {
