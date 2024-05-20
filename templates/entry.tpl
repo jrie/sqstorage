@@ -422,16 +422,25 @@
                     window.removeEventListener('resize', handleImgResize)
                 }
 
+                function checkIfLoaded() {
+                    if (imgOverlay.children[0].complete) {
+                        handleImgResize()
+                        return
+                    }
+                    window.requestAnimationFrame(checkIfLoaded)
+                }
+
                 function handleRequest(evt) {
                     if (evt.target.readyState === 4) {
                         if (evt.target.status === 200) {
                             let responseJson = JSON.parse(evt.target.responseText)
                             if (responseJson['status'] === 'OK') {
-                                imgOverlay.children[0].addEventListener('loadend', handleImgResize)
                                 window.addEventListener('resize', handleImgResize)
+                                imgOverlay.children[0].addEventListener('loadend', handleImgResize)
                                 imgOverlay.children[0].src = 'data:image;base64,' + responseJson['data']
                                 imgOverlay.classList.add('active')
                                 imgOverlay.addEventListener('click', hidePreview)
+                                window.requestAnimationFrame(checkIfLoaded)
                             }
                         }
                     }
