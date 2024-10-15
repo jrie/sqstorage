@@ -10,7 +10,7 @@ There is a new website at https://sqstorage.net where you can actively support t
 Right now sqStorage is available in German, English and Polish. Feel free to add your own translation.
 See [LANGUAGE.md](LANGUAGE.md) for details on how to do so.
 
-### Installation and usage
+### Installation and usage (manually, for docker follow [docker-installation.md](docker-installation.md))
 
 #### Requirements
 
