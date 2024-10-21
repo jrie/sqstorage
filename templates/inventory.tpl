@@ -120,7 +120,7 @@
         {/if}
         </ul>
 </div>
-<div class="clearfix"></div>    
+<div class="clearfix"></div>
 {else}
 <!--<h1>Keine Teile verdammt</h1>-->
 {/if}
