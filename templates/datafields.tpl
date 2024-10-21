@@ -21,7 +21,7 @@
             </div>
         {/if}
         <h5>{t}Auswahl{/t}</h5>
-        <form class="form-outline" name="fieldData" method="POST" action="datafields.php">
+        <form class="form-outline" name="fieldData" method="POST" action="{$urlBase}/datafields.php">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">{t}Datentyp{/t}</span>

@@ -32,7 +32,7 @@
             {/if}
 
 
-            <form class="inputForm" accept-charset="utf-8" method="POST" action="install.php">
+            <form class="inputForm" accept-charset="utf-8" method="POST" action="{$urlBase}/install.php">
 
             {if $dbform}
                 <div class="input-group mb-3">

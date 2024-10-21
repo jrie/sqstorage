@@ -20,7 +20,7 @@
 
             <div id="errorForm" class="alert alert-danger hidden" role="alert">{t}Nicht gespeichert, es befinden sich Fehler in der Formular-Eingabe.{/t}</div>
 
-            <form class="inputForm" accept-charset="utf-8" method="POST" action="entry.php" {if !$isEdit}enctype="multipart/form-data"{/if}>
+            <form class="inputForm" accept-charset="utf-8" method="POST" action="{$urlBase}/entry{$urlPostFix}" {if !$isEdit}enctype="multipart/form-data"{/if}>
 
                 {if $isEdit}<input type="hidden" value="{$item.id}" name="itemUpdateId" />{/if}
 
@@ -359,7 +359,7 @@
 
             {if $isEdit}
                 <h4 class="clearfix">{t}Bilder des Gegenstandes{/t}</h4>
-                <form method="POST" accept-charset="utf-8" action="entry{$urlPostFix}" enctype="multipart/form-data">
+                <form method="POST" accept-charset="utf-8" action="{$urlBase}/entry{$urlPostFix}" enctype="multipart/form-data">
                     <input name="images[]" required="required" type="file" multiple="multiple" accept="image/png, image/jpeg, image/jpg, image/webp, image/gif, image/bmp" placeholder="{t}Bild Upload{/t}"/>
                     <input type="hidden" value="{$item.id}" name="editItem" />
                     <input type="submit" class="submit" value="{t}Bilder hochladen{/t}"/>
@@ -381,7 +381,7 @@
 
 {include file="footer.tpl"}
 {literal}
-        <script type="text/javascript">
+<script type="text/javascript">
             function removeImage(evt) {
                 evt.preventDefault()
                 if (window.confirm('{/literal}{t}Bild wirklich entfernen?{/t}{literal}')) {
@@ -399,7 +399,7 @@
                     if (evt.target.parentNode.dataset['imageid'] === undefined) imageId = evt.target.dataset['imageid']
                     else imageId = evt.target.parentNode.dataset['imageid']
 
-                    imgRemovalRequest.open("GET", "entry{/literal}{$urlPostFix}{literal}?removeImageId=" + imageId);
+                    imgRemovalRequest.open("GET", "{/literal}{$urlBase}{literal}/entry{/literal}{$urlPostFix}{literal}?removeImageId=" + imageId);
                     imgRemovalRequest.send()
                 }
             }
@@ -447,7 +447,7 @@
                 }
 
                 imgLoader.addEventListener('readystatechange', handleRequest)
-                imgLoader.open("GET", "entry{/literal}{$urlPostFix}{literal}?getImageId=" + evt.target.parentNode.dataset['imageid']);
+                imgLoader.open("GET", "{/literal}{$urlBase}{literal}/entry{/literal}{$urlPostFix}{literal}?getImageId=" + evt.target.parentNode.dataset['imageid']);
                 imgLoader.send();
             }
 
