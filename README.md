@@ -1,4 +1,4 @@
-![Logo sqStorage](https://dwrox.net/sqstorage.png "Logo sqStorage")
+![Logo sqStorage](https://dwrox.net/sqstorage.webp "Logo sqStorage")
 
 A easy to use and super quick way to organize your inventory, storage and storage areas.
 
