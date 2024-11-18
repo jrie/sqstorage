@@ -13,12 +13,6 @@
  *
  */
 
-DB::$usenull = false;
-
-
-
-
-
 function DBMigration(){
   global $MigMessages;
   // versions control ini
