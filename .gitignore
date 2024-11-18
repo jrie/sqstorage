@@ -11,3 +11,4 @@ workdir/*
 test.php
 inventory2.php
 support/installstate.txt
+.env

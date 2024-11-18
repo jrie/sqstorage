@@ -1,5 +1,3 @@
-version: "3.0"
-
 networks:
   sqstorage:
     name: sqstorage
@@ -9,32 +7,57 @@ services:
     image: sqstorage:master
     build: .
     volumes:
-      - "./:/app"
-      - "./dba.php:/app/support/dba.php:rw"
+      - www-app:/app:rw
     working_dir: /app
-    entrypoint: ["/bin/sh", "-c", "chown -R www-data:www-data /app && php-fpm"]
+    entrypoint: ["php-fpm", "-F"]
+    environment:
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      USE_REGISTRATION: ${USE_REGISTRATION}
+      USE_PRETTY_URLS: ${USE_PRETTY_URLS}
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/status"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
     networks:
       - sqstorage
 
   db:
     image: mariadb:10.4
     environment:
-      - MYSQL_DATABASE=tlv
-      - MYSQL_USER=tlvUser
-      - MYSQL_PASSWORD=tlvUser
+      - MYSQL_DATABASE=${DB_NAME}
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
       - MYSQL_RANDOM_ROOT_PASSWORD=yes
     networks:
       - sqstorage
+    volumes:
+      - db-data:/var/lib/mysql:rw
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "${DB_USER}", "-p${DB_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
 
   web:
     image: nginx:alpine
     ports:
       - "1337:80"
     volumes:
-      - "./nginx.conf:/etc/nginx/conf.d/default.conf"
-      - "./:/app"
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - www-app:/app:ro
+    depends_on:
+      - php
     networks:
       - sqstorage
 
 volumes:
-  app:
+  www-app:
+  db-data:

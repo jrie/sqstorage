@@ -20,24 +20,26 @@ Follow these steps to install sqStorage on your system with docker.
    cd sqstorage
    ```
 
-3. Copy the example database configuration:
+3. Copy the example environment file:
 
    ```bash
-   cp ./support/dba-example.php ./dba.php
+   cp env-example .env
    ```
 
-4. Open the dba.php file for editing:
+4. Open the .env file for editing:
 
    ```bash
-   nano ./dba.php
+   nano .env
    ```
    Adjust the settings (user, password, database name, host, port, etc.) as necessary.
+   If Portainer is used, the .env file can be uploaded to Portainer or the variables can be set manually on the Portainer web interface.
 
 5. Start the Docker containers:
    ```bash
-   docker-compose up -d
+   docker compose --env-file .env up -d
    ```
-
+   If no ENV is set, sqStorage starts but the DB cannot be accessed!
+   
 ## Accessing sqStorage
 Once sqStorage is running, you can access it in your browser at the following address:
 ```

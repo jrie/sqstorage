@@ -1,0 +1,8 @@
+# docker environment file
+DB_USER=tlvUser
+DB_PASSWORD=tlvUser
+DB_NAME=tlv
+DB_HOST=db
+DB_PORT=3306
+USE_REGISTRATION=false
+USE_PRETTY_URLS=false
