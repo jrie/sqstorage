@@ -21,8 +21,7 @@ services:
     depends_on:
       db:
         condition: service_healthy
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:9000/status"]
+    healthcheck: # todo: add healthcheck
       interval: 10s
       timeout: 5s
       retries: 3
@@ -50,7 +49,6 @@ services:
     build:
       context: .
       dockerfile: nginx.Dockerfile
-#    image: nginx:alpine
     ports:
       - "1337:80"
     volumes:
