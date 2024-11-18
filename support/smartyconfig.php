@@ -1,7 +1,8 @@
 <?php
 
-$smarty = new Smarty();
-
+require_once('vendor/autoload.php');
+use Smarty\Smarty;
+$smarty = new \Smarty();
 $smarty->setTemplateDir($basedir . '/templates/');
 $smarty->setCompileDir($basedir . '/smartyfolders/templates_c/');
 $smarty->setConfigDir($basedir . '/smartyfolders/configs/');

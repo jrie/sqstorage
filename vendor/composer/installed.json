@@ -1,167 +1,234 @@
-[
-    {
-        "name": "SergeyTsalkov/meekrodb",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/SergeyTsalkov/meekrodb.git",
-            "reference": "8e19d9d6c331b9c5d8b90630b70b20f65dc0b903"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/SergeyTsalkov/meekrodb/zipball/8e19d9d6c331b9c5d8b90630b70b20f65dc0b903",
-            "reference": "8e19d9d6c331b9c5d8b90630b70b20f65dc0b903",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.0"
-        },
-        "time": "2019-01-26T17:46:13+00:00",
-        "type": "library",
-        "installation-source": "source",
-        "autoload": {
-            "classmap": [
-                "db.class.php"
-            ]
-        },
-        "license": [
-            "LGPL-3.0"
+{
+        "packages": [
+                {
+                        "name": "azatoth/php-pgettext",
+                        "version": "v1.0",
+                        "version_normalized": "1.0.0.0",
+                        "source": {
+                                "type": "git",
+                                "url": "https://github.com/azatoth/php-pgettext.git",
+                                "reference": "1d0abe74934e3ca15d792d2a57f00a88d54eff6b"
+                        },
+                        "dist": {
+                                "type": "zip",
+                                "url": "https://api.github.com/repos/azatoth/php-pgettext/zipball/1d0abe74934e3ca15d792d2a57f00a88d54eff6b",
+                                "reference": "1d0abe74934e3ca15d792d2a57f00a88d54eff6b",
+                                "shasum": ""
+                        },
+                        "require": {
+                                "ext-gettext": "*",
+                                "php": ">=5.3.0"
+                        },
+                        "time": "2014-12-05T11:08:25+00:00",
+                        "type": "library",
+                        "installation-source": "dist",
+                        "autoload": {
+                                "files": [
+                                        "pgettext.php"
+                                ]
+                        },
+                        "notification-url": "https://packagist.org/downloads/",
+                        "license": [
+                                "MIT"
+                        ],
+                        "authors": [
+                                {
+                                        "name": "Carl Fürstenberg"
+                                }
+                        ],
+                        "description": "Extension of gettext functions for PHP like pgettext, dpgettext, etc.",
+                        "homepage": "https://github.com/azatoth/php-pgettext",
+                        "keywords": [
+                                "library"
+                        ],
+                        "support": {
+                                "issues": "https://github.com/azatoth/php-pgettext/issues",
+                                "source": "https://github.com/azatoth/php-pgettext/tree/master"
+                        },
+                        "install-path": "../azatoth/php-pgettext"
+                },
+                {
+                        "name": "sergeytsalkov/meekrodb",
+                        "version": "dev-master",
+                        "version_normalized": "dev-master",
+                        "source": {
+                                "type": "git",
+                                "url": "https://github.com/SergeyTsalkov/meekrodb.git",
+                                "reference": "8413fe472e3e737f84c780dee49d5afffb88008d"
+                        },
+                        "dist": {
+                                "type": "zip",
+                                "url": "https://api.github.com/repos/SergeyTsalkov/meekrodb/zipball/8413fe472e3e737f84c780dee49d5afffb88008d",
+                                "reference": "8413fe472e3e737f84c780dee49d5afffb88008d",
+                                "shasum": ""
+                        },
+                        "require": {
+                                "ext-pdo": "*",
+                                "php": ">=7.0.0"
+                        },
+                        "time": "2024-10-27T07:21:44+00:00",
+                        "default-branch": true,
+                        "type": "library",
+                        "installation-source": "source",
+                        "autoload": {
+                                "classmap": [
+                                        "db.class.php",
+                                        "orm.class.php"
+                                ]
+                        },
+                        "license": [
+                                "LGPL-3.0"
+                        ],
+                        "authors": [
+                                {
+                                        "name": "Sergey Tsalkov",
+                                        "email": "stsalkov@gmail.com"
+                                }
+                        ],
+                        "description": "The Simple PHP/MySQL Library",
+                        "homepage": "http://www.meekro.com",
+                        "keywords": [
+                                "database",
+                                "mysql",
+                                "mysqli",
+                                "pdo"
+                        ],
+                        "support": {
+                                "email": "support@meekro.com",
+                                "source": "https://github.com/SergeyTsalkov/meekrodb/tree/v3.1.1",
+                                "issues": "https://github.com/SergeyTsalkov/meekrodb/issues"
+                        },
+                        "install-path": "../sergeytsalkov/meekrodb"
+                },
+                {
+                        "name": "smarty-gettext/smarty-gettext",
+                        "version": "1.7.0",
+                        "version_normalized": "1.7.0.0",
+                        "source": {
+                                "type": "git",
+                                "url": "https://github.com/smarty-gettext/smarty-gettext.git",
+                                "reference": "64f0e167f5a021358f9e1e4aaa4b5a1283b71e60"
+                        },
+                        "dist": {
+                                "type": "zip",
+                                "url": "https://api.github.com/repos/smarty-gettext/smarty-gettext/zipball/64f0e167f5a021358f9e1e4aaa4b5a1283b71e60",
+                                "reference": "64f0e167f5a021358f9e1e4aaa4b5a1283b71e60",
+                                "shasum": ""
+                        },
+                        "require": {
+                                "ext-gettext": "*",
+                                "ext-pcre": "*",
+                                "php": ">=5.3"
+                        },
+                        "require-dev": {
+                                "azatoth/php-pgettext": "~1.0",
+                                "phpunit/phpunit": "^4.8.36",
+                                "smarty/smarty": "3.1.*"
+                        },
+                        "suggest": {
+                                "azatoth/php-pgettext": "Support msgctxt for {t} via context parameter"
+                        },
+                        "time": "2023-01-15T13:14:50+00:00",
+                        "type": "library",
+                        "installation-source": "dist",
+                        "autoload": {
+                                "files": [
+                                        "block.t.php",
+                                        "function.locale.php"
+                                ]
+                        },
+                        "notification-url": "https://packagist.org/downloads/",
+                        "license": [
+                                "LGPL-2.1"
+                        ],
+                        "authors": [
+                                {
+                                        "name": "Sagi Bashari",
+                                        "email": "sagi@boom.org.il"
+                                },
+                                {
+                                        "name": "Elan Ruusamäe",
+                                        "email": "glen@pld-linux.org"
+                                }
+                        ],
+                        "description": "Gettext plugin enabling internationalization in Smarty Package files",
+                        "homepage": "https://github.com/smarty-gettext/smarty-gettext",
+                        "support": {
+                                "issues": "https://github.com/smarty-gettext/smarty-gettext/issues",
+                                "source": "https://github.com/smarty-gettext/smarty-gettext/tree/1.7.0"
+                        },
+                        "install-path": "../smarty-gettext/smarty-gettext"
+                },
+                {
+                        "name": "smarty/smarty",
+                        "version": "v4.5.4",
+                        "version_normalized": "4.5.4.0",
+                        "source": {
+                                "type": "git",
+                                "url": "https://github.com/smarty-php/smarty.git",
+                                "reference": "c11676e85aa71bc7c3cd9100f1655a9f4d14616e"
+                        },
+                        "dist": {
+                                "type": "zip",
+                                "url": "https://api.github.com/repos/smarty-php/smarty/zipball/c11676e85aa71bc7c3cd9100f1655a9f4d14616e",
+                                "reference": "c11676e85aa71bc7c3cd9100f1655a9f4d14616e",
+                                "shasum": ""
+                        },
+                        "require": {
+                                "php": "^7.1 || ^8.0"
+                        },
+                        "require-dev": {
+                                "phpunit/phpunit": "^8.5 || ^7.5",
+                                "smarty/smarty-lexer": "^3.1"
+                        },
+                        "time": "2024-08-14T20:04:35+00:00",
+                        "type": "library",
+                        "extra": {
+                                "branch-alias": {
+                                        "dev-master": "4.0.x-dev"
+                                }
+                        },
+                        "installation-source": "dist",
+                        "autoload": {
+                                "classmap": [
+                                        "libs/"
+                                ]
+                        },
+                        "notification-url": "https://packagist.org/downloads/",
+                        "license": [
+                                "LGPL-3.0"
+                        ],
+                        "authors": [
+                                {
+                                        "name": "Monte Ohrt",
+                                        "email": "monte@ohrt.com"
+                                },
+                                {
+                                        "name": "Uwe Tews",
+                                        "email": "uwe.tews@googlemail.com"
+                                },
+                                {
+                                        "name": "Rodney Rehm",
+                                        "email": "rodney.rehm@medialize.de"
+                                },
+                                {
+                                        "name": "Simon Wisselink",
+                                        "homepage": "https://www.iwink.nl/"
+                                }
+                        ],
+                        "description": "Smarty - the compiling PHP template engine",
+                        "homepage": "https://smarty-php.github.io/smarty/",
+                        "keywords": [
+                                "templating"
+                        ],
+                        "support": {
+                                "forum": "https://github.com/smarty-php/smarty/discussions",
+                                "issues": "https://github.com/smarty-php/smarty/issues",
+                                "source": "https://github.com/smarty-php/smarty/tree/v4.5.4"
+                        },
+                        "install-path": "../smarty/smarty"
+                }
         ],
-        "authors": [
-            {
-                "name": "Sergey Tsalkov",
-                "email": "stsalkov@gmail.com"
-            }
-        ],
-        "description": "The Simple PHP/MySQL Library",
-        "homepage": "http://www.meekro.com",
-        "keywords": [
-            "database",
-            "mysql",
-            "mysqli",
-            "pdo"
-        ],
-        "support": {
-            "email": "support@meekro.com",
-            "source": "https://github.com/SergeyTsalkov/meekrodb/tree/master",
-            "issues": "https://github.com/SergeyTsalkov/meekrodb/issues"
-        }
-    },
-    {
-        "name": "smarty-gettext/smarty-gettext",
-        "version": "1.6.2",
-        "version_normalized": "1.6.2.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/smarty-gettext/smarty-gettext.git",
-            "reference": "22e5b91b642cd643f9acdd8d04ab0e05647b98a7"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/smarty-gettext/smarty-gettext/zipball/22e5b91b642cd643f9acdd8d04ab0e05647b98a7",
-            "reference": "22e5b91b642cd643f9acdd8d04ab0e05647b98a7",
-            "shasum": ""
-        },
-        "require": {
-            "ext-gettext": "*",
-            "ext-pcre": "*",
-            "php": "~5.3|~7.0|~8.0"
-        },
-        "require-dev": {
-            "azatoth/php-pgettext": "~1.0",
-            "phpunit/phpunit": ">=4.8.36",
-            "smarty/smarty": "3.1.*"
-        },
-        "suggest": {
-            "azatoth/php-pgettext": "Support msgctxt for {t} via context parameter"
-        },
-        "time": "2021-02-23T22:00:29+00:00",
-        "bin": [
-            "tsmarty2c.php"
-        ],
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "files": [
-                "block.t.php",
-                "function.locale.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "LGPL-2.1"
-        ],
-        "authors": [
-            {
-                "name": "Sagi Bashari",
-                "email": "sagi@boom.org.il"
-            },
-            {
-                "name": "Elan Ruusamäe",
-                "email": "glen@delfi.ee"
-            }
-        ],
-        "description": "Gettext plugin enabling internationalization in Smarty Package files",
-        "homepage": "https://github.com/smarty-gettext/smarty-gettext"
-    },
-    {
-        "name": "smarty/smarty",
-        "version": "v3.1.46",
-        "version_normalized": "3.1.46.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/smarty-php/smarty.git",
-            "reference": "b3ade90dece67812410954528e0039fb5b73bcf7"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/smarty-php/smarty/zipball/b3ade90dece67812410954528e0039fb5b73bcf7",
-            "reference": "b3ade90dece67812410954528e0039fb5b73bcf7",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.2"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "^7.5 || ^6.5 || ^5.7 || ^4.8",
-            "smarty/smarty-lexer": "^3.1"
-        },
-        "time": "2022-08-01T21:58:13+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "3.1.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "classmap": [
-                "libs/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "LGPL-3.0"
-        ],
-        "authors": [
-            {
-                "name": "Monte Ohrt",
-                "email": "monte@ohrt.com"
-            },
-            {
-                "name": "Uwe Tews",
-                "email": "uwe.tews@googlemail.com"
-            },
-            {
-                "name": "Rodney Rehm",
-                "email": "rodney.rehm@medialize.de"
-            }
-        ],
-        "description": "Smarty - the compiling PHP template engine",
-        "homepage": "http://www.smarty.net",
-        "keywords": [
-            "templating"
-        ]
-    }
-]
+        "dev": true,
+        "dev-package-names": []
+}

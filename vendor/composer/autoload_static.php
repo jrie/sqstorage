@@ -7,19 +7,25 @@ namespace Composer\Autoload;
 class ComposerStaticInit2039c1f14e7d9aca2ef9bc2c7837b7ae
 {
     public static $files = array (
+        '27f7889f18b0bb8121ec4fe29691e25a' => __DIR__ . '/..' . '/azatoth/php-pgettext/pgettext.php',
         'b2b3f01361f3aaeab67fde08ae76446f' => __DIR__ . '/..' . '/smarty-gettext/smarty-gettext/block.t.php',
         'd3114450b53a83020e2822546c24e1ad' => __DIR__ . '/..' . '/smarty-gettext/smarty-gettext/function.locale.php',
     );
 
     public static $classMap = array (
-        'DB' => __DIR__ . '/..' . '/SergeyTsalkov/meekrodb/db.class.php',
-        'DBHelper' => __DIR__ . '/..' . '/SergeyTsalkov/meekrodb/db.class.php',
-        'DBTransaction' => __DIR__ . '/..' . '/SergeyTsalkov/meekrodb/db.class.php',
-        'MeekroDB' => __DIR__ . '/..' . '/SergeyTsalkov/meekrodb/db.class.php',
-        'MeekroDBEval' => __DIR__ . '/..' . '/SergeyTsalkov/meekrodb/db.class.php',
-        'MeekroDBException' => __DIR__ . '/..' . '/SergeyTsalkov/meekrodb/db.class.php',
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'DB' => __DIR__ . '/..' . '/sergeytsalkov/meekrodb/db.class.php',
+        'DBTransaction' => __DIR__ . '/..' . '/sergeytsalkov/meekrodb/db.class.php',
+        'MeekroDB' => __DIR__ . '/..' . '/sergeytsalkov/meekrodb/db.class.php',
+        'MeekroDBException' => __DIR__ . '/..' . '/sergeytsalkov/meekrodb/db.class.php',
+        'MeekroDBParsedQuery' => __DIR__ . '/..' . '/sergeytsalkov/meekrodb/db.class.php',
+        'MeekroDBWalk' => __DIR__ . '/..' . '/sergeytsalkov/meekrodb/db.class.php',
+        'MeekroORM' => __DIR__ . '/..' . '/sergeytsalkov/meekrodb/orm.class.php',
+        'MeekroORMColumn' => __DIR__ . '/..' . '/sergeytsalkov/meekrodb/orm.class.php',
+        'MeekroORMException' => __DIR__ . '/..' . '/sergeytsalkov/meekrodb/orm.class.php',
+        'MeekroORMScope' => __DIR__ . '/..' . '/sergeytsalkov/meekrodb/orm.class.php',
+        'MeekroORMTable' => __DIR__ . '/..' . '/sergeytsalkov/meekrodb/orm.class.php',
         'Smarty' => __DIR__ . '/..' . '/smarty/smarty/libs/Smarty.class.php',
-        'SmartyBC' => __DIR__ . '/..' . '/smarty/smarty/libs/SmartyBC.class.php',
         'SmartyCompilerException' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smartycompilerexception.php',
         'SmartyException' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smartyexception.php',
         'Smarty_Autoloader' => __DIR__ . '/..' . '/smarty/smarty/libs/Autoloader.php',
@@ -59,7 +65,6 @@ class ComposerStaticInit2039c1f14e7d9aca2ef9bc2c7837b7ae
         'Smarty_Internal_Compile_If' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_compile_if.php',
         'Smarty_Internal_Compile_Ifclose' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_compile_if.php',
         'Smarty_Internal_Compile_Include' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_compile_include.php',
-        'Smarty_Internal_Compile_Include_Php' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_compile_include_php.php',
         'Smarty_Internal_Compile_Insert' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_compile_insert.php',
         'Smarty_Internal_Compile_Ldelim' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_compile_ldelim.php',
         'Smarty_Internal_Compile_Make_Nocache' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_compile_make_nocache.php',
@@ -72,7 +77,6 @@ class ComposerStaticInit2039c1f14e7d9aca2ef9bc2c7837b7ae
         'Smarty_Internal_Compile_Private_Modifier' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_compile_private_modifier.php',
         'Smarty_Internal_Compile_Private_Object_Block_Function' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_compile_private_object_block_function.php',
         'Smarty_Internal_Compile_Private_Object_Function' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_compile_private_object_function.php',
-        'Smarty_Internal_Compile_Private_Php' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_compile_private_php.php',
         'Smarty_Internal_Compile_Private_Print_Expression' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_compile_private_print_expression.php',
         'Smarty_Internal_Compile_Private_Registered_Block' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_compile_private_registered_block.php',
         'Smarty_Internal_Compile_Private_Registered_Function' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_compile_private_registered_function.php',
@@ -153,7 +157,6 @@ class ComposerStaticInit2039c1f14e7d9aca2ef9bc2c7837b7ae
         'Smarty_Internal_Resource_Extends' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_resource_extends.php',
         'Smarty_Internal_Resource_File' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_resource_file.php',
         'Smarty_Internal_Resource_Php' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_resource_php.php',
-        'Smarty_Internal_Resource_Registered' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_resource_registered.php',
         'Smarty_Internal_Resource_Stream' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_resource_stream.php',
         'Smarty_Internal_Resource_String' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_resource_string.php',
         'Smarty_Internal_Runtime_CacheModify' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_runtime_cachemodify.php',
@@ -191,7 +194,7 @@ class ComposerStaticInit2039c1f14e7d9aca2ef9bc2c7837b7ae
         'Smarty_Variable' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_variable.php',
         'TPC_yyStackEntry' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_configfileparser.php',
         'TP_yyStackEntry' => __DIR__ . '/..' . '/smarty/smarty/libs/sysplugins/smarty_internal_templateparser.php',
-        'WhereClause' => __DIR__ . '/..' . '/SergeyTsalkov/meekrodb/db.class.php',
+        'WhereClause' => __DIR__ . '/..' . '/sergeytsalkov/meekrodb/db.class.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
