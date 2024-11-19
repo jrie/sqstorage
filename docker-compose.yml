@@ -22,6 +22,7 @@ services:
       db:
         condition: service_healthy
     healthcheck: # todo: add healthcheck
+      test: ["CMD", "php", "--version"]
       interval: 10s
       timeout: 5s
       retries: 3
