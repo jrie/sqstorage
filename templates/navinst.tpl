@@ -2,8 +2,8 @@
     <nav class="navbar navbar-light bg-light">
         <a href="{$urlBase}/index{$urlPostFix}">
             <picture class="logo" alt="sqStorage logo">
-                <source srcset="img/sqstorage.webp" type="image/webp" width="205" height="56">
-                <img src="img/sqstorage.png" width="205" height="56">
+                <source srcset=".//img/sqstorage.webp" type="image/webp" width="205" height="56">
+                <img src=".//img/sqstorage.png" width="205" height="56">
             </picture>
         </a>
 

@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'mail') {
 }elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'startpage'){
   SETTINGS::SettingsSet("startpage","defaultuser",$_POST['startpagekey']);
 }elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  DB::$error_handler = false;
+
   DB::$throw_exception_on_error = true;
   try {
     $_POST['username'] =  trim($_POST['username']);

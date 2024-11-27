@@ -38,7 +38,7 @@ if (isset($useRegistration) && !$useRegistration) {
     header('Location: ' . $urlBase . '/index' . $urlPostFix);
     die();
   }
-  
+
   if (!empty($_SESSION['authenticated'])) {
     $user = DB::queryFirstRow('SELECT u.id, u.username, u.password, g.usergroupid FROM users u LEFT JOIN users_groups g ON(g.userid=u.id) WHERE u.id=%i LIMIT 1', $_SESSION['user']['id']);
 
@@ -123,7 +123,7 @@ if (isset($useRegistration) && !$useRegistration) {
 
         if (count($errors) == 0) {
           $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
-          DB::$error_handler = false;
+
           DB::$throw_exception_on_error = true;
           try {
             if ($createFirstAdmin) {
@@ -150,7 +150,7 @@ if (isset($useRegistration) && !$useRegistration) {
               $error = $e->getMessage();
             }
           }
-          DB::$error_handler = true;
+
           DB::$throw_exception_on_error = false;
         } else {
           $error = implode('<br />', $errors);

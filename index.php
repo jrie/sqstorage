@@ -14,7 +14,7 @@ $smarty->assign('urlBase', $urlBase);
 
 
 require_once('./includer.php');
-if (!CheckDBCredentials(DB::$host, DB::$user, DB::$password, DB::$dbName, DB::$port)) {
+if (!CheckDBCredentials($host, DB::$user, DB::$password, $dbName, $port)) {
   header("Location: install.php");
   die();
 }

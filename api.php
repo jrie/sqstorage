@@ -43,55 +43,58 @@
  *
  *
  */
-use Tqdev\PhpCrudApi\Api;
-use Tqdev\PhpCrudApi\Config;
-use Tqdev\PhpCrudApi\RequestFactory;
-use Tqdev\PhpCrudApi\ResponseUtils;
-
-
-require_once 'support/api.php';
 require_once 'vendor/autoload.php';
 require_once 'support/dba.php';
 require_once 'support/tools.php';
-$settings['address'] = DB::$host;
-$settings['port'] = DB::$port;
+error_reporting(-1);
+
+use Tqdev\PhpCrudApi\Api;
+use Tqdev\PhpCrudApi\Config\Config;
+use Tqdev\PhpCrudApi\RequestFactory;
+use Tqdev\PhpCrudApi\ResponseUtils;
+
+//var_dump($_SERVER['PATH_INFO']);
+
+$settings['driver'] = 'mysql';
+$settings['address'] = $host;
+$settings['port'] = $port;
 $settings['username'] = DB::$user;
 $settings['password'] = DB::$password;
-$settings['database'] = DB::$dbName;
-$settings['debug'] = false;
+$settings['database'] = $dbName;
+$settings['tables'] = 'customfields,fielddata,headCategories,images,items,storages,subCategories';
+$settings['debug'] = true;
 
 
-if ($useRegistration){
-
+if ($useRegistration) {
   $settings['middlewares'] = 'dbAuth,authorization';
   $settings["dbAuth.usersTable"] = 'users'; //: The table that is used to store the users in ("users")
-  $settings["dbAuth.usernameColumn"] ='username'; //: The users table column that holds usernames ("username")
+  $settings["dbAuth.usernameColumn"] = 'username'; //: The users table column that holds usernames ("username")
   $settings["dbAuth.passwordColumn"] = 'password'; //: The users table column that holds passwords ("password")
   $settings["dbAuth.returnedColumns"] = 'id, username';
   $settings['authorization.tableHandler'] = function ($operation, $tableName) {
-                          global $ug;
-                          $ug = 999;
-                          if(isset($_SESSION['user']['id'])){
-                              $ug = fGetUserGroupID($_SESSION['user']['id']);
-                              $_SESSION['user']['usergroupid'] = $ug;
-                          }else{
-                            if(isset($_SESSION['authenticated'])) $ug = $_SESSION['user']['usergroupid'];
-                          }
-                            if($ug == 2){
-                                  if($operation  == "list") return true;
-                                  if($operation  == "read") return true;
-                                  return false;
-                            }
-                            if($ug == 999) return false;
-        return $tableName != 'users';
-      };
-      $settings['tables'] = 'customfields,fielddata,headCategories,images,items,storages,subCategories,users';
+    global $ug;
+    $ug = 999;
+    if (isset($_SESSION['user']['id'])) {
+      $ug = fGetUserGroupID($_SESSION['user']['id']);
+      $_SESSION['user']['usergroupid'] = $ug;
+    } else {
+      if (isset($_SESSION['authenticated']))
+        $ug = $_SESSION['user']['usergroupid'];
+    }
+    if ($ug == 2) {
+      if ($operation == "list")
+        return true;
+      if ($operation == "read")
+        return true;
+      return false;
+    }
+    if ($ug == 999)
+      return false;
+    return $tableName != 'users';
+  };
 
-}else{
-    $settings['tables'] = 'customfields,fielddata,headCategories,images,items,storages,subCategories';
+  $settings['tables'] .= 'users';
 }
-//$settings['customControllers']= 'MyCustomController';
-
 
 $config = new Config($settings);
 $request = RequestFactory::fromGlobals();
@@ -99,18 +102,17 @@ $api = new Api($config);
 $response = $api->handle($request);
 ResponseUtils::output($response);
 
+/*
+*  Helper
+*/
 
-
-
- /**
-  *  Helper
-  */
-
-  function fGetUserGroupID($userid){
-    if($userid < 1) return 999;
-    $usergroupid  = DB::queryFirstField('SELECT usergroupid FROM users_groups WHERE userid = %i',$userid);
-    if(!$usergroupid){
-      return 999;
-    }
-    return $usergroupid;
+function fGetUserGroupID($userid)
+{
+  if ($userid < 1)
+    return 999;
+  $usergroupid = DB::queryFirstField('SELECT usergroupid FROM users_groups WHERE userid = %i', $userid);
+  if (!$usergroupid) {
+    return 999;
   }
+  return $usergroupid;
+}

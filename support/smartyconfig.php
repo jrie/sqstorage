@@ -7,6 +7,7 @@ $smarty->setTemplateDir($basedir . '/templates/');
 $smarty->setCompileDir($basedir . '/smartyfolders/templates_c/');
 $smarty->setConfigDir($basedir . '/smartyfolders/configs/');
 $smarty->setCacheDir($basedir . '/smartyfolders/cache/');
+$smarty->error_reporting = error_reporting() & ~E_USER_DEPRECATED;
 
 if (isset($langsAvailable)) {
   $smarty->assign('langsAvailable', $langsAvailable, true);

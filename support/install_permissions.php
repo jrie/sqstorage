@@ -4,16 +4,16 @@ $header_template = <<<EOD
 <html>
   <head>
     <title>sqStorage - Installation</title>
-    <link rel="stylesheet" href="./css/bootstrap/bootstrap.css">
-    <link rel="stylesheet" href="./css/base.css">
-    <link rel="stylesheet" href="./fonts/fontawesome/css/solid.css">
-    <link rel="stylesheet" href="./fonts/fontawesome/css/regular.css">
-    <link rel="stylesheet" href="./fonts/fontawesome/css/fontawesome.css">
+    <link rel="stylesheet" href=".//css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href=".//css/base.css">
+    <link rel="stylesheet" href=".//fonts/fontawesome/css/solid.css">
+    <link rel="stylesheet" href=".//fonts/fontawesome/css/regular.css">
+    <link rel="stylesheet" href=".//fonts/fontawesome/css/fontawesome.css">
     <meta charset="utf-8">
   </head>
   <body>
   <nav class="navbar navbar-light bg-light">
-    <a href="index.php"><img class="logo" src="./img/sqstorage.png" alt="sqStorage logo" /></a>
+    <a href="index.php"><img class="logo" src=".//img/sqstorage.png" alt="sqStorage logo" /></a>
     <div class="dropdown">
       <select class="form-control mr-sm-2" name="lang">
         <option value="en_GB">English</option>

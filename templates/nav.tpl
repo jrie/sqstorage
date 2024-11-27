@@ -1,6 +1,6 @@
 <body>
     <nav class="navbar navbar-light bg-light">
-        {assign var="logoGfx" value='<picture class="logo" alt="sqStorage logo"><source srcset="img/sqstorage.webp" type="image/webp" width="205" height="56"><img src="img/sqstorage.png" width="205" height="56"></picture>'}
+        {assign var="logoGfx" value='<picture class="logo" alt="sqStorage logo"><source srcset=".//img/sqstorage.webp" type="image/webp" width="205" height="56"><img src=".//img/sqstorage.png" width="205" height="56"></picture>'}
         {if isset($useRegistration) && !$useRegistration}
         <a href="{$urlBase}/index{$urlPostFix}">{$logoGfx}</a>
         {else if isset($SESSION.user) && (int)$SESSION.user.usergroupid === 2}

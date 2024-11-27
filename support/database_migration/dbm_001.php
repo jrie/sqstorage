@@ -12,7 +12,6 @@ DB::query('CREATE TABLE IF NOT EXISTS `usergroups` (`id` bigint(20) UNSIGNED NOT
 DB::query('CREATE TABLE IF NOT EXISTS `users` (`id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,`username` varchar(20) NOT NULL,`mailaddress` varchar(254) NOT NULL,`password` varchar(255) DEFAULT NULL,`date` timestamp NOT NULL DEFAULT current_timestamp(),PRIMARY KEY (`id`),UNIQUE KEY `username` (`username`)) ENGINE=InnoDB;');
 DB::query('CREATE TABLE IF NOT EXISTS `users_groups` (`userid` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,`usergroupid` bigint(20) UNSIGNED NOT NULL,`date` timestamp NOT NULL DEFAULT current_timestamp(),PRIMARY KEY (`usergroupid`),UNIQUE KEY `userid` (`userid`)) ENGINE=InnoDB;');
 DB::query('CREATE TABLE IF NOT EXISTS `users_tokens` (`id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,`userid` bigint(20) NOT NULL,`token` varchar(255) NOT NULL,`valid_until` datetime DEFAULT NULL,PRIMARY KEY (`id`),KEY `userid` (`id`)) ENGINE=InnoDB;');
-DB::$error_handler = false;
 DB::query('INSERT INTO `settings` (`id`, `namespace`, `jsondoc`) VALUES (1, \'mail\', \'{}\')');
 DB::query('INSERT INTO `usergroups` (`id`, `name`) VALUES (1, \'Administrator\'), (2, \'Gast\'), (3, \'Benutzer\');');
-DB::$error_handler = true;
+
