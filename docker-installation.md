@@ -11,7 +11,7 @@ Follow these steps to install sqStorage on your system with docker.
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/web-rpi/sqstorage.git
+   git clone https://github.com/jrie/sqstorage.git
    ```
    
 2. Change into the directory:
@@ -36,9 +36,9 @@ Follow these steps to install sqStorage on your system with docker.
 
 5. Start the Docker containers:
    ```bash
-   docker compose --env-file .env up -d
+   docker compose up -d
    ```
-   If no ENV is set, sqStorage starts but the DB cannot be accessed!
+   Note: The ".env" file is required in order for the Docker setup to run. And it is included to load.
    
 ## Accessing sqStorage
 Once sqStorage is running, you can access it in your browser at the following address:
