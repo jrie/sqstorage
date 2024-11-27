@@ -1,0 +1,20 @@
+{
+    "name": "azatoth/php-pgettext",
+    "description": "Extension of gettext functions for PHP like pgettext, dpgettext, etc.",
+    "keywords": ["library"],
+    "homepage": "https://github.com/azatoth/php-pgettext",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Carl Fürstenberg"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "ext-gettext": "*"
+    },
+    "autoload": {
+        "files": ["pgettext.php"]
+    }
+}

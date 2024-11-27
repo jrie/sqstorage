@@ -1,0 +1,12 @@
+#!/bin/sh
+
+xgettext \
+	--language=PHP \
+	--keyword="pgettext:1c,2" \
+	--keyword="dpgettext:2c,3" \
+	--keyword="dcpgettext:2c,3" \
+	--keyword="npgettext:1c,2,3" \
+	--keyword="dnpgettext:2c,3,4" \
+	--keyword="dcnpgettext:2c,3,4" \
+	--keyword="gettext_noop" \
+	"$@"
