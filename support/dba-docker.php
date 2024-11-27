@@ -1,10 +1,15 @@
 <?php
+    $dbName = getenv('DB_NAME') ?: 'tlv';
+    $host = getenv('DB_HOST') ?: 'db';
+    $port = (int)(getenv('DB_PORT') ?: '3306');
+
     DB::$user = getenv('DB_USER') ?: 'tlvUser';
     DB::$password = getenv('DB_PASSWORD') ?: 'tlvUser';
-    DB::$dbName = getenv('DB_NAME') ?: 'tlv';
-    DB::$encoding = 'utf8';
-    DB::$host = getenv('DB_HOST') ?: 'db';
-    DB::$port = (int)(getenv('DB_PORT') ?: '3306');
+
+    DB::$dsn = 'mysql:host=' . $host. ';port=' . $port . ';charset=utf8;dbname=' . $dbName;
+
+    // https://meekro.com/docs/logging.html
+    DB::$logfile = null;
 
     // Make use of user login and registration feature
     $useRegistration = filter_var(getenv('USE_REGISTRATION'), FILTER_VALIDATE_BOOLEAN); // true OR false

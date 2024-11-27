@@ -1,11 +1,15 @@
 <?php
+    $dbName = 'tlv';
+    $host = 'localhost';
+    $port = '3306';
+
     DB::$user = 'tlvUser';
     DB::$password = 'tlvUser';
-    DB::$dbName = 'tlv';
-    DB::$encoding = 'utf8';
-    DB::$host = 'localhost';
-    // DB::$host = '123.111.10.23'; // Use for webserver
-    DB::$port = '3306';
+
+    DB::$dsn = 'mysql:host=' . $host. ';port=' . $port . ';charset=utf8;dbname=' . $dbName;
+
+    // https://meekro.com/docs/logging.html
+    DB::$logfile = null;
 
     // Make use of user login and registration feature
     $useRegistration = false; // true OR false
