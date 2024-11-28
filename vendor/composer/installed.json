@@ -512,8 +512,8 @@
                 },
                 {
                         "name": "sergeytsalkov/meekrodb",
-                        "version": "dev-master",
-                        "version_normalized": "dev-master",
+                        "version": "v3.1.1",
+                        "version_normalized": "3.1.1.0",
                         "source": {
                                 "type": "git",
                                 "url": "https://github.com/SergeyTsalkov/meekrodb.git",
@@ -530,9 +530,8 @@
                                 "php": ">=7.0.0"
                         },
                         "time": "2024-10-27T07:21:44+00:00",
-                        "default-branch": true,
                         "type": "library",
-                        "installation-source": "source",
+                        "installation-source": "dist",
                         "autoload": {
                                 "classmap": [
                                         "db.class.php",

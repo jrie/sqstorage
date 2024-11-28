@@ -3,7 +3,7 @@
         'name' => 'jrie/sqstorage',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'f895882b3efb019f473b64e329a839c944707f74',
+        'reference' => '5571f55cc8903e2433af7551830575ce61994af0',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -22,7 +22,7 @@
         'jrie/sqstorage' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'f895882b3efb019f473b64e329a839c944707f74',
+            'reference' => '5571f55cc8903e2433af7551830575ce61994af0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -110,14 +110,12 @@
             'dev_requirement' => false,
         ),
         'sergeytsalkov/meekrodb' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
+            'pretty_version' => 'v3.1.1',
+            'version' => '3.1.1.0',
             'reference' => '8413fe472e3e737f84c780dee49d5afffb88008d',
             'type' => 'library',
             'install_path' => __DIR__ . '/../sergeytsalkov/meekrodb',
-            'aliases' => array(
-                0 => '9999999-dev',
-            ),
+            'aliases' => array(),
             'dev_requirement' => false,
         ),
         'smarty-gettext/smarty-gettext' => array(
