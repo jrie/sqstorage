@@ -85,11 +85,13 @@
         <div class="list-span"><span class="listing-subcategories" title="{" , "|implode:$subNames}">{$implodedSubCats}</span></div>
         <div class="list-span"><span class="listing-dateadded" title="{$dateexploded.0}">{$dateexploded.0}</span></div>
         {if !$isGuest}
-        <a tabindex="-1" href="#" class="save-inline-edit inactive" title="{t}Schnelle Bearbeitung speichern{/t}" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
-        <a tabindex="-1" href="#" class="open-inline-edit" title="{t}Schnelle Bearbeitung{/t}" data-id="{$item.id}"><i class="fas fa-eraser"></i></a>
-        <a title="{t}Ausführliche Bearbeitung{/t}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
+        <div class="list-span actions">
+            <a tabindex="-1" href="#" class="save-inline-edit inactive" title="{t}Schnelle Bearbeitung speichern{/t}" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
+            <a tabindex="-1" href="#" class="open-inline-edit" title="{t}Schnelle Bearbeitung{/t}" data-id="{$item.id}"><i class="fas fa-eraser"></i></a>
+            <a title="{t}Ausführliche Bearbeitung{/t}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
+        </div>
 
-        <div class="dropdown float-right">
+        <div class="dropdown">
             <select autocomplete="off" id="item_{$item.id}" class="btn dropdown-toggle switchStorage listing-switchstorage" data-itemamount="{$item.amount}" data-value="0" data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {$hasStorage = false}
                 {foreach $storages as $storage}
@@ -446,18 +448,18 @@
             evt.target.parentNode.classList.toggle('active')
 
             const targetId = parseInt(evt.target.parentNode.dataset['id'])
-            let inlineEditSaver = evt.target.parentNode.parentNode.querySelector('.save-inline-edit[data-id="' + targetId + '"]')
+            let inlineEditSaver = evt.target.parentNode.parentNode.parentNode.querySelector('.save-inline-edit[data-id="' + targetId + '"]')
             if (inlineEditSaver !== null) {
                 inlineEditSaver.classList.add('inactive')
             }
 
             if (evt.target.parentNode.classList.contains('active')) {
-                const imgDisplay = evt.target.parentNode.parentNode.querySelector('.listing-hasimages > i')
+                const imgDisplay = evt.target.parentNode.parentNode.parentNode.querySelector('.listing-hasimages > i')
                 if (imgDisplay !== null) {
                     imgDisplay.classList.add('hidden')
                 }
 
-                let targetRowEdits = evt.target.parentNode.parentNode.querySelectorAll('li[data-id="' + targetId + '"] .quick-edit')
+                let targetRowEdits = evt.target.parentNode.parentNode.parentNode.querySelectorAll('li[data-id="' + targetId + '"] .quick-edit')
                 for (const field of targetRowEdits) {
                     let input = document.createElement('input')
                     input.value = field.textContent
@@ -497,7 +499,7 @@
 
                     function updateDirtyState(evt) {
                         const inputValue = encodeURI(evt.target.value.trim())
-                        let dataTarget = evt.target.parentNode.parentNode.parentNode.querySelector('.save-inline-edit[data-id="' + targetId + '"]')
+                        let dataTarget = evt.target.parentNode.parentNode.parentNode.parentNode.querySelector('.save-inline-edit[data-id="' + targetId + '"]')
 
                         if (inputValue === originalContent) {
                             evt.target.classList.remove('edit-dirty')
@@ -527,13 +529,13 @@
                     field.parentNode.insertBefore(input, field)
                 }
             } else {
-                let targetRowEdits = evt.target.parentNode.parentNode.querySelectorAll('li[data-id="' + targetId + '"] input.quick-edit')
-                evt.target.parentNode.parentNode.querySelector('.listing-hasimages').children[0].classList.toggle('hidden')
+                let targetRowEdits = evt.target.parentNode.parentNode.parentNode.querySelectorAll('li[data-id="' + targetId + '"] input.quick-edit')
+                evt.target.parentNode.parentNode.parentNode.querySelector('.listing-hasimages').children[0].classList.toggle('hidden')
                 for (let field of targetRowEdits) {
                     field.parentNode.removeChild(field)
                 }
 
-                let originalColumns = evt.target.parentNode.parentNode.querySelectorAll('li[data-id="' + targetId + '"] .hide-quick.quick-edit')
+                let originalColumns = evt.target.parentNode.parentNode.parentNode.querySelectorAll('li[data-id="' + targetId + '"] .hide-quick.quick-edit')
                 for (let field of originalColumns) {
                     field.classList.remove('hide-quick')
                     field.classList.remove('hidden')
@@ -576,9 +578,9 @@
 
                 xmlRequest.addEventListener('loadend', function(evt) {
                     if (evt.target.responseText === 'OK') {
-                        let targetRowEdits = itemButton.parentNode.parentNode.querySelectorAll('li[data-id="' + targetId + '"] input.quick-edit')
-                        let originalColumns = itemButton.parentNode.parentNode.querySelectorAll('li[data-id="' + targetId + '"] .hide-quick.quick-edit')
-                        itemButton.parentNode.parentNode.querySelector('.listing-hasimages').children[0].classList.toggle('hidden')
+                        let targetRowEdits = itemButton.parentNode.parentNode.parentNode.querySelectorAll('li[data-id="' + targetId + '"] input.quick-edit')
+                        let originalColumns = itemButton.parentNode.parentNode.parentNode.querySelectorAll('li[data-id="' + targetId + '"] .hide-quick.quick-edit')
+                        itemButton.parentNode.parentNode.parentNode.querySelector('.listing-hasimages').children[0].classList.toggle('hidden')
 
                         for (let x = 0; x < targetRowEdits.length; ++x) {
                             originalColumns[x].textContent = decodeURI(targetRowEdits[x].value)
@@ -591,7 +593,7 @@
                         itemButton.classList.remove('active')
                         itemButton.classList.add('inactive')
                         itemButton.parentNode.classList.add('inactive')
-                        itemButton.parentNode.parentNode.querySelector('.open-inline-edit.active[data-id="' + targetId + '"]').classList.remove('active')
+                        itemButton.parentNode.parentNode.parentNode.parentNode.querySelector('.open-inline-edit.active[data-id="' + targetId + '"]').classList.remove('active')
                         alert('{/literal}{t}Der Eintrag wurde erfolgreich aktualisiert.{/t}{literal}')
                     } else if (evt.target.responseText === 'AMOUNT_TYPE') {
                         alert('{/literal}{t}Die Anzahl darf nur gesamte Einheiten umfassen.{/t}{literal}')

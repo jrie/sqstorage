@@ -343,8 +343,9 @@ a.far:hover {
     word-break: break-all;
 }
 
-.storage-area li.alert-info .list-span:nth-child(0n+7) {
-    min-width: 10%;
+.storage-area li.alert-info .list-span:nth-child(0n+7),
+.storage-area .actions {
+    min-width: 8%;
     max-width: 10%;
     word-break: break-all;
 }
@@ -576,6 +577,10 @@ i.picture {
 .imageOverlay .overlayedImaged {
     max-height: 100%;
     max-width: 100%;
+}
+
+.dropdown {
+    display: inline-block;
 }
 
 .dropDown {
