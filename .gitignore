@@ -1,7 +1,6 @@
 messages_*.mo
 smartyfolders/templates_c/*.php
 composer.lock
-vendor/*
 support/dba.php
 smartyfolders/touchfile.txt
 support/smarty_debug

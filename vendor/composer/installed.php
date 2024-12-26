@@ -3,7 +3,7 @@
         'name' => 'jrie/sqstorage',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '5571f55cc8903e2433af7551830575ce61994af0',
+        'reference' => 'f22174fc16db7daa816e94f3b548aa823853ab4c',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -22,7 +22,7 @@
         'jrie/sqstorage' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '5571f55cc8903e2433af7551830575ce61994af0',
+            'reference' => 'f22174fc16db7daa816e94f3b548aa823853ab4c',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

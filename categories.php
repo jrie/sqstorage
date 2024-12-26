@@ -80,14 +80,14 @@ foreach($headCategories as $key => $category) {
 }
 
 foreach($headCategories as $key => $category) {
-  $positions = DB::query('SELECT NULL FROM `items` WHERE `headcategory`=%d', $category['id']);
-  $headCategories[$key]['positions'] = DB::affectedRows();
+  $positions = DB::queryFirstField('SELECT COUNT(*) FROM `items` WHERE `headcategory`=%d', $category['id']);
+  $headCategories[$key]['positions'] = $positions;
 }
 
 $subCategories = DB::query('SELECT `id`, `name`, `amount`, `headcategory` FROM `subCategories` ORDER BY name ASC');
 foreach($subCategories as $key => $category) {
-  $positions = DB::query('SELECT NULL FROM `items` WHERE `subcategories` LIKE %ss', ',' . $category['id'] . ',');
-  $subCategories[$key]['positions'] = DB::affectedRows();
+  $positions = DB::queryFirstField('SELECT COUNT(*) FROM `items` WHERE `subcategories` LIKE %ss', ',' . $category['id'] . ',');
+  $subCategories[$key]['positions'] = $positions;
 }
 
 $smarty->assign('alert', $alert);
