@@ -15,14 +15,15 @@ See [LANGUAGE.md](LANGUAGE.md) for details on how to do so.
 #### Requirements
 
 * PHP version 8.0 and upwards
-  * PHP extensions: `mysqli`, `gettext`, `intl`
-  * PHP extension `gd` on Raspberry OS
+  * PHP extensions: `mysqli`, `gettext`, `intl`, 
+  * PHP extension `gd`
 * a MySQL-compatible database server (e.g. MariaDB)
 * a web server, e.g. nginx or Apache.
 
 #### Installation
 To install sqStorage perform the following steps:
-* Download the files
+* Download the files using git: `git clone --recurse-submodules https://github.com/jrie/sqstorage`
+* If not done before, update the `meekrodb` git submodule: `git submodule init` and `git submodule update`
 * Place the files in the target directory (accessible for the web-server)
 * Set the required folder permission
 	* The webserver required write permissions to the following directories  
@@ -40,6 +41,7 @@ Your sgStorage installation is completed.
 
 #### Update your installation
 * Download the files and replace the existing  with the new ones
+* If not done, update the meekrodb git submodule: `git submodule init` and `git submodule update`
 * Visit the install.php page of your installation with your browser
 * Click the install / update button
 
