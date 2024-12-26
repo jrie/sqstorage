@@ -1,0 +1,169 @@
+@media print {
+  body {
+    margin: 2rem 3rem 2rem 4rem;
+    margin-bottom: 0;
+
+    .logo {
+      margin-left: 0.5rem;
+      margin-bottom: 2rem;
+      display: block;
+    }
+
+    * {
+      text-decoration: none !important;
+      color: black !important;
+    }
+
+    .clearfix {
+      display: none;
+    }
+
+    .clearfix::after {
+      display: none;
+    }
+
+    p {
+      display: none;
+    }
+
+    .navbar {
+      display: block;
+
+      .nav,
+      .searchArea,
+      .dropdown {
+        display: none;
+      }
+
+      border-bottom: 0;
+    }
+
+    .content {
+      margin-bottom: 0;
+
+      hr {
+        display: none;
+      }
+
+      button,
+      i {
+        display: none;
+      }
+
+      li {
+        background-color: transparent;
+        border: 0;
+
+        span {
+          margin: 0;
+        }
+      }
+
+      .alert-info {
+        background-color: transparent;
+      }
+
+      .list-span {
+        margin: 0;
+      }
+
+      .dropdown {
+        display: none;
+      }
+
+      .storage-area {
+        >a {
+          display: none;
+        }
+
+        .alert-info {
+
+          .list-span:nth-child(7),
+          .list-span:nth-child(8) {
+            display: none;
+          }
+        }
+
+        .list-group-item {
+          .list-span:nth-child(1) {
+            display: none;
+          }
+
+          .list-span:nth-child(2),
+          .list-span:nth-child(3) {
+            display: inline-block;
+          }
+
+          .list-span:nth-child(8) {
+            display: none;
+          }
+
+          .list-span:nth-child(7) {
+            margin: 0;
+          }
+        }
+      }
+
+      .categories {
+
+        .btn,
+        .editCategory {
+          display: none;
+        }
+
+        .list-span {
+          margin: auto;
+        }
+
+        .list-span:nth-child(4) {
+          display: none;
+        }
+
+        .list-group-item {
+          .list-span:nth-child(4) {
+            display: inline-block;
+          }
+
+          .dropdown {
+
+            display: inline;
+            background: 0;
+            border: 0;
+
+
+            span, .dropDownList {
+              display: none;
+            }
+
+            .dropDown {
+              background: 0;
+              border: 0;
+              padding: 0;
+              display: inline-block;
+
+              input {
+                padding: 0;
+                margin: 0;
+              }
+            }
+
+            .dropDown input:hover {
+              color: black;
+            }
+          }
+        }
+
+
+      }
+
+      .storage-area,
+      .categories {
+        margin-bottom: 2rem;
+      }
+    }
+
+    footer {
+      display: none;
+    }
+  }
+}
