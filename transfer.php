@@ -5,32 +5,36 @@ require('login.php');
 if ($useRegistration) {
   if (!isset($user) || !isset($user['usergroupid']) || (int)$user['usergroupid'] === 2) {
     $error = gettext('Zugriff verweigert!');
-    include('accessdenied.php');
+    include 'accessdenied.php';
     die();
   }
 }
 
-require_once('support/urlBase.php');
+require_once 'support/urlBase.php';
 $smarty->assign('urlBase', $urlBase);
 
-require_once('./support/dba.php');
-if ($usePrettyURLs) $smarty->assign('urlPostFix', '');
-else $smarty->assign('urlPostFix', '.php');
+require_once './support/dba.php';
+if ($usePrettyURLs) {
+    $smarty->assign('urlPostFix', '');
+} else {
+    $smarty->assign('urlPostFix', '.php');
+}
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
   if (isset($_GET['getId']) && !empty($_GET['getId'])) {
-    //require_once('./support/meekrodb.2.3.class.php');
-    require_once('./vendor/autoload.php');
-    require_once('./support/dba.php');
+    //require_once './support/meekrodb.2.3.class.php';
+    require_once './vendor/autoload.php';
+    require_once './support/dba.php';
 
     $storageId = (int)$_GET['getId'];
     $items = DB::query('SELECT id, label, amount FROM items WHERE storageid=%d', $storageId);
     echo json_encode($items);
     die();
   } else if (isset($_GET['transferTarget']) && !empty($_GET['transferTarget']) && isset($_GET['transferIds']) && !empty($_GET['transferIds']) && isset($_GET['transferAmounts']) && !empty($_GET['transferAmounts'])) {
-    //require_once('./support/meekrodb.2.3.class.php');
-    require_once('./vendor/autoload.php');
-    require_once('./support/dba.php');
+    //require_once './support/meekrodb.2.3.class.php';
+    require_once './vendor/autoload.php';
+    require_once './support/dba.php';
 
     $targetStorageId = (int)trim($_GET['transferTarget'], '"');
     $transferIds = explode(',', trim($_GET['transferIds'], '"'));
@@ -51,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
       if ($existingDest === null) {
         $insertarray = array();
-        
+
         foreach ($item as $key => $value) {
           if ($key !== 'id') {
             $insertarray[$key] = $value;
@@ -61,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $insertarray['storageid'] = (int)$destStorage['id'];
         $insertarray['amount'] = (int)$transferAmounts[$index];
         DB::insert("items", $insertarray);
-        
+
         $insertedId = DB::insertId();
         foreach ($images as $image) {
           unset($image['id']);

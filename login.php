@@ -3,11 +3,11 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
   session_start();
 }
 
-require_once('includer.php');
-require_once('support/urlBase.php');
+require_once 'includer.php';
+require_once 'support/urlBase.php';
 $smarty->assign('urlBase', $urlBase);
 
-require_once('./support/dba.php');
+require_once './support/dba.php';
 
 if (!$usePrettyURLs) {
   $urlPostFix = '.php';

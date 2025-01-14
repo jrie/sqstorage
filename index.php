@@ -8,12 +8,12 @@ if (!file_exists('./support/dba.php')) {
 require('login.php');
 
 $success = false;
-require_once('customFieldsData.php');
-require_once('support/urlBase.php');
+require_once 'customFieldsData.php';
+require_once 'support/urlBase.php';
 $smarty->assign('urlBase', $urlBase);
 
 
-require_once('./includer.php');
+require_once './includer.php';
 if (!CheckDBCredentials($host, DB::$user, DB::$password, $dbName, $port)) {
   header("Location: install.php");
   die();

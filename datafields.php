@@ -4,17 +4,21 @@ require('login.php');
 if ($useRegistration) {
   if (!isset($user) || !isset($user['usergroupid']) || (int)$user['usergroupid'] === 2) {
     $error = gettext('Zugriff verweigert!');
-    include('accessdenied.php');
+    include 'accessdenied.php';
     die();
   }
 }
 
-require_once('support/urlBase.php');
+require_once 'support/urlBase.php';
 $smarty->assign('urlBase', $urlBase);
 
-require_once('./support/dba.php');
-if ($usePrettyURLs) $smarty->assign('urlPostFix', '');
-else $smarty->assign('urlPostFix', '.php');
+require_once './support/dba.php';
+if ($usePrettyURLs) {
+    $smarty->assign('urlPostFix', '');
+} else {
+    $smarty->assign('urlPostFix', '.php');
+}
+
 
 
 include_once('customFieldsData.php');

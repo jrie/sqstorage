@@ -1,6 +1,6 @@
 <?php
 
-require_once('vendor/autoload.php');
+require_once 'vendor/autoload.php';
 use Smarty\Smarty;
 $smarty = new \Smarty();
 $smarty->setTemplateDir($basedir . '/templates/');

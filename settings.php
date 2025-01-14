@@ -11,17 +11,21 @@ $ghapi = array();
 if ($useRegistration) {
   if (!isset($user) || !isset($user['usergroupid']) || (int)$user['usergroupid'] === 2) {
     $error = gettext('Zugriff verweigert!');
-    include('accessdenied.php');
+    include 'accessdenied.php';
     die();
   }
 }
 
-require_once('support/urlBase.php');
+require_once 'support/urlBase.php';
 $smarty->assign('urlBase', $urlBase);
 
-require_once('./support/dba.php');
-if ($usePrettyURLs) $smarty->assign('urlPostFix', '');
-else $smarty->assign('urlPostFix', '.php');
+require_once './support/dba.php';
+if ($usePrettyURLs) {
+    $smarty->assign('urlPostFix', '');
+} else {
+    $smarty->assign('urlPostFix', '.php');
+}
+
 if(isset($_POST['target'])){
   $mtarget = $_POST['target'];
 }else{
@@ -60,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'mail') {
           if(in_array($branch,['main','dev','beta'])) SETTINGS::SettingsSet('updater','githubbranch',$branch);
         }
 }elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'updatecheck'){
-  require_once('support/updater.php');
+  require_once 'support/updater.php';
   $updatecheck = true;
   $updData = SETTINGS::SettingsGet('updater');
   $resetTime = 0;

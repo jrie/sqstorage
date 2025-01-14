@@ -105,7 +105,7 @@
             </div>
             <button type="submit" class="btn btn-primary">{t}Eintragen / Aktualisieren{/t}</button>
             <button type="reset" class="btn btn-secondary">{t}Formular zurücksetzen{/t}</button>
-            <button type="button" name="btnDelete" type="button" class="hidden btn btn-danger">{t}Feld löschen{/t}</button>
+            <button type="button" name="btnDelete"class="hidden btn btn-danger">{t}Feld löschen{/t}</button>
             <input type="hidden" readonly="readonly" name="existingId" value="-1" />
             <input type="hidden" readonly="readonly" name="doDelete" value="-1" />
         </form>

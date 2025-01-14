@@ -11,17 +11,21 @@ $updatework = false;
 if ($useRegistration) {
   if (!isset($user) || !isset($user['usergroupid']) || (int)$user['usergroupid'] === 2) {
     $error = gettext('Zugriff verweigert!');
-    include('accessdenied.php');
+    include 'accessdenied.php';
     die();
   }
 }
 
-require_once('support/urlBase.php');
+require_once 'support/urlBase.php';
 $smarty->assign('urlBase', $urlBase);
 
-require_once('./support/dba.php');
-if ($usePrettyURLs) $smarty->assign('urlPostFix', '');
-else $smarty->assign('urlPostFix', '.php');
+require_once './support/dba.php';
+if ($usePrettyURLs) {
+    $smarty->assign('urlPostFix', '');
+} else {
+    $smarty->assign('urlPostFix', '.php');
+}
+
 if(isset($_REQUEST['target'])){
   $mtarget = $_REQUEST['target'];
 }else{
@@ -29,7 +33,7 @@ if(isset($_REQUEST['target'])){
 }
 $install_allowed = false;
 if(file_exists($basedir . "/support/allow_install")) $install_allowed = true;
-require_once('./support/updater.php');
+require_once './support/updater.php';
 
 if ( $mtarget  == 'installupdate') {
   $enable = true;

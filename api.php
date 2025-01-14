@@ -1,4 +1,5 @@
 <?php
+
 /**
  * PHP-CRUD-API v2              License: MIT
  * Maurits van der Schee: maurits@vdschee.nl
@@ -66,34 +67,34 @@ $settings['debug'] = true;
 
 
 if ($useRegistration) {
-  $settings['middlewares'] = 'dbAuth,authorization';
-  $settings["dbAuth.usersTable"] = 'users'; //: The table that is used to store the users in ("users")
-  $settings["dbAuth.usernameColumn"] = 'username'; //: The users table column that holds usernames ("username")
-  $settings["dbAuth.passwordColumn"] = 'password'; //: The users table column that holds passwords ("password")
-  $settings["dbAuth.returnedColumns"] = 'id, username';
-  $settings['authorization.tableHandler'] = function ($operation, $tableName) {
-    global $ug;
-    $ug = 999;
-    if (isset($_SESSION['user']['id'])) {
-      $ug = fGetUserGroupID($_SESSION['user']['id']);
-      $_SESSION['user']['usergroupid'] = $ug;
-    } else {
-      if (isset($_SESSION['authenticated']))
-        $ug = $_SESSION['user']['usergroupid'];
-    }
-    if ($ug == 2) {
-      if ($operation == "list")
-        return true;
-      if ($operation == "read")
-        return true;
-      return false;
-    }
-    if ($ug == 999)
-      return false;
-    return $tableName != 'users';
-  };
+    $settings['middlewares'] = 'dbAuth,authorization';
+    $settings["dbAuth.usersTable"] = 'users'; //: The table that is used to store the users in ("users")
+    $settings["dbAuth.usernameColumn"] = 'username'; //: The users table column that holds usernames ("username")
+    $settings["dbAuth.passwordColumn"] = 'password'; //: The users table column that holds passwords ("password")
+    $settings["dbAuth.returnedColumns"] = 'id, username';
+    $settings['authorization.tableHandler'] = function ($operation, $tableName) {
+        global $ug;
+        $ug = 999;
+        if (isset($_SESSION['user']['id'])) {
+            $ug = fGetUserGroupID($_SESSION['user']['id']);
+            $_SESSION['user']['usergroupid'] = $ug;
+        } else {
+            if (isset($_SESSION['authenticated']))
+                $ug = $_SESSION['user']['usergroupid'];
+        }
+        if ($ug == 2) {
+            if ($operation == "list")
+                return true;
+            if ($operation == "read")
+                return true;
+            return false;
+        }
+        if ($ug == 999)
+            return false;
+        return $tableName != 'users';
+    };
 
-  $settings['tables'] .= 'users';
+    $settings['tables'] .= 'users';
 }
 
 $config = new Config($settings);
@@ -108,11 +109,11 @@ ResponseUtils::output($response);
 
 function fGetUserGroupID($userid)
 {
-  if ($userid < 1)
-    return 999;
-  $usergroupid = DB::queryFirstField('SELECT usergroupid FROM users_groups WHERE userid = %i', $userid);
-  if (!$usergroupid) {
-    return 999;
-  }
-  return $usergroupid;
+    if ($userid < 1)
+        return 999;
+    $usergroupid = DB::queryFirstField('SELECT usergroupid FROM users_groups WHERE userid = %i', $userid);
+    if (!$usergroupid) {
+        return 999;
+    }
+    return $usergroupid;
 }

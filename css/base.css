@@ -285,6 +285,12 @@ a.far:hover {
     text-decoration: none;
 }
 
+.categories,
+.headSubcategories,
+.storageListing {
+    clear: both;
+}
+
 .categories .list-span,
 .categories .list-span:nth-child(0n+1) {
     min-width: 15%;
@@ -418,6 +424,12 @@ div.dropdown.list-span {
 #transferButton {
     margin-top: 30px;
     margin-right: 4%;
+}
+
+.csvDownload {
+    margin-top: 30px;
+    margin-bottom: 50px;
+    float:right;
 }
 
 ul.existingFields {

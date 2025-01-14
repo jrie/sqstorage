@@ -21,7 +21,7 @@
                 {if $itemhasstorage}{if !$isGuest}{if isset($itemstore.storage.id)}<a title="{t}Schnelle Bearbeitung{/t}" onclick="changeSingleValue('storages','label',{$itemstore.storage.id},true);" href="javascript:void(0)"><i class="fas fa-edit fa-xs"></i></a>{/if}{/if}{/if}
                 <span class="small">({$itemstore.positionen} {if $itemstore.positionen == 1}{t}Position{/t}{else}{t}Positionen{/t}{/if}, {$itemstore.itemcount} {if $itemstore.itemcount == 1}{t}Gegenstand{/t}{else}{t}Gegenstände{/t}{/if})</span>
                 <a title="{t}Zuklappen{/t}" id="togglebtn_{$itemstore.storage.id}" onclick='toggletableview("{$itemstore.storage.id}");' href="javascript:void(0)">
-                <i class="fa-solid fa-xs fa-minimize" id="toggleicon_{$itemstore.storage.id}"></i></a>
+                    <i class="fa-solid fa-xs fa-minimize" id="toggleicon_{$itemstore.storage.id}"></i></a>
             </h4>
 
             <ul class="list-group collapsestorage" id="itemlist_{$itemstore.storage.id}">
@@ -69,67 +69,70 @@
                     {/if}
 
                     <div class="list-span">
-                      <span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i><img class="item-picture" data-id="{$item.id}" src="" onclick="displayFullImage('{$item.id}');return false;">{/if}
-                    {if !$isGuest}
-                        <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}">{$item.label}</a>
-                    {else}
-                        <span class="listing-label" title="{$item.label}">{$item.label}</span>
-                    {/if}
-                      </span>
+                        <span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i><img class="item-picture" data-id="{$item.id}" src="" onclick="displayFullImage('{$item.id}');return false;">{/if}
+                            {if !$isGuest}
+                            <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}">{$item.label}</a>
+                            {else}
+                            <span class="listing-label" title="{$item.label}">{$item.label}</span>
+                            {/if}
+                        </span>
                     </div>
 
 
-        <div class="list-span"><span class="listing-amount quick-edit">{$item.amount}</span></div>
-        <div class="list-span"><span class="listing-comment quick-edit" title="{$item.comment}">{$item.comment}</span></div>
+                    <div class="list-span"><span class="listing-amount quick-edit">{$item.amount}</span></div>
+                    <div class="list-span"><span class="listing-comment quick-edit" title="{$item.comment}">{$item.comment}</span></div>
 
-        <div class="list-span"><span class="listing-subcategories" title="{" , "|implode:$subNames}">{$implodedSubCats}</span></div>
-        <div class="list-span"><span class="listing-dateadded" title="{$dateexploded.0}">{$dateexploded.0}</span></div>
-        {if !$isGuest}
-        <div class="list-span actions">
-            <a tabindex="-1" href="#" class="save-inline-edit inactive" title="{t}Schnelle Bearbeitung speichern{/t}" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
-            <a tabindex="-1" href="#" class="open-inline-edit" title="{t}Schnelle Bearbeitung{/t}" data-id="{$item.id}"><i class="fas fa-eraser"></i></a>
-            <a title="{t}Ausführliche Bearbeitung{/t}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
-        </div>
+                    <div class="list-span"><span class="listing-subcategories" title="{" , "|implode:$subNames}">{$implodedSubCats}</span></div>
+                    <div class="list-span"><span class="listing-dateadded" title="{$dateexploded.0}">{$dateexploded.0}</span></div>
+                    {if !$isGuest}
+                    <div class="list-span actions">
+                        <a tabindex="-1" href="#" class="save-inline-edit inactive" title="{t}Schnelle Bearbeitung speichern{/t}" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
+                        <a tabindex="-1" href="#" class="open-inline-edit" title="{t}Schnelle Bearbeitung{/t}" data-id="{$item.id}"><i class="fas fa-eraser"></i></a>
+                        <a title="{t}Ausführliche Bearbeitung{/t}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
+                    </div>
 
-        <div class="dropdown">
-            <select autocomplete="off" id="item_{$item.id}" class="btn dropdown-toggle switchStorage listing-switchstorage" data-itemamount="{$item.amount}" data-value="0" data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {$hasStorage = false}
-                {foreach $storages as $storage}
-                {if ($storage.id == $item.storageid)}
-                {$hasStorage = true}
-                <option selected="selected" value="-1">{$storage.label}</option>
-                {break}
-                {/if}
+                    <div class="dropdown">
+                        <select autocomplete="off" id="item_{$item.id}" class="btn dropdown-toggle switchStorage listing-switchstorage" data-itemamount="{$item.amount}" data-value="0" data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {$hasStorage = false}
+                            {foreach $storages as $storage}
+                            {if ($storage.id == $item.storageid)}
+                            {$hasStorage = true}
+                            <option selected="selected" value="-1">{$storage.label}</option>
+                            {break}
+                            {/if}
+                            {/foreach}
+
+                            {if !$hasStorage}
+                            <option selected="selected" value="-1">{t}Zuweisen{/t}</option>
+                            {/if}
+
+                            {foreach $storages as $storage}
+                            {if ($storage.id != $item.storageid)}
+                            <option value="{$storage.id}">{$storage.label}</option>
+                            {/if}
+                            {/foreach}
+                        </select>
+                    </div>
+                    {/if}
+                </li>
+
                 {/foreach}
-
-                {if !$hasStorage}
-                <option selected="selected" value="-1">{t}Zuweisen{/t}</option>
+                {else}
+                <li class="list-group-item"><span>{t}Keine Gegenstände gefunden{/t}</span></li>
                 {/if}
-
-                {foreach $storages as $storage}
-                {if ($storage.id != $item.storageid)}
-                <option value="{$storage.id}">{$storage.label}</option>
-                {/if}
-                {/foreach}
-            </select>
+            </ul>
+            {if !$isGuest}
+                <button type="button" data-table="inventory" data-tableId="{$itemstore.storage.id}" class="csvDownload btn btn-primary">{t}Download as CSV{/t}</button>
+            {/if}
         </div>
+        <div class="clearfix"></div>
+        {else}
+        <!--<h1>Keine Teile verdammt</h1>-->
         {/if}
-        </li>
 
         {/foreach}
-        {else}
-        <li class="list-group-item"><span>{t}Keine Gegenstände gefunden{/t}</span></li>
-        {/if}
-        </ul>
-</div>
-<div class="clearfix"></div>
-{else}
-<!--<h1>Keine Teile verdammt</h1>-->
-{/if}
-
-{/foreach}
-{if !$hasdata}<li class="list-group-item"><span>{t}Keine Gegenstände gefunden{/t}</span></li>{/if}
-</form>
+        {if !$hasdata}<li class="list-group-item"><span>{t}Keine Gegenstände gefunden{/t}</span></li>{/if}
+    </form>
 
 </div>
 <!-------------------------------------------------------------------------------------------------------------->
@@ -196,8 +199,8 @@
                     {/if}
 
                     <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fa fas fa-images"></i><img class="item-picture" data-id="{$item.id}" src="">{/if}
-                    {if !$isGuest}
-                    <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
+                            {if !$isGuest}
+                            <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
                     {else}
                     <span class="listing-label" title="{$item.label}">{$item.label}</span></span>
         </div>
@@ -305,8 +308,8 @@
                     {/if}
 
                     <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i><img class="item-picture" data-id="{$item.id}" src="">{/if}
-                    {if !$isGuest}
-                    <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
+                            {if !$isGuest}
+                            <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
                     {else}
                     <span class="listing-label" title="{$item.label}">{$item.label}</span></span>
         </div>
@@ -360,6 +363,7 @@
 </form>
 </div>
 
+
 {if isset($dump)}
 <pre>{$dump}</pre>{/if}
 {include file="footer.tpl"}
@@ -368,6 +372,42 @@
 <script src="js/libs/fslightbox.js"></script>
 
 <script type="text/javascript">
+    {/literal}
+    {if !$isGuest}
+        {literal}
+            function downloadCSV(tableName, tableId) {
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'csvdownload.php', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        var blob = new Blob([xhr.response], { type: 'text/csv' });
+                        var link = document.createElement('a');
+                        link.download = tableName + '.csv';
+                        link.href = window.URL.createObjectURL(blob);
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                    }
+                };
+                if (tableId) {
+                    xhr.send('table=' + encodeURIComponent(tableName) + '&tableid='+ encodeURIComponent(tableId));
+                } else {
+                    xhr.send('table=' + encodeURIComponent(tableName));
+                }
+            }
+
+            let downloadButtons = document.querySelectorAll('.csvDownload');
+            for (let button of downloadButtons) {
+                button.addEventListener('click', function(evt) {
+                    console.log(button.dataset)
+                    downloadCSV(button.dataset['table'], button.dataset['tableid']);
+                })
+            }
+        {/literal}
+    {/if}
+    {literal}
     function NumSelect(maxAmount) {
         while (true) {
             let transferAmount = parseInt(prompt("{/literal}{t}Von diesem Artikel sind mehrere Stück am Lagerplatz. Wie viele sollen zum neuen Lagerort transferiert werden?{/t}{literal}", maxAmount))
@@ -403,7 +443,7 @@
                 openedImage.classList.toggle('active')
             }
 
-            itemPicture.setAttribute('src','data:image/*;charset=utf-8;base64,' + GetItemThumb( itemPicture.dataset['id'] ) )
+            itemPicture.setAttribute('src', 'data:image/*;charset=utf-8;base64,' + GetItemThumb(itemPicture.dataset['id']))
             itemPicture.classList.toggle('active')
         })
     }
@@ -617,7 +657,7 @@
     })
 
     window.addEventListener('load', function(evt) {
-            SetCollapsed();
+        SetCollapsed();
     })
 
 
@@ -729,23 +769,23 @@
         let icon = document.getElementById('toggleicon_' + tableid)
         let link = document.getElementById('togglebtn_' + tableid)
 
-        if(icon.classList.contains('fa-minimize')) {
+        if (icon.classList.contains('fa-minimize')) {
             //ist sichtbar -> soll unsichtbar werden
             table.style.overflow = 'hidden'
             table.style.height = '0px'
             icon.className = 'fas fa-xs fa-expand'
             link.title = {/literal}'{t}Aufklappen{/t}'{literal}
-            document.cookie  = 'collapsedstorage_'+ tableid +'=1; samesite=Strict;'
+            document.cookie = 'collapsedstorage_' + tableid + '=1; samesite=Strict;'
         } else {
             //ist unsichtbar -> soll sichtbar werden
             table.style.height = table.dataset['originalheight'] + 'px'
             icon.className = 'fas fa-xs fa-minimize'
             link.title = {/literal}'{t}Zuklappen{/t}'{literal}
-            document.cookie  = 'collapsedstorage_'+ tableid +'=0; samesite=Strict;'
+            document.cookie = 'collapsedstorage_' + tableid + '=0; samesite=Strict;'
         }
     }
 
-    function getCookie (name,defaultvalue) {
+    function getCookie(name, defaultvalue) {
         const value = '; ' + document.cookie
         let parts = value.split('; ' + name + '=')
         if (parts.length === 2) return parts.pop().split(';').shift()
@@ -760,7 +800,7 @@
 
             element.dataset['originalheight'] = element.clientHeight
             element.style = 'transition: all 300ms ease-out; height:' + element.clientHeight + 'px;'
-            element.addEventListener('transitionend', function (evt) {
+            element.addEventListener('transitionend', function(evt) {
                 window.setTimeout(function() {
                     if (evt.target.style.height === '0px') {
                         evt.target.style.overflow = 'hidden'
@@ -772,8 +812,8 @@
                 }, 0.6)
             })
 
-            let cv = getCookie("collapsedstorage_"+ itind, 0)
-            if(cv == '1') {
+            let cv = getCookie("collapsedstorage_" + itind, 0)
+            if (cv == '1') {
                 toggletableview(itind)
             }
         }
@@ -792,16 +832,16 @@
         }
     })
 
-    function displayFullImage(ItemID){
-          let lightbox = new FsLightbox();
-          lightbox.props.initialAnimation = 'initial-animation';
-          // set up props, like sources, types, events etc.
-          //lightbox.props.sources = ['data:image/*;charset=utf-8;base64,' + GetItemFullimage( ItemID )];
-          lightbox.props.type = 'image';
-          lightbox.props.sources = GetItemFullimages( ItemID );
-          lightbox.props.onInit = () => console.log('Lightbox initialized!');
+    function displayFullImage(ItemID) {
+        let lightbox = new FsLightbox();
+        lightbox.props.initialAnimation = 'initial-animation';
+        // set up props, like sources, types, events etc.
+        //lightbox.props.sources = ['data:image/*;charset=utf-8;base64,' + GetItemFullimage( ItemID )];
+        lightbox.props.type = 'image';
+        lightbox.props.sources = GetItemFullimages(ItemID);
+        lightbox.props.onInit = () => console.log('Lightbox initialized!');
 
-          lightbox.open();
+        lightbox.open();
 
     }
 </script>
