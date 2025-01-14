@@ -401,7 +401,6 @@
             let downloadButtons = document.querySelectorAll('.csvDownload');
             for (let button of downloadButtons) {
                 button.addEventListener('click', function(evt) {
-                    console.log(button.dataset)
                     downloadCSV(button.dataset['table'], button.dataset['tableid']);
                 })
             }
