@@ -122,7 +122,7 @@
                 {/if}
             </ul>
             {if !$isGuest}
-                <button type="button" data-table="inventory" data-tableId="{$itemstore.storage.id}" class="csvDownload btn btn-primary">{t}Download as CSV{/t}</button>
+                <button type="button" data-table="inventory" data-tableId="{$itemstore.storage.id}" data-name="inventory_{$itemstore.storage.label}" class="csvDownload btn btn-primary">{t}Download as CSV{/t}</button>
             {/if}
         </div>
         <div class="clearfix"></div>
@@ -375,7 +375,7 @@
     {/literal}
     {if !$isGuest}
         {literal}
-            function downloadCSV(tableName, tableId) {
+            function downloadCSV(tableName, tableId, downloadName) {
                 var xhr = new XMLHttpRequest();
                 xhr.open('POST', 'csvdownload.php', true);
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -384,7 +384,7 @@
                     if (xhr.readyState === 4 && xhr.status === 200) {
                         var blob = new Blob([xhr.response], { type: 'text/csv' });
                         var link = document.createElement('a');
-                        link.download = tableName + '.csv';
+                        link.download = downloadName ? downloadName + '.csv' : tableName + '.csv';
                         link.href = window.URL.createObjectURL(blob);
                         document.body.appendChild(link);
                         link.click();
@@ -401,7 +401,7 @@
             let downloadButtons = document.querySelectorAll('.csvDownload');
             for (let button of downloadButtons) {
                 button.addEventListener('click', function(evt) {
-                    downloadCSV(button.dataset['table'], button.dataset['tableid']);
+                    downloadCSV(button.dataset['table'], button.dataset['tableid'], button.dataset['name']);
                 })
             }
         {/literal}
