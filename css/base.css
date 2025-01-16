@@ -391,8 +391,14 @@ div.dropdown.list-span {
     background-color: #f8f9fa;
 }
 
+.storeSrc,
 .storeSrcDiv {
     margin-right: 21px;
+}
+
+.storeSrc,
+.storeDest {
+    clear: none;
 }
 
 .storageListing {
