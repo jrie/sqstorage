@@ -1,8 +1,10 @@
-![Logo sqStorage](https://dwrox.net/sqstorage.webp "Logo sqStorage")
+# sqStorage
 
-A easy to use and super quick way to organize your inventory, storage and storage areas.
+![Logo sqStorage](https://dwrox.net/imgs/sqstorage.webp "Logo sqStorage")
 
-### Official website
+A easy to use and super quick way to organize your inventory, storage and storage areas or any other kind of collections, like music, movie or video games.
+
+## Official website
 
 There is a new website at https://sqstorage.net where you can actively support the development by renting paid hosting and support. This offer is for private and business users equally. Also, you can get a subdomain at `yourname`.sqstorage.net and password protected access in addition to the optional user system of sqStorage. If you do not feel like renting hosting and support, you always can make a donation using PayPal.me at https://paypal.me/dwroxnet .
 
