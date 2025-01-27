@@ -1,28 +1,40 @@
 # sqStorage
-
 ![Logo sqStorage](https://dwrox.net/imgs/sqstorage.webp "Logo sqStorage")
 
-A easy to use and super quick way to organize your inventory, storage and storage areas or any other kind of collections, like music, movie or video games.
+## A free and open source web based inventory and storage manager
+*A easy to use and super quick way to organize your inventory, storage and storage areas or any other kind of collections, like music, movie or video games.*
 
 ## Official website
 
-There is a new website at https://sqstorage.net where you can actively support the development by renting paid hosting and support. This offer is for private and business users equally. Also, you can get a subdomain at `yourname`.sqstorage.net and password protected access in addition to the optional user system of sqStorage. If you do not feel like renting hosting and support, you always can make a donation using PayPal.me at https://paypal.me/dwroxnet .
+The official sqStorage website is located at [https://sqstorage.net](https://sqstorage.net)
 
-### Note
-Right now sqStorage is available in German, English and Polish. Feel free to add your own translation.
+### Online interactive live demo 
+A live demo is also available, including the current development state. The live demo can be found at [sqStorage live demo](https://sqstorage.net/#livedemo).
+
+## Support development
+You can actively support the development by renting paid hosting and support.
+This offer is for private and business users equally. Also, you can get a subdomain at ***`yourname`.sqstorage.net***, and password protected access in addition to the optional user system of sqStorage.
+
+If you do not feel like renting hosting and support, you always can make a donation using PayPal.me at [https://paypal.me/dwroxnet](https://paypal.me/dwroxnet).
+
+### About available languages and language extensions
+Right now sqStorage is available in *German*, *English* and *Polish*.
+Feel free to add your own translation.
+
 See [LANGUAGE.md](LANGUAGE.md) for details on how to do so.
 
-### Installation and usage (manually, for docker follow [docker-installation.md](docker-installation.md))
 
-#### Requirements
+## Installation and usage (manually, for docker follow [docker-installation.md](docker-installation.md))
 
-* PHP version 8.0 and upwards
+### Requirements
+
+* PHP version 8.2 and upwards
   * PHP extensions: `mysqli`, `gettext`, `intl`, 
   * PHP extension `gd`
 * a MySQL-compatible database server (e.g. MariaDB)
 * a web server, e.g. nginx or Apache.
 
-#### Installation
+### Installation
 To install sqStorage perform the following steps:
 * Download the files using git: `git clone --recurse-submodules https://github.com/jrie/sqstorage`
 * If not done before, update the `meekrodb` git submodule: `git submodule init` and `git submodule update`
@@ -41,13 +53,13 @@ To install sqStorage perform the following steps:
 
 Your sgStorage installation is completed.
 
-#### Update your installation
+### Update your installation
 * Download the files and replace the existing  with the new ones
 * If not done, update the meekrodb git submodule: `git submodule init` and `git submodule update`
 * Visit the install.php page of your installation with your browser
 * Click the install / update button
 
-#### Enable / disable the installation/update
+### Enable / disable the installation/update
 The ***Installer*** `install.php` is only enabled if a file named `allow_install` exists within the `support/` directory. 
 This file is installed by default. 
 If sqStorage is accessible from outside your home network, you should delete this file either
@@ -56,10 +68,10 @@ If sqStorage is accessible from outside your home network, you should delete thi
 To later update your installation, simple create the file manually
 
 
-### Manual configuration/settings
+## Manual configuration and other settings
 All this settings can be configured in `support/dba.php`
 
-#### Database
+### Database
 
 Default database: `tlv`
 
@@ -107,14 +119,14 @@ chgrp -R www-data languages/locale/
 
 should work in most cases.
 
-#### First run
+### First run
 
 - Once you installation is completed, visit the main page `index.php` to open sqStorage
 - If you decided to use the login feature, you will be asked to create an admin account.
   * this can be done only once after installation!
   * If you mess up, you will have to truncate the `users` table in order to prompt for admin account registration again.
   
-#### Custom fields and image upload
+### Custom fields and image upload
 
 If you are upgrading of an earlier version of sqStorage, 
 * the custom fields code might have changed. This fields had been implemented earlier but where of no practical use. 
@@ -123,21 +135,21 @@ If you are upgrading of an earlier version of sqStorage,
 
 Still possible so, you might have to **update your database** by visiting the `install.php` script and updating your database in order to make use of the latest features.
 
-### REST-API
+## REST-API
 sqStorage provides a REST-API for data access and manipuluation.
 See [REST_API.md](REST_API.md) for details on how to use it.
 
-### Troubleshooting
+## Troubleshooting
 `Fatal error: Uncaught Error: Class 'Locale' not found` If this error message is shown, the php package intl is not activated. If you're using Windows and XAMPP to run this app, you can enable it by editing the php.ini file in your XAMPP-php directory (Standard-installation: `C:\xampp\php\php.ini`).
 Remove the semicolon in front of 
 `;extension=php_intl.dll`
 and restart the Apache webserver.
 
-##### Language selection in Windows XAMPP
+## Language selection in Windows XAMPP
 If you're running a Windows XAMPP development system, you need to start xampp-control by command line. Start the command line [WIN+R -> cmd.exe] and enter the command `set LANG=en_GB` (or de_DE, or ... you know) and start xampp-control `c:\xampp\xampp-control.exe`
 
-### German talking src ressource
+## German talking src ressource
 The whole idea behind sqStorage or "Thom's Inventarverwaltung" can be found at the german bulletin board NGB.to over https://ngb.to/threads/39122-Webbasierte-Mini-Lagerverwaltung
 
-### Last but not least
+## Last but not least
 Have fun using sqStorage.
