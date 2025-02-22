@@ -5,8 +5,11 @@
 
     DB::$user = 'tlvUser';
     DB::$password = 'tlvUser';
-
+   	# mySQL/mariadb
     DB::$dsn = 'mysql:host=' . $host. ';port=' . $port . ';charset=utf8;dbname=' . $dbName;
+
+    # SQLite database
+    #DB::$dsn = 'sqlite:/exact/path/to/sqstorage/support/sqlite_db.sq3';
 
     // https://meekro.com/docs/logging.html
     DB::$logfile = null;
