@@ -31,8 +31,11 @@ See [LANGUAGE.md](LANGUAGE.md) for details on how to do so.
 * PHP version 8.2 and upwards
   * PHP extensions: `mysqli`, `gettext`, `intl`, 
   * PHP extension `gd`
-* a MySQL-compatible database server (e.g. MariaDB)
+* a MySQL-compatible database server (e.g. MariaDB) or *SQLite3
 * a web server, e.g. nginx or Apache.
+
+**Note for SQLtie**: SQLite is currently useable by a predefined, empty, database file located in `support/sqlite_db.sq3` - there is no setup script, the database is prepared and basically ready to use.
+Also, the PHP SQLite and PDO-SQLite driver have to be installed in order for `meekrodb` to do its magic.
 
 ### Installation
 To install sqStorage perform the following steps:
