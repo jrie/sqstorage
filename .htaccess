@@ -5,7 +5,7 @@ Satisfy all
 </Files>
 
 <IfModule mod_rewrite.c>
-RewriteEngine on
+RewriteEngine On
 RewriteRule (js|css|img|fonts)/(.*) $1/$2
 RewriteRule ^index$ index.php [L]
 
