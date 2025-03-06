@@ -124,7 +124,6 @@ if (isset($useRegistration) && !$useRegistration) {
         if (count($errors) == 0) {
           $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-          DB::$throw_exception_on_error = true;
           try {
             if ($createFirstAdmin) {
               $result = DB::insert('users', array('username' => trim($_POST['username']), 'mailaddress' => $_POST['mailaddress'], 'password' => $hashedPassword));
@@ -150,8 +149,6 @@ if (isset($useRegistration) && !$useRegistration) {
               $error = $e->getMessage();
             }
           }
-
-          DB::$throw_exception_on_error = false;
         } else {
           $error = implode('<br />', $errors);
         }

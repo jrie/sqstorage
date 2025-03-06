@@ -46,8 +46,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'mail') {
   } catch (Exception $e) {
     $error = $e->getMessage();
   }
-  DB::$error_handler = 'meekrodb_error_handler';
-  DB::$throw_exception_on_error = false;
 }elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'install'){
   if (isset($_POST['allow_install'])){
     if($_POST['allow_install']== "allow"){
@@ -83,7 +81,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'mail') {
   SETTINGS::SettingsSet("startpage","defaultuser",$_POST['startpagekey']);
 }elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-  DB::$throw_exception_on_error = true;
   try {
     $_POST['username'] =  trim($_POST['username']);
     if (!preg_match('/[^a-zA-Z0-9_\-\.]/', $_POST['username']) == 0) {
@@ -131,8 +128,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'mail') {
     if (strncmp($error, "Duplicate", 9) === 0) $error = sprintf(gettext('Der Benutzer "%s" existiert bereits.'), $user['username']);
     $user = DB::queryFirstRow('SELECT u.id, u.username, u.mailaddress, u.api_access, g.name as usergroupname, g.id as usergroupid FROM users u LEFT JOIN users_groups ugs ON(ugs.userid = u.id) LEFT JOIN usergroups g ON(g.id = ugs.usergroupid) WHERE u.id = %i LIMIT 1', $user['id']);
   }
-  DB::$error_handler = 'meekrodb_error_handler';
-  DB::$throw_exception_on_error = false;
 }
 
 
