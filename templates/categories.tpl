@@ -29,7 +29,7 @@
     </ul>
 
     {if !$isGuest}
-        <button type="button" data-table="headCategories" data-name="categories" class="csvDownload btn btn-primary">{t}Download as CSV{/t}</button>
+        <button type="button" data-table="headCategories" data-name="categories" class="csvDownload btn btn-primary">{t}Als CSV herunterladen{/t}</button>
     {/if}
 
     <hr />
@@ -96,7 +96,7 @@
     </ul>
 
     {if !$isGuest}
-        <button type="button" data-table="subCategories" data-name="subcategories" class="csvDownload btn btn-primary">{t}Download as CSV{/t}</button>
+        <button type="button" data-table="subCategories" data-name="subcategories" class="csvDownload btn btn-primary">{t}Als CSV herunterladen{/t}</button>
     {/if}
 </div>
 {include file="footer.tpl"}

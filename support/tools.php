@@ -7,26 +7,54 @@
  *  IsDBUpdateAvailable() -> Checks if a db-migration is available which isn't installed yet. Returns true/false
  */
 
-function CheckDBCredentials($host,$user,$password,$name,$port,$silent=false){
+function CheckDBCredentials($host,$user,$password,$name,$port, $dbRootUser, $dbRootUserPassword, $silent=false){
   global $error;
 
   $tmp = error_reporting();
   error_reporting(0);
-  $mysqli_connection = new MySQLi($host,$user,$password,"",$port);
+  try {
+    $mysqli_connection = new MySQLi($host, $user, $password, $name, $port);
+  } catch (mysqli_sql_exception $e) {
+    if (!is_null($dbRootUser) && !is_null($dbRootUserPassword)) {
+      $errorCode = $e->getCode();
+      $query = "CREATE DATABASE IF NOT EXISTS " . $name;
+      try {
+        $mysqli_connection = new MySQLi($host, $dbRootUser, $dbRootUserPassword, "", $port);
+      } catch (mysqli_sql_exception $e) {
+        $error[] = gettext("Hauptnutzer konnte sich nicht anmelden um sqStorage Nutzer und Datenbank anzulegen");
+        return false;
+      }
+
+      if (mysqli_query($mysqli_connection, $query)) {
+        $queryCreateUser = "CREATE USER '$user'@'$host' IDENTIFIED BY '$password';";
+        $queryGrant = "GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, INDEX, ALTER ON `$name`.* TO '$user'@'$host';";
+        $queryFlush = "FLUSH PRIVILEGES;";
+        try {
+          mysqli_query($mysqli_connection, $queryCreateUser);
+          mysqli_query($mysqli_connection, $queryGrant);
+          mysqli_query($mysqli_connection, $queryFlush);
+        } catch (mysqli_sql_exception $e2) {
+          $errorCode2 = $e2->getCode();
+          if ($errorCode2 === 1045) {
+            $error[] = gettext("Datenbank Hauptnutzer Zugriff ungültig, konnte sqStorage Benutzer und Rechte nicht setzen");
+          }
+
+          return false;
+        }
+
+        return true;
+      }
+    }
+  }
+
   error_reporting($tmp);
+
   if ($mysqli_connection->connect_error) {
       if(!$silent)$error[] = gettext("Zugang wurde verweigert. Bitte überprüfe die Zugangsdaten");
       return false;
   }
-  else {
-    $query = "CREATE DATABASE IF NOT EXISTS " . $name ;
-    if(mysqli_query($mysqli_connection, $query)){
-      return true;
-    } else {
-      $error[] = gettext("Die gewählte Datenbank existiert nicht und konnte nicht erstellt werden");
-      return false;
-    }
-  }
+
+  return true;
 }
 
 

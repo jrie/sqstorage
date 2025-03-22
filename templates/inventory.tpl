@@ -122,7 +122,7 @@
                 {/if}
             </ul>
             {if !$isGuest}
-                <button type="button" data-table="inventory" data-tableId="{$itemstore.storage.id}" data-name="inventory_{$itemstore.storage.label}" class="csvDownload btn btn-primary">{t}Download as CSV{/t}</button>
+                <button type="button" data-table="inventory" data-tableId="{$itemstore.storage.id}" data-name="inventory_{$itemstore.storage.label}" class="csvDownload btn btn-primary">{t}Als CSV herunterladen{/t}</button>
             {/if}
         </div>
         <div class="clearfix"></div>

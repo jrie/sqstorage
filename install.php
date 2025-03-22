@@ -46,7 +46,18 @@ $nodba = true;
  * Check user supplied credentials create db if required
  */
 if (isset($_POST['dbset'])) {
-    if (CheckDBCredentials($_POST['dbhost'], $_POST['dbuser'], $_POST['dbpass'], $_POST['dbname'], $_POST['dbport'], true)) {
+    $dbRootUser = null;
+    $dbRootUserPassword = null;
+
+    if (isset($_POST['dbRootUser'])) {
+        $dbRootUser = $_POST['dbRootUser'];
+    }
+
+    if (isset($_POST['dbRootUserPassword'])) {
+        $dbRootUserPassword = $_POST['dbRootUserPassword'];
+    }
+
+    if (CheckDBCredentials($_POST['dbhost'], $_POST['dbuser'], $_POST['dbpass'], $_POST['dbname'], $_POST['dbport'], $dbRootUser, $dbRootUserPassword, true)) {
         $path_to_file = './support/dba-example.php';
         $file_contents = file_get_contents($path_to_file);
         $file_contents = str_replace("\$dbName = 'tlv'", "\$dbName = '" . $_POST['dbname'] . "'", $file_contents);
@@ -75,8 +86,6 @@ if (isset($_POST['dbset'])) {
         $dbform = true;
     }
 } else {
-
-
     /**
      * Check if dba.php is writeable
      */
@@ -90,11 +99,13 @@ if (isset($_POST['dbset'])) {
             $nodba = false;
             include_once './support/dba.php';
             $dbform = false;
-            if (!CheckDBCredentials($host, DB::$user, DB::$password, $dbName, $port, true)) {
+            if (!CheckDBCredentials($host, DB::$user, DB::$password, $dbName, $port, null, null, true)) {
                 $dbform = true;
             }
         }
     } else {
+        $dbform = true;
+        /*
         if (!@copy('./support/dba-example.php', './support/dba.php')) {
             $error[] = gettext("Die Datei support/dba.php ist nicht vorhanden und konnte auch nicht erstellt werden.");
             $error[] = gettext("Setze die entsprechende Berechtigung so, dass Dein Webserver diese erstellen und bearbeiten kann") . "<br>" . gettext("Unter Linux könnten folgende Befehle weiterhelfen");
@@ -103,6 +114,7 @@ if (isset($_POST['dbset'])) {
         } else {
             $dbform = true;
         }
+        */
     }
 }
 
@@ -110,7 +122,7 @@ if (isset($_POST['dbset'])) {
  * Do migration
  */
 if (!$nodba) {
-    if (CheckDBCredentials($host, DB::$user, DB::$password, $dbName, $port, true)) {
+    if (CheckDBCredentials($host, DB::$user, DB::$password, $dbName, $port, null, null, true)) {
         $successes[] = gettext("Datenbank-Verbindung hergestellt");
         if (isset($_POST['dbwork'])) {
             include_once './support/database_migration/db_migration.php';
