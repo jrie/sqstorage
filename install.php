@@ -46,13 +46,12 @@ $nodba = true;
  * Check user supplied credentials create db if required
  */
 if (isset($_POST['dbset'])) {
-
     if (CheckDBCredentials($_POST['dbhost'], $_POST['dbuser'], $_POST['dbpass'], $_POST['dbname'], $_POST['dbport'], true)) {
-        $path_to_file = './support/dba.php';
+        $path_to_file = './support/dba-example.php';
         $file_contents = file_get_contents($path_to_file);
-        $file_contents = str_replace("$dbName = 'tlv'", "$dbName = '" . $_POST['dbname'] . "'", $file_contents);
-        $file_contents = str_replace("$host = 'localhost'", "$host = '" . $_POST['dbhost'] . "'", $file_contents);
-        $file_contents = str_replace("$port = '3306'", "$port = '" . $_POST['dbport'] . "'", $file_contents);
+        $file_contents = str_replace("\$dbName = 'tlv'", "\$dbName = '" . $_POST['dbname'] . "'", $file_contents);
+        $file_contents = str_replace("\$host = 'localhost'", "\$host = '" . $_POST['dbhost'] . "'", $file_contents);
+        $file_contents = str_replace("\$port = '3306'", "\$port = '" . $_POST['dbport'] . "'", $file_contents);
         $file_contents = str_replace("DB::\$user = 'tlvUser'", "DB::\$user = '" . $_POST['dbuser'] . "'", $file_contents);
         $file_contents = str_replace("DB::\$password = 'tlvUser'", "DB::\$password = '" . $_POST['dbpass'] . "'", $file_contents);
         $ispretty = "false;";
@@ -64,20 +63,12 @@ if (isset($_POST['dbset'])) {
             $file_contents = str_replace("\$useRegistration = false;", "\$useRegistration = true;", $file_contents);
         }
 
-        DB::$user = 'tlvUser';
-        DB::$password = 'tlvUser';
-
-        // https://meekro.com/docs/logging.html
-        DB::$logfile = null;
-
         DB::$user = $_POST['dbuser'];
         DB::$password = $_POST['dbpass'];
         $dbName = $_POST['dbname'];
         $host = $_POST['dbhost'];
         $port = $_POST['dbport'];
-        $file_contents .= '\n' . 'DB::$dsn = mysql:host=' . $host . ';port=' . $port . ';charset=utf8;dbname=' . $dbName;
-        file_put_contents($path_to_file, $file_contents);
-
+        file_put_contents("./support/dba.php", $file_contents);
         $dbform = false;
     } else {
         $error[] = gettext("Datenbank-Verbindung nicht möglich. Bitte kontrolliere die Zugangsdaten");
