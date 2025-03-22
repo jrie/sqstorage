@@ -1,6 +1,8 @@
 <body>
     <nav class="navbar navbar-light bg-light">
-        {assign var="logoGfx" value='<picture class="logo" alt="sqStorage logo"><source srcset=".//img/sqstorage.webp" type="image/webp" width="205" height="56"><img src=".//img/sqstorage.png" width="205" height="56"></picture>'}
+        {assign var="logoGfx" value='<picture class="logo" alt="sqStorage logo">
+            <source srcset=".//img/sqstorage.webp" type="image/webp" width="205" height="56"><img src=".//img/sqstorage.png" width="205" height="56">
+        </picture>'}
         {if isset($useRegistration) && !$useRegistration}
         <a href="{$urlBase}/index{$urlPostFix}">{$logoGfx}</a>
         {else if isset($SESSION.user) && (int)$SESSION.user.usergroupid === 2}
@@ -46,8 +48,12 @@
 
         <ul class="nav">
             {if isset($SESSION.user)}
-            {if (int)$SESSION.user.usergroupid !== 2}<li class="nav-item"><a href="{$urlBase}/usersettings" class="nav-link" title="{t}Benutzereinstellungen{/t}"><center><i class="fas fa-gears" title="{t}Benutzereinstellungen{/t}"></i><br /><small>{t}Benutzereinstellungen{/t}</small></center></a></li>{/if}
-            <li class="nav-item"><a href="{$urlBase}/index{$urlPostFix}?logout" class="nav-link" title="{t}Abmelden{/t}"><center><i class="fas fa-sign-out-alt" title="{t}Abmelden{/t}"></i><br /><small>{t}Abmelden{/t}</small></center></a></li>
+            {if (int)$SESSION.user.usergroupid !== 2}<li class="nav-item"><a href="{$urlBase}/usersettings{$urlPostFix}" class="nav-link" title="{t}Benutzereinstellungen{/t}">
+                    <center><i class="fas fa-gears" title="{t}Benutzereinstellungen{/t}"></i><br /><small>{t}Benutzereinstellungen{/t}</small></center>
+                </a></li>{/if}
+            <li class="nav-item"><a href="{$urlBase}/index{$urlPostFix}?logout" class="nav-link" title="{t}Abmelden{/t}">
+                    <center><i class="fas fa-sign-out-alt" title="{t}Abmelden{/t}"></i><br /><small>{t}Abmelden{/t}</small></center>
+                </a></li>
             {/if}
         </ul>
 
