@@ -2,7 +2,7 @@
 
 function GetItemThumb(itemId) {
   let ret_value = null;
-  let API_URL = 'api/records/images?filter=itemId,eq,:itemId&include=thumb&size=1';
+  let API_URL = 'api.php/records/images?filter=itemId,eq,:itemId&include=thumb&size=1';
 
   let URL = API_URL.replace(':itemId', itemId);
   const xmlhttp = new XMLHttpRequest();
@@ -21,7 +21,7 @@ function GetItemThumb(itemId) {
 
 function GetItemFullimage(itemId) {
   let ret_value = null;
-  let API_URL = 'api/records/images?filter=itemId,eq,:itemId&include=imageData&size=1';
+  let API_URL = 'api.php/records/images?filter=itemId,eq,:itemId&include=imageData&size=1';
 
   let URL = API_URL.replace(':itemId', itemId);
   const xmlhttp = new XMLHttpRequest();
@@ -40,7 +40,7 @@ function GetItemFullimage(itemId) {
 
 function GetItemFullimages(itemId) {
   let ret_value = [];
-  let API_URL = 'api/records/images?filter=itemId,eq,:itemId&include=imageData';
+  let API_URL = 'api.php/records/images?filter=itemId,eq,:itemId&include=imageData';
 
   let URL = API_URL.replace(':itemId', itemId);
   const xmlhttp = new XMLHttpRequest();
@@ -64,7 +64,7 @@ function GetItemFullimages(itemId) {
 
 function GetFieldData(table, field, id) {
   let ret_value = null;
-  let API_URL = 'api/records/:table/:id?include=:field';
+  let API_URL = 'api.php/records/:table/:id?include=:field';
   let URL = API_URL.replace(':id', id);
   URL = URL.replace(':table', table);
   URL = URL.replace(':field', field);
@@ -84,7 +84,7 @@ function GetFieldData(table, field, id) {
 
 function SetFieldData(table, field, id, data) {
   let ret_value = null;
-  let API_URL = 'api/records/:table/:id';
+  let API_URL = 'api.php/records/:table/:id';
   let URL = API_URL.replace(':id', id);
   URL = URL.replace(':table', table);
 
