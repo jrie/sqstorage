@@ -44,12 +44,12 @@ body {
 }
 
 .nav li {
-    margin: 0px;
+    margin: 0;
     margin-right: 1rem;
 }
 
 .nav li:last-child {
-    margin: 0px;
+    margin: 0;
 }
 
 .nav .nav-link:hover {
@@ -65,7 +65,7 @@ body {
 
 .searchArea {
     float: right;
-    margin: 1em 0px;
+    margin: 1em 0;
 }
 
 .input-group input,
@@ -87,10 +87,9 @@ body {
 
 .input-group .form-check label {
     font-size: 0.75rem;
-    line-height: 0px;
-    padding: 0px;
-    margin: -0.7em 0px;
-    padding: 0px 6px;
+    line-height: 0;
+    margin: -0.7em 0;
+    padding: 0 6px;
     vertical-align: text-top;
 }
 
@@ -120,6 +119,11 @@ input.quick-edit:required:focus::placeholder {
     font-size: 0.8rem;
 }
 
+form.formInstall .input-group-text {
+    min-width: 20em;
+    max-width: 20em;
+}
+
 .storage-area {
     clear: both;
     padding: 6px 8px;
@@ -128,8 +132,8 @@ input.quick-edit:required:focus::placeholder {
 
 .storage-area .btn.smallButton {
     float: left;
-    margin-top: 0px;
-    padding: 0px;
+    margin-top: 0;
+    padding: 0;
     margin-right: 14px;
 }
 
@@ -143,8 +147,8 @@ input.quick-edit:required:focus::placeholder {
 .update .alert,
 .dbupdate .alert {
     clear: both;
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
     font-weight: 500;
 }
 
@@ -153,7 +157,7 @@ input.quick-edit:required:focus::placeholder {
 .update .alert,
 .dbupdate .alert {
     list-style-type: none;
-    margin: 0px;
+    margin: 0;
 }
 
 
@@ -165,12 +169,12 @@ input.quick-edit:required:focus::placeholder {
 
 .list-group-item .removalButton.btn {
     font-size: 1.15rem;
-    padding-top: 0px;
+    padding-top: 0;
     height: auto;
 }
 
 .removalButton {
-    padding-left: 0px;
+    padding-left: 0;
 }
 
 .list-span {
@@ -265,7 +269,7 @@ input.quick-edit {
 }
 
 .headSubcategories li {
-    padding: 6px 0px;
+    padding: 6px 0;
 }
 
 .small {
@@ -370,12 +374,12 @@ a.far:hover {
 }
 
 .list-span:first-child {
-    margin: 0px;
+    margin: 0;
     margin-right: 3.4em;
 }
 
 .content.roleguest .list-span:first-child {
-    margin: 0px;
+    margin: 0;
 }
 
 .input-group .dropdown-toggle {
@@ -439,8 +443,7 @@ div.dropdown.list-span {
 }
 
 ul.existingFields {
-    padding: 0px;
-    margin: 0px;
+    margin: 0;
     width: 100%;
     padding: 4px 10px;
     font-weight: bold;
@@ -461,19 +464,19 @@ ul.existingFields li {
 }
 
 .hidden {
-    visibility: hidden !important;
-    display: none !important;
+    visibility: hidden;
+    display: none;
 }
 
 .nodisplay {
-    display: none !important;
+    display: none;
 }
 
 .green,
 .red,
 .blue {
     /*margin: 1rem 1.5rem;*/
-    margin: 1rem 0px;
+    margin: 1rem 0;
     padding: 0.5rem 1rem;
     border-radius: 4px;
     min-width: 52%;
@@ -483,8 +486,8 @@ ul.existingFields li {
 .green p,
 .red p,
 .blue p {
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
 }
 
 .green {
@@ -587,7 +590,7 @@ i.picture {
     position: absolute;
     right: 5px;
     bottom: 5px;
-    text-shadow: 0px 0px 3px white;
+    text-shadow: 0 0 3px white;
     cursor: pointer;
     color: #000;
 }
@@ -604,14 +607,14 @@ i.picture {
 .dropDown {
     min-height: 3em;
     max-height: 3.2em;
-    padding: 0px;
+    padding: 0;
     min-width: 13.8em;
     width: 13.8em;
     cursor: pointer;
 }
 
 .dropDown .fas {
-    margin: 0px;
+    margin: 0;
     padding: 0.3em;
     border: 1px solid transparent;
 }
@@ -625,10 +628,10 @@ form[name="fieldData"] .dropDown {
     text-align: left;
     cursor: pointer;
     background: transparent;
-    border-radius: 0px 4px 4px 0px;
+    border-radius: 0 4px 4px 0;
     border: none;
     color: #000;
-    margin: 0px;
+    margin: 0;
     padding: 0.5em 0.75em;
     margin-left: 0.25em;
     min-width: 75%;
@@ -648,15 +651,15 @@ form[name="fieldData"] .dropDown {
 }
 
 .dropDown label {
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
     display: inline-block;
     width: inherit;
 }
 
 .dropDown input[type="checkbox"] {
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
     text-align: left;
     min-width: 2em;
     vertical-align: middle;
@@ -668,14 +671,14 @@ form[name="fieldData"] .dropDown {
     background-color: whitesmoke;
     overflow-y: scroll;
     position: absolute;
-    left: 0px;
+    left: 0;
     text-align: left;
     top: 2.8em;
     max-height: 14em;
-    border-radius: 0px 0px 8px 8px;
+    border-radius: 0 0 8px 8px;
     border: 1px solid #aaa;
-    border-top: 0px;
-    height: 0px;
+    border-top: 0;
+    height: 0;
     transition-property: height;
     transition-duration: 700ms;
     transition-delay: 0ms;
@@ -688,8 +691,8 @@ form[name="fieldData"] .dropDown {
 }
 
 .dropDown .dropDownList.hide {
-    height: 0px;
-    border: 0px;
+    height: 0;
+    border: 0;
 }
 
 .dropDown .dropDownList.show {
@@ -701,17 +704,16 @@ form[name="fieldData"] .dropDown {
 .dropDown .dropDownList span {
     padding: 0.33em 0.75em;
     display: block;
-    color: whitesmoke;
     border-bottom: 1px solid lightgrey;
     width: 100%;
     color: grey;
 }
 
 .dropDown.multipleSelect .dropDownList span {
-    padding: 0px;
+    padding: 0;
     position: relative;
-    left: 0px;
-    top: 0px;
+    left: 0;
+    top: 0;
 }
 
 .dropDown.multipleSelect .dropDownList label {
@@ -720,8 +722,8 @@ form[name="fieldData"] .dropDown {
 }
 
 .dropDown.multipleSelect .dropDownList input {
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
 }
 
 .dropDown .dropDownList span:hover,
@@ -739,7 +741,7 @@ form[name="fieldData"] .dropDown {
 }
 
 .dropDown .dropDownList span:last-child {
-    border-bottom: 0px;
+    border-bottom: 0;
 }
 
 .customFieldWrapper {
@@ -760,7 +762,7 @@ form[name="fieldData"] .dropDown {
     font-weight: bold;
     width: 100%;
     display: inline-block;
-    border-radius: 6px 6px 0px 0px;
+    border-radius: 6px 6px 0 0;
 }
 
 input.errorInt,
