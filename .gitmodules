@@ -1,3 +1,0 @@
-[submodule "vendor/sergeytsalkov/meekrodb"]
-	path = vendor/sergeytsalkov/meekrodb
-	url = https://github.com/sergeytsalkov/meekrodb
