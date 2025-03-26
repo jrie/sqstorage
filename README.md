@@ -40,8 +40,7 @@ See [LANGUAGE.md](LANGUAGE.md) for details on how to do so.
 
 ### Installation
 To install sqStorage perform the following steps:
-* Download the files using git: `git clone --recurse-submodules https://github.com/jrie/sqstorage`
-* If not done before, update the `meekrodb` git submodule: `git submodule init` and `git submodule update`
+* Download the files using git: `git clone https://github.com/jrie/sqstorage` or `download as zip`
 * Place the files in the target directory (accessible for the web-server)
 * Set the required folder permission
 	* The webserver required write permissions to the following directories
@@ -52,7 +51,7 @@ To install sqStorage perform the following steps:
 	* Select whether you want to use pretty urls (rewrite module for the webserver is required to be activated, does currently **not** work for lighttpd)
 	* Select whether you want to use the registration and login system
 	* Enter the database credentials
-	* Enter the database administrator username and password
+	* Enter the database administrator username and password (those are not stored, it is only for database and user creation)
 	* Save the credentials
 	* Click install and the sqStorage database and user are created
 	* In the last step, click to "update the database" for the current revision.
@@ -61,7 +60,6 @@ Your sgStorage installation is completed.
 
 ### Update your installation
 * Download the files and replace the existing  with the new ones
-* If not done, update the meekrodb git submodule: `git submodule init` and `git submodule update`
 * Visit the install.php page of your installation with your browser
 * Click the install / update button
 
