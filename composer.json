@@ -19,9 +19,9 @@
 	"require": {
 		"php": ">=8.0",
 		"smarty/smarty": "~4.5.4",
-        "smarty-gettext/smarty-gettext": "^1.7",
+	        "smarty-gettext/smarty-gettext": "^1.7",
 		"azatoth/php-pgettext": "^1.0",
 		"mevdschee/php-crud-api": "2.14.29",
-		"sergeytsalkov/meekrodb": "^3.1"
+		"sergeytsalkov/meekrodb": "^3.1.3"
 	}
 }

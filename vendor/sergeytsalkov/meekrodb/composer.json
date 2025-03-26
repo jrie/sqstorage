@@ -1,0 +1,31 @@
+{
+    "name": "sergeytsalkov/meekrodb",
+    "description": "The Simple PHP/MySQL Library",
+    "homepage": "http://www.meekro.com",
+    "support": {
+        "email": "support@meekro.com"
+    },
+    "keywords": [
+        "mysql",
+        "database",
+        "mysqli",
+        "pdo"
+    ],
+    "license": "LGPL-3.0",
+    "authors": [
+        {
+            "name": "Sergey Tsalkov",
+            "email": "stsalkov@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "ext-pdo": "*"
+    },
+    "autoload": {
+        "classmap": [
+            "db.class.php",
+            "orm.class.php"
+        ]
+    }
+}

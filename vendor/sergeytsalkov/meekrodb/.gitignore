@@ -1,0 +1,5 @@
+/test.php
+simpletest/test_setup.php
+.phpdoc
+/vendor/
+/composer.lock
