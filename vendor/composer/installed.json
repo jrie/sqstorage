@@ -512,24 +512,24 @@
                 },
                 {
                         "name": "sergeytsalkov/meekrodb",
-                        "version": "v3.1.3",
-                        "version_normalized": "3.1.3.0",
+                        "version": "v3.1.4",
+                        "version_normalized": "3.1.4.0",
                         "source": {
                                 "type": "git",
                                 "url": "https://github.com/SergeyTsalkov/meekrodb.git",
-                                "reference": "ec430091562e59d08ba67e3f85f5e767a519e215"
+                                "reference": "beb054110cd945ff67568baef6984552344e6bd8"
                         },
                         "dist": {
                                 "type": "zip",
-                                "url": "https://api.github.com/repos/SergeyTsalkov/meekrodb/zipball/ec430091562e59d08ba67e3f85f5e767a519e215",
-                                "reference": "ec430091562e59d08ba67e3f85f5e767a519e215",
+                                "url": "https://api.github.com/repos/SergeyTsalkov/meekrodb/zipball/beb054110cd945ff67568baef6984552344e6bd8",
+                                "reference": "beb054110cd945ff67568baef6984552344e6bd8",
                                 "shasum": ""
                         },
                         "require": {
                                 "ext-pdo": "*",
-                                "php": ">=7.0.0"
+                                "php": ">=7.1.0"
                         },
-                        "time": "2024-12-07T07:17:17+00:00",
+                        "time": "2025-06-26T04:17:05+00:00",
                         "type": "library",
                         "installation-source": "dist",
                         "autoload": {
@@ -557,7 +557,7 @@
                         ],
                         "support": {
                                 "email": "support@meekro.com",
-                                "source": "https://github.com/SergeyTsalkov/meekrodb/tree/v3.1.3",
+                                "source": "https://github.com/SergeyTsalkov/meekrodb/tree/v3.1.4",
                                 "issues": "https://github.com/SergeyTsalkov/meekrodb/issues"
                         },
                         "install-path": "../sergeytsalkov/meekrodb"
