@@ -639,6 +639,7 @@ form[name="fieldData"] .dropDown {
     transition-duration: 300ms;
     transition-delay: 0ms;
     outline: none;
+    width: 100%;
 }
 
 .dropDown input::placeholder {
