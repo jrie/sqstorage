@@ -221,9 +221,9 @@
                         <span class="input-group-text" id="basic-addon6">{t}Seriennummer{/t}</span>
                     </div>
                     {if !$isEdit}
-                        <input type="text" maxlenght="64" name="serialnumber" class="form-control" placeholder="{t}Seriennummer/Artikelnummer{/t}" aria-label="{t}Seriennummer{/t}" aria-describedby="basic-addon6">
+                        <input type="text" maxlenght="64" name="serialnumber" class="form-control" placeholder="{t}Seriennummer/Artikelnummer{/t}" aria-label="{t}Seriennummer/Artikelnummer{/t}" aria-describedby="basic-addon6">
                     {else}
-                        <input type="text" maxlength="64" name="serialnumber" class="form-control" placeholder="{t}Seriennummer/Artikelnummer{/t}" aria-label="Seriennummer" aria-describedby="basic-addon6" value="{$item.serialnumber}">
+                        <input type="text" maxlength="64" name="serialnumber" class="form-control" placeholder="{t}Seriennummer/Artikelnummer{/t}" aria-label="{t}Seriennummer/Artikelnummer{/t}" aria-describedby="basic-addon6" value="{$item.serialnumber}">
                     {/if}
                 </div>
 
