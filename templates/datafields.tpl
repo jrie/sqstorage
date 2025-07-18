@@ -134,7 +134,9 @@
                 document.querySelector('.example').value = dataExample
                 let fieldValues = document.querySelector('.fieldValues')
 
-                if (targetValue.indexOf('selection') == -1) {
+                if (targetValue === '-1') {
+                    document.querySelector('#fieldSelection').classList.remove('hidden')
+                } else if (targetValue.indexOf('selection') === -1) {
                     fieldValues.setAttribute('readonly', 'readonly')
                     fieldValues.value = ''
                     document.querySelector('#fieldSelection').classList.add('hidden')
@@ -152,8 +154,9 @@
                 if (selectedOptions[0].value === '-1') {
                     document.querySelector('input[name="visibleInCategories_input"]').value = ''
                     document.querySelector('#fieldSelection').classList.remove('hidden')
+                } else {
+                    document.querySelector('input[name="visibleInCategories_input"]').value = optionCount.toString() + ' ' + (optionCount === 1 ? "{/literal}{t}Kategorie{/t}{literal}" : "{/literal}{t}Kategorien{/t}{literal}")
                 }
-                else document.querySelector('input[name="visibleInCategories_input"]').value = optionCount.toString() + ' ' + (optionCount === 1 ? "{/literal}{t}Kategorie{/t}{literal}" : "{/literal}{t}Kategorien{/t}{literal}")
             }
 
             function checkSubmitData(evt) {
