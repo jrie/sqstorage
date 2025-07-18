@@ -1,25 +1,25 @@
-@import url('../fonts/Montserrat/Montserrat.css');
+@import '../fonts/Montserrat/Montserrat.css';
 
 body {
-    font-family: 'Montserrat', sans;
+    font-family: montserrat, sans;
     font-weight: 300;
-    font-size: 0.75em;
+    font-size: .75em
 }
 
 .content,
 .content.roleguest {
-    padding: 0.5rem 1rem;
-    margin-bottom: 240px;
+    padding: .5rem 1rem;
+    margin-bottom: 240px
 }
 
 .btn {
-    font-size: 0.85rem;
-    font-family: inherit;
+    font-size: .85rem;
+    font-family: inherit
 }
 
 .navbar {
     border-bottom: 1px solid lightgrey;
-    font-size: 0.85rem;
+    font-size: .85rem
 }
 
 .logo {
@@ -27,119 +27,119 @@ body {
     margin-top: 12px;
     margin-bottom: 2em;
     height: 3.5rem;
-    margin-right: 3.75em;
+    margin-right: 3.75em
 }
 
 .navbar form input,
 .navbar form button {
-    font-size: inherit;
+    font-size: inherit
 }
 
 .navbar h4 {
-    font-weight: bold;
+    font-weight: 700;
     margin-right: 2%;
-    border-bottom: 2px solid lightcoral;
+    border-bottom: 2px solid #f08080;
     padding-bottom: 6px;
-    padding-top: 9px;
+    padding-top: 9px
 }
 
 .nav li {
     margin: 0;
-    margin-right: 1rem;
+    margin-right: 1rem
 }
 
 .nav li:last-child {
-    margin: 0;
+    margin: 0
 }
 
 .nav .nav-link:hover {
     color: #333;
-    text-decoration: underline;
+    text-decoration: underline
 }
 
 .nav .nav-link.activePage {
-    background-color: lightblue;
+    background-color: #add8e6;
     border-radius: 6px;
-    color: #111;
+    color: #111
 }
 
 .searchArea {
     float: right;
-    margin: 1em 0;
+    margin: 1em 0
 }
 
 .input-group input,
 .input-group select {
-    font-size: 0.75rem;
-    position: relative;
+    font-size: .75rem;
+    position: relative
 }
 
 .input-group .form-check input {
     height: 100%;
-    line-height: 1.6rem;
+    line-height: 1.6rem
 }
 
 .input-group .form-check {
-    font-size: 0.75rem;
-    margin-top: -0.5em;
-    margin-left: 1em;
+    font-size: .75rem;
+    margin-top: -.5em;
+    margin-left: 1em
 }
 
 .input-group .form-check label {
-    font-size: 0.75rem;
+    font-size: .75rem;
     line-height: 0;
-    margin: -0.7em 0;
+    margin: -.7em 0;
     padding: 0 6px;
-    vertical-align: text-top;
+    vertical-align: text-top
 }
 
 .input-group .form-control:hover::placeholder {
-    text-decoration: underline;
+    text-decoration: underline
 }
 
 .input-group .form-control::placeholder {
-    font-style: italic;
+    font-style: italic
 }
 
 .input-group .form-control:required::placeholder,
 input.quick-edit:required::placeholder {
     color: #a00;
-    font-style: italic;
+    font-style: italic
 }
 
 .input-group .form-control:required:hover::placeholder,
 .input-group .form-control:required:focus::placeholder,
 input.quick-edit:required:focus::placeholder {
-    color: red;
+    color: red
 }
 
 .input-group-text {
     min-width: 13.8em;
     max-width: 13.8em;
-    font-size: 0.8rem;
+    font-size: .8rem
 }
 
 form.formInstall .input-group-text {
     min-width: 20em;
-    max-width: 20em;
+    max-width: 20em
 }
 
 .storage-area {
     clear: both;
     padding: 6px 8px;
-    border-radius: 12px;
+    border-radius: 12px
 }
 
 .storage-area .btn.smallButton {
     float: left;
     margin-top: 0;
     padding: 0;
-    margin-right: 14px;
+    margin-right: 14px
 }
 
 .update h2,
 .dbupdate h2 {
-    font-size: 1.5em;
+    font-size: 1.5em
 }
 
 .storage-area .alert-info,
@@ -149,7 +149,7 @@ form.formInstall .input-group-text {
     clear: both;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    font-weight: 500;
+    font-weight: 500
 }
 
 .storage-area .alert,
@@ -157,44 +157,43 @@ form.formInstall .input-group-text {
 .update .alert,
 .dbupdate .alert {
     list-style-type: none;
-    margin: 0;
+    margin: 0
 }
-
 
 .list-group-item .btn {
     height: 1.95em;
-    padding-top: 0.125rem;
-    font-size: 0.75rem;
+    padding-top: .125rem;
+    font-size: .75rem
 }
 
 .list-group-item .removalButton.btn {
     font-size: 1.15rem;
     padding-top: 0;
-    height: auto;
+    height: auto
 }
 
 .removalButton {
-    padding-left: 0;
+    padding-left: 0
 }
 
 .list-span {
-    margin-right: 0.1em;
+    margin-right: .1em;
     display: inline-block;
-    font-size: 0.75rem;
+    font-size: .75rem;
     vertical-align: top;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    max-width: 70%;
+    max-width: 70%
 }
 
 .header.pointer {
-    cursor: pointer;
+    cursor: pointer
 }
 
 .header.orderup,
 .header.orderdown {
-    text-decoration: underline;
+    text-decoration: underline
 }
 
 .header.orderup::after {
@@ -202,7 +201,7 @@ form.formInstall .input-group-text {
     width: 16px;
     height: 16px;
     position: relative;
-    right: -12px;
+    right: -12px
 }
 
 .header.orderdown::after {
@@ -210,70 +209,70 @@ form.formInstall .input-group-text {
     width: 16px;
     height: 16px;
     position: relative;
-    right: -12px;
+    right: -12px
 }
 
 .list-span a,
 .list-span i,
 .list-span img {
-    vertical-align: top;
+    vertical-align: top
 }
 
 .listing-hasimages {
-    cursor: pointer;
+    cursor: pointer
 }
 
 .item-picture {
     display: none;
-    visibility: hidden;
+    visibility: hidden
 }
 
 .item-picture.active {
-    border: 1px solid black;
+    border: 1px solid #000;
     display: inline;
     visibility: visible;
     position: absolute;
     z-index: 100000;
-    max-height: 24em;
+    max-height: 24em
 }
 
 .open-inline-edit,
 .save-inline-edit {
-    margin-right: 0.5em;
-    padding: 2px;
+    margin-right: .5em;
+    padding: 2px
 }
 
 .open-inline-edit.active {
-    color: red;
+    color: red
 }
 
 .save-inline-edit {
-    margin-left: 0.5em;
-    color: black;
+    margin-left: .5em;
+    color: #000
 }
 
 .save-inline-edit.inactive {
-    color: #aaa;
+    color: #aaa
 }
 
 input.quick-edit {
     width: 100%;
-    font-weight: normal;
+    font-weight: 400;
     padding-left: 1ch;
-    padding-right: 1ch;
+    padding-right: 1ch
 }
 
 .headSubcategories {
     list-style: none;
-    padding: 6px 18px;
+    padding: 6px 18px
 }
 
 .headSubcategories li {
-    padding: 6px 0;
+    padding: 6px 0
 }
 
 .small {
-    font-size: 0.9rem;
+    font-size: .9rem
 }
 
 .fa,
@@ -281,32 +280,32 @@ input.quick-edit {
 .far,
 .fal,
 .fab {
-    font-size: 1.5em;
+    font-size: 1.5em
 }
 
 a.fas:hover,
 a.far:hover {
-    text-decoration: none;
+    text-decoration: none
 }
 
 .categories,
 .headSubcategories,
 .storageListing {
-    clear: both;
+    clear: both
 }
 
 .categories .list-span,
 .categories .list-span:nth-child(0n+1) {
     min-width: 15%;
     max-width: 15%;
-    word-break: break-all;
+    word-break: break-all
 }
 
 .categories li.alert-info .list-span:nth-child(0n+2),
 .categories li.list-group-item .list-span:nth-child(0n+2) {
     min-width: 15%;
     max-width: 15%;
-    word-break: break-all;
+    word-break: break-all
 }
 
 .storage-area li.alert-info .list-span,
@@ -314,35 +313,35 @@ a.far:hover {
 .storage-area li.list-group-item .list-span:nth-child(0n+2) {
     min-width: 10%;
     max-width: 10%;
-    word-break: break-all;
+    word-break: break-all
 }
 
 .storage-area li.alert-info .list-span:nth-child(0n+2),
 .storage-area li.list-group-item .list-span:nth-child(0n+3) {
     min-width: 13.5%;
     max-width: 13.5%;
-    word-break: break-all;
+    word-break: break-all
 }
 
 .storage-area li.alert-info .list-span:nth-child(0n+3),
 .storage-area li.list-group-item .list-span:nth-child(0n+4) {
     min-width: 6%;
     max-width: 6%;
-    word-break: break-all;
+    word-break: break-all
 }
 
 .storage-area li.alert-info .list-span:nth-child(0n+4),
 .storage-area li.list-group-item .list-span:nth-child(0n+5) {
     min-width: 15%;
     max-width: 15%;
-    word-break: break-all;
+    word-break: break-all
 }
 
 .storage-area li.alert-info .list-span:nth-child(0n+5),
 .storage-area li.list-group-item .list-span:nth-child(0n+6) {
     min-width: 16%;
     max-width: 16%;
-    word-break: break-all;
+    word-break: break-all
 }
 
 .storage-area li.alert-info .list-span:nth-child(0n+6),
@@ -350,66 +349,66 @@ a.far:hover {
     min-width: 10%;
     max-width: 10%;
     margin-right: 1.5em;
-    word-break: break-all;
+    word-break: break-all
 }
 
 .storage-area li.alert-info .list-span:nth-child(0n+7),
 .storage-area .actions {
     min-width: 8%;
     max-width: 10%;
-    word-break: break-all;
+    word-break: break-all
 }
 
 .switchStorage {
-    margin-left: 12px;
+    margin-left: 12px
 }
 
 .list-span:last-of-type {
-    border: none;
+    border: none
 }
 
 .list-span-btn {
     display: inline-block;
-    width: 2.3rem;
+    width: 2.3rem
 }
 
 .list-span:first-child {
     margin: 0;
-    margin-right: 3.4em;
+    margin-right: 3.4em
 }
 
 .content.roleguest .list-span:first-child {
-    margin: 0;
+    margin: 0
 }
 
 .input-group .dropdown-toggle {
-    min-width: 11rem;
+    min-width: 11rem
 }
 
 div.dropdown.list-span {
     margin-left: 13%;
-    overflow: visible;
+    overflow: visible
 }
 
 .list-group-item:nth-of-type(2n+2) {
-    background-color: #f8f9fa;
+    background-color: #f8f9fa
 }
 
 .storeSrc,
 .storeSrcDiv {
-    margin-right: 21px;
+    margin-right: 21px
 }
 
 .storeSrc,
 .storeDest {
-    clear: none;
+    clear: none
 }
 
 .storageListing {
     width: 38%;
     padding-left: 1%;
     float: left;
-    margin-top: 30px;
+    margin-top: 30px
 }
 
 .storageListing a {
@@ -420,89 +419,88 @@ div.dropdown.list-span {
     padding-bottom: 6px;
     padding-left: 4%;
     padding-right: 4%;
-    text-align: left;
+    text-align: left
 }
 
 .storageListing a.moving {
-    text-align: center;
+    text-align: center
 }
 
 .storageListing a:nth-of-type(2n+1) {
-    background-color: #f8f9fa;
+    background-color: #f8f9fa
 }
 
 #transferButton {
     margin-top: 30px;
-    margin-right: 4%;
+    margin-right: 4%
 }
 
 .csvDownload {
     margin-top: 30px;
     margin-bottom: 50px;
-    float:right;
+    float: right
 }
 
 ul.existingFields {
     margin: 0;
     width: 100%;
     padding: 4px 10px;
-    font-weight: bold;
+    font-weight: 700;
     min-height: 40px;
     max-height: 300px;
-    overflow-y: scroll;
+    overflow-y: scroll
 }
 
 ul.existingFields li {
     padding: 4px 14px;
     border-radius: 4px;
     margin-bottom: 1.3em;
-    cursor: pointer;
+    cursor: pointer
 }
 
 .clearfix {
-    clear: both;
+    clear: both
 }
 
 .hidden {
     visibility: hidden;
-    display: none;
+    display: none
 }
 
 .nodisplay {
-    display: none;
+    display: none
 }
 
 .green,
 .red,
 .blue {
-    /*margin: 1rem 1.5rem;*/
     margin: 1rem 0;
-    padding: 0.5rem 1rem;
+    padding: .5rem 1rem;
     border-radius: 4px;
     min-width: 52%;
-    font-weight: bold;
+    font-weight: 700
 }
 
 .green p,
 .red p,
 .blue p {
     padding: 0;
-    margin: 0;
+    margin: 0
 }
 
 .green {
     background-color: green;
-    color: whitesmoke;
+    color: #f5f5f5
 }
 
 .red {
     background-color: red;
-    color: whitesmoke;
+    color: #f5f5f5
 }
 
 .blue {
     background-color: blue;
-    color: whitesmoke;
+    color: #f5f5f5
 }
 
 .footer {
@@ -510,37 +508,37 @@ ul.existingFields li {
     position: fixed;
     left: 12px;
     z-index: 1;
-    background-color: #f8f9fa;
+    background-color: #f8f9fa
 }
 
 .login-box {
     width: 350px;
-    margin: 10% auto;
+    margin: 10% auto
 }
 
 .login-box .input-group-text {
-    min-width: unset;
+    min-width: unset
 }
 
 .login-box .input-group input,
 .input-group select {
-    height: unset;
+    height: unset
 }
 
 .login-box .form-control[readonly] {
-    background-color: white;
-    cursor: no-drop;
+    background-color: #fff;
+    cursor: no-drop
 }
 
 i.picture {
-    margin-right: 0.3em;
-    color: #0056b3;
+    margin-right: .3em;
+    color: #0056b3
 }
 
 .uploadedImages {
     margin-top: 3em;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap
 }
 
 .uploadedImages .imgDiv {
@@ -551,17 +549,17 @@ i.picture {
     margin-right: 1rem;
     margin-bottom: 1rem;
     position: relative;
-    border: 2px solid transparent;
+    border: 2px solid transparent
 }
 
 .uploadedImages .imgDiv img {
     width: 200px;
     height: auto;
-    cursor: zoom-in;
+    cursor: zoom-in
 }
 
 .uploadedImages .imgDiv:hover {
-    border: 2px solid #333;
+    border: 2px solid #333
 }
 
 .imageOverlay {
@@ -570,38 +568,38 @@ i.picture {
     z-index: 99999;
     position: fixed;
     max-height: 100%;
-    max-width: 100%;
+    max-width: 100%
 }
 
 .imageOverlay.active {
     display: block;
     visibility: visible;
     overflow: scroll;
-    background-color: rgba(225, 225, 225, 0.8);
-    cursor: zoom-out;
+    background-color: rgba(225, 225, 225, .8);
+    cursor: zoom-out
 }
 
 .imageOverlay.active img {
     max-height: 100%;
-    max-width: 100%;
+    max-width: 100%
 }
 
 .removeImageOverlay {
     position: absolute;
     right: 5px;
     bottom: 5px;
-    text-shadow: 0 0 3px white;
+    text-shadow: 0 0 3px #fff;
     cursor: pointer;
-    color: #000;
+    color: #000
 }
 
 .imageOverlay .overlayedImaged {
     max-height: 100%;
-    max-width: 100%;
+    max-width: 100%
 }
 
 .dropdown {
-    display: inline-block;
+    display: inline-block
 }
 
 .dropDown {
@@ -610,66 +608,65 @@ i.picture {
     padding: 0;
     min-width: 13.8em;
     width: 13.8em;
-    cursor: pointer;
+    cursor: pointer
 }
 
 .dropDown .fas {
     margin: 0;
-    padding: 0.3em;
-    border: 1px solid transparent;
+    padding: .3em;
+    border: 1px solid transparent
 }
 
-form[name="fieldData"] .dropDown {
+form[name=fieldData] .dropDown {
     max-width: 150%;
-    width: 150%;
+    width: 150%
 }
 
 .dropDown input {
     text-align: left;
     cursor: pointer;
-    background: transparent;
+    background: 0 0;
     border-radius: 0 4px 4px 0;
     border: none;
     color: #000;
     margin: 0;
-    padding: 0.5em 0.75em;
-    margin-left: 0.25em;
+    padding: .5em .75em;
+    margin-left: .25em;
     min-width: 75%;
     transition-property: all;
     transition-duration: 300ms;
     transition-delay: 0ms;
-    outline: none;
-    width: 100%;
+    outline: none
 }
 
 .dropDown input::placeholder {
-    color: inherit;
+    color: inherit
 }
 
 .dropDown:hover input,
 .dropDown:hover input::placeholder {
-    color: whitesmoke;
+    color: #f5f5f5
 }
 
 .dropDown label {
     padding: 0;
     margin: 0;
     display: inline-block;
-    width: inherit;
+    width: inherit
 }
 
-.dropDown input[type="checkbox"] {
+.dropDown input[type=checkbox] {
     padding: 0;
     margin: 0;
     text-align: left;
     min-width: 2em;
     vertical-align: middle;
     height: 1.5em;
-    width: 2em;
+    width: 2em
 }
 
 .dropDown .dropDownList {
-    background-color: whitesmoke;
+    background-color: #f5f5f5;
     overflow-y: scroll;
     position: absolute;
     left: 0;
@@ -684,100 +681,105 @@ form[name="fieldData"] .dropDown {
     transition-duration: 700ms;
     transition-delay: 0ms;
     z-index: 1;
-    width: inherit;
+    width: inherit
 }
 
 .dropDown:hover {
-    color: whitesmoke;
+    color: #f5f5f5
 }
 
 .dropDown .dropDownList.hide {
     height: 0;
-    border: 0;
+    border: 0
 }
 
 .dropDown .dropDownList.show {
     height: auto;
     z-index: 99999;
-    max-height: 12rem;
+    max-height: 12rem
 }
 
 .dropDown .dropDownList span {
-    padding: 0.33em 0.75em;
+    padding: .33em .75em;
     display: block;
     border-bottom: 1px solid lightgrey;
     width: 100%;
     color: grey;
+    text-wrap: wrap;
+}
+
+.dropDown .dropDownList span.nodisplay {
+    display: none;
 }
 
 .dropDown.multipleSelect .dropDownList span {
     padding: 0;
     position: relative;
     left: 0;
-    top: 0;
+    top: 0
 }
 
 .dropDown.multipleSelect .dropDownList label {
-    padding: 0.33em 0.13em;
-    cursor: pointer;
+    padding: .33em .13em;
+    cursor: pointer
 }
 
 .dropDown.multipleSelect .dropDownList input {
     margin: 0;
-    padding: 0;
+    padding: 0
 }
 
 .dropDown .dropDownList span:hover,
 .dropDown .dropDownList span[selected]:hover,
 .dropDown .dropDownList span:focus,
 .dropDown .dropDownList label:focus {
-    background-color: slategray;
-    color: whitesmoke;
+    background-color: #708090;
+    color: #f5f5f5
 }
 
 .dropDown .dropDownList span[selected],
 .dropDown .dropDownList option[selected] {
-    background-color: lightblue;
-    color: #333;
+    background-color: #add8e6;
+    color: #333
 }
 
 .dropDown .dropDownList span:last-child {
-    border-bottom: 0;
+    border-bottom: 0
 }
 
 .customFieldWrapper {
-    display: inline;
+    display: inline
 }
 
 .customFieldWrapper .form-control {
-    font-style: italic;
+    font-style: italic
 }
 
 .customFieldWrapper.hidden {
-    display: none;
+    display: none
 }
 
 .customFieldWrapper .customFieldTitle {
     background-color: bisque;
     padding: 4px 12px;
-    font-weight: bold;
+    font-weight: 700;
     width: 100%;
     display: inline-block;
-    border-radius: 6px 6px 0 0;
+    border-radius: 6px 6px 0 0
 }
 
 input.errorInt,
 input.errorFloat,
 input.errorString {
-    background-color: orange;
+    background-color: orange
 }
 
 form#updateForm span.list-span:first-of-type,
 form#startpage span.list-span:first-of-type {
     min-width: none;
-    max-width: none;
+    max-width: none
 }
 
-form#updatecheckform [type="submit"] {
-    margin-bottom: 2em;
+form#updatecheckform [type=submit] {
+    margin-bottom: 2em
 }
