@@ -97,7 +97,7 @@
             </div>
 
 
-            <div class="input-group mb-3">
+            <div class="input-group mb-3" id="fieldSelection">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon6">{t}Auswahlwerte{/t}</span>
                 </div>
@@ -137,15 +137,22 @@
                 if (targetValue.indexOf('selection') == -1) {
                     fieldValues.setAttribute('readonly', 'readonly')
                     fieldValues.value = ''
-                } else fieldValues.removeAttribute('readonly')
+                    document.querySelector('#fieldSelection').classList.add('hidden')
+                } else {
+                    fieldValues.removeAttribute('readonly')
+                    document.querySelector('#fieldSelection').classList.remove('hidden')
+                }
 
-                resetFields()
+                //resetFields()
             }
 
             function setVisiblity() {
                 let selectedOptions = document.querySelector('.switchvisiblity').selectedOptions
                 let optionCount = selectedOptions.length
-                if (selectedOptions[0].value === '-1') document.querySelector('input[name="visibleInCategories_input"]').value = ''
+                if (selectedOptions[0].value === '-1') {
+                    document.querySelector('input[name="visibleInCategories_input"]').value = ''
+                    document.querySelector('#fieldSelection').classList.remove('hidden')
+                }
                 else document.querySelector('input[name="visibleInCategories_input"]').value = optionCount.toString() + ' ' + (optionCount === 1 ? "{/literal}{t}Kategorie{/t}{literal}" : "{/literal}{t}Kategorien{/t}{literal}")
             }
 
@@ -221,6 +228,7 @@
                 }
 
                 document.querySelector('#errorForm').classList.add('hidden')
+                document.querySelector('#fieldSelection').classList.remove('hidden')
             }
 
             document.querySelector('form[name="fieldData"]').addEventListener('submit', checkSubmitData)
