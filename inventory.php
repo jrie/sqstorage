@@ -63,6 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $itemKeys = ['listing-label', 'listing-amount', 'listing-comment'];
     $dbUpdateArray = array();
+    $targetAmountAfter = 0;
 
     foreach($_POST as $key => $value) {
       if (in_array($key, $itemKeys)) {
@@ -76,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
               echo 'AMOUNT_TYPE';
               die();
             }
-            $targetAmountAfter = (int) $value;
+            $targetAmountAfter = intVal($value);
           } else if ($itemKey[1] === 'label') {
             if (empty(trim($value))) {
               continue;
@@ -95,6 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($storage !== null) {
           DB::update('storages', array('amount' => $storage['amount'] - $diffAmount), 'id=%d', $storage['id']);
         }
+
         DB::update('headCategories', array('amount' => $headCategory['amount'] - $diffAmount), 'id=%d', $headCategory['id']);
 
         foreach($subCategoriesData as $id => $amount) {
