@@ -407,9 +407,12 @@
         {/literal}
     {/if}
     {literal}
-    function NumSelect(maxAmount) {
+    function NumSelect(maxAmount, storageLabel) {
         while (true) {
-            let transferAmount = parseInt(prompt("{/literal}{t}Von diesem Artikel sind mehrere Stück am Lagerplatz. Wie viele sollen zum neuen Lagerort transferiert werden?{/t}{literal}", maxAmount))
+            let promptText = "{/literal}{t escape=no}Von diesem Artikel sind mehrere Stück am Lagerplatz. Wie viele sollen zum neuen Lagerort \"`#LABEL#`\" transferiert werden?{/t}{literal}"
+            promptText = promptText.replace('`#LABEL#`', storageLabel)
+
+            let transferAmount = parseInt(prompt(promptText, maxAmount))
             if (isNaN(transferAmount)) return -1
 
             if (transferAmount > maxAmount) {
@@ -452,12 +455,22 @@
         item.addEventListener('change', function(evt) {
             if (evt.target.value === '-1') return
 
+            let storageLabel = evt.target.options[evt.target.value].innerText;
             let amountTrans = 0
+
             if (parseInt(evt.target.dataset['itemamount']) > 0) {
-                let toTransfer = NumSelect(evt.target.dataset['itemamount'])
-                if (toTransfer <= 0) return
+                let toTransfer = NumSelect(evt.target.dataset['itemamount'], storageLabel)
+                if (toTransfer <= 0) {
+                    let dropDownParent = evt.target.parentNode.children[0].children[2];
+                    let dropDownOption = dropDownParent.children[0];
+                    dropDownParent.classList.remove('show')
+                    dropDownParent.classList.add('hide')
+                    dropDownOption.click()
+                    return
+                }
                 amountTrans = toTransfer
             }
+
             document.cookie = "inventoryScroll=" + window.scrollY + "; samesite=Strict;"
             window.location.href = '{/literal}{$urlBase}{literal}/inventory{/literal}{$urlPostFix}{literal}?storageid=' + evt.target.value + '&itemid=' + evt.target.dataset['id'] + '&amount=' + amountTrans.toString();
         })
