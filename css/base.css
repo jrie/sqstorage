@@ -760,12 +760,27 @@ form[name=fieldData] .dropDown {
 }
 
 .customFieldWrapper .customFieldTitle {
-    background-color: bisque;
-    padding: 4px 12px;
     font-weight: 700;
     width: 100%;
     display: inline-block;
-    border-radius: 6px 6px 0 0
+    padding: 0.375rem 0.75rem;
+    margin-bottom: 0;
+    line-height: 1.5;
+    color: #495057;
+    white-space: nowrap;
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+}
+
+.customFieldWrapper details.customFieldTitle {
+    margin-bottom: 2em;
+}
+
+.customFieldWrapper details.customFieldTitle div.qrCodeField {
+    margin-top: 1em;
+    padding-top: 1em;
+    border-top: 1px solid #ced4da;
 }
 
 input.errorInt,
