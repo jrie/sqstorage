@@ -455,7 +455,7 @@
         item.addEventListener('change', function(evt) {
             if (evt.target.value === '-1') return
 
-            let storageLabel = evt.target.options[evt.target.value].innerText;
+            let storageLabel = evt.target.options[evt.target.selectedIndex].innerText;
             let amountTrans = 0
 
             if (parseInt(evt.target.dataset['itemamount']) > 0) {
