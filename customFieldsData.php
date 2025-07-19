@@ -7,7 +7,8 @@
         'floatPos' => 4,
         'string' => 5,
         'selection' => 6,
-        'mselection' => 7
+        'mselection' => 7,
+        'qrcode' => 8
     ];
 
     $fieldTypes = [
@@ -18,7 +19,8 @@
         'floatPos' => gettext('Positive Gleitkommazahl'),
         'string' => gettext('Zeichenfolge < 512 Zeichen'),
         'selection' => gettext('Einzelauswahl (Single-Dropdown)'),
-        'mselection' => gettext('Mehrfachauswahl (Multi-Dropdown)')
+        'mselection' => gettext('Mehrfachauswahl (Multi-Dropdown)'),
+        'qrcode' => gettext('QR-Code Feld'),
     ];
 
     $fieldLimits = [
@@ -29,7 +31,8 @@
         'floatPos' => array(0, 4294967925),
         'string' => array('\'\'', 0, 256),
         'selection' => array('\'\'', 0, 1280),
-        'mselection' => array('\'\'', 0, 1280)
+        'mselection' => array('\'\'', 0, 1280),
+        'qrcode' => array('\'\'', 0, 256)
     ];
 
     $fieldConverts = [
@@ -40,7 +43,8 @@
         'floatPos' => 'float',
         'string' => 'string',
         'selection' => 'string',
-        'mselection' => 'string'
+        'mselection' => 'string',
+        'qrcode' => 'string'
     ];
 
     $dataExamples = [
@@ -52,5 +56,24 @@
         'floatPos' => gettext('Einzelwert: 3.4172 oder 5.179 oder 27.4'),
         'string' => gettext('Einzelwert: Zeichenfolge mit bis zu < 256 Zeichen'),
         'selection' => gettext('Einzelauswahl, durch Semikolon getrennt: erlaubt "Neu" oder "Gebraucht" oder "Refurbished" wenn "Neu;Gebraucht;Refurbished" angegeben. Und oder numerische Werte (Ganzzahl, Gleitkommazahlen)'),
-        'mselection' => gettext('Mehrfachauswahl, durch Semikolon getrennt: erlaubt "Neu" und oder "Netzwerk", wenn "Neu;Netzwerk" angegeben. Und oder numerische Werte (Ganzzahl, Gleitkommanzahlen).')
+        'mselection' => gettext('Mehrfachauswahl, durch Semikolon getrennt: erlaubt "Neu" und oder "Netzwerk", wenn "Neu;Netzwerk" angegeben. Und oder numerische Werte (Ganzzahl, Gleitkommanzahlen).'),
+        'qrcode' => gettext('Einzelauswahl: Name des verknüpften Feldes auf dem der QR-Code basiert')
+    ];
+
+    $qrBaseFields = [
+        'label' => array(
+            'id' => 0,
+            'type' => 'base',
+            'text' => gettext('Bezeichnung')
+        ),
+        'serialnumber' => array(
+            'id' => 1,
+            'type' => 'base',
+            'text' => gettext('Seriennummer/Artikelnummer')
+        ),
+        'storage' => array(
+            'id' => 2,
+            'type' => 'extend',
+            'text' => gettext('Lagerplatz')
+        )
     ];

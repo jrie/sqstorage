@@ -84,20 +84,31 @@
                 </div>
                 <div class="dropdown float-left">
                     <select name="visibleInCategories" multiple="yes" autocomplete="off" required class="btn dropdown-toggle switchvisiblity" type="button" tabindex="-1" aria-haspopup="true" aria-expanded="false">
-
                         <option value="-1" selected="selected">{t}Überall sichtbar{/t}</option>
                         {foreach $headCategories as $headCategory}
                         {if $headCategory['id'] != 0}
                             <option value="{$headCategory['id']}">{$headCategory['name']}</option>
                         {/if}
                         {/foreach}
-
                     </select>
                 </div>
             </div>
 
+            <div class="input-group mb-3 hidden" id="qrSelection">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon7">{t}Basiert auf{/t}</span>
+                </div>
+                <div class="dropdown float-left">
+                    <select name="qrVisible" autocomplete="off" class="btn dropdown-toggle qrVisible" type="button" tabindex="-1" aria-haspopup="true" aria-expanded="false">
+                        <option value="-1" selected="selected">{t}Nicht zugeordnet{/t}</option>
+                        {foreach $qrBaseFields as $qrOption}
+                            <option value="{$qrOption['id']}">{$qrOption['text']}</option>
+                        {/foreach}
+                    </select>
+                </div>
+            </div>
 
-            <div class="input-group mb-3" id="fieldSelection">
+            <div class="input-group mb-3 hidden" id="fieldSelection">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon6">{t}Auswahlwerte{/t}</span>
                 </div>
@@ -133,16 +144,31 @@
 
                 document.querySelector('.example').value = dataExample
                 let fieldValues = document.querySelector('.fieldValues')
+                let qrValues = document.querySelector('[name="qrVisible"]')
 
-                if (targetValue === '-1') {
-                    document.querySelector('#fieldSelection').classList.remove('hidden')
-                } else if (targetValue.indexOf('selection') === -1) {
-                    fieldValues.setAttribute('readonly', 'readonly')
-                    fieldValues.value = ''
-                    document.querySelector('#fieldSelection').classList.add('hidden')
+                let fieldSelection = document.querySelector('#fieldSelection')
+                let qrSelection = document.querySelector('#qrSelection')
+
+                if (targetValue === 'qrcode') {
+                    qrValues.setAttribute('required', 'required')
+                    qrValues.removeAttribute('readonly')
+                    qrSelection.classList.remove('hidden')
                 } else {
+                    qrValues.value = ''
+                    qrValues.setAttribute('readonly', 'readonly')
+                    qrValues.removeAttribute('required')
+                    qrSelection.classList.add('hidden')
+                }
+
+                if (targetValue.indexOf('selection') !== -1) {
+                    fieldValues.setAttribute('required', 'required')
                     fieldValues.removeAttribute('readonly')
-                    document.querySelector('#fieldSelection').classList.remove('hidden')
+                    fieldSelection.classList.remove('hidden')
+                } else {
+                    fieldValues.value = ''
+                    fieldValues.setAttribute('readonly', 'readonly')
+                    fieldValues.removeAttribute('required')
+                    fieldSelection.classList.add('hidden')
                 }
 
                 //resetFields()
@@ -151,9 +177,8 @@
             function setVisiblity() {
                 let selectedOptions = document.querySelector('.switchvisiblity').selectedOptions
                 let optionCount = selectedOptions.length
-                if (selectedOptions[0].value === '-1') {
+                if (optionCount === 0 || selectedOptions && selectedOptions[0].value === '-1') {
                     document.querySelector('input[name="visibleInCategories_input"]').value = ''
-                    document.querySelector('#fieldSelection').classList.remove('hidden')
                 } else {
                     document.querySelector('input[name="visibleInCategories_input"]').value = optionCount.toString() + ' ' + (optionCount === 1 ? "{/literal}{t}Kategorie{/t}{literal}" : "{/literal}{t}Kategorien{/t}{literal}")
                 }
@@ -231,7 +256,15 @@
                 }
 
                 document.querySelector('#errorForm').classList.add('hidden')
-                document.querySelector('#fieldSelection').classList.remove('hidden')
+                document.querySelector('#fieldSelection').classList.add('hidden')
+                document.querySelector('#qrSelection').classList.add('hidden')
+
+                let visibleInCategories = document.querySelector('select[name="visibleInCategories[]"]').parentNode.children[0].children[2].children
+                visibleInCategories[0].children[0].click()
+                visibleInCategories[0].children[0].children[0].setAttribute('checked', 'checked')
+
+                document.querySelector('input[name="visibleInCategories_input"]').parentNode.children[2].classList.add('hide')
+                document.querySelector('input[name="visibleInCategories_input"]').parentNode.children[2].classList.remove('show')
             }
 
             document.querySelector('form[name="fieldData"]').addEventListener('submit', checkSubmitData)
@@ -265,7 +298,9 @@
                     'dataType': ['-1', '{/literal}{t}Datentyp{/t}{literal}', 1, 63],
                     'fieldName': ['', '{/literal}{t}Feldname{/t}{literal}', 1, 63],
                     'fieldDefault': ['', '{/literal}{t}Standardwert{/t}{literal}', 0, 63],
-                    'fieldValues': ['', '{/literal}{t}Auswahl{/t}{literal}', 1, 1023]
+                    'fieldValues': ['-1', '{/literal}{t}Auswahl{/t}{literal}', 1, 1023],
+                    'qrVisibleValue': ['-1', '{/literal}{t}Basiert auf{/t}{literal}', 0, 256]
+
                 }
 
 {/literal}
@@ -391,30 +426,54 @@
                 let target = document.querySelector('select[name="dataType"]')
                 target.value = fieldTypes[parseInt(evt.target.dataset['type'])]
                 document.querySelector('input[name="dataType_input"]').value = target.options[target.selectedIndex].innerText
-                document.querySelector('input[name="fieldDefault"]').value = evt.target.dataset['default']
                 document.querySelector('input[name="fieldName"]').value = evt.target.dataset['name']
                 document.querySelector('input[name="fieldDefault"]').value = evt.target.dataset['default']
-                document.querySelector('input[name="fieldValues"]').value = evt.target.dataset['values']
 
-                let visibleSelections = evt.target.dataset['visiblein'].split(';')
-                let checkOptions =  document.querySelector('.switchvisiblity').parentNode.children[0].children[2].children
+                if (evt.target.dataset['type'] !== '8') {
+                    document.querySelector('input[name="fieldValues"]').value = evt.target.dataset['values']
+                    let visibleSelections = evt.target.dataset['visiblein'].split(';')
+                    let options = document.querySelector('.switchvisiblity').parentNode.children[0].children[2].children
 
-                checkOptions[0].children[0].click()
-                document.querySelector('input[name="visibleInCategories_input"]').parentNode.children[2].classList.add('hide')
-                document.querySelector('input[name="visibleInCategories_input"]').parentNode.children[2].classList.remove('show')
+                    options[0].children[0].click()
+                    document.querySelector('input[name="visibleInCategories_input"]').parentNode.children[2].classList.add('hide')
+                    document.querySelector('input[name="visibleInCategories_input"]').parentNode.children[2].classList.remove('show')
 
-                for (let value of visibleSelections) {
-                    if (value === '') continue
+                    for (let value of visibleSelections) {
+                        if (value === '') continue
 
-                    for (let option of checkOptions) {
-                        if (option.getAttribute('value') === value) {
-                            if (option.children[0].firstChild.checked === true) continue
-                            option.children[0].click()
-                            document.querySelector('input[name="visibleInCategories_input"]').parentNode.children[2].classList.add('hide')
-                            document.querySelector('input[name="visibleInCategories_input"]').parentNode.children[2].classList.remove('show')
-                            break
+                        for (let option of options) {
+                            if (option.getAttribute('value') === value) {
+                                if (option.children[0].firstChild.checked === true) continue
+                                option.children[0].click()
+                                document.querySelector('input[name="visibleInCategories_input"]').parentNode.children[2].classList.add('hide')
+                                document.querySelector('input[name="visibleInCategories_input"]').parentNode.children[2].classList.remove('show')
+                                break
+                            }
                         }
                     }
+
+                    document.querySelector('#fieldSelection').classList.remove('hidden')
+                    document.querySelector('#qrSelection').classList.add('hidden')
+                } else {
+                    let visibleQrField = evt.target.dataset['values']
+                    let options = document.querySelector('.qrVisible').parentNode.children[0].children[2].children
+                    if (!visibleQrField) {
+                        options[0].click()
+                        document.querySelector('input[name="qrVisible_input"]').parentNode.children[2].classList.add('hide')
+                            document.querySelector('input[name="qrVisible_input"]').parentNode.children[2].classList.remove('show')
+                    } else {
+                        for (let option of options) {
+                            if (option.getAttribute('value') === visibleQrField) {
+                                option.click()
+                                document.querySelector('input[name="qrVisible_input"]').parentNode.children[2].classList.add('hide')
+                                document.querySelector('input[name="qrVisible_input"]').parentNode.children[2].classList.remove('show')
+                                break
+                            }
+                        }
+                    }
+
+                    document.querySelector('#fieldSelection').classList.add('hidden')
+                    document.querySelector('#qrSelection').classList.remove('hidden')
                 }
 
                 document.querySelector('input#defaultVisible1').checked = false

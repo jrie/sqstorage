@@ -7,11 +7,9 @@ if (!file_exists('./support/dba.php')) {
 
 require('login.php');
 
-$success = false;
 require_once 'customFieldsData.php';
 require_once 'support/urlBase.php';
 $smarty->assign('urlBase', $urlBase);
-
 
 require_once './includer.php';
 if (!CheckDBCredentials($host, DB::$user, DB::$password, $dbName, null, null, $port)) {
@@ -39,6 +37,7 @@ if ($usePrettyURLs) {
 }
 
 $imageList = null;
+$smarty->assign('updatedEntry', '-1');
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getImageId'])) {
   $targetImage = DB::queryFirstRow('SELECT `imageData` FROM `images` WHERE `id`=%d', (int)$_GET['getImageId']);
@@ -213,9 +212,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getImageId'])) {
   if (isset($_POST['itemUpdateId']) && !empty($_POST['itemUpdateId'])) {
     $item = DB::update('items', array('label' => $_POST['label'], 'comment' => $comment, 'serialnumber' => $serialNumber, 'amount' => $amount, 'headcategory' => $category['id'], 'subcategories' => (',' . implode(',', $subIds) . ','), 'storageid' => $storage['id']), 'id=%d', $existingItem['id']);
     $itemCreationId = $existingItem['id'];
+
+    if ($itemCreationId) {
+      $smarty->assign('updatedEntry', 'updated');
+    }
   } else {
     $item = DB::insert('items', array('label' => $_POST['label'], 'comment' => $comment, 'serialnumber' => $serialNumber, 'amount' => $amount, 'headcategory' => $category['id'], 'subcategories' => (',' . implode(',', $subIds) . ','), 'storageid' => $storage['id']));
     $itemCreationId = DB::insertId();
+
+    if ($itemCreationId) {
+      $smarty->assign('updatedEntry', 'created');
+    }
+
     if(isset($_FILES['images'])){
       $count = count($_FILES['images']['tmp_name']);
       if($count > 0){
@@ -317,18 +325,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getImageId'])) {
               break;
           }
         }
-
         $existing = DB::queryFirstRow('SELECT `id` FROM `fieldData` WHERE `itemId`=%d AND `fieldId`=%d', (int)$itemCreationId, (int)$field['id']);
         if ($existing == null) DB::insert('fieldData', [$fieldType => $convertedValue, 'itemId' => (int)$itemCreationId, 'fieldId' => (int)$field['id']]);
         else DB::update('fieldData', [$fieldType => $convertedValue, 'itemId' => (int)$itemCreationId, 'fieldId' => (int)$field['id']], 'id=%d', $existing['id']);
       }
     }
   }
-
-  $success = true;
 }
 
-$isEdit = false;
 $imageList = null;
 if ((isset($_GET['editItem']) && !empty($_GET['editItem'])) || (isset($_POST['editItem']) && !empty($_POST['editItem']))) {
   if (isset($_GET['editItem'])) $itemId = (int)$_GET['editItem'];
@@ -360,13 +364,106 @@ foreach ($categories as $key => $category) {
 $subcategories = DB::query('SELECT `id`, `name` FROM subCategories');
 $customFields = DB::query('SELECT * FROM customFields');
 
-$smarty->assign('success', $success);
-$smarty->assign('isEdit', $isEdit);
 
-if ($isEdit) {
+$qrData = array();
+$qrIdsCollection = array();
+$qrTypesCollection = array();
+foreach ($qrBaseFields as $qrBaseFields) {
+  // echo 'Id: ' . $qrBaseFields['id'];
+  // echo '<br>';
+  // echo 'Type: ' . $qrBaseFields['type'];
+  // echo '<br>';
+  // echo 'Text: ' . $qrBaseFields['text'];
+  // echo '<br><br>';
+  array_push($qrIdsCollection, $qrBaseFields['id']);
+  array_push($qrTypesCollection, $qrBaseFields['type']);
+}
+
+// echo '<br>Item:<br>';
+// var_dump($item);
+
+// echo 'ids <br>';
+// var_dump($qrIdsCollection);
+// echo '<br><br>';
+// echo 'types <br>';
+// var_dump($qrTypesCollection);
+// echo '<br><br>';
+
+foreach ($customFields as $key => $customField) {
+  if ($customField['dataType'] !== '8') {
+    continue;
+  }
+
+  // echo 'Id: ' . $customField['id'];
+  // echo '<br>';
+  // echo 'Label: ' . $customField['label'];
+  // echo '<br>';
+  // echo 'Type: ' . $customField['dataType'];
+  // echo '<br>';
+  // echo 'FieldValues: ' . $customField['fieldValues'];
+  // echo '<br><br>';
+
+  $itemIndex = array_search($customField['fieldValues'], $qrIdsCollection, false);
+  if (!is_bool($itemIndex) && isset($itemId)) {
+    $targetId = $qrIdsCollection[$itemIndex];
+    $targetBase = $qrTypesCollection[$itemIndex];
+    $searchColumn = null;
+    $dataEntry = null;
+    $dataEntryType = null;
+
+    if ($targetBase === 'base') {
+      switch($targetId) {
+        case 0:
+          $searchColumn = 'label';
+          break;
+        case 1:
+          $searchColumn = 'serialnumber';
+          break;
+        default:
+          break;
+      }
+
+      if ($searchColumn) {
+        $dataEntry = DB::queryFirstRow('SELECT %b as `data-value` FROM `items` WHERE `id`=%d;', $searchColumn, $itemId);
+        // echo '<br>BASE<br>';
+        // echo $searchColumn . '<br>';
+        // var_dump($dataEntry);
+        // echo '<br><br>';
+      }
+    } else if ($targetBase === 'extend') {
+      switch ($targetId) {
+        case 2:
+          $searchColumn = 'storageid';
+          break;
+        default:
+          break;
+      }
+
+      if ($searchColumn) {
+        $dataEntry = DB::queryFirstRow('SELECT `id` as `data-value` FROM `storages` WHERE `id`=%d;', $item['storageid']);
+        // echo '<br>EXTEND<br>';
+        // echo $searchColumn . '<br>';
+        // var_dump($dataEntry);
+        // echo '<br><br>';
+      }
+
+    }
+
+    if ($dataEntry && isset($dataEntry['data-value'])) {
+      $qrData[$customField['id']] = $dataEntry;
+      $customFields[$key]['qrValue'] = $dataEntry['data-value'];
+    }
+  }
+}
+
+// $smarty->assign('qrData', $qrData);
+
+if (isset($isEdit)) {
+  $smarty->assign('isEdit', $isEdit);
   $smarty->assign('editCategory', $item['headcategory']);
 } else {
   $smarty->assign('editCategory', -1);
+  $smarty->assign('isEdit', false);
 }
 
 $smarty->assign('item', $item);
@@ -384,5 +481,4 @@ if (isset($_POST)) $smarty->assign('POST', $_POST);
 $smarty->assign('SESSION', $_SESSION);
 $smarty->assign('REQUEST', $_SERVER['REQUEST_URI']);
 $smarty->display('entry.tpl');
-
 die();

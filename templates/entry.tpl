@@ -4,24 +4,25 @@
         {foreach $fieldTypesPos as $key => $value}
         {$dataFieldsByKey[$value]=$key}
         {/foreach}
-
         <div class="content">
-            {if $success}
+            {if $updatedEntry === 'updated'}
+            <div class="statusDisplay green" role="alert">
+                <p>"{if isset($POST.label)}{$POST.label}{/if}" {t}in der Datenbank aktualisiert.{/t}</p>
+            </div>
+            {else if $updatedEntry === 'created'}
             <div class="statusDisplay green" role="alert">
                 <p>"{if isset($POST.label)}{$POST.label}{/if}" {t}zur Datenbank hinzugefügt.{/t}</p>
             </div>
             {/if}
 
             {if $isEdit}
-            <div class="alert alert-danger" role="alert">
+                <div class="statusDisplay alert alert-danger" role="alert">
                 <h6>{t}Eintrag zur Bearbeitung:{/t} &quot;{$item.label}&quot;</h6>
             </div>
             {/if}
 
             <div id="errorForm" class="alert alert-danger hidden" role="alert">{t}Nicht gespeichert, es befinden sich Fehler in der Formular-Eingabe.{/t}</div>
-
-            <form class="inputForm" accept-charset="utf-8" method="POST" action="{$urlBase}/entry{$urlPostFix}" {if !$isEdit}enctype="multipart/form-data"{/if}>
-
+            <form class="inputForm" accept-charset="utf-8" method="POST" action="{$urlBase}/entry{$urlPostFix}{if $isEdit}?editItem={$item.id}{/if}" {if !$isEdit}enctype="multipart/form-data"{/if}>
                 {if $isEdit}<input type="hidden" value="{$item.id}" name="itemUpdateId" />{/if}
 
                 <div class="input-group mb-3">
@@ -106,74 +107,6 @@
                     {/if}
                 </div>
 
-
-                {foreach $customFields as $field}
-                    <div class="customFieldWrapper hidden">
-                    {if $field.visibleIn !== ';-1;'}
-                        <span class="customFieldTitle">{$field.label}</span>
-                        <div class="input-group mb-3 customFields" data-catvisible="{$field.visibleIn}">
-                            {$existingData = null}
-                            {foreach $customData as $customField}
-                                {if $customField['fieldId'] === $field.id}
-                                    {$selectType = $dataFieldsByKey[$field.dataType]}
-                                    {$existingData = explode(';', $customField[$selectType])}
-                                    {break}
-                                {/if}
-                            {/foreach}
-
-                            {$defaultData = explode(';', $field.default)}
-                            {$readonly = ''}
-                            {if $field.dataType === '6' || $field.dataType === '7'}
-                                {$readonly = ' readonly="readonly"'}
-                            <div class="dropdown">
-                            {if $field.dataType === '6'}
-                                <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="cf{$field.id}" data-default="{$field.default}" data-nosettitle="true" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {else}
-                                <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="cf{$field.id}" data-default="{$field.default}" multiple="multiple" data-nosettitle="true" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {/if}
-                            {$hasData = false}
-                            {$options = []}
-                            {foreach explode(';', rtrim($field.fieldValues, ';')) as $value}
-                                {if $existingData !== null && in_array($value, $existingData)}
-                                    {$options[]= "<option value=\"{$value}\" selected=\"selected\">{$value}</option>"}
-                                    {$hasData = true}
-                                {else if empty($existingData) && in_array($value, $defaultData)}
-                                    {$options[]= "<option value=\"{$value}\" selected=\"selected\">{$value}</option>"}
-                                    {$hasData = true}
-                                {else}
-                                    {$options[]= "<option value=\"{$value}\" >{$value}</option>"}
-                                {/if}
-                            {/foreach}
-                            {if $hasData === false && empty($field.default)}
-                                <option value="-1" selected="selected" data-default="{$field.default}">{$field.label}</option>
-                            {else}
-                                <option value="-1" data-default="{$field.default}">{$field.label}</option>
-                            {/if}
-                            {implode('', $options)}
-                            </select>
-                                </div>
-                            {else}
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon-{$field.id}">{$field.label}</span>
-                                </div>
-                            {/if}
-
-                            {if !$isEdit}
-                                {if empty($field.default)}
-                                    <input type="text" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}">
-                                {else}
-                                    <input type="text" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}" value="{$field.default}">
-                                {/if}
-                            {else if !empty($existingData)}
-                                <input type="text" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}"  value="{implode(';',$existingData)}">
-                            {else}
-                                <input type="text" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}" value="{$field.default}">
-                            {/if}
-                        </div>
-                    {/if}
-                    </div>
-                {/foreach}
-
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <div class="dropdown">
@@ -228,119 +161,75 @@
                 </div>
 
                 <div class="customFieldWrapper">
-                {foreach $customFields as $field}
-                    {if $field.defaultVisible === '0' && $field.visibleIn === ';-1;'}
-                        <span class="customFieldTitle">{$field.label}</span>
-                        <div class="input-group mb-3 customFields">
+                    {foreach $customFields as $field}
+                        {if $field.dataType === '8'}
+                            {if isset($field['qrValue'])}
+                                <details class="customFieldTitle">
+                                <summary>{t}QR-Code:{/t} {$field.label}</summary>
+                                <div class="input-group mb-3 customFields qrCodeField" data-qrvalue="{$field['qrValue']}"></div>
+                                </details>
+                            {else if empty($field['qrValue'])}
+                                <details class="customFieldTitle">
+                                    <summary>{t}QR-Code:{/t} {$field.label}</summary>
+                                    <div class="input-group mb-3 customFields qrCodeField empty"><span>{t}No information entered for this qrCode custom field.{/t}</span></div>
+                                </details>
+                            {/if}
+                            {continue}
+                        {else if $field.defaultVisible !== '0' && $field.visibleIn === ';-1;'}
+                            <span class="customFieldTitle">{$field.label}</span>
                             {$existingData = null}
                             {foreach $customData as $customField}
                                 {if $customField['fieldId'] === $field.id}
                                     {$selectType = $dataFieldsByKey[$field.dataType]}
-                                    {$existingData = explode(';', $customField[$selectType])}
+                                    {$existingData = $customField[$selectType]}
                                     {break}
                                 {/if}
                             {/foreach}
 
+                            <div class="input-group mb-3 customFields" data-catvisible="{$field.visibleIn}">
+                                {$readonly = ''}
+                                {if $field.dataType === '8'}
+                                    {$readonly = ' readonly="readonly"'}
+                                    <h5>{$field|@var_dump}</h5>
+                                    <input type="text" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}" value="{$field.default}">
+                                    {continue}
+                                {else if $field.dataType === '6' || $field.dataType === '7'}
+                                    {$readonly = ' readonly="readonly"'}
+                                    <div class="dropdown">
+                                        <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="cf{$field.id}" data-default="{$field.default}" data-nosettitle="true" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-                            {$defaultData = explode(';', $field.default)}
-                            {$readonly = ''}
-                            {if $field.dataType === '6' || $field.dataType === '7'}
-                                {$readonly = ' readonly="readonly"'}
-
-                            <div class="dropdown">
-                            {if $field.dataType === '6'}
-                                <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="cf{$field.id}" data-default="{$field.default}" data-nosettitle="true" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {else}
-                                <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="cf{$field.id}" data-default="{$field.default}" multiple="multiple" data-nosettitle="true" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {/if}
-
-                            {$hasData = false}
-                            {$options = []}
-                            {foreach explode(';', rtrim($field.fieldValues, ';')) as $value}
-                                {if $existingData !== null && in_array($value, $existingData)}
-                                    {$options[]= "<option value=\"{$value}\" selected=\"selected\">{$value}</option>"}
-                                    {$hasData = true}
-                                {else if empty($existingData) && in_array($value, $defaultData)}
-                                    {$options[]= "<option value=\"{$value}\" selected=\"selected\">{$value}</option>"}
-                                    {$hasData = true}
+                                        <option value="-1" data-default="{$field.default}">{$field.label}</option>
+                                        {foreach explode(';', rtrim($field.fieldValues, ';')) as $value}
+                                            {if $value === $field.default}
+                                                <option value="{$value}">{$value}</option>'
+                                            {else if $value === $existingData}
+                                                <option value="{$value}" selected="selected">{$value}</option>'
+                                            {else}
+                                                <option value="{$value}">{$value}</option>'
+                                            {/if}
+                                        {/foreach}
+                                        </select>
+                                    </div>
                                 {else}
-                                    {$options[]= "<option value=\"{$value}\" >{$value}</option>"}
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon-{$field.id}">{$field.label}</span>
+                                    </div>
                                 {/if}
-                            {/foreach}
-                            {if $hasData === false && empty($field.default)}
-                                <option value="-1" selected="selected" data-default="{$field.default}">{$field.label}</option>
-                            {else}
-                                <option value="-1" data-default="{$field.default}">{$field.label}</option>
-                            {/if}
-                            {implode('', $options)}
 
-                            </select>
-                        </div>
-                        {/if}
-                        {if !$isEdit || (!empty($field.default) && $existingData === null)}
-                            <input type="text" data-type="{$field.dataType}"  name="cfd_{$field.id}" {$readonly} class="form-control" readonly="readonly" placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}" value="{$field.default}">
-                        {else if $existingData !== null}
-                            <input type="text" data-type="{$field.dataType}"  name="cfd_{$field.id}" {$readonly} class="form-control" readonly="readonly" placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}" value="{implode(';', $existingData)}">
-                        {else}
-                            <input type="text" data-type="{$field.dataType}"  name="cfd_{$field.id}" {$readonly} class="form-control" readonly="readonly" placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}" value="{$field.label}">
-                        {/if}
-                        </div>
-                    {/if}
-                {/foreach}
-                </div>
-
-                <div class="customFieldWrapper">
-                {foreach $customFields as $field}
-                    {if $field.defaultVisible !== '0' && $field.visibleIn === ';-1;'}
-                        <span class="customFieldTitle">{$field.label}</span>
-                        {$existingData = null}
-                        {foreach $customData as $customField}
-                            {if $customField['fieldId'] === $field.id}
-                                {$selectType = $dataFieldsByKey[$field.dataType]}
-                                {$existingData = $customField[$selectType]}
-                                {break}
-                            {/if}
-                        {/foreach}
-
-                        <div class="input-group mb-3 customFields" data-catvisible="{$field.visibleIn}">
-                            {$readonly = ''}
-                            {if $field.dataType === '6' || $field.dataType === '7'}
-                                {$readonly = ' readonly="readonly"'}
-                                <div class="dropdown">
-                                    <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="cf{$field.id}" data-default="{$field.default}" data-nosettitle="true" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
-                                    <option value="-1" data-default="{$field.default}">{$field.label}</option>
-                                    {foreach explode(';', rtrim($field.fieldValues, ';')) as $value}
-                                        {if $value === $field.default}
-                                            <option value="{$value}">{$value}</option>'
-                                        {else if $value === $existingData}
-                                            <option value="{$value}" selected="selected">{$value}</option>'
-                                        {else}
-                                            <option value="{$value}">{$value}</option>'
-                                        {/if}
-                                    {/foreach}
-                                    </select>
-                                </div>
-                            {else}
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon-{$field.id}">{$field.label}</span>
-                                </div>
-                            {/if}
-
-                            {if !$isEdit}
-                                {if empty($field.default)}
-                                    <input type="text" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}">
+                                {if !$isEdit}
+                                    {if empty($field.default)}
+                                        <input type="text" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}">
+                                    {else}
+                                        <input type="text" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}" value="{$field.default}">
+                                    {/if}
+                                {else if !empty($existingData)}
+                                    <input type="text" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}"  value="{$existingData}">
                                 {else}
                                     <input type="text" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}" value="{$field.default}">
                                 {/if}
-                            {else if !empty($existingData)}
-                                <input type="text" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}"  value="{$existingData}">
-                            {else}
-                                <input type="text" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}" value="{$field.default}">
-                            {/if}
-                        </div>
-                    {/if}
-                {/foreach}
+                            </div>
+                        {/if}
+                    {/foreach}
                 </div>
                 {if !$isEdit}
                     <h4 class="clearfix">{t}Bilder des Gegenstandes{/t}</h4>
@@ -580,6 +469,10 @@
                     else field.parentNode.classList.add('hidden')
                 } else {
                     field.parentNode.classList.remove('hidden')
+                }
+
+                if (field.children.length === 0) {
+                    continue
                 }
 
                 let isDropdown = field.children[0].classList.contains('dropdown')

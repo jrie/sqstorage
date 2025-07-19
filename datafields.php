@@ -33,7 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 
   $existingId = (int)$_POST['existingId'];
-
   if ($_POST['doDelete'] === '-1') {
     $dataName = trim($_POST['fieldName']);
     $dataType = $fieldTypesPos[$_POST['dataType']];
@@ -42,8 +41,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $visibleIn = ';' . implode(';', $_POST['visibleInCategories']) . ';';
     $dataValues = null;
 
-    if ($_POST['dataType'] === 'selection' || $_POST['dataType'] === 'mselection') $dataValues = $_POST['fieldValues'];
+    if ($_POST['dataType'] === 'selection' || $_POST['dataType'] === 'mselection') {
+      $dataValues = $_POST['fieldValues'];
+    } else if ($_POST['dataType'] === 'qrcode') {
+      $dataValues = $_POST['qrVisible'];
+    }
+
     if ($dataDefault === '') $dataDefault = null;
+
     $existingField = null;
     if ($existingId === -1) {
       DB::insert('customFields', array('label' => $dataName, 'default' => $dataDefault, 'dataType' => $dataType, 'defaultVisible' => $defaultVisible, 'visibleIn' => $visibleIn, 'fieldValues' => $dataValues));
@@ -70,6 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 $customFields = DB::query('SELECT * FROM customFields');
 $smarty->assign('customFields', $customFields);
+$smarty->assign('qrBaseFields', $qrBaseFields);
 
 $headCategories = DB::query('SELECT `id`, `name` FROM headCategories');
 $smarty->assign('headCategories', $headCategories);
