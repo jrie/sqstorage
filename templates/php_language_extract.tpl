@@ -30,7 +30,7 @@
 {t}E-Mail-Adresse ungültig!{/t}
 {t}Erneut prüfen{/t}
 {t}Erstelle eine Datei mit dem Namen allow_install im Verzeichnis support um die Installation zu erlauben.{/t}
-{t}Es können zur Zeit keine E-Mails vom System versendet werden.<br />Bitte diesen Einladungslink an den Benutzer weiterleiten:<br /><a href="%s">%s</a>{/t}
+{t}Es können zur Zeit keine E-Mails vom System versendet werden.<br>Bitte diesen Einladungslink an den Benutzer weiterleiten:<br><a href="%s">%s</a>{/t}
 {t}Es waren keine Einträge mit dem Datenfeld verknüpft.{/t}
 {t}Falls ein Benutzerkonto gefunden wird, erhalten Sie nun eine Mail mit einem Link zum Zurücksetzen des Passworts.{/t}
 {t}Fehler: Benutzername "%s" enthält nicht zugelassene Zeichen.{/t}
@@ -106,3 +106,19 @@
 {t}Vorhandene Datei ist älter{/t}
 {t}Vorhandene Datei ist neuer{/t}
 {t}Welcome!{/t}
+{t}Anzahl{/t}
+{t}Bemerkung{/t}
+{t}Bezeichnung{/t}
+{t}Datenbank Hauptnutzer Zugriff ungültig, konnte sqStorage Benutzer und Rechte nicht setzen{/t}
+{t}Einzelauswahl: Name des verknüpften Feldes auf dem der QR-Code basiert{/t}
+{t}Es können zur Zeit keine E-Mails vom System versendet werden.<br />Bitte diesen Einladungslink an den Benutzer weiterleiten:<br /><a href="%s">%s</a>{/t}
+{t}Hauptnutzer konnte sich nicht anmelden um sqStorage Nutzer und Datenbank anzulegen{/t}
+{t}Hinzugefügt{/t}
+{t}Kategorien{/t}
+{t}Lagerplatz{/t}
+{t}Name{/t}
+{t}Oberkategorie{/t}
+{t}Positionen{/t}
+{t}QR-Code Feld{/t}
+{t}Seriennummer/Artikelnummer{/t}
+{t}Unterkategorien{/t}

@@ -171,7 +171,7 @@
                             {else if empty($field['qrValue'])}
                                 <details class="customFieldTitle">
                                     <summary>{t}QR-Code:{/t} {$field.label}</summary>
-                                    <div class="input-group mb-3 customFields qrCodeField empty"><span>{t}No information entered for this qrCode custom field.{/t}</span></div>
+                                    <div class="input-group mb-3 customFields qrCodeField empty"><span>{t}Der verknüpfte QR-Code Wert ist nicht gesetzt.{/t}</span></div>
                                 </details>
                             {/if}
                             {continue}

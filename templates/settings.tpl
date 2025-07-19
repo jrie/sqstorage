@@ -154,7 +154,7 @@
             <li class="list-group-item">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon7">{t}E-Mail Absenderadresse{/t}</span>
+                        <span class="input-group-text" id="basic-addon7">{t}Absender{/t}</span>
                     </div>
                     <input type="email" name="senderAddress" maxlength="254" class="form-control" autocomplete="off" placeholder="email@example.com" aria-label="Absender" aria-describedby="basic-addon7" value="{$mailSettings.senderAddress}">
                 </div>
@@ -243,10 +243,10 @@
             <li class="alert alert-info">
                 <span class="list-span">{t}Update-Quelle{/t}</span>
                 <small>
-                  <br /><span><b>{t}Verfügbare Update-Quellen{/t}</b></span>
-                  <br /><span>{t}Release{/t} - {t}Getestete Veröffentlichung{/t}</span>
-                  <br /><span>{t}Betatest{/t} - {t}Noch nich veröffentlichte Funktionen, aber möglicherweise auch mit Fehlern{/t}</span>
-                  <br /><span>{t}Entwicklung{/t} - {t}Aktueller Stand der Entwicklung - mit Vorsicht zu geniesen - Fehler eingeschlossen{/t}</span>
+                  <br><span><b>{t}Verfügbare Update-Quellen{/t}</b></span>
+                  <br><span>{t}Release{/t} - {t}Getestete Veröffentlichung{/t}</span>
+                  <br><span>{t}Betatest{/t} - {t}Noch nich veröffentlichte Funktionen, aber möglicherweise auch mit Fehlern{/t}</span>
+                  <br><span>{t}Entwicklung{/t} - {t}Aktueller Stand der Entwicklung - mit Vorsicht zu geniesen - Fehler eingeschlossen{/t}</span>
                 </small>
             </li>
             <li class="list-group-item">

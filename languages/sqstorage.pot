@@ -1,12 +1,12 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=UTF-8\n"
 
-#: templates//datafields.tpl:1 templates//nav.tpl:31 templates//nav.tpl:33
+#: templates//datafields.tpl:1 templates//nav.tpl:33 templates//nav.tpl:35
 #: templates//php_language_extract.tpl:88
 msgid "Datenfelder"
 msgstr ""
 
-#: templates//datafields.tpl:7 templates//entry.tpl:21
+#: templates//datafields.tpl:7 templates//entry.tpl:24
 msgid "Nicht gespeichert, es befinden sich Fehler in der Formular-Eingabe."
 msgstr ""
 
@@ -22,12 +22,12 @@ msgstr ""
 msgid "Zur Datenbank hinzugefügt:"
 msgstr ""
 
-#: templates//datafields.tpl:23 templates//datafields.tpl:257
+#: templates//datafields.tpl:23 templates//datafields.tpl:301
 msgid "Auswahl"
 msgstr ""
 
 #: templates//datafields.tpl:27 templates//datafields.tpl:32
-#: templates//datafields.tpl:254
+#: templates//datafields.tpl:298
 msgid "Datentyp"
 msgstr ""
 
@@ -44,12 +44,12 @@ msgid "Details"
 msgstr ""
 
 #: templates//datafields.tpl:55 templates//datafields.tpl:57
-#: templates//datafields.tpl:255
+#: templates//datafields.tpl:299
 msgid "Feldname"
 msgstr ""
 
 #: templates//datafields.tpl:62 templates//datafields.tpl:64
-#: templates//datafields.tpl:256
+#: templates//datafields.tpl:300
 msgid "Standardwert"
 msgstr ""
 
@@ -73,115 +73,123 @@ msgstr ""
 msgid "Sichtbarkeit"
 msgstr ""
 
-#: templates//datafields.tpl:88
+#: templates//datafields.tpl:87
 msgid "Überall sichtbar"
 msgstr ""
 
-#: templates//datafields.tpl:102
+#: templates//datafields.tpl:99 templates//datafields.tpl:302
+msgid "Basiert auf"
+msgstr ""
+
+#: templates//datafields.tpl:103
+msgid "Nicht zugeordnet"
+msgstr ""
+
+#: templates//datafields.tpl:113
 msgid "Auswahlwerte"
 msgstr ""
 
-#: templates//datafields.tpl:104
+#: templates//datafields.tpl:115
 msgid ""
 "Auswahlwerte, durch Semikolon getrennt: 'Neu;Gebraucht;Refurbished' und oder "
 "Dezimal und Gleitkommazahlen."
 msgstr ""
 
-#: templates//datafields.tpl:104
+#: templates//datafields.tpl:115
 msgid "Neu;Gebraucht;Refurbished"
 msgstr ""
 
-#: templates//datafields.tpl:106
+#: templates//datafields.tpl:117
 msgid "Eintragen / Aktualisieren"
 msgstr ""
 
-#: templates//datafields.tpl:107
+#: templates//datafields.tpl:118
 msgid "Formular zurücksetzen"
 msgstr ""
 
-#: templates//datafields.tpl:108
+#: templates//datafields.tpl:119
 msgid "Feld löschen"
 msgstr ""
 
-#: templates//datafields.tpl:116
+#: templates//datafields.tpl:127
 msgid "Bestehende Datenfelder"
 msgstr ""
 
-#: templates//datafields.tpl:149 templates//entry.tpl:87
-#: templates//entry.tpl:89 templates//php_language_extract.tpl:40
+#: templates//datafields.tpl:183 templates//entry.tpl:88
+#: templates//entry.tpl:90 templates//php_language_extract.tpl:40
 msgid "Kategorie"
 msgstr ""
 
-#: templates//datafields.tpl:149 templates//categories.tpl:1
+#: templates//datafields.tpl:183 templates//categories.tpl:1
 #: templates//categories.tpl:9 templates//inventory.tpl:29
 #: templates//inventory.tpl:159 templates//inventory.tpl:268
-#: templates//nav.tpl:22
+#: templates//nav.tpl:24 templates//php_language_extract.tpl:117
 msgid "Kategorien"
 msgstr ""
 
-#: templates//datafields.tpl:188
+#: templates//datafields.tpl:223
 msgid "ist doppelt enthalten."
 msgstr ""
 
-#: templates//datafields.tpl:190
+#: templates//datafields.tpl:225
 msgid "Standardwert doppelt."
 msgstr ""
 
-#: templates//datafields.tpl:206
+#: templates//datafields.tpl:241
 msgid " nicht in Standardwerten enthalten."
 msgstr ""
 
-#: templates//datafields.tpl:208
+#: templates//datafields.tpl:243
 msgid "Standardwert nicht in Auswahlwerten enthalten."
 msgstr ""
 
-#: templates//datafields.tpl:246
+#: templates//datafields.tpl:290
 msgid "Ein Feld mit gleichem Namem"
 msgstr ""
 
-#: templates//datafields.tpl:246
+#: templates//datafields.tpl:290
 msgid ""
 "ist bereits vorhanden. Das alte Feld muß gelöscht oder umbenannt werden."
 msgstr ""
 
-#: templates//datafields.tpl:303
+#: templates//datafields.tpl:349
 msgid "Der Standardwert darf nur zwischen"
 msgstr ""
 
-#: templates//datafields.tpl:303 templates//datafields.tpl:317
+#: templates//datafields.tpl:349 templates//datafields.tpl:363
 msgid "und"
 msgstr ""
 
-#: templates//datafields.tpl:303
+#: templates//datafields.tpl:349
 msgid "liegen."
 msgstr ""
 
-#: templates//datafields.tpl:313 templates//datafields.tpl:317
+#: templates//datafields.tpl:359 templates//datafields.tpl:363
 msgid "Feld"
 msgstr ""
 
-#: templates//datafields.tpl:313
+#: templates//datafields.tpl:359
 msgid "hat keinen Wert."
 msgstr ""
 
-#: templates//datafields.tpl:317
+#: templates//datafields.tpl:363
 msgid "muß zwischen"
 msgstr ""
 
-#: templates//datafields.tpl:317
+#: templates//datafields.tpl:363
 msgid "Zeichen lang sein."
 msgstr ""
 
-#: templates//datafields.tpl:362
+#: templates//datafields.tpl:408
 msgid "Eintrag"
 msgstr ""
 
-#: templates//datafields.tpl:362
+#: templates//datafields.tpl:408
 msgid "wirklich löschen?"
 msgstr ""
 
-#: templates//transfer.tpl:1 templates//transfer.tpl:31 templates//nav.tpl:25
-#: templates//nav.tpl:27 templates//php_language_extract.tpl:102
+#: templates//transfer.tpl:1 templates//transfer.tpl:31 templates//nav.tpl:27
+#: templates//nav.tpl:29 templates//php_language_extract.tpl:102
 msgid "Transferieren"
 msgstr ""
 
@@ -201,17 +209,17 @@ msgstr ""
 msgid "Ziel wählen."
 msgstr ""
 
-#: templates//transfer.tpl:47 templates//inventory.tpl:412
+#: templates//transfer.tpl:47
 msgid ""
 "Von diesem Artikel sind mehrere Stück am Lagerplatz. Wie viele sollen zum "
 "neuen Lagerort transferiert werden?"
 msgstr ""
 
-#: templates//transfer.tpl:49 templates//inventory.tpl:416
+#: templates//transfer.tpl:49 templates//inventory.tpl:419
 msgid "Von diesem Artikel sind nicht genug Einheiten vorhanden."
 msgstr ""
 
-#: templates//transfer.tpl:50 templates//inventory.tpl:418
+#: templates//transfer.tpl:50 templates//inventory.tpl:421
 msgid "Anzahl kann nicht negativ sein."
 msgstr ""
 
@@ -294,15 +302,16 @@ msgstr ""
 
 #: templates//categories.tpl:10 templates//categories.tpl:40
 #: templates//inventory.tpl:31 templates//inventory.tpl:161
-#: templates//inventory.tpl:270 templates//entry.tpl:210
-#: templates//entry.tpl:213 templates//entry.tpl:215
+#: templates//inventory.tpl:270 templates//entry.tpl:143
+#: templates//entry.tpl:146 templates//entry.tpl:148
+#: templates//php_language_extract.tpl:109
 msgid "Anzahl"
 msgstr ""
 
 #: templates//categories.tpl:11 templates//categories.tpl:23
 #: templates//categories.tpl:41 templates//categories.tpl:55
 #: templates//inventory.tpl:22 templates//inventory.tpl:154
-#: templates//inventory.tpl:264
+#: templates//inventory.tpl:264 templates//php_language_extract.tpl:121
 msgid "Positionen"
 msgstr ""
 
@@ -345,10 +354,11 @@ msgstr ""
 
 #: templates//categories.tpl:39 templates//inventory.tpl:33
 #: templates//inventory.tpl:163 templates//inventory.tpl:272
+#: templates//php_language_extract.tpl:124
 msgid "Unterkategorien"
 msgstr ""
 
-#: templates//categories.tpl:45
+#: templates//categories.tpl:45 templates//php_language_extract.tpl:120
 msgid "Oberkategorie"
 msgstr ""
 
@@ -381,7 +391,7 @@ msgstr ""
 msgid "Unterkategorie umbenennen?"
 msgstr ""
 
-#: templates//inventory.tpl:1 templates//nav.tpl:21
+#: templates//inventory.tpl:1 templates//nav.tpl:23
 #: templates//php_language_extract.tpl:96
 msgid "Inventar"
 msgstr ""
@@ -402,24 +412,25 @@ msgstr ""
 msgid "Schnelle Bearbeitung"
 msgstr ""
 
-#: templates//inventory.tpl:23 templates//inventory.tpl:782
+#: templates//inventory.tpl:23 templates//inventory.tpl:795
 msgid "Zuklappen"
 msgstr ""
 
 #: templates//inventory.tpl:30 templates//inventory.tpl:160
-#: templates//inventory.tpl:269 templates//inventory.tpl:520
-#: templates//entry.tpl:29 templates//entry.tpl:32 templates//entry.tpl:34
+#: templates//inventory.tpl:269 templates//inventory.tpl:533
+#: templates//entry.tpl:30 templates//entry.tpl:33 templates//entry.tpl:35
+#: templates//php_language_extract.tpl:111
 msgid "Bezeichnung"
 msgstr ""
 
 #: templates//inventory.tpl:32 templates//inventory.tpl:162
-#: templates//inventory.tpl:271 templates//entry.tpl:71 templates//entry.tpl:75
-#: templates//entry.tpl:77
+#: templates//inventory.tpl:271 templates//entry.tpl:72 templates//entry.tpl:76
+#: templates//entry.tpl:78 templates//php_language_extract.tpl:110
 msgid "Bemerkung"
 msgstr ""
 
 #: templates//inventory.tpl:34 templates//inventory.tpl:164
-#: templates//inventory.tpl:273
+#: templates//inventory.tpl:273 templates//php_language_extract.tpl:116
 msgid "Hinzugefügt"
 msgstr ""
 
@@ -454,39 +465,45 @@ msgstr ""
 msgid "Keine Gegenstände gefunden"
 msgstr ""
 
-#: templates//inventory.tpl:471
+#: templates//inventory.tpl:412
+msgid ""
+"Von diesem Artikel sind mehrere Stück am Lagerplatz. Wie viele sollen zum "
+"neuen Lagerort \"`#LABEL#`\" transferiert werden?"
+msgstr ""
+
+#: templates//inventory.tpl:484
 msgid "Lagerplatz wirklich entfernen?"
 msgstr ""
 
-#: templates//inventory.tpl:471
+#: templates//inventory.tpl:484
 msgid "Position wirklich entfernen?"
 msgstr ""
 
-#: templates//inventory.tpl:605
+#: templates//inventory.tpl:618
 msgid "Die Bezeichnung kann nicht leer sein."
 msgstr ""
 
-#: templates//inventory.tpl:615
+#: templates//inventory.tpl:628
 msgid ""
 "Es trat ein Fehler bei dem Speichern der Inhalte auf. Die Browser Entwickler-"
 "Konsole enthält Details."
 msgstr ""
 
-#: templates//inventory.tpl:636 templates//php_language_extract.tpl:89
+#: templates//inventory.tpl:649 templates//php_language_extract.tpl:89
 msgid "Der Eintrag wurde erfolgreich aktualisiert."
 msgstr ""
 
-#: templates//inventory.tpl:638
+#: templates//inventory.tpl:651
 msgid "Die Anzahl darf nur gesamte Einheiten umfassen."
 msgstr ""
 
-#: templates//inventory.tpl:641
+#: templates//inventory.tpl:654
 msgid ""
 "Bei dem Versuch zu speichern trat ein Fehler auf. Die Browser Entwickler-"
 "Konsole enthält Details."
 msgstr ""
 
-#: templates//inventory.tpl:776
+#: templates//inventory.tpl:789
 msgid "Aufklappen"
 msgstr ""
 
@@ -498,7 +515,7 @@ msgstr ""
 msgid "sqStorage Installation / Aktualisierung"
 msgstr ""
 
-#: templates//installpage.tpl:31 templates//entry.tpl:11
+#: templates//installpage.tpl:31 templates//entry.tpl:14
 msgid "zur Datenbank hinzugefügt."
 msgstr ""
 
@@ -568,91 +585,104 @@ msgstr ""
 msgid "Erneut prüfen"
 msgstr ""
 
-#: templates//entry.tpl:1 templates//entry.tpl:354 templates//nav.tpl:16
-#: templates//nav.tpl:18 templates//settings.tpl:120
+#: templates//entry.tpl:1 templates//entry.tpl:243 templates//nav.tpl:18
+#: templates//nav.tpl:20 templates//settings.tpl:120
 #: templates//php_language_extract.tpl:91
 msgid "Eintragen"
 msgstr ""
 
-#: templates//entry.tpl:17
+#: templates//entry.tpl:10
+msgid "in der Datenbank aktualisiert."
+msgstr ""
+
+#: templates//entry.tpl:20
 msgid "Eintrag zur Bearbeitung:"
 msgstr ""
 
-#: templates//entry.tpl:32 templates//entry.tpl:34
+#: templates//entry.tpl:33 templates//entry.tpl:35
 msgid "Bezeichnung oder Name"
 msgstr ""
 
-#: templates//entry.tpl:45 templates//entry.tpl:47 templates//entry.tpl:63
-#: templates//entry.tpl:65
+#: templates//entry.tpl:46 templates//entry.tpl:48 templates//entry.tpl:64
+#: templates//entry.tpl:66 templates//php_language_extract.tpl:118
 msgid "Lagerplatz"
 msgstr ""
 
-#: templates//entry.tpl:103 templates//entry.tpl:105
+#: templates//entry.tpl:104 templates//entry.tpl:106
 msgid "Netzwerk/Hardware"
 msgstr ""
 
-#: templates//entry.tpl:184 templates//entry.tpl:187 templates//entry.tpl:202
-#: templates//entry.tpl:204 templates//php_language_extract.tpl:63
+#: templates//entry.tpl:117 templates//entry.tpl:120 templates//entry.tpl:135
+#: templates//entry.tpl:137 templates//php_language_extract.tpl:63
 msgid "Unterkategorie"
 msgstr ""
 
-#: templates//entry.tpl:202 templates//entry.tpl:204
+#: templates//entry.tpl:135 templates//entry.tpl:137
 msgid "Router,wlan,fritzBox"
 msgstr ""
 
-#: templates//entry.tpl:221 templates//entry.tpl:224
+#: templates//entry.tpl:154
 msgid "Seriennummer"
 msgstr ""
 
-#: templates//entry.tpl:224 templates//entry.tpl:226
+#: templates//entry.tpl:157 templates//entry.tpl:159
+#: templates//php_language_extract.tpl:123
 msgid "Seriennummer/Artikelnummer"
 msgstr ""
 
-#: templates//entry.tpl:346 templates//entry.tpl:361
+#: templates//entry.tpl:168 templates//entry.tpl:173
+msgid "QR-Code:"
+msgstr ""
+
+#: templates//entry.tpl:174
+msgid "Der verknüpfte QR-Code Wert ist nicht gesetzt."
+msgstr ""
+
+#: templates//entry.tpl:235 templates//entry.tpl:250
 msgid "Bilder des Gegenstandes"
 msgstr ""
 
-#: templates//entry.tpl:347 templates//entry.tpl:363
+#: templates//entry.tpl:236 templates//entry.tpl:252
 msgid "Bild Upload"
 msgstr ""
 
-#: templates//entry.tpl:352 templates//settings.tpl:118
+#: templates//entry.tpl:241 templates//settings.tpl:118
 msgid "Überschreiben"
 msgstr ""
 
-#: templates//entry.tpl:365
+#: templates//entry.tpl:254
 msgid "Bilder hochladen"
 msgstr ""
 
-#: templates//entry.tpl:373
+#: templates//entry.tpl:262
 msgid "Bild entfernen"
 msgstr ""
 
-#: templates//entry.tpl:387
+#: templates//entry.tpl:276
 msgid "Bild wirklich entfernen?"
 msgstr ""
 
-#: templates//entry.tpl:494 templates//entry.tpl:504 templates//entry.tpl:514
+#: templates//entry.tpl:383 templates//entry.tpl:393 templates//entry.tpl:403
 msgid "Fehler"
 msgstr ""
 
-#: templates//nav.tpl:37 templates//settings.tpl:1
+#: templates//nav.tpl:39 templates//settings.tpl:1
 msgid "Einstellungen"
 msgstr ""
 
-#: templates//nav.tpl:42
+#: templates//nav.tpl:44
 msgid "Suche"
 msgstr ""
 
-#: templates//nav.tpl:43
+#: templates//nav.tpl:45
 msgid "Suchen"
 msgstr ""
 
-#: templates//nav.tpl:49 templates//usersettings.tpl:1
+#: templates//nav.tpl:51 templates//nav.tpl:52 templates//usersettings.tpl:1
 msgid "Benutzereinstellungen"
 msgstr ""
 
-#: templates//nav.tpl:50
+#: templates//nav.tpl:54 templates//nav.tpl:55
 msgid "Abmelden"
 msgstr ""
 
@@ -722,7 +752,7 @@ msgid "E-Mailserver-Einstellungen"
 msgstr ""
 
 #: templates//settings.tpl:157
-msgid "E-Mail Absenderadresse"
+msgid "Absender"
 msgstr ""
 
 #: templates//settings.tpl:163
@@ -941,9 +971,8 @@ msgstr ""
 
 #: templates//php_language_extract.tpl:33
 msgid ""
-"Es können zur Zeit keine E-Mails vom System versendet werden.<br />Bitte "
-"diesen Einladungslink an den Benutzer weiterleiten:<br /><a href=\"%s\">%s</"
-"a>"
+"Es können zur Zeit keine E-Mails vom System versendet werden.<br>Bitte "
+"diesen Einladungslink an den Benutzer weiterleiten:<br><a href=\"%s\">%s</a>"
 msgstr ""
 
 #: templates//php_language_extract.tpl:34
@@ -1224,6 +1253,37 @@ msgstr ""
 
 #: templates//php_language_extract.tpl:108 templates//welcome.tpl:1
 msgid "Welcome!"
+msgstr ""
+
+#: templates//php_language_extract.tpl:112
+msgid ""
+"Datenbank Hauptnutzer Zugriff ungültig, konnte sqStorage Benutzer und Rechte "
+"nicht setzen"
+msgstr ""
+
+#: templates//php_language_extract.tpl:113
+msgid "Einzelauswahl: Name des verknüpften Feldes auf dem der QR-Code basiert"
+msgstr ""
+
+#: templates//php_language_extract.tpl:114
+msgid ""
+"Es können zur Zeit keine E-Mails vom System versendet werden.<br />Bitte "
+"diesen Einladungslink an den Benutzer weiterleiten:<br /><a href=\"%s\">%s</"
+"a>"
+msgstr ""
+
+#: templates//php_language_extract.tpl:115
+msgid ""
+"Hauptnutzer konnte sich nicht anmelden um sqStorage Nutzer und Datenbank "
+"anzulegen"
+msgstr ""
+
+#: templates//php_language_extract.tpl:119
+msgid "Name"
+msgstr ""
+
+#: templates//php_language_extract.tpl:122
+msgid "QR-Code Feld"
 msgstr ""
 
 #: templates//updater.tpl:1

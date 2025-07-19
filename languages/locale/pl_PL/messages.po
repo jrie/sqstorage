@@ -11,15 +11,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 "
 "|| n%100>14) ? 1 : 2);\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 "X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: ../../../templates\n"
+"X-Poedit-KeywordsList: {t}\n"
+"X-Poedit-SearchPath-0: .\n"
 
-#: templates//datafields.tpl:1 templates//nav.tpl:31 templates//nav.tpl:33
+#: templates//datafields.tpl:1 templates//nav.tpl:33 templates//nav.tpl:35
 #: templates//php_language_extract.tpl:88
 msgid "Datenfelder"
 msgstr "Pola danych"
 
-#: templates//datafields.tpl:7 templates//entry.tpl:21
+#: templates//datafields.tpl:7 templates//entry.tpl:24
 msgid "Nicht gespeichert, es befinden sich Fehler in der Formular-Eingabe."
 msgstr "Nie zapisano, w danych formularzy znajdują się błędy."
 
@@ -35,12 +38,12 @@ msgstr "Typ pola zmieniony:"
 msgid "Zur Datenbank hinzugefügt:"
 msgstr "Dodano do bazy danych:"
 
-#: templates//datafields.tpl:23 templates//datafields.tpl:257
+#: templates//datafields.tpl:23 templates//datafields.tpl:301
 msgid "Auswahl"
 msgstr "Selekcja"
 
 #: templates//datafields.tpl:27 templates//datafields.tpl:32
-#: templates//datafields.tpl:254
+#: templates//datafields.tpl:298
 msgid "Datentyp"
 msgstr "Typ danych"
 
@@ -57,12 +60,12 @@ msgid "Details"
 msgstr "Szczegóły"
 
 #: templates//datafields.tpl:55 templates//datafields.tpl:57
-#: templates//datafields.tpl:255
+#: templates//datafields.tpl:299
 msgid "Feldname"
 msgstr "Nazwa pola"
 
 #: templates//datafields.tpl:62 templates//datafields.tpl:64
-#: templates//datafields.tpl:256
+#: templates//datafields.tpl:300
 msgid "Standardwert"
 msgstr "Wartość domyślna"
 
@@ -86,15 +89,23 @@ msgstr "Nie"
 msgid "Sichtbarkeit"
 msgstr "Widoczność"
 
-#: templates//datafields.tpl:88
+#: templates//datafields.tpl:87
 msgid "Überall sichtbar"
 msgstr "Zawsze widoczne"
 
-#: templates//datafields.tpl:102
+#: templates//datafields.tpl:99 templates//datafields.tpl:302
+msgid "Basiert auf"
+msgstr "Na podstawie"
+
+#: templates//datafields.tpl:103
+msgid "Nicht zugeordnet"
+msgstr "Nie przypisano"
+
+#: templates//datafields.tpl:113
 msgid "Auswahlwerte"
 msgstr "Opcje"
 
-#: templates//datafields.tpl:104
+#: templates//datafields.tpl:115
 msgid ""
 "Auswahlwerte, durch Semikolon getrennt: 'Neu;Gebraucht;Refurbished' und oder "
 "Dezimal und Gleitkommazahlen."
@@ -102,103 +113,103 @@ msgstr ""
 "Selekcje oddzielone średnikiem: 'Nowy;Używany;Odnowiony' i lub liczba "
 "dziesiętna lub zmienna."
 
-#: templates//datafields.tpl:104
+#: templates//datafields.tpl:115
 msgid "Neu;Gebraucht;Refurbished"
 msgstr "Nowy;Używany;Odnowiony"
 
-#: templates//datafields.tpl:106
+#: templates//datafields.tpl:117
 msgid "Eintragen / Aktualisieren"
 msgstr "Zarejestruj się / Zaktualizuj"
 
-#: templates//datafields.tpl:107
+#: templates//datafields.tpl:118
 msgid "Formular zurücksetzen"
 msgstr "Zresetuj formularz"
 
-#: templates//datafields.tpl:108
+#: templates//datafields.tpl:119
 msgid "Feld löschen"
 msgstr "Usuń pole"
 
-#: templates//datafields.tpl:116
+#: templates//datafields.tpl:127
 msgid "Bestehende Datenfelder"
 msgstr "Istniejące pola danych"
 
-#: templates//datafields.tpl:149 templates//entry.tpl:87
-#: templates//entry.tpl:89 templates//php_language_extract.tpl:40
+#: templates//datafields.tpl:183 templates//entry.tpl:88
+#: templates//entry.tpl:90 templates//php_language_extract.tpl:40
 msgid "Kategorie"
 msgstr "Kategoria"
 
-#: templates//datafields.tpl:149 templates//categories.tpl:1
+#: templates//datafields.tpl:183 templates//categories.tpl:1
 #: templates//categories.tpl:9 templates//inventory.tpl:29
 #: templates//inventory.tpl:159 templates//inventory.tpl:268
-#: templates//nav.tpl:22
+#: templates//nav.tpl:24 templates//php_language_extract.tpl:117
 msgid "Kategorien"
 msgstr "Kategorie"
 
-#: templates//datafields.tpl:188
+#: templates//datafields.tpl:223
 msgid "ist doppelt enthalten."
 msgstr "jest zduplikowana."
 
-#: templates//datafields.tpl:190
+#: templates//datafields.tpl:225
 msgid "Standardwert doppelt."
 msgstr "Wartość domyślna jest zduplikowana."
 
-#: templates//datafields.tpl:206
+#: templates//datafields.tpl:241
 msgid " nicht in Standardwerten enthalten."
 msgstr " nie znajduje się w wartości domyślnej."
 
-#: templates//datafields.tpl:208
+#: templates//datafields.tpl:243
 msgid "Standardwert nicht in Auswahlwerten enthalten."
 msgstr "Wartość domyślna nie jest uwzględniona w wartościach zaznaczonych."
 
-#: templates//datafields.tpl:246
+#: templates//datafields.tpl:290
 msgid "Ein Feld mit gleichem Namem"
 msgstr "Pole z identyczną nazwą"
 
-#: templates//datafields.tpl:246
+#: templates//datafields.tpl:290
 msgid ""
 "ist bereits vorhanden. Das alte Feld muß gelöscht oder umbenannt werden."
 msgstr ""
 "już istnieje. Zduplikowane pole musi zostać usunięte lub należy zmienić jego "
 "nazwę."
 
-#: templates//datafields.tpl:303
+#: templates//datafields.tpl:349
 msgid "Der Standardwert darf nur zwischen"
 msgstr "Wartość standardowa może zawierać się jedynie w przedziale"
 
-#: templates//datafields.tpl:303 templates//datafields.tpl:317
+#: templates//datafields.tpl:349 templates//datafields.tpl:363
 msgid "und"
 msgstr "i"
 
-#: templates//datafields.tpl:303
+#: templates//datafields.tpl:349
 msgid "liegen."
 msgstr "leży."
 
-#: templates//datafields.tpl:313 templates//datafields.tpl:317
+#: templates//datafields.tpl:359 templates//datafields.tpl:363
 msgid "Feld"
 msgstr "Pole"
 
-#: templates//datafields.tpl:313
+#: templates//datafields.tpl:359
 msgid "hat keinen Wert."
 msgstr "nie ma wartości."
 
-#: templates//datafields.tpl:317
+#: templates//datafields.tpl:363
 msgid "muß zwischen"
 msgstr "musi być w przedziale"
 
-#: templates//datafields.tpl:317
+#: templates//datafields.tpl:363
 msgid "Zeichen lang sein."
 msgstr "o długości znaków."
 
-#: templates//datafields.tpl:362
+#: templates//datafields.tpl:408
 msgid "Eintrag"
 msgstr "Wpis"
 
-#: templates//datafields.tpl:362
+#: templates//datafields.tpl:408
 msgid "wirklich löschen?"
 msgstr "na pewno usunąć?"
 
-#: templates//transfer.tpl:1 templates//transfer.tpl:31 templates//nav.tpl:25
-#: templates//nav.tpl:27 templates//php_language_extract.tpl:102
+#: templates//transfer.tpl:1 templates//transfer.tpl:31 templates//nav.tpl:27
+#: templates//nav.tpl:29 templates//php_language_extract.tpl:102
 msgid "Transferieren"
 msgstr "Transfer"
 
@@ -218,7 +229,7 @@ msgstr "Zaznacz źródło."
 msgid "Ziel wählen."
 msgstr "Zaznacz cel."
 
-#: templates//transfer.tpl:47 templates//inventory.tpl:412
+#: templates//transfer.tpl:47
 msgid ""
 "Von diesem Artikel sind mehrere Stück am Lagerplatz. Wie viele sollen zum "
 "neuen Lagerort transferiert werden?"
@@ -226,11 +237,11 @@ msgstr ""
 "W magazynie znajduje się więcej niż jedna jednostka tego produktu. Ile z "
 "nich należy przenieść?"
 
-#: templates//transfer.tpl:49 templates//inventory.tpl:416
+#: templates//transfer.tpl:49 templates//inventory.tpl:419
 msgid "Von diesem Artikel sind nicht genug Einheiten vorhanden."
 msgstr "Niewystarczająca ilość produktu jest dostępna."
 
-#: templates//transfer.tpl:50 templates//inventory.tpl:418
+#: templates//transfer.tpl:50 templates//inventory.tpl:421
 msgid "Anzahl kann nicht negativ sein."
 msgstr "Ilość nie może być ujemna."
 
@@ -313,15 +324,16 @@ msgstr "Zapomniane dane uwierzytelniające"
 
 #: templates//categories.tpl:10 templates//categories.tpl:40
 #: templates//inventory.tpl:31 templates//inventory.tpl:161
-#: templates//inventory.tpl:270 templates//entry.tpl:210
-#: templates//entry.tpl:213 templates//entry.tpl:215
+#: templates//inventory.tpl:270 templates//entry.tpl:143
+#: templates//entry.tpl:146 templates//entry.tpl:148
+#: templates//php_language_extract.tpl:109
 msgid "Anzahl"
 msgstr "Ilość"
 
 #: templates//categories.tpl:11 templates//categories.tpl:23
 #: templates//categories.tpl:41 templates//categories.tpl:55
 #: templates//inventory.tpl:22 templates//inventory.tpl:154
-#: templates//inventory.tpl:264
+#: templates//inventory.tpl:264 templates//php_language_extract.tpl:121
 msgid "Positionen"
 msgstr "Pozycje"
 
@@ -364,10 +376,11 @@ msgstr "Pobierz jako CSV"
 
 #: templates//categories.tpl:39 templates//inventory.tpl:33
 #: templates//inventory.tpl:163 templates//inventory.tpl:272
+#: templates//php_language_extract.tpl:124
 msgid "Unterkategorien"
 msgstr "Podkategorie"
 
-#: templates//categories.tpl:45
+#: templates//categories.tpl:45 templates//php_language_extract.tpl:120
 msgid "Oberkategorie"
 msgstr "Główne kategorie"
 
@@ -400,7 +413,7 @@ msgstr "Zmienić nazwę kategorii?"
 msgid "Unterkategorie umbenennen?"
 msgstr "Zmienić nazwę podkategorii?"
 
-#: templates//inventory.tpl:1 templates//nav.tpl:21
+#: templates//inventory.tpl:1 templates//nav.tpl:23
 #: templates//php_language_extract.tpl:96
 msgid "Inventar"
 msgstr "Inwentarz"
@@ -421,24 +434,25 @@ msgstr "Nieposortowane"
 msgid "Schnelle Bearbeitung"
 msgstr "Szybka edycja"
 
-#: templates//inventory.tpl:23 templates//inventory.tpl:782
+#: templates//inventory.tpl:23 templates//inventory.tpl:795
 msgid "Zuklappen"
 msgstr "Zamknij"
 
 #: templates//inventory.tpl:30 templates//inventory.tpl:160
-#: templates//inventory.tpl:269 templates//inventory.tpl:520
-#: templates//entry.tpl:29 templates//entry.tpl:32 templates//entry.tpl:34
+#: templates//inventory.tpl:269 templates//inventory.tpl:533
+#: templates//entry.tpl:30 templates//entry.tpl:33 templates//entry.tpl:35
+#: templates//php_language_extract.tpl:111
 msgid "Bezeichnung"
 msgstr "Opis"
 
 #: templates//inventory.tpl:32 templates//inventory.tpl:162
-#: templates//inventory.tpl:271 templates//entry.tpl:71 templates//entry.tpl:75
-#: templates//entry.tpl:77
+#: templates//inventory.tpl:271 templates//entry.tpl:72 templates//entry.tpl:76
+#: templates//entry.tpl:78 templates//php_language_extract.tpl:110
 msgid "Bemerkung"
 msgstr "Komentarz"
 
 #: templates//inventory.tpl:34 templates//inventory.tpl:164
-#: templates//inventory.tpl:273
+#: templates//inventory.tpl:273 templates//php_language_extract.tpl:116
 msgid "Hinzugefügt"
 msgstr "Dodano"
 
@@ -473,19 +487,27 @@ msgstr "Pełna edycja"
 msgid "Keine Gegenstände gefunden"
 msgstr "Nie znaleziono pozycji"
 
-#: templates//inventory.tpl:471
+#: templates//inventory.tpl:412
+msgid ""
+"Von diesem Artikel sind mehrere Stück am Lagerplatz. Wie viele sollen zum "
+"neuen Lagerort \"`#LABEL#`\" transferiert werden?"
+msgstr ""
+"W lokalizacji magazynowej znajduje się kilka takich elementów. Ile z nich "
+"należy przenieść do nowej lokalizacji magazynowej \"`#LABEL#`\" ?"
+
+#: templates//inventory.tpl:484
 msgid "Lagerplatz wirklich entfernen?"
 msgstr "Czy na pewno chcesz usunąć powierzchnię magazynową?"
 
-#: templates//inventory.tpl:471
+#: templates//inventory.tpl:484
 msgid "Position wirklich entfernen?"
 msgstr "Czy na pewno chcesz usunąć pozycję?"
 
-#: templates//inventory.tpl:605
+#: templates//inventory.tpl:618
 msgid "Die Bezeichnung kann nicht leer sein."
 msgstr "Etykieta nie może być pusta."
 
-#: templates//inventory.tpl:615
+#: templates//inventory.tpl:628
 msgid ""
 "Es trat ein Fehler bei dem Speichern der Inhalte auf. Die Browser Entwickler-"
 "Konsole enthält Details."
@@ -493,15 +515,15 @@ msgstr ""
 "Błąd podczas zapisu danych. Konsola deweloperska przeglądarki zawiera "
 "szczegóły tego błędu."
 
-#: templates//inventory.tpl:636 templates//php_language_extract.tpl:89
+#: templates//inventory.tpl:649 templates//php_language_extract.tpl:89
 msgid "Der Eintrag wurde erfolgreich aktualisiert."
 msgstr "Wpis został pomyślnie zaktualizowany."
 
-#: templates//inventory.tpl:638
+#: templates//inventory.tpl:651
 msgid "Die Anzahl darf nur gesamte Einheiten umfassen."
 msgstr "Ilość musi być wpisana w pełnych jednostkach."
 
-#: templates//inventory.tpl:641
+#: templates//inventory.tpl:654
 msgid ""
 "Bei dem Versuch zu speichern trat ein Fehler auf. Die Browser Entwickler-"
 "Konsole enthält Details."
@@ -509,7 +531,7 @@ msgstr ""
 "Wystąpił błąd przy próbie zapisu. Konsola deweloperska przeglądarki zawiera "
 "szczegóły tego błędu."
 
-#: templates//inventory.tpl:776
+#: templates//inventory.tpl:789
 msgid "Aufklappen"
 msgstr "Rozszerz"
 
@@ -521,7 +543,7 @@ msgstr "Instalacja"
 msgid "sqStorage Installation / Aktualisierung"
 msgstr "sqStorage Instalacja / Aktualizacja"
 
-#: templates//installpage.tpl:31 templates//entry.tpl:11
+#: templates//installpage.tpl:31 templates//entry.tpl:14
 msgid "zur Datenbank hinzugefügt."
 msgstr "dodano do bazy danych."
 
@@ -597,91 +619,104 @@ msgstr "Instalacja / Aktualizacja bazy danych"
 msgid "Erneut prüfen"
 msgstr "Sprawdź ponownie"
 
-#: templates//entry.tpl:1 templates//entry.tpl:354 templates//nav.tpl:16
-#: templates//nav.tpl:18 templates//settings.tpl:120
+#: templates//entry.tpl:1 templates//entry.tpl:243 templates//nav.tpl:18
+#: templates//nav.tpl:20 templates//settings.tpl:120
 #: templates//php_language_extract.tpl:91
 msgid "Eintragen"
 msgstr "Wpisy"
 
-#: templates//entry.tpl:17
+#: templates//entry.tpl:10
+msgid "in der Datenbank aktualisiert."
+msgstr "zaktualizowano w bazie danych."
+
+#: templates//entry.tpl:20
 msgid "Eintrag zur Bearbeitung:"
 msgstr "Wpis do edycji:"
 
-#: templates//entry.tpl:32 templates//entry.tpl:34
+#: templates//entry.tpl:33 templates//entry.tpl:35
 msgid "Bezeichnung oder Name"
 msgstr "Opis lub nazwa"
 
-#: templates//entry.tpl:45 templates//entry.tpl:47 templates//entry.tpl:63
-#: templates//entry.tpl:65
+#: templates//entry.tpl:46 templates//entry.tpl:48 templates//entry.tpl:64
+#: templates//entry.tpl:66 templates//php_language_extract.tpl:118
 msgid "Lagerplatz"
 msgstr "Powierzchnia do magazynowania"
 
-#: templates//entry.tpl:103 templates//entry.tpl:105
+#: templates//entry.tpl:104 templates//entry.tpl:106
 msgid "Netzwerk/Hardware"
 msgstr "Sieć/Oprogramowanie"
 
-#: templates//entry.tpl:184 templates//entry.tpl:187 templates//entry.tpl:202
-#: templates//entry.tpl:204 templates//php_language_extract.tpl:63
+#: templates//entry.tpl:117 templates//entry.tpl:120 templates//entry.tpl:135
+#: templates//entry.tpl:137 templates//php_language_extract.tpl:63
 msgid "Unterkategorie"
 msgstr "Podkategoria"
 
-#: templates//entry.tpl:202 templates//entry.tpl:204
+#: templates//entry.tpl:135 templates//entry.tpl:137
 msgid "Router,wlan,fritzBox"
 msgstr "Router,WiFi,FritzBox"
 
-#: templates//entry.tpl:221 templates//entry.tpl:224
+#: templates//entry.tpl:154
 msgid "Seriennummer"
 msgstr "Numer seryjny"
 
-#: templates//entry.tpl:224 templates//entry.tpl:226
+#: templates//entry.tpl:157 templates//entry.tpl:159
+#: templates//php_language_extract.tpl:123
 msgid "Seriennummer/Artikelnummer"
 msgstr "Numer seryjny/Numer produktu"
 
-#: templates//entry.tpl:346 templates//entry.tpl:361
+#: templates//entry.tpl:168 templates//entry.tpl:173
+msgid "QR-Code:"
+msgstr "Kod QR:"
+
+#: templates//entry.tpl:174
+msgid "Der verknüpfte QR-Code Wert ist nicht gesetzt."
+msgstr "Wartość powiązanego kodu QR nie została ustawiona."
+
+#: templates//entry.tpl:235 templates//entry.tpl:250
 msgid "Bilder des Gegenstandes"
 msgstr "Zdjęcie przedmiotu"
 
-#: templates//entry.tpl:347 templates//entry.tpl:363
+#: templates//entry.tpl:236 templates//entry.tpl:252
 msgid "Bild Upload"
 msgstr "Załadować zdjęcia"
 
-#: templates//entry.tpl:352 templates//settings.tpl:118
+#: templates//entry.tpl:241 templates//settings.tpl:118
 msgid "Überschreiben"
 msgstr "Nadpisać"
 
-#: templates//entry.tpl:365
+#: templates//entry.tpl:254
 msgid "Bilder hochladen"
 msgstr "Załadować zdjęcie"
 
-#: templates//entry.tpl:373
+#: templates//entry.tpl:262
 msgid "Bild entfernen"
 msgstr "Usunąć zdjęcie"
 
-#: templates//entry.tpl:387
+#: templates//entry.tpl:276
 msgid "Bild wirklich entfernen?"
 msgstr "Na pewno usunąć zdjęcie?"
 
-#: templates//entry.tpl:494 templates//entry.tpl:504 templates//entry.tpl:514
+#: templates//entry.tpl:383 templates//entry.tpl:393 templates//entry.tpl:403
 msgid "Fehler"
 msgstr "Błąd"
 
-#: templates//nav.tpl:37 templates//settings.tpl:1
+#: templates//nav.tpl:39 templates//settings.tpl:1
 msgid "Einstellungen"
 msgstr "Ustawienia"
 
-#: templates//nav.tpl:42
+#: templates//nav.tpl:44
 msgid "Suche"
 msgstr "Szukaj"
 
-#: templates//nav.tpl:43
+#: templates//nav.tpl:45
 msgid "Suchen"
 msgstr "Szukaj"
 
-#: templates//nav.tpl:49 templates//usersettings.tpl:1
+#: templates//nav.tpl:51 templates//nav.tpl:52 templates//usersettings.tpl:1
 msgid "Benutzereinstellungen"
 msgstr "Ustawienia użytkownika"
 
-#: templates//nav.tpl:50
+#: templates//nav.tpl:54 templates//nav.tpl:55
 msgid "Abmelden"
 msgstr "Wyloguj się"
 
@@ -751,8 +786,8 @@ msgid "E-Mailserver-Einstellungen"
 msgstr "Ustawienia serwera e-mail"
 
 #: templates//settings.tpl:157
-msgid "E-Mail Absenderadresse"
-msgstr "Adres nadawcy wiadomości e-mail"
+msgid "Absender"
+msgstr "Nadawca"
 
 #: templates//settings.tpl:163
 msgid "E-Mailversand"
@@ -977,12 +1012,11 @@ msgstr ""
 
 #: templates//php_language_extract.tpl:33
 msgid ""
-"Es können zur Zeit keine E-Mails vom System versendet werden.<br />Bitte "
-"diesen Einladungslink an den Benutzer weiterleiten:<br /><a href=\"%s\">%s</"
-"a>"
+"Es können zur Zeit keine E-Mails vom System versendet werden.<br>Bitte "
+"diesen Einladungslink an den Benutzer weiterleiten:<br><a href=\"%s\">%s</a>"
 msgstr ""
-"System nie jest obecnie w stanie wysłać wiadomości. <br /> Proszę przekazać "
-"ten link do zaproszenia użytkownikowi: <br />/><a href=\"%s\">%s</a>"
+"System nie może obecnie wysyłać wiadomości e-mail.<br>Proszę przesłać ten "
+"link z zaproszeniem użytkownikowi:<br><a href=\"%s\">%s</a>"
 
 #: templates//php_language_extract.tpl:34
 msgid "Es waren keine Einträge mit dem Datenfeld verknüpft."
@@ -1184,7 +1218,7 @@ msgstr "Anulowano. Następujące pliki nie mogły zostać zapisane lub utworzone
 
 #: templates//php_language_extract.tpl:77
 msgid "Aktualisierung abgeschlossen. "
-msgstr "Aktualizacja zakończona."
+msgstr "Aktualizacja zakończona. "
 
 #: templates//php_language_extract.tpl:78
 msgid "Aktualisierung gestartet, lade nun die Aktuelle Version herunter"
@@ -1212,7 +1246,7 @@ msgid ""
 "und Verzeichnisse des Projekts besitzt"
 msgstr ""
 "Upewnij się, że serwer WWW ma uprawnienia do zapisu dla wszystkich plików i "
-"katalogów w projekcie."
+"katalogów w projekcie"
 
 #: templates//php_language_extract.tpl:84
 msgid "Das Erstellen des folgenden Verzeichnisses schlug fehl:"
@@ -1290,6 +1324,43 @@ msgstr "Istniejący plik jest nowszy"
 msgid "Welcome!"
 msgstr "Powitanie!"
 
+#: templates//php_language_extract.tpl:112
+msgid ""
+"Datenbank Hauptnutzer Zugriff ungültig, konnte sqStorage Benutzer und Rechte "
+"nicht setzen"
+msgstr ""
+"Dostęp głównego użytkownika bazy danych jest nieprawidłowy, nie można "
+"ustawić użytkownika i uprawnień sqStorage"
+
+#: templates//php_language_extract.tpl:113
+msgid "Einzelauswahl: Name des verknüpften Feldes auf dem der QR-Code basiert"
+msgstr "Wybór pojedynczy: Nazwa pola powiązanego, na którym oparty jest kod QR"
+
+#: templates//php_language_extract.tpl:114
+msgid ""
+"Es können zur Zeit keine E-Mails vom System versendet werden.<br />Bitte "
+"diesen Einladungslink an den Benutzer weiterleiten:<br /><a href=\"%s\">%s</"
+"a>"
+msgstr ""
+"System nie jest obecnie w stanie wysłać wiadomości. <br /> Proszę przekazać "
+"ten link do zaproszenia użytkownikowi: <br />/><a href=\"%s\">%s</a>"
+
+#: templates//php_language_extract.tpl:115
+msgid ""
+"Hauptnutzer konnte sich nicht anmelden um sqStorage Nutzer und Datenbank "
+"anzulegen"
+msgstr ""
+"Główny użytkownik nie mógł się zalogować, aby utworzyć użytkownika sqStorage "
+"i bazę danych"
+
+#: templates//php_language_extract.tpl:119
+msgid "Name"
+msgstr "Nazwa"
+
+#: templates//php_language_extract.tpl:122
+msgid "QR-Code Feld"
+msgstr "Pole kodu QR"
+
 #: templates//updater.tpl:1
 msgid "Aktualisierungs-Manager"
 msgstr "Menedżer aktualizacji"
@@ -1326,7 +1397,7 @@ msgid ""
 "Einstellungen aktivieren"
 msgstr ""
 "Instalacja jest obecnie niedozwolona - należy ją najpierw aktywować w "
-"ustawieniach."
+"ustawieniach"
 
 #: templates//footer.tpl:2
 msgid "Kontakt"
@@ -1363,87 +1434,3 @@ msgstr "Nowa wartość"
 #: templates//modal.tpl:32
 msgid "Abbrechen"
 msgstr "Anuluj"
-
-#~ msgid "SQStorage"
-#~ msgstr "SQStorage"
-
-#~ msgid "Bitte Benutzername und E-Mail-Adresse angeben."
-#~ msgstr "Proszę wprowadzić nazwę użytkownika i adres e-mail."
-
-#~ msgid "Datensatz"
-#~ msgstr "Zapis"
-
-#~ msgid "Datensätze"
-#~ msgstr "Zapisy"
-
-#~ msgid "Einträge"
-#~ msgstr "Wpisy"
-
-#~ msgid ""
-#~ "Einzelauswahl, durch Komma getrennt: erlaubt \"Neu\" oder \"Gebraucht\" "
-#~ "oder \"Refurbished\" wenn \"Neu,Gebraucht,Refurbished\" angegeben. Und "
-#~ "oder numerische Werte (Ganzzahl, Gleitkommazahlen)"
-#~ msgstr ""
-#~ "Wybór pojedynczy, oddzielony przecinkami: W przypadku wpisania "
-#~ "\"Nowy,Używany,Odnowiony\" \" dostępne będą \"Nowy\", \"Używany\" i "
-#~ "\"Odnowiony\". I lub wartości liczbowe (całkowite, dziesiętne)."
-
-#~ msgid "Einzelwert: Zeichenfolge mit bis zu < 512 Zeichen"
-#~ msgstr "Pojedyncza wartość: Ciąg o długości do < 512 znaków"
-
-#~ msgid "Es wurden"
-#~ msgstr "Było"
-
-#~ msgid ""
-#~ "Mehrfachauswahl, durch Komma getrennt: erlaubt \"Neu\" und oder "
-#~ "\"Netzwerk\", wenn \"Neu,Netzwerk\" angegeben. Und oder numerische Werte "
-#~ "(Ganzzahl, Gleitkommanzahlen)."
-#~ msgstr ""
-#~ "Wybór wielokrotny oddzielony przecinkami: W przypadku wpisania "
-#~ "\"Nowy,Używany,Odnowiony\" \" dostępne będą \"Nowy\", \"Używany\" i "
-#~ "\"Odnowiony\". I lub wartości liczbowe (całkowite, dziesiętne) będą "
-#~ "dostępne."
-
-#~ msgid "mit verknüpften Altdaten entfernt."
-#~ msgstr "usunąć wraz ze starymi zapisami."
-
-#~ msgid "verknüpfter Informationen gelöscht."
-#~ msgstr "połączone informacje usunięte."
-
-#~ msgid ""
-#~ "Um das Passwort für sqStorage zu ändern bitte den folgenden Link "
-#~ "aufrufen: <a href=\"%s\">%s</a>rn"
-#~ msgstr ""
-#~ "Aby zmienić hasło do sqStorage użyj następującego linku:<a "
-#~ "href=\"%s\">%s</a>"
-
-#~ msgid ""
-#~ "Sie haben eine Einladung für sqStorage erhalten: <a href=\"%s\">%s</a>rn"
-#~ msgstr "Otrzymałeś zaproszenie do sqStorage: <a href=\"%s\">%s</a>rn"
-
-#~ msgid ""
-#~ "Es können zur Zeit keine Mails vom System versendet werden.<br />Bitte "
-#~ "diesen Einladungslink an den Benutzer weiterleiten:<br /><a "
-#~ "href=\"%s\">%s</a>rn"
-#~ msgstr ""
-#~ "System nie jest obecnie w stanie wysłać wiadomości. <br /> Proszę "
-#~ "przekazać ten link do zaproszenia użytkownikowi: <br />/><a "
-#~ "href=\"%s\">%s</a>"
-
-#~ msgid "Administrator"
-#~ msgstr "Administrator"
-
-#~ msgid "Gast"
-#~ msgstr "Odwiedzający"
-
-#~ msgid "Benutzer"
-#~ msgstr "Użytkownik"
-
-#~ msgid ""
-#~ "Setze die entsprechende Berechtigung so, dass Dein Webserver diese "
-#~ "erstellen und bearbeiten kann oder erstelle die Datei manuell und gewähre "
-#~ "darauf Schreibrechte für den Webserver"
-#~ msgstr ""
-#~ "Proszę przyznać uprawnienia dostępu do pliku, aby umożliwić serwerowi "
-#~ "strony WWW tworzenie i edycję pliku lub utworzyć plik ręcznie i przyznać "
-#~ "uprawnienia do zapisu dla serwera strony WWW."
