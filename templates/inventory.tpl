@@ -199,8 +199,8 @@
                     {/if}
 
                     <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fa fas fa-images"></i><img class="item-picture" data-id="{$item.id}" src="">{/if}
-                            {if !$isGuest}
-                            <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
+                    {if !$isGuest}
+                        <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
                     {else}
                     <span class="listing-label" title="{$item.label}">{$item.label}</span></span>
         </div>
@@ -308,8 +308,8 @@
                     {/if}
 
                     <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i><img class="item-picture" data-id="{$item.id}" src="">{/if}
-                            {if !$isGuest}
-                            <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
+                    {if !$isGuest}
+                        <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
                     {else}
                     <span class="listing-label" title="{$item.label}">{$item.label}</span></span>
         </div>
@@ -429,7 +429,7 @@
         alert('{/literal}{$urlBase}{literal}/inventory{/literal}{$urlPostFix}{literal}?storageid=' + itemid + '&itemid=' + storageid);
     }
 
-    let imgListings = document.querySelectorAll('.listing-hasimages')
+    let imgListings = document.querySelectorAll('.listing-hasimages > i')
     for (let listing of imgListings) {
         listing.addEventListener('click', function(evt) {
             if (evt.target.nodeName === 'INPUT') {
@@ -501,16 +501,13 @@
 
             const targetId = parseInt(evt.target.parentNode.dataset['id'])
             let inlineEditSaver = evt.target.parentNode.parentNode.parentNode.querySelector('.save-inline-edit[data-id="' + targetId + '"]')
+            const imgDisplay = evt.target.parentNode.parentNode.parentNode.querySelector('img[data-id="' + targetId + '"]').parentNode.children[0]
+
             if (inlineEditSaver !== null) {
                 inlineEditSaver.classList.add('inactive')
             }
 
             if (evt.target.parentNode.classList.contains('active')) {
-                const imgDisplay = evt.target.parentNode.parentNode.parentNode.querySelector('.listing-hasimages > i')
-                if (imgDisplay !== null) {
-                    imgDisplay.classList.add('hidden')
-                }
-
                 let targetRowEdits = evt.target.parentNode.parentNode.parentNode.querySelectorAll('li[data-id="' + targetId + '"] .quick-edit')
                 for (const field of targetRowEdits) {
                     let input = document.createElement('input')
@@ -582,7 +579,7 @@
                 }
             } else {
                 let targetRowEdits = evt.target.parentNode.parentNode.parentNode.querySelectorAll('li[data-id="' + targetId + '"] input.quick-edit')
-                evt.target.parentNode.parentNode.parentNode.querySelector('.listing-hasimages').children[0].classList.toggle('hidden')
+                evt.target.parentNode.parentNode.parentNode.querySelector('img[data-id="' + targetId + '"]').parentNode.classList.remove('hidden')
                 for (let field of targetRowEdits) {
                     field.parentNode.removeChild(field)
                 }
@@ -624,6 +621,9 @@
                 }
 
                 xmlRequest.addEventListener('error', function(evt) {
+                    console.log('xmlRequest')
+                    console.log(xmlRequest)
+                    console.log('evt')
                     console.log(evt)
                     alert('{/literal}{t}Es trat ein Fehler bei dem Speichern der Inhalte auf. Die Browser Entwickler-Konsole enthält Details.{/t}{literal}')
                 })
@@ -632,7 +632,7 @@
                     if (evt.target.responseText === 'OK') {
                         let targetRowEdits = itemButton.parentNode.parentNode.parentNode.querySelectorAll('li[data-id="' + targetId + '"] input.quick-edit')
                         let originalColumns = itemButton.parentNode.parentNode.parentNode.querySelectorAll('li[data-id="' + targetId + '"] .hide-quick.quick-edit')
-                        itemButton.parentNode.parentNode.parentNode.querySelector('.listing-hasimages').children[0].classList.toggle('hidden')
+                        //itemButton.parentNode.parentNode.parentNode.querySelector('.listing-hasimages').children[0].classList.toggle('hidden')
 
                         for (let x = 0; x < targetRowEdits.length; ++x) {
                             originalColumns[x].textContent = decodeURI(targetRowEdits[x].value)

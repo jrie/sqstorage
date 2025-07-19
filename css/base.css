@@ -219,7 +219,9 @@ form.formInstall .input-group-text {
 }
 
 .listing-hasimages {
-    cursor: pointer
+    cursor: pointer;
+    width: calc(100% - 2ch);
+    display: block
 }
 
 .item-picture {
@@ -256,7 +258,7 @@ form.formInstall .input-group-text {
 }
 
 input.quick-edit {
-    width: 100%;
+    width: calc(100% - 2ch);
     font-weight: 400;
     padding-left: 1ch;
     padding-right: 1ch
