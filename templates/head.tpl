@@ -12,4 +12,5 @@
     <link href=".//fonts/fontawesome/css/all.css" rel="stylesheet">
     <link rel="shortcut icon" type="image/svg+xml" href=".//favicon.svg">
     <link rel="shortcut icon" type="image/png" href=".//favicon.png">
+    <script type="text/javascript" src=".//js/libs/qrcodejs/qrcode.js"></script>
 </head>
