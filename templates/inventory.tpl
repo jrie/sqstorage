@@ -121,7 +121,7 @@
                 <li class="list-group-item"><span>{t}Keine Gegenstände gefunden{/t}</span></li>
                 {/if}
             </ul>
-            {if !$isGuest}
+            {if !$isGuest && isset($itemstore.storage.id) && isset($itemstore.storage.label) }
                 <button type="button" data-table="inventory" data-tableId="{$itemstore.storage.id}" data-name="inventory_{$itemstore.storage.label}" class="csvDownload btn btn-primary">{t}Als CSV herunterladen{/t}</button>
             {/if}
         </div>
