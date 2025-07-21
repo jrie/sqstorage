@@ -81,7 +81,7 @@
                         {if $category.headcategory === NULL}
                             {t}Keine{/t}
                         {else}
-                            {foreach $headCategories as $headCategory} {
+                            {foreach $headCategories as $headCategory}
                                 {if $headCategory.id == $category.headcategory}
                                     {$headCategory.name}
                                     {break}
