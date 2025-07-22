@@ -6,16 +6,11 @@
 
 ## Official website
 
-The official sqStorage website is located at [https://sqstorage.net](https://sqstorage.net)
+The official sqStorage website is located at [https://www.sqstorage.net](https://www.sqstorage.net)
 
 ### Online interactive live demo
-A live demo is also available, including the current development state. The live demo can be found at [sqStorage live demo](https://sqstorage.net/#livedemo).
+A live demo is also available, including the current development state. The live demo can be found at [sqStorage live demo](https://www.sqstorage.net/#livedemo).
 
-## Support development
-You can actively support the development by renting paid hosting and support.
-This offer is for private and business users equally. Also, you can get a subdomain at ***`yourname`.sqstorage.net***, and password protected access in addition to the optional user system of sqStorage.
-
-If you do not feel like renting hosting and support, you always can make a donation using PayPal.me at [https://paypal.me/dwroxnet](https://paypal.me/dwroxnet).
 
 ### About available languages and language extensions
 Right now sqStorage is available in *German*, *English* and *Polish*.
