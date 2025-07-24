@@ -28,11 +28,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     $headCategory = DB::queryFirstRow('SELECT `amount` FROM headCategories WHERE id=%d', $item['headcategory']);
-    if ((int)$storage['amount'] - (int)$item['amount'] > 0) {
-      DB::update('storages', array('amount' => (int)$storage['amount'] - (int)$item['amount']), 'id=%d', $item['storageid']);
-    } else {
-      DB::update('storages', array('amount' => 0), 'id=%d', $item['storageid']);
+    if (isset($storage)) {
+      if ((int)$storage['amount'] - (int)$item['amount'] > 0) {
+        DB::update('storages', array('amount' => (int)$storage['amount'] - (int)$item['amount']), 'id=%d', $item['storageid']);
+      } else {
+        DB::update('storages', array('amount' => 0), 'id=%d', $item['storageid']);
+      }
     }
+
     DB::update('headCategories', array('amount' => (int)$headCategory['amount'] - (int)$item['amount']), 'id=%d', $item['headcategory']);
     DB::query('DELETE FROM items WHERE id=%d', $_POST['remove']);
   } else if (isset($_POST['removeStorage']) && !empty($_POST['removeStorage'])) {
