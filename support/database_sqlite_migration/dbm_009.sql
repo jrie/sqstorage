@@ -1,0 +1,1 @@
+ALTER TABLE `items` ADD `coverimage` INTEGER NULL DEFAULT NULL;
