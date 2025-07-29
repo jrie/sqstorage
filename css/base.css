@@ -576,9 +576,9 @@ i.picture {
 .imageOverlay.active {
     display: block;
     visibility: visible;
-    overflow: scroll;
+    overflow: visible;
     background-color: rgba(225, 225, 225, .8);
-    cursor: zoom-out
+    cursor: zoom-out;
 }
 
 .imageOverlay.active img {

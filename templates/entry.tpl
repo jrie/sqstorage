@@ -299,14 +299,34 @@
                 let imgSrc = evt.target.parentNode
                 let imgLoader = new XMLHttpRequest()
                 let imgOverlay = document.querySelector('.imageOverlay')
+                imgOverlay.classList.remove('active')
 
                 function handleImgResize(evt) {
-                    imgOverlay.style.left = Math.floor((1 - (imgOverlay.clientWidth / window.innerWidth)) * 50) + '%'
-                    imgOverlay.style.top = Math.floor((1 - (imgOverlay.clientHeight / window.innerHeight)) * 50) + '%'
+                    imgOverlay.style.height = 'auto';
+                    imgOverlay.style.width = 'auto';
+                    imgOverlay.style.left = '0px';
+                    imgOverlay.style.top = '0px';
+                    imgOverlay.classList.add('active')
+
+                    // imgOverlay.style.left = Math.floor((1 - (imgOverlay.clientWidth / window.innerWidth)) * 50) + '%';
+                    imgOverlay.style.top = Math.floor((1 - (imgOverlay.clientHeight / window.innerHeight)) * 50) + '%';
+
+                    let imgClientWidth =  imgOverlay.clientWidth * 0.5;
+
+                    if (parseFloat(imgOverlay.style.top) === 0) {
+                        imgOverlay.style.height = window.innerHeight + 'px';
+                        imgOverlay.style.width = 'auto';
+                        imgClientWidth =  imgOverlay.clientWidth * 0.5;
+                    }
+
+                    imgOverlay.style.left = 'calc(50% - ' + imgClientWidth + 'px)';
                 }
 
                 function hidePreview(evt) {
                     imgOverlay.classList.remove('active')
+                    imgOverlay.style.left = '0px'
+                    imgOverlay.style.top = '0px'
+
                     imgOverlay.removeEventListener('click', hidePreview)
                     window.removeEventListener('resize', handleImgResize)
                 }
@@ -316,6 +336,7 @@
                         handleImgResize()
                         return
                     }
+
                     window.requestAnimationFrame(checkIfLoaded)
                 }
 
