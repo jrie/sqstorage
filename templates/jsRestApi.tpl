@@ -1,8 +1,8 @@
 {literal}
 
-function GetItemThumb(itemId) {
+function GetItemThumb(itemId, filterType) {
   let ret_value = null;
-  let API_URL = 'api.php/records/images?filter=itemId,eq,:itemId&include=thumb&size=1';
+  let API_URL = 'api.php/records/images?filter=' + filterType + ',eq,:itemId&include=thumb&size=1';
 
   let URL = API_URL.replace(':itemId', itemId);
   const xmlhttp = new XMLHttpRequest();
@@ -19,9 +19,9 @@ function GetItemThumb(itemId) {
   return ret_value;
 }
 
-function GetItemFullimage(itemId) {
+function GetItemFullimage(itemId, filterType) {
   let ret_value = null;
-  let API_URL = 'api.php/records/images?filter=itemId,eq,:itemId&include=imageData&size=1';
+  let API_URL = 'api.php/records/images?filter=' + filterType + ',eq,:itemId&include=imageData&size=1';
 
   let URL = API_URL.replace(':itemId', itemId);
   const xmlhttp = new XMLHttpRequest();
@@ -38,7 +38,7 @@ function GetItemFullimage(itemId) {
   return ret_value;
 }
 
-function GetItemFullimages(itemId) {
+function GetItemFullimages(itemId, filterType) {
   let ret_value = [];
   let API_URL = 'api.php/records/images?filter=itemId,eq,:itemId&include=imageData';
 

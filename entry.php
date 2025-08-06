@@ -39,7 +39,18 @@ if ($usePrettyURLs) {
 $imageList = null;
 $smarty->assign('updatedEntry', '-1');
 
-if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getImageId'])) {
+
+if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['setcoverimage']) && isset($_GET['targetitem'])) {
+  $out = DB::update('items', array('coverimage' => (int) $_GET['setcoverimage']), 'id=%d',  $_GET['targetitem']);
+
+  if ($out === 1) {
+    echo 'OK';
+  } else  {
+    echo 'FAIL';
+  }
+
+  die();
+} else if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['getImageId'])) {
   $targetImage = DB::queryFirstRow('SELECT `imageData` FROM `images` WHERE `id`=%d', (int)$_GET['getImageId']);
   $targetData = [];
   if ($targetImage != null) {

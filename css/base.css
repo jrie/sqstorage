@@ -551,7 +551,8 @@ i.picture {
     margin-right: 1rem;
     margin-bottom: 1rem;
     position: relative;
-    border: 2px solid transparent
+    border: 2px solid #888;
+    background-color: darkgray;
 }
 
 .uploadedImages .imgDiv img {
@@ -586,13 +587,29 @@ i.picture {
     max-width: 100%
 }
 
+.setCoverImage,
 .removeImageOverlay {
     position: absolute;
     right: 5px;
     bottom: 5px;
-    text-shadow: 0 0 3px #fff;
     cursor: pointer;
     color: #000
+}
+
+.setCoverImage .fa {
+    right: 85%;
+    bottom: 5px;
+    color: black;
+}
+
+.setCoverImage {
+    right: 85%;
+        bottom: 5px;
+}
+
+.setCoverImage:hover .fa,
+.setCoverImage .active {
+    color: gold;
 }
 
 .imageOverlay .overlayedImaged {

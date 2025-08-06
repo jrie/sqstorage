@@ -256,10 +256,23 @@
                 {if $imageList != null}
                 <div class="imageOverlay"><img class="overlayedImaged" /></div>
                 <div class="uploadedImages">
+                    {$isFirst = true}
                     {foreach $imageList as $image}
+                    {$className = "fas fa-solid fa-star"}
                     <div class="imgDiv">
                         <a class="imageLink" data-imageid="{$image['id']}" href="#"><img src="data:image;base64,{$image['thumb']}"/></a>
                         <a class="removeImageOverlay" title="{t}Bild entfernen{/t}" data-imageid="{$image['id']}" href="#"><i class="fas fa-times-circle"></i></a>
+                        {if (!isset($item['coverimage']) || empty($item['coverimage']))}
+                            {if $isFirst}
+                                {$isFirst = false}
+                                {$className="fas fa-solid fa-star active"}
+                            {/if}
+                        {else if $item['coverimage'] == $image['id']}
+                            {$isFirst = false}
+                            {$className="fas fa-solid fa-star active"}
+                        {/if}
+
+                        <a class="setCoverImage" title="{t}Bild als Standard verwenden{/t}" data-imageid="{$image['id']}" href="#"><i class="{$className}"></i></a>
                     </div>
                     {/foreach}
                 </div>
@@ -363,6 +376,33 @@
 
             let imageLinks = document.querySelectorAll('.imageLink')
             for (let image of imageLinks) image.addEventListener('click', openImageLink)
+
+            let setCoverImageLinks = document.querySelectorAll('.setCoverImage')
+            for (let link of setCoverImageLinks) {
+                link.addEventListener('click', function(evt) {
+                    evt.preventDefault();
+
+                    let imgCover = new XMLHttpRequest()
+                    function handleDeleteRequest(evt) {
+                        if (evt.target.readyState === 4 && evt.target.status === 200) {
+                            let response = evt.target.responseText
+                            if (response === 'OK') {
+                                activeSetCoverImageLink = document.querySelector('.setCoverImage .active.fa-star')
+                                if (activeSetCoverImageLink) {
+                                    activeSetCoverImageLink.classList.remove('active')
+                                }
+                                link.children[0].classList.add('active')
+                            }
+                        }
+                    }
+
+                    imgCover.addEventListener('readystatechange', handleDeleteRequest)
+
+                    let imageId = evt.target.parentNode.dataset['imageid']
+                    imgCover.open("GET", "{/literal}{$urlBase}{literal}/entry{/literal}{$urlPostFix}{literal}?setcoverimage=" + imageId + '&targetitem=' + {/literal}{$item.id}{literal});
+                    imgCover.send()
+                })
+            }
 
             let imageRemoveLinks = document.querySelectorAll('.removeImageOverlay')
             for (let link of imageRemoveLinks) link.addEventListener('click', removeImage)

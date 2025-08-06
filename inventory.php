@@ -118,7 +118,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 //----- P0 - OK
 $success = false;
-$itesWithImages = DB::queryFirstColumn("SELECT  DISTINCT  itemId FROM images");
+$itesWithImages = DB::queryFirstColumn("SELECT DISTINCT itemId FROM images");
 
 //----- P1 + OK
 if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['itemid'])) {
@@ -133,6 +133,11 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
     if (in_array($items[$x]['id'], $itesWithImages  )) {
       $items[$x]['hasImages'] = true;
       $items[$x]['thumb'] = "";
+
+      if (empty($items[$x]['coverimage'])) {
+        $coverImageId = DB::queryFirstRow('SELECT id FROM images WHERE itemId=%d', $items[$x]['id']);
+        $items[$x]['coverimage'] = $coverImageId['id'];
+      }
     }
 
     $myitem[$storeId]['items'][] = $items[$x];
@@ -168,6 +173,11 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
     if (in_array($items[$x]['id'], $itesWithImages  )) {
       $items[$x]['hasImages'] = true;
       $items[$x]['thumb'] = "";
+
+      if (empty($items[$x]['coverimage'])) {
+        $coverImageId = DB::queryFirstRow('SELECT id FROM images WHERE itemId=%d', $items[$x]['id']);
+        $items[$x]['coverimage'] = $coverImageId['id'];
+      }
     }
 
     $myitem[$storeId]['items'][] = $items[$x];
@@ -301,6 +311,11 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
     if (in_array($items[$x]['id'], $itesWithImages  )) {
       $items[$x]['hasImages'] = true;
       $items[$x]['thumb'] = "";
+
+      if (empty($items[$x]['coverimage'])) {
+        $coverImageId = DB::queryFirstRow('SELECT id FROM images WHERE itemId=%d', $items[$x]['id']);
+        $items[$x]['coverimage'] = $coverImageId['id'];
+      }
     }
 
     $storeId = $item['storageid'];
@@ -343,6 +358,11 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
     if (in_array($items[$x]['id'], $itesWithImages  )) {
       $items[$x]['hasImages'] = true;
       $items[$x]['thumb'] = "";
+
+      if (empty($items[$x]['coverimage'])) {
+        $coverImageId = DB::queryFirstRow('SELECT id FROM images WHERE itemId=%d', $items[$x]['id']);
+        $items[$x]['coverimage'] = $coverImageId['id'];
+      }
     }
 
     $myitem[$storeId]['items'][] = $items[$x];
@@ -367,6 +387,11 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
     if (in_array($items[$x]['id'], $itesWithImages  )) {
       $items[$x]['hasImages'] = true;
       $items[$x]['thumb'] = "";
+
+      if (empty($items[$x]['coverimage'])) {
+        $coverImageId = DB::queryFirstRow('SELECT id FROM images WHERE itemId=%d', $items[$x]['id']);
+        $items[$x]['coverimage'] = $coverImageId['id'];
+      }
     }
 
       $myitem[$storeId]['storage'] = $store[$storeId];
@@ -401,8 +426,12 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
     if (in_array($items[$x]['id'], $itesWithImages  )) {
       $items[$x]['hasImages'] = true;
       $items[$x]['thumb'] = "";
-    }
 
+      if (empty($items[$x]['coverimage'])) {
+        $coverImageId = DB::queryFirstRow('SELECT id FROM images WHERE itemId=%d', $items[$x]['id']);
+        $items[$x]['coverimage'] = $coverImageId['id'];
+      }
+    }
 
     $storeId = $item['storageid'];
     $myitem[$storeId]['storage'] = $store[$storeId];
@@ -432,9 +461,15 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
   }
 
   for ($x = 0; $x < count($loseItems); $x++) {
+
     if (in_array($loseItems[$x]['id'], $itesWithImages  )) {
       $loseItems[$x]['hasImages'] = true;
       $loseItems[$x]['thumb'] = "";
+
+      if (empty($loseItems[$x]['coverimage'])) {
+        $coverImageId = DB::queryFirstRow('SELECT id FROM images WHERE itemId=%d', $loseItems[$x]['id']);
+        $loseItems[$x]['coverimage'] = $coverImageId['id'];
+      }
     }
 
     $myitem[0]['items'][] = $loseItems[$x];
@@ -454,6 +489,11 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
       if (in_array($items[$x]['id'], $itesWithImages  )) {
         $items[$x]['hasImages'] = true;
         $items[$x]['thumb'] = "";
+
+        if (empty($items[$x]['coverimage'])) {
+          $coverImageId = DB::queryFirstRow('SELECT id FROM images WHERE itemId=%d', $items[$x]['id']);
+          $items[$x]['coverimage'] = $coverImageId['id'];
+        }
       }
 
       $myitem[$store['id']]['items'][] = $items[$x];

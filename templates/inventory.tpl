@@ -69,7 +69,14 @@
                     {/if}
 
                     <div class="list-span">
-                        <span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i><img class="item-picture" data-id="{$item.id}" src="" onclick="displayFullImage('{$item.id}');return false;">{/if}
+                    {if !isset($item.coverimage) || empty($item.coverimage)}
+                        {$coverImage = $item.id}
+                        {$type = 'itemId'}
+                    {else}
+                        {$coverImage = $item.coverimage}
+                        {$type = 'id'}
+                    {/if}
+                        <span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i><img class="item-picture" data-id="{$coverImage}" data-type="{$type}" src="" onclick="displayFullImage('{$item.id}', '{$type}');return false;">{/if}
                             {if !$isGuest}
                             <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}">{$item.label}</a>
                             {else}
@@ -197,8 +204,14 @@
                     {else}
                     <span title="{$category.name}" class="list-span">{$category.name}</span>
                     {/if}
-
-                    <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fa fas fa-images"></i><img class="item-picture" data-id="{$item.id}" src="">{/if}
+                    {if !isset($item.coverimage) || empty($item.coverimage)}
+                        {$coverImage = $item.id}
+                        {$type = 'itemId'}
+                    {else}
+                        {$coverImage = $item.coverimage}
+                        {$type = 'id'}
+                    {/if}
+                    <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fa fas fa-images"></i><img class="item-picture" data-id="{$coverImage}" data-type="{$type}" src="">{/if}
                     {if !$isGuest}
                         <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
                     {else}
@@ -307,7 +320,15 @@
                     <span title="{$category.name}" class="list-span">{$category.name}</span>
                     {/if}
 
-                    <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i><img class="item-picture" data-id="{$item.id}" src="">{/if}
+                    {if !isset($item.coverimage) || empty($item.coverimage)}
+                        {$coverImage = $item.id}
+                        {$type = 'itemId'}
+                    {else}
+                        {$coverImage = $item.coverimage}
+                        {$type = 'id'}
+                    {/if}
+
+                    <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i><img class="item-picture" data-id="{$coverImage}" data-type="{$type}" src="">{/if}
                     {if !$isGuest}
                         <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
                     {else}
@@ -444,8 +465,10 @@
             if (openedImage !== null && openedImage !== itemPicture) {
                 openedImage.classList.toggle('active')
             }
-
-            itemPicture.setAttribute('src', 'data:image/*;charset=utf-8;base64,' + GetItemThumb(itemPicture.dataset['id']))
+            {/literal}
+            {$urlBase}
+            {literal}
+            itemPicture.setAttribute('src', 'data:image/*;charset=utf-8;base64,' + GetItemThumb(itemPicture.dataset['id'], itemPicture.dataset['type']))
             itemPicture.classList.toggle('active')
         })
     }
@@ -844,13 +867,13 @@
         }
     })
 
-    function displayFullImage(ItemID) {
+    function displayFullImage(ItemID, type) {
         let lightbox = new FsLightbox();
         lightbox.props.initialAnimation = 'initial-animation';
         // set up props, like sources, types, events etc.
         //lightbox.props.sources = ['data:image/*;charset=utf-8;base64,' + GetItemFullimage( ItemID )];
         lightbox.props.type = 'image';
-        lightbox.props.sources = GetItemFullimages(ItemID);
+        lightbox.props.sources = GetItemFullimages(ItemID, type);
         lightbox.props.onInit = () => console.log('Lightbox initialized!');
 
         lightbox.open();
