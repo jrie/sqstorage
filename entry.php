@@ -421,6 +421,7 @@ foreach ($customFields as $key => $customField) {
     $searchColumn = null;
     $dataEntry = null;
     $dataEntryType = null;
+    $prepend = null;
 
     if ($targetBase === 'base') {
       switch($targetId) {
@@ -445,6 +446,7 @@ foreach ($customFields as $key => $customField) {
       switch ($targetId) {
         case 2:
           $searchColumn = 'storageid';
+          $prepend = $urlBase . '/inventory' . $urlPostFix .'?category=';
           break;
         default:
           break;
@@ -457,10 +459,13 @@ foreach ($customFields as $key => $customField) {
         // var_dump($dataEntry);
         // echo '<br><br>';
       }
-
     }
 
     if ($dataEntry && isset($dataEntry['data-value'])) {
+      if (isset($prepend)) {
+        $dataEntry['data-value'] =  $prepend . $dataEntry['data-value'];
+      }
+
       $qrData[$customField['id']] = $dataEntry;
       $customFields[$key]['qrValue'] = $dataEntry['data-value'];
     }
