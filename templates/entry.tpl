@@ -178,10 +178,20 @@
                     {foreach $customFields as $field}
                         {if $field.dataType === '8'}
                             <details class="customFieldTitle">
-                            <summary>{t}QR-Code:{/t} {$field.label}</summary>
-                            {if isset($field['qrValue'])}
+                            {if isset($field.id) && $field.id == '4'}
+                                {if isset($item['checkedin'])}
+                                    {if $item['checkedin'] == '0'}
+                                        <summary>{t}QR-Code:{/t} {$field.label}: {t}Gegenstand eingescheckt{/t}</summary>
+                                    {else if $item['checkedin'] == '1'}
+                                        <summary>{t}QR-Code:{/t} {$field.label}: {t}Gegenstand ausgescheckt{/t}</summary>
+                                    {/if}
+                                    <div class="input-group mb-3 customFields qrCodeField" data-qrvalue="{$field['qrValue']}"></div>
+                                {/if}
+                            {else if isset($field['qrValue'])}
+                                <summary>{t}QR-Code:{/t} {$field.label}</summary>
                                <div class="input-group mb-3 customFields qrCodeField" data-qrvalue="{$field['qrValue']}"></div>
                             {else if empty($field['qrValue'])}
+                                <summary>{t}QR-Code:{/t} {$field.label}</summary>
                                 <div class="input-group mb-3 customFields qrCodeField empty"><span>{t}Der verknüpfte QR-Code Wert ist nicht gesetzt.{/t}</span></div>
                             {/if}
                             </details>

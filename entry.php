@@ -369,7 +369,6 @@ if ((isset($_GET['editItem']) && !empty($_GET['editItem'])) || (isset($_POST['ed
   if (isset($item)) {
     $customData = DB::query('SELECT * FROM `fieldData` WHERE `itemId`=%d', (int)$item['id']);
     $isEdit = true;
-
     $imageList = DB::query('SELECT `id`, `thumb`, `sizeX`, `sizeY` FROM `images` WHERE `itemId`=%d', $item['id']);
   }
 
