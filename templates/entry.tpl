@@ -15,6 +15,20 @@
             </div>
             {/if}
 
+            {if isset($checkedInStatus)}
+                {if $checkedInStatus == '0'}
+                    <div class="statusDisplay green" role="alert">
+                    <p>{t}Gegenstand eingescheckt{/t}</p>
+                {elseif $checkedInStatus == '1'}
+                    <div class="statusDisplay green" role="alert">
+                    <p>{t}Gegenstand ausgescheckt{/t}</p>
+                {else}
+                    <div class="statusDisplay red" role="alert">
+                    <p>{t}Fehler bei Check in / Check out{/t}</p>
+                {/if}
+                </div>
+            {/if}
+
             {if $isEdit}
                 <div class="statusDisplay alert alert-danger" role="alert">
                 <h6>{t}Eintrag zur Bearbeitung:{/t} &quot;{$item.label}&quot;</h6>

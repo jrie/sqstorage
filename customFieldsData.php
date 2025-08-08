@@ -75,5 +75,10 @@
             'id' => 2,
             'type' => 'extend',
             'text' => gettext('Lagerplatz')
+        ),
+        'checkinout' => array(
+            'id' => 3,
+            'type' => 'base',
+            'text' => gettext('Check in/check out')
         )
     ];

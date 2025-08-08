@@ -72,6 +72,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['setcoverimage']) && isse
 
   echo json_encode($targetData);
   die();
+} else if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['checkin'])) {
+  $itemId = $_GET['checkin'];
+  DB::query('UPDATE `items` SET `checkedin` = !`checkedin` WHERE id=%d', $itemId);
+  $targetData = [];
+
+  if (DB::affectedRows() == 1) {
+    $result = DB::queryFirstRow('SELECT `checkedin` FROM `items` WHERE id=%d', $itemId);
+    if (isset($result) && isset($result['checkedin'])) {
+      $checkedInStatus = $result['checkedin'];
+    }
+  } else {
+    $checkedInStatus = 'fail';
+  }
+
+  $smarty->assign('checkedInStatus', $checkedInStatus);
 } else if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES) && count($_FILES) != 0 && isset($_POST['editItem'])) {
   if (!isset($_FILES['images'])) die();
   if (!isset($_POST['editItem'])) die();
@@ -345,15 +360,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['setcoverimage']) && isse
 }
 
 $imageList = null;
-if ((isset($_GET['editItem']) && !empty($_GET['editItem'])) || (isset($_POST['editItem']) && !empty($_POST['editItem']))) {
+if ((isset($_GET['editItem']) && !empty($_GET['editItem'])) || (isset($_POST['editItem']) && !empty($_POST['editItem'])) || (isset($_GET['checkin']) && !empty($_GET['checkin']))) {
   if (isset($_GET['editItem'])) $itemId = (int)$_GET['editItem'];
   else if (isset($_POST['editItem'])) $itemId = (int)$_POST['editItem'];
+  else if (isset($_GET['checkin'])) $itemId = (int)$_GET['checkin'];
 
   $item = DB::queryFirstRow('SELECT * FROM `items` WHERE `id`=%d', $itemId);
-  $customData = DB::query('SELECT * FROM `fieldData` WHERE `itemId`=%d', (int)$item['id']);
-  $isEdit = true;
+  if (isset($item)) {
+    $customData = DB::query('SELECT * FROM `fieldData` WHERE `itemId`=%d', (int)$item['id']);
+    $isEdit = true;
 
-  $imageList = DB::query('SELECT `id`, `thumb`, `sizeX`, `sizeY` FROM `images` WHERE `itemId`=%d', $item['id']);
+    $imageList = DB::query('SELECT `id`, `thumb`, `sizeX`, `sizeY` FROM `images` WHERE `itemId`=%d', $item['id']);
+  }
+
 } else {
   $customData = null;
   //if (isset($item)) $imageList = DB::query('SELECT `id`, `thumb`, `sizeX`, `sizeY` FROM `images` WHERE `itemId`=%d', (int)$item['id']);
@@ -400,77 +419,84 @@ foreach ($qrBaseFields as $qrBaseFields) {
 // var_dump($qrTypesCollection);
 // echo '<br><br>';
 
-foreach ($customFields as $key => $customField) {
-  if ($customField['dataType'] !== '8') {
-    continue;
-  }
-
-  // echo 'Id: ' . $customField['id'];
-  // echo '<br>';
-  // echo 'Label: ' . $customField['label'];
-  // echo '<br>';
-  // echo 'Type: ' . $customField['dataType'];
-  // echo '<br>';
-  // echo 'FieldValues: ' . $customField['fieldValues'];
-  // echo '<br><br>';
-
-  $itemIndex = array_search($customField['fieldValues'], $qrIdsCollection, false);
-  if (!is_bool($itemIndex) && isset($itemId)) {
-    $targetId = $qrIdsCollection[$itemIndex];
-    $targetBase = $qrTypesCollection[$itemIndex];
-    $searchColumn = null;
-    $dataEntry = null;
-    $dataEntryType = null;
-    $prepend = null;
-
-    if ($targetBase === 'base') {
-      switch($targetId) {
-        case 0:
-          $searchColumn = 'label';
-          break;
-        case 1:
-          $searchColumn = 'serialnumber';
-          break;
-        default:
-          break;
-      }
-
-      if ($searchColumn) {
-        $dataEntry = DB::queryFirstRow('SELECT %b as `data-value` FROM `items` WHERE `id`=%d;', $searchColumn, $itemId);
-        // echo '<br>BASE<br>';
-        // echo $searchColumn . '<br>';
-        // var_dump($dataEntry);
-        // echo '<br><br>';
-      }
-    } else if ($targetBase === 'extend') {
-      switch ($targetId) {
-        case 2:
-          $searchColumn = 'storageid';
-          $prepend = $urlBase . '/inventory' . $urlPostFix .'?category=';
-          break;
-        default:
-          break;
-      }
-
-      if ($searchColumn) {
-        $dataEntry = DB::queryFirstRow('SELECT `id` as `data-value` FROM `storages` WHERE `id`=%d;', $item['storageid']);
-        // echo '<br>EXTEND<br>';
-        // echo $searchColumn . '<br>';
-        // var_dump($dataEntry);
-        // echo '<br><br>';
-      }
+if (isset($item) && !empty($item)) {
+  foreach ($customFields as $key => $customField) {
+    if ($customField['dataType'] !== '8') {
+      continue;
     }
 
-    if ($dataEntry && isset($dataEntry['data-value'])) {
-      if (isset($prepend)) {
-        $dataEntry['data-value'] =  $prepend . $dataEntry['data-value'];
+    // echo 'Id: ' . $customField['id'];
+    // echo '<br>';
+    // echo 'Label: ' . $customField['label'];
+    // echo '<br>';
+    // echo 'Type: ' . $customField['dataType'];
+    // echo '<br>';
+    // echo 'FieldValues: ' . $customField['fieldValues'];
+    // echo '<br><br>';
+
+    $itemIndex = array_search($customField['fieldValues'], $qrIdsCollection, false);
+    if (!is_bool($itemIndex) && isset($itemId)) {
+      $targetId = $qrIdsCollection[$itemIndex];
+      $targetBase = $qrTypesCollection[$itemIndex];
+      $searchColumn = null;
+      $dataEntry = null;
+      $dataEntryType = null;
+      $prepend = null;
+
+      if ($targetBase === 'base') {
+        switch ($targetId) {
+          case 0:
+            $searchColumn = 'label';
+            break;
+          case 1:
+            $searchColumn = 'serialnumber';
+            break;
+          case 3:
+            $searchColumn = 'id';
+            $prepend = $urlBase . '/entry' . $urlPostFix . '?checkin=';
+            break;
+          default:
+            break;
+        }
+
+        if ($searchColumn) {
+          $dataEntry = DB::queryFirstRow('SELECT %b as `data-value` FROM `items` WHERE `id`=%d;', $searchColumn, $itemId);
+          // echo '<br>BASE<br>';
+          // echo $searchColumn . '<br>';
+          // var_dump($dataEntry);
+          // echo '<br><br>';
+        }
+      } else if ($targetBase === 'extend') {
+        switch ($targetId) {
+          case 2:
+            $searchColumn = 'storageid';
+            $prepend = $urlBase . '/inventory' . $urlPostFix . '?category=';
+            break;
+          default:
+            break;
+        }
+
+        if ($searchColumn) {
+          $dataEntry = DB::queryFirstRow('SELECT `id` as `data-value` FROM `storages` WHERE `id`=%d;', $item['storageid']);
+          // echo '<br>EXTEND<br>';
+          // echo $searchColumn . '<br>';
+          // var_dump($dataEntry);
+          // echo '<br><br>';
+        }
       }
 
-      $qrData[$customField['id']] = $dataEntry;
-      $customFields[$key]['qrValue'] = $dataEntry['data-value'];
+      if ($dataEntry && isset($dataEntry['data-value'])) {
+        if (isset($prepend)) {
+          $dataEntry['data-value'] =  $prepend . $dataEntry['data-value'];
+        }
+
+        $qrData[$customField['id']] = $dataEntry;
+        $customFields[$key]['qrValue'] = $dataEntry['data-value'];
+      }
     }
   }
 }
+
 
 // $smarty->assign('qrData', $qrData);
 
@@ -487,7 +513,10 @@ $smarty->assign('storages', $storages);
 $smarty->assign('categories', $categories);
 $smarty->assign('subcategories', $subcategories);
 
-$smarty->assign('customData', $customData);
+if (isset($customData)) {
+  $smarty->assign('customData', $customData);
+}
+
 $smarty->assign('customFields', $customFields);
 $smarty->assign('fieldTypesPos', $fieldTypesPos);
 $smarty->assign('fieldLimits', $fieldLimits);

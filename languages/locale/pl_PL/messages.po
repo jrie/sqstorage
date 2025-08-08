@@ -22,7 +22,7 @@ msgstr ""
 msgid "Datenfelder"
 msgstr "Pola danych"
 
-#: templates//datafields.tpl:7 templates//entry.tpl:24
+#: templates//datafields.tpl:7 templates//entry.tpl:38
 msgid "Nicht gespeichert, es befinden sich Fehler in der Formular-Eingabe."
 msgstr "Nie zapisano, w danych formularzy znajdują się błędy."
 
@@ -133,14 +133,14 @@ msgstr "Usuń pole"
 msgid "Bestehende Datenfelder"
 msgstr "Istniejące pola danych"
 
-#: templates//datafields.tpl:183 templates//entry.tpl:88
-#: templates//entry.tpl:90 templates//php_language_extract.tpl:40
+#: templates//datafields.tpl:183 templates//entry.tpl:102
+#: templates//entry.tpl:104 templates//php_language_extract.tpl:40
 msgid "Kategorie"
 msgstr "Kategoria"
 
 #: templates//datafields.tpl:183 templates//categories.tpl:1
 #: templates//categories.tpl:9 templates//inventory.tpl:29
-#: templates//inventory.tpl:159 templates//inventory.tpl:268
+#: templates//inventory.tpl:166 templates//inventory.tpl:281
 #: templates//nav.tpl:24 templates//php_language_extract.tpl:117
 msgid "Kategorien"
 msgstr "Kategorie"
@@ -237,11 +237,11 @@ msgstr ""
 "W magazynie znajduje się więcej niż jedna jednostka tego produktu. Ile z "
 "nich należy przenieść?"
 
-#: templates//transfer.tpl:49 templates//inventory.tpl:419
+#: templates//transfer.tpl:49 templates//inventory.tpl:440
 msgid "Von diesem Artikel sind nicht genug Einheiten vorhanden."
 msgstr "Niewystarczająca ilość produktu jest dostępna."
 
-#: templates//transfer.tpl:50 templates//inventory.tpl:421
+#: templates//transfer.tpl:50 templates//inventory.tpl:442
 msgid "Anzahl kann nicht negativ sein."
 msgstr "Ilość nie może być ujemna."
 
@@ -323,23 +323,23 @@ msgid "Zugangsdaten vergessen"
 msgstr "Zapomniane dane uwierzytelniające"
 
 #: templates//categories.tpl:10 templates//categories.tpl:40
-#: templates//inventory.tpl:31 templates//inventory.tpl:161
-#: templates//inventory.tpl:270 templates//entry.tpl:143
-#: templates//entry.tpl:146 templates//entry.tpl:148
+#: templates//inventory.tpl:31 templates//inventory.tpl:168
+#: templates//inventory.tpl:283 templates//entry.tpl:157
+#: templates//entry.tpl:160 templates//entry.tpl:162
 #: templates//php_language_extract.tpl:109
 msgid "Anzahl"
 msgstr "Ilość"
 
 #: templates//categories.tpl:11 templates//categories.tpl:23
 #: templates//categories.tpl:41 templates//categories.tpl:55
-#: templates//inventory.tpl:22 templates//inventory.tpl:154
-#: templates//inventory.tpl:264 templates//php_language_extract.tpl:121
+#: templates//inventory.tpl:22 templates//inventory.tpl:161
+#: templates//inventory.tpl:277 templates//php_language_extract.tpl:121
 msgid "Positionen"
 msgstr "Pozycje"
 
 #: templates//categories.tpl:13 templates//categories.tpl:43
-#: templates//inventory.tpl:36 templates//inventory.tpl:166
-#: templates//inventory.tpl:275 templates//settings.tpl:141
+#: templates//inventory.tpl:36 templates//inventory.tpl:173
+#: templates//inventory.tpl:288 templates//settings.tpl:141
 msgid "Aktionen"
 msgstr "Akcje"
 
@@ -348,20 +348,20 @@ msgid "Kategorie löschen"
 msgstr "Usuń kategorię"
 
 #: templates//categories.tpl:22 templates//categories.tpl:54
-#: templates//inventory.tpl:22 templates//inventory.tpl:154
-#: templates//inventory.tpl:264
+#: templates//inventory.tpl:22 templates//inventory.tpl:161
+#: templates//inventory.tpl:277
 msgid "Gegenstand"
 msgstr "Przedmiot"
 
 #: templates//categories.tpl:22 templates//categories.tpl:54
-#: templates//inventory.tpl:22 templates//inventory.tpl:154
-#: templates//inventory.tpl:264
+#: templates//inventory.tpl:22 templates//inventory.tpl:161
+#: templates//inventory.tpl:277
 msgid "Gegenstände"
 msgstr "Przedmioty"
 
 #: templates//categories.tpl:23 templates//categories.tpl:55
-#: templates//inventory.tpl:22 templates//inventory.tpl:154
-#: templates//inventory.tpl:264
+#: templates//inventory.tpl:22 templates//inventory.tpl:161
+#: templates//inventory.tpl:277
 msgid "Position"
 msgstr "Pozycja"
 
@@ -370,12 +370,12 @@ msgid "Kategorie umbenennen"
 msgstr "Zmień nazwę kategorii"
 
 #: templates//categories.tpl:32 templates//categories.tpl:99
-#: templates//inventory.tpl:125
+#: templates//inventory.tpl:132
 msgid "Als CSV herunterladen"
 msgstr "Pobierz jako CSV"
 
 #: templates//categories.tpl:39 templates//inventory.tpl:33
-#: templates//inventory.tpl:163 templates//inventory.tpl:272
+#: templates//inventory.tpl:170 templates//inventory.tpl:285
 #: templates//php_language_extract.tpl:124
 msgid "Unterkategorien"
 msgstr "Podkategorie"
@@ -423,71 +423,71 @@ msgid "Lagerplatz löschen"
 msgstr "Usuń powierzchnię magazynową"
 
 #: templates//inventory.tpl:17 templates//inventory.tpl:20
-#: templates//inventory.tpl:149 templates//inventory.tpl:151
-#: templates//inventory.tpl:263
+#: templates//inventory.tpl:156 templates//inventory.tpl:158
+#: templates//inventory.tpl:276
 msgid "Unsortiert"
 msgstr "Nieposortowane"
 
-#: templates//inventory.tpl:21 templates//inventory.tpl:90
-#: templates//inventory.tpl:215 templates//inventory.tpl:324
+#: templates//inventory.tpl:21 templates//inventory.tpl:97
+#: templates//inventory.tpl:228 templates//inventory.tpl:345
 #: templates//modal.tpl:6
 msgid "Schnelle Bearbeitung"
 msgstr "Szybka edycja"
 
-#: templates//inventory.tpl:23 templates//inventory.tpl:795
+#: templates//inventory.tpl:23 templates//inventory.tpl:818
 msgid "Zuklappen"
 msgstr "Zamknij"
 
-#: templates//inventory.tpl:30 templates//inventory.tpl:160
-#: templates//inventory.tpl:269 templates//inventory.tpl:533
-#: templates//entry.tpl:30 templates//entry.tpl:33 templates//entry.tpl:35
+#: templates//inventory.tpl:30 templates//inventory.tpl:167
+#: templates//inventory.tpl:282 templates//inventory.tpl:553
+#: templates//entry.tpl:44 templates//entry.tpl:47 templates//entry.tpl:49
 #: templates//php_language_extract.tpl:111
 msgid "Bezeichnung"
 msgstr "Opis"
 
-#: templates//inventory.tpl:32 templates//inventory.tpl:162
-#: templates//inventory.tpl:271 templates//entry.tpl:72 templates//entry.tpl:76
-#: templates//entry.tpl:78 templates//php_language_extract.tpl:110
+#: templates//inventory.tpl:32 templates//inventory.tpl:169
+#: templates//inventory.tpl:284 templates//entry.tpl:86 templates//entry.tpl:90
+#: templates//entry.tpl:92 templates//php_language_extract.tpl:110
 msgid "Bemerkung"
 msgstr "Komentarz"
 
-#: templates//inventory.tpl:34 templates//inventory.tpl:164
-#: templates//inventory.tpl:273 templates//php_language_extract.tpl:116
+#: templates//inventory.tpl:34 templates//inventory.tpl:171
+#: templates//inventory.tpl:286 templates//php_language_extract.tpl:116
 msgid "Hinzugefügt"
 msgstr "Dodano"
 
-#: templates//inventory.tpl:37 templates//inventory.tpl:106
-#: templates//inventory.tpl:167 templates//inventory.tpl:230
-#: templates//inventory.tpl:276 templates//inventory.tpl:339
+#: templates//inventory.tpl:37 templates//inventory.tpl:113
+#: templates//inventory.tpl:174 templates//inventory.tpl:243
+#: templates//inventory.tpl:289 templates//inventory.tpl:360
 msgid "Zuweisen"
 msgstr "Przydziel"
 
-#: templates//inventory.tpl:60 templates//inventory.tpl:190
-#: templates//inventory.tpl:299
+#: templates//inventory.tpl:60 templates//inventory.tpl:197
+#: templates//inventory.tpl:312
 msgid "Position löschen"
 msgstr "Usuń pozycję"
 
-#: templates//inventory.tpl:72 templates//inventory.tpl:201
-#: templates//inventory.tpl:310
+#: templates//inventory.tpl:79 templates//inventory.tpl:214
+#: templates//inventory.tpl:331
 msgid "Gegenstand hat Bilder"
 msgstr "Pozycja zawiera zdjęcia"
 
-#: templates//inventory.tpl:89 templates//inventory.tpl:214
-#: templates//inventory.tpl:323
+#: templates//inventory.tpl:96 templates//inventory.tpl:227
+#: templates//inventory.tpl:344
 msgid "Schnelle Bearbeitung speichern"
 msgstr "Zapis szybkiej edycji"
 
-#: templates//inventory.tpl:91 templates//inventory.tpl:216
-#: templates//inventory.tpl:325
+#: templates//inventory.tpl:98 templates//inventory.tpl:229
+#: templates//inventory.tpl:346
 msgid "Ausführliche Bearbeitung"
 msgstr "Pełna edycja"
 
-#: templates//inventory.tpl:121 templates//inventory.tpl:134
-#: templates//inventory.tpl:245 templates//inventory.tpl:354
+#: templates//inventory.tpl:128 templates//inventory.tpl:141
+#: templates//inventory.tpl:258 templates//inventory.tpl:375
 msgid "Keine Gegenstände gefunden"
 msgstr "Nie znaleziono pozycji"
 
-#: templates//inventory.tpl:412
+#: templates//inventory.tpl:433
 msgid ""
 "Von diesem Artikel sind mehrere Stück am Lagerplatz. Wie viele sollen zum "
 "neuen Lagerort \"`#LABEL#`\" transferiert werden?"
@@ -495,19 +495,19 @@ msgstr ""
 "W lokalizacji magazynowej znajduje się kilka takich elementów. Ile z nich "
 "należy przenieść do nowej lokalizacji magazynowej \"`#LABEL#`\" ?"
 
-#: templates//inventory.tpl:484
+#: templates//inventory.tpl:507
 msgid "Lagerplatz wirklich entfernen?"
 msgstr "Czy na pewno chcesz usunąć powierzchnię magazynową?"
 
-#: templates//inventory.tpl:484
+#: templates//inventory.tpl:507
 msgid "Position wirklich entfernen?"
 msgstr "Czy na pewno chcesz usunąć pozycję?"
 
-#: templates//inventory.tpl:618
+#: templates//inventory.tpl:638
 msgid "Die Bezeichnung kann nicht leer sein."
 msgstr "Etykieta nie może być pusta."
 
-#: templates//inventory.tpl:628
+#: templates//inventory.tpl:651
 msgid ""
 "Es trat ein Fehler bei dem Speichern der Inhalte auf. Die Browser Entwickler-"
 "Konsole enthält Details."
@@ -515,15 +515,15 @@ msgstr ""
 "Błąd podczas zapisu danych. Konsola deweloperska przeglądarki zawiera "
 "szczegóły tego błędu."
 
-#: templates//inventory.tpl:649 templates//php_language_extract.tpl:89
+#: templates//inventory.tpl:672 templates//php_language_extract.tpl:89
 msgid "Der Eintrag wurde erfolgreich aktualisiert."
 msgstr "Wpis został pomyślnie zaktualizowany."
 
-#: templates//inventory.tpl:651
+#: templates//inventory.tpl:674
 msgid "Die Anzahl darf nur gesamte Einheiten umfassen."
 msgstr "Ilość musi być wpisana w pełnych jednostkach."
 
-#: templates//inventory.tpl:654
+#: templates//inventory.tpl:677
 msgid ""
 "Bei dem Versuch zu speichern trat ein Fehler auf. Die Browser Entwickler-"
 "Konsole enthält Details."
@@ -531,7 +531,7 @@ msgstr ""
 "Wystąpił błąd przy próbie zapisu. Konsola deweloperska przeglądarki zawiera "
 "szczegóły tego błędu."
 
-#: templates//inventory.tpl:789
+#: templates//inventory.tpl:812
 msgid "Aufklappen"
 msgstr "Rozszerz"
 
@@ -619,7 +619,7 @@ msgstr "Instalacja / Aktualizacja bazy danych"
 msgid "Erneut prüfen"
 msgstr "Sprawdź ponownie"
 
-#: templates//entry.tpl:1 templates//entry.tpl:243 templates//nav.tpl:18
+#: templates//entry.tpl:1 templates//entry.tpl:254 templates//nav.tpl:18
 #: templates//nav.tpl:20 templates//settings.tpl:120
 #: templates//php_language_extract.tpl:91
 msgid "Eintragen"
@@ -629,74 +629,90 @@ msgstr "Wpisy"
 msgid "in der Datenbank aktualisiert."
 msgstr "zaktualizowano w bazie danych."
 
-#: templates//entry.tpl:20
+#: templates//entry.tpl:21
+msgid "Gegenstand eingescheckt"
+msgstr "Przedmiot został zarejestrowany"
+
+#: templates//entry.tpl:24
+msgid "Gegenstand ausgescheckt"
+msgstr "Przedmiot został sprawdzony"
+
+#: templates//entry.tpl:27
+msgid "Fehler bei Check in / Check out"
+msgstr "Błąd podczas zameldowania/wymeldowania"
+
+#: templates//entry.tpl:34
 msgid "Eintrag zur Bearbeitung:"
 msgstr "Wpis do edycji:"
 
-#: templates//entry.tpl:33 templates//entry.tpl:35
+#: templates//entry.tpl:47 templates//entry.tpl:49
 msgid "Bezeichnung oder Name"
 msgstr "Opis lub nazwa"
 
-#: templates//entry.tpl:46 templates//entry.tpl:48 templates//entry.tpl:64
-#: templates//entry.tpl:66 templates//php_language_extract.tpl:118
+#: templates//entry.tpl:60 templates//entry.tpl:62 templates//entry.tpl:78
+#: templates//entry.tpl:80 templates//php_language_extract.tpl:118
 msgid "Lagerplatz"
 msgstr "Powierzchnia do magazynowania"
 
-#: templates//entry.tpl:104 templates//entry.tpl:106
+#: templates//entry.tpl:118 templates//entry.tpl:120
 msgid "Netzwerk/Hardware"
 msgstr "Sieć/Oprogramowanie"
 
-#: templates//entry.tpl:117 templates//entry.tpl:120 templates//entry.tpl:135
-#: templates//entry.tpl:137 templates//php_language_extract.tpl:63
+#: templates//entry.tpl:131 templates//entry.tpl:134 templates//entry.tpl:149
+#: templates//entry.tpl:151 templates//php_language_extract.tpl:63
 msgid "Unterkategorie"
 msgstr "Podkategoria"
 
-#: templates//entry.tpl:135 templates//entry.tpl:137
+#: templates//entry.tpl:149 templates//entry.tpl:151
 msgid "Router,wlan,fritzBox"
 msgstr "Router,WiFi,FritzBox"
 
-#: templates//entry.tpl:154
+#: templates//entry.tpl:168
 msgid "Seriennummer"
 msgstr "Numer seryjny"
 
-#: templates//entry.tpl:157 templates//entry.tpl:159
+#: templates//entry.tpl:171 templates//entry.tpl:173
 #: templates//php_language_extract.tpl:123
 msgid "Seriennummer/Artikelnummer"
 msgstr "Numer seryjny/Numer produktu"
 
-#: templates//entry.tpl:168 templates//entry.tpl:173
+#: templates//entry.tpl:181
 msgid "QR-Code:"
 msgstr "Kod QR:"
 
-#: templates//entry.tpl:174
+#: templates//entry.tpl:185
 msgid "Der verknüpfte QR-Code Wert ist nicht gesetzt."
 msgstr "Wartość powiązanego kodu QR nie została ustawiona."
 
-#: templates//entry.tpl:235 templates//entry.tpl:250
+#: templates//entry.tpl:246 templates//entry.tpl:261
 msgid "Bilder des Gegenstandes"
 msgstr "Zdjęcie przedmiotu"
 
-#: templates//entry.tpl:236 templates//entry.tpl:252
+#: templates//entry.tpl:247 templates//entry.tpl:263
 msgid "Bild Upload"
 msgstr "Załadować zdjęcia"
 
-#: templates//entry.tpl:241 templates//settings.tpl:118
+#: templates//entry.tpl:252 templates//settings.tpl:118
 msgid "Überschreiben"
 msgstr "Nadpisać"
 
-#: templates//entry.tpl:254
+#: templates//entry.tpl:265
 msgid "Bilder hochladen"
 msgstr "Załadować zdjęcie"
 
-#: templates//entry.tpl:262
+#: templates//entry.tpl:275
 msgid "Bild entfernen"
 msgstr "Usunąć zdjęcie"
 
-#: templates//entry.tpl:276
+#: templates//entry.tpl:286
+msgid "Bild als Standard verwenden"
+msgstr "Użyj obrazu jako domyślnego"
+
+#: templates//entry.tpl:300
 msgid "Bild wirklich entfernen?"
 msgstr "Na pewno usunąć zdjęcie?"
 
-#: templates//entry.tpl:383 templates//entry.tpl:393 templates//entry.tpl:403
+#: templates//entry.tpl:455 templates//entry.tpl:465 templates//entry.tpl:475
 msgid "Fehler"
 msgstr "Błąd"
 
