@@ -163,17 +163,14 @@
                 <div class="customFieldWrapper">
                     {foreach $customFields as $field}
                         {if $field.dataType === '8'}
+                            <details class="customFieldTitle">
+                            <summary>{t}QR-Code:{/t} {$field.label}</summary>
                             {if isset($field['qrValue'])}
-                                <details class="customFieldTitle">
-                                <summary>{t}QR-Code:{/t} {$field.label}</summary>
-                                <div class="input-group mb-3 customFields qrCodeField" data-qrvalue="{$field['qrValue']}"></div>
-                                </details>
+                               <div class="input-group mb-3 customFields qrCodeField" data-qrvalue="{$field['qrValue']}"></div>
                             {else if empty($field['qrValue'])}
-                                <details class="customFieldTitle">
-                                    <summary>{t}QR-Code:{/t} {$field.label}</summary>
-                                    <div class="input-group mb-3 customFields qrCodeField empty"><span>{t}Der verknüpfte QR-Code Wert ist nicht gesetzt.{/t}</span></div>
-                                </details>
+                                <div class="input-group mb-3 customFields qrCodeField empty"><span>{t}Der verknüpfte QR-Code Wert ist nicht gesetzt.{/t}</span></div>
                             {/if}
+                            </details>
                             {continue}
                         {else if $field.defaultVisible !== '0' && $field.visibleIn === ';-1;'}
                             <span class="customFieldTitle">{$field.label}</span>
