@@ -75,9 +75,9 @@
                     </div>
 
                 {if $isEdit && $item.storageid != 0}
-                    <input type="text" name="storage" id="storage" maxlength="64" class="form-control" placeholder="{t}Lagerplatz{/t}" required="required" autocomplete="off" value="{$currentStorage.label}">
+                    <input type="text" name="storage" id="storage" maxlength="64" class="form-control" placeholder="{t}Lagerplatz{/t}" autocomplete="off" value="{$currentStorage.label}">
                 {else}
-                    <input type="text" name="storage" id="storage" maxlength="64" class="form-control" placeholder="{t}Lagerplatz{/t}" required="required" autocomplete="off">
+                    <input type="text" name="storage" id="storage" maxlength="64" class="form-control" placeholder="{t}Lagerplatz{/t}" autocomplete="off">
                 {/if}
                 </div>
 
@@ -175,82 +175,84 @@
                 </div>
 
                 <div class="customFieldWrapper">
-                    {foreach $customFields as $field}
-                        {if $field.dataType === '8'}
-                            <details class="customFieldTitle">
-                            {if isset($field.id) && $field.id == '4'}
-                                {if isset($item['checkedin'])}
-                                    {if $item['checkedin'] == '0'}
-                                        <summary>{t}QR-Code:{/t} {$field.label}: {t}Gegenstand eingescheckt{/t} [<a href="{$field['qrValue']}">{t}Check out{/t}</a>]</summary>
-                                    {else if $item['checkedin'] == '1'}
-                                        <summary>{t}QR-Code:{/t} {$field.label}: {t}Gegenstand ausgescheckt{/t} [<a href="{$field['qrValue']}">{t}Check in{/t}</a>]</summary>
+                    {if isset($item.id)}
+                        {foreach $customFields as $field}
+                            {if $field.dataType === '8'}
+                                <details class="customFieldTitle">
+                                {if isset($field.id) && $field.id == '4'}
+                                    {if isset($item['checkedin'])}
+                                        {if $item['checkedin'] == '0'}
+                                            <summary>{t}QR-Code:{/t} {$field.label}: {t}Gegenstand eingescheckt{/t} [<a href="{$field['qrValue']}">{t}Check out{/t}</a>]</summary>
+                                        {else if $item['checkedin'] == '1'}
+                                            <summary>{t}QR-Code:{/t} {$field.label}: {t}Gegenstand ausgescheckt{/t} [<a href="{$field['qrValue']}">{t}Check in{/t}</a>]</summary>
+                                        {/if}
+                                        <div class="input-group mb-3 customFields qrCodeField" data-qrvalue="{$field['qrValue']}"></div>
                                     {/if}
-                                    <div class="input-group mb-3 customFields qrCodeField" data-qrvalue="{$field['qrValue']}"></div>
+                                {else if isset($field['qrValue'])}
+                                    <summary>{t}QR-Code:{/t} {$field.label}</summary>
+                                <div class="input-group mb-3 customFields qrCodeField" data-qrvalue="{$field['qrValue']}"></div>
+                                {else if empty($field['qrValue'])}
+                                    <summary>{t}QR-Code:{/t} {$field.label}</summary>
+                                    <div class="input-group mb-3 customFields qrCodeField empty"><span>{t}Der verknüpfte QR-Code Wert ist nicht gesetzt.{/t}</span></div>
                                 {/if}
-                            {else if isset($field['qrValue'])}
-                                <summary>{t}QR-Code:{/t} {$field.label}</summary>
-                               <div class="input-group mb-3 customFields qrCodeField" data-qrvalue="{$field['qrValue']}"></div>
-                            {else if empty($field['qrValue'])}
-                                <summary>{t}QR-Code:{/t} {$field.label}</summary>
-                                <div class="input-group mb-3 customFields qrCodeField empty"><span>{t}Der verknüpfte QR-Code Wert ist nicht gesetzt.{/t}</span></div>
-                            {/if}
-                            </details>
-                            {continue}
-                        {else if $field.defaultVisible !== '0' && $field.visibleIn === ';-1;'}
-                            <span class="customFieldTitle">{$field.label}</span>
-                            {$existingData = null}
-                            {foreach $customData as $customField}
-                                {if $customField['fieldId'] === $field.id}
-                                    {$selectType = $dataFieldsByKey[$field.dataType]}
-                                    {$existingData = $customField[$selectType]}
-                                    {break}
-                                {/if}
-                            {/foreach}
+                                </details>
+                                {continue}
+                            {else if $field.defaultVisible !== '0' && $field.visibleIn === ';-1;'}
+                                <span class="customFieldTitle">{$field.label}</span>
+                                {$existingData = null}
+                                {foreach $customData as $customField}
+                                    {if $customField['fieldId'] === $field.id}
+                                        {$selectType = $dataFieldsByKey[$field.dataType]}
+                                        {$existingData = $customField[$selectType]}
+                                        {break}
+                                    {/if}
+                                {/foreach}
 
-                            <div class="input-group mb-3 customFields" data-catvisible="{$field.visibleIn}">
-                                {$readonly = ''}
-                                {if $field.dataType === '8'}
-                                    {$readonly = ' readonly="readonly"'}
-                                    <h5>{$field|@var_dump}</h5>
-                                    <input type="text" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}" value="{$field.default}">
-                                    {continue}
-                                {else if $field.dataType === '6' || $field.dataType === '7'}
-                                    {$readonly = ' readonly="readonly"'}
-                                    <div class="dropdown">
-                                        <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="cf{$field.id}" data-default="{$field.default}" data-nosettitle="true" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <div class="input-group mb-3 customFields" data-catvisible="{$field.visibleIn}">
+                                    {$readonly = ''}
+                                    {if $field.dataType === '8'}
+                                        {$readonly = ' readonly="readonly"'}
+                                        <h5>{$field|@var_dump}</h5>
+                                        <input type="text" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}" value="{$field.default}">
+                                        {continue}
+                                    {else if $field.dataType === '6' || $field.dataType === '7'}
+                                        {$readonly = ' readonly="readonly"'}
+                                        <div class="dropdown">
+                                            <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="cf{$field.id}" data-default="{$field.default}" data-nosettitle="true" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-                                        <option value="-1" data-default="{$field.default}">{$field.label}</option>
-                                        {foreach explode(';', rtrim($field.fieldValues, ';')) as $value}
-                                            {if $value === $field.default}
-                                                <option value="{$value}">{$value}</option>'
-                                            {else if $value === $existingData}
-                                                <option value="{$value}" selected="selected">{$value}</option>'
-                                            {else}
-                                                <option value="{$value}">{$value}</option>'
-                                            {/if}
-                                        {/foreach}
-                                        </select>
-                                    </div>
-                                {else}
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon-{$field.id}">{$field.label}</span>
-                                    </div>
-                                {/if}
+                                            <option value="-1" data-default="{$field.default}">{$field.label}</option>
+                                            {foreach explode(';', rtrim($field.fieldValues, ';')) as $value}
+                                                {if $value === $field.default}
+                                                    <option value="{$value}">{$value}</option>'
+                                                {else if $value === $existingData}
+                                                    <option value="{$value}" selected="selected">{$value}</option>'
+                                                {else}
+                                                    <option value="{$value}">{$value}</option>'
+                                                {/if}
+                                            {/foreach}
+                                            </select>
+                                        </div>
+                                    {else}
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon-{$field.id}">{$field.label}</span>
+                                        </div>
+                                    {/if}
 
-                                {if !$isEdit}
-                                    {if empty($field.default)}
-                                        <input type="text" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}">
+                                    {if !$isEdit}
+                                        {if empty($field.default)}
+                                            <input type="text" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}">
+                                        {else}
+                                            <input type="text" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}" value="{$field.default}">
+                                        {/if}
+                                    {else if !empty($existingData)}
+                                        <input type="text" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}"  value="{$existingData}">
                                     {else}
                                         <input type="text" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}" value="{$field.default}">
                                     {/if}
-                                {else if !empty($existingData)}
-                                    <input type="text" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}"  value="{$existingData}">
-                                {else}
-                                    <input type="text" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}" value="{$field.default}">
-                                {/if}
-                            </div>
-                        {/if}
-                    {/foreach}
+                                </div>
+                            {/if}
+                        {/foreach}
+                    {/if}
                 </div>
                 {if !$isEdit}
                     <h4 class="clearfix">{t}Bilder des Gegenstandes{/t}</h4>
@@ -292,7 +294,6 @@
                             {$isFirst = false}
                             {$className="fas fa-solid fa-star active"}
                         {/if}
-
                         <a class="setCoverImage" title="{t}Bild als Standard verwenden{/t}" data-imageid="{$image['id']}" href="#"><i class="{$className}"></i></a>
                     </div>
                     {/foreach}
@@ -418,10 +419,11 @@
                     }
 
                     imgCover.addEventListener('readystatechange', handleDeleteRequest)
-
                     let imageId = evt.target.parentNode.dataset['imageid']
+                    {/literal}{if isset($item.id)}{literal}
                     imgCover.open("GET", "{/literal}{$urlBase}{literal}/entry{/literal}{$urlPostFix}{literal}?setcoverimage=" + imageId + '&targetitem=' + {/literal}{$item.id}{literal});
                     imgCover.send()
+                    {/literal}{/if}{literal}
                 })
             }
 
@@ -576,6 +578,12 @@
                     })
                 }
             }
+
+        window.addEventListener('beforeunload', function (evt) {
+            if (!document.querySelector('form.inputForm').reportValidity()) {
+                evt.preventDefault()
+            }
+        })
         </script>
 {/literal}
 {include file="bodyend.tpl"}

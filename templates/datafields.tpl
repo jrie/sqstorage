@@ -145,6 +145,7 @@
                 document.querySelector('.example').value = dataExample
                 let fieldValues = document.querySelector('.fieldValues')
                 let qrValues = document.querySelector('[name="qrVisible"]')
+                let defaultValue = document.querySelector('[name="fieldDefault"]')
 
                 let fieldSelection = document.querySelector('#fieldSelection')
                 let qrSelection = document.querySelector('#qrSelection')
@@ -153,11 +154,14 @@
                     qrValues.setAttribute('required', 'required')
                     qrValues.removeAttribute('readonly')
                     qrSelection.classList.remove('hidden')
+                    defaultValue.setAttribute('readonly', 'readonly')
                 } else {
                     qrValues.value = ''
                     qrValues.setAttribute('readonly', 'readonly')
                     qrValues.removeAttribute('required')
                     qrSelection.classList.add('hidden')
+                    defaultValue.classList.remove('hidden')
+                    defaultValue.removeAttribute('readonly')
                 }
 
                 if (targetValue.indexOf('selection') !== -1) {
