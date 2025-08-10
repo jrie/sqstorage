@@ -524,7 +524,6 @@
 
             const targetId = parseInt(evt.target.parentNode.dataset['id'])
             let inlineEditSaver = evt.target.parentNode.parentNode.parentNode.querySelector('.save-inline-edit[data-id="' + targetId + '"]')
-            const imgDisplay = evt.target.parentNode.parentNode.parentNode.querySelector('img[data-id="' + targetId + '"]').parentNode.children[0]
 
             if (inlineEditSaver !== null) {
                 inlineEditSaver.classList.add('inactive')
@@ -602,7 +601,7 @@
                 }
             } else {
                 let targetRowEdits = evt.target.parentNode.parentNode.parentNode.querySelectorAll('li[data-id="' + targetId + '"] input.quick-edit')
-                evt.target.parentNode.parentNode.parentNode.querySelector('img[data-id="' + targetId + '"]').parentNode.classList.remove('hidden')
+
                 for (let field of targetRowEdits) {
                     field.parentNode.removeChild(field)
                 }
