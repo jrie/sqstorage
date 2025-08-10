@@ -181,9 +181,9 @@
                             {if isset($field.id) && $field.id == '4'}
                                 {if isset($item['checkedin'])}
                                     {if $item['checkedin'] == '0'}
-                                        <summary>{t}QR-Code:{/t} {$field.label}: {t}Gegenstand eingescheckt{/t}</summary>
+                                        <summary>{t}QR-Code:{/t} {$field.label}: {t}Gegenstand eingescheckt{/t} [<a href="{$field['qrValue']}">{t}Check out{/t}</a>]</summary>
                                     {else if $item['checkedin'] == '1'}
-                                        <summary>{t}QR-Code:{/t} {$field.label}: {t}Gegenstand ausgescheckt{/t}</summary>
+                                        <summary>{t}QR-Code:{/t} {$field.label}: {t}Gegenstand ausgescheckt{/t} [<a href="{$field['qrValue']}">{t}Check in{/t}</a>]</summary>
                                     {/if}
                                     <div class="input-group mb-3 customFields qrCodeField" data-qrvalue="{$field['qrValue']}"></div>
                                 {/if}
