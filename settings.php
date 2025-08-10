@@ -122,7 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'mail') {
       }
     }
     DB::commit();
-    header('Location: ' . $urlBase . '/settings');
+    header('Location: ' . $urlBase . '/settings' . $urlPostFix);
   } catch (Exception $e) {
     $error = $e->getMessage();
     if (strncmp($error, "Duplicate", 9) === 0) $error = sprintf(gettext('Der Benutzer "%s" existiert bereits.'), $user['username']);
@@ -147,7 +147,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' || !empty($error) || ($_SERVER['REQUEST_
       if ($isEdit) {
         $user = DB::queryFirstRow('SELECT u.id, u.username, u.mailaddress, u.api_access, g.name as usergroupname, g.id as usergroupid FROM users u LEFT JOIN users_groups ugs ON(ugs.userid = u.id) LEFT JOIN usergroups g ON(g.id = ugs.usergroupid) WHERE u.id = %i LIMIT 1', $_GET['editUser']);
         if ($user == null) {
-          header('Location: '. $urlBase . '/index');
+          header('Location: '. $urlBase . '/index' . $urlPostFix);
           die();
         }
       } else {
@@ -158,7 +158,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' || !empty($error) || ($_SERVER['REQUEST_
     } else {
       $user = DB::queryFirstRow('SELECT u.id, u.username, u.mailaddress, u.api_access, g.name as usergroupname, g.id as usergroupid FROM users u LEFT JOIN users_groups ugs ON(ugs.userid = u.id) LEFT JOIN usergroups g ON(g.id = ugs.usergroupid) WHERE u.id = %i LIMIT 1', $_GET['editUser']);
       if ($user == null) {
-        header('Location: '. $urlBase . '/index');
+        header('Location: '. $urlBase . '/index' . $urlPostFix);
         die();
       }
     }
@@ -169,7 +169,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' || !empty($error) || ($_SERVER['REQUEST_
         $error = gettext('Fehler: Der letzte Administrator kann nicht gelöscht werden!');
       } else {
         USERS::DeleteUser($_GET['removeUser']);
-        header('Location: '. $urlBase . '/settings');
+        header('Location: '. $urlBase . '/settings' . $urlPostFix);
         die();
       }
     }

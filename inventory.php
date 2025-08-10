@@ -210,7 +210,7 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
     $storage = DB::queryFirstRow('SELECT id, amount FROM storages WHERE id=%d', $storeId);
     DB::update('storages', array('amount' => (int)$storage['amount'] + (int)$item['amount']), 'id=%d', $storage['id']);
     DB::update('items', array('storageid' => $storage['id']), 'id=%d', $item['id']);
-    header("location: " . $urlBase. "/inventory");
+    header("location: " . $urlBase. "/inventory" . $urlPostFix );
     die();
   } else {
     if ($storeId != null) {
@@ -228,7 +228,7 @@ if (isset($_GET['storageid']) && !empty($_GET['storageid']) && !isset($_GET['ite
 
     DB::update('items', array('amount' => (int)$item['amount'] - $setamount), 'id=%d', $item['id']);
 
-    header("location: " . $urlBase. "/inventory");
+    header("location: " . $urlBase. "/inventory" . $urlPostFix);
     die();
   }
 
