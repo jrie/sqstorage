@@ -13,16 +13,16 @@ class ComposerStaticInit2039c1f14e7d9aca2ef9bc2c7837b7ae
     );
 
     public static $prefixLengthsPsr4 = array (
-        'T' => 
+        'T' =>
         array (
             'Tqdev\\PhpCrudApi\\' => 17,
         ),
-        'P' => 
+        'P' =>
         array (
             'Psr\\Http\\Server\\' => 16,
             'Psr\\Http\\Message\\' => 17,
         ),
-        'N' => 
+        'N' =>
         array (
             'Nyholm\\Psr7\\' => 12,
             'Nyholm\\Psr7Server\\' => 18,
@@ -30,25 +30,25 @@ class ComposerStaticInit2039c1f14e7d9aca2ef9bc2c7837b7ae
     );
 
     public static $prefixDirsPsr4 = array (
-        'Tqdev\\PhpCrudApi\\' => 
+        'Tqdev\\PhpCrudApi\\' =>
         array (
             0 => __DIR__ . '/..' . '/mevdschee/php-crud-api/src/Tqdev/PhpCrudApi',
         ),
-        'Psr\\Http\\Server\\' => 
+        'Psr\\Http\\Server\\' =>
         array (
             0 => __DIR__ . '/..' . '/psr/http-server-middleware/src',
             1 => __DIR__ . '/..' . '/psr/http-server-handler/src',
         ),
-        'Psr\\Http\\Message\\' => 
+        'Psr\\Http\\Message\\' =>
         array (
             0 => __DIR__ . '/..' . '/psr/http-factory/src',
             1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
-        'Nyholm\\Psr7\\' => 
+        'Nyholm\\Psr7\\' =>
         array (
             0 => __DIR__ . '/..' . '/nyholm/psr7/src',
         ),
-        'Nyholm\\Psr7Server\\' => 
+        'Nyholm\\Psr7Server\\' =>
         array (
             0 => __DIR__ . '/..' . '/nyholm/psr7-server/src',
         ),

@@ -623,17 +623,17 @@
                 },
                 {
                         "name": "smarty/smarty",
-                        "version": "v4.5.5",
-                        "version_normalized": "4.5.5.0",
+                        "version": "v4.5.6",
+                        "version_normalized": "4.5.6.0",
                         "source": {
                                 "type": "git",
                                 "url": "https://github.com/smarty-php/smarty.git",
-                                "reference": "c4851c12e34ff80073ddeb7d98b059d57dea9de2"
+                                "reference": "a8d77c86660ca0562ec2fb781fbbda737fb7a62b"
                         },
                         "dist": {
                                 "type": "zip",
-                                "url": "https://api.github.com/repos/smarty-php/smarty/zipball/c4851c12e34ff80073ddeb7d98b059d57dea9de2",
-                                "reference": "c4851c12e34ff80073ddeb7d98b059d57dea9de2",
+                                "url": "https://api.github.com/repos/smarty-php/smarty/zipball/a8d77c86660ca0562ec2fb781fbbda737fb7a62b",
+                                "reference": "a8d77c86660ca0562ec2fb781fbbda737fb7a62b",
                                 "shasum": ""
                         },
                         "require": {
@@ -643,7 +643,7 @@
                                 "phpunit/phpunit": "^8.5 || ^7.5",
                                 "smarty/smarty-lexer": "^3.1"
                         },
-                        "time": "2024-11-21T22:06:22+00:00",
+                        "time": "2025-08-26T08:37:46+00:00",
                         "type": "library",
                         "extra": {
                                 "branch-alias": {
@@ -686,8 +686,14 @@
                         "support": {
                                 "forum": "https://github.com/smarty-php/smarty/discussions",
                                 "issues": "https://github.com/smarty-php/smarty/issues",
-                                "source": "https://github.com/smarty-php/smarty/tree/v4.5.5"
+                                "source": "https://github.com/smarty-php/smarty/tree/v4.5.6"
                         },
+                        "funding": [
+                                {
+                                        "url": "https://github.com/wisskid",
+                                        "type": "github"
+                                }
+                        ],
                         "install-path": "../smarty/smarty"
                 }
         ],
