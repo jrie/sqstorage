@@ -161,8 +161,7 @@ form.formInstall .input-group-text {
 }
 
 .list-group-item .btn {
-    height: 1.95em;
-    padding-top: .125rem;
+    padding-top: 0.25rem;
     font-size: .75rem
 }
 
