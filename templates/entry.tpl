@@ -29,6 +29,24 @@
                 </div>
             {/if}
 
+            {if isset($itemNewAmount)}
+                {if $itemNewAmount == 'failInc'}
+                    <div class="statusDisplay red" role="alert">
+                    <p>{t}Fehler bei Erhöhung der Einheiten für den Gegenstands{/t}</p>
+                {else if $itemNewAmount == 'failDec'}
+                    <div class="statusDisplay red" role="alert">
+                    <p>{t}Fehler bei Senkung der Einheiten des Gegenstands{/t}</p>
+                {else}
+                    <div class="statusDisplay green" role="alert">
+                    {if $itemNewAmountAction == 'inc'}
+                        <p>{t}Gegenstand um 1 Einheit erhöht{/t}</p>
+                    {else}
+                        <p>{t}Gegenstand um 1 Einheit gesenkt{/t}</p>
+                    {/if}
+                {/if}
+                </div>
+            {/if}
+
             {if $isEdit}
                 <div class="statusDisplay alert alert-danger" role="alert">
                 <h6>{t}Eintrag zur Bearbeitung:{/t} &quot;{$item.label}&quot;</h6>

@@ -80,5 +80,15 @@
             'id' => 3,
             'type' => 'base',
             'text' => gettext('Check in/check out')
+        ),
+        'increaseone' => array(
+            'id' => 4,
+            'type' => 'base',
+            'text' => gettext('Increase storage unit by one')
+        ),
+        'decreaseone' => array(
+            'id' => 5,
+            'type' => 'base',
+            'text' => gettext('Decrease storage unit by one')
         )
     ];

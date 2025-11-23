@@ -87,6 +87,42 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['setcoverimage']) && isse
   }
 
   $smarty->assign('checkedInStatus', $checkedInStatus);
+} else if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['incOne'])) {
+  $itemId = $_GET['incOne'];
+  DB::query('UPDATE `items` SET `amount` = `amount` + 1 WHERE id=%d', $itemId);
+  $targetData = [];
+
+  if (DB::affectedRows() == 1) {
+    $result = DB::queryFirstRow('SELECT `amount` FROM `items` WHERE id=%d', $itemId);
+    if (isset($result) && isset($result['amount'])) {
+      $itemNewAmount = $result['amount'];
+    }
+  } else {
+    $itemNewAmount = 'failInc';
+  }
+
+  $itemNewAmountAction = 'inc';
+
+  $smarty->assign('itemNewAmount', $itemNewAmount);
+  $smarty->assign('itemNewAmountAction', $itemNewAmountAction);
+} else if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['decOne'])) {
+  $itemId = $_GET['decOne'];
+  DB::query('UPDATE `items` SET `amount` = `amount` - 1 WHERE id=%d', $itemId);
+  $targetData = [];
+
+  if (DB::affectedRows() == 1) {
+    $result = DB::queryFirstRow('SELECT `amount` FROM `items` WHERE id=%d', $itemId);
+    if (isset($result) && isset($result['amount'])) {
+      $itemNewAmount = $result['amount'];
+    }
+  } else {
+    $itemNewAmount = 'failInc';
+  }
+
+  $itemNewAmountAction = 'dec';
+
+  $smarty->assign('itemNewAmount', $itemNewAmount);
+  $smarty->assign('itemNewAmountAction', $itemNewAmountAction);
 } else if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES) && count($_FILES) != 0 && isset($_POST['editItem'])) {
   if (!isset($_FILES['images'])) die();
   if (!isset($_POST['editItem'])) die();
@@ -360,10 +396,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['setcoverimage']) && isse
 }
 
 $imageList = null;
-if ((isset($_GET['editItem']) && !empty($_GET['editItem'])) || (isset($_POST['editItem']) && !empty($_POST['editItem'])) || (isset($_GET['checkin']) && !empty($_GET['checkin']))) {
+if ((isset($_GET['editItem']) && !empty($_GET['editItem'])) || (isset($_POST['editItem']) && !empty($_POST['editItem'])) || (isset($_GET['checkin']) && !empty($_GET['checkin'])) || (isset($_GET['incOne']) && !empty($_GET['incOne'])) || (isset($_GET['decOne']) && !empty($_GET['decOne'])) ) {
   if (isset($_GET['editItem'])) $itemId = (int)$_GET['editItem'];
   else if (isset($_POST['editItem'])) $itemId = (int)$_POST['editItem'];
   else if (isset($_GET['checkin'])) $itemId = (int)$_GET['checkin'];
+  else if (isset($_GET['decOne'])) $itemId = (int)$_GET['decOne'];
+  else if (isset($_GET['incOne'])) $itemId = (int)$_GET['incOne'];
 
   $item = DB::queryFirstRow('SELECT * FROM `items` WHERE `id`=%d', $itemId);
   if (isset($item)) {
@@ -453,6 +491,14 @@ if (isset($item) && !empty($item)) {
           case 3:
             $searchColumn = 'id';
             $prepend = $urlBase . '/entry' . $urlPostFix . '?checkin=';
+            break;
+          case 4:
+            $searchColumn = 'id';
+            $prepend = $urlBase . '/entry' . $urlPostFix . '?incOne=';
+            break;
+          case 5:
+            $searchColumn = 'id';
+            $prepend = $urlBase . '/entry' . $urlPostFix . '?decOne=';
             break;
           default:
             break;
