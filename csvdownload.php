@@ -123,7 +123,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 header('Content-Disposition: attachment;filename=csvdata.csv');
                 $output = fopen('php://output', 'w');
                 foreach ($data as $row) {
-                    fputcsv($output, $row);
+                    fputcsv($output, $row, ',', '"', '\\');
                 };
 
                 fclose($output);
