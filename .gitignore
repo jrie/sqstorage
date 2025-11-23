@@ -7,7 +7,5 @@ support/smarty_debug
 patch.diff
 support/smarty_force_compile
 workdir/*
-test.php
-inventory2.php
 support/installstate.txt
 .env
