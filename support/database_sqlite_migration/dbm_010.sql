@@ -1,0 +1,1 @@
+ALTER TABLE `items` ADD `checkedin` INTEGER NULL DEFAULT 0;
