@@ -1,7 +1,7 @@
 {include file="head.tpl" title="{t}Einstellungen{/t}"}
 {include file="nav.tpl" target="settings.php" request=$REQUEST}
 
-<div class="content">
+<div class="content settings">
     {if $updatecheck}
       {if $uptodate}
         <div class="alert alert-success" role="alert">
@@ -45,7 +45,7 @@
 
         {if $isEdit} <input type="hidden" value="{$user.id}" name="userUpdateId" />{/if}
 
-        <div class="input-group mb-3">
+        <div class="input-group">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">{t}Benutzername{/t}</span>
             </div>
@@ -57,7 +57,7 @@
             {/if}
         </div>
 
-        <div class="input-group mb-3">
+        <div class="input-group">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon7">{t}E-Mail{/t}</span>
             </div>
@@ -69,7 +69,7 @@
             {/if}
         </div>
 
-        <div class="input-group mb-3">
+        <div class="input-group">
             <div class="input-group-prepend">
                 <div class="dropdown">
                     <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="usergroupDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -94,7 +94,7 @@
             {/if}
         </div>
 
-        <div class="input-group mb-3">
+        <div class="input-group">
             <div class="input-group-prepend">
                 <div class="dropdown">
                     <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="userapiDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -152,17 +152,17 @@
                 <span class="list-span">{t}E-Mailserver-Einstellungen{/t}</span>
             </li>
             <li class="list-group-item">
-                <div class="input-group mb-3">
+                <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon7">{t}Absender{/t}</span>
                     </div>
                     <input type="email" name="senderAddress" maxlength="254" class="form-control" autocomplete="off" placeholder="email@example.com" aria-label="Absender" aria-describedby="basic-addon7" value="{$mailSettings.senderAddress}">
                 </div>
-                <div class="input-group mb-3">
+                <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon7">{t}E-Mailversand{/t}</span>
                     </div>
-                    <div class="form-check form-check-inline ml-3">
+                    <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="mail_enabled" id="mail_enabled_off" value="false" {if !$mailSettings.enabled}checked="checked" {/if}>
                         <label class="form-check-label" for="mail_enabled_off">{t}deaktivieren{/t}</label>
                     </div>
@@ -185,11 +185,11 @@
                 <span class="list-span">{t}Installation und Aktualisierung{/t}</span>
             </li>
             <li class="list-group-item">
-                <div class="input-group mb-3">
+                <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon7">{t}Installation{/t}</span>
                     </div>
-                    <div class="form-check form-check-inline ml-3">
+                    <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="allow_install" id="install_off" value="deny" {if $install_allowed}checked="checked" {/if}>
                         <label class="form-check-label" for="install_off">{t}verbieten{/t}</label>
                     </div>
@@ -211,14 +211,14 @@
                 <span class="list-span">{t}Standard-Startseite{/t}</span>
             </li>
             <li class="list-group-item">
-                <div class="input-group mb-3">
+                <div class="input-group">
                     <div class="input-group-prepend">
                         <div class="dropdown">
                             <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="startpageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <option value="-1" selected="selected">{t}Startseite{/t}</option>
+                            <option value="-1">{t}Startseite{/t}</option>
                                 {foreach $pages as $pagename => $pagelabel}
                                 {if $pagename == $defaultStartPage}
-                                    {$sel = "selected='selectd'"}
+                                    {$sel = "selected"}
                                 {else}
                                     {$sel = ""}
                                 {/if}
@@ -250,14 +250,14 @@
                 </small>
             </li>
             <li class="list-group-item">
-                <div class="input-group mb-3">
+                <div class="input-group">
                     <div class="input-group-prepend">
                         <div class="dropdown">
                             <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="branchDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <option value="-1" selected="selected">{t}Update-Quelle{/t}</option>
+                                <option value="-1">{t}Update-Quelle{/t}</option>
                                 {foreach $settingdata.updater.branches  as $branch => $branchlabel}
                                 {if $branch == $settingdata.updater.githubbranch}
-                                    {$sel = "selected='selected'"}
+                                    {$sel = "selected"}
                                     {$outputlabel = $branchlabel}
                                 {else}
                                     {$sel = ""}

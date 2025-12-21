@@ -3,37 +3,46 @@
 <style type="text/css">
     .introShortcuts {
         list-style: decimal;
-        line-height: 1.7em;
+        line-height: 1.8rem;
+        margin-bottom: 3rem;
     }
 
     a.headLink {
         font-weight: bold;
-        font-size: 1.5em;
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
     }
 
     .content {
-        margin: 3em 8em;
+        margin: 3rem 2rem;
     }
 
     .content>article {
-        margin-top: 4em;
+        margin-top: 1.6rem;
         margin-bottom: 0px;
-        max-width: 100ch;
+        max-width: 98ch;
+    }
+
+    .content>article > h6 {
+        margin-top: 2.2rem;
+        margin-bottom: 0.7rem;
     }
 
     .content>article p {
-        line-height: 1.4;
-        font-size: 1.2em;
+        line-height: 1.7rem;
+        font-size: 1.1rem;
     }
 
     .content>article>p>a {
         text-decoration: underline;
         font-weight: bold;
+        padding-top: 1rem;
     }
 
     .content>hr {
         margin: 0em;
-        margin-bottom: 3em;
+        margin-top: 1.3rem;
+        margin-bottom: 1rem;
     }
 
     .credits {

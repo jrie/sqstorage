@@ -19,118 +19,118 @@
             <h4 class="text-dark">
                 {if isset($itemstore.storage.label)}<a href="{$urlBase}/inventory{$urlPostFix}?storageid={$itemstore.storage.id}">{if isset($itemstore.storage.label)}{$itemstore.storage.label}{else}{t}Unsortiert{/t}{/if}</a>{else}{t}Unsortiert{/t}{/if}&nbsp;
                 {if $itemhasstorage}{if !$isGuest}{if isset($itemstore.storage.id)}<a title="{t}Schnelle Bearbeitung{/t}" onclick="changeSingleValue('storages','label',{$itemstore.storage.id},true);" href="javascript:void(0)"><i class="fas fa-edit fa-xs"></i></a>{/if}{/if}{/if}
-                <span class="small">({$itemstore.positionen} {if $itemstore.positionen == 1}{t}Position{/t}{else}{t}Positionen{/t}{/if}, {$itemstore.itemcount} {if $itemstore.itemcount == 1}{t}Gegenstand{/t}{else}{t}Gegenstände{/t}{/if})</span>
-                <a title="{t}Zuklappen{/t}" id="togglebtn_{$itemstore.storage.id}" onclick='toggletableview("{$itemstore.storage.id}");' href="javascript:void(0)">
-                    <i class="fa-solid fa-xs fa-minimize" id="toggleicon_{$itemstore.storage.id}"></i></a>
+                <a title="{t}Zuklappen{/t}" id="togglebtn_{$itemstore.storage.id}" onclick='toggletableview("{$itemstore.storage.id}");' href="javascript:void(0)"><i class="fa-solid fa-xs fa-minimize" id="toggleicon_{$itemstore.storage.id}"></i></a>
+                <span class="counts">({$itemstore.positionen} {if $itemstore.positionen == 1}{t}Position{/t}{else}{t}Positionen{/t}{/if}, {$itemstore.itemcount} {if $itemstore.itemcount == 1}{t}Gegenstand{/t}{else}{t}Gegenstände{/t}{/if})</span>
             </h4>
+            <div class="collapsestorage" id="itemlist_{$itemstore.storage.id}">
+                <ul class="list-group">
+                    <li class="alert alert-info">
+                        <span class="list-span header sortable" data-index="1" title="{t}Kategorien{/t}">{t}Kategorien{/t}</span>
+                        <span class="list-span header sortable" data-index="2" title="{t}Bezeichnung{/t}">{t}Bezeichnung{/t}</span>
+                        <span class="list-span header sortable" data-index="3" data-sort="number" title="{t}Anzahl{/t}">{t}Anzahl{/t}</span>
+                        <span class="list-span header sortable" data-index="4" title="{t}Bemerkung{/t}">{t}Bemerkung{/t}</span>
+                        <span class="list-span header sortable" data-index="5" title="{t}Unterkategorien{/t}">{t}Unterkategorien{/t}</span>
+                        <span class="list-span header sortable" data-index="6" data-sort="date" title="{t}Hinzugefügt{/t}">{t}Hinzugefügt{/t}</span>
+                        {if !$isGuest}
+                        <span class="list-span" title="{t}Aktionen{/t}">{t}Aktionen{/t}</span>
+                        <span class="list-span" title="{t}Zuweisen{/t}">{t}Zuweisen{/t}</span>
+                        {/if}
+                    </li>
 
-            <ul class="list-group collapsestorage" id="itemlist_{$itemstore.storage.id}">
-                <li class="alert alert-info">
-                    <span class="list-span header sortable" data-index="1" title="{t}Kategorien{/t}">{t}Kategorien{/t}</span>
-                    <span class="list-span header sortable" data-index="2" title="{t}Bezeichnung{/t}">{t}Bezeichnung{/t}</span>
-                    <span class="list-span header sortable" data-index="3" data-sort="number" title="{t}Anzahl{/t}">{t}Anzahl{/t}</span>
-                    <span class="list-span header sortable" data-index="4" title="{t}Bemerkung{/t}">{t}Bemerkung{/t}</span>
-                    <span class="list-span header sortable" data-index="5" title="{t}Unterkategorien{/t}">{t}Unterkategorien{/t}</span>
-                    <span class="list-span header sortable" data-index="6" data-sort="date" title="{t}Hinzugefügt{/t}">{t}Hinzugefügt{/t}</span>
-                    {if !$isGuest}
-                    <span class="list-span" title="{t}Aktionen{/t}">{t}Aktionen{/t}</span>
-                    <span class="list-span" title="{t}Zuweisen{/t}">{t}Zuweisen{/t}</span>
+                    {if isset($itemstore.items)}
+                    {foreach $itemstore.items as $item}
+
+                    {assign var="subCats" value=","|explode:$item.subcategories}
+                    {$subCategories=array()}
+                    {$subNames=array()}
+                    {foreach $subCats as $subCat}
+                    {if isset($subcategories.$subCat)}
+                    {$subCategories[] ="<a href='{$urlBase}/inventory{$urlPostFix}?subcategory={$subcategories.$subCat.id}'>{$subcategories.$subCat.name}</a>"}
+                    {$subNames[]=$subcategories.$subCat.name}
                     {/if}
-                </li>
+                    {/foreach}
 
-                {if isset($itemstore.items)}
-                {foreach $itemstore.items as $item}
+                    {assign var="implodedSubCats" value=", "|implode:$subCategories}
+                    {assign var="dateexploded" value=" "|explode:$item.date}
+                    {assign var="catid" value=$item.headcategory}
+                    {assign var="category" value=$categories.$catid}
+                    <li class="list-group-item" data-id="{$item.id}">
+                        {if !$isGuest}
+                        <button class="btn smallButton" title="{t}Position löschen{/t}" name="remove" data-name="{$item.label}" value="{$item.id}" type="submit"><i class="fas fa-times-circle"></i></button>
+                        {else}
+                        <div class="list-span"></div>
+                        {/if}
 
-                {assign var="subCats" value=","|explode:$item.subcategories}
-                {$subCategories=array()}
-                {$subNames=array()}
-                {foreach $subCats as $subCat}
-                {if isset($subcategories.$subCat)}
-                {$subCategories[] ="<a href='{$urlBase}/inventory{$urlPostFix}?subcategory={$subcategories.$subCat.id}'>{$subcategories.$subCat.name}</a>"}
-                {$subNames[]=$subcategories.$subCat.name}
+                        {if $catid != 0}
+                        <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" title="{$category.name}" class="list-span">{$category.name}</a>
+                        {else}
+                        <span title="{$category.name}" class="list-span">{$category.name}</span>
+                        {/if}
+
+                        <div class="list-span">
+                        {if !isset($item.coverimage) || empty($item.coverimage)}
+                            {$coverImage = $item.id}
+                            {$type = 'itemId'}
+                        {else}
+                            {$coverImage = $item.coverimage}
+                            {$type = 'id'}
+                        {/if}
+                            <span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i><img class="item-picture" data-id="{$coverImage}" data-type="{$type}" src="" onclick="displayFullImage('{$item.id}', '{$type}');return false;">{/if}
+                                {if !$isGuest}
+                                <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}">{$item.label}</a>
+                                {else}
+                                <span class="listing-label" title="{$item.label}">{$item.label}</span>
+                                {/if}
+                            </span>
+                        </div>
+
+
+                        <div class="list-span"><span class="listing-amount quick-edit">{$item.amount}</span></div>
+                        <div class="list-span"><span class="listing-comment quick-edit" title="{$item.comment}">{$item.comment}</span></div>
+
+                        <div class="list-span"><span class="listing-subcategories" title="{" , "|implode:$subNames}">{$implodedSubCats}</span></div>
+                        <div class="list-span"><span class="listing-dateadded" title="{$dateexploded.0}">{$dateexploded.0}</span></div>
+                        {if !$isGuest}
+                        <div class="list-span actions">
+                            <a tabindex="-1" href="#" class="save-inline-edit inactive" title="{t}Schnelle Bearbeitung speichern{/t}" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
+                            <a tabindex="-1" href="#" class="open-inline-edit" title="{t}Schnelle Bearbeitung{/t}" data-id="{$item.id}"><i class="fas fa-eraser"></i></a>
+                            <a title="{t}Ausführliche Bearbeitung{/t}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
+                        </div>
+
+                        <div class="dropdown">
+                            <select autocomplete="off" id="item_{$item.id}" class="btn dropdown-toggle switchStorage listing-switchstorage" data-itemamount="{$item.amount}" data-value="0" data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {$hasStorage = false}
+                                {foreach $storages as $storage}
+                                {if ($storage.id == $item.storageid)}
+                                {$hasStorage = true}
+                                <option selected="selected" value="-1">{$storage.label}</option>
+                                {break}
+                                {/if}
+                                {/foreach}
+
+                                {if !$hasStorage}
+                                <option selected="selected" value="-1">{t}Zuweisen{/t}</option>
+                                {/if}
+
+                                {foreach $storages as $storage}
+                                {if ($storage.id != $item.storageid)}
+                                <option value="{$storage.id}">{$storage.label}</option>
+                                {/if}
+                                {/foreach}
+                            </select>
+                        </div>
+                        {/if}
+                    </li>
+
+                    {/foreach}
+                    {else}
+                    <li class="list-group-item"><span>{t}Keine Gegenstände gefunden{/t}</span></li>
+                    {/if}
+                </ul>
+                {if !$isGuest && isset($itemstore.storage.id) && isset($itemstore.storage.label) }
+                    <button type="button" data-table="inventory" data-tableId="{$itemstore.storage.id}" data-name="inventory_{$itemstore.storage.label}" class="csvDownload btn btn-primary">{t}Als CSV herunterladen{/t}</button>
                 {/if}
-                {/foreach}
-
-                {assign var="implodedSubCats" value=", "|implode:$subCategories}
-                {assign var="dateexploded" value=" "|explode:$item.date}
-                {assign var="catid" value=$item.headcategory}
-                {assign var="category" value=$categories.$catid}
-                <li class="list-group-item" data-id="{$item.id}">
-                    {if !$isGuest}
-                    <button class="btn smallButton" title="{t}Position löschen{/t}" name="remove" data-name="{$item.label}" value="{$item.id}" type="submit"><i class="fas fa-times-circle"></i></button>
-                    {else}
-                    <div class="list-span"></div>
-                    {/if}
-
-                    {if $catid != 0}
-                    <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" title="{$category.name}" class="list-span">{$category.name}</a>
-                    {else}
-                    <span title="{$category.name}" class="list-span">{$category.name}</span>
-                    {/if}
-
-                    <div class="list-span">
-                    {if !isset($item.coverimage) || empty($item.coverimage)}
-                        {$coverImage = $item.id}
-                        {$type = 'itemId'}
-                    {else}
-                        {$coverImage = $item.coverimage}
-                        {$type = 'id'}
-                    {/if}
-                        <span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i><img class="item-picture" data-id="{$coverImage}" data-type="{$type}" src="" onclick="displayFullImage('{$item.id}', '{$type}');return false;">{/if}
-                            {if !$isGuest}
-                            <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}">{$item.label}</a>
-                            {else}
-                            <span class="listing-label" title="{$item.label}">{$item.label}</span>
-                            {/if}
-                        </span>
-                    </div>
-
-
-                    <div class="list-span"><span class="listing-amount quick-edit">{$item.amount}</span></div>
-                    <div class="list-span"><span class="listing-comment quick-edit" title="{$item.comment}">{$item.comment}</span></div>
-
-                    <div class="list-span"><span class="listing-subcategories" title="{" , "|implode:$subNames}">{$implodedSubCats}</span></div>
-                    <div class="list-span"><span class="listing-dateadded" title="{$dateexploded.0}">{$dateexploded.0}</span></div>
-                    {if !$isGuest}
-                    <div class="list-span actions">
-                        <a tabindex="-1" href="#" class="save-inline-edit inactive" title="{t}Schnelle Bearbeitung speichern{/t}" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
-                        <a tabindex="-1" href="#" class="open-inline-edit" title="{t}Schnelle Bearbeitung{/t}" data-id="{$item.id}"><i class="fas fa-eraser"></i></a>
-                        <a title="{t}Ausführliche Bearbeitung{/t}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
-                    </div>
-
-                    <div class="dropdown">
-                        <select autocomplete="off" id="item_{$item.id}" class="btn dropdown-toggle switchStorage listing-switchstorage" data-itemamount="{$item.amount}" data-value="0" data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {$hasStorage = false}
-                            {foreach $storages as $storage}
-                            {if ($storage.id == $item.storageid)}
-                            {$hasStorage = true}
-                            <option selected="selected" value="-1">{$storage.label}</option>
-                            {break}
-                            {/if}
-                            {/foreach}
-
-                            {if !$hasStorage}
-                            <option selected="selected" value="-1">{t}Zuweisen{/t}</option>
-                            {/if}
-
-                            {foreach $storages as $storage}
-                            {if ($storage.id != $item.storageid)}
-                            <option value="{$storage.id}">{$storage.label}</option>
-                            {/if}
-                            {/foreach}
-                        </select>
-                    </div>
-                    {/if}
-                </li>
-
-                {/foreach}
-                {else}
-                <li class="list-group-item"><span>{t}Keine Gegenstände gefunden{/t}</span></li>
-                {/if}
-            </ul>
-            {if !$isGuest && isset($itemstore.storage.id) && isset($itemstore.storage.label) }
-                <button type="button" data-table="inventory" data-tableId="{$itemstore.storage.id}" data-name="inventory_{$itemstore.storage.label}" class="csvDownload btn btn-primary">{t}Als CSV herunterladen{/t}</button>
-            {/if}
+            </div>
         </div>
         <div class="clearfix"></div>
         {else}
@@ -140,7 +140,6 @@
         {/foreach}
         {if !$hasdata}<li class="list-group-item"><span>{t}Keine Gegenstände gefunden{/t}</span></li>{/if}
     </form>
-
 </div>
 <!-------------------------------------------------------------------------------------------------------------->
 {elseif $parse.mode == "category"}
@@ -150,7 +149,7 @@
         {foreach $myitem as $itemstore}
         {if $parse.showemptystorages || $itemstore.itemcount > 0 }
         <hr>
-        <div class="storage-area">
+        <div class="storage-area categories">
             <h4 class="text-dark">
                 {if isset($itemstore.label)}
                 {if isset($itemstore.label)}{$itemstore.label}{else}{t}Unsortiert{/t}{/if}&nbsp;
@@ -224,11 +223,13 @@
         <div class="list-span"><span class="listing-subcategories" title="{" , "|implode:$subNames}">{$implodedSubCats}</span></div>
         <div class="list-span"><span class="listing-dateadded" title="{$dateexploded.0}">{$dateexploded.0}</span></div>
         {if !$isGuest}
-        <a tabindex="-1" href="#" class="save-inline-edit inactive" title="{t}Schnelle Bearbeitung speichern{/t}" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
-        <a tabindex="-1" href="#" class="open-inline-edit" title="{t}Schnelle Bearbeitung{/t}" data-id="{$item.id}"><i class="fas fa-eraser"></i></a>
-        <a title="{t}Ausführliche Bearbeitung{/t}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
+        <div class="list-span actions">
+            <a tabindex="-1" href="#" class="save-inline-edit inactive" title="{t}Schnelle Bearbeitung speichern{/t}" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
+            <a tabindex="-1" href="#" class="open-inline-edit" title="{t}Schnelle Bearbeitung{/t}" data-id="{$item.id}"><i class="fas fa-eraser"></i></a>
+            <a title="{t}Ausführliche Bearbeitung{/t}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
+        </div>
 
-        <div class="dropdown float-right">
+        <div class="dropdown">
             <select autocomplete="off" id="item_{$item.id}" class="btn dropdown-toggle switchStorage listing-switchstorage" data-itemamount="{$item.amount}" data-value="0" data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {$hasStorage = false}
                 {foreach $storages as $storage}
@@ -271,7 +272,7 @@
         {foreach $myitem as $itemstore}
         {if $parse.showemptystorages || $itemstore.itemcount > 0 }
         <hr>
-        <div class="storage-area">
+        <div class="storage-area categories">
             <h4 class="text-dark">
                 {if isset($itemstore.storage.label)}{$itemstore.storage.label}{else}{t}Unsortiert{/t}{/if}&nbsp;
                 <span class="small">({$itemstore.positionen} {if $itemstore.positionen == 1}{t}Position{/t}{else}{t}Positionen{/t}{/if}, {$itemstore.itemcount} {if $itemstore.itemcount == 1}{t}Gegenstand{/t}{else}{t}Gegenstände{/t}{/if})</span>
@@ -341,11 +342,13 @@
         <div class="list-span"><span class="listing-subcategories" title="{" , "|implode:$subNames}">{$implodedSubCats}</span></div>
         <div class="list-span"><span class="listing-dateadded" title="{$dateexploded.0}">{$dateexploded.0}</span></div>
         {if !$isGuest}
-        <a tabindex="-1" href="#" class="save-inline-edit inactive" title="{t}Schnelle Bearbeitung speichern{/t}" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
-        <a tabindex="-1" href="#" class="open-inline-edit" title="{t}Schnelle Bearbeitung{/t}" data-id="{$item.id}"><i class="fas fa-eraser"></i></a>
-        <a title="{t}Ausführliche Bearbeitung{/t}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
+        <div class="list-span actions">
+            <a tabindex="-1" href="#" class="save-inline-edit inactive" title="{t}Schnelle Bearbeitung speichern{/t}" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
+            <a tabindex="-1" href="#" class="open-inline-edit" title="{t}Schnelle Bearbeitung{/t}" data-id="{$item.id}"><i class="fas fa-eraser"></i></a>
+            <a title="{t}Ausführliche Bearbeitung{/t}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
+        </div>
 
-        <div class="dropdown float-right">
+        <div class="dropdown">
             <select autocomplete="off" id="item_{$item.id}" class="btn dropdown-toggle switchStorage listing-switchstorage" data-itemamount="{$item.amount}" data-value="0" data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {$hasStorage = false}
                 {foreach $storages as $storage}
@@ -833,7 +836,7 @@
             const itind = element.id.substring(9)
 
             element.dataset['originalheight'] = element.clientHeight
-            element.style = 'transition: all 300ms ease-out; height:' + element.clientHeight + 'px;'
+            element.style = 'transition: all 300ms ease; height:' + element.clientHeight + 'px;'
             element.addEventListener('transitionend', function(evt) {
                 window.setTimeout(function() {
                     if (evt.target.style.height === '0px') {

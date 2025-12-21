@@ -7,133 +7,132 @@
     <div id="errorForm" class="alert alert-danger hidden" role="alert">{t}Nicht gespeichert, es befinden sich Fehler in der Formular-Eingabe.{/t}</div>
 
     <div class="content">
-        {if $removedField}
-            <div class="statusDisplay green">
-                <p>{t}Feld entfernt:{/t} {$POST.fieldName} {if isset($removedData) && $removedData !== false}{$removedData}{/if}</p>
-            </div>
-        {elseif $resetEntries !== 0}
-            <div class="statusDisplay green">
-                <p>{t}Feld Typ geändert:{/t} {$POST.fieldName} {if $resetEntries !== 0}{$resetEntries}{/if}</p>
-            </div>
-        {else if $addedField !== ''}
-            <div class="statusDisplay green">
-                <p>{t}Zur Datenbank hinzugefügt:{/t} {$POST.fieldName}</p>
-            </div>
-        {/if}
-        <h5>{t}Auswahl{/t}</h5>
-        <form class="form-outline" name="fieldData" method="POST" action="{$urlBase}/datafields.php">
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">{t}Datentyp{/t}</span>
+        <div class="datafields">
+            {if $removedField}
+                <div class="statusDisplay green">
+                    <p>{t}Feld entfernt:{/t} {$POST.fieldName} {if isset($removedData) && $removedData !== false}{$removedData}{/if}</p>
                 </div>
-                <div class="dropdown float-left">
-                    <select name="dataType" autocomplete="off" required class="btn dropdown-toggle switchdatatype" type="button" tabindex="-1" aria-haspopup="true" aria-expanded="false">
-
-                        <option value="-1" selected="selected">{t}Datentyp{/t}</option>
-                        {foreach $fieldTypes as $type => $value}
-                            <option value="{$type}">{$value}</option>
-                        {/foreach}
-
-                    </select>
+            {elseif $resetEntries !== 0}
+                <div class="statusDisplay green">
+                    <p>{t}Feld Typ geändert:{/t} {$POST.fieldName} {if $resetEntries !== 0}{$resetEntries}{/if}</p>
                 </div>
-            </div>
-
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon2">{t}Beispielwerte{/t}</span>
+            {else if $addedField !== ''}
+                <div class="statusDisplay green">
+                    <p>{t}Zur Datenbank hinzugefügt:{/t} {$POST.fieldName}</p>
                 </div>
-                <input type="text" class="form-control example" autocomplete="off" readonly="readonly" placeholder="{t}Datentyp Beispielwerte{/t}" aria-label="{t}Beispielwerte{/t}" aria-describedby="basic-addon2">
-            </div>
+            {/if}
+            <h5>{t}Auswahl{/t}</h5>
+            <form class="form-outline" name="fieldData" method="POST" action="{$urlBase}/datafields.php">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">{t}Datentyp{/t}</span>
+                    </div>
+                    <div class="dropdown float-left">
+                        <select name="dataType" autocomplete="off" required class="btn dropdown-toggle switchdatatype" type="button" tabindex="-1" aria-haspopup="true" aria-expanded="false">
+
+                            <option value="-1" selected="selected">{t}Datentyp{/t}</option>
+                            {foreach $fieldTypes as $type => $value}
+                                <option value="{$type}">{$value}</option>
+                            {/foreach}
+
+                        </select>
+                    </div>
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon2">{t}Beispielwerte{/t}</span>
+                    </div>
+                    <input type="text" class="form-control example" autocomplete="off" readonly="readonly" placeholder="{t}Datentyp Beispielwerte{/t}" aria-label="{t}Beispielwerte{/t}" aria-describedby="basic-addon2">
+                </div>
+
+                <hr>
+                </hr>
+
+                <h5>{t}Details{/t}</h5>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon3">{t}Feldname{/t}</span>
+                    </div>
+                    <input type="text" name="fieldName" required maxlength="63" class="form-control" autocomplete="off" placeholder="{t}Feldname{/t}" aria-label="{t}Feldname{/t}" aria-describedby="basic-addon3">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon4">{t}Standardwert{/t}</span>
+                    </div>
+                    <input type="text" name="fieldDefault" data-check="fieldValues" maxlength="511" class="form-control" autocomplete="off" placeholder="{t}Standardwert: Keine Eingabe gleichsam leer{/t}" aria-label="{t}Standardwert{/t}" aria-describedby="basic-addon4">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon5">{t}Feld immer sichtbar?{/t}</span>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="defaultVisible" id="defaultVisible1" value="on" checked>
+                        <label class="form-check-label" for="defaultVisible1">{t}Ja{/t}</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="defaultVisible" id="defaultVisible2" value="off">
+                        <label class="form-check-label" for="defaultVisible2">{t}Nein{/t}</label>
+                    </div>
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon6">{t}Sichtbarkeit{/t}</span>
+                    </div>
+                    <div class="dropdown float-left">
+                        <select name="visibleInCategories" multiple="yes" autocomplete="off" required class="btn dropdown-toggle switchvisiblity" type="button" tabindex="-1" aria-haspopup="true" aria-expanded="false">
+                            <option value="-1" selected="selected">{t}Überall sichtbar{/t}</option>
+                            {foreach $headCategories as $headCategory}
+                            {if $headCategory['id'] != 0}
+                                <option value="{$headCategory['id']}">{$headCategory['name']}</option>
+                            {/if}
+                            {/foreach}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="input-group mb-3 hidden" id="qrSelection">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon7">{t}Basiert auf{/t}</span>
+                    </div>
+                    <div class="dropdown float-left">
+                        <select name="qrVisible" autocomplete="off" class="btn dropdown-toggle qrVisible" type="button" tabindex="-1" aria-haspopup="true" aria-expanded="false">
+                            <option value="-1" selected="selected">{t}Nicht zugeordnet{/t}</option>
+                            {foreach $qrBaseFields as $qrOption}
+                                <option value="{$qrOption['id']}">{$qrOption['text']}</option>
+                            {/foreach}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="input-group mb-3 hidden" id="fieldSelection">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon6">{t}Auswahlwerte{/t}</span>
+                    </div>
+                    <input type="text" name="fieldValues" requried="required" readonly="readonly" maxlength="1279" class="form-control fieldValues" autocomplete="off" placeholder="{t}Auswahlwerte, durch Semikolon getrennt: 'Neu;Gebraucht;Refurbished' und oder Dezimal und Gleitkommazahlen.{/t}" aria-label="{t}Neu;Gebraucht;Refurbished{/t}" aria-describedby="basic-addon6">
+                </div>
+                <button type="submit" class="btn btn-primary">{t}Eintragen / Aktualisieren{/t}</button>
+                <button type="reset" class="btn btn-secondary">{t}Formular zurücksetzen{/t}</button>
+                <button type="button" name="btnDelete"class="hidden btn btn-danger">{t}Feld löschen{/t}</button>
+                <input type="hidden" readonly="readonly" name="existingId" value="-1" />
+                <input type="hidden" readonly="readonly" name="doDelete" value="-1" />
+            </form>
 
             <hr>
             </hr>
 
-            <h5>{t}Details{/t}</h5>
-
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon3">{t}Feldname{/t}</span>
-                </div>
-                <input type="text" name="fieldName" required maxlength="63" class="form-control" autocomplete="off" placeholder="{t}Feldname{/t}" aria-label="{t}Feldname{/t}" aria-describedby="basic-addon3">
-            </div>
-
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon4">{t}Standardwert{/t}</span>
-                </div>
-                <input type="text" name="fieldDefault" data-check="fieldValues" maxlength="511" class="form-control" autocomplete="off" placeholder="{t}Standardwert: Keine Eingabe gleichsam leer{/t}" aria-label="{t}Standardwert{/t}" aria-describedby="basic-addon4">
-            </div>
-
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon5">{t}Feld immer sichtbar?{/t}</span>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="defaultVisible" id="defaultVisible1" value="on" checked>
-                    <label class="form-check-label" for="defaultVisible1">{t}Ja{/t}</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="defaultVisible" id="defaultVisible2" value="off">
-                    <label class="form-check-label" for="defaultVisible2">{t}Nein{/t}</label>
-                </div>
-            </div>
-
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon6">{t}Sichtbarkeit{/t}</span>
-                </div>
-                <div class="dropdown float-left">
-                    <select name="visibleInCategories" multiple="yes" autocomplete="off" required class="btn dropdown-toggle switchvisiblity" type="button" tabindex="-1" aria-haspopup="true" aria-expanded="false">
-                        <option value="-1" selected="selected">{t}Überall sichtbar{/t}</option>
-                        {foreach $headCategories as $headCategory}
-                        {if $headCategory['id'] != 0}
-                            <option value="{$headCategory['id']}">{$headCategory['name']}</option>
-                        {/if}
-                        {/foreach}
-                    </select>
-                </div>
-            </div>
-
-            <div class="input-group mb-3 hidden" id="qrSelection">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon7">{t}Basiert auf{/t}</span>
-                </div>
-                <div class="dropdown float-left">
-                    <select name="qrVisible" autocomplete="off" class="btn dropdown-toggle qrVisible" type="button" tabindex="-1" aria-haspopup="true" aria-expanded="false">
-                        <option value="-1" selected="selected">{t}Nicht zugeordnet{/t}</option>
-                        {foreach $qrBaseFields as $qrOption}
-                            <option value="{$qrOption['id']}">{$qrOption['text']}</option>
-                        {/foreach}
-                    </select>
-                </div>
-            </div>
-
-            <div class="input-group mb-3 hidden" id="fieldSelection">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon6">{t}Auswahlwerte{/t}</span>
-                </div>
-                <input type="text" name="fieldValues" requried="required" readonly="readonly" maxlength="1279" class="form-control fieldValues" autocomplete="off" placeholder="{t}Auswahlwerte, durch Semikolon getrennt: 'Neu;Gebraucht;Refurbished' und oder Dezimal und Gleitkommazahlen.{/t}" aria-label="{t}Neu;Gebraucht;Refurbished{/t}" aria-describedby="basic-addon6">
-            </div>
-            <button type="submit" class="btn btn-primary">{t}Eintragen / Aktualisieren{/t}</button>
-            <button type="reset" class="btn btn-secondary">{t}Formular zurücksetzen{/t}</button>
-            <button type="button" name="btnDelete"class="hidden btn btn-danger">{t}Feld löschen{/t}</button>
-            <input type="hidden" readonly="readonly" name="existingId" value="-1" />
-            <input type="hidden" readonly="readonly" name="doDelete" value="-1" />
-        </form>
-
-        <hr>
-        </hr>
-
-        <h5>{t}Bestehende Datenfelder{/t}</h5>
-        <ul class="existingFields">
-            {foreach $customFields as $field}
-                <li class="btn-secondary dataField" data-fieldid="{$field.id}" data-values="{$field.fieldValues}" data-default="{$field.default}" data-defaultvisible="{$field.defaultVisible}" data-type="{$field.dataType}" data-name="{$field.label}" data-visiblein="{$field.visibleIn}">{$field.label}</li>
-            {/foreach}
-        </ul>
+            <h5>{t}Bestehende Datenfelder{/t}</h5>
+            <ul class="existingFields">
+                {foreach $customFields as $field}
+                    <li class="btn-secondary dataField" data-fieldid="{$field.id}" data-values="{$field.fieldValues}" data-default="{$field.default}" data-defaultvisible="{$field.defaultVisible}" data-type="{$field.dataType}" data-name="{$field.label}" data-visiblein="{$field.visibleIn}">{$field.label}</li>
+                {/foreach}
+            </ul>
+        </div>
     </div>
-
-
-
 
 {include file="footer.tpl"}
 {literal}

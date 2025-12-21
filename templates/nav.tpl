@@ -46,8 +46,8 @@
         </form>
 
 
+        {if isset($SESSION.user)}
         <ul class="nav">
-            {if isset($SESSION.user)}
             {if (int)$SESSION.user.usergroupid !== 2}<li class="nav-item"><a href="{$urlBase}/usersettings{$urlPostFix}" class="nav-link" title="{t}Benutzereinstellungen{/t}">
                     <center><i class="fas fa-gears" title="{t}Benutzereinstellungen{/t}"></i><br><small>{t}Benutzereinstellungen{/t}</small></center>
                 </a></li>{/if}

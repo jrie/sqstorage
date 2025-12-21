@@ -1,38 +1,44 @@
 {include file="head.tpl" title="{t}Transferieren{/t}"}
 {include file="nav.tpl" target="transfer.php" request=$REQUEST}
 
-    <div class="content">
+    <div class="content transfer">
+        <div class="srcDestContainer">
+            <div class="storeSrcDiv">
+                <div class="dropdown">
+                    <select value="-1" autocomplete="off" class="btn dropdown-toggle switchStorage" id="storeSrc" type="button" tabindex="-1" data-type="storeSrc" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <option selected="selected" value="-1">{t}Quelle{/t}</option>';
+                    {foreach $storages as $storage}
+                        <option value="{$storage.id}">{$storage.label}</option>
+                    {/foreach}
+                    </select>
+                </div>
+            </div>
+            <div class="storeDestDiv">
+                <div class="dropdown ">
+                    <select value="-1" autocomplete="off" class="btn dropdown-toggle switchStorage" id="storeDest" type="button" tabindex="-1" data-type="storeDest" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <option selected="selected" value="-1">{t}Ziel{/t}</option>
 
-        <div class="dropdown float-left storeSrcDiv">
-            <select value="-1" autocomplete="off" class="btn dropdown-toggle switchStorage" id="storeSrc" type="button" tabindex="-1" data-type="storeSrc" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <option selected="selected" value="-1">{t}Quelle{/t}</option>';
-            {foreach $storages as $storage}
-                <option value="{$storage.id}">{$storage.label}</option>
-            {/foreach}
-            </select>
-        </div>
-
-        <div class="dropdown float-left storeDestDiv">
-            <select value="-1" autocomplete="off" class="btn dropdown-toggle switchStorage" id="storeDest" type="button" tabindex="-1" data-type="storeDest" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <option selected="selected" value="-1">{t}Ziel{/t}</option>
-
-            {foreach $storages as $storage}
-                <option value="{$storage.id}">{$storage.label}</option>
-            {/foreach}
-            </select>
-        </div>
-
+                    {foreach $storages as $storage}
+                        <option value="{$storage.id}">{$storage.label}</option>
+                    {/foreach}
+                    </select>
+                </div>
+            </div>
+        <div>
         <div class="clearfix storageListing storeSrc">
             <h2>{t}Quelle{/t}</h2>
-            <div class="data" data-type="src">{t}Quelle wählen.{/t}</div>
+            <div class="data" data-type="src"><p>{t}Quelle wählen.{/t}</p></div>
         </div>
-        <div class="float-left storageListing storeDest">
-            <h2>{t}Ziel{/t}</h2>
-            <div class="data" data-type="dest">{t}Ziel wählen.{/t}</div><button id="transferButton" class="btn btn-primary float-right">{t}Transferieren{/t}</button>
+        <div class="float-left storageListing storeDestDiv">
+            <div class="storeDest">
+                <h2>{t}Ziel{/t}</h2>
+                <div class="data" data-type="dest"><p>{t}Ziel wählen.{/t}</p></div>
+            </div>
+            <div class="storeAction">
+                <button id="transferButton" class="btn btn-primary float-right">{t}Transferieren{/t}</button>
+            </div>
         </div>
-        
         <div class="clearfix"></div>
-        </div>
 
 {$target="transfer.php"}
 
@@ -56,7 +62,7 @@
                 evt.preventDefault()
                 if (evt.target.dataset['sid'] === document.querySelector('.switchStorage[data-type="storeDest"]').value || parseInt(document.querySelector('.switchStorage[data-type="storeDest"]').value) === -1) return
                 if (evt.target.parentNode.dataset['type'] === 'src') {
-                    let target = document.querySelector('.storageListing.storeDest .data')
+                    let target = document.querySelector('.storeDest .data')
                     let targetId = parseInt(evt.target.dataset['id'])
                     let index = transferItemIds.indexOf(targetId)
                     let amount = parseInt(evt.target.dataset['amount'])
@@ -82,10 +88,10 @@
                         target.lastChild.addEventListener('click', transferItem)
                         evt.target.addEventListener('click', transferItem)
                     } else {
-                        let srcTarget = document.querySelector('.storageListing.storeSrc .data a[data-id="' + evt.target.dataset['id'] + '"]')
+                        let srcTarget = document.querySelector('.storeSrc .data a[data-id="' + evt.target.dataset['id'] + '"]')
                         if (srcTarget !== null) srcTarget.classList.remove('moving')
 
-                        target = document.querySelector('.storageListing.storeDest .data a[data-id="' + evt.target.dataset['id'] + '"]')
+                        target = document.querySelector('.storeDest .data a[data-id="' + evt.target.dataset['id'] + '"]')
                         target.parentNode.removeChild(target)
 
                         let amount = parseInt(srcTarget.textContent.match(/[0-9,\.]*/)[0])
@@ -100,7 +106,7 @@
                     if (index !== -1) {
                         evt.target.parentNode.removeChild(evt.target)
 
-                        let srcTarget = document.querySelector('.storageListing.storeSrc .data a[data-id="' + evt.target.dataset['id'] + '"]')
+                        let srcTarget = document.querySelector('.storeSrc .data a[data-id="' + evt.target.dataset['id'] + '"]')
                         if (srcTarget !== null) {
                             srcTarget.classList.remove('moving')
                             let amount = parseInt(srcTarget.textContent.match(/[0-9]*/)[0])
