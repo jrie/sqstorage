@@ -716,11 +716,14 @@ ul.existingFields li.btn-primary {
 
 .login-box {
   width: 350px;
-  margin: 10% auto;
+  margin: 5% auto;
 }
 
 .login-box .input-group-text {
   min-width: unset;
+  max-width: unset;
+  margin-right: unset;
+  display: inline-block;
 }
 
 .login-box .input-group input,
@@ -733,7 +736,22 @@ ul.existingFields li.btn-primary {
   cursor: no-drop;
 }
 
-i.picture {
+.login-box .login > div {
+  float: left;
+}
+
+.login-box .login button[type="submit"] {
+  float: right;
+  max-width: 30%;
+}
+
+.login-box .login input#remember {
+  padding: 0.6rem;
+  margin-right: 0.5rem;
+  margin-left: 0px;
+}
+
+.login-box i.picture {
   margin-right: 0.3em;
   color: #0056b3;
 }

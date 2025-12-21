@@ -1,7 +1,10 @@
 {include file="head.tpl" title="{t}Login und Registrierung{/t}"}
+<nav class="navbar navbar-light bg-light">
+    {assign var="logoGfx" value='<picture class="logo" alt="sqStorage logo">
+        <source srcset=".//img/sqstorage.webp" type="image/webp" width="205" height="56"><img src=".//img/sqstorage.png" width="205" height="56">
+    </picture>'}
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a href="{$urlBase}/index{$urlPostFix}"><img class="logo" src=".//img/sqstorage.png" /></a>
+    <a href="{$urlBase}/{$urlPostFix}">{$logoGfx}</a>
 
     <div class="dropdown">
         <select class="form-control mr-sm-2" name="lang">
@@ -80,30 +83,25 @@
                             </div>
                         {/if}
                         <div class="row">
-                            <div class="col-7">
-                                <div class="form-group form-check">
+                            <div class="form-group form-check login">
+                                    <div>
                                     <input type="checkbox" id="remember" class="form-check-input">
                                     <label for="remember" class="form-check-label">
                                         {t}Angemeldet bleiben?{/t}
                                     </label>
                                 </div>
-                            </div>
-                            <div class="col-5">
+
                                 <button type="submit" class="btn btn-primary btn-block btn-flat">{if $showActivation}{t}Speichern{/t}{else}{t}Anmelden{/t}{/if}</button>
                             </div>
+                            <div class="clearfix"></div>
                         </div>
 
 
                     {else}
-                        <div class="row">
-                            <div class="col-7">
-                            </div>
-                            <div class="col-5">
-                                <button type="submit" class="btn btn-primary btn-block btn-flat">{t}Anfordern{/t}</button>
-                            </div>
-                        </div>
+                    <div class="login">
+                        <button type="submit" class="btn btn-primary btn-block btn-flat">{t}Anfordern{/t}</button>
+                    </div>
                     {/if}
-
 
                 </form>
                 {if !$showActivation}
