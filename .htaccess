@@ -22,21 +22,18 @@ RewriteRule ^inventory$ inventory.php [L]
 RewriteRule ^inventory/$ inventory.php [L]
 
 RewriteRule ^categories$ categories.php [L]
-RewriteRule ^categories/$ categories.php [L]
 RewriteRule ^categories(\?.*)$ categories.php$1 [QSA,L]
 RewriteRule ^categories/([0-9]+)$ inventory.php?category=$1 [QSA,L]
 
 RewriteRule ^transfer$ transfer.php [L]
 RewriteRule ^transfer/$ transfer.php [L]
 
-RewriteRule ^api/(.*)$ api.php/$1 [QSA,L]
-
+RewriteRule ^api(.*)$ api.php/$1 [QSA,L]
 
 RewriteRule ^datafields$ datafields.php [L]
 RewriteRule ^datafields/$ datafields.php [L]
 
 RewriteRule ^settings$ settings.php [L]
-RewriteRule ^settings/$ settings.php [L]
 RewriteRule ^settings/editUser=([0-9]+)$ settings.php/editUser=$1 [QSA,L]
 RewriteRule ^settings/removeUser=([0-9]+)$ settings.php/removeUser=$1 [QSA,L]
 RewriteRule ^settings\?addUser$ settings.php?addUser [QSA,L]
@@ -48,10 +45,8 @@ RewriteRule ^subcategories/$ subcategories.php
 RewriteRule ^subcategories/([0-9]+)$ inventory.php?subcategory=$1 [QSA,L]
 
 RewriteRule ^usersettings$ usersettings.php [L]
-RewriteRule ^usersettings/$ usersettings.php [L]
 
 RewriteRule ^updater$ updater.php [L]
-RewriteRule ^updater/$ updater.php [L]
 
 </IfModule>
 
