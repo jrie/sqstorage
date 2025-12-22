@@ -1,25 +1,25 @@
 <?php
 $user="";
-require('login.php');
 $error = "";
 $success = "";
 $settingdata = array();
 $updatecheck = false;
 $uptodate = false;
 $ghapi = array();
+require_once 'login.php';
 
-if ($useRegistration) {
-  if (!isset($user) || !isset($user['usergroupid']) || (int)$user['usergroupid'] === 2) {
+if ($useRegistration || !isset($useRegistration)) {
+  if (!isset($user) || !isset($user['usergroupid']) || (int)$user['usergroupid'] !== 1) {
     $error = gettext('Zugriff verweigert!');
     include 'accessdenied.php';
     die();
   }
 }
 
+require_once 'support/dba.php';
 require_once 'support/urlBase.php';
 $smarty->assign('urlBase', $urlBase);
 
-require_once './support/dba.php';
 if ($usePrettyURLs) {
     $smarty->assign('urlPostFix', '');
 } else {
@@ -48,11 +48,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'mail') {
   }
 }elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'install'){
   if (isset($_POST['allow_install'])){
-    if($_POST['allow_install']== "allow"){
-        touch ($basedir . "/support/allow_install");
+    if($_POST['allow_install'] == "allow"){
+        touch($basedir . "/support/allow_install");
         $install_allowed = true;
     }else{
-        unlink ($basedir . "/support/allow_install");
+        if (file_exists($basedir . "/support/allow_install")) {
+          unlink($basedir . "/support/allow_install");
+        }
+
         $install_allowed = false;
     }
   }
@@ -80,7 +83,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'mail') {
 }elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'startpage'){
   SETTINGS::SettingsSet("startpage","defaultuser",$_POST['startpagekey']);
 }elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
   try {
     $_POST['username'] =  trim($_POST['username']);
     if (!preg_match('/[^a-zA-Z0-9_\-\.]/', $_POST['username']) == 0) {
@@ -99,6 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'mail') {
       }
 
       $user = DB::update('users', array('username' => trim($_POST['username']), 'mailaddress' => $_POST['mailaddress'], 'api_access' => $_POST['userapikey']), 'id=%i', $_POST['userUpdateId']);
+
       USERS::AssignUserToGroup($_POST['userUpdateId'],$_POST['usergroupid']);
     } else {
       $token = bin2hex(openssl_random_pseudo_bytes(16));
@@ -134,7 +137,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'mail') {
 $isEdit = false;
 $isAdd = false;
 $usergroups = DB::query('SELECT id, name FROM usergroups');
-
 if ($_SERVER['REQUEST_METHOD'] == 'GET' || !empty($error) || ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'mail')) {
   if (isset($_GET['editUser']) && !empty($_GET['editUser'])) {
     $isEdit = true;
@@ -187,14 +189,15 @@ if ($mailDB !== NULL) {
   $mailSettings['enabled'] = false;
 }
 
-//if(!in_array('failcount',DB::columnList('users'))){
-//  $users = DB::query('SELECT u.id, u.username, u.mailaddress, u.api_access, g.name as usergroupname, g.id as usergroupid FROM users u LEFT JOIN users_groups ugs ON(ugs.userid = u.id) LEFT JOIN usergroups g ON(g.id = ugs.usergroupid) ORDER BY u.username ASC');
-//} else {
-//  $users = DB::query('SELECT u.id, u.username, u.mailaddress, u.api_access, g.name as usergroupname, g.id as usergroupid FROM users u LEFT JOIN users_groups ugs ON(ugs.userid = u.id) LEFT JOIN usergroups g ON(g.id = ugs.usergroupid) ORDER BY u.username ASC');
-//}
+if(!array_key_exists('failcount',DB::columnList('users'))){
+  $users = DB::query('SELECT u.id, u.username, u.mailaddress, u.api_access, g.name as usergroupname, g.id as usergroupid FROM users u LEFT JOIN users_groups ugs ON(ugs.userid = u.id) LEFT JOIN usergroups g ON(g.id = ugs.usergroupid) ORDER BY u.username ASC');
+} else {
+  $users = DB::query('SELECT u.id, u.username, u.mailaddress, u.api_access, g.name as usergroupname, g.id as usergroupid FROM users u LEFT JOIN users_groups ugs ON(ugs.userid = u.id) LEFT JOIN usergroups g ON(g.id = ugs.usergroupid) ORDER BY u.username ASC');
+}
 
 $users = null;
-if (!in_array('api_access', DB::columnList('users'))) {
+
+if (!array_key_exists('api_access', DB::columnList('users'))) {
   $users = DB::query('SELECT u.id, u.username, u.mailaddress, g.name as usergroupname, g.id as usergroupid FROM users u LEFT JOIN users_groups ugs ON(ugs.userid = u.id) LEFT JOIN usergroups g ON(g.id = ugs.usergroupid) ORDER BY u.username ASC');
 } else {
   $users = DB::query('SELECT u.id, u.username, u.mailaddress, u.api_access, g.name as usergroupname, g.id as usergroupid FROM users u LEFT JOIN users_groups ugs ON(ugs.userid = u.id) LEFT JOIN usergroups g ON(g.id = ugs.usergroupid) ORDER BY u.username ASC');

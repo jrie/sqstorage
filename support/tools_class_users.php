@@ -11,7 +11,7 @@
   public static function AllowLogin($username,&$remaining_seconds){
     //auto update user table structure of failcount column is missing
     $remaining_seconds = 0;
-    if(!in_array('failcount',DB::columnList('users'))) return true;
+    if(!array_key_exists('failcount',DB::columnList('users'))) return true;
 
     $fc = DB::queryFirstRow('Select failcount, lastfail from users WHERE username = %s',$username);
     if (is_null($fc)) return true;
@@ -42,7 +42,7 @@
   }
 
   public static function RegisterFail($userid){
-    if(!in_array('failcount',DB::columnList('users'))) return true;
+    if(!array_key_exists('failcount',DB::columnList('users'))) return true;
     $ofc = DB::queryFirstField('Select failcount from users WHERE id=%i',$userid);
 
     $ofc = $ofc + 1;
@@ -51,7 +51,7 @@
   }
 
   public static function ResetFail($userid){
-    if(!in_array('failcount',DB::columnList('users'))) return true;
+    if(!array_key_exists('failcount',DB::columnList('users'))) return true;
     DB::update('users',[ 'failcount' => 0, 'lastfail' => 0 ], 'id=%i',$userid);
     return true;
   }

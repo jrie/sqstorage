@@ -1,9 +1,7 @@
 {include file="head.tpl" title="{t}Benutzereinstellungen{/t}"}
 {include file="nav.tpl" target="usersettings.php" request=$REQUEST}
 
-<div class="content">
-
-
+<div class="content usersettings">
     {if count($error)>0}
     <div class="alert alert-danger" role="alert">
       {foreach $error as $singleerror}
@@ -21,7 +19,7 @@
 
     <form accept-charset="utf-8" id="startpage" method="POST" action="">
         <input type="hidden" id="install" name="target" value="startpage" />
-        <ul class="categories list-group">
+        <ul class="list-group">
             <li class="alert alert-info">
                 <span class="list-span">{t}Startseite{/t}</span>
             </li>
@@ -56,7 +54,7 @@
 
     <form accept-charset="utf-8" id="passchange" method="POST" action="">
         <input type="hidden" id="install" name="target" value="passwordchange" />
-        <ul class="categories list-group">
+        <ul class="list-group">
             <li class="alert alert-info">
                 <span class="list-span">{t}sqStorage Passwortänderung{/t}</span>
             </li>
@@ -86,7 +84,7 @@
         </ul>
         <div class="clearfix"></div>
     </form>
-  <hr />
+
 </div>
 
 

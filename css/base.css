@@ -249,7 +249,9 @@ form.formInstall .input-group-text {
 .storage-area .alert-info,
 .categories .alert-info,
 .update .alert,
-.dbupdate .alert {
+.dbupdate .alert,
+.usersettings .alert,
+.settings .alert {
   clear: both;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
@@ -259,7 +261,9 @@ form.formInstall .input-group-text {
 .storage-area .alert,
 .categories .alert,
 .update .alert,
-.dbupdate .alert {
+.dbupdate .alert,
+.usersettings .alert,
+.settings .alert {
   list-style-type: none;
   margin: 0;
 }
@@ -1075,55 +1079,92 @@ input[name="images[]"] {
   margin-bottom: 1rem;
 }
 
-div.settings {
+.usersettings,
+.settings {
   clear: both;
   padding: 1rem 2rem;
   border-radius: 12px;
 }
 
-div.settings > form {
+.usersettings > form,
+.settings > form {
   margin-top: 2.3rem;
 }
 
-div.settings > form:last-of-type {
+.usersettings > form:last-of-type,
+.settings > form:last-of-type {
   margin-bottom: 5rem;
 }
 
-div.settings > form:first-of-type {
+.usersettings > form:first-of-type {
   margin-top: 0;
 }
 
-div.settings ul.categories {
+.usersettings ul.list-group,
+.settings ul.list-group {
   padding: 0;
 }
 
-div.settings form .list-span:first-of-type {
+.usersettings form .list-span:first-of-type,
+.settings form .list-span:first-of-type {
   min-width: none;
   max-width: none;
   display: block;
 }
 
-div.settings > form button[type="submit"],
-div.settings > form li > button {
+.usersettings > form button[type="submit"],
+.usersettings > form li > button,
+.settings > form button[type="submit"],
+.settings > form li > button {
   margin-top: 1.6rem;
   margin-bottom: 0.6rem;
   margin-right: 0.7rem;
 }
 
-div.settings > form .form-check-inline input,
-div.settings > form .form-check-inline label {
+.usersettings > form .form-check-inline input,
+.usersettings > form .form-check-inline label,
+.settings > form .form-check-inline input,
+.settings > form .form-check-inline label {
   line-height: 1.6rem;
   vertical-align: middle;
 }
 
-div.settings > form .list-group-item {
+.usersettings > form .list-group-item,
+.settings > form .list-group-item {
   padding-top: 1rem;
 }
-div.settings > form .input-group {
+
+.usersettings > form .input-group,
+.settings > form .input-group {
   line-height: 1rem;
   vertical-align: middle;
 }
 
-div.settings > form .dropDown {
-  padding: 0;
+.usersettings > form input#startpagename,
+.usersettings > form#passchange input,
+.settings > form#updater input,
+.settings > form#startpage input {
+  border-radius: 0px 4px 4px 0px;
+}
+
+.usersettings > form#passchange input {
+  margin-right: 3rem;
+}
+
+.usersettings > form#passchange input:last-of-type {
+  margin-right: 0px;
+}
+
+.settings .userlist.categories li.list-group-item .list-span,
+.settings .userlist.categories li.list-group-item .list-span i {
+  vertical-align: text-bottom;
+  line-height: 1.6rem;
+}
+
+.settings .userlist.categories li.list-group-item .list-span i {
+  vertical-align: middle;
+}
+
+.settings .list-group-item .input-group:not(:first-child) {
+  margin-top: 1rem;
 }

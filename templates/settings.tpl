@@ -3,24 +3,25 @@
 
 <div class="content settings">
     {if $updatecheck}
-      {if $uptodate}
-        <div class="alert alert-success" role="alert">
-          <h6>{t}sqStorage ist aktuell{/t}</h6>
-        </div>
-      {else}
-        <div class="alert alert-danger" role="alert">
-          <h6>{t}Es steht eine Aktualisierung zu Verfügung{/t}</h6>
-          <a href="updater.php" title="{t}Aktualisierung{/t}">{t}Aktualisierung{/t}</a>
-        </div>
-      {/if}
-    {else}
-      <form method="POST" id="updatecheckform">
-      <input type="hidden" id="install" name="target" value="updatecheck" />
-      <button type="submit" class="btn btn-primary float-right">{t}Auf Updates prüfen{/t}</button>
-      </form>
-      <div class="clearfix"></div>
+        {if !$isEdit && !$isAdd}
+        {if $uptodate}
+            <div class="alert alert-success" role="alert">
+            <h6>{t}sqStorage ist aktuell{/t}</h6>
+            </div>
+        {else}
+            <div class="alert alert-danger" role="alert">
+            <h6>{t}Es steht eine Aktualisierung zu Verfügung{/t}</h6>
+            <a href="updater.php" title="{t}Aktualisierung{/t}">{t}Aktualisierung{/t}</a>
+            </div>
+        {/if}
+        {else}
+            <form method="POST" id="updatecheckform">
+            <input type="hidden" id="install" name="target" value="updatecheck" />
+            <button type="submit" class="btn btn-primary float-right">{t}Auf Updates prüfen{/t}</button>
+            </form>
+        {/if}
     {/if}
-
+    <div class="clearfix"></div>
 
     {if $isEdit || $isAdd}
     {if strlen($error)>0}
@@ -41,7 +42,7 @@
     </div>
     {/if}
 
-    <form accept-charset="utf-8" id="userform" method="POST" action="#">
+    <form accept-charset="utf-8" id="userform" method="POST" action="">
 
         {if $isEdit} <input type="hidden" value="{$user.id}" name="userUpdateId" />{/if}
 
@@ -129,21 +130,18 @@
     {/if}
 
     {if $update_available}
-    <div class="alert alert-danger" role="alert">
-        <h6></i><a href='install.php'><i class="fa fa-sync"></i>{t}Bitte die Datenbank aktualisieren{/t}<i class="fa fa-sync"></i></a></h6>
-    </div>
+        <div class="alert alert-danger" role="alert">
+            <h6></i><a href='install.php'><i class="fa fa-sync"></i>{t}Bitte die Datenbank aktualisieren{/t}<i class="fa fa-sync"></i></a></h6>
+        </div>
     {/if}
 
     {if $useRegistration}
-    {if !isset($users.0.api_access)}<a href='install.php'>{t}Bitte die Datenbank aktualisieren{/t}</a>{else}<a class="btn btn-primary addUser" href="{$urlBase}/settings{$urlPostFix}?addUser">{t}Neuer Benutzer{/t}</a>{/if}
-    <hr />
-    <ul class="categories list-group">
+    <ul class="categories userlist list-group">
         <li class="alert alert-info"><span class="list-span">{t}Benutzername{/t}</span><span class="list-span">{t}E-Mail{/t}</span><span class="list-span">{t}Gruppe{/t}</span><span class="list-span">{t}API Zugriff{/t}</span><span class="list-span">{t}Aktionen{/t}</span></li>
         {foreach $users as $user}
         <li class="list-group-item"><a title="{t}Benutzer löschen{/t}" name="removeUser" data-name="{$user.username}" data-id="{$user.usergroupid}" href="{$urlBase}/settings{$urlPostFix}?removeUser={$user.id}" class="removalButton fas fa-times-circle btn"></a><span class="list-span">{$user.username}</span><span class="list-span">{$user.mailaddress}</span><span class="list-span">{$user.usergroupname}</span><span class="list-span">{if !isset($user.api_access)}{t}Bitte die Datenbank aktualisieren{/t}{else}{if $user.api_access == 1}<i class="fas fa-circle-check"></i>{else}<i class="fas fa-ban"></i>{/if}{/if}</span><a class="fas fa-edit editUser" href="#" name="editUser" data-name="{$user.username}" data-id="{$user.id}"></a></li>
         {/foreach}
     </ul>
-    <hr />
 
     <form accept-charset="utf-8" id="mailform" method="POST" action="">
         <input type="hidden" id="mail" name="target" value="mail" />
@@ -176,7 +174,6 @@
         </ul>
         <div class="clearfix"></div>
     </form>
-    <hr />
     {/if}
     <form accept-charset="utf-8" id="updateForm" method="POST" action="">
         <input type="hidden" id="install" name="target" value="install" />
@@ -203,10 +200,9 @@
         </ul>
         <div class="clearfix"></div>
     </form>
-    <hr />
     <form accept-charset="utf-8" id="startpage" method="POST" action="">
         <input type="hidden" id="install" name="target" value="startpage" />
-        <ul class="categories list-group">
+        <ul class="list-group">
             <li class="alert alert-info">
                 <span class="list-span">{t}Standard-Startseite{/t}</span>
             </li>
@@ -239,7 +235,7 @@
 
     <form accept-charset="utf-8" id="updater" method="POST" action="">
         <input type="hidden" id="install" name="target" value="updater" />
-        <ul class="categories list-group">
+        <ul class="list-group">
             <li class="alert alert-info">
                 <span class="list-span">{t}Update-Quelle{/t}</span>
                 <small>
@@ -276,9 +272,6 @@
         </ul>
         <div class="clearfix"></div>
     </form>
-
-
-
     {/if}
 </div>
 

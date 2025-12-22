@@ -1,6 +1,7 @@
 <?php
 $user="";
 require('login.php');
+$users = "";
 $error = "";
 $success = "";
 $settingdata = array();
@@ -51,14 +52,14 @@ $smarty->assign('updatework',$updatework);
 $smarty->assign('updatecheck',$updatecheck);
 $smarty->assign('uptodate',$uptodate);
 $smarty->assign('settingdata',$settingdata);
-//$smarty->assign('update_available',$dbUpdateAvailable);
+$smarty->assign('update_available',$dbUpdateAvailable);
 $smarty->assign('install_allowed',$install_allowed);
 $smarty->assign('success', $success);
 $smarty->assign('error', $error);
 $smarty->assign('POST', $_POST);
-//$smarty->assign('user', $user);
-//$smarty->assign('users', $users);
-//$smarty->assign('usergroups', $usergroups);
+$smarty->assign('user', $user);
+$smarty->assign('users', $users);
+$smarty->assign('usergroups', $usergroups);
 $smarty->assign('SESSION', $_SESSION);
 $smarty->assign('REQUEST', $_SERVER['REQUEST_URI']);
 
