@@ -61,11 +61,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['setcoverimage']) && isse
 
   die();
 } else if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['removeImageId'])) {
-  DB::query('DELETE FROM `images` WHERE id=%d LIMIT 1', (int)$_GET['removeImageId']);
-  $targetData = [];
+  $imageId = (int)$_GET['removeImageId'];
+
+  $itemId = DB::queryFirstRow('SELECT `itemId` FROM `images` WHERE id=%d', $imageId);
+  DB::query('DELETE FROM `images` WHERE `id`=%d LIMIT 1', $imageId);
+
+  $wasDeleted = false;
 
   if (DB::affectedRows() == 1) {
+    $wasDeleted = true;
+
+    $existingImage = DB::queryFirstRow('SELECT `id` FROM `images` WHERE `itemId`=%d', (int)$itemId['itemId']);
+    if ($existingImage != null) {
+      DB::query('UPDATE `items` SET `coverimage`=%d WHERE `id`=%d LIMIT 1', (int)$existingImage['id'], (int)$itemId['itemId']);
+    }
+  }
+
+  $targetData = [];
+
+  if ($wasDeleted) {
     $targetData['status'] = 'OK';
+    if ($existingImage != null) {
+      $targetData['replaceid'] = $existingImage['id'];
+    }
   } else {
     $targetData['status'] = 'FAIL';
   }

@@ -75,7 +75,7 @@
                             {$coverImage = $item.coverimage}
                             {$type = 'id'}
                         {/if}
-                            <span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i><img class="item-picture" data-id="{$coverImage}" data-type="{$type}" src="" onclick="displayFullImage('{$item.id}', '{$type}');return false;">{/if}
+                            <span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i><img class="item-picture" data-id="{$coverImage}" data-type="{$type}" src="" onclick="displayFullImage('{$item.id}', '{$type}', '{$coverImage}');return false;">{/if}
                                 {if !$isGuest}
                                 <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}">{$item.label}</a>
                                 {else}
@@ -869,15 +869,14 @@
         }
     })
 
-    function displayFullImage(ItemID, type) {
+    function displayFullImage(ItemID, type, coverId) {
         let lightbox = new FsLightbox();
         lightbox.props.initialAnimation = 'initial-animation';
         // set up props, like sources, types, events etc.
         //lightbox.props.sources = ['data:image/*;charset=utf-8;base64,' + GetItemFullimage( ItemID )];
         lightbox.props.type = 'image';
-        lightbox.props.sources = GetItemFullimages(ItemID, type);
+        lightbox.props.sources = GetItemFullimages(ItemID, type, coverId);
         lightbox.props.onInit = () => console.log('Lightbox initialized!');
-
         lightbox.open();
 
     }

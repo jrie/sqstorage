@@ -38,9 +38,9 @@ function GetItemFullimage(itemId, filterType) {
   return ret_value;
 }
 
-function GetItemFullimages(itemId, filterType) {
+function GetItemFullimages(itemId, filterType, coverId) {
   let ret_value = [];
-  let API_URL = 'api.php/records/images?filter=itemId,eq,:itemId&include=imageData';
+  let API_URL = 'api.php/records/images?filter=itemId,eq,:itemId&include=imageData,id';
 
   let URL = API_URL.replace(':itemId', itemId);
   const xmlhttp = new XMLHttpRequest();
@@ -50,7 +50,13 @@ function GetItemFullimages(itemId, filterType) {
       let ArrLength = Object.keys(newCharacterJSON["records"]).length;
 
       for (let x = 0; x < ArrLength; x++) {
-        ret_value.push('data:image/*;charset=utf-8;base64,' + atob(newCharacterJSON["records"][x]['imageData']));
+        let imageData = 'data:image/*;charset=utf-8;base64,' + atob(newCharacterJSON["records"][x]['imageData'])
+        if (newCharacterJSON["records"][x]['id'] != coverId) {
+          ret_value.push(imageData);
+        } else {
+          ret_value.splice(0, 0, imageData);
+        }
+        //ret_value.push('data:image/*;charset=utf-8;base64,' + atob(newCharacterJSON["records"][x]['imageData']));
       }
     }
   };

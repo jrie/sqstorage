@@ -335,6 +335,12 @@
                         if (evt.target.readyState === 4 && evt.target.status === 200) {
                             let responseJson = JSON.parse(evt.target.responseText)
                             if (responseJson['status'] === 'OK') imgContainer.parentNode.removeChild(imgContainer)
+                            if (responseJson['replaceid']) {
+                                let replaceCoverImageLink = document.querySelector('a.setCoverImage[data-imageid="' + responseJson['replaceid'] +'"]');
+                                if (replaceCoverImageLink) {
+                                    replaceCoverImageLink.click();
+                                }
+                            }
                         }
                     }
 
