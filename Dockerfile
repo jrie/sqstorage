@@ -1,4 +1,6 @@
-FROM php:fpm-alpine
+# FROM php:fpm-alpine
+#109
+FROM php:8.4-fpm-alpine
 
 COPY ./*.php /app/
 COPY ./favicon.* /app/
