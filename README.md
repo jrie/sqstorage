@@ -101,10 +101,6 @@ to the `/etc/apache2/sites-enabled/000-default.conf` site configuration (don't f
 
 Alternatively `$usePrettyURLs` can be set to `false` in order to disable pretty urls. ***This might resolve some errors on Raspberry OS***.
 
-### PHP Error: Class "DB" not found on first installation / download
-See this issue ["Class "DB" not found"](https://github.com/jrie/sqstorage/issues/106).
-This is due to the fact that "meekrodb" is referenced as a submodule and not added as a fixed part in the downloaded package *or* on default `git clone` command. See also this [topic on Stackoverflow](https://stackoverflow.com/questions/34719785/how-to-add-submodule-files-to-a-github-release).
-
 #### Permissions and error 500
 
 The directories `smartyfiles/` , `support/` and `languages/locale/` need to be **writeable** for the webserver.
