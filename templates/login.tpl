@@ -26,12 +26,10 @@
 <div class="content">
     <div class="login-box">
         <div class="card">
+            {if isset($error)}
+                <div class="statusDisplay red">{$error}</div>
+            {/if}
             <div class="card-body login-card-body">
-
-                {if isset($error)}
-                    <div class="statusDisplay red">{$error}</div>
-                {/if}
-
                 <p class="login-box-msg">
                     {if $createFirstAdmin}
                         {t}Neue Admin-Zugangsdaten eingeben{/t}
@@ -39,8 +37,9 @@
                         {if $showActivation}
                             {t}Neue Zugangsdaten eingeben{/t}
                         {else}
-                            {t}Zugangsdaten eingeben{/t}</p>
+                            {t}Zugangsdaten eingeben{/t}
                     {/if}
+                </p>
                 {/if}
                 <form action="{$urlBase}/login{$urlPostFix}{if $showActivation}?activate={$activate}{/if}{if $showRecover}?recover{/if}" method="post">
                     <div class="input-group mb-3">
