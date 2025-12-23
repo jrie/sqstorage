@@ -25,10 +25,10 @@
 
 <div class="content">
     <div class="login-box">
+	{if isset($error)}
+           <div class="statusDisplay red">{$error}</div>
+        {/if}
         <div class="card">
-            {if isset($error)}
-                <div class="statusDisplay red">{$error}</div>
-            {/if}
             <div class="card-body login-card-body">
                 <p class="login-box-msg">
                     {if $createFirstAdmin}
