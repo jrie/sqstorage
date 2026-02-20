@@ -209,7 +209,7 @@ class MeekroDB {
         $pdo = new PDO($this->dsn, $this->user, $this->password, $this->connect_options);
         $this->internal_pdo = $pdo;
       } catch (PDOException $e) {
-        throw new MeekroDBException($e->getMessage());
+        throw MeekroDBException::fromException($e);
       }
       
     }
@@ -605,6 +605,14 @@ class MeekroDB {
         $str = '%' . str_replace(array('%', '_'), array('\%', '\_'), $arg) . '%';
         return new MeekroDBParsedQuery('?', array($str));
       },
+      'ssb' => function($arg) use ($t) { 
+        $str = str_replace(array('%', '_'), array('\%', '\_'), $arg) . '%';
+        return new MeekroDBParsedQuery('?', array($str));
+      },
+      'sse' => function($arg) use ($t) { 
+        $str = '%' . str_replace(array('%', '_'), array('\%', '\_'), $arg);
+        return new MeekroDBParsedQuery('?', array($str));
+      },
       'ls' => function($arg) use ($t, $placeholders) {
         $arg = array_map('strval', $arg);
         return new MeekroDBParsedQuery($placeholders(count($arg)), $arg);
@@ -981,26 +989,28 @@ class MeekroDB {
     $this->last_query_at = time();
     
     $starttime = microtime(true);
-    $pdo = $this->get();
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    $db_type = $this->dbType();
-    if ($db_type == 'mysql') {
-      $pdo->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, $is_buffered);
-    }
-    else if ($db_type == 'pgsql') {
-      $pdo->setAttribute(PDO::PGSQL_ATTR_DISABLE_PREPARES, 1);
-    }
-    
     $result = $Exception = null;
+
     try {
+      $pdo = $this->get();
+      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      switch ($this->dbType()) {
+        case 'mysql':
+          $pdo->setAttribute(PHP_VERSION_ID >= 80500 ? Pdo\Mysql::ATTR_USE_BUFFERED_QUERY : PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, $is_buffered);
+          break;
+        
+        case 'pgsql':
+          $pdo->setAttribute(PHP_VERSION_ID >= 80500 ? Pdo\Pgsql::ATTR_DISABLE_PREPARES : PDO::PGSQL_ATTR_DISABLE_PREPARES, 1);
+          break;
+      }
+
       if ($params) {
         $result = $pdo->prepare($query);
         foreach ($params as $i => $param) {
           if (is_int($param)) {
             $data_type = PDO::PARAM_INT;
           }
-          else if (is_string($param) && $db_type == 'pgsql' && !mb_check_encoding($param)) {
+          else if (is_string($param) && $this->dbType() == 'pgsql' && !mb_check_encoding($param)) {
             $data_type = PDO::PARAM_LOB;
           }
           else {
@@ -1015,10 +1025,15 @@ class MeekroDB {
         $result = $pdo->query($query);
       }
       
-    } catch (PDOException $e) {
-      $Exception = new MeekroDBException(
-        $e->getMessage(), $query, $params, $e->getCode()
-      );
+    } catch (PDOException|MeekroDBException $e) {
+
+      if ($e instanceof PDOException) {
+        $Exception = MeekroDBException::fromException($e);
+      } else {
+        $Exception = $e;
+      }
+
+      $Exception->setQuery($query, $params);
     }
     
     $runtime = microtime(true) - $starttime;
@@ -1355,16 +1370,17 @@ class DBTransaction {
 class MeekroDBException extends Exception {
   protected $query = '';
   protected $params = array();
-  
-  function __construct($message='', $query='', $params=array(), $code = 0) {
-    parent::__construct($message);
-    $this->query = $query;
-    $this->params = $params;
-    $this->code = $code;
+
+  static function fromException(Exception $e) {
+    return new self($e->getMessage(), 0, $e);
   }
-  
+
   public function getQuery() { return $this->query; }
   public function getParams() { return $this->params; }
+  public function setQuery($query, array $params) {
+    $this->query = $query;
+    $this->params = $params;
+  }
 }
 
 class MeekroDBParsedQuery {

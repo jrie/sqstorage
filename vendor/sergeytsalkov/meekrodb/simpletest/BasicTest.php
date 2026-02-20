@@ -88,6 +88,7 @@ class BasicTest extends SimpleTest {
 
   // * basic test of:
   //   queryFirstField(), queryFirstColumn(), queryFirstList(), queryRaw()
+  //   %ss, %sse, %ssb
   function test_05_query() {
     $charlie_password = DB::queryFirstField("SELECT password FROM accounts WHERE username IN %ls AND username = %s", 
       array('Charlie', 'Charlie\'s Friend'), 'Charlie\'s Friend');
@@ -109,6 +110,21 @@ class BasicTest extends SimpleTest {
     $row2 = $statement->fetch(PDO::FETCH_ASSOC);
     $this->assert($row['password'] === 'goodbye');
     $this->assert($row2 === false);
+
+    $rows = DB::query("SELECT * FROM accounts WHERE username LIKE %ss", 'ee');
+    $this->assert(count($rows) === 1);
+    $this->assert($rows[0]['username'] === 'Deer');
+
+    $rows = DB::query("SELECT * FROM accounts WHERE username LIKE %ssb", 'ee');
+    $this->assert(count($rows) === 0);
+
+    $rows = DB::query("SELECT * FROM accounts WHERE username LIKE %ssb", 'De');
+    $this->assert(count($rows) === 1);
+    $this->assert($rows[0]['username'] === 'Deer');
+
+    $rows = DB::query("SELECT * FROM accounts WHERE username LIKE %sse", 'eer');
+    $this->assert(count($rows) === 1);
+    $this->assert($rows[0]['username'] === 'Deer');
   }
 
   // * alternative param_char and named_param_seperator separate will work

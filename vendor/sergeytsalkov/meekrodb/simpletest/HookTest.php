@@ -255,4 +255,26 @@ class HookTest extends SimpleTest {
     $this->assert($error_worked);
   }
 
+  function test_14_cant_connect() {
+    if ($this->db_type == 'sqlite') return; // no logins
+
+    $callback_worked = false;
+    $fn = function($hash) use (&$callback_worked) {
+      if ($this->match_set($hash['error'], ['access denied', 'connection to server'])) {
+        $callback_worked = true;
+        return false;
+      }
+    };
+
+    $old_user = DB::$user;
+    DB::$user = 'asdf';
+    DB::disconnect();
+
+    DB::addHook('run_failed', $fn);
+    DB::query("SELECT * FROM accounts");
+    $this->assert($callback_worked);
+    DB::removeHooks('run_failed');
+    DB::$user = $old_user;
+  }
+
 }
