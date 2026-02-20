@@ -1,6 +1,4 @@
-# FROM php:fpm-alpine
-#109
-FROM php:8.4-fpm-alpine
+FROM php:fpm-alpine
 
 COPY ./*.php /app/
 COPY ./favicon.* /app/
@@ -20,10 +18,10 @@ COPY ./support/dba-docker.php /app/support/dba.php
 COPY ./templates /app/templates
 COPY ./vendor /app/vendor
 COPY ./welcome_lang /app/welcome_lang
-
 RUN chown www-data:www-data -R /app/
 
 VOLUME /app
 
-RUN ( curl -sSLf https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions -o - || echo 'return 1' ) | sh -s \
-    mysqli gettext gd intl pdo_mysql
+ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
+RUN chmod +x /usr/local/bin/install-php-extensions
+RUN /usr/local/bin/install-php-extensions mysqli gettext gd intl pdo_mysql

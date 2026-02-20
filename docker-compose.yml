@@ -1,4 +1,3 @@
-version: "3.4"
 networks:
   sqstorage:
     name: sqstorage
@@ -41,6 +40,7 @@ services:
       - sqstorage
     volumes:
       - db-data:/var/lib/mysql:rw
+      - ./support/initdb.sql/:/docker-entrypoint-initdb.d/initdb.sql:ro
 
   web:
     build:
