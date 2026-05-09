@@ -122,3 +122,6 @@
 {t}QR-Code Feld{/t}
 {t}Seriennummer/Artikelnummer{/t}
 {t}Unterkategorien{/t}
+{t}Anzahl um 1 erhöhen{/t}
+{t}Anzahl um 1 senken{/t}
+{t}Check in/check out{/t}

@@ -20,7 +20,7 @@
         'string' => gettext('Zeichenfolge < 512 Zeichen'),
         'selection' => gettext('Einzelauswahl (Single-Dropdown)'),
         'mselection' => gettext('Mehrfachauswahl (Multi-Dropdown)'),
-        'qrcode' => gettext('QR-Code Feld'),
+        'qrcode' => gettext('QR-Code Feld')
     ];
 
     $fieldLimits = [
@@ -84,11 +84,12 @@
         'increaseone' => array(
             'id' => 4,
             'type' => 'base',
-            'text' => gettext('Increase storage unit by one')
+            'text' => gettext('Anzahl um 1 erhöhen')
         ),
         'decreaseone' => array(
             'id' => 5,
             'type' => 'base',
-            'text' => gettext('Decrease storage unit by one')
+            'text' => gettext('Anzahl um 1 senken')
         )
     ];
+  

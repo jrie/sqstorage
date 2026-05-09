@@ -33,7 +33,7 @@
                 {if isset($itemNewAmount)}
                     {if $itemNewAmount == 'failInc'}
                         <div class="statusDisplay red" role="alert">
-                        <p>{t}Fehler bei Erhöhung der Einheiten für den Gegenstands{/t}</p>
+                        <p>{t}Fehler bei Erhöhung der Einheiten des Gegenstands{/t}</p>
                     {else if $itemNewAmount == 'failDec'}
                         <div class="statusDisplay red" role="alert">
                         <p>{t}Fehler bei Senkung der Einheiten des Gegenstands{/t}</p>
