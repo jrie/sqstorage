@@ -14,6 +14,11 @@
                     <span class="list-span" title="{t}Aktionen{/t}">{t}Aktionen{/t}</span>
                 {/if}
             </li>
+            {if empty($headCategories)}
+                <li class="list-group-item">
+                    {t}Keine Hauptkategorie vorhanden{/t}
+                </li>
+            {/if}
             {foreach $headCategories as $category}
                 <li class="list-group-item" data-id="{$category.id}">
                     {if !$isGuest}
@@ -47,6 +52,11 @@
                 {/if}
                 <span class="list-span" title="{t}Oberkategorie{/t}">{t}Oberkategorie{/t}</span>
             </li>
+            {if empty($subCategories)}
+                <li class="list-group-item">
+                    {t}Keine Unterkategorien vorhanden{/t}
+                </li>
+            {/if}
             {foreach $subCategories as $category}
                 <li class="list-group-item" data-id="{$category.id}">
 
@@ -65,9 +75,9 @@
                             <select class="btn dropdown-toggle categoryDropdowns" type="button" data-originid="{$category.id}" tabindex="-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" autocomplete="off">
 
                                 {if $category.headcategory != 0}
-                                    <option value="-1">{t}Keine{/t}</option>
+                                    <option value="-1">{t}Keine Auswahl{/t}</option>
                                 {else}
-                                    <option value="-1" selected="selected">{t}Keine{/t}</option>
+                                    <option value="-1" selected="selected">{t}Keine Auswahl{/t}</option>
                                 {/if}
 
                                 {foreach $headCategories as $headCategory} {
@@ -82,7 +92,7 @@
                     {else}
                         <div class="list-span">
                             {if $category.headcategory === NULL}
-                                {t}Keine{/t}
+                                {t}Keine Auswahl{/t}
                             {else}
                                 {foreach $headCategories as $headCategory}
                                     {if $headCategory.id == $category.headcategory}

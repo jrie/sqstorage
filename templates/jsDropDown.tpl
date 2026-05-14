@@ -71,9 +71,13 @@ function searchValue (input, itemContainer) {
 }
 
 let targetIndex = 0
-let zIndex = 99999
+let zIndex = 100
 for (let item of dropDowns) {
   --zIndex
+  
+  if (zIndex == 90) {
+    zIndex = 100
+  }
 
   let container = document.createElement('div')
 
@@ -310,11 +314,8 @@ for (let item of dropDowns) {
   input.classList.remove('dropdown')
 
   if (item.selectedOptions.length !== 0) {
-    if (item.selectedOptions.length !== 0) input.setAttribute('placeholder', item.selectedOptions[0].innerText)
-    else input.setAttribute('placeholder', item.options[0].innerText)
-    input.value = ''
+    input.setAttribute('placeholder', item.selectedOptions[0].innerText)
   } else {
-    input.value = ''
     input.setAttribute('placeholder', item.options[0].innerText)
   }
 

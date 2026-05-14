@@ -34,9 +34,15 @@
                     {if $itemNewAmount == 'failInc'}
                         <div class="statusDisplay red" role="alert">
                         <p>{t}Fehler bei Erhöhung der Einheiten des Gegenstands{/t}</p>
+                    {else if $itemNewAmount == 'failIncLimit'}
+                        <div class="statusDisplay red" role="alert">
+                        <p>{t}Fehler bei Erhöhung der Einheiten, Wert größer Maximalwert für Datenbank-Typ{/t}</p>
                     {else if $itemNewAmount == 'failDec'}
                         <div class="statusDisplay red" role="alert">
                         <p>{t}Fehler bei Senkung der Einheiten des Gegenstands{/t}</p>
+                    {else if $itemNewAmount == 'failDecLimit'}
+                        <div class="statusDisplay red" role="alert">
+                        <p>{t}Fehler bei Senkung der Einheiten, Wert wäre kleiner Null{/t}</p>
                     {else}
                         <div class="statusDisplay green" role="alert">
                         {if $itemNewAmountAction == 'inc'}
@@ -50,8 +56,8 @@
 
                 {if $isEdit}
                     <div class="statusDisplay alert alert-danger" role="alert">
-                    <h6>{t}Eintrag zur Bearbeitung:{/t} &quot;{$item.label}&quot;</h6>
-                </div>
+                        <h6>{t}Eintrag zur Bearbeitung:{/t} &quot;{$item.label}&quot;</h6>
+                    </div>
                 {/if}
 
                 <div id="errorForm" class="alert alert-danger hidden" role="alert">{t}Nicht gespeichert, es befinden sich Fehler in der Formular-Eingabe.{/t}</div>
@@ -76,13 +82,18 @@
                                 <select class="btn dropdown-toggle" type="button" tabindex="-1" id="storageDropdown" data-toggle="dropdown" data-nosettitle="true" aria-haspopup="true" aria-expanded="false" autocomplete="off">
 
                                 {if $isEdit && $item.storageid != 0}
-                                        <option value="-1">{t}Lagerplatz{/t}</option>
-                                    {else}
-                                        <option value="-1" selected="selected">{t}Lagerplatz{/t}</option>
+                                    <option value="-1">{t}Lagerplatz{/t}</option>
+                                {else}
+                                    <option value="-1" selected="selected">{t}Lagerplatz{/t}</option>
                                 {/if}
+                                
                                 {foreach $storages as $storage}
+                                    {if empty($storage.label)}
+                                        {continue}
+                                    {/if}        
+
                                     {if $isEdit && $storage.id == $item.storageid}
-                                        {$currentStorage = $storage}
+                                        {$currentStorage = $storage}                                        
                                         <option value="{$storage.label}" selected="selected">{$storage.label}</option>
                                     {else}
                                         <option value="{$storage.label}">{$storage.label}</option>
@@ -93,7 +104,7 @@
                             </div>
                         </div>
 
-                    {if $isEdit && $item.storageid != 0}
+                    {if $isEdit && isset($currentStorage) && isset($currentStorage['label'])}
                         <input type="text" name="storage" id="storage" maxlength="64" class="form-control" placeholder="{t}Lagerplatz{/t}" autocomplete="off" value="{$currentStorage.label}">
                     {else}
                         <input type="text" name="storage" id="storage" maxlength="64" class="form-control" placeholder="{t}Lagerplatz{/t}" autocomplete="off">
@@ -123,20 +134,21 @@
                                     <option value="-1" selected="selected">{t}Kategorie{/t}</option>
                                 {/if}/
                                 {foreach $categories as $category}
-                                {if $isEdit && $category.id == $item.headcategory}
-                                    {$currentCategory = $category}
-                                    <option value="{$category.name}" data-catid="{$category.id}" selected="selected">{$category.name}</option>
-                                {else}
-                                    <option value="{$category.name}" data-catid="{$category.id}">{$category.name}</option>'
-                                {/if}
+                                    {if $isEdit && $category.id == $item.headcategory}
+                                        {$currentCategory = $category}
+                                        <option value="{$category.name}" data-catid="{$category.id}" selected="selected">{$category.name}</option>
+                                    {else}
+                                        <option value="{$category.name}" data-catid="{$category.id}">{$category.name}</option>'
+                                    {/if}
                                 {/foreach}
                                 </select>
                             </div>
                         </div>
-                        {if !$isEdit || $currentCategory == null}
-                            <input type="text" class="form-control" id="category" name="category" required="required" autocomplete="off" placeholder="{t}Netzwerk/Hardware{/t}">
-                        {else}
+
+                        {if $isEdit && isset($currentCategory) && isset($currentCategory['name'])}
                             <input type="text" class="form-control" id="category" name="category" required="required" autocomplete="off" placeholder="{t}Netzwerk/Hardware{/t}" value="{t}{$currentCategory.name}{/t}">
+                        {else}
+                            <input type="text" class="form-control" id="category" name="category" required="required" autocomplete="off" placeholder="{t}Netzwerk/Hardware{/t}">
                         {/if}
                     </div>
 
@@ -194,11 +206,15 @@
                     </div>
 
                     <div class="customFieldWrapper">
+                            
                         {if isset($item.id)}
+                            {if !empty($customFields)}
+                                <span class="customFieldsHeader">{t}Custom fields{/t}</span>
+                            {/if}
                             {foreach $customFields as $field}
-                                {if $field.dataType === '8'}
-                                    <details class="customFieldTitle">
-                                    {if isset($field.id) && $field.id == '4'}
+                            {if $field.dataType === strval($fieldTypesPos['qrcode'])}
+                            <details class="customFieldTitle">
+                                    {if isset($field.id) && $field.id == '4' && isset($field['qrid']) && $field['qrid'] == 3}
                                         {if isset($item['checkedin'])}
                                             {if $item['checkedin'] == '0'}
                                                 <summary>{t}QR-Code:{/t} {$field.label}: {t}Gegenstand eingescheckt{/t} [<a href="{$field['qrValue']}">{t}Check out{/t}</a>]</summary>
@@ -209,7 +225,7 @@
                                         {/if}
                                     {else if isset($field['qrValue'])}
                                         <summary>{t}QR-Code:{/t} {$field.label}</summary>
-                                    <div class="input-group mb-3 customFields qrCodeField" data-qrvalue="{$field['qrValue']}"></div>
+                                        <div class="input-group mb-3 customFields qrCodeField" data-qrvalue="{$field['qrValue']}"></div>
                                     {else if empty($field['qrValue'])}
                                         <summary>{t}QR-Code:{/t} {$field.label}</summary>
                                         <div class="input-group mb-3 customFields qrCodeField empty"><span>{t}Der verknüpfte QR-Code Wert ist nicht gesetzt.{/t}</span></div>
@@ -217,7 +233,6 @@
                                     </details>
                                     {continue}
                                 {else if $field.defaultVisible !== '0' && $field.visibleIn === ';-1;'}
-                                    <span class="customFieldTitle">{$field.label}</span>
                                     {$existingData = null}
                                     {foreach $customData as $customField}
                                         {if $customField['fieldId'] === $field.id}
@@ -229,12 +244,13 @@
 
                                     <div class="input-group mb-3 customFields" data-catvisible="{$field.visibleIn}">
                                         {$readonly = ''}
-                                        {if $field.dataType === '8'}
+                                        
+                                        {if $field.dataType === strval($fieldTypesPos['qrcode'])}
                                             {$readonly = ' readonly="readonly"'}
                                             <h5>{$field|@var_dump}</h5>
                                             <input type="text" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}" value="{$field.default}">
                                             {continue}
-                                        {else if $field.dataType === '6' || $field.dataType === '7'}
+                                        {else if $field.dataType ===  strval($fieldTypesPos['selection']) || $field.dataType ===  strval($fieldTypesPos['mselection'])}
                                             {$readonly = ' readonly="readonly"'}
                                             <div class="dropdown">
                                                 <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="cf{$field.id}" data-default="{$field.default}" data-nosettitle="true" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -257,16 +273,22 @@
                                             </div>
                                         {/if}
 
+                                        {if $field.dataType ===  strval($fieldTypesPos['datetime'])}
+                                            {$inputDataType = "datetime-local"}
+                                        {else}
+                                            {$inputDataType = "text"}
+                                        {/if}
+
                                         {if !$isEdit}
                                             {if empty($field.default)}
-                                                <input type="text" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}">
+                                                <input type="{$inputDataType}" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}">
                                             {else}
-                                                <input type="text" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}" value="{$field.default}">
+                                                <input type="{$inputDataType}" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}" value="{$field.default}">
                                             {/if}
                                         {else if !empty($existingData)}
-                                            <input type="text" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}"  value="{$existingData}">
+                                            <input type="{$inputDataType}" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}"  value="{$existingData}">
                                         {else}
-                                            <input type="text" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}" value="{$field.default}">
+                                            <input type="{$inputDataType}" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}" value="{$field.default}">
                                         {/if}
                                     </div>
                                 {/if}
@@ -290,7 +312,7 @@
 
                 {if $isEdit}
                     <h4 class="clearfix">{t}Bilder des Gegenstandes{/t}</h4>
-                    <form method="POST" accept-charset="utf-8" action="{$urlBase}/entry{$urlPostFix}" enctype="multipart/form-data">
+                    <form name="imageUpload" id="imageUpload" method="POST" accept-charset="utf-8" action="{$urlBase}/entry{$urlPostFix}" enctype="multipart/form-data">
                         <input name="images[]" required="required" type="file" multiple="multiple" accept="image/png, image/jpeg, image/jpg, image/webp, image/gif, image/bmp" placeholder="{t}Bild Upload{/t}"/>
                         <input type="hidden" value="{$item.id}" name="editItem" />
                         <input type="submit" class="submit" value="{t}Bilder hochladen{/t}"/>
@@ -303,6 +325,7 @@
                         {$className = "fas fa-solid fa-star"}
                         <div class="imgDiv">
                             <a class="imageLink" data-imageid="{$image['id']}" href="#"><img src="data:image;base64,{$image['thumb']}"/></a>
+                            <div class="imgControls">
                             <a class="removeImageOverlay" title="{t}Bild entfernen{/t}" data-imageid="{$image['id']}" href="#"><i class="fas fa-times-circle"></i></a>
                             {if (!isset($item['coverimage']) || empty($item['coverimage']))}
                                 {if $isFirst}
@@ -314,6 +337,7 @@
                                 {$className="fas fa-solid fa-star active"}
                             {/if}
                             <a class="setCoverImage" title="{t}Bild als Standard verwenden{/t}" data-imageid="{$image['id']}" href="#"><i class="{$className}"></i></a>
+                            </div>
                         </div>
                         {/foreach}
                     </div>
@@ -325,10 +349,31 @@
 {include file="footer.tpl"}
 {literal}
 <script type="text/javascript">
+            function checkImageSubmission(evt) {
+                // 16 MB Limit for mediumBlob and requires XAMMP mysql config "max_allowed_packet" size set to 16 MB
+                let maxFileSizeBytes = 16777215;
+                
+                let fileInput = evt.target.querySelector('input[name="images[]"]');
+                let files = fileInput.files;
+                for (let file of files) {
+                    if (file.size > maxFileSizeBytes) {
+                        alert('Image "' + file.name + '" must not be larger than 16 MegaByte (' + maxFileSizeBytes + ' bytes)\nThge actual file size is ' + (file.size / 1024 / 1024).toFixed(2) + ' MegaByte (' + file.size + ' bytes)')
+                        evt.preventDefault();
+                        return false;
+                    }
+                }
+            }
+
+            let imageUpload = document.querySelector('#imageUpload')
+            
+            if (imageUpload) {
+                imageUpload.addEventListener('submit', checkImageSubmission)
+            }
+
             function removeImage(evt) {
                 evt.preventDefault()
                 if (window.confirm('{/literal}{t}Bild wirklich entfernen?{/t}{literal}')) {
-                    let imgContainer = evt.target.parentNode.parentNode
+                    let imgContainer = evt.target.parentNode.parentNode.parentNode
                     let imgRemovalRequest = new XMLHttpRequest()
 
                     function handleDeleteRequest(evt) {
@@ -595,7 +640,7 @@
                             let targetId = 'cfd_' + evt.target.id.replace('cf', '')
 
                             let optionsSelected = []
-                            for (let option of evt.target.selectedOptions) optionsSelected.push(option.value)
+                            for (let option of evt.target.selectefdOptions) optionsSelected.push(option.value)
 
                             if (optionsSelected[0] !== '-1') document.querySelector('input[name="'+ targetId + '"]').value = optionsSelected.join(';')
                             else document.querySelector('input[name="'+ targetId + '"]').value = ''

@@ -776,22 +776,68 @@ ul.existingFields li.btn-primary {
   position: relative;
   border: 2px solid #888;
   background-color: darkgray;
+  position: relative;
+}
+
+.uploadedImages .imgDiv:hover {
+  border: 2px solid #000; 
 }
 
 .uploadedImages .imgDiv img {
   width: 200px;
-  height: auto;
+  height: 200px;
   cursor: zoom-in;
+  filter: brightness(80%);
+  object-fit: cover;
 }
 
-.uploadedImages .imgDiv:hover {
-  border: 2px solid #333;
+.uploadedImages .imgDiv:hover img {
+  filter: brightness(100%); 
+}
+
+.uploadedImages .imgDiv:not(:has(i.active)) .imgControls a {
+  display: none;
+}
+.uploadedImages .imgDiv:has(i.active) .imgControls .removeImageOverlay {
+  display: none;
+}
+.uploadedImages .imgDiv:has(i.active) .imgControls .setCoverImage {
+  display: unset;
+}
+
+.uploadedImages .imgDiv:hover .imgControls {
+  height: 3.6em;
+  width: 100%;
+  position: absolute;
+  display: block;
+  bottom: 0px;
+}
+
+.uploadedImages .imgDiv:hover .imgControls .setCoverImage,
+.uploadedImages .imgDiv:hover .imgControls .removeImageOverlay,
+.uploadedImages .imgDiv:hover:has(i.active) .imgControls .removeImageOverlay  {
+  display: unset;
+}
+
+.uploadedImages .imgDiv i {
+  color: white;
+  border: 1px solid #000;
+  border-radius: 200%;
+  padding: 0.3em;
+  background-color: #333;
+}
+
+.uploadedImages .imgDiv i.active,
+.uploadedImages .imgDiv:hover i.active {
+  color: gold;
+  background-color: #000;
+  border: 1px solid gold;
 }
 
 .imageOverlay {
   display: none;
   visibility: hidden;
-  z-index: 99999;
+  z-index: 100;
   position: fixed;
   max-height: 100%;
   max-width: 100%;
@@ -805,11 +851,6 @@ ul.existingFields li.btn-primary {
   cursor: zoom-out;
 }
 
-.imageOverlay.active img {
-  max-height: 100%;
-  max-width: 100%;
-}
-
 .setCoverImage,
 .removeImageOverlay {
   position: absolute;
@@ -819,20 +860,20 @@ ul.existingFields li.btn-primary {
   color: #000;
 }
 
-.setCoverImage .fa {
-  right: 85%;
-  bottom: 5px;
+.setCoverImage .fas {
+  right: 80%;
+  bottom: 0.3em;
   color: black;
 }
 
 .setCoverImage {
-  right: 85%;
+  right: calc(85% - 1em);
   bottom: 5px;
 }
 
-.setCoverImage:hover .fa,
-.setCoverImage .active {
-  color: gold;
+.uploadedImages .imgDiv:hover .fa,
+.uploadedImages .imgDiv .active {
+  color: gold; 
 }
 
 .imageOverlay .overlayedImaged {
@@ -914,7 +955,7 @@ ul.existingFields li.btn-primary {
 }
 
 .dropDown input::placeholder {
-  color: inherit;
+  color: #999;
 }
 
 .dropDown:hover input,
@@ -1043,6 +1084,7 @@ ul.existingFields li.btn-primary {
   display: none;
 }
 
+.customFieldWrapper .customFieldsHeader,
 .customFieldWrapper .customFieldTitle {
   font-weight: 700;
   width: 100%;
@@ -1057,7 +1099,7 @@ ul.existingFields li.btn-primary {
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
 }
-
+.customFieldWrapper .customFieldsHeader,
 .customFieldWrapper details.customFieldTitle {
   margin-bottom: 2em;
 }

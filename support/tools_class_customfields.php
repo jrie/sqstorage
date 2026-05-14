@@ -33,7 +33,7 @@ class CF {
 
   public static function GetItemBasedCFD($customFieldsRaw){
     // retvat[itemID][customFieldID]
-      $fnames = array('intNeg','intPos','intNegPos','floatNeg','floatPos','string','selection','mselection');
+      $fnames = array('intNeg','intPos','intNegPos','floatNeg','floatPos','string','selection','mselection', 'qrcode', 'datetime');
       $cflookupfield = array();
       for($x = 0; $x < count($customFieldsRaw);$x++){
         $cflookupfield[ $customFieldsRaw[$x]['id'] ] = $customFieldsRaw[$x]['dataType'];

@@ -14,10 +14,10 @@
         <div class="storage-area">
             {$itemhasstorage = false}
             {if !$isGuest}
-            {if isset($itemstore.storage.label)}<button title="{t}Lagerplatz löschen{/t}" class="btn smallButton" name="removeStorage" data-name="{if isset($itemstore.storage.label)}{$itemstore.storage.label}{$itemhasstorage = true}{else}{t}Unsortiert{/t}{/if}" value="{$itemstore.storage.id}" type="submit"><i class="fas fa-times-circle"></i></button>{/if}
+            {if !empty($itemstore.storage.label)}<button title="{t}Lagerplatz löschen{/t}" class="btn smallButton" name="removeStorage" data-name="{if isset($itemstore.storage.label)}{$itemstore.storage.label}{$itemhasstorage = true}{else}{t}Nicht zugewiesen{/t}{/if}" value="{$itemstore.storage.id}" type="submit"><i class="fas fa-times-circle"></i></button>{/if}
             {/if}
             <h4 class="text-dark">
-                {if isset($itemstore.storage.label)}<a href="{$urlBase}/inventory{$urlPostFix}?storageid={$itemstore.storage.id}">{if isset($itemstore.storage.label)}{$itemstore.storage.label}{else}{t}Unsortiert{/t}{/if}</a>{else}{t}Unsortiert{/t}{/if}&nbsp;
+                {if !empty($itemstore.storage.label)}<a href="{$urlBase}/inventory{$urlPostFix}?storageid={$itemstore.storage.id}">{if isset($itemstore.storage.label)}{$itemstore.storage.label}{else}{t}Nicht zugewiesen{/t}{/if}</a>{else}{t}Nicht zugewiesen{/t}{/if}&nbsp;
                 {if $itemhasstorage}{if !$isGuest}{if isset($itemstore.storage.id)}<a title="{t}Schnelle Bearbeitung{/t}" onclick="changeSingleValue('storages','label',{$itemstore.storage.id},true);" href="javascript:void(0)"><i class="fas fa-edit fa-xs"></i></a>{/if}{/if}{/if}
                 <a title="{t}Zuklappen{/t}" id="togglebtn_{$itemstore.storage.id}" onclick='toggletableview("{$itemstore.storage.id}");' href="javascript:void(0)"><i class="fa-solid fa-xs fa-minimize" id="toggleicon_{$itemstore.storage.id}"></i></a>
                 <span class="counts">({$itemstore.positionen} {if $itemstore.positionen == 1}{t}Position{/t}{else}{t}Positionen{/t}{/if}, {$itemstore.itemcount} {if $itemstore.itemcount == 1}{t}Gegenstand{/t}{else}{t}Gegenstände{/t}{/if})</span>
@@ -101,7 +101,7 @@
                             <select autocomplete="off" id="item_{$item.id}" class="btn dropdown-toggle switchStorage listing-switchstorage" data-itemamount="{$item.amount}" data-value="0" data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 {$hasStorage = false}
                                 {foreach $storages as $storage}
-                                {if ($storage.id == $item.storageid)}
+                                {if ($storage.id == $item.storageid && !empty($storage.label))}
                                 {$hasStorage = true}
                                 <option selected="selected" value="-1">{$storage.label}</option>
                                 {break}
@@ -109,10 +109,13 @@
                                 {/foreach}
 
                                 {if !$hasStorage}
-                                <option selected="selected" value="-1">{t}Zuweisen{/t}</option>
+                                <option selected="selected" value="-1">{t}Nicht zugewiesen{/t}</option>
                                 {/if}
 
                                 {foreach $storages as $storage}
+                                {if empty($storage.label)}
+                                    {continue}
+                                {/if}
                                 {if ($storage.id != $item.storageid)}
                                 <option value="{$storage.id}">{$storage.label}</option>
                                 {/if}
@@ -151,10 +154,10 @@
         <hr>
         <div class="storage-area categories">
             <h4 class="text-dark">
-                {if isset($itemstore.label)}
-                {if isset($itemstore.label)}{$itemstore.label}{else}{t}Unsortiert{/t}{/if}&nbsp;
+                {if !empty($itemstore.label)}
+                {if !empty($itemstore.label)}{$itemstore.label}{else}{t}Nicht zugewiesen{/t}{/if}&nbsp;
                 {else}
-                {if isset($itemstore.storage.label)}{$itemstore.storage.label}{else}{t}Unsortiert{/t}{/if}&nbsp;
+                {if !empty($itemstore.storage.label)}{$itemstore.storage.label}{else}{t}Nicht zugewiesen{/t}{/if}&nbsp;
                 {/if}
 
                 <span class="small">({$itemstore.positionen} {if $itemstore.positionen == 1}{t}Position{/t}{else}{t}Positionen{/t}{/if}, {$itemstore.itemcount} {if $itemstore.itemcount == 1}{t}Gegenstand{/t}{else}{t}Gegenstände{/t}{/if})</span>
@@ -235,18 +238,21 @@
                 {foreach $storages as $storage}
                 {if ($storage.id == $item.storageid)}
                 {$hasStorage = true}
+
                 <option selected="selected" value="-1">{$storage.label}</option>
                 {break}
                 {/if}
                 {/foreach}
 
                 {if !$hasStorage}
-                <option selected="selected" value="-1">{t}Zuweisen{/t}</option>
+                <option selected="selected" value="-1">{t}Nicht zugewiesen{/t}</option>
                 {/if}
 
                 {foreach $storages as $storage}
                 {if ($storage.id != $item.storageid)}
-                <option value="{$storage.id}">{$storage.label}</option>
+                    {if !empty($storage.label)}
+                        <option value="{$storage.id}">{$storage.label}</option>
+                    {/if}
                 {/if}
                 {/foreach}
             </select>
@@ -274,7 +280,7 @@
         <hr>
         <div class="storage-area categories">
             <h4 class="text-dark">
-                {if isset($itemstore.storage.label)}{$itemstore.storage.label}{else}{t}Unsortiert{/t}{/if}&nbsp;
+                {if !empty($itemstore.storage.label)}{$itemstore.storage.label}{else}{t}Nicht zugewiesen{/t}{/if}&nbsp;
                 <span class="small">({$itemstore.positionen} {if $itemstore.positionen == 1}{t}Position{/t}{else}{t}Positionen{/t}{/if}, {$itemstore.itemcount} {if $itemstore.itemcount == 1}{t}Gegenstand{/t}{else}{t}Gegenstände{/t}{/if})</span>
             </h4>
             <ul class="list-group">
@@ -352,21 +358,27 @@
             <select autocomplete="off" id="item_{$item.id}" class="btn dropdown-toggle switchStorage listing-switchstorage" data-itemamount="{$item.amount}" data-value="0" data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {$hasStorage = false}
                 {foreach $storages as $storage}
-                {if ($storage.id == $item.storageid)}
-                {$hasStorage = true}
-                <option selected="selected" value="-1">{$storage.label}</option>
-                {break}
-                {/if}
-                {/foreach}
+                    {if empty($storage.label)}
+                        {continue}
+                    {/if}
 
-                {if !$hasStorage}
-                <option selected="selected" value="-1">{t}Zuweisen{/t}</option>
-                {/if}
+                    {if ($storage.id == $item.storageid)}
+                        {$hasStorage = true}
+                        <option selected="selected" value="-1">{$storage.label}</option>
+                        {break}
+                    {/if}
+                    {/foreach}
 
-                {foreach $storages as $storage}
-                {if ($storage.id != $item.storageid)}
-                <option value="{$storage.id}">{$storage.label}</option>
-                {/if}
+                    {if !$hasStorage}
+                        <option selected="selected" value="-1">{t}Nicht zugewiesen{/t}</option>
+                    {/if}
+
+                    {foreach $storages as $storage}
+                    {if ($storage.id != $item.storageid)}
+                        {if !empty($storage.label)}
+                        <option value="{$storage.id}">{$storage.label}</option>
+                        {/if}
+                    {/if}
                 {/foreach}
             </select>
         </div>

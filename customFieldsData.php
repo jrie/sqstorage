@@ -5,34 +5,40 @@
         'intNegPos' => 2,
         'floatNeg' => 3,
         'floatPos' => 4,
-        'string' => 5,
-        'selection' => 6,
-        'mselection' => 7,
-        'qrcode' => 8
+        'floatNegPos' => 5,
+        'string' => 6,
+        'selection' => 7,
+        'mselection' => 8,
+        'qrcode' => 9,
+        'datetime' => 10
     ];
 
     $fieldTypes = [
         'intNeg' => gettext('Negative Ganzzahl'),
         'intPos' => gettext('Positive Ganzzahl'),
         'intNegPos' => gettext('Negative oder positive Ganzzahl'),
-        'floatNeg' => gettext('Negative oder positive Gleitkommazahl'),
+        'floatNeg' => gettext('Negative Gleitkommazahl'),
         'floatPos' => gettext('Positive Gleitkommazahl'),
+        'floatNegPos' => gettext('Negative oder positive Gleitkommazahl'),
         'string' => gettext('Zeichenfolge < 512 Zeichen'),
         'selection' => gettext('Einzelauswahl (Single-Dropdown)'),
         'mselection' => gettext('Mehrfachauswahl (Multi-Dropdown)'),
-        'qrcode' => gettext('QR-Code Feld')
+        'qrcode' => gettext('QR-Code Feld'),
+        'datetime' => gettext('Datum und Uhrzeit'),
     ];
 
     $fieldLimits = [
-        'intNeg' => array(-4294967294, 0),
-        'intPos' => array(0, 4294967925),
-        'intNegPos' => array(-2147483638, 214747483637),
-        'floatNeg' => array(-2147483638, 0),
-        'floatPos' => array(0, 4294967925),
+        'intNeg' => array(-9223372036854775808, 0),
+        'intPos' => array(0, 18446744073709551615),
+        'intNegPos' => array(-9223372036854775808, 9223372036854775807),
+        'floatNeg' => array(-21474836380000000.0, 0),
+        'floatPos' => array(0, 18446744073710000000.0),
+        'floatNegPos' => array(-222507385850720140.0, 179769313486231570.0),
         'string' => array('\'\'', 0, 256),
         'selection' => array('\'\'', 0, 1280),
         'mselection' => array('\'\'', 0, 1280),
-        'qrcode' => array('\'\'', 0, 256)
+        'qrcode' => array('\'\'', 0, 256),
+        'datetime' => array('\'\'', 0, 0)
     ];
 
     $fieldConverts = [
@@ -41,10 +47,12 @@
         'intNegPos' => 'int',
         'floatNeg' => 'float',
         'floatPos' => 'float',
+        'floatNegPos' => 'float',
         'string' => 'string',
         'selection' => 'string',
         'mselection' => 'string',
-        'qrcode' => 'string'
+        'qrcode' => 'string',
+        'datetime' => 'datetime'
     ];
 
     $dataExamples = [
@@ -54,10 +62,12 @@
         'intNegPos' => gettext('Einzelwert: -10 oder -2 oder 2000 oder 4000'),
         'floatNeg' => gettext('Einzelwert: -11.4 oder -0.032 kleiner gleich 0'),
         'floatPos' => gettext('Einzelwert: 3.4172 oder 5.179 oder 27.4'),
+        'floatNegPos' => gettext('Einzelwert: -3.4172 oder 5.179'),
         'string' => gettext('Einzelwert: Zeichenfolge mit bis zu < 256 Zeichen'),
         'selection' => gettext('Einzelauswahl, durch Semikolon getrennt: erlaubt "Neu" oder "Gebraucht" oder "Refurbished" wenn "Neu;Gebraucht;Refurbished" angegeben. Und oder numerische Werte (Ganzzahl, Gleitkommazahlen)'),
         'mselection' => gettext('Mehrfachauswahl, durch Semikolon getrennt: erlaubt "Neu" und oder "Netzwerk", wenn "Neu;Netzwerk" angegeben. Und oder numerische Werte (Ganzzahl, Gleitkommanzahlen).'),
-        'qrcode' => gettext('Einzelauswahl: Name des verknüpften Feldes auf dem der QR-Code basiert')
+        'qrcode' => gettext('Einzelauswahl: Name des verknüpften Feldes auf dem der QR-Code basiert'),
+        'datetime' => gettext('Datum und Uhrzeit: Datum und Zeitangabe')
     ];
 
     $qrBaseFields = [
@@ -92,4 +102,3 @@
             'text' => gettext('Anzahl um 1 senken')
         )
     ];
-  

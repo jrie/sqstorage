@@ -107,17 +107,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['setcoverimage']) && isse
   $smarty->assign('checkedInStatus', $checkedInStatus);
 } else if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['incOne'])) {
   $itemId = $_GET['incOne'];
-  DB::query('UPDATE `items` SET `amount` = `amount` + 1 WHERE id=%d', $itemId);
-  $targetData = [];
+  $itemNewAmount = 'failInc';
 
-  if (DB::affectedRows() == 1) {
-    $result = DB::queryFirstRow('SELECT `amount` FROM `items` WHERE id=%d', $itemId);
-    if (isset($result) && isset($result['amount'])) {
-      $itemNewAmount = $result['amount'];
+  $itemData = DB::queryFirstRow('SELECT `amount`, `headcategory`, `subcategories`, `storageid` FROM `items` WHERE id=%d', $itemId);
+
+  if ($itemData['amount'] + 1 < $fieldLimits['intPos']) {
+    DB::query('UPDATE `items` SET `amount` = `amount` + 1 WHERE id=%d', $itemId);
+    $targetData = [];
+
+    if (DB::affectedRows() == 1) {
+    
+      DB::query('UPDATE `headcategories` SET `amount` = `amount` + 1 WHERE id=%d', $itemData['headcategory']);
+
+      $subcategoriesIds = explode(',', trim($itemData['subcategories'], ','));
+      foreach ($subcategoriesIds as $subId) {
+        DB::query('UPDATE `subcategories` SET `amount` = `amount` + 1 WHERE id=%d', $subId);
+      }
+      
+      $result = DB::queryFirstRow('SELECT `amount` FROM `items` WHERE id=%d', $itemId);
+      if (isset($result) && isset($result['amount'])) {
+        $itemNewAmount = $result['amount'];
+      }
     }
   } else {
-    $itemNewAmount = 'failInc';
-  }
+    $itemNewAmount = 'failIncLimit';
+  } 
 
   $itemNewAmountAction = 'inc';
 
@@ -125,16 +139,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['setcoverimage']) && isse
   $smarty->assign('itemNewAmountAction', $itemNewAmountAction);
 } else if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['decOne'])) {
   $itemId = $_GET['decOne'];
-  DB::query('UPDATE `items` SET `amount` = `amount` - 1 WHERE id=%d', $itemId);
-  $targetData = [];
+  $itemNewAmount = 'failDec';
+  
+  $itemData = DB::queryFirstRow('SELECT `amount`, `headcategory`, `subcategories`, `storageid` FROM `items` WHERE id=%d', $itemId);
 
-  if (DB::affectedRows() == 1) {
-    $result = DB::queryFirstRow('SELECT `amount` FROM `items` WHERE id=%d', $itemId);
-    if (isset($result) && isset($result['amount'])) {
-      $itemNewAmount = $result['amount'];
+  if ($itemData['amount'] - 1 > 0) {
+    DB::query('UPDATE `items` SET `amount` = `amount` - 1 WHERE id=%d', $itemId);
+    $targetData = [];
+    
+    if (DB::affectedRows() == 1) {
+      DB::query('UPDATE `headcategories` SET `amount` = `amount` - 1 WHERE id=%d', $itemData['headcategory']);
+
+      $subcategoriesIds = explode(',', trim($itemData['subcategories'], ','));
+      foreach ($subcategoriesIds as $subId) {
+        DB::query('UPDATE `subcategories` SET `amount` = `amount` - 1 WHERE id=%d', $subId);
+      }
+      
+      $result = DB::queryFirstRow('SELECT `amount` FROM `items` WHERE id=%d', $itemId);
+      if (isset($result) && isset($result['amount'])) {
+        $itemNewAmount = $result['amount'];
+      }
     }
   } else {
-    $itemNewAmount = 'failInc';
+    $itemNewAmount = 'failDecLimit';
   }
 
   $itemNewAmountAction = 'dec';
@@ -234,7 +261,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['setcoverimage']) && isse
 
   $serialNumber = isset($_POST['serialnumber']) && !empty($_POST['serialnumber']) ? $_POST['serialnumber'] : NULL;
   $comment = isset($_POST['comment']) && !empty($_POST['comment']) ? $_POST['comment'] : NULL;
-  $subcategories = isset($_POST['subcategories']) && !empty($_POST['subcategories']) ? explode(',', $_POST['subcategories']) : NULL;
+  $subcategories = isset($_POST['subcategories']) && !empty($_POST['subcategories']) ? explode(',', trim($_POST['subcategories'], ',')) : NULL;
 
   // Custom fields
   if (isset($_POST['itemUpdateId']) && !empty($_POST['itemUpdateId'])) {
@@ -245,7 +272,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['setcoverimage']) && isse
       DB::update('headCategories', array('amount' => (int)$category['amount'] - (int)$existingItem['amount']), 'id=%d', $category['id']);
     }
 
-    $exitingSubCategories = explode(',', $existingItem['subcategories']);
+    $exitingSubCategories = explode(',', trim($existingItem['subcategories'], ','));
     foreach ($exitingSubCategories as $subcategoryId) {
       $subCategory = DB::queryFirstRow('SELECT id, amount FROM subCategories WHERE id=%d', $subcategoryId);
       if ($subCategory !== null) {
@@ -375,14 +402,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['setcoverimage']) && isse
 
   foreach (array_keys($_POST) as $key) {
     if (strncmp($key, 'cfd_', 4) === 0) {
-      $fieldKey = (int) explode('_', $key, 2)[1];
+      $fieldKey = (int) rtrim(explode('_', $key, 2)[1], '_');
       $value = $_POST[$key];
       $field = DB::queryFirstRow('SELECT `id`, `dataType`, `fieldValues`, `default` FROM `customFields` WHERE `id`=%d', $fieldKey);
       if ($field !== null) {
         $fieldType = null;
-        foreach ($fieldTypesPos as $key => $index) {
+        foreach ($fieldTypesPos as $fieldTypeKey => $index) {
           if ($index == (int) $field['dataType']) {
-            $fieldType = $key;
+            $fieldType = $fieldTypeKey;
             break;
           }
         }
@@ -398,6 +425,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['setcoverimage']) && isse
               break;
             case 3:
             case 4:
+            case 5:
               $convertedValue = doubleval($value);
               break;
             default:
@@ -405,8 +433,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['setcoverimage']) && isse
               break;
           }
         }
+
         $existing = DB::queryFirstRow('SELECT `id` FROM `fieldData` WHERE `itemId`=%d AND `fieldId`=%d', (int)$itemCreationId, (int)$field['id']);
-        if ($existing == null) DB::insert('fieldData', [$fieldType => $convertedValue, 'itemId' => (int)$itemCreationId, 'fieldId' => (int)$field['id']]);
+        if (!$existing) DB::insert('fieldData', [$fieldType => $convertedValue, 'itemId' => (int)$itemCreationId, 'fieldId' => (int)$field['id']]);
         else DB::update('fieldData', [$fieldType => $convertedValue, 'itemId' => (int)$itemCreationId, 'fieldId' => (int)$field['id']], 'id=%d', $existing['id']);
       }
     }
@@ -476,7 +505,7 @@ foreach ($qrBaseFields as $qrBaseFields) {
 
 if (isset($item) && !empty($item)) {
   foreach ($customFields as $key => $customField) {
-    if ($customField['dataType'] !== '8') {
+    if ($customField['dataType'] !== strval($fieldTypesPos['qrcode'])) {
       continue;
     }
 
@@ -555,6 +584,8 @@ if (isset($item) && !empty($item)) {
 
         $qrData[$customField['id']] = $dataEntry;
         $customFields[$key]['qrValue'] = $dataEntry['data-value'];
+        $customFields[$key]['qrbase'] = $targetBase;
+        $customFields[$key]['qrid'] = $targetId;
       }
     }
   }

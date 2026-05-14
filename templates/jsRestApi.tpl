@@ -9,7 +9,11 @@ function GetItemThumb(itemId, filterType) {
   xmlhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       const newCharacterJSON = JSON.parse(xmlhttp.responseText);
-      ret_value = atob(newCharacterJSON["records"][0]['thumb']);
+      {/literal}{if isset(DB::$dsn) && str_starts_with(DB::$dsn, 'sqlite')}{literal}
+        ret_value = newCharacterJSON["records"][0]['thumb'];
+      {/literal}{else}{literal}
+        ret_value = atob(newCharacterJSON["records"][0]['thumb']);
+      {/literal}{/if}{literal}
     }
   };
 
@@ -28,7 +32,11 @@ function GetItemFullimage(itemId, filterType) {
   xmlhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       const newCharacterJSON = JSON.parse(xmlhttp.responseText);
-      ret_value = atob(newCharacterJSON["records"][0]['imageData']);
+      {/literal}{if isset(DB::$dsn) && str_starts_with(DB::$dsn, 'sqlite')}{literal}
+        ret_value = newCharacterJSON["records"][0]['imageData'];
+      {/literal}{else}{literal}
+        ret_value = atob(newCharacterJSON["records"][0]['imageData']);
+      {/literal}{/if}{literal}
     }
   };
 
@@ -50,7 +58,12 @@ function GetItemFullimages(itemId, filterType, coverId) {
       let ArrLength = Object.keys(newCharacterJSON["records"]).length;
 
       for (let x = 0; x < ArrLength; x++) {
-        let imageData = 'data:image/*;charset=utf-8;base64,' + atob(newCharacterJSON["records"][x]['imageData'])
+        // let imageData = 'data:image/*;charset=utf-8;base64,' + atob(newCharacterJSON["records"][x]['imageData'])
+        {/literal}{if isset(DB::$dsn) && str_starts_with(DB::$dsn, 'sqlite')}{literal}
+          let imageData = 'data:image/*;charset=utf-8;base64,' + newCharacterJSON["records"][x]['imageData'];
+        {/literal}{else}{literal}
+          let imageData = 'data:image/*;charset=utf-8;base64,' + atob(newCharacterJSON["records"][x]['imageData'])
+        {/literal}{/if}{literal}
         if (newCharacterJSON["records"][x]['id'] != coverId) {
           ret_value.push(imageData);
         } else {

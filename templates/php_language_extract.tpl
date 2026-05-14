@@ -125,3 +125,7 @@
 {t}Anzahl um 1 erhöhen{/t}
 {t}Anzahl um 1 senken{/t}
 {t}Check in/check out{/t}
+{t}Datum und Uhrzeit{/t}
+{t}Datum und Uhrzeit: Datum und Zeitangabe{/t}
+{t}Einzelwert: -3.4172 oder 5.179{/t}
+{t}Negative Gleitkommazahl{/t}

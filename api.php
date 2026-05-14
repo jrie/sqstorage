@@ -55,13 +55,20 @@ use Tqdev\PhpCrudApi\RequestFactory;
 use Tqdev\PhpCrudApi\ResponseUtils;
 
 //var_dump($_SERVER['PATH_INFO']);
+if (str_starts_with(DB::$dsn, 'mysql')) {
+    $settings['driver'] = 'mysql';
+    $settings['address'] = $host;
+    $settings['port'] = $port;
+    $settings['username'] = DB::$user;
+    $settings['password'] = DB::$password;
+    $settings['database'] = $dbName;
+} else {
+    $settings['driver'] = 'sqlite';
+    $settings['address'] = explode(':', DB::$dsn, 2)[1];
+    $settings['database'] = $dbName;
+}
 
-$settings['driver'] = 'mysql';
-$settings['address'] = $host;
-$settings['port'] = $port;
-$settings['username'] = DB::$user;
-$settings['password'] = DB::$password;
-$settings['database'] = $dbName;
+
 $settings['tables'] = 'customfields,fielddata,headCategories,images,items,storages,subCategories';
 $settings['debug'] = true;
 

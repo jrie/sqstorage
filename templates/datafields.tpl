@@ -149,7 +149,10 @@
                 let fieldSelection = document.querySelector('#fieldSelection')
                 let qrSelection = document.querySelector('#qrSelection')
 
-                if (targetValue === 'qrcode') {
+                if (targetValue === 'datetime') {
+                    defaultValue.removeAttribute('readonly')
+                    defaultValue.setAttribute('type', 'datetime-local')
+                } else if (targetValue === 'qrcode') {
                     qrValues.setAttribute('required', 'required')
                     qrValues.removeAttribute('readonly')
                     qrSelection.classList.remove('hidden')
@@ -161,6 +164,7 @@
                     qrSelection.classList.add('hidden')
                     defaultValue.classList.remove('hidden')
                     defaultValue.removeAttribute('readonly')
+                    defaultValue.setAttribute('type', 'text')
                 }
 
                 if (targetValue.indexOf('selection') !== -1) {
@@ -354,6 +358,9 @@
                                 document.querySelector('input[name="fieldDefault"]').focus()
                                 break
                             }
+                        } else if (fieldConverts[field.value] === 'datetime') {
+                            let value = document.querySelector('input[name="fieldDefault"]').value
+                            if (value === '') continue
                         }
                     }
 

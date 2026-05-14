@@ -35,8 +35,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         DB::update('storages', array('amount' => 0), 'id=%d', $item['storageid']);
       }
     }
-
-    DB::update('headCategories', array('amount' => (int)$headCategory['amount'] - (int)$item['amount']), 'id=%d', $item['headcategory']);
+    
+    if ($headCategory) {
+      DB::update('headCategories', array('amount' => (int)$headCategory['amount'] - (int)$item['amount']), 'id=%d', $item['headcategory']);
+    }
+    
     DB::query('DELETE FROM items WHERE id=%d', $_POST['remove']);
   } else if (isset($_POST['removeStorage']) && !empty($_POST['removeStorage'])) {
     DB::update('items', array('storageid' => 0), 'storageid=%d', $_POST['removeStorage']);
@@ -96,11 +99,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
       if ($targetAmountAfter !== $targetAmountBefore) {
         $diffAmount = $targetAmountBefore - $targetAmountAfter;
-        if ($storage !== null) {
+        if ($storage) {
           DB::update('storages', array('amount' => $storage['amount'] - $diffAmount), 'id=%d', $storage['id']);
         }
 
-        DB::update('headCategories', array('amount' => $headCategory['amount'] - $diffAmount), 'id=%d', $headCategory['id']);
+        if ($headCategory) {
+          DB::update('headCategories', array('amount' => $headCategory['amount'] - $diffAmount), 'id=%d', $headCategory['id']);
+        }
 
         foreach($subCategoriesData as $id => $amount) {
           DB::update('subCategories', array('amount' => $amount - $diffAmount), 'id=%d', $id);

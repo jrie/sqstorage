@@ -27,4 +27,18 @@ for (let qrField of qrCodeFields) {
     qrCodeSettings['removeCanvas'] = true
     new QRCode(qrField, qrCodeSettings)
 }
+
+let qrCodeImages = document.querySelectorAll('div.qrCodeField > img')
+
+for (let qrImage of qrCodeImages) {
+    let qrParent = qrImage.parentNode
+    
+    let qrLink = document.createElement('a')
+    qrLink.alt = qrParent.dataset.qrvalue
+    qrLink.title = qrParent.dataset.qrvalue
+    qrLink.href = qrParent.dataset.qrvalue
+
+    qrLink.appendChild(qrImage)
+    qrParent.appendChild(qrLink)
+}
 </script>
