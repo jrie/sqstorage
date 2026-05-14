@@ -213,7 +213,7 @@
                         {$coverImage = $item.coverimage}
                         {$type = 'id'}
                     {/if}
-                    <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fa fas fa-images"></i><img class="item-picture" data-id="{$coverImage}" data-type="{$type}" src="">{/if}
+                    <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fa fas fa-images"></i><img class="item-picture" data-id="{$coverImage}" data-type="{$type}" src="" onclick="displayFullImage('{$item.id}', '{$type}', '{$coverImage}');return false;">{/if}
                     {if !$isGuest}
                         <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
                     {else}
@@ -335,7 +335,7 @@
                         {$type = 'id'}
                     {/if}
 
-                    <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i><img class="item-picture" data-id="{$coverImage}" data-type="{$type}" src="">{/if}
+                    <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i><img class="item-picture" data-id="{$coverImage}" data-type="{$type}" src="" onclick="displayFullImage('{$item.id}', '{$type}', '{$coverImage}');return false;">{/if}
                     {if !$isGuest}
                         <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
                     {else}
