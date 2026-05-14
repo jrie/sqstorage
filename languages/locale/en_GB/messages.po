@@ -179,7 +179,7 @@ msgstr "Default value"
 
 #: templates//datafields.tpl:65
 msgid "Standardwert: Keine Eingabe gleichsam leer"
-msgstr "Default value: Leave it empty for non"
+msgstr "Default value: Leave empty to set no default"
 
 #: templates//datafields.tpl:70
 msgid "Feld immer sichtbar?"
