@@ -16,18 +16,18 @@ msgstr ""
 msgid "Kategorien"
 msgstr ""
 
-#: templates//categories.tpl:11 templates//categories.tpl:48
+#: templates//categories.tpl:11 templates//categories.tpl:28
+#: templates//categories.tpl:48 templates//categories.tpl:67
+#: templates//inventory.tpl:23 templates//inventory.tpl:163
+#: templates//inventory.tpl:284 templates//php_language_extract.tpl:121
+msgid "Positionen"
+msgstr ""
+
+#: templates//categories.tpl:12 templates//categories.tpl:49
 #: templates//entry.tpl:188 templates//entry.tpl:191 templates//entry.tpl:193
 #: templates//inventory.tpl:30 templates//inventory.tpl:170
 #: templates//inventory.tpl:290 templates//php_language_extract.tpl:109
 msgid "Anzahl"
-msgstr ""
-
-#: templates//categories.tpl:12 templates//categories.tpl:29
-#: templates//categories.tpl:49 templates//categories.tpl:68
-#: templates//inventory.tpl:23 templates//inventory.tpl:163
-#: templates//inventory.tpl:284 templates//php_language_extract.tpl:121
-msgid "Positionen"
 msgstr ""
 
 #: templates//categories.tpl:14 templates//categories.tpl:51
@@ -47,19 +47,19 @@ msgstr ""
 #: templates//categories.tpl:28 templates//categories.tpl:67
 #: templates//inventory.tpl:23 templates//inventory.tpl:163
 #: templates//inventory.tpl:284
-msgid "Gegenstand"
-msgstr ""
-
-#: templates//categories.tpl:28 templates//categories.tpl:67
-#: templates//inventory.tpl:23 templates//inventory.tpl:163
-#: templates//inventory.tpl:284
-msgid "Gegenstände"
+msgid "Position"
 msgstr ""
 
 #: templates//categories.tpl:29 templates//categories.tpl:68
 #: templates//inventory.tpl:23 templates//inventory.tpl:163
 #: templates//inventory.tpl:284
-msgid "Position"
+msgid "Gegenstand"
+msgstr ""
+
+#: templates//categories.tpl:29 templates//categories.tpl:68
+#: templates//inventory.tpl:23 templates//inventory.tpl:163
+#: templates//inventory.tpl:284
+msgid "Gegenstände"
 msgstr ""
 
 #: templates//categories.tpl:31
@@ -334,7 +334,7 @@ msgid "Fehler bei Senkung der Einheiten des Gegenstands"
 msgstr ""
 
 #: templates//entry.tpl:45
-msgid "Fehler bei Senkung der Einheiten, Wert wäre kleiner Null"
+msgid "Fehler bei Senkung der Einheiten, Wert ist Null"
 msgstr ""
 
 #: templates//entry.tpl:49

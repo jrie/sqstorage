@@ -42,7 +42,7 @@
                         <p>{t}Fehler bei Senkung der Einheiten des Gegenstands{/t}</p>
                     {else if $itemNewAmount == 'failDecLimit'}
                         <div class="statusDisplay red" role="alert">
-                        <p>{t}Fehler bei Senkung der Einheiten, Wert wäre kleiner Null{/t}</p>
+                        <p>{t}Fehler bei Senkung der Einheiten, Wert ist Null{/t}</p>
                     {else}
                         <div class="statusDisplay green" role="alert">
                         {if $itemNewAmountAction == 'inc'}
