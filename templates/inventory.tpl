@@ -265,6 +265,9 @@
         <li class="list-group-item"><span>{t}Keine Gegenstände gefunden{/t}</span></li>
         {/if}
         </ul>
+        {if !$isGuest && !empty($itemstore.storage.label)}
+            <button type="button" data-table="itemsHeadcategory" data-tableId="{$_GET['category']}" data-name="{$itemstore.storage.label}" class="csvDownload btn btn-primary">{t}Als CSV herunterladen{/t}</button>
+        {/if}
 </div>
 {/if}
 {/foreach}
@@ -390,6 +393,10 @@
         <li class="list-group-item"><span>{t}Keine Gegenstände gefunden{/t}</span></li>
         {/if}
         </ul>
+
+        {if !$isGuest && !empty($itemstore.storage.label)}
+            <button type="button" data-table="itemsSubcategory" data-tableId="{$_GET['subcategory']}" data-name="{$itemstore.storage.label}" class="csvDownload btn btn-primary">{t}Als CSV herunterladen{/t}</button>
+        {/if}
 </div>
 {else}
 <!--<h1>Keine Teile verdammt</h1>-->
