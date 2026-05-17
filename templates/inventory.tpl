@@ -101,24 +101,27 @@
                             <select autocomplete="off" id="item_{$item.id}" class="btn dropdown-toggle switchStorage listing-switchstorage" data-itemamount="{$item.amount}" data-value="0" data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 {$hasStorage = false}
                                 {foreach $storages as $storage}
-                                {if ($storage.id == $item.storageid && !empty($storage.label))}
-                                {$hasStorage = true}
-                                <option selected="selected" value="-1">{$storage.label}</option>
-                                {break}
-                                {/if}
-                                {/foreach}
+                                    {if empty($storage.label)}
+                                        {continue}
+                                    {/if}
 
-                                {if !$hasStorage}
-                                <option selected="selected" value="-1">{t}Nicht zugewiesen{/t}</option>
-                                {/if}
+                                    {if ($storage.id == $item.storageid)}
+                                        {$hasStorage = true}
+                                        <option selected="selected" value="-1">{$storage.label}</option>
+                                        {break}
+                                    {/if}
+                                    {/foreach}
 
-                                {foreach $storages as $storage}
-                                {if empty($storage.label)}
-                                    {continue}
-                                {/if}
-                                {if ($storage.id != $item.storageid)}
-                                <option value="{$storage.id}">{$storage.label}</option>
-                                {/if}
+                                    {if !$hasStorage}
+                                        <option selected="selected" value="-1">{t}Nicht zugewiesen{/t}</option>
+                                    {/if}
+
+                                    {foreach $storages as $storage}
+                                    {if ($storage.id != $item.storageid)}
+                                        {if !empty($storage.label)}
+                                        <option value="{$storage.id}">{$storage.label}</option>
+                                        {/if}
+                                    {/if}
                                 {/foreach}
                             </select>
                         </div>
@@ -236,24 +239,27 @@
             <select autocomplete="off" id="item_{$item.id}" class="btn dropdown-toggle switchStorage listing-switchstorage" data-itemamount="{$item.amount}" data-value="0" data-id="{$item.id}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {$hasStorage = false}
                 {foreach $storages as $storage}
-                {if ($storage.id == $item.storageid)}
-                {$hasStorage = true}
-
-                <option selected="selected" value="-1">{$storage.label}</option>
-                {break}
-                {/if}
-                {/foreach}
-
-                {if !$hasStorage}
-                <option selected="selected" value="-1">{t}Nicht zugewiesen{/t}</option>
-                {/if}
-
-                {foreach $storages as $storage}
-                {if ($storage.id != $item.storageid)}
-                    {if !empty($storage.label)}
-                        <option value="{$storage.id}">{$storage.label}</option>
+                    {if empty($storage.label)}
+                        {continue}
                     {/if}
-                {/if}
+
+                    {if ($storage.id == $item.storageid)}
+                        {$hasStorage = true}
+                        <option selected="selected" value="-1">{$storage.label}</option>
+                        {break}
+                    {/if}
+                    {/foreach}
+
+                    {if !$hasStorage}
+                        <option selected="selected" value="-1">{t}Nicht zugewiesen{/t}</option>
+                    {/if}
+
+                    {foreach $storages as $storage}
+                    {if ($storage.id != $item.storageid)}
+                        {if !empty($storage.label)}
+                        <option value="{$storage.id}">{$storage.label}</option>
+                        {/if}
+                    {/if}
                 {/foreach}
             </select>
         </div>
