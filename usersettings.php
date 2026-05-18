@@ -8,7 +8,7 @@ $error = "";
 $success = "";
 
 if ($useRegistration) {
-  if (isset($user) && isset($user['usergroupid']) && (int)$user['usergroupid'] === 1) {
+  if (isset($user) && isset($user['usergroupid']) && ((int)$user['usergroupid'] === 1 || (int)$user['usergroupid'] === 3)) {
   } else {
     $error = gettext('Zugriff verweigert!');
     include 'accessdenied.php';
@@ -31,8 +31,12 @@ if(isset($_POST['target'])){
 $errors = array();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'passwordchange') {
-  if(USERS::SetUserPassword( $_POST['oldPassword'] , $_POST['newPassword1'] , $_POST['newPassword2'],$errors )   ){
-    $success = gettext('Der Eintrag wurde erfolgreich aktualisiert.');
+  if ($_SERVER['SERVER_NAME'] !== 'demo.sqstorage.net') {
+    if(USERS::SetUserPassword( $_POST['oldPassword'] , $_POST['newPassword1'] , $_POST['newPassword2'],$errors)) {
+      $success = gettext('Der Eintrag wurde erfolgreich aktualisiert.');
+    }
+  } else {
+    $errors[] = 'You are in the demo environment, it is not possible to change the password here!';
   }
 } elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'startpage') {
   SETTINGS::SettingsSet("startpage",$_SESSION['user']['username'],$_POST['startpagekey']);
