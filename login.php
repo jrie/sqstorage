@@ -125,13 +125,19 @@ if (isset($useRegistration) && !$useRegistration) {
           $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
           try {
+            $result = null;
             if ($createFirstAdmin) {
               $result = DB::insert('users', array('username' => trim($_POST['username']), 'mailaddress' => $_POST['mailaddress'], 'password' => $hashedPassword));
               $userId = DB::insertId();
               $result = DB::insert('users_groups', array('userid' => $userId, 'usergroupid' => 1));
-            } else {
+            } else if (isset($userId)) {
               $result = DB::update('users', array('username' => trim($_POST['username']), 'password' => $hashedPassword), 'id=%i', $userId);
+            } else {
+              $error = gettext('Zugriff verweigert!');
+              include 'accessdenied.php';
+              die();
             }
+
             if ($result && DB::affectedRows() == 1) {
               if (!empty($user['tokenid'])) {
                 DB::delete('users_tokens', 'id=%i', $user['tokenid']);
