@@ -1,4 +1,5 @@
 <?php
+$basedir = __DIR__;
 $user="";
 $error = "";
 $success = "";
@@ -7,18 +8,21 @@ $updatecheck = false;
 $uptodate = false;
 $ghapi = array();
 require_once 'login.php';
+require_once 'support/dba.php';
+require_once 'support/urlBase.php';
+$smarty->assign('urlBase', $urlBase);
 
-if ($useRegistration || !isset($useRegistration)) {
-  if (!isset($user) || !isset($user['usergroupid']) || (int)$user['usergroupid'] !== 1) {
+$error = "";
+$success = "";
+
+if ($useRegistration) {
+  if (isset($user) && isset($user['usergroupid']) && (int)$user['usergroupid'] === 1) {
+  } else {
     $error = gettext('Zugriff verweigert!');
     include 'accessdenied.php';
     die();
   }
 }
-
-require_once 'support/dba.php';
-require_once 'support/urlBase.php';
-$smarty->assign('urlBase', $urlBase);
 
 if ($usePrettyURLs) {
     $smarty->assign('urlPostFix', '');
@@ -178,12 +182,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' || !empty($error) || ($_SERVER['REQUEST_
   }
 }
 
-$mailDB = DB::queryFirstField('SELECT jsondoc FROM settings WHERE namespace="mail" LIMIT 1');
+$mailDB = DB::queryFirstField('SELECT `jsondoc` FROM `settings` WHERE `namespace`="mail";');
 
 if ($mailDB !== NULL) {
   $mailSet = json_decode($mailDB);
-  $mailSettings['senderAddress'] = @$mailSet->senderAddress;
-  $mailSettings['enabled'] = @$mailSet->enabled;
+  $mailSettings['senderAddress'] = $mailSet->senderAddress;
+  $mailSettings['enabled'] = $mailSet->enabled;
 } else {
   $mailSettings['senderAddress'] = "";
   $mailSettings['enabled'] = false;
@@ -205,11 +209,11 @@ if (!array_key_exists('api_access', DB::columnList('users'))) {
 
 $dbUpdateAvailable = IsDBUpdateAvailable();
 $pages = [
+  'welcome' => gettext('Welcome!'),
   'entry' => gettext("Eintragen"),
   'inventory' => gettext('Inventar'),
   'transfer' => gettext('Transferieren'),
   'datafields' => gettext('Datenfelder'),
-  'welcome' => gettext('Welcome!'),
 ];
 
 $settingdata['updater'] = SETTINGS::SettingsGet('updater');
