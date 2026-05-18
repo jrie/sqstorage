@@ -21,6 +21,7 @@
             </form>
         {/if}
     {/if}
+
     <div class="clearfix"></div>
 
     {if $isEdit || $isAdd}
@@ -45,74 +46,90 @@
     <form accept-charset="utf-8" id="userform" method="POST" action="">
 
         {if $isEdit} <input type="hidden" value="{$user.id}" name="userUpdateId" />{/if}
+        
+        <ul class="list-group">
+            <li class="alert alert-info">
+                <span class="list-span">{t}Benutzereinstellungen{/t}</span>
+            </li>
 
-        <div class="input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">{t}Benutzername{/t}</span>
-            </div>
+            <li class="list-group-item">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">{t}Benutzername{/t}</span>
+                    </div>
 
-            {if !$isEdit && !$error}
-            <input type="text" name="username" maxlength="20" class="form-control" required="required" placeholder="{t}Benutzername{/t}" aria-label="{t}Benutzername{/t}" aria-describedby="basic-addon1">
-            {else}
-            <input type="text" name="username" maxlength="20" class="form-control" required="required" placeholder="{t}Benutzername{/t}" aria-label="{t}Benutzername{/t}" aria-describedby="basic-addon1" value="{$user.username}">
-            {/if}
-        </div>
+                    {if !$isEdit && !$error}
+                    <input type="text" name="username" maxlength="20" class="form-control" required="required" placeholder="{t}Benutzername{/t}" aria-label="{t}Benutzername{/t}" aria-describedby="basic-addon1">
+                    {else}
+                    <input type="text" name="username" maxlength="20" class="form-control" required="required" placeholder="{t}Benutzername{/t}" aria-label="{t}Benutzername{/t}" aria-describedby="basic-addon1" value="{$user.username}">
+                    {/if}
+                </div>
+            </li>
 
-        <div class="input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon7">{t}E-Mail{/t}</span>
-            </div>
+            <li class="list-group-item">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon7">{t}E-Mail{/t}</span>
+                    </div>
+                    {if !$isEdit && !$error}
+                    <input type="email" name="mailaddress" maxlength="254" class="form-control" autocomplete="off" placeholder="{t}E-Mail{/t}" aria-label="{t}E-Mail{/t}" aria-describedby="basic-addon7">
+                    {else}
+                    <input type="email" name="mailaddress" maxlength="254" class="form-control" autocomplete="off" placeholder="{t}E-Mail{/t}" aria-label="{t}E-Mail{/t}" aria-describedby="basic-addon7" value="{$user.mailaddress}">
+                    {/if}
+                </div>
+            </li>
 
-            {if !$isEdit && !$error}
-            <input type="email" name="mailaddress" maxlength="254" class="form-control" autocomplete="off" placeholder="{t}E-Mail{/t}" aria-label="{t}E-Mail{/t}" aria-describedby="basic-addon7">
-            {else}
-            <input type="email" name="mailaddress" maxlength="254" class="form-control" autocomplete="off" placeholder="{t}E-Mail{/t}" aria-label="{t}E-Mail{/t}" aria-describedby="basic-addon7" value="{$user.mailaddress}">
-            {/if}
-        </div>
 
-        <div class="input-group">
-            <div class="input-group-prepend">
-                <div class="dropdown">
-                    <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="usergroupDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <option value="-1" selected="selected">{t}Benutzergruppe{/t}</option>
-                        {$currentUsergroup=NULL}
-                        {foreach $usergroups as $usergroup}
-                        {if ($isEdit || $error) && $user.usergroupid == $usergroup.id}
-                        {$currentUsergroup=$usergroup}
+            <li class="list-group-item">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="dropdown">
+                            <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="usergroupDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <option value="-1" selected="selected">{t}Benutzergruppe{/t}</option>
+                                {$currentUsergroup=NULL}
+                                {foreach $usergroups as $usergroup}
+                                {if ($isEdit || $error) && $user.usergroupid == $usergroup.id}
+                                {$currentUsergroup=$usergroup}
+                                {/if}
+                                <option value="{$usergroup.id}">{t}{$usergroup.name}{/t}</option>
+                                {/foreach}
+                            </select>
+                        </div>
+                    </div>
+
+                    {if (!$isEdit && !$error) || $currentUsergroup == null}
+                    <input type="text" class="form-control" id="usergroupname" name="usergroupname" readonly="readonly" required="required" autocomplete="off" placeholder="{t}Benutzergruppe{/t}">
+                    <input type="hidden" value="" id="usergroupid" name="usergroupid" />
+                    {else}
+                    <input type="text" class="form-control" id="usergroupname" name="usergroupname" readonly="readonly" required="required" autocomplete="off" placeholder="{t}Benutzergruppe{/t} " value="{$user.usergroupname}">
+                    <input type="hidden" value="{$user.usergroupid}" id="usergroupid" name="usergroupid" />
+                    {/if}
+                </div>
+            </li>
+        
+            <li class="list-group-item">
+                <div class="input-group mb-3">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="dropdown">
+                                <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="userapiDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <option value="-1" selected="selected">{t}API Zugriff{/t}</option>
+                                    <option value="0">{t}verbieten{/t}</option>
+                                    <option value="1">{t}erlauben{/t}</option>
+                                </select>
+                            </div>
+                        </div>
+                        {if (!$isEdit && !$error) || $currentUsergroup == null}
+                        <input type="text" class="form-control" id="userapi" name="userapi" readonly="readonly" required="required" autocomplete="off" placeholder="{t}API Zugriff{/t}">
+                        <input type="hidden" value="" id="userapikey" name="userapikey" />
+                        {else}
+                        <input type="text" class="form-control" id="userapi" name="userapi" readonly="readonly" required="required" autocomplete="off" placeholder="{t}API Zugriff{/t} " value="{if $user.api_access == 1}{t}erlauben{/t}{else}{t}verbieten{/t}{/if}">
+                        <input type="hidden" value="{$user.api_access}" id="userapikey" name="userapikey" />
                         {/if}
-                        <option value="{$usergroup.id}">{t}{$usergroup.name}{/t}</option>
-                        {/foreach}
-                    </select>
+                    </div>
                 </div>
-            </div>
-
-            {if (!$isEdit && !$error) || $currentUsergroup == null}
-            <input type="text" class="form-control" id="usergroupname" name="usergroupname" readonly="readonly" required="required" autocomplete="off" placeholder="{t}Benutzergruppe{/t}">
-            <input type="hidden" value="" id="usergroupid" name="usergroupid" />
-            {else}
-            <input type="text" class="form-control" id="usergroupname" name="usergroupname" readonly="readonly" required="required" autocomplete="off" placeholder="{t}Benutzergruppe{/t} " value="{$user.usergroupname}">
-            <input type="hidden" value="{$user.usergroupid}" id="usergroupid" name="usergroupid" />
-            {/if}
-        </div>
-
-        <div class="input-group">
-            <div class="input-group-prepend">
-                <div class="dropdown">
-                    <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="userapiDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <option value="-1" selected="selected">{t}API Zugriff{/t}</option>
-                        <option value="0">{t}verbieten{/t}</option>
-                        <option value="1">{t}erlauben{/t}</option>
-                    </select>
-                </div>
-            </div>
-            {if (!$isEdit && !$error) || $currentUsergroup == null}
-            <input type="text" class="form-control" id="userapi" name="userapi" readonly="readonly" required="required" autocomplete="off" placeholder="{t}API Zugriff{/t}">
-            <input type="hidden" value="" id="userapikey" name="userapikey" />
-            {else}
-            <input type="text" class="form-control" id="userapi" name="userapi" readonly="readonly" required="required" autocomplete="off" placeholder="{t}API Zugriff{/t} " value="{if $user.api_access == 1}{t}erlauben{/t}{else}{t}verbieten{/t}{/if}">
-            <input type="hidden" value="{$user.api_access}" id="userapikey" name="userapikey" />
-            {/if}
-        </div>
+            </li>
+        </ul>
 
         <div style="float: right;">
             {if $isEdit}
@@ -139,7 +156,7 @@
     <ul class="categories userlist list-group">
         <li class="alert alert-info"><span class="list-span">{t}Benutzername{/t}</span><span class="list-span">{t}E-Mail{/t}</span><span class="list-span">{t}Gruppe{/t}</span><span class="list-span">{t}API Zugriff{/t}</span><span class="list-span">{t}Aktionen{/t}</span></li>
         {foreach $users as $user}
-        <li class="list-group-item"><a title="{t}Benutzer löschen{/t}" name="removeUser" data-name="{$user.username}" data-id="{$user.usergroupid}" href="{$urlBase}/settings{$urlPostFix}?removeUser={$user.id}" class="removalButton fas fa-times-circle btn"></a><span class="list-span">{$user.username}</span><span class="list-span">{$user.mailaddress}</span><span class="list-span">{$user.usergroupname}</span><span class="list-span">{if !isset($user.api_access)}{t}Bitte die Datenbank aktualisieren{/t}{else}{if $user.api_access == 1}<i class="fas fa-circle-check"></i>{else}<i class="fas fa-ban"></i>{/if}{/if}</span><a class="fas fa-edit editUser" href="#" name="editUser" data-name="{$user.username}" data-id="{$user.id}"></a></li>
+        <li class="list-group-item"><a title="{t}Benutzer löschen{/t}" name="removeUser"  href="{$urlBase}/settings{$urlPostFix}?removeUser={$user.id}" class="removalButton btn"><i class="fas fa-times-circle"></i></a><span class="list-span">{$user.username}</span><span class="list-span">{$user.mailaddress}</span><span class="list-span">{$user.usergroupname}</span><span class="list-span">{if !isset($user.api_access)}{t}Bitte die Datenbank aktualisieren{/t}{else}{if $user.api_access == 1}<i class="fas fa-circle-check"></i>{else}<i class="fas fa-ban"></i>{/if}{/if}</span><a class="fas fa-edit editUser" href="#" name="editUser" data-name="{$user.username}" data-id="{$user.id}"></a></li>
         {/foreach}
     </ul>
 
@@ -147,7 +164,7 @@
         <input type="hidden" id="mail" name="target" value="mail" />
         <ul class="categories list-group">
             <li class="alert alert-info">
-                <span class="list-span">{t}E-Mailserver-Einstellungen{/t}</span>
+    <span class="list-span">{t}E-Mailserver-Einstellungen{/t}&nbsp;-&nbsp;{if $mailSettings.enabled}{t}Status: Aktiviert{/t}{else}{t}Status: Deaktiviert{/t}{/if}</span>
             </li>
             <li class="list-group-item">
                 <div class="input-group">
@@ -161,11 +178,11 @@
                         <span class="input-group-text" id="basic-addon7">{t}E-Mailversand{/t}</span>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="mail_enabled" id="mail_enabled_off" value="false" {if !$mailSettings.enabled}checked="checked" {/if}>
+                        <input class="form-check-input" type="radio" name="mail_enabled" id="mail_enabled_off" value="false" {if $mailSettings.enabled}checked="checked" {/if}>
                         <label class="form-check-label" for="mail_enabled_off">{t}deaktivieren{/t}</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="mail_enabled" id="mail_enabled_on" value="true" {if $mailSettings.enabled}checked="checked" {/if}>
+                        <input class="form-check-input" type="radio" name="mail_enabled" id="mail_enabled_on" value="true" {if !$mailSettings.enabled}checked="checked" {/if}>
                         <label class="form-check-label" for="mail_enabled_on">{t}aktivieren{/t}</label>
                     </div>
                 </div>
@@ -179,7 +196,7 @@
         <input type="hidden" id="install" name="target" value="install" />
         <ul class="categories list-group">
             <li class="alert alert-info">
-                <span class="list-span">{t}Installation und Aktualisierung{/t}</span>
+                <span class="list-span">{t}Installation und Aktualisierung{/t}&nbsp;-&nbsp;{if $install_allowed}{t}Status: Aktiviert{/t}{else}{t}Status: Deaktiviert{/t}{/if}</span>
             </li>
             <li class="list-group-item">
                 <div class="input-group">
@@ -210,8 +227,7 @@
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <div class="dropdown">
-                            <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="startpageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <option value="-1">{t}Startseite{/t}</option>
+                            <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="startpageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" placeholder="{t}Startseite{/t}">
                                 {foreach $pages as $pagename => $pagelabel}
                                 {if $pagename == $defaultStartPage}
                                     {$sel = "selected"}
@@ -223,7 +239,7 @@
                             </select>
                         </div>
                     </div>
-                    <input type="text" class="form-control" id="startpagename" name="startpagename" readonly="readonly" required="required" autocomplete="off" placeholder="{t}Startseite{/t} " value="{$pages.$defaultStartPage}">
+                    <input type="text" class="form-control" id="startpagename" name="startpagename" readonly="readonly" required="required" autocomplete="off" value="{$pages.$defaultStartPage}" placeholder="{t}Startseite{/t}">
                     <input type="hidden" value="{$defaultStartPage}" id="startpagekey" name="startpagekey" />
                 </div>
                 <button type="submit" class="btn btn-primary float-right">{t}Einstellungen speichern{/t}</button>
@@ -249,8 +265,7 @@
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <div class="dropdown">
-                            <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="branchDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <option value="-1">{t}Update-Quelle{/t}</option>
+                            <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="branchDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" placeholder="{t}Update-Quelle{/t}">
                                 {foreach $settingdata.updater.branches  as $branch => $branchlabel}
                                 {if $branch == $settingdata.updater.githubbranch}
                                     {$sel = "selected"}
@@ -319,7 +334,6 @@
             }
             usergroupname.value = evt.target.options[evt.target.selectedIndex].text
             usergroupid.value = evt.target.value
-            evt.target.value = '-1'
         })
     }
 
@@ -334,33 +348,21 @@
             }
             usergroupname.value = evt.target.options[evt.target.selectedIndex].text
             usergroupid.value = evt.target.value
-            evt.target.value = '-1'
         })
     }
 
     if (document.querySelector('#startpageDropdown') !== null) {
         document.querySelector('#startpageDropdown').addEventListener('change', function(evt) {
             let startpage = document.querySelector('#startpagekey')
-            if (parseInt(evt.target.value) === -1) {
-                document.querySelector('#startpagename').value = ''
-                return
-            }
             document.querySelector('#startpagename').value = evt.target.options[evt.target.selectedIndex].text
             startpage.value = evt.target.value
-            evt.target.value = '-1'
         })
     }
 
     if (document.querySelector('#branchDropdown') !== null) {
         document.querySelector('#branchDropdown').addEventListener('change', function(evt) {
-            if (parseInt(evt.target.value) === -1) {
-                branch.value = ''
-                return
-            }
-
             document.querySelector('#branchlabel').value = evt.target.options[evt.target.selectedIndex].text
             document.querySelector('#branch').value = evt.target.value
-            evt.target.value = '-1'
         })
     }
 

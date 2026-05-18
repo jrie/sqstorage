@@ -16,6 +16,9 @@
     </div>
     {/if}
 
+     <div class="clearfix"></div>
+
+
 
     <form accept-charset="utf-8" id="startpage" method="POST" action="">
         <input type="hidden" id="install" name="target" value="startpage" />
@@ -27,8 +30,7 @@
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <div class="dropdown">
-                            <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="startpageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <option value="-1" selected="selected">{t}Startseite{/t}</option>
+                            <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="startpageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" placeholder="{t}Startseite{/t}">
                                 {foreach $pages as $pagename => $pagelabel}
                                 {if $pagename == $defaultStartPage}
                                     {$sel = "selected='selected'"}
@@ -153,13 +155,8 @@
         document.querySelector('#startpageDropdown').addEventListener('change', function(evt) {
             let startpagename = document.querySelector('#startpagename')
             let startpage = document.querySelector('#startpagekey')
-            if (parseInt(evt.target.value) === -1) {
-                startpagename.value = ''
-                return
-            }
             startpagename.value = evt.target.options[evt.target.selectedIndex].text
             startpage.value = evt.target.value
-            evt.target.value = '-1'
         })
     }
 
