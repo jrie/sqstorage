@@ -1,20 +1,21 @@
 <?php
-require('login.php');
+require_once 'login.php';
+require_once 'support/dba.php';
+require_once 'support/urlBase.php';
+$smarty->assign('urlBase', $urlBase);
+
 $error = "";
 $success = "";
 
-if ($useRegistration || !isset($user)) {
-  if (!isset($user['username']) || !isset($user['usergroupid']) || (int)$user['usergroupid'] === 2) {
+if ($useRegistration) {
+  if (isset($user) && isset($user['usergroupid']) && (int)$user['usergroupid'] === 1) {
+  } else {
     $error = gettext('Zugriff verweigert!');
     include 'accessdenied.php';
     die();
   }
 }
 
-require_once 'support/urlBase.php';
-$smarty->assign('urlBase', $urlBase);
-
-require_once './support/dba.php';
 if ($usePrettyURLs) {
     $smarty->assign('urlPostFix', '');
 } else {
@@ -26,6 +27,7 @@ if(isset($_POST['target'])){
 }else{
   $mtarget = "";
 }
+
 $errors = array();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'passwordchange') {
@@ -37,11 +39,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'passwordchange') {
 }
 
 $pages = [
+  'welcome' => gettext('Welcome!'),
   'entry' => gettext("Eintragen"),
   'inventory' => gettext('Inventar'),
   'transfer' => gettext('Transferieren'),
   'datafields' => gettext('Datenfelder'),
-  'welcome' => gettext('Welcome!'),
 ];
 
 $defaultStartPage = SETTINGS::SettingsGetSingle("startpage", $user['username'], SETTINGS::SettingsGetSingle("startpage","defaultuser","welcome"));
