@@ -129,3 +129,5 @@
 {t}Datum und Uhrzeit: Datum und Zeitangabe{/t}
 {t}Einzelwert: -3.4172 oder 5.179{/t}
 {t}Negative Gleitkommazahl{/t}
+{t}Datum{/t}
+{t}Seriennummer{/t}
