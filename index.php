@@ -10,6 +10,7 @@ require('login.php');
 $success = false;
 require_once 'customFieldsData.php';
 require_once 'support/urlBase.php';
+require_once 'support/dba.php';
 $smarty->assign('urlBase', $urlBase);
 
 
