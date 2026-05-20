@@ -184,13 +184,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' || !empty($error) || ($_SERVER['REQUEST_
 
 $mailDB = DB::queryFirstField('SELECT `jsondoc` FROM `settings` WHERE `namespace`="mail";');
 
+$mailSettings['senderAddress'] = "";
+$mailSettings['enabled'] = false;
+
 if ($mailDB !== NULL) {
   $mailSet = json_decode($mailDB);
-  $mailSettings['senderAddress'] = $mailSet->senderAddress;
-  $mailSettings['enabled'] = $mailSet->enabled;
-} else {
-  $mailSettings['senderAddress'] = "";
-  $mailSettings['enabled'] = false;
+  if (isset($mailSet->senderAddress)) {
+    $mailSettings['senderAddress'] = $mailSet->senderAddress;
+  }
+
+  if (isset($mailSet->enabled)) {
+    $mailSettings['enabled'] = $mailSet->enabled;
+  }
 }
 
 if(!array_key_exists('failcount',DB::columnList('users'))){
