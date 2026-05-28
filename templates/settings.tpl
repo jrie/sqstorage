@@ -25,11 +25,6 @@
     <div class="clearfix"></div>
 
     {if $isEdit || $isAdd}
-    {if strlen($error)>0}
-    <div class="alert alert-danger" role="alert">
-        <h6>{$error}</h6>
-    </div>
-    {/if}
 
     {if strlen($success)>0}
     <div class="alert alert-info" role="alert">
@@ -37,19 +32,33 @@
     </div>
     {/if}
 
-    {if $isEdit || $error}
+    {if $isEdit}
     <div class="alert alert-danger" role="alert">
         <h6>{t}Benutzer zur Bearbeitung:{/t} &quot;{$user.username}&quot;</h6>
     </div>
+    {else if $isAdd }
+      {if !empty($error)}
+      <div class="alert alert-danger" role="alert">
+          <h6>{$error}</h6>
+      </div>
+      {else}
+      <div class="alert alert-danger" role="alert">
+      <h6>{t}Neuen Benutzer anlegen.{/t}</h6>
+      </div>
+      {/if}
     {/if}
 
     <form accept-charset="utf-8" id="userform" method="POST" action="">
 
         {if $isEdit} <input type="hidden" value="{$user.id}" name="userUpdateId" />{/if}
-        
+
         <ul class="list-group">
             <li class="alert alert-info">
+              {if $isAdd }
+                <span class="list-span">{t}Benutzerdetails{/t}</span>
+              {else}
                 <span class="list-span">{t}Benutzereinstellungen{/t}</span>
+              {/if}
             </li>
 
             <li class="list-group-item">
@@ -57,11 +66,12 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">{t}Benutzername{/t}</span>
                     </div>
-
-                    {if !$isEdit && !$error}
-                    <input type="text" name="username" maxlength="20" class="form-control" required="required" placeholder="{t}Benutzername{/t}" aria-label="{t}Benutzername{/t}" aria-describedby="basic-addon1">
+                    {if $isAdd && !empty($POST)}
+                      <input type="text" name="username" maxlength="20" class="form-control" required="required" placeholder="{t}Benutzername{/t}" aria-label="{t}Benutzername{/t}" aria-describedby="basic-addon1" value="{$POST.username}">
+                    {else if $isEdit}
+                      <input type="text" name="username" maxlength="20" class="form-control" required="required" placeholder="{t}Benutzername{/t}" aria-label="{t}Benutzername{/t}" aria-describedby="basic-addon1" value="{$user.username}">
                     {else}
-                    <input type="text" name="username" maxlength="20" class="form-control" required="required" placeholder="{t}Benutzername{/t}" aria-label="{t}Benutzername{/t}" aria-describedby="basic-addon1" value="{$user.username}">
+                      <input type="text" name="username" maxlength="20" class="form-control" required="required" placeholder="{t}Benutzername{/t}" aria-label="{t}Benutzername{/t}" aria-describedby="basic-addon1">
                     {/if}
                 </div>
             </li>
@@ -71,14 +81,15 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon7">{t}E-Mail{/t}</span>
                     </div>
-                    {if !$isEdit && !$error}
-                    <input type="email" name="mailaddress" maxlength="254" class="form-control" autocomplete="off" placeholder="{t}E-Mail{/t}" aria-label="{t}E-Mail{/t}" aria-describedby="basic-addon7">
+                    {if $isAdd && !empty($POST)}
+                      <input type="email" name="mailaddress" maxlength="254" class="form-control" autocomplete="off" required="required" placeholder="{t}E-Mail{/t}" aria-label="{t}E-Mail{/t}" aria-describedby="basic-addon7" value="{$POST.mailaddress}">
+                    {else if $isEdit }
+                      <input type="email" name="mailaddress" maxlength="254" class="form-control" autocomplete="off" required="required" placeholder="{t}E-Mail{/t}" aria-label="{t}E-Mail{/t}" aria-describedby="basic-addon7" value="{$user.mailaddress}">
                     {else}
-                    <input type="email" name="mailaddress" maxlength="254" class="form-control" autocomplete="off" placeholder="{t}E-Mail{/t}" aria-label="{t}E-Mail{/t}" aria-describedby="basic-addon7" value="{$user.mailaddress}">
+                      <input type="email" name="mailaddress" maxlength="254" class="form-control" autocomplete="off" required="required" placeholder="{t}E-Mail{/t}" aria-label="{t}E-Mail{/t}" aria-describedby="basic-addon7">
                     {/if}
                 </div>
             </li>
-
 
             <li class="list-group-item">
                 <div class="input-group mb-3">
@@ -88,25 +99,28 @@
                                 <option value="-1" selected="selected">{t}Benutzergruppe{/t}</option>
                                 {$currentUsergroup=NULL}
                                 {foreach $usergroups as $usergroup}
-                                {if ($isEdit || $error) && $user.usergroupid == $usergroup.id}
-                                {$currentUsergroup=$usergroup}
-                                {/if}
-                                <option value="{$usergroup.id}">{t}{$usergroup.name}{/t}</option>
+                                  {if (!$isAdd && $user.usergroupid == $usergroup.id) || ($isAdd && $POST.usergroupid == $usergroup.id)}
+                                    {$currentUsergroup=$usergroup}
+                                  {/if}
+                                  <option value="{$usergroup.id}">{t}{$usergroup.name}{/t}</option>
                                 {/foreach}
                             </select>
                         </div>
                     </div>
 
-                    {if (!$isEdit && !$error) || $currentUsergroup == null}
-                    <input type="text" class="form-control" id="usergroupname" name="usergroupname" readonly="readonly" required="required" autocomplete="off" placeholder="{t}Benutzergruppe{/t}">
-                    <input type="hidden" value="" id="usergroupid" name="usergroupid" />
+                    {if $isAdd && !empty($POST)}
+                      <input type="text" class="form-control" id="usergroupname" name="usergroupname" readonly="readonly" required="required" autocomplete="off" placeholder="{t}Benutzergruppe{/t}" value="{$POST.usergroupname}">
+                      <input type="hidden" value="{$POST.usergroupid}" id="usergroupid" name="usergroupid" />
+                    {else if $isEdit}
+                      <input type="text" class="form-control" id="usergroupname" name="usergroupname" readonly="readonly" required="required" autocomplete="off" placeholder="{t}Benutzergruppe{/t}" value="{$user.usergroupname}">
+                      <input type="hidden" value="{$user.usergroupid}" id="usergroupid" name="usergroupid" />
                     {else}
-                    <input type="text" class="form-control" id="usergroupname" name="usergroupname" readonly="readonly" required="required" autocomplete="off" placeholder="{t}Benutzergruppe{/t} " value="{$user.usergroupname}">
-                    <input type="hidden" value="{$user.usergroupid}" id="usergroupid" name="usergroupid" />
+                      <input type="text" class="form-control" id="usergroupname" name="usergroupname" readonly="readonly" required="required" autocomplete="off" placeholder="{t}Benutzergruppe{/t}">
+                      <input type="hidden" value="" id="usergroupid" name="usergroupid" />
                     {/if}
                 </div>
             </li>
-        
+
             <li class="list-group-item">
                 <div class="input-group mb-3">
                     <div class="input-group">
@@ -119,12 +133,16 @@
                                 </select>
                             </div>
                         </div>
-                        {if (!$isEdit && !$error) || $currentUsergroup == null}
-                        <input type="text" class="form-control" id="userapi" name="userapi" readonly="readonly" required="required" autocomplete="off" placeholder="{t}API Zugriff{/t}">
-                        <input type="hidden" value="" id="userapikey" name="userapikey" />
+
+                        {if $isAdd && !empty($POST)}
+                          <input type="text" class="form-control" id="userapi" name="userapi" readonly="readonly" required="required" autocomplete="off" placeholder="{t}API Zugriff{/t} " value="{if $POST.userapikey == 1}{t}erlauben{/t}{else}{t}verbieten{/t}{/if}">
+                          <input type="hidden" value="{$POST.userapikey}" id="userapikey" name="userapikey" />
+                        {else if $isEdit}
+                          <input type="text" class="form-control" id="userapi" name="userapi" readonly="readonly" required="required" autocomplete="off" placeholder="{t}API Zugriff{/t} " value="{if $user.api_access == 1}{t}erlauben{/t}{else}{t}verbieten{/t}{/if}">
+                          <input type="hidden" value="{$user.api_access}" id="userapikey" name="userapikey" />
                         {else}
-                        <input type="text" class="form-control" id="userapi" name="userapi" readonly="readonly" required="required" autocomplete="off" placeholder="{t}API Zugriff{/t} " value="{if $user.api_access == 1}{t}erlauben{/t}{else}{t}verbieten{/t}{/if}">
-                        <input type="hidden" value="{$user.api_access}" id="userapikey" name="userapikey" />
+                          <input type="text" class="form-control" id="userapi" name="userapi" readonly="readonly" required="required" autocomplete="off" placeholder="{t}API Zugriff{/t}">
+                          <input type="hidden" value=""id="userapikey" name="userapikey" />
                         {/if}
                     </div>
                 </div>
@@ -158,7 +176,12 @@
         {foreach $users as $user}
         <li class="list-group-item"><a title="{t}Benutzer löschen{/t}" name="removeUser"  href="{$urlBase}/settings{$urlPostFix}?removeUser={$user.id}" class="removalButton btn"><i class="fas fa-times-circle"></i></a><span class="list-span">{$user.username}</span><span class="list-span">{$user.mailaddress}</span><span class="list-span">{$user.usergroupname}</span><span class="list-span">{if !isset($user.api_access)}{t}Bitte die Datenbank aktualisieren{/t}{else}{if $user.api_access == 1}<i class="fas fa-circle-check"></i>{else}<i class="fas fa-ban"></i>{/if}{/if}</span><a class="fas fa-edit editUser" href="#" name="editUser" data-name="{$user.username}" data-id="{$user.id}"></a></li>
         {/foreach}
-    </ul>
+        <li class="list-group-item">
+          <a title="{t}Benutzer anlegen{/t}" name="addUser"  href="{$urlBase}/settings{$urlPostFix}?addUser" class="btn btn-primary float-right">{t}Benutzer anlegen{/t}</a>
+        </li>
+        </ul>
+
+  <div class="clearfix"></div>
 
     <form accept-charset="utf-8" id="mailform" method="POST" action="">
         <input type="hidden" id="mail" name="target" value="mail" />
