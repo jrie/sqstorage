@@ -116,14 +116,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['setcoverimage']) && isse
     $targetData = [];
 
     if (DB::affectedRows() == 1) {
-    
-      DB::query('UPDATE `headcategories` SET `amount` = `amount` + 1 WHERE id=%d', $itemData['headcategory']);
+
+      DB::query('UPDATE `headCategories` SET `amount` = `amount` + 1 WHERE id=%d', $itemData['headcategory']);
 
       $subcategoriesIds = explode(',', trim($itemData['subcategories'], ','));
       foreach ($subcategoriesIds as $subId) {
         DB::query('UPDATE `subcategories` SET `amount` = `amount` + 1 WHERE id=%d', $subId);
       }
-      
+
       $result = DB::queryFirstRow('SELECT `amount` FROM `items` WHERE id=%d', $itemId);
       if (isset($result) && isset($result['amount'])) {
         $itemNewAmount = $result['amount'];
@@ -131,7 +131,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['setcoverimage']) && isse
     }
   } else {
     $itemNewAmount = 'failIncLimit';
-  } 
+  }
 
   $itemNewAmountAction = 'inc';
 
@@ -140,21 +140,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['setcoverimage']) && isse
 } else if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['decOne'])) {
   $itemId = $_GET['decOne'];
   $itemNewAmount = 'failDec';
-  
+
   $itemData = DB::queryFirstRow('SELECT `amount`, `headcategory`, `subcategories`, `storageid` FROM `items` WHERE id=%d', $itemId);
 
   if ($itemData['amount'] - 1 > 0) {
     DB::query('UPDATE `items` SET `amount` = `amount` - 1 WHERE id=%d', $itemId);
     $targetData = [];
-    
+
     if (DB::affectedRows() == 1) {
-      DB::query('UPDATE `headcategories` SET `amount` = `amount` - 1 WHERE id=%d', $itemData['headcategory']);
+      DB::query('UPDATE `headCategories` SET `amount` = `amount` - 1 WHERE id=%d', $itemData['headcategory']);
 
       $subcategoriesIds = explode(',', trim($itemData['subcategories'], ','));
       foreach ($subcategoriesIds as $subId) {
         DB::query('UPDATE `subcategories` SET `amount` = `amount` - 1 WHERE id=%d', $subId);
       }
-      
+
       $result = DB::queryFirstRow('SELECT `amount` FROM `items` WHERE id=%d', $itemId);
       if (isset($result) && isset($result['amount'])) {
         $itemNewAmount = $result['amount'];

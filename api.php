@@ -69,7 +69,7 @@ if (str_starts_with(DB::$dsn, 'mysql')) {
 }
 
 
-$settings['tables'] = 'customfields,fielddata,headCategories,images,items,storages,subCategories';
+$settings['tables'] = 'customFields,fielddata,headCategories,images,items,storages,subCategories';
 $settings['debug'] = true;
 
 

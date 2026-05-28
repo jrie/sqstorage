@@ -24,9 +24,9 @@ with the following operations
 
 ##### Acessible tables
 The following tables can be manipulated by the API
-* customfields
-* fielddata
-* headcategories
+* customFields
+* fieldData
+* headCategories
 * images
 * items
 * storages
