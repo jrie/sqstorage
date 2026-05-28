@@ -122,11 +122,13 @@ if (isset($_POST['dbset'])) {
  * Do migration
  */
 if (!$nodba) {
+  if (isset(DB::$dsn) && !str_starts_with(DB::$dsn, 'sqlite')) {
     if (CheckDBCredentials($host, DB::$user, DB::$password, $dbName, $port, null, null, true)) {
         $successes[] = gettext("Datenbank-Verbindung hergestellt");
         if (isset($_POST['dbwork'])) {
-            include_once './support/database_migration/db_migration.php';
-            DBMigration();
+              include_once './support/database_migration/db_migration.php';
+              DBMigration();
+            }
         }
     }
 }
