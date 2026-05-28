@@ -9,6 +9,12 @@ $smarty->assign('urlBase', $urlBase);
 
 require_once './support/dba.php';
 
+if (isset(DB::$dsn) && str_starts_with(DB::$dsn, 'sqlite')) {
+  $dbNow = DB::query("SELECT datetime('now');");
+} else {
+  $dbNow = DB::query("SELECT NOW();");
+}
+
 if (!$usePrettyURLs) {
   $urlPostFix = '.php';
 } else {
@@ -31,7 +37,7 @@ if (isset($useRegistration) && !$useRegistration) {
   $smarty->assign('activate', $activate);
   if (isset($_POST)) $smarty->assign('POST', $_POST);
   if (isset($error)) $smarty->assign('error', $error);
-  } else {
+} else {
   if (isset($_GET['logout'])) {
     unset($_SESSION['authenticated']);
     unset($_SESSION['user']);
@@ -72,7 +78,7 @@ if (isset($useRegistration) && !$useRegistration) {
   }
 
   if ($createFirstAdmin || (isset($_GET['activate']) && !empty($_GET['activate']))) {
-    DB::delete('users_tokens', 'valid_until < NOW()');
+    DB::delete('users_tokens', 'valid_until < %t', $dbNow);
 
     if (!$createFirstAdmin) {
       $userId = substr($_GET['activate'], 0, -32);
@@ -187,7 +193,7 @@ if (isset($useRegistration) && !$useRegistration) {
       $hashedToken = password_hash($token, PASSWORD_DEFAULT);
       $mailSettings = json_decode(DB::queryFirstField('SELECT jsondoc FROM settings WHERE namespace="mail"'));
       if (!empty($mailSettings)) {
-        DB::insert('users_tokens', array('userid' => $user['id'], 'token' => $hashedToken, 'valid_until' => DB::sqlEval('NOW() + INTERVAL 24 HOUR')));
+        DB::insert('users_tokens', array('userid' => $user['id'], 'token' => $hashedToken, 'valid_until' => DB::sqlEval('%t + INTERVAL 24 HOUR')), $dbNow);
       }
 
       if ($mailSettings->enabled && filter_var($mailSettings->senderAddress, FILTER_VALIDATE_EMAIL)) {
