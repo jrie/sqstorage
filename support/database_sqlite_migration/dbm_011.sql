@@ -14,14 +14,13 @@ CREATE TABLE "fieldData" (
 	"selection"	varchar(1280) DEFAULT NULL,
 	"mselection"	varchar(1280) DEFAULT NULL,
 	"qrcode"	char(256) DEFAULT NULL,
-	"datetime"	DATETIME NOT NULL DEFAULT NULL,
-	PRIMARY KEY("id" AUTOINCREMENT)
+	"datetime"	DATETIME DEFAULT NULL
 );
 
 
 ALTER TABLE `database_rev` ADD `customfieldrev` integer NOT NULL DEFAULT 1;
-UPDATE `customfields` SET `dataType` = 9 WHERE `customfields`.`dataType` = 8;
-UPDATE `customfields` SET `dataType` = 8 WHERE `customfields`.`dataType` = 7;
-UPDATE `customfields` SET `dataType` = 7 WHERE `customfields`.`dataType` = 6;
-UPDATE `customfields` SET `dataType` = 6 WHERE `customfields`.`dataType` = 5;
+UPDATE `customFields` SET `dataType` = 9 WHERE `customFields`.`dataType` = 8;
+UPDATE `customFields` SET `dataType` = 8 WHERE `customFields`.`dataType` = 7;
+UPDATE `customFields` SET `dataType` = 7 WHERE `customFields`.`dataType` = 6;
+UPDATE `customFields` SET `dataType` = 6 WHERE `customFields`.`dataType` = 5;
 UPDATE `database_rev` SET `customfieldrev` = 2;

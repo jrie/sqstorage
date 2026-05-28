@@ -1,0 +1,1 @@
+ALTER TABLE `fieldData` CHANGE `datetime` DATETIME DEFAULT NULL;
