@@ -133,7 +133,6 @@
             }
             usergroupname.value = evt.target.options[evt.target.selectedIndex].text
             usergroupid.value = evt.target.value
-            evt.target.value = '-1'
         })
     }
 
@@ -147,7 +146,6 @@
             }
             usergroupname.value = evt.target.options[evt.target.selectedIndex].text
             usergroupid.value = evt.target.value
-            evt.target.value = '-1'
         })
     }
 
