@@ -6,8 +6,8 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET NAMES utf8mb4 */;
 
 
-DROP TABLE IF EXISTS `customfields`;
-CREATE TABLE `customfields` (
+DROP TABLE IF EXISTS `customFields`;
+CREATE TABLE `customFields` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `label` varchar(64) NOT NULL,
   `dataType` int(10) UNSIGNED NOT NULL,
@@ -25,10 +25,10 @@ CREATE TABLE `database_rev` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `database_rev` (`id`, `dbrev`, `customfieldrev`) VALUES
-(1, 11, 2);
+(1, 12, 2);
 
-DROP TABLE IF EXISTS `fielddata`;
-CREATE TABLE `fielddata` (
+DROP TABLE IF EXISTS `fieldData`;
+CREATE TABLE `fieldData` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `fieldId` bigint(20) UNSIGNED NOT NULL,
   `itemId` bigint(20) UNSIGNED NOT NULL,
@@ -42,11 +42,11 @@ CREATE TABLE `fielddata` (
   `selection` varchar(1280) DEFAULT NULL,
   `mselection` varchar(1280) DEFAULT NULL,
   `qrcode` varchar(256) DEFAULT NULL,
-  `datetime` datetime NOT NULL
+  `datetime` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-DROP TABLE IF EXISTS `headcategories`;
-CREATE TABLE `headcategories` (
+DROP TABLE IF EXISTS `headCategories`;
+CREATE TABLE `headCategories` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` char(128) NOT NULL,
   `amount` bigint(20) UNSIGNED DEFAULT NULL
@@ -145,7 +145,7 @@ CREATE TABLE `users_tokens` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
-ALTER TABLE `customfields`
+ALTER TABLE `customFields`
   ADD PRIMARY KEY (`id`);
 
 ALTER TABLE `database_rev`
@@ -155,7 +155,7 @@ ALTER TABLE `database_rev`
 ALTER TABLE `fielddata`
   ADD PRIMARY KEY (`id`);
 
-ALTER TABLE `headcategories`
+ALTER TABLE `headCategories`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `name` (`name`);
 
@@ -194,7 +194,7 @@ ALTER TABLE `users_tokens`
   ADD KEY `userid` (`id`);
 
 
-ALTER TABLE `customfields`
+ALTER TABLE `customFields`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `database_rev`
@@ -203,7 +203,7 @@ ALTER TABLE `database_rev`
 ALTER TABLE `fielddata`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
-ALTER TABLE `headcategories`
+ALTER TABLE `headCategories`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `images`
