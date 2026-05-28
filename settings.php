@@ -110,8 +110,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'mail') {
     } else {
       $token = bin2hex(openssl_random_pseudo_bytes(16));
       $hashedToken = password_hash($token, PASSWORD_DEFAULT);
-      $userId = DB::insert('users', array('username' => trim($_POST['username']), 'api_access' => $_POST['userapikey'], 'mailaddress' => $_POST['mailaddress']));
+      DB::insert('users', array('username' => trim($_POST['username']), 'api_access' => $_POST['userapikey'], 'mailaddress' => $_POST['mailaddress']));
       $userId = DB::insertId();
+
       USERS::AssignUserToGroup($userId,$_POST['usergroupid']);
       DB::insert('users_tokens', array('userid' => $userId, 'token' => $hashedToken, 'valid_until' => DB::sqlEval('NOW( ) + INTERVAL 1 WEEK')));
       $mailSettings['enabled'] = SETTINGS::SettingsGetSingle('mail','enabled',false);
@@ -132,7 +133,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'mail') {
     header('Location: ' . $urlBase . '/settings' . $urlPostFix);
   } catch (Exception $e) {
     $error = $e->getMessage();
-    if (strncmp($error, "Duplicate", 9) === 0) $error = sprintf(gettext('Der Benutzer "%s" existiert bereits.'), $user['username']);
+    if (str_contains($error, " 1062 ")) $error = sprintf(gettext('Der Benutzer "%s" existiert bereits.'), $user['username']);
     $user = DB::queryFirstRow('SELECT u.id, u.username, u.mailaddress, u.api_access, g.name as usergroupname, g.id as usergroupid FROM users u LEFT JOIN users_groups ugs ON(ugs.userid = u.id) LEFT JOIN usergroups g ON(g.id = ugs.usergroupid) WHERE u.id = %i LIMIT 1', $user['id']);
   }
 }
