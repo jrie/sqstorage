@@ -12,6 +12,56 @@ if ($usePrettyURLs) {
 
 
 $alert = "";
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  if ($useRegistration) {
+    if (!isset($user) || !isset($user['usergroupid']) || (int)$user['usergroupid'] === 2) {
+      $error = gettext('Zugriff verweigert!');
+      include 'accessdenied.php';
+      die();
+    }
+  }
+
+  if (isset($_POST['categoryname']) && isset($_POST['categorytype'])) {
+    $existingCategory = null;
+    $msgError = "";
+    $error = "";
+
+    $newCategoryName = trim($_POST['categoryname']);
+    $newCategoryId = -1;
+
+    switch($_POST['categorytype']) {
+      case '0':
+        $existingCategory = DB::queryFirstRow('SELECT `id` FROM `headCategories` WHERE `name`=%s', $newCategoryName);
+        $msgError = gettext('Eine Kategorie mit diesem Namen existiert bereits: "' . $newCategoryName . '"');
+        break;
+      case '1':
+        $existingCategory = DB::queryFirstRow('SELECT `id` FROM `subCategories` WHERE `name`=%s', $newCategoryName);
+        $msgError = gettext('Eine Unterkategorie mit diesem Namen existiert bereits: "' . $newCategoryName . '"');
+        break;
+      default:
+        break;
+    }
+
+    if ($existingCategory !== null) {
+      $error = $msgError;
+    } else {
+      switch ($_POST['categorytype']) {
+        case '0':
+          $newCategoryId = DB::insert('headCategories',  array('name' => $newCategoryName, 'amount' => 0));
+          break;
+        case '1':
+          $newCategoryId = DB::insert('subCategories',  array('name' => $newCategoryName, 'amount' => 0));
+          break;
+        default:
+          break;
+      }
+    }
+
+    $smarty->assign('error', $error);
+    $smarty->assign('addedCategoryName', $newCategoryName);
+    $smarty->assign('addedCategoryId', $newCategoryId);
+  }
+}
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if (isset($_GET['setCategoryId']) && !empty($_GET['setCategoryId']) && isset($_GET['to']) && !empty($_GET['to'])) {
         $newCategory = DB::queryFirstRow('SELECT `id`, `amount` FROM `headCategories` WHERE `id`=%d', (int)$_GET['to']);
@@ -75,7 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
         if ($subCategory) {
             $previousCategory = DB::queryFirstRow('SELECT `id`, `amount` FROM `headCategories` WHERE `id`=%d',  $subCategory['headcategory']);
-            
+
             if ($previousCategory) {
                 DB::update('headCategories', array('amount' => (int)$previousCategory['amount'] - $subCategory['amount']), 'id=%d',  $previousCategory['id']);
             }

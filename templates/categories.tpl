@@ -4,6 +4,51 @@
 <div class="content {if $isGuest}roleguest{/if}">
   {$alert}
   <hr />
+  {if !$isGuest}
+    {if !empty($error) || $addedCategoryId === -1}
+      <div class="alert alert-danger" role="alert">
+        <h6>{$error}</h6>
+      </div>
+    {else if isset($addedCategoryName)}
+      <div class="alert alert-success" role="alert">
+        <h6>{t}Kategorie angelegt:{/t}&nbsp;"{$addedCategoryName}"</h6>
+      </div>
+    {/if}
+    <div class="categories">
+
+      <form name="addcategory" method="POST" action="{$urlBase}/categories{$urlPostFix}">
+        <ul class="list-group">
+          <li class="alert alert-info">
+            <span>{t}Neue Kategorie oder Unterkategorie anlegen{/t}</span>
+          </li>
+          <li class="list-group-item mb-2">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">{t}Bezeichnung{/t}</span>
+              </div>
+              <input type="text" name="categoryname" class="form-control" maxlength="128" required autocomplete="off" placeholder="{t}Kategorie/Unterkategorie Bezeichnung{/t}" aria-label="{t}Bezeichnung{/t}" aria-describedby="basic-addon1">
+            </div>
+
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon2">{t}Kategorie-Typ{/t}</span>
+              </div>
+              <div class="dropdown">
+                <select name="categorytype" required autocomplete="off" required class="btn dropdown-toggle" type="button" tabindex="-1" aria-haspopup="true" aria-expanded="false">
+                  <option value="0" selected="selected">{t}Kategorie{/t}</option>
+                  <option value="1">{t}Unterkategorie{/t}</option>
+                </select>
+              </div>
+            </div>
+
+          </li>
+        </ul>
+        <button class="float-right btn-form-submit btn btn-primary" title="{t}Hinzufügen{/t}" type="submit">{t}Hinzufügen{/t}</button>
+      </form>
+    </div>
+  {/if}
+  <hr />
+
   <div class="categories">
     <ul class="list-group">
       <li class="alert alert-info">
