@@ -24,9 +24,9 @@
           <li class="list-group-item mb-2">
             <div class="input-group mb-3">
               <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">{t}Bezeichnung{/t}</span>
+                <span class="input-group-text" id="basic-addon1">{t}Name{/t}</span>
               </div>
-              <input type="text" name="categoryname" class="form-control" maxlength="128" required autocomplete="off" placeholder="{t}Kategorie/Unterkategorie Bezeichnung{/t}" aria-label="{t}Bezeichnung{/t}" aria-describedby="basic-addon1">
+              <input type="text" name="categoryname" class="form-control" maxlength="128" required autocomplete="off" placeholder="{t}Kategorie/Unterkategorie Bezeichnung{/t}" aria-label="{t}Name{/t}" aria-describedby="basic-addon1">
             </div>
 
             <div class="input-group mb-2">
