@@ -26,7 +26,7 @@ if (count($tbls) == 0) {
 
 if ($useRegistration) {
   if (!isset($user) || !isset($user['usergroupid']) || (int)$user['usergroupid'] === 2) {
-    header('Location: '. $urlBase . '/inventory' . $urlPostFix);
+    header('Location: ' . $urlBase . '/inventory' . $urlPostFix);
     die();
   }
 }
@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['setcoverimage']) && isse
 
   if ($out === 1) {
     echo 'OK';
-  } else  {
+  } else {
     echo 'FAIL';
   }
 
@@ -185,7 +185,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['setcoverimage']) && isse
       echo '<!DOCTYPE html>' . PHP_EOL . '<head>' . PHP_EOL . '<title>sqStorage - Image upload error</title>' . PHP_EOL . '<link rel="stylesheet" href="/css/bootstrap/bootstrap.css">' . PHP_EOL . '';
       echo '<link rel="stylesheet" href="/css/base.css">' . PHP_EOL . '<link rel="stylesheet" href="/fonts/fontawesome/css/solid.css"><link rel="stylesheet" href="/fonts/fontawesome/css/regular.css"><link rel="stylesheet" href="/fonts/fontawesome/css/fontawesome.css">' . PHP_EOL . '';
       echo '<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">' . PHP_EOL . '';
-      echo '</head>' . PHP_EOL . '<body>' . PHP_EOL . '<nav class="navbar navbar-light bg-light">' . PHP_EOL . '<a href="'.  $urlBase . '/index' . $urlPostFix . '"><img class="logo" src="/img/sqstorage.png" alt="sqStorage logo" /></a>' . PHP_EOL . '</nav>';
+      echo '</head>' . PHP_EOL . '<body>' . PHP_EOL . '<nav class="navbar navbar-light bg-light">' . PHP_EOL . '<a href="' .  $urlBase . '/index' . $urlPostFix . '"><img class="logo" src="/img/sqstorage.png" alt="sqStorage logo" /></a>' . PHP_EOL . '</nav>';
       echo '<div class="content">' . PHP_EOL . '<div class="alert alert-danger">' . PHP_EOL . '';
       echo '<h2>File image upload error due to size</h2><br><p>Error uploading image file: "<b>' . $tmpName . '</b>"<br><br>Visit and try to fix the PHP "upload_max_filesize" parameter, see for details: <a href="https://www.php.net/manual/en/ini.core.php#ini.upload-max-filesize">https://www.php.net/manual/en/ini.core.php#ini.upload-max-filesize</a><br><br><a href="' . $_SERVER['HTTP_REFERER'] . '">Click here to return to the previous page.</a></p>';
       echo '</div>' . PHP_EOL . '</div>' . PHP_EOL . '</body>' . PHP_EOL . '</html>';
@@ -256,7 +256,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['setcoverimage']) && isse
   die();
 } else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $amount = isset($_POST['amount']) && !empty($_POST['amount']) ? (int) $_POST['amount'] : 0;
-  if ($amount < 0 || strlen( (string) $amount) > 19) {
+  if ($amount < 0 || strlen((string) $amount) > 19) {
     die();
   }
 
@@ -332,69 +332,69 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['setcoverimage']) && isse
       $smarty->assign('updatedEntry', 'created');
     }
 
-    if(isset($_FILES['images'])){
+    if (isset($_FILES['images'])) {
       $count = count($_FILES['images']['tmp_name']);
-      if($count > 0){
+      if ($count > 0) {
         for ($x = 0; $x < $count; ++$x) {
           $tmpName = $_FILES['images']['tmp_name'][$x];
-          if(strlen($tmpName)>0 ){
-          $imageInfo = getimagesize($tmpName);
-          $imgMime = $imageInfo['mime'];
-          $imageData = imagecreatefromstring(file_get_contents(addslashes($tmpName)));
-          $imageLarge = $imageData; // Keep the original upload size
-          $imageThumbnail = imagescale($imageData, 200);
+          if (strlen($tmpName) > 0) {
+            $imageInfo = getimagesize($tmpName);
+            $imgMime = $imageInfo['mime'];
+            $imageData = imagecreatefromstring(file_get_contents(addslashes($tmpName)));
+            $imageLarge = $imageData; // Keep the original upload size
+            $imageThumbnail = imagescale($imageData, 200);
 
-          if ($imgMime == 'image/png') {
-            ob_start();
-            imagepng($imageLarge);
-          } else if ($imgMime == 'image/jpeg') {
-            ob_start();
-            imagejpeg($imageLarge);
-          } else if ($imgMime == 'image/gif') {
-            ob_start();
-            imagegif($imageLarge);
-          } else if ($imgMime == 'image/webp') {
-            ob_start();
-            imagewebp($imageLarge);
-          } else if ($imgMime == 'image/bmp') {
-            ob_start();
-            imagebmp($imageLarge);
-          } else {
-            // Img type not supported
-            // Show a proper message to user
-            echo 'The selected image format is not supported.';
-            die();
-          }
+            if ($imgMime == 'image/png') {
+              ob_start();
+              imagepng($imageLarge);
+            } else if ($imgMime == 'image/jpeg') {
+              ob_start();
+              imagejpeg($imageLarge);
+            } else if ($imgMime == 'image/gif') {
+              ob_start();
+              imagegif($imageLarge);
+            } else if ($imgMime == 'image/webp') {
+              ob_start();
+              imagewebp($imageLarge);
+            } else if ($imgMime == 'image/bmp') {
+              ob_start();
+              imagebmp($imageLarge);
+            } else {
+              // Img type not supported
+              // Show a proper message to user
+              echo 'The selected image format is not supported.';
+              die();
+            }
 
-          imagedestroy($imageLarge);
-          $imageData64 = base64_encode(ob_get_contents());
-          ob_end_clean();
+            imagedestroy($imageLarge);
+            $imageData64 = base64_encode(ob_get_contents());
+            ob_end_clean();
 
-          if ($imgMime == 'image/png') {
-            ob_start();
-            imagepng($imageThumbnail);
-          } else if ($imgMime == 'image/jpeg') {
-            ob_start();
-            imagejpeg($imageThumbnail);
-          } else if ($imgMime == 'image/gif') {
-            ob_start();
-            imagegif($imageThumbnail);
-          } else if ($imgMime == 'image/webp') {
-            ob_start();
-            imagewebp($imageThumbnail);
-          } else if ($imgMime == 'image/bmp') {
-            ob_start();
-            imagebmp($imageThumbnail);
-          } else {
-            // Img type not supported
-            // Show a proper message to user
-            echo 'The selected image format is not supported.';
-            die();
-          }
-          imagedestroy($imageThumbnail);
-          $imageThumbnailData64 = base64_encode(ob_get_contents());
-          ob_end_clean();
-          DB::query('INSERT INTO `images` VALUES(NULL, %d, %d, %d, %s, %s)', $itemCreationId, $imageInfo[0], $imageInfo[1], $imageThumbnailData64, $imageData64);
+            if ($imgMime == 'image/png') {
+              ob_start();
+              imagepng($imageThumbnail);
+            } else if ($imgMime == 'image/jpeg') {
+              ob_start();
+              imagejpeg($imageThumbnail);
+            } else if ($imgMime == 'image/gif') {
+              ob_start();
+              imagegif($imageThumbnail);
+            } else if ($imgMime == 'image/webp') {
+              ob_start();
+              imagewebp($imageThumbnail);
+            } else if ($imgMime == 'image/bmp') {
+              ob_start();
+              imagebmp($imageThumbnail);
+            } else {
+              // Img type not supported
+              // Show a proper message to user
+              echo 'The selected image format is not supported.';
+              die();
+            }
+            imagedestroy($imageThumbnail);
+            $imageThumbnailData64 = base64_encode(ob_get_contents());
+            ob_end_clean();
+            DB::query('INSERT INTO `images` VALUES(NULL, %d, %d, %d, %s, %s)', $itemCreationId, $imageInfo[0], $imageInfo[1], $imageThumbnailData64, $imageData64);
           }
         }
       }
@@ -444,7 +444,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['setcoverimage']) && isse
 }
 
 $imageList = null;
-if ((isset($_GET['editItem']) && !empty($_GET['editItem'])) || (isset($_POST['editItem']) && !empty($_POST['editItem'])) || (isset($_GET['checkin']) && !empty($_GET['checkin'])) || (isset($_GET['incOne']) && !empty($_GET['incOne'])) || (isset($_GET['decOne']) && !empty($_GET['decOne'])) ) {
+if ((isset($_GET['editItem']) && !empty($_GET['editItem'])) || (isset($_POST['editItem']) && !empty($_POST['editItem'])) || (isset($_GET['checkin']) && !empty($_GET['checkin'])) || (isset($_GET['incOne']) && !empty($_GET['incOne'])) || (isset($_GET['decOne']) && !empty($_GET['decOne']))) {
   if (isset($_GET['editItem'])) $itemId = (int)$_GET['editItem'];
   else if (isset($_POST['editItem'])) $itemId = (int)$_POST['editItem'];
   else if (isset($_GET['checkin'])) $itemId = (int)$_GET['checkin'];
@@ -457,7 +457,6 @@ if ((isset($_GET['editItem']) && !empty($_GET['editItem'])) || (isset($_POST['ed
     $isEdit = true;
     $imageList = DB::query('SELECT `id`, `thumb`, `sizeX`, `sizeY` FROM `images` WHERE `itemId`=%d', $item['id']);
   }
-
 } else {
   $customData = null;
   //if (isset($item)) $imageList = DB::query('SELECT `id`, `thumb`, `sizeX`, `sizeY` FROM `images` WHERE `itemId`=%d', (int)$item['id']);
