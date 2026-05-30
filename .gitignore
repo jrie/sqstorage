@@ -8,4 +8,5 @@ patch.diff
 support/smarty_force_compile
 workdir/*
 support/installstate.txt
+templates/php_language_extract.tpl
 .env

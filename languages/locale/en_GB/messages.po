@@ -13,7 +13,7 @@ msgstr ""
 "X-Generator: Poedit 3.9\n"
 
 #: templates//datafields.tpl:1 templates//nav.tpl:33 templates//nav.tpl:35
-#: templates//php_language_extract.tpl:88
+#: templates//php_language_extract.tpl:32
 msgid "Datenfelder"
 msgstr "Data fields"
 
@@ -46,7 +46,7 @@ msgstr "Type of data"
 msgid "Beispielwerte"
 msgstr "Example values"
 
-#: templates//datafields.tpl:47 templates//php_language_extract.tpl:13
+#: templates//datafields.tpl:47 templates//php_language_extract.tpl:34
 msgid "Datentyp Beispielwerte"
 msgstr "Data type example values"
 
@@ -128,15 +128,16 @@ msgstr "Delete field"
 msgid "Bestehende Datenfelder"
 msgstr "Existing data fields"
 
-#: templates//datafields.tpl:191 templates//entry.tpl:132
-#: templates//entry.tpl:134 templates//php_language_extract.tpl:40
+#: templates//datafields.tpl:191 templates//categories.tpl:38
+#: templates//entry.tpl:132 templates//entry.tpl:134
+#: templates//php_language_extract.tpl:76
 msgid "Kategorie"
 msgstr "Category"
 
 #: templates//datafields.tpl:191 templates//categories.tpl:1
-#: templates//categories.tpl:10 templates//inventory.tpl:26
+#: templates//categories.tpl:55 templates//inventory.tpl:26
 #: templates//inventory.tpl:167 templates//inventory.tpl:290
-#: templates//nav.tpl:24 templates//php_language_extract.tpl:117
+#: templates//nav.tpl:24 templates//php_language_extract.tpl:78
 msgid "Kategorien"
 msgstr "Categories"
 
@@ -202,7 +203,7 @@ msgid "wirklich löschen?"
 msgstr "really delete?"
 
 #: templates//transfer.tpl:1 templates//transfer.tpl:48 templates//nav.tpl:27
-#: templates//nav.tpl:29 templates//php_language_extract.tpl:102
+#: templates//nav.tpl:29 templates//php_language_extract.tpl:111
 msgid "Transferieren"
 msgstr "Transfer"
 
@@ -254,7 +255,7 @@ msgstr "No items found."
 msgid "Zugriff verweigert"
 msgstr "Access denied"
 
-#: templates//accessdenied.tpl:18 templates//php_language_extract.tpl:72
+#: templates//accessdenied.tpl:18 templates//php_language_extract.tpl:130
 msgid "Zugriff verweigert!"
 msgstr "Access denied!"
 
@@ -315,108 +316,139 @@ msgstr "Request"
 msgid "Zugangsdaten vergessen"
 msgstr "Credentials forgotten"
 
-#: templates//categories.tpl:11 templates//categories.tpl:26
-#: templates//categories.tpl:50 templates//categories.tpl:66
+#: templates//categories.tpl:14
+msgid "Kategorie angelegt:"
+msgstr "Category created:"
+
+#: templates//categories.tpl:22
+msgid "Neue Kategorie oder Unterkategorie anlegen"
+msgstr "Create new category or subcatogory"
+
+#: templates//categories.tpl:27 templates//categories.tpl:29
+#: templates//php_language_extract.tpl:87
+msgid "Name"
+msgstr "Name"
+
+#: templates//categories.tpl:29
+msgid "Kategorie/Unterkategorie Bezeichnung"
+msgstr "Category/subcategory name"
+
+#: templates//categories.tpl:34
+msgid "Kategorie-Typ"
+msgstr "Category type"
+
+#: templates//categories.tpl:39 templates//entry.tpl:162
+#: templates//entry.tpl:165 templates//entry.tpl:180 templates//entry.tpl:182
+#: templates//php_language_extract.tpl:116
+msgid "Unterkategorie"
+msgstr "Subcategory"
+
+#: templates//categories.tpl:46
+msgid "Hinzufügen"
+msgstr "Add"
+
+#: templates//categories.tpl:56 templates//categories.tpl:71
+#: templates//categories.tpl:95 templates//categories.tpl:111
 #: templates//inventory.tpl:21 templates//inventory.tpl:161
-#: templates//inventory.tpl:285 templates//php_language_extract.tpl:121
+#: templates//inventory.tpl:285 templates//php_language_extract.tpl:98
 msgid "Positionen"
 msgstr "Positions"
 
-#: templates//categories.tpl:12 templates//categories.tpl:51
+#: templates//categories.tpl:57 templates//categories.tpl:96
 #: templates//inventory.tpl:28 templates//inventory.tpl:169
 #: templates//inventory.tpl:292 templates//entry.tpl:188
 #: templates//entry.tpl:191 templates//entry.tpl:193
-#: templates//php_language_extract.tpl:109
+#: templates//php_language_extract.tpl:10
 msgid "Anzahl"
 msgstr "Amount"
 
-#: templates//categories.tpl:14 templates//categories.tpl:53
+#: templates//categories.tpl:59 templates//categories.tpl:98
 #: templates//inventory.tpl:33 templates//inventory.tpl:174
 #: templates//inventory.tpl:297 templates//settings.tpl:175
 msgid "Aktionen"
 msgstr "Actions"
 
-#: templates//categories.tpl:19
+#: templates//categories.tpl:64
 msgid "Keine Hauptkategorie vorhanden"
 msgstr "No main category created"
 
-#: templates//categories.tpl:26 templates//categories.tpl:66
+#: templates//categories.tpl:71 templates//categories.tpl:111
 #: templates//inventory.tpl:21 templates//inventory.tpl:161
 #: templates//inventory.tpl:285
 msgid "Position"
 msgstr "Position"
 
-#: templates//categories.tpl:28 templates//categories.tpl:68
+#: templates//categories.tpl:73 templates//categories.tpl:113
 #: templates//inventory.tpl:21 templates//inventory.tpl:162
 #: templates//inventory.tpl:286
 msgid "Gegenstand"
 msgstr "Item"
 
-#: templates//categories.tpl:28 templates//categories.tpl:68
+#: templates//categories.tpl:73 templates//categories.tpl:113
 #: templates//inventory.tpl:21 templates//inventory.tpl:162
 #: templates//inventory.tpl:286
 msgid "Gegenstände"
 msgstr "Items"
 
-#: templates//categories.tpl:31
+#: templates//categories.tpl:76
 msgid "Kategorie löschen"
 msgstr "Remove category"
 
-#: templates//categories.tpl:32
+#: templates//categories.tpl:77
 msgid "Kategorie umbenennen"
 msgstr "Rename the category"
 
-#: templates//categories.tpl:40 templates//categories.tpl:115
+#: templates//categories.tpl:85 templates//categories.tpl:160
 #: templates//inventory.tpl:131 templates//inventory.tpl:266
 #: templates//inventory.tpl:392
 msgid "Als CSV herunterladen"
 msgstr "Download as CSV"
 
-#: templates//categories.tpl:49 templates//inventory.tpl:30
+#: templates//categories.tpl:94 templates//inventory.tpl:30
 #: templates//inventory.tpl:171 templates//inventory.tpl:294
-#: templates//php_language_extract.tpl:124
+#: templates//php_language_extract.tpl:118
 msgid "Unterkategorien"
 msgstr "Subcategories"
 
-#: templates//categories.tpl:55 templates//php_language_extract.tpl:120
+#: templates//categories.tpl:100 templates//php_language_extract.tpl:93
 msgid "Oberkategorie"
 msgstr "Main categories"
 
-#: templates//categories.tpl:59
+#: templates//categories.tpl:104
 msgid "Keine Unterkategorien vorhanden"
 msgstr "No subcategories created"
 
-#: templates//categories.tpl:71
+#: templates//categories.tpl:116
 msgid "Unterkategorie löschen"
 msgstr "Remove subcategory"
 
-#: templates//categories.tpl:72
+#: templates//categories.tpl:117
 msgid "Unterkategorie umbenennen"
 msgstr "Rename the subcategory"
 
-#: templates//categories.tpl:81 templates//categories.tpl:83
-#: templates//categories.tpl:98
+#: templates//categories.tpl:126 templates//categories.tpl:128
+#: templates//categories.tpl:143
 msgid "Keine Auswahl"
 msgstr "No selection"
 
-#: templates//categories.tpl:160
+#: templates//categories.tpl:205
 msgid "Kategorie wirklich entfernen?"
 msgstr "Really remove the category?"
 
-#: templates//categories.tpl:160
+#: templates//categories.tpl:205
 msgid "Unterkategorie wirklich entfernen?"
 msgstr "Really remove the subcategory?"
 
-#: templates//categories.tpl:170
+#: templates//categories.tpl:215
 msgid "Kategorie umbenennen?"
 msgstr "Rename the category?"
 
-#: templates//categories.tpl:170
+#: templates//categories.tpl:215
 msgid "Unterkategorie umbenennen?"
 msgstr "Rename the subcategory?"
 
 #: templates//inventory.tpl:1 templates//nav.tpl:23
-#: templates//php_language_extract.tpl:96
+#: templates//php_language_extract.tpl:75
 msgid "Inventar"
 msgstr "Inventory"
 
@@ -438,19 +470,19 @@ msgstr "Collapse"
 #: templates//inventory.tpl:27 templates//inventory.tpl:168
 #: templates//inventory.tpl:291 templates//inventory.tpl:571
 #: templates//entry.tpl:69 templates//entry.tpl:72 templates//entry.tpl:74
-#: templates//php_language_extract.tpl:111
+#: templates//php_language_extract.tpl:18
 msgid "Bezeichnung"
 msgstr "Description"
 
 #: templates//inventory.tpl:29 templates//inventory.tpl:170
 #: templates//inventory.tpl:293 templates//entry.tpl:116
 #: templates//entry.tpl:120 templates//entry.tpl:122
-#: templates//php_language_extract.tpl:110
+#: templates//php_language_extract.tpl:13
 msgid "Bemerkung"
 msgstr "Comment"
 
 #: templates//inventory.tpl:31 templates//inventory.tpl:172
-#: templates//inventory.tpl:295 templates//php_language_extract.tpl:116
+#: templates//inventory.tpl:295 templates//php_language_extract.tpl:74
 msgid "Hinzugefügt"
 msgstr "Added"
 
@@ -517,7 +549,7 @@ msgstr ""
 "There was an error saving the contents. The browser developer console "
 "contains details."
 
-#: templates//inventory.tpl:696 templates//php_language_extract.tpl:89
+#: templates//inventory.tpl:696 templates//php_language_extract.tpl:40
 msgid "Der Eintrag wurde erfolgreich aktualisiert."
 msgstr "The entry was updated succesfully."
 
@@ -613,13 +645,13 @@ msgstr "Enter credentials"
 msgid "Datenbank installieren / aktualisieren"
 msgstr "Install / update database"
 
-#: templates//installpage.tpl:117 templates//php_language_extract.tpl:31
+#: templates//installpage.tpl:117 templates//php_language_extract.tpl:61
 msgid "Erneut prüfen"
 msgstr "Check again"
 
 #: templates//entry.tpl:1 templates//entry.tpl:307 templates//nav.tpl:18
 #: templates//nav.tpl:20 templates//settings.tpl:156
-#: templates//php_language_extract.tpl:91
+#: templates//php_language_extract.tpl:47
 msgid "Eintragen"
 msgstr "Enter"
 
@@ -673,7 +705,7 @@ msgid "Bezeichnung oder Name"
 msgstr "Description or name"
 
 #: templates//entry.tpl:85 templates//entry.tpl:87 templates//entry.tpl:108
-#: templates//entry.tpl:110 templates//php_language_extract.tpl:118
+#: templates//entry.tpl:110 templates//php_language_extract.tpl:82
 msgid "Lagerplatz"
 msgstr "Storage area"
 
@@ -681,21 +713,16 @@ msgstr "Storage area"
 msgid "Netzwerk/Hardware"
 msgstr "Network/Hardware"
 
-#: templates//entry.tpl:162 templates//entry.tpl:165 templates//entry.tpl:180
-#: templates//entry.tpl:182 templates//php_language_extract.tpl:63
-msgid "Unterkategorie"
-msgstr "Subcategory"
-
 #: templates//entry.tpl:180 templates//entry.tpl:182
 msgid "Router,wlan,fritzBox"
 msgstr "Router,WiFi,FritzBox"
 
-#: templates//entry.tpl:199 templates//php_language_extract.tpl:133
+#: templates//entry.tpl:199 templates//php_language_extract.tpl:106
 msgid "Seriennummer"
 msgstr "Serialnumber"
 
 #: templates//entry.tpl:202 templates//entry.tpl:204
-#: templates//php_language_extract.tpl:123
+#: templates//php_language_extract.tpl:107
 msgid "Seriennummer/Artikelnummer"
 msgstr "Serialnumber/Product number"
 
@@ -901,7 +928,7 @@ msgstr "Update source"
 msgid "Verfügbare Update-Quellen"
 msgstr "Available update sources"
 
-#: templates//settings.tpl:282 templates//php_language_extract.tpl:101
+#: templates//settings.tpl:282 templates//php_language_extract.tpl:105
 msgid "Release"
 msgstr "Release"
 
@@ -909,7 +936,7 @@ msgstr "Release"
 msgid "Getestete Veröffentlichung"
 msgstr "Tested release"
 
-#: templates//settings.tpl:283 templates//php_language_extract.tpl:81
+#: templates//settings.tpl:283 templates//php_language_extract.tpl:17
 msgid "Betatest"
 msgstr "Beta test"
 
@@ -918,7 +945,7 @@ msgid ""
 "Noch nich veröffentlichte Funktionen, aber möglicherweise auch mit Fehlern"
 msgstr "Features not yet released, but possibly also with bugs"
 
-#: templates//settings.tpl:284 templates//php_language_extract.tpl:92
+#: templates//settings.tpl:284 templates//php_language_extract.tpl:60
 msgid "Entwicklung"
 msgstr "Development"
 
@@ -957,80 +984,171 @@ msgid "1 Eintrag wurde gelöscht."
 msgstr "1 entry was deleted."
 
 #: templates//php_language_extract.tpl:3
+msgid ""
+"Abbruch. Die folgenden Dateien konnten nicht beschrieben oder erstellt "
+"werden:"
+msgstr "Abort. The following files could not be written or created:"
+
+#: templates//php_language_extract.tpl:4
 msgid "Absender-Mailadresse ungültig."
 msgstr "Invalid sender email address."
 
-#: templates//php_language_extract.tpl:4
+#: templates//php_language_extract.tpl:5
+msgid "Aktualisierung abgeschlossen. "
+msgstr "Update complete."
+
+#: templates//php_language_extract.tpl:6
+msgid "Aktualisierung gestartet, lade nun die Aktuelle Version herunter"
+msgstr "Update started, now download the current version"
+
+#: templates//php_language_extract.tpl:7
+msgid ""
+"Alle geprüften Dateien sind älter als jene in der Quelle. Update sollte "
+"durchgeführt werden"
+msgstr ""
+"All checked files are older than those in the source. Update should be "
+"carried out"
+
+#: templates//php_language_extract.tpl:8
 msgid "Alte Revision:"
 msgstr "Old revision:"
 
-#: templates//php_language_extract.tpl:5
+#: templates//php_language_extract.tpl:9
 msgid "Anmeldung für weitere XXX Sekunden gesperrt"
 msgstr "Login is blocked for another XXX seconds"
 
-#: templates//php_language_extract.tpl:6
+#: templates//php_language_extract.tpl:11
+msgid "Anzahl um 1 erhöhen"
+msgstr "Increase units by 1"
+
+#: templates//php_language_extract.tpl:12
+msgid "Anzahl um 1 senken"
+msgstr "Decrease units by 1"
+
+#: templates//php_language_extract.tpl:14
+msgid "Benötigte Schreibrechte bestehen. Kopiere nun die Dateien"
+msgstr "The necessary write permissions exist. Now copy the files"
+
+#: templates//php_language_extract.tpl:15
 msgid "Benutzername enthält nicht zugelassene Zeichen."
 msgstr "Username contains illegal characters."
 
-#: templates//php_language_extract.tpl:7
+#: templates//php_language_extract.tpl:16
 msgid "Benutzername ist erforderlich."
 msgstr "Username is required."
 
-#: templates//php_language_extract.tpl:8
+#: templates//php_language_extract.tpl:19
 msgid "Bitte erlaube dem Webserver Schreibzugriff auf die Datei"
 msgstr "Please set write permission to the file"
 
-#: templates//php_language_extract.tpl:9
+#: templates//php_language_extract.tpl:20
+msgid "Bitte stelle sicher, dass alle Dateien vom Webserver beschreibbar sind."
+msgstr "Please make sure that all files are writable from the web server."
+
+#: templates//php_language_extract.tpl:21
+msgid ""
+"Bitte stelle sicher, dass der Webserver Schreibberechtigung für alle Dateien "
+"und Verzeichnisse des Projekts besitzt"
+msgstr ""
+"Please make sure that the web server has write permission for all files and "
+"directories of the project"
+
+#: templates//php_language_extract.tpl:22
+msgid "Check in/check out"
+msgstr "Check in/check out"
+
+#: templates//php_language_extract.tpl:23
+msgid "Das Erstellen des folgenden Verzeichnisses schlug fehl:"
+msgstr "Creation of the following folders resulted in an error:"
+
+#: templates//php_language_extract.tpl:24
+msgid "Datei"
+msgstr "File"
+
+#: templates//php_language_extract.tpl:25
+msgid "Datei-Datum"
+msgstr "File date"
+
+#: templates//php_language_extract.tpl:26
+msgid "Datei-Datumsabgleich"
+msgstr "File-date check"
+
+#: templates//php_language_extract.tpl:27
+msgid " Dateien kopiert. Bitte prüfen ob ein Datenbank-Update vorhanden ist"
+msgstr " Files copied. Please check whether a database update is available"
+
+#: templates//php_language_extract.tpl:28
+msgid ""
+"Datenbank Hauptnutzer Zugriff ungültig, konnte sqStorage Benutzer und Rechte "
+"nicht setzen"
+msgstr ""
+"Database main user access invalid, could not set sqStorage user and rights"
+
+#: templates//php_language_extract.tpl:29
 msgid "Datenbank ist auf dem aktuellen Stand"
 msgstr "Database is up to date"
 
-#: templates//php_language_extract.tpl:10
+#: templates//php_language_extract.tpl:30
 msgid "Datenbank-Verbindung hergestellt"
 msgstr "Database connected"
 
-#: templates//php_language_extract.tpl:11
+#: templates//php_language_extract.tpl:31
 msgid "Datenbank-Verbindung nicht möglich. Bitte kontrolliere die Zugangsdaten"
 msgstr "Database connection failed. please check the credentials"
 
-#: templates//php_language_extract.tpl:12
+#: templates//php_language_extract.tpl:33
 msgid "Datensätze mit verknüpften Altdaten entfernt."
 msgstr "Records with old linked data removed."
 
-#: templates//php_language_extract.tpl:14
+#: templates//php_language_extract.tpl:35
+msgid "Datum"
+msgstr "Date"
+
+#: templates//php_language_extract.tpl:36
+msgid "Datum und Uhrzeit"
+msgstr "Date and time"
+
+#: templates//php_language_extract.tpl:37
+msgid "Datum und Uhrzeit: Datum und Zeitangabe"
+msgstr "Date and time: Date and time definition"
+
+#: templates//php_language_extract.tpl:38
 msgid "Der Aktivierungslink ist nicht mehr gültig."
 msgstr "The activation link is expired."
 
-#: templates//php_language_extract.tpl:15
+#: templates//php_language_extract.tpl:39
 msgid "Der Benutzer \"%s\" existiert bereits."
 msgstr "The user \"%s\" exists already."
 
-#: templates//php_language_extract.tpl:16
+#: templates//php_language_extract.tpl:41
 msgid "Der Webserver kann die Datei support/dba.php nicht ändern"
 msgstr "Unable to edit the file support/dba.php"
 
-#: templates//php_language_extract.tpl:17
-msgid ""
-"Die Datei support/dba.php ist nicht vorhanden und konnte auch nicht erstellt "
-"werden."
-msgstr "The file support/dba.php is missing and creating it failed."
-
-#: templates//php_language_extract.tpl:18
-msgid "Die gewählte Datenbank existiert nicht und konnte nicht erstellt werden"
-msgstr "The selected database doesn't exists and could not be created"
-
-#: templates//php_language_extract.tpl:19
+#: templates//php_language_extract.tpl:42
 msgid "Die Installation ist momentan nicht erlaubt"
 msgstr "Installation is currently not allowed"
 
-#: templates//php_language_extract.tpl:20
+#: templates//php_language_extract.tpl:43
+msgid "Die nächste Überprüfung nach folgendem Zeitpunkt stattfinden:"
+msgstr "The next review can take place after the following date:"
+
+#: templates//php_language_extract.tpl:44
 msgid "Die Passwörter stimmen nicht überein!"
 msgstr "The passwords didn't match!"
 
-#: templates//php_language_extract.tpl:21
+#: templates//php_language_extract.tpl:45
+msgid "Eine Kategorie mit diesem Namen existiert bereits:"
+msgstr "A category with this name exists:"
+
+#: templates//php_language_extract.tpl:46
+msgid "Eine Unterkategorie mit diesem Namen existiert bereits:"
+msgstr "A subcategory with this name exists:"
+
+#: templates//php_language_extract.tpl:48
 msgid "Einträge wurden gelöscht."
 msgstr "Entries were deleted."
 
-#: templates//php_language_extract.tpl:22
+#: templates//php_language_extract.tpl:49
 msgid ""
 "Einzelauswahl, durch Semikolon getrennt: erlaubt \"Neu\" oder \"Gebraucht\" "
 "oder \"Refurbished\" wenn \"Neu;Gebraucht;Refurbished\" angegeben. Und oder "
@@ -1040,39 +1158,48 @@ msgstr ""
 "\"New\", \"Used\" and \"Refurbished\" additional to numeric values (inter, "
 "decimal) will be available"
 
-#: templates//php_language_extract.tpl:23
+#: templates//php_language_extract.tpl:50
+msgid "Einzelauswahl: Name des verknüpften Feldes auf dem der QR-Code basiert"
+msgstr ""
+"Single selection: Name of the linked field on which the QR code is based"
+
+#: templates//php_language_extract.tpl:51
 msgid "Einzelauswahl (Single-Dropdown)"
 msgstr "Single choice (single dropdown)"
 
-#: templates//php_language_extract.tpl:24
+#: templates//php_language_extract.tpl:52
 msgid "Einzelwert: -10 oder -2 oder 2000 oder 4000"
 msgstr "Single value: -10 or -2 or 2000 or 4000"
 
-#: templates//php_language_extract.tpl:25
+#: templates//php_language_extract.tpl:53
 msgid "Einzelwert: -11.4 oder -0.032 kleiner gleich 0"
 msgstr "Single value: -11.4 or -0.032 , less or equal than 0"
 
-#: templates//php_language_extract.tpl:26
+#: templates//php_language_extract.tpl:54
 msgid "Einzelwert: -131 oder -7019 oder kleiner gleich 0"
 msgstr "Single value:-131 or-7019 and less  or equal 0"
 
-#: templates//php_language_extract.tpl:27
+#: templates//php_language_extract.tpl:55
 msgid "Einzelwert: 1 oder 291 oder 4016, größer gleich 0"
 msgstr "Single value: 1 or 291 or 4016, not less than 0"
 
-#: templates//php_language_extract.tpl:28
+#: templates//php_language_extract.tpl:56
+msgid "Einzelwert: -3.4172 oder 5.179"
+msgstr "Single value: -3.4172 or 5.179"
+
+#: templates//php_language_extract.tpl:57
 msgid "Einzelwert: 3.4172 oder 5.179 oder 27.4"
 msgstr "Single value: 3.4172 or 5.179 or 27.4"
 
-#: templates//php_language_extract.tpl:29
+#: templates//php_language_extract.tpl:58
 msgid "Einzelwert: Zeichenfolge mit bis zu < 256 Zeichen"
 msgstr "Single value: String with less or equal 256 characters"
 
-#: templates//php_language_extract.tpl:30
+#: templates//php_language_extract.tpl:59
 msgid "E-Mail-Adresse ungültig!"
 msgstr "Invalid email address!"
 
-#: templates//php_language_extract.tpl:32
+#: templates//php_language_extract.tpl:62
 msgid ""
 "Erstelle eine Datei mit dem Namen allow_install im Verzeichnis support um "
 "die Installation zu erlauben."
@@ -1080,330 +1207,7 @@ msgstr ""
 "Create a file named \"allow_install\" in the support directory to allow "
 "installation."
 
-#: templates//php_language_extract.tpl:33
-msgid ""
-"Es können zur Zeit keine E-Mails vom System versendet werden.<br>Bitte "
-"diesen Einladungslink an den Benutzer weiterleiten:<br><a href=\"%s\">%s</a>"
-msgstr ""
-"The system is currently unable to send mails. <br> Please forward this "
-"invitation link to the user: <br>/><a href=\"%s\">%s</a>"
-
-#: templates//php_language_extract.tpl:34
-msgid "Es waren keine Einträge mit dem Datenfeld verknüpft."
-msgstr "No entries were linked to the data field."
-
-#: templates//php_language_extract.tpl:35
-msgid ""
-"Falls ein Benutzerkonto gefunden wird, erhalten Sie nun eine Mail mit einem "
-"Link zum Zurücksetzen des Passworts."
-msgstr ""
-"If a user account was found, you'll receive an email containing the link to "
-"reset your password."
-
-#: templates//php_language_extract.tpl:36
-msgid "Fehler: Benutzername \"%s\" enthält nicht zugelassene Zeichen."
-msgstr "Error: Username \"%s\" contains illegal characters."
-
-#: templates//php_language_extract.tpl:37
-msgid "Fehler: Der letzte Administrator kann nicht gelöscht werden!"
-msgstr "Failure: The last administrator cannot be deleted!"
-
-#: templates//php_language_extract.tpl:38
-msgid ""
-"Fehler: Dies ist der letzte Administrator, die Gruppe kann nicht auf \"%s\" "
-"geändert werden!"
-msgstr ""
-"Error: This is the last administrator, the user group can not be changed to "
-"\"%s\"!"
-
-#: templates//php_language_extract.tpl:39
-msgid "Fehler: E-Mail-Adresse \"%s\" ungültig."
-msgstr "Error: Invalid email address \"%s\"."
-
-#: templates//php_language_extract.tpl:41
-msgid "Kategorie entfernt."
-msgstr "Category removed."
-
-#: templates//php_language_extract.tpl:42
-msgid "Kategorie umbenannt."
-msgstr "Category renamed."
-
-#: templates//php_language_extract.tpl:43
-msgid "keine Änderungen durchgeführt"
-msgstr "no changes applied"
-
-#: templates//php_language_extract.tpl:44
-msgid ""
-"Mehrfachauswahl, durch Semikolon getrennt: erlaubt \"Neu\" und oder "
-"\"Netzwerk\", wenn \"Neu;Netzwerk\" angegeben. Und oder numerische Werte "
-"(Ganzzahl, Gleitkommanzahlen)."
-msgstr ""
-"Multiple choice, semicolon separated: If \"New;Used,Refurbished\" is "
-"entered, \"New\", \"Used\" and \"Refurbished\" additional to numeric values "
-"(decimal or inter) will be available."
-
-#: templates//php_language_extract.tpl:45
-msgid "Mehrfachauswahl (Multi-Dropdown)"
-msgstr "Multiple choice (multi-dropdown)"
-
-#: templates//php_language_extract.tpl:46
-msgid ""
-"Momentan können keine E-Mails versendet werden, bitte später noch einmal "
-"versuchen, oder einen Administrator kontaktieren."
-msgstr ""
-"Emails cannot be sent at the moment, please try again later or contact an "
-"administrator."
-
-#: templates//php_language_extract.tpl:47
-msgid "Negative Ganzzahl"
-msgstr "Negative integer"
-
-#: templates//php_language_extract.tpl:48
-msgid "Negative oder positive Ganzzahl"
-msgstr "Negative or positive integer"
-
-#: templates//php_language_extract.tpl:49
-msgid "Negative oder positive Gleitkommazahl"
-msgstr "Negative or positive floating point number"
-
-#: templates//php_language_extract.tpl:50
-msgid "Neue Revision:"
-msgstr "New revision:"
-
-#: templates//php_language_extract.tpl:51
-msgid "Passwort muß einen Großbuchstaben enthalten!"
-msgstr "Password must contain an uppercase letter!"
-
-#: templates//php_language_extract.tpl:52
-msgid "Passwort muß einen Kleinbuchstaben enthalten!"
-msgstr "Password must contain a lowercase letter!"
-
-#: templates//php_language_extract.tpl:53
-msgid "Passwort muß eine Zahl enthalten!"
-msgstr "Password must contain a number!"
-
-#: templates//php_language_extract.tpl:54
-msgid "Passwort zu kurz, mindestens 8 Zeichen!"
-msgstr "Password too short, at least 8 characters!"
-
-#: templates//php_language_extract.tpl:55
-msgid "Positive Ganzzahl"
-msgstr "Positive integer"
-
-#: templates//php_language_extract.tpl:56
-msgid "Positive Gleitkommazahl"
-msgstr "Positive floating point number"
-
-#: templates//php_language_extract.tpl:57
-msgid ""
-"Setze die entsprechende Berechtigung so, dass Dein Webserver diese erstellen "
-"und bearbeiten kann"
-msgstr ""
-"Please set the file access permissions to allow your webserver to create and "
-"edit the file or create the file manually and grant write permission to the "
-"webserver"
-
-#: templates//php_language_extract.tpl:58
-msgid "Sie haben eine Einladung für sqStorage erhalten: <a href=\"%s\">%s</a>"
-msgstr "You received an invitation to sqStorage: <a href=\"%s\">%s</a>"
-
-#: templates//php_language_extract.tpl:59
-msgid "sqStorage Einladung"
-msgstr "sqStorage invite"
-
-#: templates//php_language_extract.tpl:60 templates//usersettings.tpl:61
-msgid "sqStorage Passwortänderung"
-msgstr "sqStorage password change"
-
-#: templates//php_language_extract.tpl:61
-msgid ""
-"Um das Passwort für sqStorage zu ändern bitte den folgenden Link aufrufen: "
-"<a href=\"%s\">%s</a>"
-msgstr ""
-"In order to change the password for usage of sqStorage please follow this "
-"link: <a href=\"%s\">%s</a>"
-
-#: templates//php_language_extract.tpl:62
-msgid "Unkategorisiert"
-msgstr "Uncategorized"
-
-#: templates//php_language_extract.tpl:64
-msgid "Unterkategorie entfernt."
-msgstr "Subcategory removed."
-
-#: templates//php_language_extract.tpl:65
-msgid "Unterkategorie umbenannt."
-msgstr "Subcategory renamed."
-
-#: templates//php_language_extract.tpl:66
-msgid "Unter Linux könnten folgende Befehle weiterhelfen"
-msgstr "If your operating system is Linux the following command may help you"
-
-#: templates//php_language_extract.tpl:67
-msgid ""
-"Verwendest Du eine bestehende Installation und die Benutzerverwaltung, "
-"kannst Du diese Datei als Administrator über das Einstellungen erstellen und "
-"nach der Aktualisierung auch wieder entfernen."
-msgstr ""
-"If you are about to updating an existing installation and also using the "
-"login feature, you can create this file in the Settings and also delete it "
-"afterwards."
-
-#: templates//php_language_extract.tpl:68
-msgid "Zeichenfolge < 512 Zeichen"
-msgstr "String < 512 characters"
-
-#: templates//php_language_extract.tpl:69
-msgid "Zugangsdaten ungültig"
-msgstr "Invalid credentials"
-
-#: templates//php_language_extract.tpl:70
-msgid "Zugang wurde verweigert. Bitte überprüfe die Zugangsdaten"
-msgstr "Access denied. Please check the credentials"
-
-#: templates//php_language_extract.tpl:71
-msgid "Zugriff auf folgende Verzeichnisse fehlgeschlagen:"
-msgstr "Access to the following directories was denied:"
-
-#: templates//php_language_extract.tpl:73
-msgid "Zu viele Anmeldeversuche. Bitte später nochmal versuchen"
-msgstr "Too many login attempts. Please try again later"
-
-#: templates//php_language_extract.tpl:74
-msgid " Dateien kopiert. Bitte prüfen ob ein Datenbank-Update vorhanden ist"
-msgstr " Files copied. Please check whether a database update is available"
-
-#: templates//php_language_extract.tpl:75
-msgid " kopiert"
-msgstr " copied"
-
-#: templates//php_language_extract.tpl:76
-msgid ""
-"Abbruch. Die folgenden Dateien konnten nicht beschrieben oder erstellt "
-"werden:"
-msgstr "Abort. The following files could not be written or created:"
-
-#: templates//php_language_extract.tpl:77
-msgid "Aktualisierung abgeschlossen. "
-msgstr "Update complete."
-
-#: templates//php_language_extract.tpl:78
-msgid "Aktualisierung gestartet, lade nun die Aktuelle Version herunter"
-msgstr "Update started, now download the current version"
-
-#: templates//php_language_extract.tpl:79
-msgid ""
-"Alle geprüften Dateien sind älter als jene in der Quelle. Update sollte "
-"durchgeführt werden"
-msgstr ""
-"All checked files are older than those in the source. Update should be "
-"carried out"
-
-#: templates//php_language_extract.tpl:80
-msgid "Benötigte Schreibrechte bestehen. Kopiere nun die Dateien"
-msgstr "The necessary write permissions exist. Now copy the files"
-
-#: templates//php_language_extract.tpl:82
-msgid "Bitte stelle sicher, dass alle Dateien vom Webserver beschreibbar sind."
-msgstr "Please make sure that all files are writable from the web server."
-
-#: templates//php_language_extract.tpl:83
-msgid ""
-"Bitte stelle sicher, dass der Webserver Schreibberechtigung für alle Dateien "
-"und Verzeichnisse des Projekts besitzt"
-msgstr ""
-"Please make sure that the web server has write permission for all files and "
-"directories of the project"
-
-#: templates//php_language_extract.tpl:84
-msgid "Das Erstellen des folgenden Verzeichnisses schlug fehl:"
-msgstr "Creation of the following folders resulted in an error:"
-
-#: templates//php_language_extract.tpl:85
-msgid "Datei"
-msgstr "File"
-
-#: templates//php_language_extract.tpl:86
-msgid "Datei-Datum"
-msgstr "File date"
-
-#: templates//php_language_extract.tpl:87
-msgid "Datei-Datumsabgleich"
-msgstr "File-date check"
-
-#: templates//php_language_extract.tpl:90
-msgid "Die nächste Überprüfung nach folgendem Zeitpunkt stattfinden:"
-msgstr "The next review can take place after the following date:"
-
-#: templates//php_language_extract.tpl:93
-msgid "Folgende Datei konnte nicht erstellt werden:"
-msgstr "The following file could not be created:"
-
-#: templates//php_language_extract.tpl:94
-msgid ""
-"Github beschränkt leider die API-Nutzung, weshalb die Prüfung momentan nicht "
-"stattfinden kann."
-msgstr ""
-"Github unfortunately restricts API use, which is why the test cannot take "
-"place at the moment."
-
-#: templates//php_language_extract.tpl:95
-msgid "Gleich"
-msgstr "Identical"
-
-#: templates//php_language_extract.tpl:97
-msgid "Letzte Änderungen:"
-msgstr "Last changes:"
-
-#: templates//php_language_extract.tpl:98
-msgid "Prüfe ob die Installation aktuell ist."
-msgstr "Check if the installation is up to date."
-
-#: templates//php_language_extract.tpl:99
-msgid "Prüfsumme"
-msgstr "Checksum"
-
-#: templates//php_language_extract.tpl:100
-msgid "Prüfsummenabgleich"
-msgstr "Checksum comparison"
-
-#: templates//php_language_extract.tpl:103
-msgid "Überprüfe die notwendigen Schreibberechtigungen"
-msgstr "Check the necessary write permissions"
-
-#: templates//php_language_extract.tpl:104
-msgid "Übersprungen, Prüfsummendifferenz"
-msgstr "Skipped, checksum mismatch"
-
-#: templates//php_language_extract.tpl:105
-msgid "Unterschiedlich"
-msgstr "Differently"
-
-#: templates//php_language_extract.tpl:106
-msgid "Vorhandene Datei ist älter"
-msgstr "Existing file is older"
-
-#: templates//php_language_extract.tpl:107
-msgid "Vorhandene Datei ist neuer"
-msgstr "Existing file is newer"
-
-#: templates//php_language_extract.tpl:108 templates//welcome.tpl:1
-msgid "Welcome!"
-msgstr "Welcome!"
-
-#: templates//php_language_extract.tpl:112
-msgid ""
-"Datenbank Hauptnutzer Zugriff ungültig, konnte sqStorage Benutzer und Rechte "
-"nicht setzen"
-msgstr ""
-"Database main user access invalid, could not set sqStorage user and rights"
-
-#: templates//php_language_extract.tpl:113
-msgid "Einzelauswahl: Name des verknüpften Feldes auf dem der QR-Code basiert"
-msgstr ""
-"Single selection: Name of the linked field on which the QR code is based"
-
-#: templates//php_language_extract.tpl:114
+#: templates//php_language_extract.tpl:63
 #, fuzzy
 #| msgid ""
 #| "Es können zur Zeit keine Mails vom System versendet werden.<br />Bitte "
@@ -1417,52 +1221,252 @@ msgstr ""
 "The system is currently unable to send mails. <br /> Please forward this "
 "invitation link to the user: <br />/><a href=\"%s\">%s</a>"
 
-#: templates//php_language_extract.tpl:115
+#: templates//php_language_extract.tpl:64
+msgid "Es waren keine Einträge mit dem Datenfeld verknüpft."
+msgstr "No entries were linked to the data field."
+
+#: templates//php_language_extract.tpl:65
+msgid ""
+"Falls ein Benutzerkonto gefunden wird, erhalten Sie nun eine Mail mit einem "
+"Link zum Zurücksetzen des Passworts."
+msgstr ""
+"If a user account was found, you'll receive an email containing the link to "
+"reset your password."
+
+#: templates//php_language_extract.tpl:66
+msgid "Fehler: Benutzername \"%s\" enthält nicht zugelassene Zeichen."
+msgstr "Error: Username \"%s\" contains illegal characters."
+
+#: templates//php_language_extract.tpl:67
+msgid "Fehler: Der letzte Administrator kann nicht gelöscht werden!"
+msgstr "Failure: The last administrator cannot be deleted!"
+
+#: templates//php_language_extract.tpl:68
+msgid ""
+"Fehler: Dies ist der letzte Administrator, die Gruppe kann nicht auf \"%s\" "
+"geändert werden!"
+msgstr ""
+"Error: This is the last administrator, the user group can not be changed to "
+"\"%s\"!"
+
+#: templates//php_language_extract.tpl:69
+msgid "Fehler: E-Mail-Adresse \"%s\" ungültig."
+msgstr "Error: Invalid email address \"%s\"."
+
+#: templates//php_language_extract.tpl:70
+msgid "Folgende Datei konnte nicht erstellt werden:"
+msgstr "The following file could not be created:"
+
+#: templates//php_language_extract.tpl:71
+msgid ""
+"Github beschränkt leider die API-Nutzung, weshalb die Prüfung momentan nicht "
+"stattfinden kann."
+msgstr ""
+"Github unfortunately restricts API use, which is why the test cannot take "
+"place at the moment."
+
+#: templates//php_language_extract.tpl:72
+msgid "Gleich"
+msgstr "Identical"
+
+#: templates//php_language_extract.tpl:73
 msgid ""
 "Hauptnutzer konnte sich nicht anmelden um sqStorage Nutzer und Datenbank "
 "anzulegen"
 msgstr ""
 "Database Admin User could not login to create sqStorage User and Database"
 
-#: templates//php_language_extract.tpl:119
-msgid "Name"
-msgstr "Name"
+#: templates//php_language_extract.tpl:77
+msgid "Kategorie entfernt."
+msgstr "Category removed."
 
-#: templates//php_language_extract.tpl:122
-msgid "QR-Code Feld"
-msgstr "QR-Code field"
+#: templates//php_language_extract.tpl:79
+msgid "Kategorie umbenannt."
+msgstr "Category renamed."
 
-#: templates//php_language_extract.tpl:125
-msgid "Anzahl um 1 erhöhen"
-msgstr "Increase units by 1"
+#: templates//php_language_extract.tpl:80
+msgid "keine Änderungen durchgeführt"
+msgstr "no changes applied"
 
-#: templates//php_language_extract.tpl:126
-msgid "Anzahl um 1 senken"
-msgstr "Decrease units by 1"
+#: templates//php_language_extract.tpl:81
+msgid " kopiert"
+msgstr " copied"
 
-#: templates//php_language_extract.tpl:127
-msgid "Check in/check out"
-msgstr "Check in/check out"
+#: templates//php_language_extract.tpl:83
+msgid "Letzte Änderungen:"
+msgstr "Last changes:"
 
-#: templates//php_language_extract.tpl:128
-msgid "Datum und Uhrzeit"
-msgstr "Date and time"
+#: templates//php_language_extract.tpl:84
+msgid ""
+"Mehrfachauswahl, durch Semikolon getrennt: erlaubt \"Neu\" und oder "
+"\"Netzwerk\", wenn \"Neu;Netzwerk\" angegeben. Und oder numerische Werte "
+"(Ganzzahl, Gleitkommanzahlen)."
+msgstr ""
+"Multiple choice, semicolon separated: If \"New;Used,Refurbished\" is "
+"entered, \"New\", \"Used\" and \"Refurbished\" additional to numeric values "
+"(decimal or inter) will be available."
 
-#: templates//php_language_extract.tpl:129
-msgid "Datum und Uhrzeit: Datum und Zeitangabe"
-msgstr "Date and time: Date and time definition"
+#: templates//php_language_extract.tpl:85
+msgid "Mehrfachauswahl (Multi-Dropdown)"
+msgstr "Multiple choice (multi-dropdown)"
 
-#: templates//php_language_extract.tpl:130
-msgid "Einzelwert: -3.4172 oder 5.179"
-msgstr "Single value: -3.4172 or 5.179"
+#: templates//php_language_extract.tpl:86
+msgid ""
+"Momentan können keine E-Mails versendet werden, bitte später noch einmal "
+"versuchen, oder einen Administrator kontaktieren."
+msgstr ""
+"Emails cannot be sent at the moment, please try again later or contact an "
+"administrator."
 
-#: templates//php_language_extract.tpl:131
+#: templates//php_language_extract.tpl:88
+msgid "Negative Ganzzahl"
+msgstr "Negative integer"
+
+#: templates//php_language_extract.tpl:89
 msgid "Negative Gleitkommazahl"
 msgstr "Negtaivv floating point number"
 
-#: templates//php_language_extract.tpl:132
-msgid "Datum"
-msgstr "Date"
+#: templates//php_language_extract.tpl:90
+msgid "Negative oder positive Ganzzahl"
+msgstr "Negative or positive integer"
+
+#: templates//php_language_extract.tpl:91
+msgid "Negative oder positive Gleitkommazahl"
+msgstr "Negative or positive floating point number"
+
+#: templates//php_language_extract.tpl:92
+msgid "Neue Revision:"
+msgstr "New revision:"
+
+#: templates//php_language_extract.tpl:94
+msgid "Passwort muß einen Großbuchstaben enthalten!"
+msgstr "Password must contain an uppercase letter!"
+
+#: templates//php_language_extract.tpl:95
+msgid "Passwort muß einen Kleinbuchstaben enthalten!"
+msgstr "Password must contain a lowercase letter!"
+
+#: templates//php_language_extract.tpl:96
+msgid "Passwort muß eine Zahl enthalten!"
+msgstr "Password must contain a number!"
+
+#: templates//php_language_extract.tpl:97
+msgid "Passwort zu kurz, mindestens 8 Zeichen!"
+msgstr "Password too short, at least 8 characters!"
+
+#: templates//php_language_extract.tpl:99
+msgid "Positive Ganzzahl"
+msgstr "Positive integer"
+
+#: templates//php_language_extract.tpl:100
+msgid "Positive Gleitkommazahl"
+msgstr "Positive floating point number"
+
+#: templates//php_language_extract.tpl:101
+msgid "Prüfe ob die Installation aktuell ist."
+msgstr "Check if the installation is up to date."
+
+#: templates//php_language_extract.tpl:102
+msgid "Prüfsumme"
+msgstr "Checksum"
+
+#: templates//php_language_extract.tpl:103
+msgid "Prüfsummenabgleich"
+msgstr "Checksum comparison"
+
+#: templates//php_language_extract.tpl:104
+msgid "QR-Code Feld"
+msgstr "QR-Code field"
+
+#: templates//php_language_extract.tpl:108
+msgid "Sie haben eine Einladung für sqStorage erhalten: <a href=\"%s\">%s</a>"
+msgstr "You received an invitation to sqStorage: <a href=\"%s\">%s</a>"
+
+#: templates//php_language_extract.tpl:109
+msgid "sqStorage Einladung"
+msgstr "sqStorage invite"
+
+#: templates//php_language_extract.tpl:110 templates//usersettings.tpl:61
+msgid "sqStorage Passwortänderung"
+msgstr "sqStorage password change"
+
+#: templates//php_language_extract.tpl:112
+msgid "Überprüfe die notwendigen Schreibberechtigungen"
+msgstr "Check the necessary write permissions"
+
+#: templates//php_language_extract.tpl:113
+msgid "Übersprungen, Prüfsummendifferenz"
+msgstr "Skipped, checksum mismatch"
+
+#: templates//php_language_extract.tpl:114
+msgid ""
+"Um das Passwort für sqStorage zu ändern bitte den folgenden Link aufrufen: "
+"<a href=\"%s\">%s</a>"
+msgstr ""
+"In order to change the password for usage of sqStorage please follow this "
+"link: <a href=\"%s\">%s</a>"
+
+#: templates//php_language_extract.tpl:115
+msgid "Unkategorisiert"
+msgstr "Uncategorized"
+
+#: templates//php_language_extract.tpl:117
+msgid "Unterkategorie entfernt."
+msgstr "Subcategory removed."
+
+#: templates//php_language_extract.tpl:119
+msgid "Unterkategorie umbenannt."
+msgstr "Subcategory renamed."
+
+#: templates//php_language_extract.tpl:120
+msgid "Unter Linux könnten folgende Befehle weiterhelfen"
+msgstr "If your operating system is Linux the following command may help you"
+
+#: templates//php_language_extract.tpl:121
+msgid "Unterschiedlich"
+msgstr "Differently"
+
+#: templates//php_language_extract.tpl:122
+msgid ""
+"Verwendest Du eine bestehende Installation und die Benutzerverwaltung, "
+"kannst Du diese Datei als Administrator über das Einstellungen erstellen und "
+"nach der Aktualisierung auch wieder entfernen."
+msgstr ""
+"If you are about to updating an existing installation and also using the "
+"login feature, you can create this file in the Settings and also delete it "
+"afterwards."
+
+#: templates//php_language_extract.tpl:123
+msgid "Vorhandene Datei ist älter"
+msgstr "Existing file is older"
+
+#: templates//php_language_extract.tpl:124
+msgid "Vorhandene Datei ist neuer"
+msgstr "Existing file is newer"
+
+#: templates//php_language_extract.tpl:125 templates//welcome.tpl:1
+msgid "Welcome!"
+msgstr "Welcome!"
+
+#: templates//php_language_extract.tpl:126
+msgid "Zeichenfolge < 512 Zeichen"
+msgstr "String < 512 characters"
+
+#: templates//php_language_extract.tpl:127
+msgid "Zugangsdaten ungültig"
+msgstr "Invalid credentials"
+
+#: templates//php_language_extract.tpl:128
+msgid "Zugang wurde verweigert. Bitte überprüfe die Zugangsdaten"
+msgstr "Access denied. Please check the credentials"
+
+#: templates//php_language_extract.tpl:129
+msgid "Zugriff auf folgende Verzeichnisse fehlgeschlagen:"
+msgstr "Access to the following directories was denied:"
+
+#: templates//php_language_extract.tpl:131
+msgid "Zu viele Anmeldeversuche. Bitte später nochmal versuchen"
+msgstr "Too many login attempts. Please try again later"
 
 #: templates//updater.tpl:1
 msgid "Aktualisierungs-Manager"
@@ -1537,6 +1541,31 @@ msgstr "New value"
 #: templates//modal.tpl:29
 msgid "Abbrechen"
 msgstr "Cancel"
+
+#~ msgid ""
+#~ "Die Datei support/dba.php ist nicht vorhanden und konnte auch nicht "
+#~ "erstellt werden."
+#~ msgstr "The file support/dba.php is missing and creating it failed."
+
+#~ msgid ""
+#~ "Die gewählte Datenbank existiert nicht und konnte nicht erstellt werden"
+#~ msgstr "The selected database doesn't exists and could not be created"
+
+#~ msgid ""
+#~ "Es können zur Zeit keine E-Mails vom System versendet werden.<br>Bitte "
+#~ "diesen Einladungslink an den Benutzer weiterleiten:<br><a href=\"%s\">%s</"
+#~ "a>"
+#~ msgstr ""
+#~ "The system is currently unable to send mails. <br> Please forward this "
+#~ "invitation link to the user: <br>/><a href=\"%s\">%s</a>"
+
+#~ msgid ""
+#~ "Setze die entsprechende Berechtigung so, dass Dein Webserver diese "
+#~ "erstellen und bearbeiten kann"
+#~ msgstr ""
+#~ "Please set the file access permissions to allow your webserver to create "
+#~ "and edit the file or create the file manually and grant write permission "
+#~ "to the webserver"
 
 #~ msgid "Lagerplatz löschen"
 #~ msgstr "Remove storage area"
