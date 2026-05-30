@@ -18,7 +18,7 @@
               <a title="{t}Lagerplatz umbenennen{/t}" onclick="changeSingleValue('storages','label',{$itemstore.storage.id},true);" href="javascript:void(0)"><i class="fas fa-edit fa-xs"></i></a>
             {/if}
             <a title="{t}Zuklappen{/t}" id="togglebtn_{$itemstore.storage.id}" onclick='toggletableview("{$itemstore.storage.id}");' href="javascript:void(0)"><i class="fa-solid fa-xs fa-minimize" id="toggleicon_{$itemstore.storage.id}"></i></a>
-            <span class="counts">({$itemstore.positionen}{if $itemstore.positionen == 1}{t}Position{/t}{else}{t}Positionen{/t}{/if}, {$itemstore.itemcount}{if $itemstore.itemcount == 1}{t}Gegenstand{/t}{else}{t}Gegenstände{/t}{/if})</span>
+            <span class="counts">({$itemstore.positionen}&nbsp;{if $itemstore.positionen == 1}{t}Position{/t}{else}{t}Positionen{/t}{/if}, {$itemstore.itemcount}&nbsp;{if $itemstore.itemcount == 1}{t}Gegenstand{/t}{else}{t}Gegenstände{/t}{/if})</span>
           </h4>
           <div class="collapsestorage" id="itemlist_{$itemstore.storage.id}">
             <ul class="list-group">
