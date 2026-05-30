@@ -139,16 +139,16 @@
                               <option value="{$category.name}" data-catid="{$category.id}" selected="selected">{$category.name}</option>
                             {else}
                               <option value="{$category.name}" data-catid="{$category.id}">{$category.name}</option>
-                          {/if}
+                            {/if}
                           {/foreach}
                         </select>
                       </div>
                     </div>
 
                     {if $isEdit && isset($currentCategory) && isset($currentCategory['name'])}
-                    <input type="text" class="form-control" id="category" name="category" required="required" autocomplete="off" placeholder="{t}Netzwerk/Hardware{/t}" value="{t}{$currentCategory.name}{/t}">
+                      <input type="text" class="form-control" id="category" name="category" required="required" autocomplete="off" placeholder="{t}Netzwerk/Hardware{/t}" value="{t}{$currentCategory.name}{/t}">
                     {else}
-                    <input type="text" class="form-control" id="category" name="category" required="required" autocomplete="off" placeholder="{t}Netzwerk/Hardware{/t}">
+                      <input type="text" class="form-control" id="category" name="category" required="required" autocomplete="off" placeholder="{t}Netzwerk/Hardware{/t}">
                     {/if}
                   </div>
 
@@ -159,27 +159,27 @@
                           {$subCat = array()}
                           {$subCategories = array()}
                           {if $isEdit && !empty($item.subcategories)}
-                          <option value="-1">{t}Unterkategorie{/t}</option>
-                          {assign var="subCat" value=","|explode:$item.subcategories}
+                            <option value="-1">{t}Unterkategorie{/t}</option>
+                            {assign var="subCat" value=","|explode:$item.subcategories}
                           {else}
-                          <option value="-1" selected="selected">{t}Unterkategorie{/t}</option>
+                            <option value="-1" selected="selected">{t}Unterkategorie{/t}</option>
                           {/if}
 
                           {foreach $subcategories as $category}
-                          {if $isEdit && in_array($category.id, $subCat)}
-                          {$subCategories[] = $category.name};
-                          <option selected="selected" value="{$category.name}">{$category.name}</option>
-                          {else}
-                          <option value="{$category.name}">{$category.name}</option>
-                          {/if}
+                            {if $isEdit && in_array($category.id, $subCat)}
+                              {$subCategories[] = $category.name};
+                              <option selected="selected" value="{$category.name}">{$category.name}</option>
+                            {else}
+                              <option value="{$category.name}">{$category.name}</option>
+                            {/if}
                           {/foreach}
                         </select>
                       </div>
                     </div>
                     {if !$isEdit || empty($subCategories)}
-                    <input type="text" class="form-control" id="subcategory" name="subcategories" placeholder="{t}Router,wlan,fritzBox{/t}" aria-label="{t}Unterkategorie{/t}" autocomplete="off">
+                      <input type="text" class="form-control" id="subcategory" name="subcategories" placeholder="{t}Router,wlan,fritzBox{/t}" aria-label="{t}Unterkategorie{/t}" autocomplete="off">
                     {else}
-                    <input type="text" class="form-control" id="subcategory" name="subcategories" placeholder="{t}Router,wlan,fritzBox{/t}" aria-label="{t}Unterkategorie{/t}" autocomplete="off" value="{','|implode:$subCategories}">
+                      <input type="text" class="form-control" id="subcategory" name="subcategories" placeholder="{t}Router,wlan,fritzBox{/t}" aria-label="{t}Unterkategorie{/t}" autocomplete="off" value="{','|implode:$subCategories}">
                     {/if}
                   </div>
 
@@ -188,9 +188,9 @@
                       <span class="input-group-text" id="basic-addon4">{t}Anzahl{/t}</span>
                     </div>
                     {if !$isEdit}
-                    <input type="number" maxlength="19" min="0" autocomplete="off" name="amount" required="required" class="form-control" placeholder="0" aria-label="{t}Anzahl{/t}" aria-describedby="basic-addon4">
+                      <input type="number" maxlength="19" min="0" autocomplete="off" name="amount" required="required" class="form-control" placeholder="0" aria-label="{t}Anzahl{/t}" aria-describedby="basic-addon4">
                     {else}
-                    <input type="number" maxlength="19" min="0" autocomplete="off" name="amount" required="required" class="form-control" placeholder="0" aria-label="{t}Anzahl{/t}" aria-describedby="basic-addon4" value="{$item.amount}">
+                      <input type="number" maxlength="19" min="0" autocomplete="off" name="amount" required="required" class="form-control" placeholder="0" aria-label="{t}Anzahl{/t}" aria-describedby="basic-addon4" value="{$item.amount}">
                     {/if}
                   </div>
 
@@ -199,100 +199,100 @@
                       <span class="input-group-text" id="basic-addon6">{t}Seriennummer{/t}</span>
                     </div>
                     {if !$isEdit}
-                    <input type="text" maxlenght="64" name="serialnumber" class="form-control" placeholder="{t}Seriennummer/Artikelnummer{/t}" aria-label="{t}Seriennummer/Artikelnummer{/t}" aria-describedby="basic-addon6">
+                      <input type="text" maxlenght="64" name="serialnumber" class="form-control" placeholder="{t}Seriennummer/Artikelnummer{/t}" aria-label="{t}Seriennummer/Artikelnummer{/t}" aria-describedby="basic-addon6">
                     {else}
-                    <input type="text" maxlength="64" name="serialnumber" class="form-control" placeholder="{t}Seriennummer/Artikelnummer{/t}" aria-label="{t}Seriennummer/Artikelnummer{/t}" aria-describedby="basic-addon6" value="{$item.serialnumber}">
+                      <input type="text" maxlength="64" name="serialnumber" class="form-control" placeholder="{t}Seriennummer/Artikelnummer{/t}" aria-label="{t}Seriennummer/Artikelnummer{/t}" aria-describedby="basic-addon6" value="{$item.serialnumber}">
                     {/if}
                   </div>
 
                   <div class="customFieldWrapper">
 
                     {if isset($item.id)}
-                    {if !empty($customFields)}
-                    <span class="customFieldsHeader">{t}Custom fields{/t}</span>
-                    {/if}
-                    {foreach $customFields as $field}
-                    {if $field.dataType === strval($fieldTypesPos['qrcode'])}
-                    <details class="customFieldTitle">
-                      {if isset($field.id) && $field.id == '4' && isset($field['qrid']) && $field['qrid'] == 3}
-                      {if isset($item['checkedin'])}
-                      {if $item['checkedin'] == '0'}
-                      <summary>{t}QR-Code:{/t} {$field.label}: {t}Gegenstand eingescheckt{/t} [<a href="{$field['qrValue']}">{t}Check out{/t}</a>]</summary>
-                      {else if $item['checkedin'] == '1'}
-                      <summary>{t}QR-Code:{/t} {$field.label}: {t}Gegenstand ausgescheckt{/t} [<a href="{$field['qrValue']}">{t}Check in{/t}</a>]</summary>
+                      {if !empty($customFields)}
+                        <span class="customFieldsHeader">{t}Custom fields{/t}</span>
                       {/if}
-                      <div class="input-group mb-3 customFields qrCodeField" data-qrvalue="{$field['qrValue']}"></div>
-                      {/if}
-                      {else if isset($field['qrValue'])}
-                      <summary>{t}QR-Code:{/t} {$field.label}</summary>
-                      <div class="input-group mb-3 customFields qrCodeField" data-qrvalue="{$field['qrValue']}"></div>
-                      {else if empty($field['qrValue'])}
-                      <summary>{t}QR-Code:{/t} {$field.label}</summary>
-                      <div class="input-group mb-3 customFields qrCodeField empty"><span>{t}Der verknüpfte QR-Code Wert ist nicht gesetzt.{/t}</span></div>
-                      {/if}
-                    </details>
-                    {continue}
-                    {else if $field.defaultVisible !== '0' && $field.visibleIn === ';-1;'}
-                    {$existingData = null}
-                    {foreach $customData as $customField}
-                    {if $customField['fieldId'] === $field.id}
-                    {$selectType = $dataFieldsByKey[$field.dataType]}
-                    {$existingData = $customField[$selectType]}
-                    {break}
-                    {/if}
-                    {/foreach}
-
-                    <div class="input-group mb-3 customFields" data-catvisible="{$field.visibleIn}">
-                      {$readonly = ''}
-
-                      {if $field.dataType === strval($fieldTypesPos['qrcode'])}
-                      {$readonly = ' readonly="readonly"'}
-                      <h5>{$field|@var_dump}</h5>
-                      <input type="text" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}" value="{$field.default}">
-                      {continue}
-                      {else if $field.dataType ===  strval($fieldTypesPos['selection']) || $field.dataType ===  strval($fieldTypesPos['mselection'])}
-                      {$readonly = ' readonly="readonly"'}
-                      <div class="dropdown">
-                        <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="cf{$field.id}" data-default="{$field.default}" data-nosettitle="true" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
-                          <option value="-1" data-default="{$field.default}">{$field.label}</option>
-                          {foreach explode(';', rtrim($field.fieldValues, ';')) as $value}
-                          {if $value === $field.default}
-                          <option value="{$value}">{$value}</option>
-                            {else if $value === $existingData}
-                            <option value="{$value}" selected="selected">{$value}</option>
-                          {else}
-                          <option value="{$value}">{$value}</option>
+                      {foreach $customFields as $field}
+                        {if $field.dataType === strval($fieldTypesPos['qrcode'])}
+                          <details class="customFieldTitle">
+                            {if isset($field.id) && $field.id == '4' && isset($field['qrid']) && $field['qrid'] == 3}
+                              {if isset($item['checkedin'])}
+                                {if $item['checkedin'] == '0'}
+                                  <summary>{t}QR-Code:{/t} {$field.label}: {t}Gegenstand eingescheckt{/t} [<a href="{$field['qrValue']}">{t}Check out{/t}</a>]</summary>
+                                {else if $item['checkedin'] == '1'}
+                                  <summary>{t}QR-Code:{/t} {$field.label}: {t}Gegenstand ausgescheckt{/t} [<a href="{$field['qrValue']}">{t}Check in{/t}</a>]</summary>
+                                {/if}
+                                <div class="input-group mb-3 customFields qrCodeField" data-qrvalue="{$field['qrValue']}"></div>
+                              {/if}
+                            {else if isset($field['qrValue'])}
+                              <summary>{t}QR-Code:{/t} {$field.label}</summary>
+                              <div class="input-group mb-3 customFields qrCodeField" data-qrvalue="{$field['qrValue']}"></div>
+                            {else if empty($field['qrValue'])}
+                              <summary>{t}QR-Code:{/t} {$field.label}</summary>
+                              <div class="input-group mb-3 customFields qrCodeField empty"><span>{t}Der verknüpfte QR-Code Wert ist nicht gesetzt.{/t}</span></div>
+                            {/if}
+                          </details>
+                          {continue}
+                        {else if $field.defaultVisible !== '0' && $field.visibleIn === ';-1;'}
+                          {$existingData = null}
+                          {foreach $customData as $customField}
+                            {if $customField['fieldId'] === $field.id}
+                              {$selectType = $dataFieldsByKey[$field.dataType]}
+                              {$existingData = $customField[$selectType]}
+                              {break}
                             {/if}
                           {/foreach}
-                        </select>
-                      </div>
-                      {else}
-                      <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon-{$field.id}">{$field.label}</span>
-                      </div>
-                      {/if}
 
-                      {if $field.dataType ===  strval($fieldTypesPos['datetime'])}
-                        {$inputDataType = "datetime-local"}
-                      {else}
-                        {$inputDataType = "text"}
-                      {/if}
+                          <div class="input-group mb-3 customFields" data-catvisible="{$field.visibleIn}">
+                            {$readonly = ''}
 
-                      {if !$isEdit}
-                        {if empty($field.default)}
-                          <input type="{$inputDataType}" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}">
-                        {else}
-                          <input type="{$inputDataType}" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}" value="{$field.default}">
+                            {if $field.dataType === strval($fieldTypesPos['qrcode'])}
+                              {$readonly = ' readonly="readonly"'}
+                              <h5>{$field|@var_dump}</h5>
+                              <input type="text" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}" value="{$field.default}">
+                              {continue}
+                            {else if $field.dataType ===  strval($fieldTypesPos['selection']) || $field.dataType ===  strval($fieldTypesPos['mselection'])}
+                              {$readonly = ' readonly="readonly"'}
+                              <div class="dropdown">
+                                <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="cf{$field.id}" data-default="{$field.default}" data-nosettitle="true" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                                  <option value="-1" data-default="{$field.default}">{$field.label}</option>
+                                  {foreach explode(';', rtrim($field.fieldValues, ';')) as $value}
+                                    {if $value === $field.default}
+                                      <option value="{$value}">{$value}</option>
+                                    {else if $value === $existingData}
+                                      <option value="{$value}" selected="selected">{$value}</option>
+                                    {else}
+                                      <option value="{$value}">{$value}</option>
+                                    {/if}
+                                  {/foreach}
+                                </select>
+                              </div>
+                            {else}
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon-{$field.id}">{$field.label}</span>
+                              </div>
+                            {/if}
+
+                            {if $field.dataType ===  strval($fieldTypesPos['datetime'])}
+                              {$inputDataType = "datetime-local"}
+                            {else}
+                              {$inputDataType = "text"}
+                            {/if}
+
+                            {if !$isEdit}
+                              {if empty($field.default)}
+                                <input type="{$inputDataType}" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}">
+                              {else}
+                                <input type="{$inputDataType}" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}" value="{$field.default}">
+                              {/if}
+                            {else if !empty($existingData)}
+                              <input type="{$inputDataType}" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}" value="{$existingData}">
+                            {else}
+                              <input type="{$inputDataType}" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}" value="{$field.default}">
+                            {/if}
+                          </div>
                         {/if}
-                      {else if !empty($existingData)}
-                        <input type="{$inputDataType}" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}" value="{$existingData}">
-                      {else}
-                        <input type="{$inputDataType}" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}" value="{$field.default}">
-                      {/if}
-                    </div>
-                    {/if}
-                    {/foreach}
+                      {/foreach}
                     {/if}
                   </div>
                   {if !$isEdit}
