@@ -13,6 +13,16 @@ $myitem = array();
 //----- P0 + OK
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  if ($useRegistration) {
+    if (!isset($user) || !isset($user['usergroupid']) || (int)$user['usergroupid'] === 2) {
+      $error = gettext('Zugriff verweigert!');
+      include 'accessdenied.php';
+      die();
+    }
+  }
+}
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   if (isset($_POST['remove']) && !empty($_POST['remove'])) {
     $item = DB::queryFirstRow('SELECT * FROM items WHERE id=%d', $_POST['remove']);
     $storage = DB::queryFirstRow('SELECT amount FROM storages WHERE id=%d', $item['storageid']);
@@ -35,11 +45,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         DB::update('storages', array('amount' => 0), 'id=%d', $item['storageid']);
       }
     }
-    
+
     if ($headCategory) {
       DB::update('headCategories', array('amount' => (int)$headCategory['amount'] - (int)$item['amount']), 'id=%d', $item['headcategory']);
     }
-    
+
     DB::query('DELETE FROM items WHERE id=%d', $_POST['remove']);
   } else if (isset($_POST['removeStorage']) && !empty($_POST['removeStorage'])) {
     DB::update('items', array('storageid' => 0), 'storageid=%d', $_POST['removeStorage']);
