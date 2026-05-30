@@ -6,33 +6,35 @@
  * Class USERS
  */
 
- class USERS{
+class USERS
+{
 
-  public static function AllowLogin($username,&$remaining_seconds){
+  public static function AllowLogin($username, &$remaining_seconds)
+  {
     //auto update user table structure of failcount column is missing
     $remaining_seconds = 0;
-    if(!array_key_exists('failcount',DB::columnList('users'))) return true;
+    if (!array_key_exists('failcount', DB::columnList('users'))) return true;
 
-    $fc = DB::queryFirstRow('Select failcount, lastfail from users WHERE username = %s',$username);
+    $fc = DB::queryFirstRow('Select failcount, lastfail from users WHERE username = %s', $username);
     if (is_null($fc)) return true;
     if (count($fc) == 0) return true;  //no user-record, no problem. Login will assign the error message
-    $sinceLastFail = abs( time()-$fc['lastfail'] );
-    if ( $sinceLastFail > 900 ) return true; // last failed login try happened more than 15 minutes ago, let's have another try
+    $sinceLastFail = abs(time() - $fc['lastfail']);
+    if ($sinceLastFail > 900) return true; // last failed login try happened more than 15 minutes ago, let's have another try
     if ($fc['failcount'] < 3) return true;  // 3 login tries without delay
 
     $waittime = 0;
-    if ($fc['failcount'] < 9){
-        $multi = 10;
+    if ($fc['failcount'] < 9) {
+      $multi = 10;
 
 
-        $waittime = $fc['failcount'] * $multi;
-        if($sinceLastFail > $waittime) return true;
+      $waittime = $fc['failcount'] * $multi;
+      if ($sinceLastFail > $waittime) return true;
 
-        $remaining_seconds = $waittime - $sinceLastFail;
-        return false;
+      $remaining_seconds = $waittime - $sinceLastFail;
+      return false;
     }
 
-    if ($fc['failcount'] < 9){
+    if ($fc['failcount'] < 9) {
       sleep($fc['failcount']);
       return true;
     } // less than 10 tries? Why not slow down it slightly, by 1 second per fail
@@ -41,26 +43,29 @@
     return false; // still not allowd? So better say 'computer says no'
   }
 
-  public static function RegisterFail($userid){
-    if(!array_key_exists('failcount',DB::columnList('users'))) return true;
-    $ofc = DB::queryFirstField('Select failcount from users WHERE id=%i',$userid);
+  public static function RegisterFail($userid)
+  {
+    if (!array_key_exists('failcount', DB::columnList('users'))) return true;
+    $ofc = DB::queryFirstField('Select failcount from users WHERE id=%i', $userid);
 
     $ofc = $ofc + 1;
-    DB::update('users',[ 'failcount' => $ofc, 'lastfail' => time() ], 'id=%i',$userid);
+    DB::update('users', ['failcount' => $ofc, 'lastfail' => time()], 'id=%i', $userid);
     return true;
   }
 
-  public static function ResetFail($userid){
-    if(!array_key_exists('failcount',DB::columnList('users'))) return true;
-    DB::update('users',[ 'failcount' => 0, 'lastfail' => 0 ], 'id=%i',$userid);
+  public static function ResetFail($userid)
+  {
+    if (!array_key_exists('failcount', DB::columnList('users'))) return true;
+    DB::update('users', ['failcount' => 0, 'lastfail' => 0], 'id=%i', $userid);
     return true;
   }
 
-  public static function Login($username,$password,&$error){
+  public static function Login($username, $password, &$error)
+  {
     $remaining = 0;
-    if(!USERS::AllowLogin($username,$remaining)){
+    if (!USERS::AllowLogin($username, $remaining)) {
       $error = gettext('Zu viele Anmeldeversuche. Bitte später nochmal versuchen');
-      $error .= "<br />" . str_replace('XXX',$remaining, gettext('Anmeldung für weitere XXX Sekunden gesperrt'));
+      $error .= "<br />" . str_replace('XXX', $remaining, gettext('Anmeldung für weitere XXX Sekunden gesperrt'));
 
       return false;
     }
@@ -72,16 +77,14 @@
       return true;
     } else {
       $error = gettext('Zugangsdaten ungültig');
-      if(is_array($user)) USERS::RegisterFail($user['id']);
+      if (is_array($user)) USERS::RegisterFail($user['id']);
       return false;
-
     }
-
-
   }
 
 
-  public static function CheckPasswordCompliance($password,$password_repeat,&$errors){
+  public static function CheckPasswordCompliance($password, $password_repeat, &$errors)
+  {
     $errors = [];
     if (strlen($password) < 8) {
       $errors[] = gettext('Passwort zu kurz, mindestens 8 Zeichen!');
@@ -98,37 +101,39 @@
     if ($password != $password_repeat) {
       $errors[] = gettext('Die Passwörter stimmen nicht überein!');
     }
-    if(count($errors) > 0) return false;
+    if (count($errors) > 0) return false;
     return true;
   }
 
-  public static function SetUserPassword($oldpassword,$newpassword,$newpassword_repeat,&$errors){
+  public static function SetUserPassword($oldpassword, $newpassword, $newpassword_repeat, &$errors)
+  {
     $errors = array();
-    if(!isset( $_SESSION['user']['id'] )) return false;
-    if(!USERS::CheckPasswordCompliance($newpassword,$newpassword_repeat,$errors)) return false;
+    if (!isset($_SESSION['user']['id'])) return false;
+    if (!USERS::CheckPasswordCompliance($newpassword, $newpassword_repeat, $errors)) return false;
     $user = DB::queryFirstRow('SELECT * FROM users WHERE id=%i LIMIT 1', $_SESSION['user']['id']);
     if ($user && password_verify($oldpassword, $user['password'])) {
       $newpasshash = password_hash($newpassword, PASSWORD_DEFAULT);
-      DB::query('UPDATE users SET `password` = %s WHERE id =%i ',$newpasshash,$_SESSION['user']['id']);
+      DB::query('UPDATE users SET `password` = %s WHERE id =%i ', $newpasshash, $_SESSION['user']['id']);
       return true;
-    }else{
+    } else {
       $errors[] = gettext('Zugangsdaten ungültig');
       return false;
     }
   }
 
-  public static function AssignUserToGroup($userid,$groupid){
-    $isRegisteredUser = DB::queryFirstRow('SELECT * FROM users_groups WHere userid = %i LIMIT 1',$userid);
-    if($isRegisteredUser === null){
-        DB::insert('users_groups', ['userid' => $userid, 'usergroupid' => $groupid ]);
-    }else{
-        DB::query('UPDATE users_groups SET usergroupid = %i WHERE userid = %i',$groupid,$userid);
+  public static function AssignUserToGroup($userid, $groupid)
+  {
+    $isRegisteredUser = DB::queryFirstRow('SELECT * FROM users_groups WHere userid = %i LIMIT 1', $userid);
+    if ($isRegisteredUser === null) {
+      DB::insert('users_groups', ['userid' => $userid, 'usergroupid' => $groupid]);
+    } else {
+      DB::query('UPDATE users_groups SET usergroupid = %i WHERE userid = %i', $groupid, $userid);
     }
   }
 
-  public static function DeleteUser($userid){
-      DB::query('DELETE FROM users_groups WHERE userid = %i',$userid);
-      DB::query('DELETE FROM users WHERE id=%i', $userid);
+  public static function DeleteUser($userid)
+  {
+    DB::query('DELETE FROM users_groups WHERE userid = %i', $userid);
+    DB::query('DELETE FROM users WHERE id=%i', $userid);
   }
-
- }
+}
