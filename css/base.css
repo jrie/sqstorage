@@ -168,6 +168,12 @@ input.quick-edit:required:focus::placeholder {
   margin-right: 1rem;
 }
 
+form .input-group-text,
+form .dropdown {
+  min-width: 24rem;
+  max-width: 24rem;
+}
+
 form.formInstall .input-group-text {
   min-width: 20em;
   max-width: 20em;
