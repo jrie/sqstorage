@@ -34,10 +34,6 @@
       {else if isset($SESSION.user) && (int)$SESSION.user.usergroupid !== 2}
         <li class="nav-item"><a href="{$urlBase}/datafields{$urlPostFix}" class="nav-link {$pages['datafields.php']}">{t}Datenfelder{/t}</a></li>
       {/if}
-
-      {if (isset($SESSION.user) && isset($SESSION.user.usergroupid) && (int)$SESSION.user.usergroupid === 1) || !$useRegistration}
-        <li class="nav-item"><a href="{$urlBase}/settings{$urlPostFix}" class="nav-link {$pages['settings.php']}">{t}Einstellungen{/t}</a></li>
-      {/if}
     </ul>
 
     <form class="form-inline searchArea" method="GET" action="{$urlBase}/inventory{$urlPostFix}">
@@ -48,8 +44,11 @@
 
     {if isset($SESSION.user)}
       <ul class="nav">
-        {if (int)$SESSION.user.usergroupid !== 2}<li class="nav-item"><a href="{$urlBase}/usersettings{$urlPostFix}" class="nav-link" title="{t}Benutzereinstellungen{/t}">
-              <center><i class="fas fa-gears" title="{t}Benutzereinstellungen{/t}"></i><br><small>{t}Benutzereinstellungen{/t}</small></center>
+        {if (isset($SESSION.user.usergroupid) && (int)$SESSION.user.usergroupid === 1) || !$useRegistration}
+          <li class="nav-item"><a href="{$urlBase}/settings{$urlPostFix}" class="nav-link adminsettings {$pages['settings.php']}">{t}Einstellungen{/t}</a></li>
+        {/if}
+        {if (int)$SESSION.user.usergroupid !== 2}<li class="nav-item"><a href="{$urlBase}/usersettings{$urlPostFix}" class="nav-link" title="{t}Profileinstellungen{/t}">
+              <center><i class="fas fa-gears" title="{t}Profileinstellungen{/t}"></i><br><small>{t}Profileinstellungen{/t}</small></center>
           </a></li>{/if}
         <li class="nav-item"><a href="{$urlBase}/index{$urlPostFix}?logout" class="nav-link" title="{t}Abmelden{/t}">
             <center><i class="fas fa-sign-out-alt" title="{t}Abmelden{/t}"></i><br><small>{t}Abmelden{/t}</small></center>
