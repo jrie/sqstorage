@@ -2,14 +2,14 @@
 {include file="nav.tpl" target="index.php" request=$REQUEST}
 
 
-        <div class="content">
+<div class="content">
 
 
-        </div>
+</div>
 
 {include file="footer.tpl"}
 {literal}
-        <script type="text/javascript">
-        </script>
+  <script type="text/javascript">
+  </script>
 {/literal}
 {include file="bodyend.tpl"}

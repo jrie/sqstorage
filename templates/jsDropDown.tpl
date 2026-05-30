@@ -74,7 +74,7 @@ let targetIndex = 0
 let zIndex = 100
 for (let item of dropDowns) {
   --zIndex
-  
+
   if (zIndex == 90) {
     zIndex = 100
   }
@@ -146,7 +146,7 @@ for (let item of dropDowns) {
           for (let option of target.options) {
             option.removeAttribute('selected')
           }
-          
+
           for (let index of selected) {
             target.options[index].setAttribute('selected', 'selected')
           }
@@ -330,7 +330,7 @@ for (let item of dropDowns) {
   input.addEventListener('keyup', function (evt) {
     searchValue(input, itemContainer)
   })
-  
+
   icon.addEventListener('click', function () {
     toggleDropdown(input, itemContainer)
   })
