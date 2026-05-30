@@ -162,7 +162,7 @@ input.quick-edit:required:focus::placeholder {
 .input-group-text,
 .dropdown {
   min-width: 14rem;
-  max-width: 1rem;
+  max-width: 14rem;
   font-size: 0.8rem;
   color: #333;
   margin-right: 1rem;
