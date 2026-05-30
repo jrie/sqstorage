@@ -33,20 +33,24 @@ class CF {
 
   public static function GetItemBasedCFD($customFieldsRaw){
     // retvat[itemID][customFieldID]
-      $fnames = array('intNeg','intPos','intNegPos','floatNeg','floatPos','string','selection','mselection', 'qrcode', 'datetime');
-      $cflookupfield = array();
-      for($x = 0; $x < count($customFieldsRaw);$x++){
-        $cflookupfield[ $customFieldsRaw[$x]['id'] ] = $customFieldsRaw[$x]['dataType'];
-      }
-      $out = array();
-      $cfb = DB::query('SELECT * FROM fieldData');
-      for($x=0;$x < count($cfb);$x++){
-          $cf = $cfb[$x];
-          $lookupfield = $fnames[ $cflookupfield[ $cf['fieldId'] ]  ];
-          $out[$cf['itemId']][$cf['fieldId']] = $cf[$lookupfield];
-      }
+    $fnames = array('intNeg','intPos','intNegPos','floatNeg','floatPos','string','selection','mselection', 'qrcode', 'datetime');
+    $cflookupfield = array();
+    for($x = 0; $x < count($customFieldsRaw);$x++){
+      $cflookupfield[ $customFieldsRaw[$x]['id'] ] = $customFieldsRaw[$x]['dataType'];
+    }
+    $out = array();
+    $cfb = DB::query('SELECT * FROM fieldData', $fnames);
 
-  return $out;
+    for($x=0;$x < count($cfb);$x++){
+        $cf = $cfb[$x];
+        if (!isset($fnames[$cflookupfield[$cf['fieldId']]])) {
+          continue;
+        }
+        $lookupfield = $fnames[$cflookupfield[$cf['fieldId']]];
+        $out[$cf['itemId']][$cf['fieldId']] = $cf[$lookupfield];
+    }
+
+    return $out;
   }
 
 
