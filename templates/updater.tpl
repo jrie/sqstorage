@@ -20,8 +20,7 @@
             </span>
           </div>
         </div>
-        <button class="btn btn-primary float-right" id="updaterbutton"
-          onclick="RunTheUpdate();return false;">{t}Aktualisierung durchführen{/t}</button>
+        <button class="btn btn-primary float-right" id="updaterbutton" onclick="RunTheUpdate();return false;">{t}Aktualisierung durchführen{/t}</button>
       </li>
     </ul>
 

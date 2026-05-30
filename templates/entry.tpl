@@ -62,9 +62,7 @@
 
                 <div id="errorForm" class="alert alert-danger hidden" role="alert">{t}Nicht gespeichert, es befinden
                   sich Fehler in der Formular-Eingabe.{/t}</div>
-                <form class="inputForm" accept-charset="utf-8" method="POST"
-                  action="{$urlBase}/entry{$urlPostFix}{if $isEdit}?editItem={$item.id}{/if}"
-                  {if !$isEdit}enctype="multipart/form-data" {/if}>
+                <form class="inputForm" accept-charset="utf-8" method="POST" action="{$urlBase}/entry{$urlPostFix}{if $isEdit}?editItem={$item.id}{/if}" {if !$isEdit}enctype="multipart/form-data" {/if}>
                   {if $isEdit}<input type="hidden" value="{$item.id}" name="itemUpdateId" />{/if}
 
                   <div class="input-group mb-3">
@@ -72,13 +70,9 @@
                       <span class="input-group-text" id="basic-addon1">{t}Bezeichnung{/t}</span>
                     </div>
                     {if !$isEdit}
-                      <input type="text" name="label" maxlength="64" class="form-control" required="required"
-                        placeholder="{t}Bezeichnung oder Name{/t}" aria-label="{t}Bezeichnung{/t}"
-                        aria-describedby="basic-addon1">
+                      <input type="text" name="label" maxlength="64" class="form-control" required="required" placeholder="{t}Bezeichnung oder Name{/t}" aria-label="{t}Bezeichnung{/t}" aria-describedby="basic-addon1">
                     {else}
-                      <input type="text" name="label" maxlength="64" class="form-control" required="required"
-                        placeholder="{t}Bezeichnung oder Name{/t}" )aria-label="{t}Bezeichnung{/t}"
-                        aria-describedby="basic-addon1" value="{$item.label}">
+                      <input type="text" name="label" maxlength="64" class="form-control" required="required" placeholder="{t}Bezeichnung oder Name{/t}" )aria-label="{t}Bezeichnung{/t}" aria-describedby="basic-addon1" value="{$item.label}">
                     {/if}
 
                   </div>
@@ -86,9 +80,7 @@
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
                       <div class="dropdown">
-                        <select class="btn dropdown-toggle" type="button" tabindex="-1" id="storageDropdown"
-                          data-toggle="dropdown" data-nosettitle="true" aria-haspopup="true" aria-expanded="false"
-                          autocomplete="off">
+                        <select class="btn dropdown-toggle" type="button" tabindex="-1" id="storageDropdown" data-toggle="dropdown" data-nosettitle="true" aria-haspopup="true" aria-expanded="false" autocomplete="off">
 
                           {if $isEdit && $item.storageid != 0}
                             <option value="-1">{t}Lagerplatz{/t}</option>
@@ -114,11 +106,9 @@
                     </div>
 
                     {if $isEdit && isset($currentStorage) && isset($currentStorage['label'])}
-                      <input type="text" name="storage" id="storage" maxlength="64" class="form-control"
-                        placeholder="{t}Lagerplatz{/t}" autocomplete="off" value="{$currentStorage.label}">
+                      <input type="text" name="storage" id="storage" maxlength="64" class="form-control" placeholder="{t}Lagerplatz{/t}" autocomplete="off" value="{$currentStorage.label}">
                     {else}
-                      <input type="text" name="storage" id="storage" maxlength="64" class="form-control"
-                        placeholder="{t}Lagerplatz{/t}" autocomplete="off">
+                      <input type="text" name="storage" id="storage" maxlength="64" class="form-control" placeholder="{t}Lagerplatz{/t}" autocomplete="off">
                     {/if}
                   </div>
 
@@ -128,12 +118,9 @@
                     </div>
 
                     {if isset($item.comment) && !empty($item.comment)}
-                      <input type="text" name="comment" maxlength="255" class="form-control" autocomplete="off"
-                        placeholder="{t}Bemerkung{/t}" aria-label="{t}Bemerkung{/t}" aria-describedby="basic-addon7"
-                        value="{$item.comment}">
+                      <input type="text" name="comment" maxlength="255" class="form-control" autocomplete="off" placeholder="{t}Bemerkung{/t}" aria-label="{t}Bemerkung{/t}" aria-describedby="basic-addon7" value="{$item.comment}">
                     {else}
-                      <input type="text" name="comment" maxlength="255" class="form-control" autocomplete="off"
-                        placeholder="{t}Bemerkung{/t}" aria-label="{t}Bemerkung{/t}" aria-describedby="basic-addon7">
+                      <input type="text" name="comment" maxlength="255" class="form-control" autocomplete="off" placeholder="{t}Bemerkung{/t}" aria-label="{t}Bemerkung{/t}" aria-describedby="basic-addon7">
                     {/if}
 
                   </div>
@@ -141,9 +128,7 @@
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
                       <div class="dropdown">
-                        <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" data-nosettitle="true"
-                          type="button" id="categoryDropdown" data-toggle="dropdown" aria-haspopup="true"
-                          aria-expanded="false">
+                        <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" data-nosettitle="true" type="button" id="categoryDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           {if $isEdit}
                             <option value="-1">{t}Kategorie{/t}</option>
                           {else}
@@ -163,20 +148,16 @@
                     </div>
 
                     {if $isEdit && isset($currentCategory) && isset($currentCategory['name'])}
-                    <input type="text" class="form-control" id="category" name="category" required="required"
-                      autocomplete="off" placeholder="{t}Netzwerk/Hardware{/t}" value="{t}{$currentCategory.name}{/t}">
+                    <input type="text" class="form-control" id="category" name="category" required="required" autocomplete="off" placeholder="{t}Netzwerk/Hardware{/t}" value="{t}{$currentCategory.name}{/t}">
                     {else}
-                    <input type="text" class="form-control" id="category" name="category" required="required"
-                      autocomplete="off" placeholder="{t}Netzwerk/Hardware{/t}">
+                    <input type="text" class="form-control" id="category" name="category" required="required" autocomplete="off" placeholder="{t}Netzwerk/Hardware{/t}">
                     {/if}
                   </div>
 
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
                       <div class="dropdown">
-                        <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button"
-                          id="subcategoryDropdown" multiple="multiple" size="3" data-nosettitle="true"
-                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="subcategoryDropdown" multiple="multiple" size="3" data-nosettitle="true" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           {$subCat = array()}
                           {$subCategories = array()}
                           {if $isEdit && !empty($item.subcategories)}
@@ -198,12 +179,9 @@
                       </div>
                     </div>
                     {if !$isEdit || empty($subCategories)}
-                    <input type="text" class="form-control" id="subcategory" name="subcategories"
-                      placeholder="{t}Router,wlan,fritzBox{/t}" aria-label="{t}Unterkategorie{/t}" autocomplete="off">
+                    <input type="text" class="form-control" id="subcategory" name="subcategories" placeholder="{t}Router,wlan,fritzBox{/t}" aria-label="{t}Unterkategorie{/t}" autocomplete="off">
                     {else}
-                    <input type="text" class="form-control" id="subcategory" name="subcategories"
-                      placeholder="{t}Router,wlan,fritzBox{/t}" aria-label="{t}Unterkategorie{/t}" autocomplete="off"
-                      value="{','|implode:$subCategories}">
+                    <input type="text" class="form-control" id="subcategory" name="subcategories" placeholder="{t}Router,wlan,fritzBox{/t}" aria-label="{t}Unterkategorie{/t}" autocomplete="off" value="{','|implode:$subCategories}">
                     {/if}
                   </div>
 
@@ -212,12 +190,9 @@
                       <span class="input-group-text" id="basic-addon4">{t}Anzahl{/t}</span>
                     </div>
                     {if !$isEdit}
-                    <input type="number" maxlength="19" min="0" autocomplete="off" name="amount" required="required"
-                      class="form-control" placeholder="0" aria-label="{t}Anzahl{/t}" aria-describedby="basic-addon4">
+                    <input type="number" maxlength="19" min="0" autocomplete="off" name="amount" required="required" class="form-control" placeholder="0" aria-label="{t}Anzahl{/t}" aria-describedby="basic-addon4">
                     {else}
-                    <input type="number" maxlength="19" min="0" autocomplete="off" name="amount" required="required"
-                      class="form-control" placeholder="0" aria-label="{t}Anzahl{/t}" aria-describedby="basic-addon4"
-                      value="{$item.amount}">
+                    <input type="number" maxlength="19" min="0" autocomplete="off" name="amount" required="required" class="form-control" placeholder="0" aria-label="{t}Anzahl{/t}" aria-describedby="basic-addon4" value="{$item.amount}">
                     {/if}
                   </div>
 
@@ -226,13 +201,9 @@
                       <span class="input-group-text" id="basic-addon6">{t}Seriennummer{/t}</span>
                     </div>
                     {if !$isEdit}
-                    <input type="text" maxlenght="64" name="serialnumber" class="form-control"
-                      placeholder="{t}Seriennummer/Artikelnummer{/t}" aria-label="{t}Seriennummer/Artikelnummer{/t}"
-                      aria-describedby="basic-addon6">
+                    <input type="text" maxlenght="64" name="serialnumber" class="form-control" placeholder="{t}Seriennummer/Artikelnummer{/t}" aria-label="{t}Seriennummer/Artikelnummer{/t}" aria-describedby="basic-addon6">
                     {else}
-                    <input type="text" maxlength="64" name="serialnumber" class="form-control"
-                      placeholder="{t}Seriennummer/Artikelnummer{/t}" aria-label="{t}Seriennummer/Artikelnummer{/t}"
-                      aria-describedby="basic-addon6" value="{$item.serialnumber}">
+                    <input type="text" maxlength="64" name="serialnumber" class="form-control" placeholder="{t}Seriennummer/Artikelnummer{/t}" aria-label="{t}Seriennummer/Artikelnummer{/t}" aria-describedby="basic-addon6" value="{$item.serialnumber}">
                     {/if}
                   </div>
 
@@ -248,11 +219,9 @@
                       {if isset($field.id) && $field.id == '4' && isset($field['qrid']) && $field['qrid'] == 3}
                       {if isset($item['checkedin'])}
                       {if $item['checkedin'] == '0'}
-                      <summary>{t}QR-Code:{/t} {$field.label}: {t}Gegenstand eingescheckt{/t} [<a
-                          href="{$field['qrValue']}">{t}Check out{/t}</a>]</summary>
+                      <summary>{t}QR-Code:{/t} {$field.label}: {t}Gegenstand eingescheckt{/t} [<a href="{$field['qrValue']}">{t}Check out{/t}</a>]</summary>
                       {else if $item['checkedin'] == '1'}
-                      <summary>{t}QR-Code:{/t} {$field.label}: {t}Gegenstand ausgescheckt{/t} [<a
-                          href="{$field['qrValue']}">{t}Check in{/t}</a>]</summary>
+                      <summary>{t}QR-Code:{/t} {$field.label}: {t}Gegenstand ausgescheckt{/t} [<a href="{$field['qrValue']}">{t}Check in{/t}</a>]</summary>
                       {/if}
                       <div class="input-group mb-3 customFields qrCodeField" data-qrvalue="{$field['qrValue']}"></div>
                       {/if}
@@ -282,16 +251,12 @@
                       {if $field.dataType === strval($fieldTypesPos['qrcode'])}
                       {$readonly = ' readonly="readonly"'}
                       <h5>{$field|@var_dump}</h5>
-                      <input type="text" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control"
-                        {$readonly} placeholder="{$field.default}" aria-label="{$field.label}"
-                        aria-describedby="basic-addon-{$field.id}" value="{$field.default}">
+                      <input type="text" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}" value="{$field.default}">
                       {continue}
                       {else if $field.dataType ===  strval($fieldTypesPos['selection']) || $field.dataType ===  strval($fieldTypesPos['mselection'])}
                       {$readonly = ' readonly="readonly"'}
                       <div class="dropdown">
-                        <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button"
-                          id="cf{$field.id}" data-default="{$field.default}" data-nosettitle="true"
-                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="cf{$field.id}" data-default="{$field.default}" data-nosettitle="true" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
                           <option value="-1" data-default="{$field.default}">{$field.label}</option>
                           {foreach explode(';', rtrim($field.fieldValues, ';')) as $value}
@@ -319,22 +284,14 @@
 
                       {if !$isEdit}
                         {if empty($field.default)}
-                          <input type="{$inputDataType}" data-type="{$field.dataType}" name="cfd_{$field.id}"
-                            class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}"
-                            aria-describedby="basic-addon-{$field.id}">
+                          <input type="{$inputDataType}" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}">
                         {else}
-                          <input type="{$inputDataType}" data-type="{$field.dataType}" name="cfd_{$field.id}"
-                            class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}"
-                            aria-describedby="basic-addon-{$field.id}" value="{$field.default}">
+                          <input type="{$inputDataType}" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}" value="{$field.default}">
                         {/if}
                       {else if !empty($existingData)}
-                        <input type="{$inputDataType}" data-type="{$field.dataType}" name="cfd_{$field.id}"
-                          class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}"
-                          aria-describedby="basic-addon-{$field.id}" value="{$existingData}">
+                        <input type="{$inputDataType}" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}" value="{$existingData}">
                       {else}
-                        <input type="{$inputDataType}" data-type="{$field.dataType}" name="cfd_{$field.id}"
-                          class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}"
-                          aria-describedby="basic-addon-{$field.id}" value="{$field.default}">
+                        <input type="{$inputDataType}" data-type="{$field.dataType}" name="cfd_{$field.id}" class="form-control" {$readonly} placeholder="{$field.default}" aria-label="{$field.label}" aria-describedby="basic-addon-{$field.id}" value="{$field.default}">
                       {/if}
                     </div>
                     {/if}
@@ -343,9 +300,7 @@
                   </div>
                   {if !$isEdit}
                     <h4 class="clearfix">{t}Bilder des Gegenstandes{/t}</h4>
-                    <input name="images[]" type="file" multiple="multiple"
-                      accept="image/png, image/jpeg, image/jpg, image/webp, image/gif, image/bmp"
-                      placeholder="{t}Bild Upload{/t}" />
+                    <input name="images[]" type="file" multiple="multiple" accept="image/png, image/jpeg, image/jpg, image/webp, image/gif, image/bmp" placeholder="{t}Bild Upload{/t}" />
                   {/if}
 
                   <div style="float: right;">
@@ -360,11 +315,8 @@
 
                 {if $isEdit}
                   <h4 class="clearfix">{t}Bilder des Gegenstandes{/t}</h4>
-                  <form name="imageUpload" id="imageUpload" method="POST" accept-charset="utf-8"
-                    action="{$urlBase}/entry{$urlPostFix}" enctype="multipart/form-data">
-                    <input name="images[]" required="required" type="file" multiple="multiple"
-                      accept="image/png, image/jpeg, image/jpg, image/webp, image/gif, image/bmp"
-                      placeholder="{t}Bild Upload{/t}" />
+                  <form name="imageUpload" id="imageUpload" method="POST" accept-charset="utf-8" action="{$urlBase}/entry{$urlPostFix}" enctype="multipart/form-data">
+                    <input name="images[]" required="required" type="file" multiple="multiple" accept="image/png, image/jpeg, image/jpg, image/webp, image/gif, image/bmp" placeholder="{t}Bild Upload{/t}" />
                     <input type="hidden" value="{$item.id}" name="editItem" />
                     <input type="submit" class="submit" value="{t}Bilder hochladen{/t}" />
                   </form>
@@ -375,11 +327,9 @@
                       {foreach $imageList as $image}
                         {$className = "fas fa-solid fa-star"}
                         <div class="imgDiv">
-                          <a class="imageLink" data-imageid="{$image['id']}" href="#"><img
-                              src="data:image;base64,{$image['thumb']}" /></a>
+                          <a class="imageLink" data-imageid="{$image['id']}" href="#"><img src="data:image;base64,{$image['thumb']}" /></a>
                           <div class="imgControls">
-                            <a class="removeImageOverlay" title="{t}Bild entfernen{/t}" data-imageid="{$image['id']}"
-                              href="#"><i class="fas fa-times-circle"></i></a>
+                            <a class="removeImageOverlay" title="{t}Bild entfernen{/t}" data-imageid="{$image['id']}" href="#"><i class="fas fa-times-circle"></i></a>
                             {if (!isset($item['coverimage']) || empty($item['coverimage']))}
                               {if $isFirst}
                                 {$isFirst = false}
@@ -389,8 +339,7 @@
                               {$isFirst = false}
                               {$className="fas fa-solid fa-star active"}
                             {/if}
-                            <a class="setCoverImage" title="{t}Bild als Standard verwenden{/t}" data-imageid="{$image['id']}"
-                              href="#"><i class="{$className}"></i></a>
+                            <a class="setCoverImage" title="{t}Bild als Standard verwenden{/t}" data-imageid="{$image['id']}" href="#"><i class="{$className}"></i></a>
                           </div>
                         </div>
                       {/foreach}

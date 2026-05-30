@@ -8,10 +8,8 @@
     <ul class="list-group">
       <li class="alert alert-info">
         <span class="list-span header sortable" data-index="1" title="{t}Kategorien{/t}">{t}Kategorien{/t}</span>
-        <span class="list-span header sortable" data-index="2" data-sort="number"
-          title="{t}Positionen{/t}">{t}Positionen{/t}</span>
-        <span class=" list-span header sortable" data-index="3" data-sort="number"
-          title="{t}Anzahl{/t}">{t}Anzahl{/t}</span>
+        <span class="list-span header sortable" data-index="2" data-sort="number" title="{t}Positionen{/t}">{t}Positionen{/t}</span>
+        <span class=" list-span header sortable" data-index="3" data-sort="number" title="{t}Anzahl{/t}">{t}Anzahl{/t}</span>
         {if !$isGuest}
           <span class="list-span" title="{t}Aktionen{/t}">{t}Aktionen{/t}</span>
         {/if}
@@ -24,27 +22,22 @@
       {foreach $headCategories as $category}
         <li class="list-group-item" data-id="{$category.id}">
           {if !$isGuest}
-            <a name="removeCategory" tabindex="-1" data-name="{$category.name}"
-              href="{$urlBase}/categories{$urlPostFix}?removeCategory={$category.id}" title="{t}Kategorie löschen{/t}"
-              class="removalButton fas fa-times-circle btn"></a>
+            <a name="removeCategory" tabindex="-1" data-name="{$category.name}" href="{$urlBase}/categories{$urlPostFix}?removeCategory={$category.id}" title="{t}Kategorie löschen{/t}" class="removalButton fas fa-times-circle btn"></a>
           {/if}
-          <a class="list-span" data-name="{$category.name}" title="{$category.name}"
-            href="{$urlBase}/inventory{$urlPostFix}?category={$category.id}">{$category.name}</a>
+          <a class="list-span" data-name="{$category.name}" title="{$category.name}" href="{$urlBase}/inventory{$urlPostFix}?category={$category.id}">{$category.name}</a>
           <span class="list-span">{$category.positions}
             {if $category.positions == 1}{t}Position{/t}{else}{t}Positionen{/t}{/if}</span>
           <span class="list-span">{$category.amount}
             {if $category.amount == 1}{t}Gegenstand{/t}{else}{t}Gegenstände{/t}{/if}</span>
           {if !$isGuest}
-            <a title="{t}Kategorie umbenennen{/t}" class="fas fa-edit editCategory" href="#" name="editCategory"
-              data-name="{$category.name}" data-id="{$category.id}"></a>
+            <a title="{t}Kategorie umbenennen{/t}" class="fas fa-edit editCategory" href="#" name="editCategory" data-name="{$category.name}" data-id="{$category.id}"></a>
           {/if}
         </li>
       {/foreach}
     </ul>
 
     {if !$isGuest}
-      <button type="button" data-table="headCategories" data-name="categories" class="csvDownload btn btn-primary">{t}Als
-        CSV herunterladen{/t}</button>
+      <button type="button" data-table="headCategories" data-name="categories" class="csvDownload btn btn-primary">{t}Als CSV herunterladen{/t}</button>
     {/if}
   </div>
 
@@ -53,12 +46,9 @@
   <div class="categories">
     <ul class="list-group">
       <li class="alert alert-info">
-        <span class="list-span header sortable" data-index="1"
-          title="{t}Unterkategorien{/t}">{t}Unterkategorien{/t}</span>
-        <span class="list-span header sortable" data-index="2" data-sort="number"
-          title="{t}Positionen{/t}">{t}Positionen{/t}</span>
-        <span class="list-span header sortable" data-index="3" data-sort="number"
-          title="{t}Anzahl{/t}">{t}Anzahl{/t}</span>
+        <span class="list-span header sortable" data-index="1" title="{t}Unterkategorien{/t}">{t}Unterkategorien{/t}</span>
+        <span class="list-span header sortable" data-index="2" data-sort="number" title="{t}Positionen{/t}">{t}Positionen{/t}</span>
+        <span class="list-span header sortable" data-index="3" data-sort="number" title="{t}Anzahl{/t}">{t}Anzahl{/t}</span>
         {if !$isGuest}
           <span class="list-span" title="{t}Aktionen{/t}">{t}Aktionen{/t}</span>
         {/if}
@@ -73,25 +63,20 @@
         <li class="list-group-item" data-id="{$category.id}">
 
           {if !$isGuest}
-            <a name="removeSubcategory" tabindex="-1" data-name="{$category.name}"
-              href="{$urlBase}/categories{$urlPostFix}?removeSubcategory={$category.id}"
-              title="{t}Unterkategorie löschen{/t}" class="removalButton fas fa-times-circle btn"></a>
+            <a name="removeSubcategory" tabindex="-1" data-name="{$category.name}" href="{$urlBase}/categories{$urlPostFix}?removeSubcategory={$category.id}" title="{t}Unterkategorie löschen{/t}" class="removalButton fas fa-times-circle btn"></a>
           {/if}
-          <a class="list-span" data-name="{$category.name}" title="{$category.name}"
-            href="{$urlBase}/inventory{$urlPostFix}?subcategory={$category.id}">{$category.name}</a>
+          <a class="list-span" data-name="{$category.name}" title="{$category.name}" href="{$urlBase}/inventory{$urlPostFix}?subcategory={$category.id}">{$category.name}</a>
           <span class="list-span">{$category.positions}
             {if $category.positions == 1}{t}Position{/t}{else}{t}Positionen{/t}{/if}</span>
           <span class="list-span">{$category.amount}
             {if $category.amount == 1}{t}Gegenstand{/t}{else}{t}Gegenstände{/t}{/if}</span>
           {if !$isGuest}
-            <a title="{t}Unterkategorie umbenennen{/t}" class="fas fa-edit editCategory" href="#" name="editSubcategory"
-              data-name="{$category.name}" data-id="{$category.id}"></a>
+            <a title="{t}Unterkategorie umbenennen{/t}" class="fas fa-edit editCategory" href="#" name="editSubcategory" data-name="{$category.name}" data-id="{$category.id}"></a>
           {/if}
 
           {if !$isGuest}
             <div class="dropdown list-span">
-              <select class="btn dropdown-toggle categoryDropdowns" type="button" data-originid="{$category.id}"
-                tabindex="-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" autocomplete="off">
+              <select class="btn dropdown-toggle categoryDropdowns" type="button" data-originid="{$category.id}" tabindex="-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" autocomplete="off">
 
                 {if $category.headcategory != 0}
                   <option value="-1">{t}Keine Auswahl{/t}</option>
@@ -128,8 +113,7 @@
     </ul>
 
     {if !$isGuest}
-      <button type="button" data-table="subCategories" data-name="subcategories"
-        class="csvDownload btn btn-primary">{t}Als CSV herunterladen{/t}</button>
+      <button type="button" data-table="subCategories" data-name="subcategories" class="csvDownload btn btn-primary">{t}Als CSV herunterladen{/t}</button>
     {/if}
 
   </div>

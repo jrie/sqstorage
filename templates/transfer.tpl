@@ -5,8 +5,7 @@
   <div class="srcDestContainer">
     <div class="storeSrcDiv">
       <div class="dropdown">
-        <select autocomplete="off" class="btn dropdown-toggle switchStorage" id="storeSrc" type="button" tabindex="-1"
-          data-type="storeSrc" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <select autocomplete="off" class="btn dropdown-toggle switchStorage" id="storeSrc" type="button" tabindex="-1" data-type="storeSrc" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <option selected="selected" value="-1">{t}Quelle{/t}</option>
           {foreach $storages as $storage}
             {if empty($storage.label)}
@@ -19,8 +18,7 @@
     </div>
     <div class="storeDestDiv">
       <div class="dropdown ">
-        <select autocomplete="off" class="btn dropdown-toggle switchStorage" id="storeDest" type="button" tabindex="-1"
-          data-type="storeDest" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <select autocomplete="off" class="btn dropdown-toggle switchStorage" id="storeDest" type="button" tabindex="-1" data-type="storeDest" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <option selected="selected" value="-1">{t}Ziel{/t}</option>
 
           {foreach $storages as $storage}

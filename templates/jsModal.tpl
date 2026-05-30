@@ -27,7 +27,7 @@ function changeSingleValue (table, field, dataid, refresh) {
   document.getElementById('newval').value = GetFieldData(table, field, dataid)
   document.getElementById('UpdateField').value = field
   document.getElementById('UpdateTable').value = table
-  
+
   if (refresh) {
     document.getElementById('refresh').value = '1'
   } else {
@@ -42,7 +42,7 @@ function saveModal () {
   const field = document.getElementById('UpdateField').value
   const table = document.getElementById('UpdateTable').value
   const newval = document.getElementById('newval').value
-  
+
   let refresh = false
   if (document.getElementById('refresh').value == '1') {
     refresh = true

@@ -8,8 +8,4 @@
 </div>
 
 {include file="footer.tpl"}
-{literal}
-  <script type="text/javascript">
-  </script>
-{/literal}
 {include file="bodyend.tpl"}

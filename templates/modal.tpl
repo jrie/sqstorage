@@ -19,11 +19,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text" id="nvl">{t}Neuer Wert{/t}</span>
             </div>
-
-            <input type="text" id="newval" name="label4newval " maxlength="64" class="form-control"
-              placeholder="{t}Neuer Wert{/t}" )aria-label="{t}Neuer Wert{/t}" aria-describedby="nvl" value="">
-
-
+            <input type="text" id="newval" name="label4newval " maxlength="64" class="form-control" placeholder="{t}Neuer Wert{/t}" aria-label="{t}Neuer Wert{/t}" aria-describedby="nvl" value="">
           </div>
 
 

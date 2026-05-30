@@ -53,8 +53,7 @@
         </div>
         <div class="custom-control custom-switch">
           <input type="checkbox" name="userctl" class="custom-control-input" id="customSwitches2">
-          <label class="custom-control-label" for="customSwitches2">{t}Verwende die Benutzerregistrierung und
-            Zutrittskontrolle{/t}</label>
+          <label class="custom-control-label" for="customSwitches2">{t}Verwende die Benutzerregistrierung und Zutrittskontrolle{/t}</label>
         </div>
       </div>
 
@@ -63,62 +62,48 @@
         <div class="input-group-prepend">
           <span class="input-group-text" id="basic-addon1">{t}Datenbank-Benutzer{/t}</span>
         </div>
-        <input type="text" name="dbuser" maxlength="255" class="form-control" required="required" placeholder="tlvUser"
-          aria-label="{t}Datenbank-Benutzer{/t}" aria-describedby="basic-addon1"
-          value="{if isset($POST.dbuser)}{$POST.dbuser}{else}tlvUser{/if}">
+        <input type="text" name="dbuser" maxlength="255" class="form-control" required="required" placeholder="tlvUser" aria-label="{t}Datenbank-Benutzer{/t}" aria-describedby="basic-addon1" value="{if isset($POST.dbuser)}{$POST.dbuser}{else}tlvUser{/if}">
       </div>
 
       <div class="input-group mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text" id="basic-addon1">{t}Datenbank-Passwort{/t}</span>
         </div>
-        <input type="password" name="dbpass" maxlength="1024" class="form-control" required="required"
-          placeholder="tlvUser" aria-label="{t}Datenbank-Passwort{/t}" aria-describedby="basic-addon1"
-          value="{if isset($POST.dbpass)}{$POST.dbpass}{else}tlvUser{/if}">
+        <input type="password" name="dbpass" maxlength="1024" class="form-control" required="required" placeholder="tlvUser" aria-label="{t}Datenbank-Passwort{/t}" aria-describedby="basic-addon1" value="{if isset($POST.dbpass)}{$POST.dbpass}{else}tlvUser{/if}">
       </div>
 
       <div class="input-group mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text" id="basic-addon1">{t}Datenbank-Name{/t}</span>
         </div>
-        <input type="text" name="dbname" maxlength="255" class="form-control" required="required" placeholder="tlv"
-          aria-label="{t}Datenbank-Name{/t}" aria-describedby="basic-addon1"
-          value="{if isset($POST.dbname)}{$POST.dbname}{else}tlv{/if}">
+        <input type="text" name="dbname" maxlength="255" class="form-control" required="required" placeholder="tlv" aria-label="{t}Datenbank-Name{/t}" aria-describedby="basic-addon1" value="{if isset($POST.dbname)}{$POST.dbname}{else}tlv{/if}">
       </div>
 
       <div class="input-group mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text" id="basic-addon1">{t}Datenbank-Server{/t}</span>
         </div>
-        <input type="text" name="dbhost" maxlength="255" class="form-control" required="required" placeholder="localhost"
-          aria-label="{t}Datenbank-Server{/t}" aria-describedby="basic-addon1"
-          value="{if isset($POST.dbhost)}{$POST.dbhost}{else}localhost{/if}">
+        <input type="text" name="dbhost" maxlength="255" class="form-control" required="required" placeholder="localhost" aria-label="{t}Datenbank-Server{/t}" aria-describedby="basic-addon1" value="{if isset($POST.dbhost)}{$POST.dbhost}{else}localhost{/if}">
       </div>
 
       <div class="input-group mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text" id="basic-addon1">{t}Datenbank-Port{/t}</span>
         </div>
-        <input type="text" name="dbport" maxlength="5" class="form-control" required="required" placeholder="3306"
-          aria-label="{t}Datenbank-Port{/t}" aria-describedby="basic-addon1"
-          value="{if isset($POST.dbport)}{$POST.dbport}{else}3306{/if}">
+        <input type="text" name="dbport" maxlength="5" class="form-control" required="required" placeholder="3306" aria-label="{t}Datenbank-Port{/t}" aria-describedby="basic-addon1" value="{if isset($POST.dbport)}{$POST.dbport}{else}3306{/if}">
       </div>
 
       <div class="input-group mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text" id="basic-addon1">{t}Datenbank-Admin-Nutzer{/t}</span>
         </div>
-        <input type="text" name="dbRootUser" class="form-control" required="required"
-          placeholder="{t}Datenbank-Admin-Nutzer um sqStorage Nutzer und Datenbank anzulegen{/t}"
-          aria-label="{t}Datenbank-Admin-Nutzer{/t}" aria-describedby="basic-addon1">
+        <input type="text" name="dbRootUser" class="form-control" required="required" placeholder="{t}Datenbank-Admin-Nutzer um sqStorage Nutzer und Datenbank anzulegen{/t}" aria-label="{t}Datenbank-Admin-Nutzer{/t}" aria-describedby="basic-addon1">
       </div>
       <div class="input-group mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text" id="basic-addon1">{t}Datenbank-Admin-Passwort{/t}</span>
         </div>
-        <input type="password" name="dbRootUserPassword" class="form-control" required="required"
-          placeholder="{t}Datenbank-Admin-Passwort um sqStorage Nutzer und Datenbank anzulegen{/t}"
-          aria-label="{t}Datenbank-Admin-Passwort{/t}" aria-describedby="basic-addon1">
+        <input type="password" name="dbRootUserPassword" class="form-control" required="required" placeholder="{t}Datenbank-Admin-Passwort um sqStorage Nutzer und Datenbank anzulegen{/t}" aria-label="{t}Datenbank-Admin-Passwort{/t}" aria-describedby="basic-addon1">
       </div>
 
       <input type="submit" class="btn form-control btn-success" value="{t}Verbindungsdaten eintragen{/t}">

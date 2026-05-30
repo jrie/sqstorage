@@ -30,8 +30,7 @@
           <span class="input-group-text" id="basic-addon1">{t}Datentyp{/t}</span>
         </div>
         <div class="dropdown float-left">
-          <select name="dataType" autocomplete="off" required class="btn dropdown-toggle switchdatatype" type="button"
-            tabindex="-1" aria-haspopup="true" aria-expanded="false">
+          <select name="dataType" autocomplete="off" required class="btn dropdown-toggle switchdatatype" type="button" tabindex="-1" aria-haspopup="true" aria-expanded="false">
 
             <option value="-1" selected="selected">{t}Datentyp{/t}</option>
             {foreach $fieldTypes as $type => $value}
@@ -46,8 +45,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text" id="basic-addon2">{t}Beispielwerte{/t}</span>
         </div>
-        <input type="text" class="form-control example" autocomplete="off" readonly="readonly"
-          placeholder="{t}Datentyp Beispielwerte{/t}" aria-label="{t}Beispielwerte{/t}" aria-describedby="basic-addon2">
+        <input type="text" class="form-control example" autocomplete="off" readonly="readonly" placeholder="{t}Datentyp Beispielwerte{/t}" aria-label="{t}Beispielwerte{/t}" aria-describedby="basic-addon2">
       </div>
 
       <hr>
@@ -59,17 +57,14 @@
         <div class="input-group-prepend">
           <span class="input-group-text" id="basic-addon3">{t}Feldname{/t}</span>
         </div>
-        <input type="text" name="fieldName" required maxlength="63" class="form-control" autocomplete="off"
-          placeholder="{t}Feldname{/t}" aria-label="{t}Feldname{/t}" aria-describedby="basic-addon3">
+        <input type="text" name="fieldName" required maxlength="63" class="form-control" autocomplete="off" placeholder="{t}Feldname{/t}" aria-label="{t}Feldname{/t}" aria-describedby="basic-addon3">
       </div>
 
       <div class="input-group mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text" id="basic-addon4">{t}Standardwert{/t}</span>
         </div>
-        <input type="text" name="fieldDefault" data-check="fieldValues" maxlength="511" class="form-control"
-          autocomplete="off" placeholder="{t}Standardwert: Keine Eingabe gleichsam leer{/t}"
-          aria-label="{t}Standardwert{/t}" aria-describedby="basic-addon4">
+        <input type="text" name="fieldDefault" data-check="fieldValues" maxlength="511" class="form-control" autocomplete="off" placeholder="{t}Standardwert: Keine Eingabe gleichsam leer{/t}" aria-label="{t}Standardwert{/t}" aria-describedby="basic-addon4">
       </div>
 
       <div class="input-group mb-3">
@@ -91,9 +86,7 @@
           <span class="input-group-text" id="basic-addon6">{t}Sichtbarkeit{/t}</span>
         </div>
         <div class="dropdown float-left">
-          <select name="visibleInCategories" multiple="yes" autocomplete="off" required
-            class="btn dropdown-toggle switchvisiblity" type="button" tabindex="-1" aria-haspopup="true"
-            aria-expanded="false">
+          <select name="visibleInCategories" multiple="yes" autocomplete="off" required class="btn dropdown-toggle switchvisiblity" type="button" tabindex="-1" aria-haspopup="true" aria-expanded="false">
             <option value="-1" selected="selected">{t}Überall sichtbar{/t}</option>
             {foreach $headCategories as $headCategory}
               {if $headCategory['id'] != 0}
@@ -109,8 +102,7 @@
           <span class="input-group-text" id="basic-addon7">{t}Basiert auf{/t}</span>
         </div>
         <div class="dropdown float-left">
-          <select name="qrVisible" autocomplete="off" class="btn dropdown-toggle qrVisible" type="button" tabindex="-1"
-            aria-haspopup="true" aria-expanded="false">
+          <select name="qrVisible" autocomplete="off" class="btn dropdown-toggle qrVisible" type="button" tabindex="-1" aria-haspopup="true" aria-expanded="false">
             <option value="-1" selected="selected">{t}Nicht zugeordnet{/t}</option>
             {foreach $qrBaseFields as $qrOption}
               <option value="{$qrOption['id']}">{$qrOption['text']}</option>
@@ -123,10 +115,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text" id="basic-addon6">{t}Auswahlwerte{/t}</span>
         </div>
-        <input type="text" name="fieldValues" requried="required" readonly="readonly" maxlength="1279"
-          class="form-control fieldValues" autocomplete="off"
-          placeholder="{t}Auswahlwerte, durch Semikolon getrennt: 'Neu;Gebraucht;Refurbished' und oder Dezimal und Gleitkommazahlen.{/t}"
-          aria-label="{t}Neu;Gebraucht;Refurbished{/t}" aria-describedby="basic-addon6">
+        <input type="text" name="fieldValues" requried="required" readonly="readonly" maxlength="1279" class="form-control fieldValues" autocomplete="off" placeholder="{t}Auswahlwerte, durch Semikolon getrennt: 'Neu;Gebraucht;Refurbished' und oder Dezimal und Gleitkommazahlen.{/t}" aria-label="{t}Neu;Gebraucht;Refurbished{/t}" aria-describedby="basic-addon6">
       </div>
       <button type="submit" class="btn btn-primary">{t}Eintragen / Aktualisieren{/t}</button>
       <button type="reset" class="btn btn-secondary">{t}Formular zurücksetzen{/t}</button>
@@ -141,9 +130,7 @@
     <h5>{t}Bestehende Datenfelder{/t}</h5>
     <ul class="existingFields">
       {foreach $customFields as $field}
-        <li class="btn-secondary dataField" data-fieldid="{$field.id}" data-values="{$field.fieldValues}"
-          data-default="{$field.default}" data-defaultvisible="{$field.defaultVisible}" data-type="{$field.dataType}"
-          data-name="{$field.label}" data-visiblein="{$field.visibleIn}">{$field.label}</li>
+        <li class="btn-secondary dataField" data-fieldid="{$field.id}" data-values="{$field.fieldValues}" data-default="{$field.default}" data-defaultvisible="{$field.defaultVisible}" data-type="{$field.dataType}" data-name="{$field.label}" data-visiblein="{$field.visibleIn}">{$field.label}</li>
       {/foreach}
     </ul>
   </div>

@@ -41,12 +41,9 @@
             {/if}
           </p>
         {/if}
-        <form
-          action="{$urlBase}/login{$urlPostFix}{if $showActivation}?activate={$activate}{/if}{if $showRecover}?recover{/if}"
-          method="post">
+        <form action="{$urlBase}/login{$urlPostFix}{if $showActivation}?activate={$activate}{/if}{if $showRecover}?recover{/if}" method="post">
           <div class="input-group mb-3">
-            <input type="text" id="username" name="username" class="form-control" placeholder="{t}Benutzername{/t}"
-              value="{if ($showActivation || $showRecover)}{if isset($user.username)}{$user.username}{/if}{else}{if isset($POST.username)}{$POST.username}{/if}{/if}">
+            <input type="text" id="username" name="username" class="form-control" placeholder="{t}Benutzername{/t}" value="{if ($showActivation || $showRecover)}{if isset($user.username)}{$user.username}{/if}{else}{if isset($POST.username)}{$POST.username}{/if}{/if}">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-user"></span>
@@ -55,8 +52,7 @@
           </div>
           {if ($showRecover || $createFirstAdmin)}
             <div class="input-group mb-3">
-              <input type="email" id="mailaddress" name="mailaddress" class="form-control" placeholder="{t}E-Mail{/t}"
-                value="{if isset($POST.mailaddress)}{$POST.mailaddress}{/if}">
+              <input type="email" id="mailaddress" name="mailaddress" class="form-control" placeholder="{t}E-Mail{/t}" value="{if isset($POST.mailaddress)}{$POST.mailaddress}{/if}">
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-envelope"></span>
@@ -68,8 +64,7 @@
 
 
             <div class="input-group mb-3">
-              <input type="password" id="password" name="password" class="form-control" placeholder="{t}Passwort{/t}"
-                value="{if $showActivation}{if isset($POST.password)}{$POST.password}{/if}{/if}">
+              <input type="password" id="password" name="password" class="form-control" placeholder="{t}Passwort{/t}" value="{if $showActivation}{if isset($POST.password)}{$POST.password}{/if}{/if}">
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-lock"></span>
@@ -78,9 +73,7 @@
             </div>
             {if $showActivation}
               <div class="input-group mb-3">
-                <input type="password" id="password_repeat" name="password_repeat" class="form-control"
-                  placeholder="{t}Passwort wiederholen{/t}"
-                  value="{if $showActivation}{if isset($POST.password_repeat)}{$POST.password_repeat}{/if}{/if}">
+                <input type="password" id="password_repeat" name="password_repeat" class="form-control" placeholder="{t}Passwort wiederholen{/t}" value="{if $showActivation}{if isset($POST.password_repeat)}{$POST.password_repeat}{/if}{/if}">
                 <div class="input-group-append">
                   <div class="input-group-text">
                     <span class="fas fa-lock"></span>
@@ -97,8 +90,7 @@
                   </label>
                 </div>
 
-                <button type="submit"
-                  class="btn btn-primary btn-block btn-flat">{if $showActivation}{t}Speichern{/t}{else}{t}Anmelden{/t}{/if}</button>
+                <button type="submit" class="btn btn-primary btn-block btn-flat">{if $showActivation}{t}Speichern{/t}{else}{t}Anmelden{/t}{/if}</button>
               </div>
               <div class="clearfix"></div>
             </div>

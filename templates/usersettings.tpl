@@ -30,8 +30,7 @@
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <div class="dropdown">
-              <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="startpageDropdown"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" placeholder="{t}Startseite{/t}">
+              <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="startpageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" placeholder="{t}Startseite{/t}">
                 {foreach $pages as $pagename => $pagelabel}
                   {if $pagename == $defaultStartPage}
                     {$sel = "selected='selected'"}
@@ -43,8 +42,7 @@
               </select>
             </div>
           </div>
-          <input type="text" class="form-control" id="startpagename" name="startpagename" readonly="readonly"
-            required="required" autocomplete="off" placeholder="{t}Startseite{/t} " value="{$pages.$defaultStartPage}">
+          <input type="text" class="form-control" id="startpagename" name="startpagename" readonly="readonly" required="required" autocomplete="off" placeholder="{t}Startseite{/t} " value="{$pages.$defaultStartPage}">
           <input type="hidden" value="{$defaultStartPage}" id="startpagekey" name="startpagekey" />
         </div>
 
@@ -68,24 +66,19 @@
             <span class="input-group-text" id="basic-addon1">{t}Aktuelles Passwort{/t}</span>
           </div>
 
-          <input type="password" name="oldPassword" maxlength="254" class="form-control" autocomplete="off"
-            placeholder="{t}Aktuelles Passwort{/t}" aria-label="{t}Aktuelles Passwort{/t}"
-            aria-describedby="basic-addon1">
+          <input type="password" name="oldPassword" maxlength="254" class="form-control" autocomplete="off" placeholder="{t}Aktuelles Passwort{/t}" aria-label="{t}Aktuelles Passwort{/t}" aria-describedby="basic-addon1">
 
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon2">{t}Neues Passwort{/t}</span>
           </div>
 
-          <input type="password" name="newPassword1" maxlength="254" class="form-control" autocomplete="off"
-            placeholder="{t}Neues Passwort{/t}" aria-label="{t}Neues Passwort{/t}" aria-describedby="basic-addon2">
+          <input type="password" name="newPassword1" maxlength="254" class="form-control" autocomplete="off" placeholder="{t}Neues Passwort{/t}" aria-label="{t}Neues Passwort{/t}" aria-describedby="basic-addon2">
 
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon3">{t}Passwort wiederholen{/t}</span>
           </div>
 
-          <input type="password" name="newPassword2" maxlength="254" class="form-control" autocomplete="off"
-            placeholder="{t}Passwort wiederholen{/t}" aria-label="{t}Passwort wiederholen{/t}"
-            aria-describedby="basic-addon3">
+          <input type="password" name="newPassword2" maxlength="254" class="form-control" autocomplete="off" placeholder="{t}Passwort wiederholen{/t}" aria-label="{t}Passwort wiederholen{/t}" aria-describedby="basic-addon3">
         </div>
 
         <button type="submit" class="btn btn-primary float-right">{t}Neues Passwort speichern{/t}</button>
