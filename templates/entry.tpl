@@ -232,7 +232,7 @@
                             {/if}
                           </details>
                           {continue}
-                        {else if $field.defaultVisible !== '0' && $field.visibleIn === ';-1;'}
+                        {else if $field.defaultVisible !== '0' && ($field.visibleIn === ';-1;' || str_contains($field.visibleIn, ';'|cat:$item.headcategory|cat:';'))}
                           {$existingData = null}
                           {foreach $customData as $customField}
                             {if $customField['fieldId'] === $field.id}
