@@ -13,9 +13,6 @@
           <hr>
           <div class="storage-area">
             {$itemhasstorage = false}
-            {if !$isGuest}
-              {if !empty($itemstore.storage.label)}<button title="{t}Lagerplatz löschen{/t}" class="btn smallButton" name="removeStorage" data-name="{if isset($itemstore.storage.label)}{$itemstore.storage.label}{$itemhasstorage = true}{else}{t}Nicht zugewiesen{/t}{/if}" value="{$itemstore.storage.id}" type="submit"><i class="fas fa-times-circle"></i></button>{/if}
-            {/if}
             <h4 class="text-dark">
               {if !empty($itemstore.storage.label)}<a href="{$urlBase}/inventory{$urlPostFix}?storageid={$itemstore.storage.id}">
                   {if isset($itemstore.storage.label)}{$itemstore.storage.label}
@@ -27,8 +24,7 @@
               {/if}&nbsp;
               {if $itemhasstorage}
                 {if !$isGuest}
-                  {if isset($itemstore.storage.id)}<a title="
-                    {t}Schnelle Bearbeitung{/t}" onclick="changeSingleValue('storages','label',{$itemstore.storage.id},true);" href="javascript:void(0)"><i class="fas fa-edit fa-xs"></i></a>{/if}
+                  {if isset($itemstore.storage.id)}<a title="{t}Schnelle Bearbeitung{/t}" onclick="changeSingleValue('storages','label',{$itemstore.storage.id},true);" href="javascript:void(0)"><i class="fas fa-edit fa-xs"></i></a>{/if}
                 {/if}
               {/if}
               <a title="{t}Zuklappen{/t}" id="togglebtn_{$itemstore.storage.id}" onclick='toggletableview("{$itemstore.storage.id}");' href="javascript:void(0)"><i class="fa-solid fa-xs fa-minimize" id="toggleicon_{$itemstore.storage.id}"></i></a>
@@ -69,12 +65,6 @@
                     {assign var="catid" value=$item.headcategory}
                     {assign var="category" value=$categories.$catid}
                     <li class="list-group-item" data-id="{$item.id}">
-                      {if !$isGuest}
-                        <button class="btn smallButton" title="{t}Position löschen{/t}" name="remove" data-name="{$item.label}" value="{$item.id}" type="submit"><i class="fas fa-times-circle"></i></button>
-                      {else}
-                        <div class="list-span"></div>
-                      {/if}
-
                       {if $catid != 0}
                         <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" title="{$category.name}" class="list-span">{$category.name}</a>
                       {else}
@@ -107,6 +97,7 @@
                       </div>
                       {if !$isGuest}
                         <div class="list-span actions">
+                          <a title="{t}Position löschen{/t}" name="remove" data-name="{$item.label}" value="{$item.id}" type="submit"><i class="fa fas fa-times-circle"></i></a>
                           <a tabindex="-1" href="#" class="save-inline-edit inactive" title="{t}Schnelle Bearbeitung speichern{/t}" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
                           <a tabindex="-1" href="#" class="open-inline-edit" title="{t}Schnelle Bearbeitung{/t}" data-id="{$item.id}"><i class="fas fa-eraser"></i></a>
                           <a title="{t}Ausführliche Bearbeitung{/t}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
@@ -183,7 +174,7 @@
                 {if $itemstore.itemcount == 1}{t}Gegenstand{/t}{else}{t}Gegenstände{/t}{/if})</span>
 
             </h4>
-            <ul class="list-group">
+            <ul class="subcategories list-group">
               <li class="alert alert-info">
                 <span class="list-span header sortable" data-index="1" title="{t}Kategorien{/t}">{t}Kategorien{/t}</span>
                 <span class="list-span header sortable" data-index="2" title="{t}Bezeichnung{/t}">{t}Bezeichnung{/t}</span>
@@ -215,12 +206,6 @@
                   {assign var="catid" value=$item.headcategory}
                   {assign var="category" value=$categories.$catid}
                   <li class="list-group-item" data-id="{$item.id}">
-                    {if !$isGuest}
-                      <button class="btn smallButton" title="{t}Position löschen{/t}" name="remove" data-name="{$item.label}" value="{$item.id}" type="submit"><i class="fa fas fa-times-circle"></i></button>
-                    {else}
-                      <div class="list-span"></div>
-                    {/if}
-
                     {if $catid != 0}
                       <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" title="{$category.name}" class="list-span">{$category.name}</a>
                     {else}
@@ -247,6 +232,7 @@
               <div class="list-span"><span class="listing-dateadded" title="{$dateexploded.0}">{$dateexploded.0}</span></div>
               {if !$isGuest}
                 <div class="list-span actions">
+                  <a title="{t}Position löschen{/t}" name="remove" data-name="{$item.label}" value="{$item.id}" type="submit"><i class="fa fas fa-times-circle"></i></a>
                   <a tabindex="-1" href="#" class="save-inline-edit inactive" title="{t}Schnelle Bearbeitung speichern{/t}" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
                   <a tabindex="-1" href="#" class="open-inline-edit" title="{t}Schnelle Bearbeitung{/t}" data-id="{$item.id}"><i class="fas fa-eraser"></i></a>
                   <a title="{t}Ausführliche Bearbeitung{/t}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
@@ -311,7 +297,7 @@
                 {if $itemstore.positionen == 1}{t}Position{/t}{else}{t}Positionen{/t}{/if}, {$itemstore.itemcount}
                 {if $itemstore.itemcount == 1}{t}Gegenstand{/t}{else}{t}Gegenstände{/t}{/if})</span>
             </h4>
-            <ul class="list-group">
+            <ul class="subcategories list-group">
               <li class="alert alert-info">
                 <span class="list-span header sortable" data-index="1" title="{t}Kategorien{/t}">{t}Kategorien{/t}</span>
                 <span class="list-span header sortable" data-index="2" title="{t}Bezeichnung{/t}">{t}Bezeichnung{/t}</span>
@@ -343,12 +329,6 @@
                   {assign var="catid" value=$item.headcategory}
                   {assign var="category" value=$categories.$catid}
                   <li class="list-group-item" data-id="{$item.id}">
-                    {if !$isGuest}
-                      <button class="btn smallButton" title="{t}Position löschen{/t}" name="remove" data-name="{$item.label}" value="{$item.id}" type="submit"><i class="fas fa-times-circle"></i></button>
-                    {else}
-                      <div class="list-span"></div>
-                    {/if}
-
                     {if $catid != 0}
                       <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" title="{$category.name}" class="list-span">{$category.name}</a>
                     {else}
@@ -377,6 +357,7 @@
               <div class="list-span"><span class="listing-dateadded" title="{$dateexploded.0}">{$dateexploded.0}</span></div>
               {if !$isGuest}
                 <div class="list-span actions">
+                  <a title="{t}Position löschen{/t}" name="remove" data-name="{$item.label}" value="{$item.id}" type="submit"><i class="fa fas fa-times-circle"></i></a>
                   <a tabindex="-1" href="#" class="save-inline-edit inactive" title="{t}Schnelle Bearbeitung speichern{/t}" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
                   <a tabindex="-1" href="#" class="open-inline-edit" title="{t}Schnelle Bearbeitung{/t}" data-id="{$item.id}"><i class="fas fa-eraser"></i></a>
                   <a title="{t}Ausführliche Bearbeitung{/t}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
@@ -547,7 +528,7 @@
       })
     }
 
-    let removalButtons = document.querySelectorAll('.smallButton')
+    let removalButtons = document.querySelectorAll('.actions [name="remove"]')
     for (let button of removalButtons) {
       button.addEventListener('click', function(evt) {
         let target = evt.target

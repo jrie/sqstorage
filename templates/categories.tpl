@@ -21,16 +21,16 @@
       {/if}
       {foreach $headCategories as $category}
         <li class="list-group-item" data-id="{$category.id}">
-          {if !$isGuest}
-            <a name="removeCategory" tabindex="-1" data-name="{$category.name}" href="{$urlBase}/categories{$urlPostFix}?removeCategory={$category.id}" title="{t}Kategorie löschen{/t}" class="removalButton fas fa-times-circle btn"></a>
-          {/if}
           <a class="list-span" data-name="{$category.name}" title="{$category.name}" href="{$urlBase}/inventory{$urlPostFix}?category={$category.id}">{$category.name}</a>
           <span class="list-span">{$category.positions}
             {if $category.positions == 1}{t}Position{/t}{else}{t}Positionen{/t}{/if}</span>
           <span class="list-span">{$category.amount}
             {if $category.amount == 1}{t}Gegenstand{/t}{else}{t}Gegenstände{/t}{/if}</span>
           {if !$isGuest}
+          <div class="list-span actions">
+            <a name="removeCategory" tabindex="-1" data-name="{$category.name}" href="{$urlBase}/categories{$urlPostFix}?removeCategory={$category.id}" title="{t}Kategorie löschen{/t}" class="removalButton fas fa-times-circle btn"></a>
             <a title="{t}Kategorie umbenennen{/t}" class="fas fa-edit editCategory" href="#" name="editCategory" data-name="{$category.name}" data-id="{$category.id}"></a>
+          </div>
           {/if}
         </li>
       {/foreach}
@@ -61,17 +61,16 @@
       {/if}
       {foreach $subCategories as $category}
         <li class="list-group-item" data-id="{$category.id}">
-
-          {if !$isGuest}
-            <a name="removeSubcategory" tabindex="-1" data-name="{$category.name}" href="{$urlBase}/categories{$urlPostFix}?removeSubcategory={$category.id}" title="{t}Unterkategorie löschen{/t}" class="removalButton fas fa-times-circle btn"></a>
-          {/if}
           <a class="list-span" data-name="{$category.name}" title="{$category.name}" href="{$urlBase}/inventory{$urlPostFix}?subcategory={$category.id}">{$category.name}</a>
           <span class="list-span">{$category.positions}
             {if $category.positions == 1}{t}Position{/t}{else}{t}Positionen{/t}{/if}</span>
           <span class="list-span">{$category.amount}
             {if $category.amount == 1}{t}Gegenstand{/t}{else}{t}Gegenstände{/t}{/if}</span>
           {if !$isGuest}
+<div class="subcategories list-span actions">
+            <a name="removeSubcategory" tabindex="-1" data-name="{$category.name}" href="{$urlBase}/categories{$urlPostFix}?removeSubcategory={$category.id}" title="{t}Unterkategorie löschen{/t}" class="removalButton fas fa-times-circle btn"></a>
             <a title="{t}Unterkategorie umbenennen{/t}" class="fas fa-edit editCategory" href="#" name="editSubcategory" data-name="{$category.name}" data-id="{$category.id}"></a>
+</div>
           {/if}
 
           {if !$isGuest}
