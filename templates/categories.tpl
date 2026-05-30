@@ -5,7 +5,7 @@
   {$alert}
   <hr />
   {if !$isGuest}
-    {if !empty($error) || $addedCategoryId === -1}
+    {if !empty($error) || (isset($addedCategoryId) && $addedCategoryId === -1)}
       <div class="alert alert-danger" role="alert">
         <h6>{$error}</h6>
       </div>
