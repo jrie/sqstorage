@@ -7,7 +7,8 @@
  *  IsDBUpdateAvailable() -> Checks if a db-migration is available which isn't installed yet. Returns true/false
  */
 
-function CheckDBCredentials($host,$user,$password,$name,$port, $dbRootUser, $dbRootUserPassword, $silent=false){
+function CheckDBCredentials($host, $user, $password, $name, $port, $dbRootUser, $dbRootUserPassword, $silent = false)
+{
   global $error;
 
   $tmp = error_reporting();
@@ -50,39 +51,39 @@ function CheckDBCredentials($host,$user,$password,$name,$port, $dbRootUser, $dbR
   error_reporting($tmp);
 
   if ($mysqli_connection->connect_error) {
-      if(!$silent)$error[] = gettext("Zugang wurde verweigert. Bitte überprüfe die Zugangsdaten");
-      return false;
+    if (!$silent) $error[] = gettext("Zugang wurde verweigert. Bitte überprüfe die Zugangsdaten");
+    return false;
   }
 
   return true;
 }
 
 
-function GetNonEmptyArrayValues($ArrayGet){
+function GetNonEmptyArrayValues($ArrayGet)
+{
   $out = array();
-  for($x = 0; $x < count($ArrayGet);$x++){
-      if($ArrayGet[$x] != "") $out[] = $ArrayGet[$x];
+  for ($x = 0; $x < count($ArrayGet); $x++) {
+    if ($ArrayGet[$x] != "") $out[] = $ArrayGet[$x];
   }
   return $out;
 }
 
 
-function IsDBUpdateAvailable(){
+function IsDBUpdateAvailable()
+{
   global $basedir;
-    foreach (glob("$basedir"."/support/database_migration/dbm_*.php") as $filename) {
-      $fn = basename($filename,".php");
-      list($dump,$rev) = explode("_",$fn);
-      $availablerev = $rev * 1;
-    }
-    $dbvers = DB::queryFirstField('SELECT MAX(dbrev) FROM database_rev');
-    if($availablerev > $dbvers){
-      return true;
-    }
-    return false;
+  foreach (glob("$basedir" . "/support/database_migration/dbm_*.php") as $filename) {
+    $fn = basename($filename, ".php");
+    list($dump, $rev) = explode("_", $fn);
+    $availablerev = $rev * 1;
+  }
+  $dbvers = DB::queryFirstField('SELECT MAX(dbrev) FROM database_rev');
+  if ($availablerev > $dbvers) {
+    return true;
+  }
+  return false;
 }
 
 /**
  * End Miscellaneous functions
  */
-
-
