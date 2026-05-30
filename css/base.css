@@ -374,7 +374,6 @@ form .categories .dropdown {
 }
 
 .save-inline-edit {
-  margin-left: 0.5em;
   color: #000;
 }
 
@@ -496,14 +495,15 @@ a.far:hover {
   word-break: break-all;
 }
 
-.categories .actions {
+div.categories .actions {
   min-width: 15%;
   max-width: 15%;
 }
 
-.subcategories .actions {
-  min-width: 7.5%;
-  max-width: 7.5;
+div.subcategories.actions {
+  min-width: 15%;
+  max-width: 15%;
+  vertical-align: center;
 }
 
 .actions [name="remove"],
