@@ -4,8 +4,7 @@
 
 
 
-<div id="errorForm" class="alert alert-danger hidden" role="alert">{t}Nicht gespeichert, es befinden sich Fehler in der
-  Formular-Eingabe.{/t}</div>
+<div id="errorForm" class="alert alert-danger hidden" role="alert">{t}Nicht gespeichert, es befinden sich Fehler in der Formular-Eingabe.{/t}</div>
 
 <div class="content">
   <div class="datafields">

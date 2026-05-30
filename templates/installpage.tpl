@@ -42,8 +42,7 @@
         </div>
         <div class="custom-control custom-switch">
           <input type="checkbox" name="prettyurl" class="custom-control-input" id="customSwitches">
-          <label class="custom-control-label" for="customSwitches">{t}Verwende z.B. http://example.com/inventory anstatt
-            http://example.com/inventory.php{/t}</label>
+          <label class="custom-control-label" for="customSwitches">{t}Verwende z.B. http://example.com/inventory anstatt http://example.com/inventory.php{/t}</label>
         </div>
       </div>
 

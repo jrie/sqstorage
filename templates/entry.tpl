@@ -60,8 +60,7 @@
                   </div>
                 {/if}
 
-                <div id="errorForm" class="alert alert-danger hidden" role="alert">{t}Nicht gespeichert, es befinden
-                  sich Fehler in der Formular-Eingabe.{/t}</div>
+                <div id="errorForm" class="alert alert-danger hidden" role="alert">{t}Nicht gespeichert, es befinden sich Fehler in der Formular-Eingabe.{/t}</div>
                 <form class="inputForm" accept-charset="utf-8" method="POST" action="{$urlBase}/entry{$urlPostFix}{if $isEdit}?editItem={$item.id}{/if}" {if !$isEdit}enctype="multipart/form-data" {/if}>
                   {if $isEdit}<input type="hidden" value="{$item.id}" name="itemUpdateId" />{/if}
 
@@ -137,10 +136,9 @@
                           {foreach $categories as $category}
                             {if $isEdit && $category.id == $item.headcategory}
                               {$currentCategory = $category}
-                              <option value="{$category.name}" data-catid="{$category.id}" selected="selected">
-                                {$category.name}</option>
+                              <option value="{$category.name}" data-catid="{$category.id}" selected="selected">{$category.name}</option>
                             {else}
-                              <option value="{$category.name}" data-catid="{$category.id}">{$category.name}</option>'
+                              <option value="{$category.name}" data-catid="{$category.id}">{$category.name}</option>
                           {/if}
                           {/foreach}
                         </select>
@@ -230,8 +228,7 @@
                       <div class="input-group mb-3 customFields qrCodeField" data-qrvalue="{$field['qrValue']}"></div>
                       {else if empty($field['qrValue'])}
                       <summary>{t}QR-Code:{/t} {$field.label}</summary>
-                      <div class="input-group mb-3 customFields qrCodeField empty"><span>{t}Der verknüpfte QR-Code Wert
-                          ist nicht gesetzt.{/t}</span></div>
+                      <div class="input-group mb-3 customFields qrCodeField empty"><span>{t}Der verknüpfte QR-Code Wert ist nicht gesetzt.{/t}</span></div>
                       {/if}
                     </details>
                     {continue}
@@ -261,11 +258,11 @@
                           <option value="-1" data-default="{$field.default}">{$field.label}</option>
                           {foreach explode(';', rtrim($field.fieldValues, ';')) as $value}
                           {if $value === $field.default}
-                          <option value="{$value}">{$value}</option>'
+                          <option value="{$value}">{$value}</option>
                             {else if $value === $existingData}
-                            <option value="{$value}" selected="selected">{$value}</option>'
+                            <option value="{$value}" selected="selected">{$value}</option>
                           {else}
-                          <option value="{$value}">{$value}</option>'
+                          <option value="{$value}">{$value}</option>
                             {/if}
                           {/foreach}
                         </select>
