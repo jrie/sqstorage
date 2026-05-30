@@ -24,6 +24,7 @@ hr {
   font-size: inherit;
   font-family: inherit;
 }
+
 .btn-secondary {
   border: 1px solid rgb(206, 212, 218);
 }
@@ -32,6 +33,15 @@ hr {
   color: #fff;
   background-color: #17a2b8;
   border-color: #17a2b8;
+}
+
+.btn-form-submit {
+  margin-top: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.float-right {
+  float: right;
 }
 
 .navbar {
@@ -166,6 +176,7 @@ input.quick-edit:required:focus::placeholder {
   font-size: 0.8rem;
   color: #333;
   margin-right: 1rem;
+  line-height: 2em;
 }
 
 .categories .input-group-text,
@@ -174,6 +185,7 @@ form .input-group-text,
 form .dropdown {
   min-width: 18rem;
   max-width: 18rem;
+  line-height: 2em;
 }
 
 
@@ -489,6 +501,7 @@ a.far:hover {
 
 .storage-area li.alert-info .list-span:nth-child(0n + 7),
 .storage-area .actions,
+.storage-area .subcategories .actions,
 .categories .actions {
   min-width: 8%;
   max-width: 8%;
@@ -565,6 +578,11 @@ div.subcategories.actions {
 
 .storeDestDiv {
   padding-left: 2.8%;
+}
+
+.transfer .dropDown {
+  max-width: 30rem;
+  min-width: 30rem;
 }
 
 .storeSrcDiv {
@@ -922,6 +940,7 @@ ul.existingFields li.btn-primary {
   margin: 0;
   padding: 0.3em;
   border: 1px solid transparent;
+  vertical-align: center;
 }
 
 .datafields {
