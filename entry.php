@@ -7,8 +7,9 @@ if (!file_exists('./support/dba.php')) {
 
 require('login.php');
 
-require_once 'customFieldsData.php';
-require_once 'support/urlBase.php';
+require_once './customFieldsData.php';
+require_once './support/dba.php';
+require_once './support/urlBase.php';
 $smarty->assign('urlBase', $urlBase);
 
 require_once './includer.php';
