@@ -6,67 +6,56 @@ IFS="
 
 STEP=0
 
-if [ "$1" != "" ]
-then
+if [[ "$1" != "" ]]; then
   STEP=$1
 fi
 
-
-
-if [ $STEP == "0" ]
-then
+if [[ $STEP == "0" ]]; then
+  touch templates/php_language_extract.tpl
   rm tmpout.txt 2>/dev/null
   ALLPHP=$(find . -name '*.php' | grep -v vendor | grep -v smartyfolders)
-  for PHPFILE in $ALLPHP
-  do
-  echo $PHPFILE
-  xgettext --from-code=UTF-8 "$PHPFILE" -L PHP -o tmpX.txt --no-wrap
-  cat tmpX.txt >> tmpout.txt
-done
+  for PHPFILE in $ALLPHP; do
+    echo "$PHPFILE"
+    xgettext --from-code=UTF-8 "$PHPFILE" -L PHP -o tmpX.txt --no-wrap
+    cat tmpX.txt >>tmpout.txt
+  done
   rm tmpX.txt
-STEP=1
+  STEP=1
 fi
 
-if [ $STEP == "1" ]
-then
-    START=7
-    LINES=$(grep "msgid" tmpout.txt  | sort -u)
-    for LINE in $LINES
-    do
-#      echo "$LINE"
-      LINELENGTH=${#LINE}
-      let LENGTH=$LINELENGTH-$START-1
-      EXTLINES=${LINE:$START:$LENGTH}
-      if [ "$EXTLINES" != "" ]
-      then
-        EXTLINE=$(echo "$EXTLINES" | sed 's/\\"/"/g')
-        OUTLINE='{t}'"$EXTLINE"'{/t}'
-        echo $OUTLINE
-          ISBUGGY=$(echo "$OUTLINE" | grep -F '\"' | wc -l)
-          if [ "$ISBUGGY" == "0" ]
-          then
-            ISIN=$(grep -F "$OUTLINE" templates/php_language_extract.tpl | wc -l)
-            if [ "$ISIN" == "0" ]
-            then
-              echo "NEW: $OUTLINE"
-              echo "$OUTLINE" >> templates/php_language_extract.tpl
+if [[ $STEP == "1" ]]; then
+  START=7
+  LINES=$(grep "msgid" tmpout.txt | sort -u)
+  for LINE in $LINES; do
+    #      echo "$LINE"
+    LINELENGTH=${#LINE}
+    ((LENGTH = LINELENGTH - START - 1))
+    EXTLINES=${LINE:$START:$LENGTH}
+    if [[ "$EXTLINES" != "" ]]; then
+      EXTLINE=$(echo "$EXTLINES" | sed 's/\\"/"/g')
+      OUTLINE='{t}'"$EXTLINE"'{/t}'
+      echo "$OUTLINE"
+      ISBUGGY=$(echo "$OUTLINE" | grep -c '\"')
+      if [[ "$ISBUGGY" == "0" ]]; then
+        ISIN=$(grep -c "$OUTLINE" templates/php_language_extract.tpl)
+        if [[ "$ISIN" == "0" ]]; then
+          echo "$OUTLINE" >>templates/php_language_extract.tpl
 
-            fi
-          fi
+        fi
       fi
-    done
-    STEP=2
+    fi
+  done
+  STEP=2
 fi
 
-if [ "$STEP" == "2" ]
-then
+if [[ "$STEP" == "2" ]]; then
   vendor/smarty-gettext/smarty-gettext/tsmarty2c.php -o languages/sqstorage.pot templates/
   STEP=3
 fi
 
-if [ "$STEP" == "3" ]
-then
+if [[ "$STEP" == "3" ]]; then
   rm tmpout.txt 2>/dev/null
+  rm templates/php_language_extract.tpl
   STEP=4
 fi
 
