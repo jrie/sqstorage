@@ -174,7 +174,7 @@
       <ul class="categories userlist list-group">
         <li class="alert alert-info"><span class="list-span">{t}Benutzername{/t}</span><span class="list-span">{t}E-Mail{/t}</span><span class="list-span">{t}Gruppe{/t}</span><span class="list-span">{t}API Zugriff{/t}</span><span class="list-span">{t}Aktionen{/t}</span></li>
         {foreach $users as $user}
-          <li class="list-group-item"><a title="{t}Benutzer löschen{/t}" name="removeUser" href="{$urlBase}/settings{$urlPostFix}?removeUser={$user.id}" class="removalButton btn"><i class="fas fa-times-circle"></i></a><span class="list-span">{$user.username}</span><span class="list-span">{$user.mailaddress}</span><span class="list-span">{$user.usergroupname}</span><span class="list-span">{if !isset($user.api_access)}{t}Bitte die Datenbank aktualisieren{/t}{else}{if $user.api_access == 1}<i class="fas fa-circle-check"></i>{else}<i class="fas fa-ban"></i>{/if}{/if}</span><a class="fas fa-edit editUser" href="#" name="editUser" data-name="{$user.username}" data-id="{$user.id}"></a></li>
+          <li class="list-group-item"><a title="{t}Benutzer löschen{/t}" name="removeUser" href="{$urlBase}/settings{$urlPostFix}?removeUser={$user.id}" class="removalButton btn" data-name="{$user.username}" data-groupid="{$user.usergroupid}"><i class="fas fa-times-circle" data-name="{$user.username}" data-groupid="{$user.usergroupid}"></i></a><span class="list-span">{$user.username}</span><span class="list-span">{$user.mailaddress}</span><span class="list-span">{$user.usergroupname}</span><span class="list-span">{if !isset($user.api_access)}{t}Bitte die Datenbank aktualisieren{/t}{else}{if $user.api_access == 1}<i class="fas fa-circle-check"></i>{else}<i class="fas fa-ban"></i>{/if}{/if}</span><a class="fas fa-edit editUser" href="#" name="editUser" data-name="{$user.username}" data-id="{$user.id}"></a></li>
         {/foreach}
         <li class="list-group-item">
           <a title="{t}Benutzer anlegen{/t}" name="addUser" href="{$urlBase}/settings{$urlPostFix}?addUser" class="btn btn-primary float-right">{t}Benutzer anlegen{/t}</a>
@@ -323,12 +323,12 @@
     let removalButtons = document.querySelectorAll('.removalButton')
     let countAdmins = 0;
     for (let button of removalButtons) {
-      countAdmins = countAdmins + (button.getAttribute('data-id') == 1 ? 1 : 0)
+      countAdmins = countAdmins + (button.dataset.groupid == '1' ? 1 : 0)
       button.addEventListener('click', function(evt) {
-        let isLastAdmin = countAdmins == 1 && evt.target.getAttribute('data-id') == 1;
-        let targetType = evt.target.name === 'removeUser' && !isLastAdmin ? '{/literal}{t}Benutzer wirklich entfernen?{/t}{literal}' : '{/literal}{t}Der letzte Administrator kann nicht gelöscht werden!{/t}{literal}'
+        let isLastAdmin = countAdmins == 1 && evt.target.dataset.groupid == '1';
+        let targetType = !isLastAdmin ? '{/literal}{t}Benutzer wirklich entfernen?{/t}{literal}' : '{/literal}{t}Der letzte Administrator kann nicht gelöscht werden!{/t}{literal}'
         if (!isLastAdmin) {
-          if (!window.confirm(targetType + ' "' + evt.target.dataset['name'] + '"')) {
+          if (!window.confirm(targetType + ' "' + evt.target.dataset.name + '"')) {
             evt.preventDefault()
           }
         } else {
