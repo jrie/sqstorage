@@ -193,7 +193,7 @@ if (isset($useRegistration) && !$useRegistration) {
       $hashedToken = password_hash($token, PASSWORD_DEFAULT);
       $mailSettings = json_decode(DB::queryFirstField('SELECT jsondoc FROM settings WHERE namespace="mail"'));
       if (!empty($mailSettings)) {
-        DB::insert('users_tokens', array('userid' => $user['id'], 'token' => $hashedToken, 'valid_until' => DB::sqlEval('%t + INTERVAL 24 HOUR')), $dbNow);
+        DB::insert('users_tokens', array('userid' => $user['id'], 'token' => $hashedToken, 'valid_until' => DB::sqlEval('NOW() + INTERVAL 24 HOUR')));
       }
 
       if ($mailSettings->enabled && filter_var($mailSettings->senderAddress, FILTER_VALIDATE_EMAIL)) {
