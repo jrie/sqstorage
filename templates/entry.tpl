@@ -148,9 +148,9 @@
                         </div>
 
                         {if $isEdit && isset($currentCategory) && isset($currentCategory['name'])}
-                          <input type="text" class="form-control" id="category" name="category" required="required" autocomplete="off" placeholder="{t}Netzwerk/Hardware{/t}" value="{t}{$currentCategory.name}{/t}">
+                          <input type="text" class="form-control" id="category" name="category" required="required" autocomplete="off" placeholder="{t}Name der Hauptkategorie{/t}" value="{t}{$currentCategory.name}{/t}">
                         {else}
-                          <input type="text" class="form-control" id="category" name="category" required="required" autocomplete="off" placeholder="{t}Netzwerk/Hardware{/t}">
+                          <input type="text" class="form-control" id="category" name="category" required="required" autocomplete="off" placeholder="{t}Name der Hauptkategorie{/t}">
                         {/if}
                       </div>
 
@@ -179,9 +179,9 @@
                           </div>
                         </div>
                         {if !$isEdit || empty($subCategories)}
-                          <input type="text" class="form-control" id="subcategory" name="subcategories" placeholder="{t}Router,wlan,fritzBox{/t}" aria-label="{t}Unterkategorie{/t}" autocomplete="off">
+                          <input type="text" class="form-control" id="subcategory" name="subcategories" placeholder="{t}Untergategorie 1, Unterkategorie 2, Unterkategorie 3 (Namen, getrennt durch Komma){/t}" aria-label="{t}Unterkategorie{/t}" autocomplete="off">
                         {else}
-                          <input type="text" class="form-control" id="subcategory" name="subcategories" placeholder="{t}Router,wlan,fritzBox{/t}" aria-label="{t}Unterkategorie{/t}" autocomplete="off" value="{','|implode:$subCategories}">
+                          <input type="text" class="form-control" id="subcategory" name="subcategories" placeholder="{t}Untergategorie 1, Unterkategorie 2, Unterkategorie 3 (Namen, getrennt durch Komma){/t}" aria-label="{t}Unterkategorie{/t}" autocomplete="off" value="{','|implode:$subCategories}">
                         {/if}
                       </div>
 
