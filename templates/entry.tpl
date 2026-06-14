@@ -61,156 +61,157 @@
                 {/if}
 
                 <div id="errorForm" class="alert alert-danger hidden" role="alert">{t}Nicht gespeichert, es befinden sich Fehler in der Formular-Eingabe.{/t}</div>
+
                 <form class="inputForm" accept-charset="utf-8" method="POST" action="{$urlBase}/entry{$urlPostFix}{if $isEdit}?editItem={$item.id}{/if}" {if !$isEdit}enctype="multipart/form-data" {/if}>
-                  {if $isEdit}<input type="hidden" value="{$item.id}" name="itemUpdateId" />{/if}
+                  {if $isEdit}
+                    <input type="hidden" value="{$item.id}" name="itemUpdateId" />
+                  {/if}
 
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="basic-addon1">{t}Bezeichnung{/t}</span>
-                    </div>
-                    {if !$isEdit}
-                      <input type="text" name="label" maxlength="64" class="form-control" required="required" placeholder="{t}Bezeichnung oder Name{/t}" aria-label="{t}Bezeichnung{/t}" aria-describedby="basic-addon1">
-                    {else}
-                      <input type="text" name="label" maxlength="64" class="form-control" required="required" placeholder="{t}Bezeichnung oder Name{/t}" )aria-label="{t}Bezeichnung{/t}" aria-describedby="basic-addon1" value="{$item.label}">
-                    {/if}
-
-                  </div>
-
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <div class="dropdown">
-                        <select class="btn dropdown-toggle" type="button" tabindex="-1" id="storageDropdown" data-toggle="dropdown" data-nosettitle="true" aria-haspopup="true" aria-expanded="false" autocomplete="off">
-
-                          {if $isEdit && $item.storageid != 0}
-                            <option value="-1">{t}Lagerplatz{/t}</option>
-                          {else}
-                            <option value="-1" selected="selected">{t}Lagerplatz{/t}</option>
-                          {/if}
-
-                          {foreach $storages as $storage}
-                            {if empty($storage.label)}
-                              {continue}
-                            {/if}
-
-                            {if $isEdit && $storage.id == $item.storageid}
-                              {$currentStorage = $storage}
-                              <option value="{$storage.label}" selected="selected">{$storage.label}</option>
-                            {else}
-                              <option value="{$storage.label}">{$storage.label}</option>
-                            {/if}
-                          {{/foreach}}
-
-                        </select>
+                  <ul class="list-group">
+                    <li class="alert alert-info">
+                      <span>{t}Details des Gegenstands{/t}</span>
+                    </li>
+                    <li class="list-group-item mb-2">
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1">{t}Bezeichnung{/t}</span>
+                        </div>
+                        {if !$isEdit}
+                          <input type="text" name="label" maxlength="64" class="form-control" required="required" placeholder="{t}Bezeichnung oder Name{/t}" aria-label="{t}Bezeichnung{/t}" aria-describedby="basic-addon1">
+                        {else}
+                          <input type="text" name="label" maxlength="64" class="form-control" required="required" placeholder="{t}Bezeichnung oder Name{/t}" )aria-label="{t}Bezeichnung{/t}" aria-describedby="basic-addon1" value="{$item.label}">
+                        {/if}
                       </div>
-                    </div>
 
-                    {if $isEdit && isset($currentStorage) && isset($currentStorage['label'])}
-                      <input type="text" name="storage" id="storage" maxlength="64" class="form-control" placeholder="{t}Lagerplatz{/t}" autocomplete="off" value="{$currentStorage.label}">
-                    {else}
-                      <input type="text" name="storage" id="storage" maxlength="64" class="form-control" placeholder="{t}Lagerplatz{/t}" autocomplete="off">
-                    {/if}
-                  </div>
-
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="basic-addon7">{t}Bemerkung{/t}</span>
-                    </div>
-
-                    {if isset($item.comment) && !empty($item.comment)}
-                      <input type="text" name="comment" maxlength="255" class="form-control" autocomplete="off" placeholder="{t}Bemerkung{/t}" aria-label="{t}Bemerkung{/t}" aria-describedby="basic-addon7" value="{$item.comment}">
-                    {else}
-                      <input type="text" name="comment" maxlength="255" class="form-control" autocomplete="off" placeholder="{t}Bemerkung{/t}" aria-label="{t}Bemerkung{/t}" aria-describedby="basic-addon7">
-                    {/if}
-
-                  </div>
-
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <div class="dropdown">
-                        <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" data-nosettitle="true" type="button" id="categoryDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          {if $isEdit}
-                            <option value="-1">{t}Kategorie{/t}</option>
-                          {else}
-                            <option value="-1" selected="selected">{t}Kategorie{/t}</option>
-                          {/if}/
-                          {foreach $categories as $category}
-                            {if $isEdit && $category.id == $item.headcategory}
-                              {$currentCategory = $category}
-                              <option value="{$category.name}" data-catid="{$category.id}" selected="selected">{$category.name}</option>
+                      <div class="input-group mb-3">
+                        <div class="dropdown">
+                          <select class="btn dropdown-toggle" type="button" tabindex="-1" id="storageDropdown" data-toggle="dropdown" data-nosettitle="true" aria-haspopup="true" aria-expanded="false" autocomplete="off">
+                            {if $isEdit && $item.storageid != 0}
+                              <option value="-1">{t}Lagerplatz{/t}</option>
                             {else}
-                              <option value="{$category.name}" data-catid="{$category.id}">{$category.name}</option>
+                              <option value="-1" selected="selected">{t}Lagerplatz{/t}</option>
                             {/if}
-                          {/foreach}
-                        </select>
+
+                            {foreach $storages as $storage}
+                              {if empty($storage.label)}
+                                {continue}
+                              {/if}
+
+                              {if $isEdit && $storage.id == $item.storageid}
+                                {$currentStorage = $storage}
+                                <option value="{$storage.label}" selected="selected">{$storage.label}</option>
+                              {else}
+                                <option value="{$storage.label}">{$storage.label}</option>
+                              {/if}
+                            {{/foreach}}
+                          </select>
+                        </div>
+
+                        {if $isEdit && isset($currentStorage) && isset($currentStorage['label'])}
+                          <input type="text" name="storage" id="storage" maxlength="64" class="form-control" placeholder="{t}Lagerplatz{/t}" autocomplete="off" value="{$currentStorage.label}">
+                        {else}
+                          <input type="text" name="storage" id="storage" maxlength="64" class="form-control" placeholder="{t}Lagerplatz{/t}" autocomplete="off">
+                        {/if}
                       </div>
-                    </div>
 
-                    {if $isEdit && isset($currentCategory) && isset($currentCategory['name'])}
-                      <input type="text" class="form-control" id="category" name="category" required="required" autocomplete="off" placeholder="{t}Netzwerk/Hardware{/t}" value="{t}{$currentCategory.name}{/t}">
-                    {else}
-                      <input type="text" class="form-control" id="category" name="category" required="required" autocomplete="off" placeholder="{t}Netzwerk/Hardware{/t}">
-                    {/if}
-                  </div>
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon7">{t}Bemerkung{/t}</span>
+                        </div>
 
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <div class="dropdown">
-                        <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="subcategoryDropdown" multiple="multiple" size="3" data-nosettitle="true" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          {$subCat = array()}
-                          {$subCategories = array()}
-                          {if $isEdit && !empty($item.subcategories)}
-                            <option value="-1">{t}Unterkategorie{/t}</option>
-                            {assign var="subCat" value=","|explode:$item.subcategories}
-                          {else}
-                            <option value="-1" selected="selected">{t}Unterkategorie{/t}</option>
-                          {/if}
-
-                          {foreach $subcategories as $category}
-                            {if $isEdit && in_array($category.id, $subCat)}
-                              {$subCategories[] = $category.name};
-                              <option selected="selected" value="{$category.name}">{$category.name}</option>
-                            {else}
-                              <option value="{$category.name}">{$category.name}</option>
-                            {/if}
-                          {/foreach}
-                        </select>
+                        {if isset($item.comment) && !empty($item.comment)}
+                          <input type="text" name="comment" maxlength="255" class="form-control" autocomplete="off" placeholder="{t}Bemerkung{/t}" aria-label="{t}Bemerkung{/t}" aria-describedby="basic-addon7" value="{$item.comment}">
+                        {else}
+                          <input type="text" name="comment" maxlength="255" class="form-control" autocomplete="off" placeholder="{t}Bemerkung{/t}" aria-label="{t}Bemerkung{/t}" aria-describedby="basic-addon7">
+                        {/if}
                       </div>
-                    </div>
-                    {if !$isEdit || empty($subCategories)}
-                      <input type="text" class="form-control" id="subcategory" name="subcategories" placeholder="{t}Router,wlan,fritzBox{/t}" aria-label="{t}Unterkategorie{/t}" autocomplete="off">
-                    {else}
-                      <input type="text" class="form-control" id="subcategory" name="subcategories" placeholder="{t}Router,wlan,fritzBox{/t}" aria-label="{t}Unterkategorie{/t}" autocomplete="off" value="{','|implode:$subCategories}">
-                    {/if}
-                  </div>
 
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="basic-addon4">{t}Anzahl{/t}</span>
-                    </div>
-                    {if !$isEdit}
-                      <input type="number" maxlength="19" min="0" autocomplete="off" name="amount" required="required" class="form-control" placeholder="0" aria-label="{t}Anzahl{/t}" aria-describedby="basic-addon4">
-                    {else}
-                      <input type="number" maxlength="19" min="0" autocomplete="off" name="amount" required="required" class="form-control" placeholder="0" aria-label="{t}Anzahl{/t}" aria-describedby="basic-addon4" value="{$item.amount}">
-                    {/if}
-                  </div>
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <div class="dropdown">
+                            <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" data-nosettitle="true" type="button" id="categoryDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              {if $isEdit}
+                                <option value="-1">{t}Kategorie{/t}</option>
+                              {else}
+                                <option value="-1" selected="selected">{t}Kategorie{/t}</option>
+                              {/if}/
+                              {foreach $categories as $category}
+                                {if $isEdit && $category.id == $item.headcategory}
+                                  {$currentCategory = $category}
+                                  <option value="{$category.name}" data-catid="{$category.id}" selected="selected">{$category.name}</option>
+                                {else}
+                                  <option value="{$category.name}" data-catid="{$category.id}">{$category.name}</option>
+                                {/if}
+                              {/foreach}
+                            </select>
+                          </div>
+                        </div>
 
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="basic-addon6">{t}Seriennummer{/t}</span>
-                    </div>
-                    {if !$isEdit}
-                      <input type="text" maxlenght="64" name="serialnumber" class="form-control" placeholder="{t}Seriennummer/Artikelnummer{/t}" aria-label="{t}Seriennummer/Artikelnummer{/t}" aria-describedby="basic-addon6">
-                    {else}
-                      <input type="text" maxlength="64" name="serialnumber" class="form-control" placeholder="{t}Seriennummer/Artikelnummer{/t}" aria-label="{t}Seriennummer/Artikelnummer{/t}" aria-describedby="basic-addon6" value="{$item.serialnumber}">
-                    {/if}
-                  </div>
+                        {if $isEdit && isset($currentCategory) && isset($currentCategory['name'])}
+                          <input type="text" class="form-control" id="category" name="category" required="required" autocomplete="off" placeholder="{t}Netzwerk/Hardware{/t}" value="{t}{$currentCategory.name}{/t}">
+                        {else}
+                          <input type="text" class="form-control" id="category" name="category" required="required" autocomplete="off" placeholder="{t}Netzwerk/Hardware{/t}">
+                        {/if}
+                      </div>
 
-                  <div class="customFieldWrapper">
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <div class="dropdown">
+                            <select class="btn dropdown-toggle" tabindex="-1" autocomplete="off" type="button" id="subcategoryDropdown" multiple="multiple" size="3" data-nosettitle="true" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              {$subCat = array()}
+                              {$subCategories = array()}
+                              {if $isEdit && !empty($item.subcategories)}
+                                <option value="-1">{t}Unterkategorie{/t}</option>
+                                {assign var="subCat" value=","|explode:$item.subcategories}
+                              {else}
+                                <option value="-1" selected="selected">{t}Unterkategorie{/t}</option>
+                              {/if}
 
-                    {if isset($item.id)}
-                      {if !empty($customFields)}
-                        <span class="customFieldsHeader">{t}Custom fields{/t}</span>
-                      {/if}
+                              {foreach $subcategories as $category}
+                                {if $isEdit && in_array($category.id, $subCat)}
+                                  {$subCategories[] = $category.name};
+                                  <option selected="selected" value="{$category.name}">{$category.name}</option>
+                                {else}
+                                  <option value="{$category.name}">{$category.name}</option>
+                                {/if}
+                              {/foreach}
+                            </select>
+                          </div>
+                        </div>
+                        {if !$isEdit || empty($subCategories)}
+                          <input type="text" class="form-control" id="subcategory" name="subcategories" placeholder="{t}Router,wlan,fritzBox{/t}" aria-label="{t}Unterkategorie{/t}" autocomplete="off">
+                        {else}
+                          <input type="text" class="form-control" id="subcategory" name="subcategories" placeholder="{t}Router,wlan,fritzBox{/t}" aria-label="{t}Unterkategorie{/t}" autocomplete="off" value="{','|implode:$subCategories}">
+                        {/if}
+                      </div>
+
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon4">{t}Anzahl{/t}</span>
+                        </div>
+                        {if !$isEdit}
+                          <input type="number" maxlength="19" min="0" autocomplete="off" name="amount" required="required" class="form-control" placeholder="0" aria-label="{t}Anzahl{/t}" aria-describedby="basic-addon4">
+                        {else}
+                          <input type="number" maxlength="19" min="0" autocomplete="off" name="amount" required="required" class="form-control" placeholder="0" aria-label="{t}Anzahl{/t}" aria-describedby="basic-addon4" value="{$item.amount}">
+                        {/if}
+                      </div>
+
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon6">{t}Seriennummer{/t}</span>
+                        </div>
+                        {if !$isEdit}
+                          <input type="text" maxlenght="64" name="serialnumber" class="form-control" placeholder="{t}Seriennummer/Artikelnummer{/t}" aria-label="{t}Seriennummer/Artikelnummer{/t}" aria-describedby="basic-addon6">
+                        {else}
+                          <input type="text" maxlength="64" name="serialnumber" class="form-control" placeholder="{t}Seriennummer/Artikelnummer{/t}" aria-label="{t}Seriennummer/Artikelnummer{/t}" aria-describedby="basic-addon6" value="{$item.serialnumber}">
+                        {/if}
+                      </div>
+                    </li>
+                  </ul>
+
+                  {if isset($item.id) && !empty($customFields)}
+                    <div class="customFieldWrapper">
+                      <span class="customFieldsHeader">{t}Custom fields{/t}</span>
                       {foreach $customFields as $field}
                         {if $field.dataType === strval($fieldTypesPos['qrcode'])}
                           <details class="customFieldTitle">
@@ -293,11 +294,20 @@
                           </div>
                         {/if}
                       {/foreach}
-                    {/if}
-                  </div>
+                    </div>
+                  {/if}
+
                   {if !$isEdit}
-                    <h4 class="clearfix">{t}Bilder des Gegenstandes{/t}</h4>
-                    <input name="images[]" type="file" multiple="multiple" accept="image/png, image/jpeg, image/jpg, image/webp, image/gif, image/bmp" placeholder="{t}Bild Upload{/t}" />
+                    <div>
+                      <ul class="list-group">
+                        <li class="alert alert-info">
+                          <span>{t}Dem Eintrag Bilder hinzufügen:{/t}</span>
+                        </li>
+                        <li class="list-group-item">
+                          <input name="images[]" type="file" multiple="multiple" accept="image/png, image/jpeg, image/jpg, image/webp, image/gif, image/bmp" placeholder="{t}Bild Upload{/t}" />
+                        </li>
+                      </ul>
+                    </div>
                   {/if}
 
                   <div style="float: right;">
