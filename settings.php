@@ -119,8 +119,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $mtarget  == 'mail') {
 
       if ($mailSettings['enabled'] && filter_var($mailSettings['senderAddress'], FILTER_VALIDATE_EMAIL)) {
         $header[] = 'MIME-Version: 1.0';
-        $header[] = 'Content-type: text/html; charset=utf-8';
+        $header[] = 'Content-type: text/plain; charset=utf-8';
         $header[] = 'From: ' . $mailSettings['senderAddress'];
+
+        $senderURL = dirname($_SERVER['HTTP_REFERER']);
+        $userName = trim($_POST['username']);
+        $userTokenURL = $senderURL . '/login?activate=' . $userId . $token;
+
+        // Old version
         mail($_POST['mailaddress'], gettext('sqStorage Einladung'), sprintf(gettext("Sie haben eine Einladung für sqStorage erhalten: <a href=\"%s\">%s</a>"), dirname($_SERVER['HTTP_REFERER']) . '/login?activate=' . $userId . $token, dirname($_SERVER['HTTP_REFERER']) . '/login?activate=' . $userId . $token), implode("\r\n", $header));
       } else {
         DB::commit();
@@ -169,10 +175,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' || !empty($error) || ($_SERVER['REQUEST_
     }
   } else {
     if (isset($_GET['removeUser']) && !empty($_GET['removeUser'])) {
-      $adminAccounts = DB::query('SELECT userid FROM users_groups WHERE usergroupid=1 LIMIT 2');
-      if (count($adminAccounts) === 1 && $adminAccounts[0]['userid'] == $_GET['removeUser']) {
+      $adminAccounts = DB::query('SELECT `userid` FROM `users_groups` WHERE `usergroupid`=1 LIMIT 2');
+      $removalAdminAccount = DB::queryFirstRow('SELECT `userid` FROM `users_groups` WHERE `id`=%d', $_GET['removeUser']);
+
+      if (count($adminAccounts) === 1) {
         $error = gettext('Fehler: Der letzte Administrator kann nicht gelöscht werden!');
-      } else {
+      } else if ($removalAdminAccount !== null) {
         USERS::DeleteUser($_GET['removeUser']);
         header('Location: ' . $urlBase . '/settings' . $urlPostFix);
         die();
