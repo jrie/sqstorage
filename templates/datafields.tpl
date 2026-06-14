@@ -8,10 +8,13 @@
 
 <div class="content">
   <div class="datafields">
-    {if $removedField}
+    {if $addedField}
       <div class="statusDisplay green">
-        <p>{t}Feld entfernt:{/t} {$POST.fieldName} {if isset($removedData) && $removedData !== false}{$removedData}{/if}
-        </p>
+        <p>{t}Feld hinzugefügt:{/t} {$POST.fieldName}</p>
+      </div>
+    {else if $removedField}
+      <div class="statusDisplay green">
+        <p>{t}Feld entfernt:{/t} {$POST.fieldName} {if isset($removedData) && $removedData !== false}{$removedData}{/if}</p>
       </div>
     {elseif $resetEntries !== 0}
       <div class="statusDisplay green">
