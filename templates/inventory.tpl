@@ -23,8 +23,8 @@
           <div class="collapsestorage" id="itemlist_{$itemstore.storage.id}">
             <ul class="list-group">
               <li class="alert alert-info">
-                <span class="list-span header sortable" data-index="1" title="{t}Kategorien{/t}">{t}Kategorien{/t}</span>
-                <span class="list-span header sortable" data-index="2" title="{t}Bezeichnung{/t}">{t}Bezeichnung{/t}</span>
+                <span class="list-span header sortable" data-index="1" title="{t}Bezeichnung{/t}">{t}Bezeichnung{/t}</span>
+                <span class="list-span header sortable" data-index="2" title="{t}Kategorien{/t}">{t}Kategorien{/t}</span>
                 <span class="list-span header sortable" data-index="3" data-sort="number" title="{t}Anzahl{/t}">{t}Anzahl{/t}</span>
                 <span class="list-span header sortable" data-index="4" title="{t}Bemerkung{/t}">{t}Bemerkung{/t}</span>
                 <span class="list-span header sortable" data-index="5" title="{t}Unterkategorien{/t}">{t}Unterkategorien{/t}</span>
@@ -53,12 +53,6 @@
                   {assign var="catid" value=$item.headcategory}
                   {assign var="category" value=$categories.$catid}
                   <li class="list-group-item" data-id="{$item.id}">
-                    {if $catid != 0}
-                      <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" title="{$category.name}" class="list-span">{$category.name}</a>
-                    {else}
-                      <span title="{$category.name}" class="list-span">{$category.name}</span>
-                    {/if}
-
                     <div class="list-span">
                       {if !isset($item.coverimage) || empty($item.coverimage)}
                         {$coverImage = $item.id}
@@ -75,6 +69,12 @@
                         {/if}
                       </span>
                     </div>
+                    {if $catid != 0}
+                      <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" title="{$category.name}" class="list-span">{$category.name}</a>
+                    {else}
+                      <span title="{$category.name}" class="list-span">{$category.name}</span>
+                    {/if}
+
 
 
                     <div class="list-span"><span class="listing-amount quick-edit">{$item.amount}</span></div>
@@ -164,8 +164,8 @@
           </h4>
           <ul class="subcategories list-group">
             <li class="alert alert-info">
-              <span class="list-span header sortable" data-index="1" title="{t}Kategorien{/t}">{t}Kategorien{/t}</span>
-              <span class="list-span header sortable" data-index="2" title="{t}Bezeichnung{/t}">{t}Bezeichnung{/t}</span>
+              <span class="list-span header sortable" data-index="1" title="{t}Bezeichnung{/t}">{t}Bezeichnung{/t}</span>
+              <span class="list-span header sortable" data-index="2" title="{t}Kategorien{/t}">{t}Kategorien{/t}</span>
               <span class="list-span header sortable" data-index="3" data-sort="number" title="{t}Anzahl{/t}">{t}Anzahl{/t}</span>
               <span class="list-span header sortable" data-index="4" title="{t}Bemerkung{/t}">{t}Bemerkung{/t}</span>
               <span class="list-span header sortable" data-index="5" title="{t}Unterkategorien{/t}">{t}Unterkategorien{/t}</span>
@@ -194,11 +194,6 @@
                 {assign var="catid" value=$item.headcategory}
                 {assign var="category" value=$categories.$catid}
                 <li class="list-group-item" data-id="{$item.id}">
-                  {if $catid != 0}
-                    <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" title="{$category.name}" class="list-span">{$category.name}</a>
-                  {else}
-                    <span title="{$category.name}" class="list-span">{$category.name}</span>
-                  {/if}
                   {if !isset($item.coverimage) || empty($item.coverimage)}
                     {$coverImage = $item.id}
                     {$type = 'itemId'}
@@ -209,8 +204,18 @@
                   <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fa fas fa-images"></i><img class="item-picture" data-id="{$coverImage}" data-type="{$type}" src="" onclick="displayFullImage('{$item.id}', '{$type}', '{$coverImage}');return false;">{/if}
                       {if !$isGuest}
                         <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
+                    {if $catid != 0}
+                      <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" title="{$category.name}" class="list-span">{$category.name}</a>
+                    {else}
+                      <span title="{$category.name}" class="list-span">{$category.name}</span>
+                    {/if}
                   {else}
-                    <span class="listing-label" title="{$item.label}">{$item.label}</span></span>
+                    <span class="listing-label" title="{$item.label}">{$item.label}</span>
+                    {if $catid != 0}
+                      <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" title="{$category.name}" class="list-span">{$category.name}</a>
+                    {else}
+                      <span title="{$category.name}" class="list-span">{$category.name}</span>
+                    {/if}
               </div>
             {/if}
             <div class="list-span"><span class="listing-amount quick-edit">{$item.amount}</span></div>
@@ -287,8 +292,8 @@
           </h4>
           <ul class="subcategories list-group">
             <li class="alert alert-info">
-              <span class="list-span header sortable" data-index="1" title="{t}Kategorien{/t}">{t}Kategorien{/t}</span>
-              <span class="list-span header sortable" data-index="2" title="{t}Bezeichnung{/t}">{t}Bezeichnung{/t}</span>
+              <span class="list-span header sortable" data-index="1" title="{t}Bezeichnung{/t}">{t}Bezeichnung{/t}</span>
+              <span class="list-span header sortable" data-index="2" title="{t}Kategorien{/t}">{t}Kategorien{/t}</span>
               <span class="list-span header sortable" data-index="3" data-sort="number" title="{t}Anzahl{/t}">{t}Anzahl{/t}</span>
               <span class="list-span header sortable" data-index="4" title="{t}Bemerkung{/t}">{t}Bemerkung{/t}</span>
               <span class="list-span header sortable" data-index="5" title="{t}Unterkategorien{/t}">{t}Unterkategorien{/t}</span>
@@ -317,12 +322,6 @@
                 {assign var="catid" value=$item.headcategory}
                 {assign var="category" value=$categories.$catid}
                 <li class="list-group-item" data-id="{$item.id}">
-                  {if $catid != 0}
-                    <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" title="{$category.name}" class="list-span">{$category.name}</a>
-                  {else}
-                    <span title="{$category.name}" class="list-span">{$category.name}</span>
-                  {/if}
-
                   {if !isset($item.coverimage) || empty($item.coverimage)}
                     {$coverImage = $item.id}
                     {$type = 'itemId'}
@@ -334,8 +333,18 @@
                   <div class="list-span"><span class="listing-hasimages">{if isset($item.hasImages) && $item.hasImages}<i title="{t}Gegenstand hat Bilder{/t}" class="picture fas fa-images"></i><img class="item-picture" data-id="{$coverImage}" data-type="{$type}" src="" onclick="displayFullImage('{$item.id}', '{$type}', '{$coverImage}');return false;">{/if}
                       {if !$isGuest}
                         <a class="listing-label quick-edit" title="{$item.label}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}">{$item.label}</a></span></div>
+                    {if $catid != 0}
+                      <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" title="{$category.name}" class="list-span">{$category.name}</a>
+                    {else}
+                      <span title="{$category.name}" class="list-span">{$category.name}</span>
+                    {/if}
                   {else}
                     <span class="listing-label" title="{$item.label}">{$item.label}</span></span>
+                    {if $catid != 0}
+                      <a href="{$urlBase}/inventory{$urlPostFix}?category={$item.headcategory}" title="{$category.name}" class="list-span">{$category.name}</a>
+                    {else}
+                      <span title="{$category.name}" class="list-span">{$category.name}</span>
+                    {/if}
               </div>
             {/if}
             <div class="list-span"><span class="listing-amount quick-edit">{$item.amount}</span></div>
