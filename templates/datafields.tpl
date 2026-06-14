@@ -448,7 +448,7 @@
       document.querySelector('input[name="fieldName"]').value = evt.target.dataset['name']
       document.querySelector('input[name="fieldDefault"]').value = evt.target.dataset['default']
 
-      if (evt.target.dataset['type'] !== '8') {
+      if (evt.target.dataset['type'] !== '9') {
         document.querySelector('input[name="fieldValues"]').value = evt.target.dataset['values']
         let visibleSelections = evt.target.dataset['visiblein'].split(';')
         let options = document.querySelector('.switchvisiblity').parentNode.children[0].children[2].children
@@ -475,6 +475,7 @@
 
         document.querySelector('#fieldSelection').classList.remove('hidden')
         document.querySelector('#qrSelection').classList.add('hidden')
+        document.querySelector('input[name="fieldDefault"]').parentNode.classList.remove('hidden')
       } else {
         let visibleQrField = evt.target.dataset['values']
         let options = document.querySelector('.qrVisible').parentNode.children[0].children[2].children
@@ -482,6 +483,8 @@
           options[0].click()
           document.querySelector('input[name="qrVisible_input"]').parentNode.children[2].classList.add('hide')
           document.querySelector('input[name="qrVisible_input"]').parentNode.children[2].classList.remove('show')
+          document.querySelector('#qrSelection').classList.add('hidden')
+
         } else {
           for (let option of options) {
             if (option.getAttribute('value') === visibleQrField) {
@@ -492,7 +495,7 @@
             }
           }
         }
-
+        document.querySelector('input[name="fieldDefault"]').parentNode.classList.add('hidden')
         document.querySelector('#fieldSelection').classList.add('hidden')
         document.querySelector('#qrSelection').classList.remove('hidden')
       }
