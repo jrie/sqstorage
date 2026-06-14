@@ -1,5 +1,7 @@
 <?php
-require('login.php');
+require_once 'login.php';
+require_once 'support/dba.php';
+
 
 if ($useRegistration) {
   if (!isset($user) || !isset($user['usergroupid']) || (int)$user['usergroupid'] === 2) {
