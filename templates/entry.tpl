@@ -672,9 +672,21 @@
                     }
                   }
 
+                  let originalValues = {}
+                  let fields = document.querySelectorAll('.inputForm .form-control')
+                  for (let field of fields) {
+                    originalValues[field.getAttribute('name')] = field.value
+                  }
+
                   window.addEventListener('beforeunload', function(evt) {
-                    if (!document.querySelector('form.inputForm').reportValidity()) {
-                      evt.preventDefault()
+                    let fields = document.querySelectorAll('.inputForm .form-control')
+                    if (originalValues) {
+                      for (let field of fields) {
+                        if (originalValues[field.getAttribute('name')] !== field.value) {
+                          evt.preventDefault()
+                          break;
+                        }
+                      }
                     }
                   })
                 </script>
