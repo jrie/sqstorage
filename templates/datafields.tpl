@@ -156,17 +156,25 @@
       if (targetValue === 'datetime') {
         defaultValue.removeAttribute('readonly')
         defaultValue.setAttribute('type', 'datetime-local')
+        qrValues.value = ''
+        qrValues.setAttribute('readonly', 'readonly')
+        qrValues.removeAttribute('required')
+        qrSelection.classList.add('hidden')
+        defaultValue.parentNode.classList.remove('hidden')
+        defaultValue.removeAttribute('readonly')
       } else if (targetValue === 'qrcode') {
         qrValues.setAttribute('required', 'required')
         qrValues.removeAttribute('readonly')
+        qrValues.value = ''
         qrSelection.classList.remove('hidden')
         defaultValue.setAttribute('readonly', 'readonly')
+        defaultValue.parentNode.classList.add('hidden')
       } else {
         qrValues.value = ''
         qrValues.setAttribute('readonly', 'readonly')
         qrValues.removeAttribute('required')
         qrSelection.classList.add('hidden')
-        defaultValue.classList.remove('hidden')
+        defaultValue.parentNode.classList.remove('hidden')
         defaultValue.removeAttribute('readonly')
         defaultValue.setAttribute('type', 'text')
       }
@@ -456,6 +464,8 @@
         options[0].children[0].click()
         document.querySelector('input[name="visibleInCategories_input"]').parentNode.children[2].classList.add('hide')
         document.querySelector('input[name="visibleInCategories_input"]').parentNode.children[2].classList.remove('show')
+        document.querySelector('input[name="fieldDefault"]').parentNode.classList.add('hidden')
+        document.querySelector('.qrVisible').parentNode.parentNode.classList.add('hidden')
 
         for (let value of visibleSelections) {
           if (value === '') continue
@@ -476,9 +486,12 @@
         document.querySelector('#fieldSelection').classList.remove('hidden')
         document.querySelector('#qrSelection').classList.add('hidden')
         document.querySelector('input[name="fieldDefault"]').parentNode.classList.remove('hidden')
+
       } else {
         let visibleQrField = evt.target.dataset['values']
         let options = document.querySelector('.qrVisible').parentNode.children[0].children[2].children
+        document.querySelector('.qrVisible').parentNode.parentNode.classList.remove('hidden')
+
         if (!visibleQrField) {
           options[0].click()
           document.querySelector('input[name="qrVisible_input"]').parentNode.children[2].classList.add('hide')
