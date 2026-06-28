@@ -1,5 +1,5 @@
-#FROM php:fpm-alpine
-FROM php:8.4-fpm-alpine
+FROM php:fpm-alpine
+#FROM php:8.4-fpm-alpine
 
 COPY ./*.php /app/
 COPY ./favicon.* /app/
@@ -26,3 +26,4 @@ VOLUME /app
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 RUN chmod +x /usr/local/bin/install-php-extensions
 RUN /usr/local/bin/install-php-extensions mysqli gettext gd intl pdo_mysql
+COPY ./support/sqstorage_php.ini /usr/local/etc/php/conf.d/sqstorage_php.ini
