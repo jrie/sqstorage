@@ -678,11 +678,23 @@
                     originalValues[field.getAttribute('name')] = field.value
                   }
 
+                  let submitControl = document.querySelector('.inputForm button[type="submit"]')
+                  let isUserSubmitted = false
+                  if (submitControl) {
+                    submitControl.addEventListener('click', function () {
+                        isUserSubmitted = true
+                    })
+                  }
+
                   window.addEventListener('beforeunload', function(evt) {
+                    if (isUserSubmitted) {
+                      return true
+                    }
+
                     let fields = document.querySelectorAll('.inputForm .form-control')
                     if (originalValues) {
                       for (let field of fields) {
-                        if (originalValues[field.getAttribute('name')] !== field.value) {
+                        if (originalValues[field.getAttribute('name')] !== field.value && field.value !== "") {
                           evt.preventDefault()
                           break;
                         }
