@@ -96,8 +96,8 @@ CREATE TABLE `storages` (
   `amount` bigint(20) UNSIGNED NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-DROP TABLE IF EXISTS `subcategories`;
-CREATE TABLE `subcategories` (
+DROP TABLE IF EXISTS `subCategories`;
+CREATE TABLE `subCategories` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` char(128) NOT NULL,
   `amount` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
@@ -152,7 +152,7 @@ ALTER TABLE `database_rev`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `dbr` (`dbrev`);
 
-ALTER TABLE `fielddata`
+ALTER TABLE `fieldData`
   ADD PRIMARY KEY (`id`);
 
 ALTER TABLE `headCategories`
@@ -172,7 +172,7 @@ ALTER TABLE `settings`
 ALTER TABLE `storages`
   ADD PRIMARY KEY (`id`);
 
-ALTER TABLE `subcategories`
+ALTER TABLE `subCategories`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `subcategory` (`name`),
   ADD UNIQUE KEY `name` (`name`);
@@ -200,7 +200,7 @@ ALTER TABLE `customFields`
 ALTER TABLE `database_rev`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
-ALTER TABLE `fielddata`
+ALTER TABLE `fieldData`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `headCategories`
@@ -218,7 +218,7 @@ ALTER TABLE `settings`
 ALTER TABLE `storages`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
-ALTER TABLE `subcategories`
+ALTER TABLE `subCategories`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `users`
