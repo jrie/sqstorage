@@ -42,12 +42,12 @@ msgstr "Typ pola zmieniony:"
 msgid "Zur Datenbank hinzugefügt:"
 msgstr "Dodano do bazy danych:"
 
-#: templates//datafields.tpl:28 templates//datafields.tpl:314
+#: templates//datafields.tpl:28 templates//datafields.tpl:322
 msgid "Auswahl"
 msgstr "Selekcja"
 
 #: templates//datafields.tpl:32 templates//datafields.tpl:37
-#: templates//datafields.tpl:311
+#: templates//datafields.tpl:319
 msgid "Datentyp"
 msgstr "Typ danych"
 
@@ -64,12 +64,12 @@ msgid "Details"
 msgstr "Szczegóły"
 
 #: templates//datafields.tpl:60 templates//datafields.tpl:62
-#: templates//datafields.tpl:312
+#: templates//datafields.tpl:320
 msgid "Feldname"
 msgstr "Nazwa pola"
 
 #: templates//datafields.tpl:67 templates//datafields.tpl:69
-#: templates//datafields.tpl:313
+#: templates//datafields.tpl:321
 msgid "Standardwert"
 msgstr "Wartość domyślna"
 
@@ -97,7 +97,7 @@ msgstr "Widoczność"
 msgid "Überall sichtbar"
 msgstr "Zawsze widoczne"
 
-#: templates//datafields.tpl:104 templates//datafields.tpl:315
+#: templates//datafields.tpl:104 templates//datafields.tpl:323
 msgid "Basiert auf"
 msgstr "Na podstawie"
 
@@ -137,79 +137,79 @@ msgstr "Usuń pole"
 msgid "Bestehende Datenfelder"
 msgstr "Istniejące pola danych"
 
-#: templates//datafields.tpl:194 templates//categories.tpl:38
+#: templates//datafields.tpl:202 templates//categories.tpl:38
 #: templates//entry.tpl:134 templates//entry.tpl:136
 #: templates//php_language_extract.tpl:70
 msgid "Kategorie"
 msgstr "Kategoria"
 
-#: templates//datafields.tpl:194 templates//categories.tpl:1
+#: templates//datafields.tpl:202 templates//categories.tpl:1
 #: templates//categories.tpl:55 templates//inventory.tpl:27
 #: templates//inventory.tpl:168 templates//inventory.tpl:296
 #: templates//nav.tpl:24 templates//php_language_extract.tpl:72
 msgid "Kategorien"
 msgstr "Kategorie"
 
-#: templates//datafields.tpl:235
+#: templates//datafields.tpl:243
 msgid "ist doppelt enthalten."
 msgstr "jest zduplikowana."
 
-#: templates//datafields.tpl:237
+#: templates//datafields.tpl:245
 msgid "Standardwert doppelt."
 msgstr "Wartość domyślna jest zduplikowana."
 
-#: templates//datafields.tpl:253
+#: templates//datafields.tpl:261
 msgid " nicht in Standardwerten enthalten."
 msgstr " nie znajduje się w wartości domyślnej."
 
-#: templates//datafields.tpl:255
+#: templates//datafields.tpl:263
 msgid "Standardwert nicht in Auswahlwerten enthalten."
 msgstr "Wartość domyślna nie jest uwzględniona w wartościach zaznaczonych."
 
-#: templates//datafields.tpl:303
+#: templates//datafields.tpl:311
 msgid "Ein Feld mit gleichem Namem"
 msgstr "Pole z identyczną nazwą"
 
-#: templates//datafields.tpl:303
+#: templates//datafields.tpl:311
 msgid ""
 "ist bereits vorhanden. Das alte Feld muß gelöscht oder umbenannt werden."
 msgstr ""
 "już istnieje. Zduplikowane pole musi zostać usunięte lub należy zmienić jego "
 "nazwę."
 
-#: templates//datafields.tpl:363
+#: templates//datafields.tpl:371
 msgid "Der Standardwert darf nur zwischen"
 msgstr "Wartość standardowa może zawierać się jedynie w przedziale"
 
-#: templates//datafields.tpl:363 templates//datafields.tpl:382
+#: templates//datafields.tpl:371 templates//datafields.tpl:390
 msgid "und"
 msgstr "i"
 
-#: templates//datafields.tpl:363
+#: templates//datafields.tpl:371
 msgid "liegen."
 msgstr "leży."
 
-#: templates//datafields.tpl:376 templates//datafields.tpl:382
+#: templates//datafields.tpl:384 templates//datafields.tpl:390
 msgid "Feld"
 msgstr "Pole"
 
-#: templates//datafields.tpl:376
+#: templates//datafields.tpl:384
 msgid "hat keinen Wert."
 msgstr "nie ma wartości."
 
-#: templates//datafields.tpl:382
+#: templates//datafields.tpl:390
 msgid "muß zwischen"
 msgstr "musi być w przedziale"
 
-#: templates//datafields.tpl:382
+#: templates//datafields.tpl:390
 msgid "Zeichen lang sein."
 msgstr "o długości znaków."
 
-#: templates//datafields.tpl:427
+#: templates//datafields.tpl:435
 msgid "Eintrag"
 msgstr "Wpis"
 
-#: templates//datafields.tpl:427
+#: templates//datafields.tpl:435
 msgid "wirklich löschen?"
 msgstr "na pewno usunąć?"
 
@@ -242,11 +242,11 @@ msgstr ""
 "W magazynie znajduje się więcej niż jedna jednostka tego produktu. Ile z "
 "nich należy przenieść?"
 
-#: templates//transfer.tpl:65 templates//inventory.tpl:465
+#: templates//transfer.tpl:65 templates//inventory.tpl:488
 msgid "Von diesem Artikel sind nicht genug Einheiten vorhanden."
 msgstr "Niewystarczająca ilość produktu jest dostępna."
 
-#: templates//transfer.tpl:66 templates//inventory.tpl:467
+#: templates//transfer.tpl:66 templates//inventory.tpl:490
 msgid "Anzahl kann nicht negativ sein."
 msgstr "Ilość nie może być ujemna."
 
@@ -474,12 +474,12 @@ msgstr "Nieprzypisane"
 msgid "Lagerplatz umbenennen"
 msgstr "Zmień nazwę miejsca przechowywania"
 
-#: templates//inventory.tpl:20 templates//inventory.tpl:852
+#: templates//inventory.tpl:20 templates//inventory.tpl:885
 msgid "Zuklappen"
 msgstr "Zamknij"
 
 #: templates//inventory.tpl:26 templates//inventory.tpl:167
-#: templates//inventory.tpl:295 templates//inventory.tpl:580
+#: templates//inventory.tpl:295 templates//inventory.tpl:613
 #: templates//entry.tpl:77 templates//entry.tpl:80 templates//entry.tpl:82
 #: templates//php_language_extract.tpl:18
 msgid "Bezeichnung"
@@ -532,7 +532,15 @@ msgstr "Pełna edycja"
 msgid "Keine Gegenstände gefunden"
 msgstr "Nie znaleziono pozycji"
 
-#: templates//inventory.tpl:458
+#: templates//inventory.tpl:466
+msgid "Unbekannter Fehler in Eingabeformular Verarbeitung"
+msgstr "Nieznany błąd podczas przetwarzania formularza wprowadzania danych"
+
+#: templates//inventory.tpl:469
+msgid "Fehler beim löschen des Eintrags."
+msgstr "Wystąpił błąd podczas usuwania wpisu."
+
+#: templates//inventory.tpl:481
 msgid ""
 "Von diesem Artikel sind mehrere Stück am Lagerplatz. Wie viele sollen zum "
 "neuen Lagerort \"`#LABEL#`\" transferiert werden?"
@@ -540,19 +548,19 @@ msgstr ""
 "W lokalizacji magazynowej znajduje się kilka takich elementów. Ile z nich "
 "należy przenieść do nowej lokalizacji magazynowej \"`#LABEL#`\" ?"
 
-#: templates//inventory.tpl:533
+#: templates//inventory.tpl:556
 msgid "Lagerplatz wirklich entfernen?"
 msgstr "Czy na pewno chcesz usunąć powierzchnię magazynową?"
 
-#: templates//inventory.tpl:533
+#: templates//inventory.tpl:556
 msgid "Position wirklich entfernen?"
 msgstr "Czy na pewno chcesz usunąć pozycję?"
 
-#: templates//inventory.tpl:668
+#: templates//inventory.tpl:701
 msgid "Die Bezeichnung kann nicht leer sein."
 msgstr "Etykieta nie może być pusta."
 
-#: templates//inventory.tpl:681
+#: templates//inventory.tpl:714
 msgid ""
 "Es trat ein Fehler bei dem Speichern der Inhalte auf. Die Browser Entwickler-"
 "Konsole enthält Details."
@@ -560,15 +568,15 @@ msgstr ""
 "Błąd podczas zapisu danych. Konsola deweloperska przeglądarki zawiera "
 "szczegóły tego błędu."
 
-#: templates//inventory.tpl:705 templates//php_language_extract.tpl:39
+#: templates//inventory.tpl:738 templates//php_language_extract.tpl:39
 msgid "Der Eintrag wurde erfolgreich aktualisiert."
 msgstr "Wpis został pomyślnie zaktualizowany."
 
-#: templates//inventory.tpl:707
+#: templates//inventory.tpl:740
 msgid "Die Anzahl darf nur gesamte Einheiten umfassen."
 msgstr "Ilość musi być wpisana w pełnych jednostkach."
 
-#: templates//inventory.tpl:710
+#: templates//inventory.tpl:743
 msgid ""
 "Bei dem Versuch zu speichern trat ein Fehler auf. Die Browser Entwickler-"
 "Konsole enthält Details."
@@ -576,7 +584,7 @@ msgstr ""
 "Wystąpił błąd przy próbie zapisu. Konsola deweloperska przeglądarki zawiera "
 "szczegóły tego błędu."
 
-#: templates//inventory.tpl:846
+#: templates//inventory.tpl:879
 msgid "Aufklappen"
 msgstr "Rozszerz"
 

@@ -37,12 +37,12 @@ msgstr "Field type changed:"
 msgid "Zur Datenbank hinzugefügt:"
 msgstr "Added to the database:"
 
-#: templates//datafields.tpl:28 templates//datafields.tpl:314
+#: templates//datafields.tpl:28 templates//datafields.tpl:322
 msgid "Auswahl"
 msgstr "Selection"
 
 #: templates//datafields.tpl:32 templates//datafields.tpl:37
-#: templates//datafields.tpl:311
+#: templates//datafields.tpl:319
 msgid "Datentyp"
 msgstr "Type of data"
 
@@ -59,12 +59,12 @@ msgid "Details"
 msgstr "Details"
 
 #: templates//datafields.tpl:60 templates//datafields.tpl:62
-#: templates//datafields.tpl:312
+#: templates//datafields.tpl:320
 msgid "Feldname"
 msgstr "Field name"
 
 #: templates//datafields.tpl:67 templates//datafields.tpl:69
-#: templates//datafields.tpl:313
+#: templates//datafields.tpl:321
 msgid "Standardwert"
 msgstr "Default value"
 
@@ -92,7 +92,7 @@ msgstr "Visibility"
 msgid "Überall sichtbar"
 msgstr "Always visible"
 
-#: templates//datafields.tpl:104 templates//datafields.tpl:315
+#: templates//datafields.tpl:104 templates//datafields.tpl:323
 msgid "Basiert auf"
 msgstr "Is based on"
 
@@ -132,77 +132,77 @@ msgstr "Delete field"
 msgid "Bestehende Datenfelder"
 msgstr "Existing data fields"
 
-#: templates//datafields.tpl:194 templates//categories.tpl:38
+#: templates//datafields.tpl:202 templates//categories.tpl:38
 #: templates//entry.tpl:134 templates//entry.tpl:136
 #: templates//php_language_extract.tpl:70
 msgid "Kategorie"
 msgstr "Category"
 
-#: templates//datafields.tpl:194 templates//categories.tpl:1
+#: templates//datafields.tpl:202 templates//categories.tpl:1
 #: templates//categories.tpl:55 templates//inventory.tpl:27
 #: templates//inventory.tpl:168 templates//inventory.tpl:296
 #: templates//nav.tpl:24 templates//php_language_extract.tpl:72
 msgid "Kategorien"
 msgstr "Categories"
 
-#: templates//datafields.tpl:235
+#: templates//datafields.tpl:243
 msgid "ist doppelt enthalten."
 msgstr "is duplicated."
 
-#: templates//datafields.tpl:237
+#: templates//datafields.tpl:245
 msgid "Standardwert doppelt."
 msgstr "Default value duplicated."
 
-#: templates//datafields.tpl:253
+#: templates//datafields.tpl:261
 msgid " nicht in Standardwerten enthalten."
 msgstr " not inside default values."
 
-#: templates//datafields.tpl:255
+#: templates//datafields.tpl:263
 msgid "Standardwert nicht in Auswahlwerten enthalten."
 msgstr "Default value is not included in selection values."
 
-#: templates//datafields.tpl:303
+#: templates//datafields.tpl:311
 msgid "Ein Feld mit gleichem Namem"
 msgstr "A field with the same name"
 
-#: templates//datafields.tpl:303
+#: templates//datafields.tpl:311
 msgid ""
 "ist bereits vorhanden. Das alte Feld muß gelöscht oder umbenannt werden."
 msgstr "does already exits. The old one needs to be deleted or renamed."
 
-#: templates//datafields.tpl:363
+#: templates//datafields.tpl:371
 msgid "Der Standardwert darf nur zwischen"
 msgstr "The default value is only allowed to be between"
 
-#: templates//datafields.tpl:363 templates//datafields.tpl:382
+#: templates//datafields.tpl:371 templates//datafields.tpl:390
 msgid "und"
 msgstr "and"
 
-#: templates//datafields.tpl:363
+#: templates//datafields.tpl:371
 msgid "liegen."
 msgstr "."
 
-#: templates//datafields.tpl:376 templates//datafields.tpl:382
+#: templates//datafields.tpl:384 templates//datafields.tpl:390
 msgid "Feld"
 msgstr "Field"
 
-#: templates//datafields.tpl:376
+#: templates//datafields.tpl:384
 msgid "hat keinen Wert."
 msgstr "has no value."
 
-#: templates//datafields.tpl:382
+#: templates//datafields.tpl:390
 msgid "muß zwischen"
 msgstr "needs to be between"
 
-#: templates//datafields.tpl:382
+#: templates//datafields.tpl:390
 msgid "Zeichen lang sein."
 msgstr "characters long."
 
-#: templates//datafields.tpl:427
+#: templates//datafields.tpl:435
 msgid "Eintrag"
 msgstr "Entry"
 
-#: templates//datafields.tpl:427
+#: templates//datafields.tpl:435
 msgid "wirklich löschen?"
 msgstr "really delete?"
 
@@ -235,11 +235,11 @@ msgstr ""
 "There is more than one unit of this article in storage. How many should be "
 "transferred?"
 
-#: templates//transfer.tpl:65 templates//inventory.tpl:465
+#: templates//transfer.tpl:65 templates//inventory.tpl:488
 msgid "Von diesem Artikel sind nicht genug Einheiten vorhanden."
 msgstr "Not enough units of the item available."
 
-#: templates//transfer.tpl:66 templates//inventory.tpl:467
+#: templates//transfer.tpl:66 templates//inventory.tpl:490
 msgid "Anzahl kann nicht negativ sein."
 msgstr "Amount cannot be negative."
 
@@ -467,12 +467,12 @@ msgstr "Not assigned"
 msgid "Lagerplatz umbenennen"
 msgstr "Rename storage"
 
-#: templates//inventory.tpl:20 templates//inventory.tpl:852
+#: templates//inventory.tpl:20 templates//inventory.tpl:885
 msgid "Zuklappen"
 msgstr "Collapse"
 
 #: templates//inventory.tpl:26 templates//inventory.tpl:167
-#: templates//inventory.tpl:295 templates//inventory.tpl:580
+#: templates//inventory.tpl:295 templates//inventory.tpl:613
 #: templates//entry.tpl:77 templates//entry.tpl:80 templates//entry.tpl:82
 #: templates//php_language_extract.tpl:18
 msgid "Bezeichnung"
@@ -525,7 +525,15 @@ msgstr "Full edit"
 msgid "Keine Gegenstände gefunden"
 msgstr "No items found"
 
-#: templates//inventory.tpl:458
+#: templates//inventory.tpl:466
+msgid "Unbekannter Fehler in Eingabeformular Verarbeitung"
+msgstr "Unknown error when processing input form request"
+
+#: templates//inventory.tpl:469
+msgid "Fehler beim löschen des Eintrags."
+msgstr "Error when removing entry."
+
+#: templates//inventory.tpl:481
 msgid ""
 "Von diesem Artikel sind mehrere Stück am Lagerplatz. Wie viele sollen zum "
 "neuen Lagerort \"`#LABEL#`\" transferiert werden?"
@@ -533,19 +541,19 @@ msgstr ""
 "There is more than one unit of this article in storage. How many should be "
 "transferred to `#LABEL#`\"?"
 
-#: templates//inventory.tpl:533
+#: templates//inventory.tpl:556
 msgid "Lagerplatz wirklich entfernen?"
 msgstr "Really remove storage area?"
 
-#: templates//inventory.tpl:533
+#: templates//inventory.tpl:556
 msgid "Position wirklich entfernen?"
 msgstr "Really remove position?"
 
-#: templates//inventory.tpl:668
+#: templates//inventory.tpl:701
 msgid "Die Bezeichnung kann nicht leer sein."
 msgstr "Label cannot be empty."
 
-#: templates//inventory.tpl:681
+#: templates//inventory.tpl:714
 msgid ""
 "Es trat ein Fehler bei dem Speichern der Inhalte auf. Die Browser Entwickler-"
 "Konsole enthält Details."
@@ -553,15 +561,15 @@ msgstr ""
 "There was an error saving the contents. The browser developer console "
 "contains details."
 
-#: templates//inventory.tpl:705 templates//php_language_extract.tpl:39
+#: templates//inventory.tpl:738 templates//php_language_extract.tpl:39
 msgid "Der Eintrag wurde erfolgreich aktualisiert."
 msgstr "The entry was updated succesfully."
 
-#: templates//inventory.tpl:707
+#: templates//inventory.tpl:740
 msgid "Die Anzahl darf nur gesamte Einheiten umfassen."
 msgstr "The amount has to be written in full units."
 
-#: templates//inventory.tpl:710
+#: templates//inventory.tpl:743
 msgid ""
 "Bei dem Versuch zu speichern trat ein Fehler auf. Die Browser Entwickler-"
 "Konsole enthält Details."
@@ -569,7 +577,7 @@ msgstr ""
 "There was an error on the attempt to save. The browser developer console "
 "contains details."
 
-#: templates//inventory.tpl:846
+#: templates//inventory.tpl:879
 msgid "Aufklappen"
 msgstr "Expand"
 

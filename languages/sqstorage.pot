@@ -26,12 +26,12 @@ msgstr ""
 msgid "Zur Datenbank hinzugefügt:"
 msgstr ""
 
-#: templates//datafields.tpl:28 templates//datafields.tpl:314
+#: templates//datafields.tpl:28 templates//datafields.tpl:322
 msgid "Auswahl"
 msgstr ""
 
 #: templates//datafields.tpl:32 templates//datafields.tpl:37
-#: templates//datafields.tpl:311
+#: templates//datafields.tpl:319
 msgid "Datentyp"
 msgstr ""
 
@@ -48,12 +48,12 @@ msgid "Details"
 msgstr ""
 
 #: templates//datafields.tpl:60 templates//datafields.tpl:62
-#: templates//datafields.tpl:312
+#: templates//datafields.tpl:320
 msgid "Feldname"
 msgstr ""
 
 #: templates//datafields.tpl:67 templates//datafields.tpl:69
-#: templates//datafields.tpl:313
+#: templates//datafields.tpl:321
 msgid "Standardwert"
 msgstr ""
 
@@ -81,7 +81,7 @@ msgstr ""
 msgid "Überall sichtbar"
 msgstr ""
 
-#: templates//datafields.tpl:104 templates//datafields.tpl:315
+#: templates//datafields.tpl:104 templates//datafields.tpl:323
 msgid "Basiert auf"
 msgstr ""
 
@@ -119,77 +119,77 @@ msgstr ""
 msgid "Bestehende Datenfelder"
 msgstr ""
 
-#: templates//datafields.tpl:194 templates//categories.tpl:38
+#: templates//datafields.tpl:202 templates//categories.tpl:38
 #: templates//entry.tpl:134 templates//entry.tpl:136
 #: templates//php_language_extract.tpl:70
 msgid "Kategorie"
 msgstr ""
 
-#: templates//datafields.tpl:194 templates//categories.tpl:1
+#: templates//datafields.tpl:202 templates//categories.tpl:1
 #: templates//categories.tpl:55 templates//inventory.tpl:27
 #: templates//inventory.tpl:168 templates//inventory.tpl:296
 #: templates//nav.tpl:24 templates//php_language_extract.tpl:72
 msgid "Kategorien"
 msgstr ""
 
-#: templates//datafields.tpl:235
+#: templates//datafields.tpl:243
 msgid "ist doppelt enthalten."
 msgstr ""
 
-#: templates//datafields.tpl:237
+#: templates//datafields.tpl:245
 msgid "Standardwert doppelt."
 msgstr ""
 
-#: templates//datafields.tpl:253
+#: templates//datafields.tpl:261
 msgid " nicht in Standardwerten enthalten."
 msgstr ""
 
-#: templates//datafields.tpl:255
+#: templates//datafields.tpl:263
 msgid "Standardwert nicht in Auswahlwerten enthalten."
 msgstr ""
 
-#: templates//datafields.tpl:303
+#: templates//datafields.tpl:311
 msgid "Ein Feld mit gleichem Namem"
 msgstr ""
 
-#: templates//datafields.tpl:303
+#: templates//datafields.tpl:311
 msgid ""
 "ist bereits vorhanden. Das alte Feld muß gelöscht oder umbenannt werden."
 msgstr ""
 
-#: templates//datafields.tpl:363
+#: templates//datafields.tpl:371
 msgid "Der Standardwert darf nur zwischen"
 msgstr ""
 
-#: templates//datafields.tpl:363 templates//datafields.tpl:382
+#: templates//datafields.tpl:371 templates//datafields.tpl:390
 msgid "und"
 msgstr ""
 
-#: templates//datafields.tpl:363
+#: templates//datafields.tpl:371
 msgid "liegen."
 msgstr ""
 
-#: templates//datafields.tpl:376 templates//datafields.tpl:382
+#: templates//datafields.tpl:384 templates//datafields.tpl:390
 msgid "Feld"
 msgstr ""
 
-#: templates//datafields.tpl:376
+#: templates//datafields.tpl:384
 msgid "hat keinen Wert."
 msgstr ""
 
-#: templates//datafields.tpl:382
+#: templates//datafields.tpl:390
 msgid "muß zwischen"
 msgstr ""
 
-#: templates//datafields.tpl:382
+#: templates//datafields.tpl:390
 msgid "Zeichen lang sein."
 msgstr ""
 
-#: templates//datafields.tpl:427
+#: templates//datafields.tpl:435
 msgid "Eintrag"
 msgstr ""
 
-#: templates//datafields.tpl:427
+#: templates//datafields.tpl:435
 msgid "wirklich löschen?"
 msgstr ""
 
@@ -220,11 +220,11 @@ msgid ""
 "neuen Lagerort transferiert werden?"
 msgstr ""
 
-#: templates//transfer.tpl:65 templates//inventory.tpl:465
+#: templates//transfer.tpl:65 templates//inventory.tpl:488
 msgid "Von diesem Artikel sind nicht genug Einheiten vorhanden."
 msgstr ""
 
-#: templates//transfer.tpl:66 templates//inventory.tpl:467
+#: templates//transfer.tpl:66 templates//inventory.tpl:490
 msgid "Anzahl kann nicht negativ sein."
 msgstr ""
 
@@ -452,12 +452,12 @@ msgstr ""
 msgid "Lagerplatz umbenennen"
 msgstr ""
 
-#: templates//inventory.tpl:20 templates//inventory.tpl:852
+#: templates//inventory.tpl:20 templates//inventory.tpl:885
 msgid "Zuklappen"
 msgstr ""
 
 #: templates//inventory.tpl:26 templates//inventory.tpl:167
-#: templates//inventory.tpl:295 templates//inventory.tpl:580
+#: templates//inventory.tpl:295 templates//inventory.tpl:613
 #: templates//entry.tpl:77 templates//entry.tpl:80 templates//entry.tpl:82
 #: templates//php_language_extract.tpl:18
 msgid "Bezeichnung"
@@ -510,45 +510,53 @@ msgstr ""
 msgid "Keine Gegenstände gefunden"
 msgstr ""
 
-#: templates//inventory.tpl:458
+#: templates//inventory.tpl:466
+msgid "Unbekannter Fehler in Eingabeformular Verarbeitung"
+msgstr ""
+
+#: templates//inventory.tpl:469
+msgid "Fehler beim löschen des Eintrags."
+msgstr ""
+
+#: templates//inventory.tpl:481
 msgid ""
 "Von diesem Artikel sind mehrere Stück am Lagerplatz. Wie viele sollen zum "
 "neuen Lagerort \"`#LABEL#`\" transferiert werden?"
 msgstr ""
 
-#: templates//inventory.tpl:533
+#: templates//inventory.tpl:556
 msgid "Lagerplatz wirklich entfernen?"
 msgstr ""
 
-#: templates//inventory.tpl:533
+#: templates//inventory.tpl:556
 msgid "Position wirklich entfernen?"
 msgstr ""
 
-#: templates//inventory.tpl:668
+#: templates//inventory.tpl:701
 msgid "Die Bezeichnung kann nicht leer sein."
 msgstr ""
 
-#: templates//inventory.tpl:681
+#: templates//inventory.tpl:714
 msgid ""
 "Es trat ein Fehler bei dem Speichern der Inhalte auf. Die Browser Entwickler-"
 "Konsole enthält Details."
 msgstr ""
 
-#: templates//inventory.tpl:705 templates//php_language_extract.tpl:39
+#: templates//inventory.tpl:738 templates//php_language_extract.tpl:39
 msgid "Der Eintrag wurde erfolgreich aktualisiert."
 msgstr ""
 
-#: templates//inventory.tpl:707
+#: templates//inventory.tpl:740
 msgid "Die Anzahl darf nur gesamte Einheiten umfassen."
 msgstr ""
 
-#: templates//inventory.tpl:710
+#: templates//inventory.tpl:743
 msgid ""
 "Bei dem Versuch zu speichern trat ein Fehler auf. Die Browser Entwickler-"
 "Konsole enthält Details."
 msgstr ""
 
-#: templates//inventory.tpl:846
+#: templates//inventory.tpl:879
 msgid "Aufklappen"
 msgstr ""
 
