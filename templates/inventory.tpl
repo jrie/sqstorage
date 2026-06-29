@@ -85,7 +85,7 @@
                     </div>
                     {if !$isGuest}
                       <div class="list-span actions">
-                        <a title="{t}Position löschen{/t}" name="remove" data-name="{$item.label}" value="{$item.id}" type="submit"><i class="fa fas fa-times-circle"></i></a>
+                        <a title="{t}Position löschen{/t}" name="remove" data-name="{$item.label}" value="{$item.id}"><i class="fa fas fa-times-circle"></i></a>
                         <a tabindex="-1" href="#" class="save-inline-edit inactive" title="{t}Schnelle Bearbeitung speichern{/t}" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
                         <a tabindex="-1" href="#" class="open-inline-edit" title="{t}Schnelle Bearbeitung{/t}" data-id="{$item.id}"><i class="fas fa-eraser"></i></a>
                         <a title="{t}Ausführliche Bearbeitung{/t}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
@@ -225,7 +225,7 @@
             <div class="list-span"><span class="listing-dateadded" title="{$dateexploded.0}">{$dateexploded.0}</span></div>
             {if !$isGuest}
               <div class="list-span actions">
-                <a title="{t}Position löschen{/t}" name="remove" data-name="{$item.label}" value="{$item.id}" type="submit"><i class="fa fas fa-times-circle"></i></a>
+                <a title="{t}Position löschen{/t}" name="remove" data-name="{$item.label}" value="{$item.id}"><i class="fa fas fa-times-circle"></i></a>
                 <a tabindex="-1" href="#" class="save-inline-edit inactive" title="{t}Schnelle Bearbeitung speichern{/t}" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
                 <a tabindex="-1" href="#" class="open-inline-edit" title="{t}Schnelle Bearbeitung{/t}" data-id="{$item.id}"><i class="fas fa-eraser"></i></a>
                 <a title="{t}Ausführliche Bearbeitung{/t}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
@@ -354,7 +354,7 @@
             <div class="list-span"><span class="listing-dateadded" title="{$dateexploded.0}">{$dateexploded.0}</span></div>
             {if !$isGuest}
               <div class="list-span actions">
-                <a title="{t}Position löschen{/t}" name="remove" data-name="{$item.label}" value="{$item.id}" type="submit"><i class="fa fas fa-times-circle"></i></a>
+                <a title="{t}Position löschen{/t}" name="remove" data-name="{$item.label}" value="{$item.id}"><i class="fa fas fa-times-circle"></i></a>
                 <a tabindex="-1" href="#" class="save-inline-edit inactive" title="{t}Schnelle Bearbeitung speichern{/t}" data-id="{$item.id}"><i class="fas fa-floppy-disk"></i></a>
                 <a tabindex="-1" href="#" class="open-inline-edit" title="{t}Schnelle Bearbeitung{/t}" data-id="{$item.id}"><i class="fas fa-eraser"></i></a>
                 <a title="{t}Ausführliche Bearbeitung{/t}" href="{$urlBase}/entry{$urlPostFix}?editItem={$item.id}"><i class="fas fa-edit"></i></a>
@@ -453,6 +453,29 @@
     {/literal}
   {/if}
   {literal}
+    async function sendFormReqeuest(formData) {
+      let response = await fetch("{/literal}{$urlBase}{literal}/inventory{/literal}{$urlPostFix}{literal}", {
+        method: "POST",
+        body: formData
+      })
+
+      let responseText = await response.text()
+      if (responseText === 'OK') {
+        window.location.reload()
+      } else {
+        let msg = '{/literal}{t}Unbekannter Fehler in Eingabeformular Verarbeitung{/t}{literal}'
+        switch (responseText) {
+          case 'FAIL_DELETE':
+            msg = '{/literal}{t}Fehler beim löschen des Eintrags.{/t}{literal}'
+            break
+          default:
+            break
+        }
+
+        alert(msg)
+      }
+    }
+
     function NumSelect(maxAmount, storageLabel) {
       while (true) {
         let promptText = "{/literal}{t escape=no}Von diesem Artikel sind mehrere Stück am Lagerplatz. Wie viele sollen zum neuen Lagerort \"`#LABEL#`\" transferiert werden?{/t}{literal}"
@@ -532,7 +555,17 @@
         if (target.dataset['name'] === undefined) target = target.parentNode
         let targetType = target.name === 'removeStorage' ? '{/literal}{t}Lagerplatz wirklich entfernen?{/t}{literal}' : '{/literal}{t}Position wirklich entfernen?{/t}{literal}'
 
-        if (!window.confirm(targetType + ' "' + target.dataset['name'] + '"')) evt.preventDefault()
+        if (!window.confirm(targetType + ' "' + target.dataset['name'] + '"')) {
+          evt.preventDefault()
+          return
+        }
+
+        let form = document.querySelector('#inventoryForm')
+        if (form) {
+          let formData = new FormData(form);
+          formData.append('remove', target.getAttribute('value'))
+          sendFormReqeuest(formData)
+        }
       })
     }
 

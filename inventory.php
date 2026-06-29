@@ -51,6 +51,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     DB::query('DELETE FROM items WHERE id=%d', $_POST['remove']);
+    if (DB::affectedRows() === 1) {
+      echo 'OK';
+    } else {
+      echo 'FAIL_DELETE';
+    }
+
+    die();
   } else if (isset($_POST['removeStorage']) && !empty($_POST['removeStorage'])) {
     DB::update('items', array('storageid' => 0), 'storageid=%d', $_POST['removeStorage']);
     DB::query('DELETE FROM `storages` WHERE id=%d', $_POST['removeStorage']);

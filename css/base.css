@@ -526,6 +526,7 @@ div.subcategories.actions {
   padding: 0;
   margin-right: 6px;
   vertical-align: text-top;
+  cursor: pointer;
 }
 
 .storage-area ul {
